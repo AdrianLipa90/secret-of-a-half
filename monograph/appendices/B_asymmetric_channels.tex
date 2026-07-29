@@ -1,0 +1,85 @@
+\chapter{Asymmetric Channels and Metric Dependence}
+\label{app:asymmetric}
+
+\section{General weighted cancellation theorem}
+
+Let $a,b\in\C\setminus\{0\}$ and define
+\[
+ \Acomp_{a,b}(\sigma,\phi)
+ =a\sqrt\sigma+b e^{i\phi}\sqrt{1-\sigma}.
+\]
+
+\begin{theorem}[Weighted cancellation]
+\label{thm:weighted-cancellation}
+For $0<\sigma<1$, $\Acomp_{a,b}(\sigma,\phi)=0$ if and only if
+\begin{equation}
+ \sigma=\frac{|b|^2}{|a|^2+|b|^2}
+ \label{eq:weighted-sigma-app}
+\end{equation}
+and
+\begin{equation}
+ e^{i\phi}=-\frac{a}{b}\frac{|b|}{|a|}.
+ \label{eq:weighted-phase-app}
+\end{equation}
+The phase on the right has unit modulus.
+\end{theorem}
+\begin{proof}
+The zero equation implies
+\[
+ |a|\sqrt\sigma=|b|\sqrt{1-\sigma}.
+\]
+Squaring and solving gives \cref{eq:weighted-sigma-app}. Dividing the original equation by $b\sqrt{1-\sigma}$ then gives \cref{eq:weighted-phase-app}. The converse is direct.
+\end{proof}
+
+\begin{corollary}
+The cancellation point is $\sigma=1/2$ if and only if $|a|=|b|$.
+\end{corollary}
+
+\section{Metric interpretation}
+
+A detector is a covector $d=(\bar a,\bar b)$ acting on a state. Equal gain means the detector has equal modulus on the two basis vectors. This condition depends on the chosen inner product and basis. If the channel basis is changed by a non-unitary transformation, equal coefficients do not represent equal physical or geometric gain.
+
+Therefore a canonical zeta-state construction must provide:
+\begin{enumerate}
+  \item a Hilbert-space inner product;
+  \item an orthogonal complement-related decomposition;
+  \item a swap isometry $X$;
+  \item a detector invariant under the swap.
+\end{enumerate}
+If $X$ is unitary and $X\ket0=\ket1$, then swap invariance of the detector ray implies equal gain up to phase.
+
+\section{Perturbation of the selected line}
+
+Write $|a|=1+\epsilon$ and $|b|=1-\epsilon$ for small $\epsilon$. Then
+\begin{align*}
+ \sigma_*(\epsilon)
+ &=\frac{(1-\epsilon)^2}{(1+\epsilon)^2+(1-\epsilon)^2}\\
+ &=\frac12-\epsilon+O(\epsilon^3).
+\end{align*}
+A first-order gain asymmetry causes a first-order horizontal shift. The half-axis is therefore highly diagnostic of exact channel symmetry.
+
+If a proposed numerical map produces weights close to, but not exactly, $1/2$ at known zeros, it may be detecting a small metric asymmetry rather than numerical noise. The source of that asymmetry must be identified.
+
+\section{Monotone reparameterizations}
+
+The direct ansatz uses channel probability $p(\sigma)=\sigma$. A more general complement-compatible map satisfies
+\begin{equation}
+ p(1-\sigma)=1-p(\sigma).
+ \label{eq:complement-p}
+\end{equation}
+If $p$ is strictly monotone, then $p(1/2)=1/2$ and the balanced line remains unchanged. Thus the location theorem does not require the identity map specifically; it requires a complement-symmetric injective weight map.
+
+\begin{proposition}[Generalized weight theorem]
+Let $p:(0,1)\to(0,1)$ be injective and satisfy \cref{eq:complement-p}. If an equal-gain readout with weights $p(\sigma)$ and $1-p(\sigma)$ vanishes, then $\sigma=1/2$.
+\end{proposition}
+\begin{proof}
+Cancellation gives $p(\sigma)=1/2$. The complement property gives $p(1/2)=1/2$. Injectivity implies $\sigma=1/2$.
+\end{proof}
+
+This generalization may be useful if a canonical metric produces a nonlinear probability coordinate. The exact identity $p(\sigma)=\sigma$ is conceptually clean but not logically necessary for the half-axis conclusion.
+
+\section{Indefinite metrics}
+
+If the channel space has an indefinite inner product, equal ``norms'' can lose positivity and cancellation conditions can change dramatically. Since the information interpretation requires probabilities and the detector proof uses positivity, the initial ansatz restricts to positive-definite Hilbert metrics. Any indefinite or Krein-space extension must replace the entropy and positivity arguments with new ones.
+
+\status{The weighted-channel theorem and monotone reparameterization result are exact. They expose metric symmetry as a required, testable assumption.}

@@ -1,0 +1,38 @@
+\chapter{Monograph Claim Ledger}
+\label{app:claims}
+
+\small
+\begin{longtable}{@{}p{0.10\textwidth}p{0.47\textwidth}p{0.14\textwidth}p{0.15\textwidth}@{}}
+\caption{Principal claims and their status in Version 0.2.}\label{tab:claim-ledger}\\
+\toprule
+ID & Statement & Status & Location\\
+\midrule
+\endfirsthead
+\toprule
+ID & Statement & Status & Location\\
+\midrule
+\endhead
+SOH-L001 & Binary Shannon entropy is uniquely maximal at $\sigma=1/2$, with value $\ln2$. & Exact & \Cref{lem:entropy-max}\\
+SOH-L002 & Equal-gain normalized two-channel cancellation occurs only at $\sigma=1/2$ and phase $\pi$. & Exact & \Cref{lem:exact-cancellation}\\
+SOH-L003 & The fixed set of $\J(s)=1-\bar s$ is the critical line. & Exact & \Cref{lem:J-fixed}\\
+SOH-L004 & Entropy deficit from balance equals a Bernoulli KL divergence and is positive. & Exact & \Cref{prop:entropy-deficit}\\
+SOH-L005 & The binary-spinor complement, entropy, sign, and phase-locked cancellation conditions are equivalent. & Exact model theorem & \Cref{thm:triple-coincidence}\\
+SOH-L006 & Eta and zeta have identical zero sets with multiplicity in the open critical strip. & Exact classical & \Cref{prop:eta-zeta-equivalence}\\
+SOH-L007 & Unequal channel gains shift the cancellation point to $|b|^2/(|a|^2+|b|^2)$. & Exact & \Cref{thm:weighted-cancellation}\\
+SOH-C001 & A canonical zeta-state map converts every non-trivial zero into equal-gain complementary cancellation. & Open bridge & \Cref{post:zero-equivalence}\\
+SOH-T001 & Under SOH-C001 and the channel assumptions, all non-trivial zeros lie on $\Re s=1/2$. & Conditional & \Cref{thm:conditional-rh}\\
+SOH-C002 & A theta-kernel or analytic-vector construction satisfies the canonical bridge requirements. & Open programme & \Cref{chap:candidates}\\
+SOH-C003 & A self-adjoint operator has spectral determinant proportional to $\XiR$. & Open spectral route & \Cref{thm:spectral-conditional}\\
+SOH-L008 & The native paired theta state satisfies $P(\J s)=X\overline{P(s)}$. & Exact & \Cref{thm:pn-covariance}\\
+SOH-L009 & The native closure defect equals $(\Re s-1/2)^2$. & Exact & \Cref{thm:pn-closure}\\
+SOH-L010 & The continuous paired theta detector equals $\xi(s)$. & Exact classical & \Cref{prop:pn-detector}\\
+SOH-C004 & Every non-trivial zero closes in the canonical self-dual PhaseNav shell. & Open bridge & Postulate~\ref{post:pn-open-bridge}\\
+SOH-T002 & Under SOH-C004, all non-trivial zeros lie on $\Re s=1/2$. & Conditional & \Cref{thm:pn-conditional-rh}\\
+SOH-N001 & The eighteen-pair detector is a low-height numerical approximation. & Numerical & \Cref{chap:phasenav-native}\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Promotion rule}
+
+An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of RH left unproved. Numerical agreement cannot promote a claim to exact status.

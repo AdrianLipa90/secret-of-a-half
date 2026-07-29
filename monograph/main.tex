@@ -1,0 +1,126 @@
+\documentclass[11pt,a4paper,openany]{book}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,margin=27mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs,longtable,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage{caption}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=green!35!black,urlcolor=blue!55!black]{hyperref}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+\graphicspath{{figures/}}
+\setstretch{1.08}
+\setlist{itemsep=0.3em,topsep=0.4em}
+\setlength{\parindent}{1.25em}
+\setlength{\parskip}{0.15em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\nouppercase{\leftmark}}
+\fancyhead[RO]{\small\nouppercase{\rightmark}}
+\fancyfoot[C]{\thepage}
+
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{criterion}[theorem]{Criterion}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{postulate}[theorem]{Postulate}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem}[theorem]{Open Problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{warning}[theorem]{Boundary Warning}
+\crefname{postulate}{postulate}{postulates}
+\Crefname{postulate}{Postulate}{Postulates}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Sstrip}{\mathcal{S}}
+\newcommand{\Crit}{\mathcal{C}_{1/2}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\Acomp}{\mathcal{A}}
+\newcommand{\Hbin}{H_2}
+\newcommand{\Dkl}{D_{\mathrm{KL}}}
+\newcommand{\XiR}{\Xi}
+\newcommand{\ket}[1]{\lvert #1\rangle}
+\newcommand{\bra}[1]{\langle #1\rvert}
+\newcommand{\braket}[2]{\langle #1\mid #2\rangle}
+\newcommand{\status}[1]{\par\smallskip\noindent\textbf{Claim status:} #1\par\smallskip}
+\newcommand{\gap}[1]{\par\smallskip\noindent\textbf{Blocking gap:} #1\par\smallskip}
+\newcommand{\half}{\tfrac12}
+
+\title{\textbf{The Secret of a Half}\\[0.5em]
+\Large Binary Complementarity, Spinorial Phase, and the Critical Axis of the Riemann Zeta Function}
+\author{Adrian Lipa}
+\date{Research Monograph, Version 0.2\\29 July 2026}
+\hypersetup{
+  pdftitle={The Secret of a Half: Binary Complementarity, Spinorial Phase, and the Critical Axis of the Riemann Zeta Function},
+  pdfauthor={Adrian Lipa},
+  pdfsubject={Information-spinor critical-axis ansatz and native PhaseNav theta bridge},
+  pdfkeywords={Riemann zeta function, critical line, binary entropy, spinor, Dirichlet eta function, PhaseNav, theta kernel}
+}
+
+\begin{document}
+\frontmatter
+\input{frontmatter/title}
+\input{frontmatter/abstract}
+\input{frontmatter/preface}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\mainmatter
+\part{Analytic and Logical Foundations}
+\include{chapters/01_scope_and_claims}
+\include{chapters/02_zeta_xi_background}
+\include{chapters/03_symmetry_and_the_half_axis}
+
+\part{Binary and Spinorial Structures}
+\include{chapters/04_binary_entropy}
+\include{chapters/05_two_channel_cancellation}
+\include{chapters/06_bloch_and_spinorial_phase}
+\include{chapters/07_dirichlet_eta_bridge}
+
+\part{The Information--Spinor Ansatz}
+\include{chapters/08_ansatz_axioms}
+\include{chapters/09_conditional_theorem}
+\include{chapters/10_no_go_results}
+\include{chapters/11_candidate_bridges}
+\include{chapters/12_spectral_reformulation}
+
+\part{Verification and Research Programme}
+\include{chapters/13_computational_validation}
+\include{chapters/14_falsification_and_milestones}
+\include{chapters/15_conclusion}
+
+\part{Native PhaseNav Construction}
+\include{chapters/16_phasenav_native_construction}
+
+\appendix
+\part{Appendices}
+\include{appendices/A_elementary_proofs}
+\include{appendices/B_asymmetric_channels}
+\include{appendices/C_numerical_tables}
+\include{appendices/D_claim_ledger}
+\include{appendices/E_notation}
+
+\backmatter
+\bibliographystyle{plainnat}
+\bibliography{../references/references}
+\end{document}

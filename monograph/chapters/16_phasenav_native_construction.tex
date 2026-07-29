@@ -1,0 +1,269 @@
+\chapter{A Native PhaseNav Theta-Bridge Construction}
+\label{chap:phasenav-native}
+
+\section{Purpose and claim boundary}
+
+This chapter supplies the first executable construction aimed at the open bridge
+identified in \cref{chap:candidates}.  The construction is expressed natively as
+a $36$-dimensional weighted phase state rather than as prose subsequently encoded
+into PhaseNav.  Its source of truth is the program
+\begin{center}
+\texttt{construction/phasenav/secret\_of\_half\_theta\_bridge.pnv}.
+\end{center}
+The accompanying Python module parses the node basis and execution profile from
+that file and evaluates the state.  It is therefore an executor and auditor, not
+the primary definition.
+
+Three statements are exact: covariance under the zeta involution, the formula for
+the native closure defect, and the continuous theta--Mellin detector identity.
+One statement remains open: every non-trivial zero must be shown to occupy the
+canonical self-dual PhaseNav shell.  This distinction is maintained throughout.
+
+\section{Symmetric theta channels}
+
+Let
+\begin{equation}
+ \psi(x)=\sum_{n=1}^{\infty}e^{-\pi n^2x},\qquad x\ge1.
+ \label{eq:theta-tail-native}
+\end{equation}
+The completed zeta function has the symmetric representation
+\begin{equation}
+ \xi(s)=\frac12+\frac{s(s-1)}2\int_1^\infty
+ \psi(x)\left(x^{s/2}+x^{(1-s)/2}\right)\frac{dx}{x}.
+ \label{eq:xi-theta-native-x}
+\end{equation}
+Put $x=e^u$ and write
+\begin{equation}
+ s=\frac12+z,\qquad z=\delta+it,
+ \qquad \delta=\operatorname{Re}s-\frac12.
+ \label{eq:centered-z-native}
+\end{equation}
+Then \cref{eq:xi-theta-native-x} becomes
+\begin{equation}
+ \xi(s)=\frac12+\frac{s(s-1)}2\int_0^\infty
+ \psi(e^u)e^{u/4}
+ \left(e^{zu/2}+e^{-zu/2}\right)du.
+ \label{eq:xi-theta-native-u}
+\end{equation}
+The two exponentials are canonical complementary channels; no arbitrary split of
+$\xi$ has been introduced.
+
+\section{Eighteen pairs in thirty-six dimensions}
+
+Choose positive quadrature nodes and weights $(u_k,q_k)$, $k=0,\ldots,17$, and
+set
+\begin{equation}
+ b_k=q_k\psi(e^{u_k})e^{u_k/4}>0.
+ \label{eq:base-gain-native}
+\end{equation}
+The native PhaseNav state is the interleaved vector
+\begin{equation}
+ P_{18}(s)=
+ \left(R_{0,+},R_{0,-},\ldots,R_{17,+},R_{17,-}\right)\in\C^{36},
+ \label{eq:pn-state}
+\end{equation}
+where
+\begin{equation}
+ R_{k,+}(s)=b_ke^{+zu_k/2},\qquad
+ R_{k,-}(s)=b_ke^{-zu_k/2}.
+ \label{eq:pn-rotor-pair}
+\end{equation}
+Writing $R_{k,\pm}=\rho_{k,\pm}e^{i\phi_{k,\pm}}$ gives
+\begin{align}
+ \rho_{k,+}&=b_ke^{+\delta u_k/2}, &
+ \phi_{k,+}&=+tu_k/2\pmod{2\pi},\label{eq:pn-plus}\\
+ \rho_{k,-}&=b_ke^{-\delta u_k/2}, &
+ \phi_{k,-}&=-tu_k/2\pmod{2\pi}.\label{eq:pn-minus}
+\end{align}
+Thus $t$ acts as phase transport, whereas displacement away from the critical
+axis acts as antisymmetric radial gain shear.
+
+The PhaseNav phase grammar is used directly.  The theta seed is an
+\texttt{IDENTITY} operator; complex transport is \texttt{DIFFERENTIAL}; the
+zeta involution is an \texttt{ORBIT}; and native closure is an
+\texttt{AFFECT} operator.
+
+\section{Involution covariance}
+
+Let $X$ swap the two members of every rotor pair and let complex conjugation act
+componentwise.
+
+\begin{theorem}[Native involution covariance]
+\label{thm:pn-covariance}
+For every $s\in\C$,
+\begin{equation}
+ P_{18}(\J s)=X\overline{P_{18}(s)},
+ \qquad \J s=1-\overline{s}.
+ \label{eq:pn-covariance}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Under $\J$, the centred coordinate satisfies $z\mapsto-\overline z$.  Therefore
+\[
+ R_{k,+}(\J s)=b_ke^{-\overline z u_k/2}
+ =\overline{R_{k,-}(s)},
+\]
+and similarly $R_{k,-}(\J s)=\overline{R_{k,+}(s)}$.  Applying this identity to
+all eighteen pairs proves \cref{eq:pn-covariance}.
+\end{proof}
+
+The executable residual is the maximum componentwise norm of the difference
+between the two sides.  It is at roundoff level in the regression suite.
+
+\section{The native closure defect}
+
+The canonical self-dual shell is the weighted torus on which every pair has the
+base gain $b_k$ in both channels.  Define
+\begin{equation}
+ \mathcal C_{18}(s)=
+ \frac{\sum_{k=0}^{17}
+ \left[\log\left(\rho_{k,+}/\rho_{k,-}\right)\right]^2}
+ {\sum_{k=0}^{17}u_k^2}.
+ \label{eq:pn-closure-defect}
+\end{equation}
+This quantity is gauge-independent because it uses gain ratios and is unaffected
+by any common phase rotation.
+
+\begin{theorem}[Exact native closure identity]
+\label{thm:pn-closure}
+For all $s\in\C$,
+\begin{equation}
+ \boxed{\mathcal C_{18}(s)=
+ \left(\operatorname{Re}s-\frac12\right)^2.}
+ \label{eq:pn-closure-identity}
+\end{equation}
+Consequently,
+\begin{equation}
+ \mathcal C_{18}(s)=0
+ \quad\Longleftrightarrow\quad
+ \operatorname{Re}s=\frac12.
+ \label{eq:pn-half-equivalence}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+From \cref{eq:pn-plus,eq:pn-minus},
+\[
+ \log\frac{\rho_{k,+}}{\rho_{k,-}}=\delta u_k.
+\]
+Substitution into \cref{eq:pn-closure-defect} yields
+\[
+ \mathcal C_{18}(s)=
+ \frac{\delta^2\sum_ku_k^2}{\sum_ku_k^2}=\delta^2.
+\]
+Using \cref{eq:centered-z-native} proves both claims.
+\end{proof}
+
+The theorem is independent of known zero ordinates, numerical fitting and the
+accuracy of the quadrature.  The same identity holds for every non-degenerate
+finite node set and for the continuous state.
+
+\section{The theta--Mellin detector}
+
+The finite detector is
+\begin{equation}
+ D_{18}(s)=\frac12+\frac{s(s-1)}2
+ \sum_{k=0}^{17}\left(R_{k,+}(s)+R_{k,-}(s)\right).
+ \label{eq:pn-detector18}
+\end{equation}
+
+\begin{proposition}[Continuous detector identity]
+\label{prop:pn-detector}
+When the quadrature is replaced by the continuous measure in
+\cref{eq:xi-theta-native-u}, the detector equals $\xi(s)$ identically.
+\end{proposition}
+
+\begin{proof}
+Insert the continuous versions of \cref{eq:base-gain-native,eq:pn-rotor-pair}
+into \cref{eq:pn-detector18}.  The resulting integral is exactly
+\cref{eq:xi-theta-native-u}.
+\end{proof}
+
+The finite detector retains the functional equation exactly at the algebraic
+level because the two channels are exchanged by $s\mapsto1-s$.  Its numerical
+agreement with $\xi$ depends on the finite quadrature and is therefore reported
+separately from the exact construction.
+
+\section{The open native-closure bridge}
+
+\begin{postulate}[SOH-PN-C001 / SOH-C004]
+\label{post:pn-open-bridge}
+Every non-trivial zero $\rho$ of $\xi$ is represented by a zero state that closes
+in the canonical self-dual PhaseNav shell:
+\begin{equation}
+ \xi(\rho)=0\quad\Longrightarrow\quad\mathcal C(\rho)=0.
+ \label{eq:pn-open-bridge}
+\end{equation}
+\end{postulate}
+
+\begin{theorem}[Conditional PhaseNav critical-axis theorem]
+\label{thm:pn-conditional-rh}
+If Postulate~\ref{post:pn-open-bridge} holds for every non-trivial zero, then every such
+zero lies on $\operatorname{Re}s=1/2$.
+\end{theorem}
+
+\begin{proof}
+Let $\rho$ be a non-trivial zero.  The postulate gives
+$\mathcal C(\rho)=0$.  By \cref{thm:pn-closure}, this is equivalent to
+$\operatorname{Re}\rho=1/2$.
+\end{proof}
+
+This theorem does not hide the hard step.  The functional equation maps an
+off-axis zero to a complementary zero, but it does not by itself identify the
+two radially distinct states as one native self-dual state.  Establishing
+Postulate~\ref{post:pn-open-bridge} requires an additional analytic mechanism.
+
+\section{Possible promotion mechanisms}
+
+The construction turns the vague request for a canonical bridge into a finite
+list of mathematically testable promotion routes:
+\begin{enumerate}
+ \item construct a positive theta-kernel Gram operator whose null vectors are
+ exactly the detector-zero states and whose positivity forces equal pair gains;
+ \item construct a self-adjoint generator for which the native closed states are
+ precisely the zero modes;
+ \item embed the paired state into a de Branges space and prove the required
+ Hermite--Biehler inequality;
+ \item derive the closure condition from Weil positivity;
+ \item prove uniqueness of the canonical zero-state representation under the
+ involution, excluding two radially distinct partners.
+\end{enumerate}
+Any one of these would have to be proved without assuming an equivalent form of
+RH in disguise.
+
+\section{Executable profile and numerical receipt}
+
+The native program contains eighteen Gauss--Legendre nodes on $u\in[0,2]$.  The
+choice gives a low-height computational profile, not a global theorem.  The
+executor verifies:
+\begin{itemize}
+ \item $36$ dimensions and $18$ complementary pairs;
+ \item involution covariance;
+ \item the exact closure identity at several off-axis points;
+ \item the functional equation for the finite detector;
+ \item agreement with $\xi(1/2)$ and $\xi(2)=\pi/6$ within the declared finite
+ quadrature tolerance;
+ \item a small detector residual at the first known zero ordinate.
+\end{itemize}
+The generated CSV receipt records detector magnitude, closure defect and
+covariance residual.  Numerical proximity to known zeros is evidence only for
+the implementation of the detector; it is not evidence for
+\cref{post:pn-open-bridge}.
+
+\section{Interpretation}
+
+The construction identifies the half-axis as the unique locus on which the
+canonical theta pair is both self-dual and free of radial shear.  This is a
+stronger statement than observing that the functional equation is symmetric
+about one half: it supplies an explicit state, an involution, a detector and a
+metric obstruction.
+
+What remains is correspondingly precise.  The research problem is no longer to
+explain why one half looks natural.  It is to prove that detector-zero states
+cannot inhabit two distinct involution-related radial shells.  PhaseNav has
+converted that question into the promotion of one explicit postulate.
+
+\status{The covariance theorem, closure theorem and continuous detector identity
+are exact.  The zero-to-native-closure implication is open.  No proof of the
+Riemann Hypothesis is claimed.}

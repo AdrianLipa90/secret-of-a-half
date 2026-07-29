@@ -1,0 +1,137 @@
+\chapter{Exact Cancellation in a Normalized Two-Channel State}
+\label{chap:cancellation}
+
+\section{The complementary amplitude}
+
+Let $\mathcal{H}=\C^2$ with orthonormal basis $\{\ket{0},\ket{1}\}$. For $0\le\sigma\le1$ and phase $\phi\in\R$, define the normalized state
+\begin{equation}
+ \ket{\psi(\sigma,\phi)}
+ =\sqrt{\sigma}\ket{0}+e^{i\phi}\sqrt{1-\sigma}\ket{1}.
+ \label{eq:binary-state}
+\end{equation}
+Let
+\[
+ \ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt2},
+ \qquad
+ \ket{-}=\frac{\ket{0}-\ket{1}}{\sqrt2}.
+\]
+The unnormalized equal-gain readout amplitude is
+\begin{equation}
+ \Acomp(\sigma,\phi)
+ =\sqrt{\sigma}+e^{i\phi}\sqrt{1-\sigma}
+ =\sqrt2\,\braket{+}{\psi(\sigma,\phi)}.
+ \label{eq:Acomp-def}
+\end{equation}
+Thus exact cancellation means that the state is orthogonal to the symmetric detector $\ket{+}$.
+
+\section{Uniqueness theorem}
+
+Squaring the modulus gives
+\begin{equation}
+ |\Acomp(\sigma,\phi)|^2
+ =1+2\sqrt{\sigma(1-\sigma)}\cos\phi.
+ \label{eq:Acomp-square}
+\end{equation}
+
+\begin{lemma}[SOH-L002: exact complementary cancellation]
+\label{lem:exact-cancellation}
+For $0\le\sigma\le1$,
+\[
+ \Acomp(\sigma,\phi)=0
+ \quad\Longleftrightarrow\quad
+ \sigma=\frac12,
+ \quad \phi\equiv\pi\pmod{2\pi}.
+\]
+\end{lemma}
+\begin{proof}
+If $\Acomp=0$, then
+\[
+ \sqrt{\sigma}=-e^{i\phi}\sqrt{1-\sigma}.
+\]
+Taking moduli gives $\sigma=1-\sigma$, hence $\sigma=1/2$. Substituting back yields $e^{i\phi}=-1$. The converse follows immediately.
+\end{proof}
+
+The proof contains two logically distinct requirements:
+\begin{enumerate}
+  \item equal magnitudes force balance, $\sigma=1/2$;
+  \item opposite phase forces $\phi=\pi$ modulo $2\pi$.
+\end{enumerate}
+Neither condition alone is sufficient.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.82\textwidth]{cancellation_landscape.png}
+ \caption{The equal-gain cancellation landscape has a unique zero at $(\sigma,\phi)=(1/2,\pi)$ modulo phase periodicity.}
+ \label{fig:cancellation-landscape}
+\end{figure}
+
+\section{Geometric proof and the triangle inequality}
+
+The same result follows from the equality condition in the triangle inequality. Two complex numbers of lengths $\sqrt\sigma$ and $\sqrt{1-\sigma}$ can sum to zero only if their lengths are equal and their directions are opposite. This geometric formulation is valuable because it generalizes to Hilbert-space components: exact cancellation against a rank-one detector is an equality case of a norm inequality.
+
+At the unique zero,
+\[
+ \ket{\psi(1/2,\pi)}=\ket{-},
+\]
+up to a global phase. Therefore the cancellation condition selects not merely the equator of the Bloch sphere but one ray on that equator.
+
+\section{Local stability}
+
+Set
+\[
+ \sigma=\frac12+x,
+ \qquad
+ \phi=\pi+\delta.
+\]
+Then
+\begin{align}
+ |\Acomp|^2
+ &=1-\sqrt{1-4x^2}\cos\delta\notag\\
+ &=2x^2+\frac12\delta^2+O\!\left(x^4+x^2\delta^2+\delta^4\right).
+ \label{eq:cancellation-local}
+\end{align}
+The cancellation point is therefore a non-degenerate quadratic minimum in the two transverse coordinates. Horizontal imbalance costs $2x^2$ to leading order, the same coefficient that appears in the entropy deficit \cref{eq:entropy-deficit-series}. Phase mismatch costs $\delta^2/2$.
+
+This agreement of the horizontal quadratic terms is not accidental. Both arise from a symmetric binary normalization near equal weights. It provides a precise local sense in which information imbalance and failure of destructive interference measure the same displacement. It does not identify either with $|\xi(s)|$.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.80\textwidth]{cancellation_quadratic_error.png}
+ \caption{Error of the quadratic approximation in \cref{eq:cancellation-local}. The exact minimum is locally coercive.}
+ \label{fig:cancellation-quadratic}
+\end{figure}
+
+\section{Weighted detectors and the hidden equal-gain assumption}
+
+The half point depends on equal channel gain. Let $a,b>0$ and define
+\begin{equation}
+ \Acomp_{a,b}(\sigma,\phi)
+ =a\sqrt\sigma+b e^{i\phi}\sqrt{1-\sigma}.
+ \label{eq:weighted-amplitude}
+\end{equation}
+Then exact cancellation requires
+\begin{equation}
+ \sigma=\frac{b^2}{a^2+b^2},
+ \qquad \phi\equiv\pi\pmod{2\pi}.
+ \label{eq:weighted-balance}
+\end{equation}
+The balance point is $1/2$ if and only if $a=b$.
+
+This fact is central to claim discipline. The zeta-state ansatz cannot simply choose an equal-gain detector for aesthetic reasons. Equal gain must be justified by involution symmetry, unitarity, a canonical inner product, or another independently derived principle. Otherwise a hidden metric asymmetry shifts the selected line.
+
+\section{Why two channels matter}
+
+For three or more channels, exact vector cancellation can occur for many unequal weight configurations. The uniqueness of $1/2$ is a special property of a complementary pair with a fixed equal-gain readout. Thus the word ``binary'' is mathematically substantive. A many-term alternating Dirichlet series does not automatically reduce to the two-channel lemma; a canonical coarse-graining must be constructed.
+
+\section{Readout factorization target}
+
+The most direct bridge would have the form
+\begin{equation}
+ \xi(s)=g(s)\,\Acomp\bigl(\Re s,\Phi(s)\bigr),
+ \label{eq:naive-factorization}
+\end{equation}
+where $g$ never vanishes in $\Sstrip$. Then any zero of $\xi$ would be a zero of $\Acomp$, and \cref{lem:exact-cancellation} would prove RH.
+
+However, \cref{eq:naive-factorization} is not yet a legitimate construction. The right-hand amplitude depends explicitly on $\Re s$ and is generally non-holomorphic; $\Phi$ and $g$ can be engineered to reproduce any zero set; normalization may become singular; and no canonical origin has been supplied. These obstructions are treated in \cref{chap:nogo,chap:candidates}.
+
+\status{SOH-L002, the local expansion, and the weighted-channel result are exact. Their use as a zeta zero detector is conditional on a canonical readout factorization.}

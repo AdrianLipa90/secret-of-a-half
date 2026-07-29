@@ -1,0 +1,141 @@
+\chapter{Axioms of the Information--Spinor Ansatz}
+\label{chap:axioms}
+
+\section{Purpose of the axiomatization}
+
+The preceding chapters established a network of exact correspondences. To convert that network into a research programme, the assumptions must be stated in a form that can be tested, weakened, or rejected. The axioms below are not asserted as properties already possessed by the zeta function. They define the class of models under consideration.
+
+\section{The binary state bundle}
+
+Let $\Sstrip$ be the open critical strip and let $\mathbb P(\C^2)$ be the projective space of rays in a two-dimensional complex Hilbert space. A representative state is written
+\begin{equation}
+ \ket{\Psi(s)}
+ =e^{i\chi(s)}\left(
+ \sqrt{\sigma}\ket{0}
+ +e^{i\Phi(s)}\sqrt{1-\sigma}\ket{1}
+ \right),
+ \qquad s=\sigma+it.
+ \label{eq:ansatz-state}
+\end{equation}
+The overall phase $\chi$ is gauge; the relative phase $\Phi$ affects the detector amplitude.
+
+\begin{axiom}[Normalized complement weights]
+\label{ax:weights}
+The squared channel norms of the state associated with $s=\sigma+it$ are $\sigma$ and $1-\sigma$.
+\end{axiom}
+
+This axiom is the most direct identification of the analytic real part with binary balance. It is natural under $\sigma\leftrightarrow1-\sigma$, but it is not forced by classical zeta theory. A more advanced model may derive these weights from a kernel or operator rather than assume them.
+
+\begin{axiom}[Equal-gain detector]
+\label{ax:detector}
+There exists a fixed detector ray $\ket{+}=(\ket0+\ket1)/\sqrt2$ whose amplitude is the normalized zero readout:
+\begin{equation}
+ R(s)=\braket{+}{\Psi(s)}.
+ \label{eq:readout}
+\end{equation}
+\end{axiom}
+
+The equality of detector gains is essential. As shown in \cref{chap:cancellation,app:asymmetric}, an asymmetric detector selects a line other than $1/2$.
+
+\begin{postulate}[Zero equivalence]
+\label{post:zero-equivalence}
+There is a non-vanishing scalar function $g(s)$ on $\Sstrip$ such that
+\begin{equation}
+ \xi(s)=g(s)R(s),
+ \label{eq:zero-factorization}
+\end{equation}
+or, in a weaker version sufficient for the location theorem,
+\begin{equation}
+ \xi(s)=0\quad\Longleftrightarrow\quad R(s)=0.
+ \label{eq:zero-equivalence}
+\end{equation}
+Multiplicity preservation is required for a full analytic equivalence.
+\end{postulate}
+
+This postulate is SOH-C001 in explicit form. It is the unresolved bridge.
+
+\begin{axiom}[Involution covariance]
+\label{ax:covariance}
+The projective state map is compatible with the critical-strip involution:
+\begin{equation}
+ [\Psi(\J s)]=[X\overline{\Psi(s)}],
+ \label{eq:ansatz-covariance}
+\end{equation}
+where $X$ swaps the channel basis.
+\end{axiom}
+
+Covariance exchanges the weights $\sigma$ and $1-\sigma$. On the critical line, where $s=\J s$, it enforces equal component norms up to projective gauge.
+
+\begin{axiom}[Canonical construction]
+\label{ax:canonical}
+The map $s\mapsto[\Psi(s)]$, the detector, and the factor $g$ are determined from classical analytic data such as $\xi$, the theta kernel, an explicit Hilbert-space transform, or a specified operator. They may not use tabulated zero locations or a rule conditioned on $\xi(s)=0$.
+\end{axiom}
+
+\section{Minimal and strong versions}
+
+The \emph{minimal ansatz} consists of \cref{ax:weights,ax:detector} and the zero equivalence \cref{eq:zero-equivalence}. It is sufficient for a conditional proof of RH. The \emph{strong ansatz} adds covariance, regularity, multiplicity preservation, and an explicit construction.
+
+The distinction matters because the minimal ansatz can be satisfied by artificial maps. For example, one can choose a phase from the value of $\xi(s)$ so that the readout vanishes whenever $\xi(s)$ does. Such a map restates the zero set without explaining it. The strong ansatz is intended to exclude this.
+
+\section{Gauge-invariant formulation}
+
+Let $P_+=\ket{+}\bra{+}$ be the detector projector. The zero readout condition is equivalent to
+\begin{equation}
+ \bra{\Psi(s)}P_+\ket{\Psi(s)}=0.
+ \label{eq:projector-zero}
+\end{equation}
+Because $P_+$ is positive semidefinite, this occurs exactly when $P_+\ket{\Psi(s)}=0$. The expression is gauge invariant and non-negative. This suggests a possible positivity route: construct a zeta-dependent state for which a positive expectation value is proportional to $|\xi(s)|^2$ up to a non-vanishing factor.
+
+Specifically, a strong realization could seek
+\begin{equation}
+ |\xi(s)|^2=w(s)\bra{\Psi(s)}P_+\ket{\Psi(s)},
+ \qquad w(s)>0\quad(s\in\Sstrip).
+ \label{eq:positive-factorization}
+\end{equation}
+This avoids phase gauge issues and preserves the zero set. It is non-holomorphic, as any modulus-square identity must be, but it may arise naturally from a reproducing kernel or transfer operator.
+
+\section{Covariance constraints on the phase}
+
+Using the representative \cref{eq:ansatz-state}, the swap-conjugation operation gives
+\[
+ X\overline{\ket{\Psi(s)}}
+ \sim \sqrt{1-\sigma}\ket0+e^{i\Phi(s)}\sqrt\sigma\ket1,
+\]
+up to an overall phase. At $\J s=(1-\sigma)+it$, this matches the required exchanged weights. Covariance therefore constrains the relative phase at paired points but does not necessarily force
+\[
+ \Phi(\J s)=\Phi(s).
+\]
+The precise relation depends on gauge conventions. A projective formulation is safer than equating raw phases.
+
+On the fixed line, covariance requires the ray to be invariant under swap-conjugation. This restricts it to a one-parameter family of balanced rays. The detector zero selects one member of that family. Thus the symmetry and the zero condition remain complementary pieces.
+
+\section{A hierarchy of construction targets}
+
+A candidate bridge can be evaluated against the following hierarchy:
+\begin{enumerate}
+  \item \textbf{Zero-set map:} correct zeros, perhaps engineered.
+  \item \textbf{Covariant map:} respects $\J$ and conjugation.
+  \item \textbf{Metric map:} derives the channel weights and equal detector gain.
+  \item \textbf{Analytic map:} preserves multiplicity and varies with controlled regularity.
+  \item \textbf{Operator map:} arises from a self-adjoint or positive object.
+  \item \textbf{Arithmetic map:} retains Euler-product or explicit-formula information.
+\end{enumerate}
+A map achieving only the first level has little explanatory value. A map reaching the fifth level would be close to a genuine RH mechanism.
+
+\section{The role of the imaginary coordinate}
+
+The axioms determine only the horizontal balance coordinate. The imaginary part $t$ must enter through phase, dynamics, or spectral quantization. In a state model one expects
+\[
+ \Phi(s)=\Phi(\sigma,t),
+\]
+with zeros occurring when the phase reaches opposition simultaneously with equal weights. On the critical line, equal weights are automatic, so the zero ordinates are the values of $t$ for which the phase or detector condition quantizes.
+
+This suggests the interpretation
+\[
+ \sigma\quad\text{as balance},
+ \qquad
+ t\quad\text{as spectral phase or frequency}.
+\]
+It is a useful decomposition, not an established physical ontology.
+
+\status{The axioms define the ansatz. Only the elementary consequences are proved. The zero-equivalence and canonical-construction requirements remain unfulfilled.}

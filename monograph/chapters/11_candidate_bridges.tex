@@ -1,0 +1,135 @@
+\chapter{Candidate Canonical Bridges}
+\label{chap:candidates}
+
+\section{Evaluation criteria}
+
+A candidate bridge should be judged by more than whether it can reproduce the zero set. The following criteria will be used:
+\begin{description}
+  \item[Z] Zero equivalence: detector zero if and only if $\xi(s)=0$ in $\Sstrip$.
+  \item[C] Covariance: compatibility with $\J$ and complex conjugation.
+  \item[M] Metric derivation: channel weights and equal gain arise from a specified inner product.
+  \item[A] Analytic control: multiplicities and continuation are preserved.
+  \item[P] Positivity or self-adjointness: a mechanism forbids off-axis zeros.
+  \item[R] Arithmetic retention: the Euler product, primes, or explicit formula remain visible.
+\end{description}
+No candidate in this chapter is claimed to satisfy all six criteria.
+
+\section{Theta-kernel vectorization}
+
+The integral representation \cref{eq:xi-integral} is symmetric in the two functions
+\[
+ x^{s/2},\qquad x^{(1-s)/2}.
+\]
+This suggests treating them as complementary channels in a weighted function space on $[1,\infty)$. Let
+\[
+ f_s(x)=x^{s/2},\qquad g_s(x)=x^{(1-s)/2},
+\]
+and use a measure derived from $\psi(x)dx/x$. Under $s\mapsto1-s$, the two functions swap. A vector
+\[
+ v(s)=\begin{pmatrix}f_s\\g_s\end{pmatrix}
+\]
+is therefore naturally covariant.
+
+The immediate difficulty is that $\xi(s)$ is not simply the equal-gain inner product of these two channels; it includes the constant $1/2$ and the factor $s(s-1)$. More importantly, the norms of $f_s$ and $g_s$ in the naive positive measure are not $\sigma$ and $1-\sigma$. Still, this route has genuine advantages: it begins from the classical theta derivation, is defined on an open domain, and builds complement covariance without zero fitting.
+
+A concrete subproblem is to find a $2\times2$ operator-valued kernel $K_s(x,y)$ such that a Schur complement or determinant equals $\xi(s)$ and the involution acts by channel swap. Positivity of that kernel on the centred real slice could then connect to RH.
+
+\section{Unnormalized analytic vector with detector projection}
+
+To avoid the non-holomorphic normalized amplitude, seek analytic functions $F_0,F_1$ on $\Sstrip$ such that
+\begin{equation}
+ \xi(s)=F_0(s)+F_1(s),
+ \label{eq:analytic-two-sum}
+\end{equation}
+while the component norm ratio, evaluated in a separate Hermitian metric $G(s)$, satisfies
+\begin{equation}
+ \frac{\|F_0(s)\|_G^2}{\|F_0(s)\|_G^2+\|F_1(s)\|_G^2}=\sigma.
+ \label{eq:derived-weight-ratio}
+\end{equation}
+The scalar sum remains holomorphic; the normalized probabilities arise from a Hermitian construction and may depend on $\bar s$.
+
+This separation is mathematically natural. Holomorphic vector bundles carry Hermitian metrics whose norms are not holomorphic. The challenge is to derive $G$ canonically and keep the vector non-zero at zeros of the sum. If $F_1=-F_0\neq0$ at a zero, the state is well-defined and exactly cancels.
+
+A trivial decomposition $F_0=1$, $F_1=\xi-1$ satisfies the sum but has no symmetry or arithmetic meaning. The real work is to obtain the components from complementary pieces of the theta transform, explicit formula, or a transfer operator.
+
+\section{Reproducing-kernel Hilbert spaces}
+
+In a reproducing-kernel Hilbert space of entire functions, evaluation at $s$ is an inner product with a kernel vector $K_s$. Zeros of a function $F$ are orthogonality conditions
+\[
+ F(s)=\langle F,K_s\rangle=0.
+\]
+This is already a detector interpretation. De Branges spaces add an involutive structure and strong control over real zeros of entire functions \citep{debranges1968}.
+
+The information--spinor programme asks whether the evaluation kernel can be decomposed into two complement-related components whose relative norms encode $(\sigma,1-\sigma)$. If a de Branges-type positivity condition could be established for a function constructed from $\XiR$, real-zero theorems would replace the elementary cancellation lemma at a more powerful level.
+
+The danger is overstatement. The existence of de Branges theory does not imply that $\XiR$ belongs to a suitable de Branges class with all required inequalities. Those inequalities are often equivalent in difficulty to RH.
+
+\section{Li coefficients and information deficit}
+
+Li's criterion states that RH is equivalent to non-negativity of the sequence
+\begin{equation}
+ \lambda_n=\frac{1}{(n-1)!}
+ \left.\frac{d^n}{ds^n}\left[s^{n-1}\log\xi(s)\right]\right|_{s=1},
+ \qquad n\ge1
+ \label{eq:li-coefficients}
+\end{equation}
+\citep{li1997}. This is an exact positivity reformulation.
+
+A possible information-theoretic route would represent each $\lambda_n$ as an integral or sum of non-negative entropy deficits,
+\begin{equation}
+ \lambda_n\stackrel{?}{=}\int\left(\ln2-\Hbin(\sigma)\right)d\mu_n(\sigma,t),
+ \label{eq:li-entropy-candidate}
+\end{equation}
+with a positive measure $\mu_n$ derived canonically from zeta data. If achieved, positivity would be automatic. No such representation is supplied here; \cref{eq:li-entropy-candidate} is a precise search target.
+
+The target is falsifiable. If the natural measures arising from the explicit formula are signed or the integral cannot reproduce known $\lambda_n$, the route fails in that form.
+
+\section{Weil positivity and two-channel kernels}
+
+Weil's explicit-formula criterion recasts RH as positivity of a quadratic form on suitable test functions \citep{weil1952}. This is conceptually aligned with \cref{eq:positive-factorization}: both seek a positive Hermitian object whose null or sign structure controls zeros.
+
+A two-channel version could begin with a test function and its involutive complement, assemble a $2\times2$ Gram matrix, and ask whether positivity forces equal diagonal weights at zero modes. The benefit is that equal gain would emerge from a symmetric Gram matrix. The obstacle is that constructing the correct positive form is essentially the hard part of Weil's criterion.
+
+\section{Nyman--Beurling approximation}
+
+The Nyman--Beurling criterion, in strengthened forms, makes RH equivalent to a closure or approximation property in a Hilbert space \citep{baezduarte2003}. Approximation errors are non-negative norms and therefore natural candidates for an information deficit. One could ask whether the optimal approximation admits a binary decomposition into a function and its complement, with balance at the closure threshold.
+
+This route is less directly spinorial but stronger analytically: the Hilbert-space norm and positivity are built in. A successful connection would need to show that the binary state is not an arbitrary visualization but a compression of the approximation geometry.
+
+\section{Transfer operators and parity grading}
+
+Alternating signs can be encoded by a parity operator $\Pi$ with eigenvalues $\pm1$. A transfer operator $L_s$ acting on a graded space $\mathcal H_+\oplus\mathcal H_-$ may yield determinants or traces involving zeta-type functions. If the eta function appears as a graded trace,
+\[
+ \operatorname{Tr}(\Pi L_s^n),
+\]
+then the binary channels are the parity sectors. The desired equal-gain cancellation would correspond to a balanced zero mode across the sectors.
+
+This route has clear structural appeal but requires an explicit operator with controlled spectrum and determinant. Without it, ``parity'' is only a relabelling of the alternating sign.
+
+\section{A candidate specification}
+
+The following specification is concrete enough for computational and analytic work.
+
+\begin{problem}[Kernel-state bridge]
+Find a Hilbert space $\mathcal H=\mathcal H_0\oplus\mathcal H_1$, an analytic non-zero vector $v(s)\in\mathcal H$, a fixed bounded detector $D:\mathcal H\to\C$, and a swap symmetry $X$ such that:
+\begin{enumerate}
+  \item $Dv(s)=h(s)\xi(s)$ with $h$ analytic and non-vanishing on $\Sstrip$;
+  \item $v(\J s)=X\overline{v(s)}$;
+  \item $X$ exchanges $\mathcal H_0$ and $\mathcal H_1$ and preserves the inner product;
+  \item the normalized projection norms satisfy
+  \[
+   \frac{\|P_0v(s)\|^2}{\|v(s)\|^2}=\sigma,
+   \qquad
+   \frac{\|P_1v(s)\|^2}{\|v(s)\|^2}=1-\sigma;
+  \]
+  \item $D$ restricts to equal gain on the two projected directions relevant to the zero mode.
+\end{enumerate}
+\end{problem}
+
+At a zero, $v(s)$ remains non-zero but lies in $\ker D$. The norm conditions and equal gain then reduce the zero mode to the cancellation lemma. This specification avoids the normalization singularity and cleanly separates analytic vectors from Hermitian probabilities.
+
+\section{Research priority}
+
+Among the candidates, the theta-kernel and analytic-vector routes are the most native to the present ansatz. The spectral route in the next chapter is the strongest route to RH but may absorb the information-spinor picture as interpretation rather than as the primary proof engine. The appropriate strategy is not to choose prematurely: derive invariants that every viable route must share and test them against known zeta structure.
+
+\status{All cited RH criteria are classical. Their proposed information-theoretic decompositions are open research targets, not established equivalences.}

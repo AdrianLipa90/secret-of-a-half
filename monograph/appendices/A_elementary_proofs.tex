@@ -1,0 +1,140 @@
+\chapter{Collected Elementary Proofs}
+\label{app:proofs}
+
+This appendix gathers calculations that are short enough to verify line by line but important enough to keep visible.
+
+\section{Entropy derivatives}
+
+For
+\[
+ \Hbin(\sigma)=-\sigma\ln\sigma-(1-\sigma)\ln(1-\sigma),
+\]
+we have
+\begin{align*}
+ \frac{d}{d\sigma}[-\sigma\ln\sigma]&=-\ln\sigma-1,\\
+ \frac{d}{d\sigma}[-(1-\sigma)\ln(1-\sigma)]&=\ln(1-\sigma)+1.
+\end{align*}
+Therefore
+\[
+ \Hbin'(\sigma)=\ln(1-\sigma)-\ln\sigma,
+\]
+and
+\[
+ \Hbin''(\sigma)=-\frac{1}{1-\sigma}-\frac{1}{\sigma}
+ =-\frac{1}{\sigma(1-\sigma)}.
+\]
+Strict negativity on $(0,1)$ proves strict concavity.
+
+\section{Entropy deficit expansion}
+
+Let $\sigma=1/2+x$. Differentiate or expand logarithms:
+\begin{align*}
+ \ln2-\Hbin(1/2+x)
+ &=\left(\frac12+x\right)\ln(1+2x)
+ +\left(\frac12-x\right)\ln(1-2x).
+\end{align*}
+Using
+\[
+ \ln(1\pm2x)=\sum_{n\ge1}\frac{(-1)^{n+1}(\pm2x)^n}{n},
+ \qquad |x|<1/2,
+\]
+odd powers cancel and one obtains
+\[
+ \ln2-\Hbin(1/2+x)
+ =\sum_{m=1}^{\infty}\frac{(2x)^{2m}}{2m(2m-1)}.
+\]
+The first terms are
+\[
+ 2x^2+\frac43x^4+\frac{32}{15}x^6+\frac{32}{7}x^8+\cdots.
+\]
+Every coefficient is positive.
+
+\section{Cancellation modulus}
+
+Starting with
+\[
+ \Acomp=\sqrt\sigma+e^{i\phi}\sqrt{1-\sigma},
+\]
+we calculate
+\begin{align*}
+ |\Acomp|^2
+ &=\left(\sqrt\sigma+e^{i\phi}\sqrt{1-\sigma}\right)
+ \left(\sqrt\sigma+e^{-i\phi}\sqrt{1-\sigma}\right)\\
+ &=\sigma+(1-\sigma)+2\sqrt{\sigma(1-\sigma)}\cos\phi\\
+ &=1+2\sqrt{\sigma(1-\sigma)}\cos\phi.
+\end{align*}
+Since $2\sqrt{\sigma(1-\sigma)}\le1$ with equality only at $\sigma=1/2$, and $\cos\phi\ge-1$ with equality only at $\phi=\pi$ modulo $2\pi$, the squared modulus is non-negative and vanishes only when both equality cases occur.
+
+\section{Local cancellation expansion}
+
+Set $\sigma=1/2+x$ and $\phi=\pi+\delta$. Then
+\[
+ 2\sqrt{\sigma(1-\sigma)}=\sqrt{1-4x^2}
+\]
+and
+\[
+ \cos(\pi+\delta)=-\cos\delta.
+\]
+Hence
+\[
+ |\Acomp|^2=1-\sqrt{1-4x^2}\cos\delta.
+\]
+The expansions
+\begin{align*}
+ \sqrt{1-4x^2}&=1-2x^2-2x^4+O(x^6),\\
+ \cos\delta&=1-\frac12\delta^2+\frac1{24}\delta^4+O(\delta^6)
+\end{align*}
+give
+\[
+ |\Acomp|^2=2x^2+\frac12\delta^2-x^2\delta^2+2x^4-\frac1{24}\delta^4+\cdots.
+\]
+The Hessian at the minimum is positive definite.
+
+\section{Involution covariance of xi}
+
+Using $\xi(s)=\xi(1-s)$ and $\xi(\bar s)=\overline{\xi(s)}$,
+\begin{align*}
+ \xi(\J s)
+ &=\xi(1-\bar s)\\
+ &=\xi(\bar s)\\
+ &=\overline{\xi(s)}.
+\end{align*}
+If $s$ is fixed by $\J$, then $\xi(s)$ is real. Conversely, reality of $\xi(s)$ does not imply $s$ is fixed.
+
+\section{Eta prefactor zeros}
+
+The equation $1-2^{1-s}=0$ is equivalent to
+\[
+ e^{(1-s)\ln2}=1=e^{2\pi ik},\qquad k\in\mathbb Z.
+\]
+Thus
+\[
+ (1-s)\ln2=2\pi ik,
+\]
+and
+\[
+ s=1-\frac{2\pi ik}{\ln2}.
+\]
+For $k\neq0$, $\zeta$ is finite and the eta function has a zero. For $k=0$, the zero of the factor cancels the pole of zeta.
+
+\section{Centred coordinate and conjugation}
+
+Let $z=-i(s-1/2)$. Under $\J$,
+\begin{align*}
+ z'&=-i\left(1-\bar s-\frac12\right)
+ =-i\left(\frac12-\bar s\right)\\
+ &=\overline{-i\left(s-\frac12\right)}=\bar z.
+\end{align*}
+Thus the anti-linear reflection becomes ordinary conjugation.
+
+\section{Phase-locked equivalence}
+
+For $0<\sigma<1$,
+\[
+ e^{2\pi i\sigma}=-1
+\]
+means
+\[
+ 2\pi\sigma=(2k+1)\pi
+\]
+for some integer $k$, hence $\sigma=(2k+1)/2$. Only $k=0$ gives a value in $(0,1)$. Combining with the cancellation lemma proves the phase-locked amplitude equivalence.

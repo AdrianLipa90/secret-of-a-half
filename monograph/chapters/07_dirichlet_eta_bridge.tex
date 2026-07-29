@@ -1,0 +1,136 @@
+\chapter{The Dirichlet Eta Function as an Exact Binary Bridge}
+\label{chap:eta}
+
+\section{Alternating Dirichlet series}
+
+The Dirichlet eta function is defined initially for $\Re s>0$ by the convergent alternating series
+\begin{equation}
+ \eta(s)=\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^s}.
+ \label{eq:eta-def}
+\end{equation}
+For $\Re s>1$, absolute convergence permits an odd-even decomposition:
+\begin{align}
+ \eta(s)
+ &=\sum_{n\ge1}n^{-s}-2\sum_{m\ge1}(2m)^{-s}\notag\\
+ &=\zeta(s)-2^{1-s}\zeta(s)\notag\\
+ &=(1-2^{1-s})\zeta(s).
+ \label{eq:eta-zeta}
+\end{align}
+Analytic continuation extends this identity to all $s$. The zero of the prefactor at $s=1$ cancels the simple pole of $\zeta$, so $\eta$ is entire.
+
+At $s=1$, the alternating harmonic series gives
+\begin{equation}
+ \eta(1)=1-\frac12+\frac13-\frac14+\cdots=\ln2.
+ \label{eq:eta-one}
+\end{equation}
+Equations \cref{eq:eta-zeta,eq:eta-one} establish an exact, classical relation among binary alternation, the constant $\ln2$, and the zeta function. This is stronger than a numerical coincidence.
+
+\section{Zero equivalence in the open critical strip}
+
+The binary prefactor vanishes when
+\begin{equation}
+ 2^{1-s}=1.
+ \label{eq:prefactor-zero-eq}
+\end{equation}
+Using $2^{1-s}=\exp((1-s)\ln2)$, its solutions are
+\begin{equation}
+ s_k=1-\frac{2\pi i k}{\ln2},\qquad k\in\mathbb Z.
+ \label{eq:prefactor-zeros}
+\end{equation}
+For $k\neq0$, these are genuine zeros of $\eta$ lying on $\Re s=1$. At $k=0$, the pole of $\zeta$ cancels the prefactor zero and leaves $\eta(1)=\ln2\neq0$.
+
+Because every prefactor zero has real part $1$, the prefactor is non-zero throughout the open critical strip.
+
+\begin{proposition}[Eta--zeta zero equivalence in $\Sstrip$]
+\label{prop:eta-zeta-equivalence}
+For $0<\Re s<1$,
+\[
+ \eta(s)=0\quad\Longleftrightarrow\quad\zeta(s)=0.
+\]
+The multiplicities agree.
+\end{proposition}
+\begin{proof}
+In $\Sstrip$, the entire factor $1-2^{1-s}$ is non-zero. Multiplication by a non-vanishing analytic function preserves zeros and multiplicities.
+\end{proof}
+
+This proposition supplies the most direct exact bridge in the project. Every non-trivial zeta zero is a zero of a binary alternating Dirichlet series. The bridge is exact, but it remains many-channel: the alternating series contains infinitely many complex terms. The two-channel cancellation lemma cannot be applied without a canonical reduction.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.84\textwidth]{eta_prefactor.png}
+ \caption{The eta prefactor has its additional zeros on $\Re s=1$, not on the critical line. In the open strip it is non-vanishing, so eta and zeta zeros coincide there.}
+ \label{fig:eta-prefactor}
+\end{figure}
+
+\section{Parity channels and a no-go observation}
+
+For $\Re s>1$, define the odd and even channels
+\begin{align}
+ O(s)&=\sum_{m=1}^{\infty}(2m-1)^{-s}=(1-2^{-s})\zeta(s),\label{eq:odd-channel}\\
+ E(s)&=\sum_{m=1}^{\infty}(2m)^{-s}=2^{-s}\zeta(s).
+ \label{eq:even-channel}
+\end{align}
+Then $\eta=O-E$. It is tempting to interpret a zero of eta as equality of two channels. However, after analytic continuation, at a non-trivial zeta zero both $O$ and $E$ vanish because both contain the factor $\zeta(s)$. The equality is then $0=0$, not a normalized cancellation of two non-zero amplitudes.
+
+Away from zeros, their ratio is
+\begin{equation}
+ \frac{E(s)}{O(s)}=\frac{1}{2^s-1}.
+ \label{eq:parity-ratio}
+\end{equation}
+Equal channel magnitudes would require
+\[
+ |2^s-1|=1.
+\]
+Writing $2^s=2^\sigma e^{it\ln2}$, this becomes
+\begin{equation}
+ 2^\sigma=2\cos(t\ln2),
+ \label{eq:parity-equal-modulus}
+\end{equation}
+where the right side must be positive. This is a family of curves, not the line $\sigma=1/2$. Therefore the naive odd-even split does not yield the critical axis.
+
+\section{Alternation, phase, and $\pi$}
+
+The sign $(-1)^{n-1}$ is $e^{i\pi(n-1)}$. Thus the eta series inserts a fixed phase increment $\pi$ between successive parity classes. This is the same elementary phase responsible for two-channel destructive interference and spinorial sign closure. Again, exact common ingredients do not automatically produce identical mechanisms:
+\begin{itemize}
+  \item in the two-channel model, two vectors of equal norm cancel;
+  \item in eta, infinitely many terms with alternating signs sum to an entire function;
+  \item at a zeta zero, global cancellation occurs across the entire analytically continued series.
+\end{itemize}
+A canonical coarse-graining would need to map the infinite alternating structure into a normalized pair while preserving zerohood and involution covariance.
+
+\section{The eta value $\ln2$ and the half point}
+
+The exact statements now form a chain of shared structures:
+\[
+ \eta(1)=\ln2=\Hbin(1/2),
+\]
+and
+\[
+ \eta(s)=0\iff\zeta(s)=0\quad(s\in\Sstrip).
+\]
+The first equation relates the alternating harmonic series to balanced binary information. The second relates the alternating zeta function to non-trivial zeros. What is not established is an implication
+\[
+ \eta(s)=0\quad\Longrightarrow\quad\Hbin(\Re s)=\ln2.
+\]
+That implication is essentially RH expressed in informational language. The monograph does not hide it.
+
+\section{A useful reformulation of the open bridge}
+
+Instead of asking vaguely whether ``binary information explains RH'', one may ask:
+
+\begin{problem}[Canonical binary reduction of eta]
+Construct, from the eta or theta representation and without using the zero set as input, a normalized two-component vector
+\[
+ V(s)=\begin{pmatrix}V_0(s)\\V_1(s)\end{pmatrix}
+\]
+and a non-vanishing scalar factor $g(s)$ on $\Sstrip$ such that:
+\begin{enumerate}
+  \item $\eta(s)=g(s)(V_0(s)+V_1(s))$;
+  \item $|V_0(s)|^2=\Re s$ and $|V_1(s)|^2=1-\Re s$ after normalization;
+  \item the construction is covariant under $\J$ and analytic at the level required to preserve multiplicities;
+  \item no phase or parameter is fitted to known zeros.
+\end{enumerate}
+\end{problem}
+If such a construction existed, \cref{lem:exact-cancellation} would force all eta zeros in the strip, hence all non-trivial zeta zeros, onto the half-axis. The difficulty of satisfying all four requirements is the precise content of the open programme.
+
+\status{The eta identity, value at one, prefactor zeros, and zero equivalence in the strip are exact. The normalized binary reduction is open.}

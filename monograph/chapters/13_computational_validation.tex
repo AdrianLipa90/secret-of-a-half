@@ -1,0 +1,124 @@
+\chapter{Computational Validation and Numerical Regression}
+\label{chap:computation}
+
+\section{Role of computation}
+
+Computation serves three legitimate purposes in this project:
+\begin{enumerate}
+  \item verify that symbolic formulas were implemented correctly;
+  \item visualize geometry and local stability;
+  \item test candidate constructions for immediate counterexamples.
+\end{enumerate}
+It does not replace proof of a universal statement. A finite list of critical-line zeros is compatible with both RH and the possibility of a later off-axis zero.
+
+The scripts supplied with this monograph generate every figure and numerical table from source. No zero locations are hard-coded. The principal dependencies are Python, NumPy, Matplotlib, and mpmath.
+
+\section{Elementary unit tests}
+
+The repository's initial code implements:
+\begin{align*}
+ \Hbin(\sigma)&=-\sigma\ln\sigma-(1-\sigma)\ln(1-\sigma),\\
+ \Acomp(\sigma,\phi)&=\sqrt\sigma+e^{i\phi}\sqrt{1-\sigma},\\
+ \J(s)&=1-\overline{s}.
+\end{align*}
+The baseline unit tests check
+\begin{align*}
+ \Hbin(1/2)&=\ln2,\\
+ \Acomp(1/2,\pi)&=0,\\
+ \J(1/2+17i)&=1/2+17i.
+\end{align*}
+The monograph adds property-style tests across sampled domains: entropy symmetry and strict deficit, involution idempotence, cancellation uniqueness to numerical tolerance, eta--zeta identity, and xi functional symmetry.
+
+\section{Functional-equation residuals}
+
+The completed function is evaluated at high precision using
+\[
+ \xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s).
+\]
+At selected points, the residuals
+\[
+ |\xi(s)-\xi(1-s)|,
+ \qquad
+ |\xi(\J s)-\overline{\xi(s)}|
+\]
+are at the scale expected from the chosen arbitrary precision. These checks confirm code consistency; they do not prove the functional equation, which was derived analytically in \cref{chap:zeta}.
+
+\input{generated/functional_equation_residuals_table.tex}
+
+\section{Critical-line visualization}
+
+On the critical line, $\XiR(t)=\xi(1/2+it)$ is real. \Cref{fig:xi-line} plots a scaled version for $0\le t\le50$. Vertical markers indicate the first zeros returned by mpmath.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.86\textwidth]{xi_critical_line.png}
+ \caption{A scaled numerical plot of $\XiR(t)$ on the critical line. The finite plot is illustrative and not a proof of global zero location.}
+ \label{fig:xi-line}
+\end{figure}
+
+The plot emphasizes the separation between the balance coordinate and spectral coordinate. Restricting to $\sigma=1/2$ makes the completed function real; zeros then occur at discrete ordinates. The ansatz seeks a mechanism that proves this restriction is compulsory rather than chosen for plotting.
+
+\section{Cancellation landscape}
+
+The squared amplitude
+\[
+ 1+2\sqrt{\sigma(1-\sigma)}\cos\phi
+\]
+is evaluated on a grid. Its unique zero in one phase period is visible in \cref{fig:cancellation-landscape}. The local approximation
+\[
+ 2x^2+\frac12\delta^2
+\]
+is compared against the exact expression in \cref{fig:cancellation-quadratic}. These plots are direct visual checks of the proof, not empirical discoveries.
+
+\section{Eta prefactor test}
+
+The factor $1-2^{1-s}$ is evaluated across a region containing the critical strip. The numerical valleys align with $\Re s=1$ at the predicted ordinates $-2\pi k/\ln2$, as shown in \cref{fig:eta-prefactor}. The factor remains bounded away from zero on compact subsets of the open strip, consistent with \cref{prop:eta-zeta-equivalence}.
+
+A regression test samples points with $0<\sigma<1$ and verifies
+\[
+ \eta(s)-(1-2^{1-s})\zeta(s)
+\]
+to high precision. Near $s=1$, direct evaluation requires care because the factor and pole cancel; mpmath's analytic continuation handles the limit, while a dedicated series expansion is preferable for rigorous interval computation.
+
+\section{First-zero table}
+
+The first twenty non-trivial zeros are included in \cref{app:numerical}. Their real parts are reported as $0.5$ by the numerical routine. This table has two purposes: it fixes a reproducible software baseline and supplies test ordinates for future candidate kernels. It is not used to fit any parameter in the ansatz.
+
+\section{Falsification experiments for candidate maps}
+
+Any proposed state map should undergo at least the following tests before analytic effort is invested:
+\begin{enumerate}
+  \item \textbf{Zero coincidence.} Does the detector vanish at computed zeta zeros to increasing precision?
+  \item \textbf{False positives.} Does it vanish at non-zeros on or off the critical line?
+  \item \textbf{Covariance.} Is the state at $\J s$ related to the swapped conjugate state?
+  \item \textbf{Metric stability.} Are the component weights in $[0,1]$ and do they sum to one?
+  \item \textbf{Gauge stability.} Is the zero readout independent of arbitrary phase conventions?
+  \item \textbf{Approach stability.} At a zero, does the state ray have a unique limit from different directions?
+  \item \textbf{No fitting.} Does the algorithm work when evaluated at zeros not used during development?
+  \item \textbf{Multiplicity.} Does local scaling match the expected order of the zero?
+\end{enumerate}
+A candidate failing any basic test should be rejected or reformulated before interpretive claims are made.
+
+\section{Interval arithmetic and proof assistants}
+
+Floating-point tests are not certified. If a candidate bridge reaches a serious stage, the next computational layer should include:
+\begin{itemize}
+  \item interval arithmetic for bounds on kernels and non-vanishing factors;
+  \item exact symbolic differentiation for local expansions;
+  \item formal verification of elementary lemmas in Lean, Isabelle, or Coq;
+  \item reproducible containers with pinned dependency versions;
+  \item hash manifests for generated figures and tables.
+\end{itemize}
+Formalizing the cancellation theorem is easy; formalizing the analytic continuation and spectral construction would be substantially harder but valuable.
+
+\section{Reproducibility manifest}
+
+The asset script writes figures and numerical tables into the repository build directories. The PDF build should proceed from a clean checkout by running:
+\begin{verbatim}
+python scripts/generate_monograph_assets.py
+cd monograph
+latexmk -pdf main.tex
+\end{verbatim}
+The generated PDF, log, auxiliary files, and rendered page checks should be recorded in an append-only build log before release.
+
+\status{The numerical results are regression evidence only. Every theorem used in the logical chain is proved independently of the computations.}

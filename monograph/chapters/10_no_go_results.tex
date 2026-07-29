@@ -1,0 +1,131 @@
+\chapter{No-Go Results and Failure Modes}
+\label{chap:nogo}
+
+\section{Why negative results are necessary}
+
+The half-axis is surrounded by many suggestive symmetries. Without explicit no-go results, it is easy to mistake a restatement for an explanation. This chapter collects constructions that are exact but insufficient, and identifies the precise reason each fails.
+
+\section{No-go I: symmetry alone}
+
+The equations
+\[
+ \xi(s)=\xi(1-s),\qquad \overline{\xi(s)}=\xi(\bar s)
+\]
+make the zero set invariant under a four-element symmetry group. They do not imply that each zero is fixed. An off-axis quartet is fully compatible with both equations. Any argument using only these symmetries cannot prove RH unless it adds a principle that collapses orbits.
+
+\begin{proposition}[Symmetry insufficiency]
+There exist non-zero entire functions $F$ satisfying
+\[
+ F(s)=F(1-s),\qquad \overline{F(s)}=F(\bar s),
+\]
+with zeros off the line $\Re s=1/2$.
+\end{proposition}
+\begin{proof}
+Choose $\rho\notin\Crit$ and form
+\[
+ F(s)=\prod_{\alpha\in\{\rho,\bar\rho,1-\rho,1-\bar\rho\}}(s-\alpha).
+\]
+The zero set has the required symmetry, and the monic polynomial is invariant under both transformations, yet its zeros are off-axis.
+\end{proof}
+
+This elementary counterexample is decisive: the functional symmetry determines the orbit geometry, not the fixed-point property.
+
+\section{No-go II: entropy maximization alone}
+
+The function $\Hbin(\Re s)$ is maximal on the entire critical line, but $\xi(s)$ is not zero at every point of that line. Entropy cannot determine the ordinates. Conversely, the statement that a zero should maximize entropy is precisely the unproved implication
+\[
+ \xi(s)=0\Longrightarrow\Re s=1/2.
+\]
+Thus entropy supplies a candidate Lyapunov or balance functional only after a zero-to-state relation is established.
+
+A more subtle failure is to define
+\[
+ Q(s)=|\xi(s)|^2+\ln2-\Hbin(\Re s).
+\]
+This non-negative function vanishes exactly at critical-line zeros. But its definition already combines the zero condition and the target line. It is a diagnostic, not a proof mechanism.
+
+\section{No-go III: eta alternation alone}
+
+The eta function gives an exact binary alternating series and has the same zeros as zeta in the open strip. Yet its prefactor zeros lie on $\Re s=1$, not on $1/2$, and the naive odd-even channels both vanish at zeta zeros after analytic continuation. Alternation provides phase $\pi$ but not normalized equal magnitudes.
+
+The parity ratio \cref{eq:parity-ratio} shows that equal odd-even magnitude traces the curves \cref{eq:parity-equal-modulus}. Therefore ``odd equals even'' is not equivalent to the critical line.
+
+\section{No-go IV: direct functional-equation channels}
+
+A tempting pair is
+\[
+ V_0(s)=\xi(s),\qquad V_1(s)=-\xi(1-s).
+\]
+The functional equation makes $V_0+V_1=0$ for every $s$, not only at zeros. This detector has no discriminating power.
+
+Using the anti-linear pair
+\[
+ V_0(s)=\xi(s),\qquad V_1(s)=-\overline{\xi(s)}
+\]
+gives cancellation whenever $\xi(s)$ is real. Along the critical line, $\xi(1/2+it)$ is real for all $t$, so again the readout vanishes too often. A zero detector must distinguish zero value from symmetry of phase.
+
+\section{No-go V: arbitrary phase engineering}
+
+Given any complex scalar $f(s)$, one may define a phase $\Phi(s)$ so that
+\[
+ |\Acomp(\sigma,\Phi(s))|
+\]
+tracks a normalized transform of $|f(s)|$ whenever the range permits. With sufficient freedom in a prefactor, almost any zero set can be represented. This shows that a smooth state map is not enough. The phase must arise from a specified transform, connection, or operator and must obey covariance independent of the zeros.
+
+A canonicality test is to replace $\xi$ by another entire function with the same symmetry but different zeros. If the construction simply adapts its phase pointwise, it has not explained zeta arithmetic.
+
+\section{No-go VI: holomorphic normalized weights}
+
+The desired weights explicitly involve $\sigma=\Re s=(s+\bar s)/2$. A scalar amplitude built directly from $\sqrt\sigma$ and $\sqrt{1-\sigma}$ is not holomorphic. Therefore it cannot equal $\xi(s)$ times a non-vanishing holomorphic factor on an open set.
+
+\begin{proposition}[Naive holomorphic obstruction]
+Let
+\[
+ R(s)=\sqrt{\Re s}+e^{i\Phi(s)}\sqrt{1-\Re s}
+\]
+with $\Phi$ real-valued and continuously differentiable. Except in degenerate cases, $R$ is not holomorphic on any open subset of $\Sstrip$.
+\end{proposition}
+\begin{proof}[Reason]
+The modulus of each component depends on $s+\bar s$. The Cauchy--Riemann equations would require cancellation of this explicit $\bar s$ dependence by the phase in a highly constrained way. A real-valued holomorphic phase is locally constant, which cannot remove the dependence. A formal Wirtinger derivative gives $\partial R/\partial\bar s\neq0$ generically.
+\end{proof}
+
+This does not kill the ansatz. It shows that the normalized state should be derived from a larger analytic object rather than identified with an analytic scalar directly.
+
+\section{No-go VII: normalization singular at zeros}
+
+If one defines
+\[
+ \Psi(s)=\frac{1}{N(s)}\begin{pmatrix}F_0(s)\\F_1(s)\end{pmatrix},
+ \qquad N(s)^2=|F_0(s)|^2+|F_1(s)|^2,
+\]
+and both components vanish at a zeta zero, the normalized state is undefined there. The parity channels $O(s)$ and $E(s)$ exhibit exactly this problem because both contain $\zeta(s)$.
+
+A valid construction needs either:
+\begin{enumerate}
+  \item a vector that remains non-zero while its detector projection vanishes; or
+  \item a well-defined limiting ray independent of approach direction; or
+  \item an unnormalized analytic vector whose detector zeros are studied without dividing by a vanishing norm.
+\end{enumerate}
+
+\section{No-go VIII: finite numerical verification}
+
+Checking a large number of zeros on the critical line is powerful evidence and an essential regression test, but no finite computation proves a statement about all zeros. The same applies to numerical equality of functional-equation values. Computation can falsify an identity by finding a counterexample or detect implementation errors; it cannot close the infinite analytic argument.
+
+\section{No-go IX: many-channel cancellation is not binary balance}
+
+An infinite sum can vanish through polygonal cancellation among unequal terms. Without a theorem reducing it to two equal-norm effective channels, the binary lemma does not apply. The eta function makes this clear: alternating signs do not imply pairwise equality of odd and even contributions in the analytically continued region.
+
+\section{Constructive lessons}
+
+The no-go results impose design requirements:
+\begin{enumerate}
+  \item add positivity or self-adjointness to collapse symmetry orbits;
+  \item derive equal channel metric from an invariant inner product;
+  \item preserve a non-zero state norm at detector zeros;
+  \item retain analytic structure before normalization;
+  \item use eta alternation as input, not as a completed proof;
+  \item require arithmetic content beyond the abstract symmetry class.
+\end{enumerate}
+These requirements guide the candidate routes in the next chapter.
+
+\status{The counterexamples and obstructions are exact at the level stated. They rule out specific shortcuts, not every possible information-theoretic realization.}

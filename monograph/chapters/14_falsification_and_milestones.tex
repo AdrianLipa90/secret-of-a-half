@@ -1,0 +1,139 @@
+\chapter{Falsification Programme and Research Milestones}
+\label{chap:falsification}
+
+\section{Principle of progress}
+
+The project should advance by closing explicit gaps, not by accumulating analogies. Each milestone below has a pass condition, a fail condition, and an output artifact. A failed candidate is still useful if the failure is recorded precisely and prevents repetition.
+
+\section{Milestone 1: formalize the exact core}
+
+\paragraph{Goal.}
+Maintain machine-checkable or fully written proofs of the entropy, cancellation, involution, eta, and asymmetric-channel results.
+
+\paragraph{PASS.}
+Every statement has explicit domain assumptions; symbolic and numerical tests agree; edge cases at $\sigma=0,1$ and $s=1$ are handled.
+
+\paragraph{FAIL.}
+A proof relies on an unstated branch choice, a normalization that vanishes, or a numerical approximation.
+
+\paragraph{Artifacts.}
+Claim ledger, theorem source files, unit tests, and a formalization roadmap.
+
+\section{Milestone 2: theta-kernel channel decomposition}
+
+\paragraph{Goal.}
+Derive two complementary analytic vector components from the theta representation \cref{eq:xi-integral}.
+
+\paragraph{PASS.}
+The components are defined on an open domain, swap under $s\mapsto1-s$, remain jointly non-zero at zeros of their detector sum, and reconstruct $\xi$ up to a non-vanishing factor.
+
+\paragraph{FAIL.}
+Both components share a common $\xi$ factor and vanish together, or the decomposition cancels identically for all $s$.
+
+\paragraph{Artifacts.}
+A derivation note, symbolic implementation, covariance tests, and counterexample log.
+
+\section{Milestone 3: derive the channel metric}
+
+\paragraph{Goal.}
+Construct a positive Hermitian metric in which the normalized component weights equal $\sigma$ and $1-\sigma$.
+
+\paragraph{PASS.}
+The metric is positive on $\Sstrip$, swap-invariant, derived from kernel data, and free of zero fitting.
+
+\paragraph{FAIL.}
+Positivity fails, the metric becomes singular at zeros, or the desired weights are imposed by hand.
+
+\paragraph{Artifacts.}
+Metric formula, positivity proof or certified numerical counterexample, and updated claim status.
+
+\section{Milestone 4: zero-readout equivalence}
+
+\paragraph{Goal.}
+Prove that a fixed equal-gain detector vanishes exactly when $\xi(s)$ does.
+
+\paragraph{PASS.}
+The equivalence holds on the entire open strip, preserves multiplicity, and the prefactor is proved non-vanishing.
+
+\paragraph{FAIL.}
+There are false positives, false negatives, an identically vanishing readout, or a prefactor zero in the strip.
+
+\paragraph{Artifacts.}
+Theorem, proof, interval tests, and a map of exceptional sets.
+
+This milestone closes SOH-C001. If the preceding metric milestone is also passed, SOH-T001 yields RH.
+
+\section{Milestone 5: positivity or self-adjointness}
+
+\paragraph{Goal.}
+Upgrade the state construction to a positive kernel or self-adjoint operator.
+
+\paragraph{PASS.}
+Domains, closure, spectrum, determinant, and non-vanishing factors are rigorous; the prime-side trace or explicit formula is recovered.
+
+\paragraph{FAIL.}
+The operator is only formally symmetric, boundary conditions are missing, the determinant is undefined, or continuous spectrum introduces unaccounted terms.
+
+\paragraph{Artifacts.}
+Operator specification, proof package, trace formula, and external review notes.
+
+\section{Milestone 6: independent adversarial review}
+
+\paragraph{Goal.}
+Subject the strongest result to independent specialists in analytic number theory, spectral theory, and functional analysis.
+
+\paragraph{PASS.}
+Reviewers can reproduce the construction and identify no circular dependency or hidden equivalence to RH left unproved.
+
+\paragraph{FAIL.}
+A key lemma is merely an equivalent statement of RH, a convergence step is invalid, or canonicality is unsupported.
+
+\paragraph{Artifacts.}
+Versioned manuscript, response-to-review document, and append-only correction log.
+
+\section{Hard falsifiers of the information-spinor route}
+
+The broad route should be considered falsified in its current form if any of the following is proved:
+\begin{enumerate}
+  \item no involution-covariant analytic vector decomposition can satisfy the required norm ratio in any positive swap-invariant metric;
+  \item every eta- or theta-derived two-channel decomposition either vanishes jointly at zeta zeros or has unavoidable false-positive detector zeros;
+  \item the required equal-gain condition contradicts the arithmetic asymmetry of every canonical decomposition;
+  \item a theorem shows that any factorization with the stated weights is necessarily non-canonical or equivalent to preselecting the critical line.
+\end{enumerate}
+Such results would not disprove RH. They would disprove this proposed mechanism.
+
+\section{Soft failures and model revisions}
+
+Some failures would suggest revision rather than abandonment:
+\begin{itemize}
+  \item the channel weights may be a monotone transform $p(\sigma)$ with complement property $p(1-\sigma)=1-p(\sigma)$;
+  \item the effective state may live in a higher-dimensional space but possess a two-dimensional zero-mode compression;
+  \item entropy may emerge from a kernel determinant rather than component probabilities;
+  \item spinorial phase may be a holonomy in parameter space rather than the direct law $e^{2\pi i\sigma}$;
+  \item the decisive positivity may reside in Li or Weil criteria rather than a pointwise state amplitude.
+\end{itemize}
+Any revision must preserve the unique half-axis and improve, not weaken, canonicality.
+
+\section{Publication thresholds}
+
+The project should use explicit labels:
+\begin{description}
+  \item[Exploratory note.] Exact elementary lemmas plus conjectural architecture.
+  \item[Research monograph.] Full derivations, no-go results, reproducible computations, and open gap ledger. This version has that status.
+  \item[Conditional theorem paper.] A non-trivial canonical construction is achieved but one major positivity or equivalence assumption remains.
+  \item[Claimed RH proof.] All bridges are proved, independently audited, and no hypothesis equivalent to RH remains hidden.
+\end{description}
+Moving between labels requires a documented claim-ledger update.
+
+\section{Immediate next mathematical tasks}
+
+The highest-value tasks after this monograph are:
+\begin{enumerate}
+  \item derive all non-trivial two-component decompositions of the theta integral that are covariant under $s\mapsto1-s$;
+  \item classify when their detector sum has a non-vanishing common norm at zeta zeros;
+  \item determine whether a swap-invariant Hermitian metric can produce the exact weight ratio $\sigma:(1-\sigma)$;
+  \item test candidate kernels against off-axis synthetic entire functions with the same symmetry, to detect whether arithmetic content is truly used;
+  \item compare the resulting positivity condition with Li and Weil criteria.
+\end{enumerate}
+
+\status{This chapter is a preregistered research plan. Its pass/fail criteria are intended to prevent claim drift and hidden fitting.}

@@ -1,0 +1,126 @@
+\chapter{Bloch Geometry, Euler Phase, and Spinorial Closure}
+\label{chap:spinor}
+
+\section{Bloch-sphere parameterization}
+
+Every normalized pure state in $\C^2$, up to global phase, can be written as
+\begin{equation}
+ \ket{\psi(\theta,\phi)}
+ =\cos\frac{\theta}{2}\ket{0}
+ +e^{i\phi}\sin\frac{\theta}{2}\ket{1},
+ \qquad 0\le\theta\le\pi.
+ \label{eq:bloch-state}
+\end{equation}
+Comparing with \cref{eq:binary-state},
+\begin{equation}
+ \sigma=\cos^2\frac{\theta}{2},
+ \qquad 1-\sigma=\sin^2\frac{\theta}{2}.
+ \label{eq:sigma-theta}
+\end{equation}
+Therefore
+\begin{equation}
+ \sigma=\frac12\quad\Longleftrightarrow\quad\theta=\frac\pi2.
+ \label{eq:half-equator}
+\end{equation}
+Balanced binary states form the Bloch equator. Exact equal-gain cancellation adds $\phi=\pi$, selecting the ray $\ket{-}$.
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.70\textwidth]{bloch_equator.png}
+ \caption{The half condition fixes the equator, while the relative phase $\pi$ selects the state orthogonal to the equal-gain detector.}
+ \label{fig:bloch-equator}
+\end{figure}
+
+\section{Euler's sign}
+
+Euler's identity
+\[
+ e^{i\pi}=-1
+\]
+is the elementary phase statement behind destructive interference. If a normalized parameter $\sigma\in(0,1)$ controls a phase fraction through
+\begin{equation}
+ U(\sigma)=e^{2\pi i\sigma},
+ \label{eq:phase-law}
+\end{equation}
+then
+\begin{equation}
+ U(\sigma)=-1
+ \quad\Longleftrightarrow\quad
+ \sigma=\frac12
+ \quad\text{for }0<\sigma<1.
+ \label{eq:phase-half}
+\end{equation}
+This is an exact implication after the phase law is defined. The non-trivial assumption is the identification of the same $\sigma$ with the normalized phase fraction and, later, with $\Re s$.
+
+\section{Spinorial sign under $2\pi$ rotation}
+
+The group $\mathrm{SU}(2)$ double-covers $\mathrm{SO}(3)$. For a spin-$1/2$ representation, a physical rotation through angle $\alpha$ about unit vector $\mathbf n$ is represented by
+\begin{equation}
+ U(\alpha,\mathbf n)=\exp\!\left(-\frac{i\alpha}{2}\,\mathbf n\cdot\boldsymbol\sigma\right),
+ \label{eq:spin-rotation}
+\end{equation}
+where $\boldsymbol\sigma$ are the Pauli matrices. At $\alpha=2\pi$,
+\begin{equation}
+ U(2\pi,\mathbf n)=-I,
+ \label{eq:spinor-minus}
+\end{equation}
+and only after $4\pi$ does the state vector return to itself. The global sign is invisible for an isolated ray but becomes observable in interference.
+
+Berry's geometric phase generalizes this phenomenon. For a spin-$1/2$ eigenstate transported adiabatically around a closed loop on the Bloch sphere, the geometric phase is minus one half the enclosed solid angle, modulo $2\pi$ \citep{berry1984}. A loop enclosing solid angle $2\pi$ therefore produces a phase $\pi$ and the sign $-1$.
+
+The relevance to the present ansatz is structural: the same relative sign required for exact two-channel cancellation is the sign associated with spinorial closure. This does not show that zeta zeros are physical spinors. It identifies a two-dimensional projective geometry in which balance and sign closure meet naturally.
+
+\section{The binary-spinor equivalence theorem}
+
+Define the phase-locked amplitude
+\begin{equation}
+ \Acomp_*(\sigma)
+ =\sqrt\sigma+e^{2\pi i\sigma}\sqrt{1-\sigma},
+ \qquad 0<\sigma<1.
+ \label{eq:phase-locked-amplitude}
+\end{equation}
+
+\begin{theorem}[Triple coincidence of the half]
+\label{thm:triple-coincidence}
+For $0<\sigma<1$, the following statements are equivalent:
+\begin{enumerate}
+  \item $\sigma=1-\sigma$;
+  \item $\Hbin(\sigma)=\ln2$;
+  \item $e^{2\pi i\sigma}=-1$;
+  \item $\Acomp_*(\sigma)=0$;
+  \item $\sigma=1/2$.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The complement fixed-point equation gives $\sigma=1/2$. By \cref{lem:entropy-max}, the entropy reaches $\ln2$ only there. Equation \cref{eq:phase-half} establishes the phase equivalence. Finally, \cref{lem:exact-cancellation} applied to $\phi=2\pi\sigma$ gives the amplitude equivalence.
+\end{proof}
+
+This theorem is one of the main exact results of the monograph. It shows that four apparently different notions collapse onto the same point inside a single explicit model. The theorem says nothing yet about $\zeta$ or $\xi$; it becomes relevant to RH only if $\sigma$ is canonically tied to $\Re s$ and zerohood is tied to the readout.
+
+\section{Gauge and global phase}
+
+A pure quantum state is a ray, so multiplication by $e^{i\chi}$ does not change the state. The cancellation amplitude, however, compares a state with a fixed detector and is sensitive to relative phase. Therefore a candidate zeta-state map must specify enough gauge structure to make the readout meaningful.
+
+Suppose
+\[
+ \ket{\Psi(s)}\mapsto e^{i\chi(s)}\ket{\Psi(s)}.
+\]
+Then $\braket{+}{\Psi(s)}$ acquires the same factor, so its zero set is gauge invariant. This is favourable: an amplitude-zero condition can be well-defined on rays. But decomposing the state into two channel phases may depend on basis and gauge. The basis must therefore arise from the complement symmetry rather than arbitrary coordinates.
+
+\section{Covariance and the equator}
+
+The channel-swap covariance previewed in \cref{eq:state-covariance-preview} exchanges the north and south hemispheres under $\sigma\mapsto1-\sigma$. On the fixed line it places the state on the equator, because the two component norms must agree. A separate analytic or spectral condition must select the antipodal phase required for orthogonality to $\ket{+}$.
+
+This separation is useful:
+\begin{align*}
+ \text{zeta involution covariance}&\quad\rightsquigarrow\quad\text{equal component norms on }\Crit,\\
+ \text{zero condition}&\quad\rightsquigarrow\quad\text{relative phase }\pi,\\
+ \text{together}&\quad\rightsquigarrow\quad\text{exact cancellation}.
+\end{align*}
+A successful bridge should derive both arrows from one construction.
+
+\begin{warning}
+The spinorial sign is not a proof of the phase law $\phi=2\pi\Re s$. That law is a model identification. Any future derivation must explain why the zeta argument traverses a loop whose holonomy is parameterized by the real part in precisely this way.
+\end{warning}
+
+\status{Bloch parameterization, spinor sign, Berry-phase relation, and the triple-coincidence theorem are exact within their stated model. The identification with zeta data remains open.}

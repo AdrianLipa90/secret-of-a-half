@@ -1,0 +1,116 @@
+\chapter{Binary Entropy, $\ln2$, and Information Balance}
+\label{chap:entropy}
+
+\section{Binary Shannon entropy}
+
+For a binary distribution with probabilities $(\sigma,1-\sigma)$, the Shannon entropy in nats is
+\begin{equation}
+ \Hbin(\sigma)=-\sigma\ln\sigma-(1-\sigma)\ln(1-\sigma),
+ \qquad 0<\sigma<1.
+ \label{eq:binary-entropy}
+\end{equation}
+This is the two-symbol specialization of Shannon's general entropy \citep{shannon1948}.
+
+\begin{lemma}[SOH-L001: unique entropy maximum]
+\label{lem:entropy-max}
+The function $\Hbin$ has a unique global maximum at $\sigma=1/2$, where
+\[
+ \Hbin(1/2)=\ln2.
+\]
+\end{lemma}
+\begin{proof}
+Differentiation gives
+\begin{align}
+ \Hbin'(\sigma)&=\ln\frac{1-\sigma}{\sigma},\label{eq:H-prime}\\
+ \Hbin''(\sigma)&=-\frac{1}{\sigma(1-\sigma)}<0.\label{eq:H-second}
+\end{align}
+Thus $\Hbin$ is strictly concave. Its only stationary point satisfies $(1-\sigma)/\sigma=1$, hence $\sigma=1/2$, and strict concavity makes it the unique maximum. Substitution gives $\ln2$.
+\end{proof}
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.78\textwidth]{binary_entropy.png}
+ \caption{Binary Shannon entropy is symmetric under $\sigma\leftrightarrow1-\sigma$ and uniquely maximal at the balanced point.}
+ \label{fig:binary-entropy}
+\end{figure}
+
+The appearance of $\ln2$ is exact and elementary: it is the information content of one equiprobable binary distinction when logarithms are natural. It is not, by itself, evidence about zeta zeros. Its relevance arises only if the real part $\sigma$ can be justified as a normalized binary weight in a canonical zeta representation.
+
+\section{Entropy deficit as relative entropy}
+
+Define the balanced reference distribution $u=(1/2,1/2)$. The Kullback--Leibler divergence from $(\sigma,1-\sigma)$ to $u$ is
+\begin{align}
+ \Dkl\bigl((\sigma,1-\sigma)\,\|\,u\bigr)
+ &=\sigma\ln\frac{\sigma}{1/2}+(1-\sigma)\ln\frac{1-\sigma}{1/2}\notag\\
+ &=\ln2-\Hbin(\sigma).
+ \label{eq:entropy-deficit-KL}
+\end{align}
+
+\begin{proposition}[Information deficit identity]
+\label{prop:entropy-deficit}
+The loss of binary entropy away from the half point is exactly a relative entropy:
+\[
+ \ln2-\Hbin(\sigma)=\Dkl\bigl((\sigma,1-\sigma)\,\|\,(1/2,1/2)\bigr)\ge0,
+\]
+with equality if and only if $\sigma=1/2$.
+\end{proposition}
+
+This reformulation is useful because it upgrades ``the entropy is maximal'' into a positive distance-like quantity. Relative entropy is not a metric, but it is non-negative and vanishes only when the distributions agree.
+
+Writing $\sigma=1/2+x$, the Taylor expansion is
+\begin{equation}
+ \ln2-\Hbin(1/2+x)
+ =2x^2+\frac43x^4+\frac{32}{15}x^6+\frac{32}{7}x^8+O(x^{10}).
+ \label{eq:entropy-deficit-series}
+\end{equation}
+The leading quadratic term makes the half point stable under small perturbations. Pinsker's inequality gives the global lower bound
+\begin{equation}
+ \ln2-\Hbin(\sigma)\ge2\left(\sigma-\frac12\right)^2.
+ \label{eq:pinsker-binary}
+\end{equation}
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.78\textwidth]{entropy_deficit.png}
+ \caption{The entropy deficit is positive and begins quadratically in horizontal displacement from $1/2$.}
+ \label{fig:entropy-deficit}
+\end{figure}
+
+\section{Symmetry is the essential input}
+
+The entropy maximum at $1/2$ is not special to the logarithmic Shannon formula alone. Let $F:(0,1)\to\R$ be strictly concave and symmetric under $\sigma\mapsto1-\sigma$. Then Jensen's inequality gives
+\[
+ F(1/2)=F\!\left(\frac{\sigma+(1-\sigma)}{2}\right)
+ >\frac{F(\sigma)+F(1-\sigma)}{2}=F(\sigma)
+\]
+for $\sigma\neq1/2$. Thus any strictly concave complement-symmetric uncertainty functional is uniquely maximized at the half point.
+
+Shannon entropy contributes more than the location: it supplies the exact value $\ln2$, additivity for independent sources, and the operational interpretation of average code length. The location, however, is primarily a consequence of strict concavity plus complement symmetry.
+
+\section{A variational characterization}
+
+The balanced point can be characterized as the solution of a constrained variational problem:
+\begin{equation}
+ \max_{p_0,p_1>0}\left\{-p_0\ln p_0-p_1\ln p_1\right\}
+ \quad\text{subject to}\quad p_0+p_1=1.
+ \label{eq:entropy-variational}
+\end{equation}
+Using a Lagrange multiplier $\lambda$,
+\[
+ \mathcal{L}=-\sum_{j=0}^{1}p_j\ln p_j+\lambda(p_0+p_1-1),
+\]
+and stationarity implies $\ln p_0=\ln p_1$, hence $p_0=p_1=1/2$.
+
+This variational language is suggestive for zeta theory because several equivalent criteria for RH are positivity or minimization statements. Suggestion is not equivalence. To turn entropy into an RH criterion, one would need to derive a zeta-dependent functional whose minimizer or zero set is tied to \cref{eq:entropy-variational} without inserting the critical line manually.
+
+\section{The limitation of entropy alone}
+
+For every $t\in\R$, the point $s=1/2+it$ has the same binary entropy if $\sigma=\Re s$ is used as the weight. Entropy therefore selects a vertical line but says nothing about which heights are zeros. This is appropriate: the ansatz separates a balance coordinate $\sigma$ from a spectral coordinate $t$. A successful theory would use binary balance to constrain the horizontal location and an independent quantization condition to determine the ordinates.
+
+Moreover, an off-axis zero does not contradict the entropy calculation. It would merely correspond to an imbalanced weight. A theorem must show that zerohood forces maximal balance; entropy does not supply that implication by itself.
+
+\begin{warning}
+The statement ``$\ln2$ occurs both in binary entropy and in the eta function'' is a genuine shared constant, but a shared constant is not a proof of shared mechanism. The exact eta identity is developed in \cref{chap:eta}; the missing step remains a canonical state or operator representation.
+\end{warning}
+
+\status{The entropy maximum, KL identity, series, and bounds are exact. Their application to $\Re s$ is part of the ansatz and requires the state-weight bridge.}

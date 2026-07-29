@@ -1,31 +1,108 @@
 {
-  "schema_version": "0.1.0",
-  "project": "secret-of-a-half",
+  "version": "0.2",
+  "date": "2026-07-29",
   "claims": [
     {
       "id": "SOH-L001",
-      "status": "exact_lemma",
-      "statement": "Binary Shannon entropy has a unique maximum at sigma = 1/2."
+      "status": "exact",
+      "statement": "Binary Shannon entropy is uniquely maximal at sigma=1/2, with value ln 2.",
+      "location": "Theorem 4.1"
     },
     {
       "id": "SOH-L002",
-      "status": "exact_lemma",
-      "statement": "Exact cancellation of the normalized complementary two-channel state requires sigma = 1/2 and relative phase pi modulo 2pi."
+      "status": "exact",
+      "statement": "Equal-gain normalized two-channel cancellation occurs only at sigma=1/2 and relative phase pi.",
+      "location": "Theorem 5.1"
     },
     {
       "id": "SOH-L003",
-      "status": "exact_lemma",
-      "statement": "The fixed set of s -> 1 - conjugate(s) is Re(s) = 1/2."
+      "status": "exact",
+      "statement": "The fixed set of J(s)=1-conjugate(s) is Re(s)=1/2.",
+      "location": "Theorem 3.2"
+    },
+    {
+      "id": "SOH-L004",
+      "status": "exact",
+      "statement": "Entropy deficit from balance equals Bernoulli KL divergence and is positive away from 1/2.",
+      "location": "Theorem 4.2"
+    },
+    {
+      "id": "SOH-L005",
+      "status": "exact_model_theorem",
+      "statement": "Within the binary-spinor model, complement symmetry, maximal entropy, spinorial sign and phase-locked cancellation are equivalent to sigma=1/2.",
+      "location": "Theorem 6.1"
+    },
+    {
+      "id": "SOH-L006",
+      "status": "exact_classical",
+      "statement": "Eta and zeta have identical zero sets with multiplicity in the open critical strip.",
+      "location": "Theorem 7.1"
+    },
+    {
+      "id": "SOH-L007",
+      "status": "exact",
+      "statement": "Unequal channel gains shift the cancellation point to |b|^2/(|a|^2+|b|^2).",
+      "location": "Theorem B.1"
     },
     {
       "id": "SOH-C001",
-      "status": "open_conjectural_bridge",
-      "statement": "A canonical zeta-state map converts every non-trivial zeta zero into exact complementary cancellation."
+      "status": "open_bridge",
+      "statement": "A canonical regular, covariant and gauge-independent zeta-state map converts every non-trivial zero into equal-gain complementary cancellation.",
+      "location": "Chapter 8"
     },
     {
       "id": "SOH-T001",
-      "status": "conditional_theorem",
-      "statement": "Under SOH-C001 and the stated normalization and phase hypotheses, all non-trivial zeros lie on Re(s) = 1/2."
+      "status": "conditional",
+      "statement": "Under SOH-C001 and the channel hypotheses, every non-trivial zero lies on Re(s)=1/2.",
+      "location": "Theorem 9.1"
+    },
+    {
+      "id": "SOH-C002",
+      "status": "open_programme",
+      "statement": "A theta-kernel, analytic-vector, positivity or reproducing-kernel construction satisfies the canonical bridge requirements.",
+      "location": "Chapter 11"
+    },
+    {
+      "id": "SOH-C003",
+      "status": "open_spectral_route",
+      "statement": "A self-adjoint operator has a spectral determinant proportional to Xi.",
+      "location": "Chapter 12"
+    },
+    {
+      "id": "SOH-L008",
+      "status": "exact",
+      "statement": "The native paired theta state satisfies P(J(s)) = X conjugate(P(s)).",
+      "location": "PhaseNav Construction, Theorem 16.1"
+    },
+    {
+      "id": "SOH-L009",
+      "status": "exact",
+      "statement": "The normalized native PhaseNav closure defect equals (Re(s)-1/2)^2.",
+      "location": "PhaseNav Construction, Theorem 16.2"
+    },
+    {
+      "id": "SOH-L010",
+      "status": "exact_classical",
+      "statement": "The continuous paired theta-Mellin detector equals xi(s).",
+      "location": "PhaseNav Construction, Proposition 16.3"
+    },
+    {
+      "id": "SOH-C004",
+      "status": "open_bridge",
+      "statement": "Every non-trivial xi zero closes in the canonical self-dual PhaseNav shell.",
+      "location": "PhaseNav Construction, Postulate 16.4"
+    },
+    {
+      "id": "SOH-T002",
+      "status": "conditional",
+      "statement": "Under SOH-C004, every non-trivial zero lies on Re(s)=1/2.",
+      "location": "PhaseNav Construction, Theorem 16.5"
+    },
+    {
+      "id": "SOH-N001",
+      "status": "numerical",
+      "statement": "The 18-pair detector is a low-height quadrature approximation to xi(s).",
+      "location": "PhaseNav Construction, Section 16.8"
     }
   ]
 }

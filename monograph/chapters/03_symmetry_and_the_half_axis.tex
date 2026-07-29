@@ -1,0 +1,139 @@
+\chapter{Symmetry, Involution, and the Half-Axis}
+\label{chap:symmetry}
+
+\section{The anti-linear involution}
+
+The functional equation is a holomorphic reflection $s\mapsto1-s$. To express reflection across a vertical line, combine it with complex conjugation.
+
+\begin{definition}[Critical-strip involution]
+Define
+\begin{equation}
+ \J:\C\to\C,\qquad \J(s)=1-\overline{s}.
+ \label{eq:J-def}
+\end{equation}
+\end{definition}
+It is anti-linear over complex scalars and satisfies $\J^2=\operatorname{id}$.
+
+\begin{lemma}[SOH-L003: fixed set]
+\label{lem:J-fixed}
+The fixed set of $\J$ is exactly the critical line:
+\[
+ \operatorname{Fix}(\J)=\Crit.
+\]
+\end{lemma}
+\begin{proof}
+Write $s=\sigma+it$. Then
+\[
+ \J(s)=1-\sigma+it.
+\]
+The equation $\J(s)=s$ is equivalent to $1-\sigma=\sigma$, hence $\sigma=1/2$, while $t$ remains arbitrary.
+\end{proof}
+
+The completed zeta function is covariant under this involution:
+\begin{equation}
+ \xi(\J s)=\overline{\xi(s)}.
+ \label{eq:xi-J-covariance}
+\end{equation}
+Indeed,
+\[
+ \xi(1-\overline{s})=\xi(\overline{s})=\overline{\xi(s)}.
+\]
+This equation will later be the model for covariance of a candidate state map.
+
+\section{Why symmetry does not imply the Riemann Hypothesis}
+
+A common logical mistake is to infer that because the zero set is invariant under $\J$, every zero must satisfy $\J(\rho)=\rho$. Set invariance is weaker than pointwise fixation.
+
+\begin{proposition}[Orbit alternative]
+Let $Z\subset\Sstrip$ be invariant under conjugation and $s\mapsto1-s$. For every $\rho\in Z$, either:
+\begin{enumerate}
+  \item $\Re\rho=1/2$, in which case $\J(\rho)=\rho$; or
+  \item $\Re\rho\neq1/2$, in which case $\rho$ and $\J(\rho)$ are distinct zeros at the same height and symmetric horizontal displacement.
+\end{enumerate}
+Including conjugation produces a quartet unless further coincidences occur.
+\end{proposition}
+\begin{proof}
+Immediate from the action of $\J(\sigma+it)=1-\sigma+it$ and complex conjugation.
+\end{proof}
+
+\begin{figure}[htbp]
+ \centering
+ \includegraphics[width=0.82\textwidth]{involution_geometry.png}
+ \caption{The zeta symmetries produce an orbit. Symmetry alone permits an off-axis quartet; the Riemann Hypothesis asserts collapse onto the fixed line.}
+ \label{fig:involution-geometry}
+\end{figure}
+
+This proposition isolates the missing ingredient. A proof needs a principle that forbids distinct paired points. Positivity, self-adjointness, monotonicity, or an exact cancellation law could supply such a principle, but invariance alone cannot.
+
+\section{The affine origin of one half}
+
+The number $1/2$ is forced by the complement map $C(\sigma)=1-\sigma$.
+
+\begin{lemma}[Unique complement fixed point]
+On $\R$, the equation $C(\sigma)=\sigma$ has the unique solution $\sigma=1/2$.
+\end{lemma}
+
+More generally, an affine involution $C_a(x)=a-x$ has centre $a/2$. The half is not numerology; it is the algebraic centre of the unit complement. The unit is supplied by the zeta functional equation, which pairs $s$ with $1-s$.
+
+This observation suggests a useful hierarchy:
+\begin{enumerate}
+  \item the number $1$ enters through the analytic functional equation;
+  \item complementarity relative to $1$ selects the centre $1/2$;
+  \item the Riemann Hypothesis asks whether all non-trivial zeros are self-dual under the resulting involution.
+\end{enumerate}
+
+\section{Centred displacement}
+
+Define the horizontal displacement
+\begin{equation}
+ x=\sigma-\frac12.
+ \label{eq:x-displacement}
+\end{equation}
+Then complementarity acts as $x\mapsto-x$. Any scalar diagnostic intended to penalize departure from the axis should naturally be even in $x$. Binary entropy deficit, cancellation intensity near its minimum, and many positivity candidates have exactly this property.
+
+The centred complex coordinate
+\[
+ u=s-\frac12=x+it
+\]
+transforms as
+\[
+ u\mapsto-\overline{u}
+\]
+under $\J$. Multiplying by $-i$ gives the spectral coordinate $z=-iu$, under which $\J$ becomes ordinary conjugation:
+\[
+ z\mapsto\overline{z}.
+\]
+Thus a self-adjoint spectral realization would convert the anti-linear zeta symmetry into the standard reality of spectra.
+
+\section{Self-duality versus zerohood}
+
+The fixed-line property is a property of the argument $s$; zerohood is a property of the value $\xi(s)$. A canonical bridge must relate them without assuming either. The following diagram summarizes the required logic:
+\[
+ \xi(s)=0
+ \quad\Longrightarrow\quad
+ \text{canonical state cancellation}
+ \quad\Longrightarrow\quad
+ \J(s)=s
+ \quad\Longrightarrow\quad
+ \Re s=\frac12.
+\]
+Only the last implication is elementary. The middle implication is the two-channel lemma developed later. The first is SOH-C001, the open bridge.
+
+\begin{warning}
+Replacing the first arrow by a definition does not solve the problem. For example, assigning the state $\ket{-}$ whenever $\xi(s)=0$ is tautological. The state must be constructed independently and its readout zero must be proved equivalent to $\xi(s)=0$.
+\end{warning}
+
+\section{A symmetry-compatible channel swap}
+
+Let $X$ be the swap operator on $\C^2$,
+\[
+ X\ket{0}=\ket{1},\qquad X\ket{1}=\ket{0}.
+\]
+A state map $s\mapsto\ket{\Psi(s)}$ with channel weights $(\sigma,1-\sigma)$ is naturally compatible with $\J$ if
+\begin{equation}
+ \ket{\Psi(\J s)}\sim X\,\overline{\ket{\Psi(s)}},
+ \label{eq:state-covariance-preview}
+\end{equation}
+where $\sim$ denotes equality of rays. At a fixed point $s\in\Crit$, this covariance enforces equal channel norms. It does not by itself enforce the relative phase $\pi$ needed for destructive cancellation. This is the state-space version of the same logical gap: symmetry gives balance, while zerohood requires a further phase or orthogonality condition.
+
+\status{SOH-L003 and the orbit analysis are exact. The state covariance in \cref{eq:state-covariance-preview} is a design requirement for later candidate maps, not an established property of zeta zeros.}

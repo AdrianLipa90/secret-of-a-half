@@ -18,3 +18,8 @@ dist/
 *.synctex.gz
 *.toc
 .DS_Store
+
+# Deterministic generated monograph assets
+monograph/figures/*.png
+monograph/figures/*.pdf
+monograph/main.pdf

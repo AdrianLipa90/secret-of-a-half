@@ -1,0 +1,94 @@
+\chapter{Scope, Method, and Claim Discipline}
+\label{chap:scope}
+
+\section{The problem being addressed}
+
+The Riemann Hypothesis states that every non-trivial zero $\rho$ of the Riemann zeta function has real part $1/2$ \citep{riemann1859,clay2026}. It is important to distinguish this global assertion from the much simpler observation that the completed zeta function possesses a symmetry centred at $1/2$. A symmetry centre does not generally force every zero to be fixed by the symmetry. It may only force zeros to occur in symmetric families.
+
+The present project asks whether the axis $\Re s=1/2$ can be characterized simultaneously as:
+\begin{enumerate}
+  \item the fixed set of the anti-linear zeta involution;
+  \item the unique point of binary informational balance;
+  \item the unique equal-gain two-channel state permitting exact destructive cancellation;
+  \item the unique value in $(0,1)$ producing the spinorial sign $-1$ under the phase law $e^{2\pi i\sigma}$.
+\end{enumerate}
+Each item can be proved exactly once the relevant definitions are fixed. The difficult question is whether the zeros of $\xi(s)$ admit a canonical representation in which these structures are not merely parallel but are mathematically the same event.
+
+\section{Variables and domains}
+
+Throughout the monograph,
+\[
+ s=\sigma+it,\qquad \sigma,t\in\R,
+\]
+and the open critical strip is
+\[
+ \Sstrip=\{s\in\C:0<\Re s<1\}.
+\]
+The critical line is
+\[
+ \Crit=\{s\in\C:\Re s=1/2\}.
+\]
+The word ``binary'' refers to a normalized pair of non-negative weights $(\sigma,1-\sigma)$. No claim is made that the zeta function is literally a two-state physical system. Rather, the ansatz asks whether a two-channel representation can be constructed canonically from the analytic data.
+
+The natural logarithm is denoted by $\ln$. Entropies are therefore measured in nats, so that the balanced binary entropy is $\ln2$. The complex power $2^s$ means $\exp(s\ln2)$, with the real logarithm of $2$.
+
+\section{Autonomy and non-circularity}
+
+A construction intended to illuminate the Riemann Hypothesis must not encode the answer in its definitions. There are several ways circularity can enter:
+\begin{itemize}
+  \item defining a state only at already known zeros and choosing its weights to be $1/2$;
+  \item using a phase function that is set to $\pi$ precisely when $\xi(s)=0$;
+  \item dividing by $\xi(s)$ and then interpreting a singular normalization as a zero detector;
+  \item fitting parameters to a finite list of tabulated zeros;
+  \item invoking self-adjointness without constructing a domain, operator, and spectral equivalence.
+\end{itemize}
+The canonical bridge demanded later in this text is designed to exclude these manoeuvres.
+
+\begin{definition}[Canonical for the present programme]
+A map, operator, or kernel is called \emph{canonical} if it is determined by previously specified zeta, theta, Hilbert-space, or symmetry data; is defined on an open domain rather than only on the zero set; is covariant under the relevant involutions; contains no parameters fitted to zero locations; and admits an independently checkable rule for its normalization.
+\end{definition}
+
+This definition is intentionally demanding. A non-canonical map can always be manufactured to send a prescribed set to any desired geometric locus. Such manufacture has no explanatory power.
+
+\section{Claim classes}
+
+The core repository begins with five claims. Three are elementary lemmas:
+\begin{align*}
+\text{SOH-L001:}&\quad \Hbin(\sigma)\text{ is uniquely maximal at }\sigma=1/2,\\
+\text{SOH-L002:}&\quad \Acomp(\sigma,\phi)=0\iff \sigma=1/2,\ \phi\equiv\pi\pmod{2\pi},\\
+\text{SOH-L003:}&\quad \operatorname{Fix}(\J)=\Crit,
+\end{align*}
+where $\J(s)=1-\overline{s}$. One claim is the open bridge:
+\begin{quote}
+\textbf{SOH-C001.} A canonical zeta-state map converts every non-trivial zero into exact complementary cancellation.
+\end{quote}
+The final claim is conditional:
+\begin{quote}
+\textbf{SOH-T001.} Under SOH-C001 and the specified normalization, all non-trivial zeros lie on $\Crit$.
+\end{quote}
+
+The monograph strengthens the exact layer with several additional results. In particular, the entropy deficit is a Kullback--Leibler divergence, equal-gain cancellation has a coercive quadratic expansion, the binary-spinor model admits an equivalence theorem, and unequal channel metrics move the balance point away from $1/2$. These additions sharpen both the positive structure and the hidden assumptions.
+
+\section{What would count as success?}
+
+There are several levels of success, and they should not be confused.
+
+\paragraph{Level 1: structural explanation.}
+One proves that complementarity, entropy, equal-gain cancellation, spinorial sign, and zeta symmetry all single out the same half-coordinate. This is achieved in the exact model developed here.
+
+\paragraph{Level 2: canonical zero representation.}
+One constructs a state or kernel from classical zeta data such that its vanishing is equivalent to $\xi(s)=0$ and its channel norms are linked to $(\sigma,1-\sigma)$. This is not achieved here.
+
+\paragraph{Level 3: positivity or self-adjointness.}
+One proves that the canonical representation is governed by a positive kernel or a self-adjoint operator, forcing the centred spectral variable to be real. This would imply the Riemann Hypothesis.
+
+\paragraph{Level 4: accepted proof.}
+Every analytic detail, domain issue, convergence statement, and equivalence is verified independently and accepted through ordinary mathematical publication and review. Nothing in this monograph claims that level.
+
+\section{Why pursue a conditional theorem?}
+
+A conditional theorem is useful when it compresses the unresolved problem into a precise construction target. The Hilbert--P\'olya strategy is valuable for exactly this reason: if the zero ordinates are the spectrum of a self-adjoint operator, they are real, and the Riemann Hypothesis follows. The hard part is not the final spectral implication but the operator construction \citep{berrykeating1999,connes1999,dlmf2026}.
+
+The information--spinor theorem developed here plays an analogous role. It does not replace Hilbert--P\'olya; it refines what a two-channel geometric realization would need to accomplish. Its value is measured by whether it rules out vague analogies and generates testable mathematical subproblems.
+
+\status{This chapter is methodological. Its definitions govern how later statements are classified; it contains no claim that RH is proved.}

@@ -70,6 +70,8 @@ secret-of-a-half/
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── pyproject.toml
+├── construction/
+│   └── phasenav/
 ├── claims/
 │   ├── CLAIM_LEDGER.md
 │   └── claim_ledger.json
@@ -109,6 +111,33 @@ secret-of-a-half/
 4. Construct and test candidate zeta-state maps.
 5. Investigate Hilbert–Pólya, de Branges, Weil and positivity routes without conflating analogy with proof.
 6. Build the monograph from the claim ledger and verified derivations.
+
+## Monograph Version 0.2
+
+The complete monograph is maintained as modular LaTeX in `monograph/`. GitHub Actions rebuilds the validated 92-page PDF and publishes it as the `secret-of-a-half-monograph-v0.2` workflow artifact. It contains 16 chapters, five appendices, deterministic figures, numerical regression tables, the native PhaseNav construction, and a full claim ledger.
+
+Its strongest result is conditional: once a canonical, regular, equal-gain zeta-state map satisfying the stated zero-equivalence and covariance requirements is constructed, the critical-line conclusion follows. That canonical bridge remains open.
+
+## Native PhaseNav Construction v0.1
+
+The first executable bridge construction is now defined natively in
+`construction/phasenav/secret_of_half_theta_bridge.pnv`.
+
+It maps the symmetric theta-Mellin representation of the completed zeta function
+to 18 complementary rotor pairs, giving a 36-dimensional PhaseNav state. The
+construction proves exactly that its normalized self-dual closure defect is
+
+\[
+\mathcal C(s)=\left(\operatorname{Re}(s)-\frac12\right)^2.
+\]
+
+The finite detector approximates \(\xi(s)\), while the continuous detector is the
+classical theta-Mellin identity. The remaining open statement is explicit:
+every non-trivial zero must be shown to close in the canonical self-dual
+PhaseNav shell. This is `SOH-C004`; it is not marked as proved.
+
+The Python implementation parses and executes the `.pnv` source. It is an
+auditor of the native program, not the source of the construction.
 
 ## Author
 

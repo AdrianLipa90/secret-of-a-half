@@ -1,0 +1,134 @@
+\chapter{The Zeta Function, Completion, and the Critical Strip}
+\label{chap:zeta}
+
+\section{Dirichlet series and Euler product}
+
+For $\Re s>1$, the Riemann zeta function is defined by the absolutely convergent Dirichlet series
+\begin{equation}
+ \zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}.
+ \label{eq:zeta-dirichlet}
+\end{equation}
+Unique factorization of positive integers gives the Euler product
+\begin{equation}
+ \zeta(s)=\prod_{p\ \mathrm{prime}}\frac{1}{1-p^{-s}},
+ \qquad \Re s>1.
+ \label{eq:euler-product}
+\end{equation}
+Absolute convergence shows that $\zeta(s)\neq0$ in this half-plane. The Euler product is the first reason the zero problem is arithmetically significant: analytic information about $\zeta$ controls fluctuations in the distribution of primes \citep{riemann1859,titchmarsh1986,edwards1974}.
+
+The function extends meromorphically to the whole complex plane with a single simple pole at $s=1$ of residue $1$. Its trivial zeros occur at the negative even integers. All other zeros lie in the open critical strip $\Sstrip$; these are the non-trivial zeros \citep{dlmf2026}.
+
+\section{Theta-function derivation of the completed function}
+
+The symmetry is most transparent after completion. Define
+\[
+ \psi(x)=\sum_{n=1}^{\infty}e^{-\pi n^2x},\qquad x>0,
+\]
+and the Jacobi theta function
+\[
+ \theta(x)=1+2\psi(x)=\sum_{n\in\mathbb Z}e^{-\pi n^2x}.
+\]
+Poisson summation yields the modular relation
+\begin{equation}
+ \theta(x)=x^{-1/2}\theta(1/x).
+ \label{eq:theta-modular}
+\end{equation}
+For $\Re s>1$, termwise Mellin transformation gives
+\begin{equation}
+ \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)\zeta(s)
+ =\int_0^{\infty}\psi(x)x^{s/2-1}\,dx.
+ \label{eq:mellin-zeta}
+\end{equation}
+Split the integral at $x=1$. In the interval $(0,1)$, substitute $x=1/u$ and use \cref{eq:theta-modular}, equivalently
+\[
+ \psi(1/u)=u^{1/2}\psi(u)+\frac{u^{1/2}-1}{2}.
+\]
+One obtains
+\begin{align}
+ \pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)\zeta(s)
+ &=\frac{1}{s(s-1)}
+ +\int_1^{\infty}\psi(x)
+ \left(x^{s/2}+x^{(1-s)/2}\right)\frac{dx}{x}.
+ \label{eq:completed-integral-pre}
+\end{align}
+The right-hand side gives meromorphic continuation and is manifestly invariant under $s\mapsto1-s$ apart from the elementary pole term.
+
+\begin{definition}[Riemann xi function]
+The completed zeta function is
+\begin{equation}
+ \xi(s)=\frac12 s(s-1)\pi^{-s/2}\Gamma\!\left(\frac{s}{2}\right)\zeta(s).
+ \label{eq:xi-def}
+\end{equation}
+\end{definition}
+Multiplying \cref{eq:completed-integral-pre} by $s(s-1)/2$ gives
+\begin{equation}
+ \xi(s)=\frac12+\frac12s(s-1)
+ \int_1^{\infty}\psi(x)
+ \left(x^{s/2}+x^{(1-s)/2}\right)\frac{dx}{x}.
+ \label{eq:xi-integral}
+\end{equation}
+The exponential decay of $\psi(x)$ makes the integral entire in $s$. Thus $\xi$ is entire and obeys the functional equation
+\begin{equation}
+ \xi(s)=\xi(1-s).
+ \label{eq:xi-fe}
+\end{equation}
+This is the exact analytic origin of the centre $1/2$.
+
+\section{Reality and zero symmetries}
+
+Because $\zeta$, $\Gamma$, and the remaining factors in \cref{eq:xi-def} respect complex conjugation away from their standard cuts and then by analytic continuation,
+\begin{equation}
+ \overline{\xi(s)}=\xi(\overline{s}).
+ \label{eq:xi-reality}
+\end{equation}
+Combining \cref{eq:xi-fe,eq:xi-reality}, if $\rho$ is a zero then so are
+\[
+ \overline{\rho},\qquad 1-\rho,\qquad 1-\overline{\rho}.
+\]
+Generically these are four distinct points. On the critical line, the orbit collapses because $1-\overline{\rho}=\rho$.
+
+The functional symmetry therefore explains why $1/2$ is the centre, but it does not explain why all zero orbits should collapse to their fixed set. This distinction is the logical starting point of the ansatz.
+
+\section{Centred spectral coordinate}
+
+Introduce
+\begin{equation}
+ z=-i\left(s-\frac12\right),
+ \qquad s=\frac12+iz.
+ \label{eq:centered-coordinate}
+\end{equation}
+Define the entire function
+\begin{equation}
+ \XiR(z)=\xi\!\left(\frac12+iz\right).
+ \label{eq:Xi-def}
+\end{equation}
+Then the functional equation gives
+\[
+ \XiR(z)=\XiR(-z),
+\]
+so $\XiR$ is even. The reality relation implies
+\[
+ \overline{\XiR(\overline{z})}=\XiR(z),
+\]
+so it is a real entire function. If $z=x+iy$, then
+\[
+ s=\left(\frac12-y\right)+ix.
+\]
+Consequently,
+\begin{equation}
+ \Re s=\frac12\quad\Longleftrightarrow\quad z\in\R.
+ \label{eq:rh-real-xi-zeros}
+\end{equation}
+The Riemann Hypothesis is therefore equivalent to the statement that all zeros of $\XiR(z)$ are real.
+
+This coordinate makes the operator route immediate: if $\XiR$ were a spectral determinant of a self-adjoint operator up to a non-vanishing entire factor, its zeros would be real. It also separates the two coordinates conceptually. The horizontal displacement from the critical line becomes the imaginary part of a would-be spectral parameter, while the zero ordinate becomes its real part.
+
+\section{The critical line as a real slice}
+
+For real $t$,
+\[
+ \XiR(t)=\xi\!\left(\frac12+it\right)\in\R.
+\]
+The critical line is thus a real slice of the completed analytic structure, not merely a line drawn through numerical zeros. Classical results show that infinitely many zeros lie on this line \citep{hardy1914}, and much stronger proportions are known, but the assertion that all non-trivial zeros lie there remains open \citep{conrey2003,clay2026}.
+
+\status{All identities in this chapter are classical. The theta-function calculation derives the symmetry centre but does not prove fixation of every zero.}

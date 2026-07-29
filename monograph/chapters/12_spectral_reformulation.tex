@@ -1,0 +1,122 @@
+\chapter{Spectral Reformulation and the Real-Zero Mechanism}
+\label{chap:spectral}
+
+\section{Hilbert--P\'olya logic}
+
+In the centred coordinate $s=1/2+iz$, RH is equivalent to all zeros of $\XiR(z)$ being real. The strongest familiar mechanism for real spectral values is self-adjointness.
+
+\begin{theorem}[Conditional spectral theorem]
+\label{thm:spectral-conditional}
+Suppose there exists a self-adjoint operator $H$ on a Hilbert space and an entire spectral determinant $D(z)$ such that
+\begin{equation}
+ \XiR(z)=e^{a+bz}D(z),
+ \label{eq:spectral-factorization}
+\end{equation}
+where the exponential factor is non-zero and the zeros of $D$ are exactly the eigenvalues of $H$, with multiplicity. Then RH holds.
+\end{theorem}
+\begin{proof}
+The spectrum of a self-adjoint operator is real. The non-vanishing exponential does not alter zeros, so every zero of $\XiR$ is real. By \cref{eq:rh-real-xi-zeros}, every non-trivial zeta zero lies on $\Re s=1/2$.
+\end{proof}
+
+The theorem captures the Hilbert--P\'olya idea. Many quantum-chaotic analogies and operator proposals are motivated by zero statistics \citep{montgomery1973,odlyzko1987,berrykeating1999,keatingsnaith2000}. No accepted operator satisfying \cref{eq:spectral-factorization} is known.
+
+\section{How the half enters spectrally}
+
+Self-adjointness does not derive the number $1/2$ from scratch. The functional equation first determines the centred coordinate. Specifically,
+\[
+ z=-i(s-1/2)
+\]
+turns the anti-linear involution $\J$ into complex conjugation. The half is therefore the coordinate shift that converts zeta symmetry into spectral reality. The operator then supplies the missing orbit-collapse principle.
+
+This separation mirrors the information-spinor theorem:
+\begin{align*}
+ \text{functional symmetry}&\longrightarrow\text{centre }1/2,\\
+ \text{self-adjointness or positive cancellation}&\longrightarrow\text{reality/fixation}.
+\end{align*}
+The two frameworks differ in the mechanism of the second arrow.
+
+\section{Two-level compression of a spectral problem}
+
+Suppose a candidate operator $H$ carries an involution or grading that decomposes the Hilbert space into two complementary sectors. Near an eigenvalue, an effective two-dimensional subspace may be spanned by sector components. In such a compression, the determinant condition can reduce to cancellation of two amplitudes. The information-spinor model may then be interpreted as an effective local description of a richer spectral object.
+
+This perspective avoids requiring the entire zeta function to be literally a qubit amplitude. Instead:
+\begin{enumerate}
+  \item the full operator provides arithmetic and spectral content;
+  \item symmetry supplies a two-sector decomposition;
+  \item a zero mode is compressed to a balanced two-component state;
+  \item the half-axis expresses equality of sector norms under self-duality.
+\end{enumerate}
+This is a plausible architecture but still requires construction.
+
+\section{A $2\times2$ toy Hamiltonian}
+
+Consider the Hermitian matrix
+\begin{equation}
+ H(x,t)=
+ \begin{pmatrix}
+  x & q(t)\\
+  \overline{q(t)} & -x
+ \end{pmatrix},
+ \label{eq:toy-H}
+\end{equation}
+where $x=\sigma-1/2$. Its eigenvalues are
+\[
+ E_\pm=\pm\sqrt{x^2+|q(t)|^2}.
+\]
+A zero eigenvalue requires $x=0$ and $q(t)=0$. Thus a Hermitian two-level model separates the horizontal balance condition from the vertical quantization condition exactly as desired.
+
+The determinant is
+\begin{equation}
+ \det H(x,t)=-x^2-|q(t)|^2\le0,
+ \label{eq:toy-det}
+\end{equation}
+and vanishes only on the critical line at quantized values of $t$. If one could derive a function $q(t)$ whose zeros are the zeta ordinates and embed this matrix in a canonical operator family, RH would be automatic.
+
+As written, the toy model is not a construction because choosing $q(t)=\XiR(t)$ imports the critical-line restriction and does not address off-axis zeros. Its value is to display the form of a coercive Hermitian mechanism: off-axis displacement contributes the positive term $x^2$ and cannot be cancelled by a real spectrum.
+
+\section{Non-Hermitian deformation and off-axis zeros}
+
+If self-adjointness is broken, let
+\[
+ H_\epsilon(x,t)=
+ \begin{pmatrix}
+  x+i\epsilon & q(t)\\
+  \overline{q(t)} & -x+i\epsilon
+ \end{pmatrix}.
+\]
+Complex eigenvalues become possible. This suggests an interpretation of off-axis displacement as non-Hermitian leakage or failure of positivity. Such language is heuristic unless a genuine zeta operator is present, but it provides a falsifiable signature for candidate numerical models: any mechanism claiming RH should show exactly where Hermiticity enters and how it excludes horizontal displacement.
+
+\section{Spectral determinant requirements}
+
+Infinite-dimensional determinants require care. A valid proposal must specify:
+\begin{itemize}
+  \item the operator domain and proof of self-adjointness;
+  \item discreteness or regularization of the relevant spectrum;
+  \item the determinant definition and convergence class;
+  \item the non-vanishing prefactor relating it to $\XiR$;
+  \item multiplicities and possible continuous-spectrum contributions;
+  \item arithmetic information explaining the prime side of the explicit formula.
+\end{itemize}
+Many attractive formal Hamiltonians fail at one of these points.
+
+\section{Random-matrix evidence and its limit}
+
+The local statistics of high zeta zeros resemble eigenvalue statistics of random Hermitian matrices, a connection initiated by Montgomery's pair correlation and developed through extensive numerical and theoretical work \citep{montgomery1973,odlyzko1987,keatingsnaith2000}. This is strong evidence for a spectral structure. Statistical agreement does not identify the operator and does not prove every zero is on the line.
+
+For the present ansatz, random-matrix behaviour supports the idea that $t$ is a spectral coordinate, while the binary balance coordinate controls the horizontal axis. It does not directly support the specific entropy or spinor mapping.
+
+\section{Integration with the information-spinor theorem}
+
+A spectral realization could imply the information-spinor conditions rather than the reverse. Suppose $H$ has a swap symmetry and a zero mode decomposes into two sectors. If the symmetry makes the sector norms equal and the eigenvalue equation imposes opposite detector phase, the zero mode becomes the state $\ket{-}$ in the effective sector basis. The cancellation theorem then appears as the two-level shadow of self-adjoint spectral reality.
+
+This integration is conceptually attractive because it assigns distinct tasks:
+\begin{description}
+  \item[Zeta functional equation:] centres the coordinate at $1/2$.
+  \item[Self-adjoint operator:] makes the spectral coordinate real.
+  \item[Sector symmetry:] produces binary equal norms.
+  \item[Zero-mode equation:] produces destructive phase.
+  \item[Entropy:] measures deviation from sector balance.
+\end{description}
+The architecture is coherent; the operator remains unknown.
+
+\status{The conditional spectral theorem and toy-matrix calculations are exact. Their application to zeta depends on an unconstructed self-adjoint spectral realization.}
