@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1.0",
+  "project": "secret-of-a-half",
+  "claims": [
+    {
+      "id": "SOH-L001",
+      "status": "exact_lemma",
+      "statement": "Binary Shannon entropy has a unique maximum at sigma = 1/2."
+    },
+    {
+      "id": "SOH-L002",
+      "status": "exact_lemma",
+      "statement": "Exact cancellation of the normalized complementary two-channel state requires sigma = 1/2 and relative phase pi modulo 2pi."
+    },
+    {
+      "id": "SOH-L003",
+      "status": "exact_lemma",
+      "statement": "The fixed set of s -> 1 - conjugate(s) is Re(s) = 1/2."
+    },
+    {
+      "id": "SOH-C001",
+      "status": "open_conjectural_bridge",
+      "statement": "A canonical zeta-state map converts every non-trivial zeta zero into exact complementary cancellation."
+    },
+    {
+      "id": "SOH-T001",
+      "status": "conditional_theorem",
+      "statement": "Under SOH-C001 and the stated normalization and phase hypotheses, all non-trivial zeros lie on Re(s) = 1/2."
+    }
+  ]
+}
