@@ -3,7 +3,7 @@
 
 \small
 \begin{longtable}{@{}p{0.10\textwidth}p{0.47\textwidth}p{0.14\textwidth}p{0.15\textwidth}@{}}
-\caption{Principal claims and their status in Version 0.4.}\label{tab:claim-ledger}\\
+\caption{Principal claims and their status in Version 0.5.}\label{tab:claim-ledger}\\
 \toprule
 ID & Statement & Status & Location\\
 \midrule
@@ -35,7 +35,10 @@ SOH-N001 & The eighteen-pair detector is a low-height numerical approximation. &
 
 \section{Promotion rule}
 
-An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of RH left unproved. Numerical agreement cannot promote a claim to exact status.
+An open claim may be promoted only when its complete proof or reproducible
+construction is present, every dependency is listed, and no dependency is
+merely an equivalent formulation of RH left unproved. Numerical agreement
+cannot promote a claim to exact status.
 
 \subsection*{PhaseNav--Weil Hermite ladder and reciprocal duality}
 \begin{description}
@@ -48,3 +51,16 @@ An open claim may be promoted only when its complete proof or reproducible const
 \item[SOH-L017, exact.] The half is the Fisher--Rao geodesic midpoint of the two labelled pure states.
 \item[SOH-H001, exploratory.] Defined zero and undefined bottom are interpreted as informational boundary labels.
 \end{description}
+
+\subsection*{Prime-tail certificate}
+\begin{description}
+\item[SOH-L018, exact.] The map $z_{\rm t}=1/\log x$ compactifies the logarithmic prime tail to a finite interval with a flat endpoint.
+\item[SOH-L019, exact.] Every fixed Hermite matrix entry has the declared upper-incomplete-gamma prime-tail majorant under an explicit monotonicity condition.
+\item[SOH-L020, exact finite-section theorem.] Entrywise certificates imply a finite-section operator-norm bound and a Weyl eigenvalue enclosure.
+\item[SOH-N005, numerical.] At $w=0.8$, $Q=100000$, and $N\le6$, the largest certified norm bound is $7.717202888999335\times10^{-13}$.
+\end{description}
+
+The reciprocal coordinate in SOH-L018 acts on the logarithmic prime-tail
+variable. It is not a map of zeta zeros. Uniform control as the basis size
+tends to infinity, global arithmetic positivity, and the null-space
+implication to native closure remain open.
