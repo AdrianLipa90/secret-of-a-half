@@ -1,0 +1,32 @@
+\chapter{The PhaseNav--Weil Hermite Ladder}
+\label{ch:hermite-ladder}
+
+The two-channel arithmetic witness validates one localized direction of the
+Weil form.  This chapter replaces that isolated direction by an explicit dense
+ladder.  For fixed $w>0$ and real $\gamma$, define
+\[
+ \psi_n(r)=
+ \left(\frac{w}{\sqrt\pi\,2^n n!}\right)^{1/2}
+ H_n(w(r-\gamma))e^{-w^2(r-\gamma)^2/2}.
+\]
+The translated-scaled Hermite family is a Schwartz basis.  Consequently the
+union of its finite spans is dense in $\mathcal S(\mathbb R)$.
+
+For $H_{mn}(r)=\overline{\psi_m(\overline r)}\psi_n(r)$, Hermite
+linearization and the Gaussian transform give a closed Fourier formula.  In
+particular, $\widehat H_{mn}(0)=\delta_{mn}$.  Applying the arithmetic explicit
+formula entrywise gives principal matrices
+\[
+ W_N=(\mathcal W[H_{mn}])_{m,n=0}^{N-1}.
+\]
+For every vector $a\in\mathbb C^N$,
+\[
+ a^*W_Na=\mathcal W\!\left[\left|\sum_{n<N}a_n\psi_n\right|^2\right].
+\]
+Thus positivity of all finite sections is exactly positivity on the algebraic
+Hermite core.  Continuity of the fully regularized form would extend this to
+its Schwartz closure.  The construction therefore converts the vague dense
+family requirement into a concrete countable sequence of principal-minor
+conditions.  It does not prove those conditions uniformly in $N$, does not yet
+remove arithmetic cutoffs, and does not prove that the null space forces native
+PhaseNav closure.

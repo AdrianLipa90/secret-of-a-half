@@ -8,27 +8,29 @@ From the repository root:
 
 ```bash
 python scripts/generate_monograph_assets.py
+python scripts/run_phasenav_weil_hermite_ladder.py
+python scripts/run_zero_undefined_duality.py
 cd monograph
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
-/usr/bin/bibtex.original main
+bibtex main
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
-```
-
-When `latexmk` and an unshadowed `bibtex` are available, the equivalent short build is:
-
-```bash
-cd monograph
-latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 ```
 
 ## Outputs
 
-- `main.pdf` — compiled monograph;
+- `main.pdf` — compiled 97-page Version 0.4 monograph;
 - `figures/` — deterministic PDF and PNG figures;
-- `generated/` — LaTeX tables generated from the numerical CSV files;
+- `generated/` — generated LaTeX tables;
 - `main.log` — TeX build log.
+
+## Version 0.4 additions
+
+- Chapter 17: explicit PhaseNav–Weil Hermite dense-core ladder;
+- Chapter 18: zero–undefined reciprocal duality, spinor fixed state and Fisher–Rao midpoint;
+- explicit NaN boundary guard;
+- updated claim ledger and executable receipts.
 
 ## Claim boundary
 
-The elementary balance, entropy, cancellation, involution and eta lemmas are proved in the text. The native theta bridge proves its covariance and closure identity, but the implication from every non-trivial zero to native self-dual closure remains open. Therefore Version 0.2 is an ansatz monograph with an executable native PhaseNav construction with a conditional critical-line theorem, not a proof of the Riemann Hypothesis.
+The new reciprocal and information-geometric lemmas are exact. The interpretation of `UNDEFINED_BOTTOM` as an informational endpoint is exploratory. Global PhaseNav–Weil positivity, native zero closure, and the canonical bridge from every non-trivial zeta zero remain open. Version 0.4 does not claim a proof of the Riemann Hypothesis.

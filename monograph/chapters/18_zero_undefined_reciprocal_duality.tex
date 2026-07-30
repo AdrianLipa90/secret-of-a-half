@@ -1,0 +1,187 @@
+\chapter{Zero, Undefinedness, and Reciprocal Self-Duality}
+\label{ch:zero-undefined}
+
+This chapter formalizes a new interpretive hypothesis: the half may be read as
+the balanced state between a defined zero and an undefined informational
+state.  The exact content is a labelled-state geometry.  The interpretation of
+one label as ``undefined'' remains exploratory.
+
+\section{The NaN boundary warning}
+
+\begin{warning}[NaN is not a numeric endpoint]
+IEEE floating-point \texttt{NaN} is not a real number and is not ordered with
+zero.  Consequently, the statement that $1/2$ is numerically between
+\texttt{NaN} and $0$ is not a well-formed assertion in the usual order on
+$\mathbb R$.  In this chapter \texttt{NaN} appears only as a possible
+implementation marker for an abstract state label.  It never enters arithmetic.
+\end{warning}
+
+Let
+\[
+ Z_0=\texttt{DEFINED\_ZERO},
+ \qquad
+ U=\texttt{UNDEFINED\_BOTTOM}
+\]
+be two labels.  They are vertices of a binary simplex, not numerical values to
+be added together.
+
+\section{The labelled binary simplex}
+
+\begin{definition}[Zero--undefined state]
+For $p\in[0,1]$, define
+\[
+ X(p)=(1-p)Z_0+pU.
+\]
+This notation denotes the probability distribution $(1-p,p)$ on the two
+labels $Z_0$ and $U$.
+\end{definition}
+
+The exchange of labels induces the complement involution
+\[
+ C(p)=1-p.
+\]
+Its unique fixed point is immediate:
+\[
+ C(p)=p
+ \quad\Longleftrightarrow\quad
+ p=\frac12.
+\]
+
+\section{Projective odds and reciprocal inversion}
+
+To avoid collision with the centred zeta coordinate used elsewhere, write
+$z_{\rm o}$ for the projective odds coordinate:
+\[
+ z_{\rm o}=\Omega(p)=\frac{p}{1-p}.
+\]
+It compactifies the two pure labelled states as
+\[
+ p=0\longleftrightarrow z_{\rm o}=0,
+ \qquad
+ p=1\longleftrightarrow z_{\rm o}=\infty.
+\]
+
+\begin{theorem}[Reciprocal conjugacy]
+\label{thm:zero-undefined-conjugacy}
+For $p\in(0,1)$,
+\[
+ \Omega(C(p))=\frac1{\Omega(p)}.
+\]
+With the endpoint conventions $1/0=\infty$ and $1/\infty=0$, the identity
+extends to the closed simplex.
+\end{theorem}
+
+\begin{proof}
+Directly,
+\[
+ \Omega(1-p)=\frac{1-p}{p}
+ =\frac1{p/(1-p)}
+ =\frac1{\Omega(p)}.
+\]
+The endpoint statement follows by continuity on the extended non-negative
+line.
+\end{proof}
+
+\begin{corollary}[Unique positive self-dual point]
+\label{cor:zero-undefined-half}
+The reciprocal map $z_{\rm o}\mapsto1/z_{\rm o}$ has the unique positive fixed
+point $z_{\rm o}=1$, and
+\[
+ \Omega^{-1}(1)=\frac12.
+\]
+Hence the projective self-dual point and the label-swap fixed point coincide.
+\end{corollary}
+
+\section{Spinor embedding}
+
+Define the positive amplitude representative
+\[
+ \Psi(p)=
+ \begin{pmatrix}
+ \sqrt{1-p}\\
+ \sqrt p
+ \end{pmatrix}.
+\]
+The exchange matrix
+\[
+ X=\begin{pmatrix}0&1\\1&0\end{pmatrix}
+\]
+satisfies $X\Psi(p)=\Psi(1-p)$.  Its unique positive normalized fixed state is
+\[
+ \Psi\!\left(\frac12\right)
+ =\frac1{\sqrt2}
+ \begin{pmatrix}1\\1\end{pmatrix}.
+\]
+Thus the same half selected by reciprocal projective duality is the equal-gain
+spinor fixed by channel exchange.
+
+\section{Fisher--Rao midpoint}
+
+The Bernoulli Fisher metric is
+\[
+ ds^2=\frac{dp^2}{p(1-p)}.
+\]
+Introduce the arc coordinate
+\[
+ \theta(p)=2\arcsin\sqrt p.
+\]
+Then $ds^2=d\theta^2$, while
+\[
+ \theta(0)=0,
+ \qquad
+ \theta(1)=\pi.
+\]
+
+\begin{theorem}[Geodesic midpoint]
+\label{thm:fisher-half-midpoint}
+The state $p=1/2$ is the exact Fisher--Rao midpoint of the two pure labelled
+states:
+\[
+ d_{\rm FR}(0,1/2)=d_{\rm FR}(1/2,1)=\frac\pi2.
+\]
+\end{theorem}
+
+\begin{proof}
+Since $\theta(1/2)=2\arcsin(1/\sqrt2)=\pi/2$, the distances in the arc
+coordinate are both $\pi/2$.
+\end{proof}
+
+The same point maximizes binary entropy:
+\[
+ H_2(p)=-p\ln p-(1-p)\ln(1-p),
+ \qquad
+ H_2(1/2)=\ln2.
+\]
+Consequently four exact selections coincide:
+\[
+\begin{aligned}
+ \text{label-swap fixed point}
+ &=\text{reciprocal fixed point}\\
+ &=\text{spinor balance}\\
+ &=\text{Fisher--Rao midpoint}\\
+ &=\frac12.
+\end{aligned}
+\]
+
+\section{Native PhaseNav formulation}
+
+The authoritative executable source is
+\begin{center}
+\texttt{construction/phasenav/secret\_of_half_zero\_undefined\_duality.pnv}.
+\end{center}
+It declares the vertices, complement orbit, projective odds transform,
+reciprocal orbit, spinor embedding, Fisher--Rao coordinate and the explicit
+NaN guard.  Python parses and audits that source; it is not the source of the
+construction.
+
+\section{Claim ledger}
+
+\begin{itemize}
+\item \textbf{SOH-L015 (exact):} complement is conjugate to reciprocal inversion
+in odds coordinates.
+\item \textbf{SOH-L016 (exact):} the unique positive reciprocal fixed point
+corresponds to $p=1/2$.
+ item \textbf{SOH-LM»
+^X›
+NüH	LKÃâ\»Hö\⁄\ãKTò[»Ÿ[Ÿ\⁄X»ZY⁄[ùÇó][H^ôû‘”“RH
+^‹ò]‹ûJNüHYö[ôYô\õ»[ô[ôYö[ôYõ›€H\ôBö[ù\úô]Y\»[ôõ‹õX][€ò[õ›[ô\ûHXô[ÀÇó[ô⁄][Z^ô_BÇóŸX›[€û–õ›[ô\ûHô[]]ôH»Hô]Hõÿõ[_BÇïH^X›[[X\»[à\»⁄\\à»õ›Y[ùYûHõ€ã]ö]öX[ô]Hô\õ‹»⁄]ûô\õÀK][ôYö[ôY›]\Àà^H\ôYõ‹ôH»õ›€‹ŸH^‘”“PÃH‹Çó^‘”“PÃ_KàZ\àõ€H\»›ùX›\ò[à^HYHõ›\ù[ô\[ô[ùò€€‹ô[ò]Hﬁ\›[H[à⁄X⁄Hÿ[YH[à\X\ú»\»H[ö\]YHŸ[ãYX[⁄[ùÇê[ûH\ŸH[àH‹ö]Xÿ[[[ôH[‹ô[H›[ô\]Z\ô\»Hÿ[õ€öXÿ[úöYŸHúõ€HBò€€\]Yô]Hù[ò›[€à»HXô[Y\ŸSò]à›]KÇ

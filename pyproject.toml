@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "secret-of-a-half"
-version = "0.2.0"
-description = "Independent computational and mathematical workspace for the information-spinor critical-axis ansatz."
+version = "0.4.0"
+description = "Information-spinor, native PhaseNav, Weil-Hermite and reciprocal self-duality research workspace."
 requires-python = ">=3.10"
 authors = [{name = "Adrian Lipa"}]
 dependencies = []
