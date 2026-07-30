@@ -161,6 +161,27 @@ This establishes falsification sensitivity of the finite probe. It does not
 establish positivity of the complete arithmetic Weil form and does not prove
 the Riemann Hypothesis. The new open promotion target is `SOH-C005`.
 
+## Native PhaseNav–Weil Arithmetic Operator v0.2
+
+The next construction is defined in
+`construction/phasenav/secret_of_half_weil_arithmetic.pnv`.
+
+It evaluates the localized two-channel Weil matrix from prime powers, the
+archimedean gamma factor, conductor and pole terms. The arithmetic sum does not
+consume a zero list. Its deterministic result matches the earlier low-height
+spectral receipt within the declared numerical tolerance:
+
+```text
+arithmetic lambda_min:        +1.30e-13
+arithmetic lambda_max:        +2.00e+00
+prime-cutoff stability:       PASS
+spectral normalization check: PASS
+```
+
+This closes the first executable prime-to-phase-to-spectrum audit loop. It is
+one positive localized sample, not a proof of dense Weil positivity; `SOH-C005`
+remains open.
+
 ## Author
 
 Adrian Lipa

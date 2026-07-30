@@ -39,6 +39,9 @@ jobs:
       - name: Run PhaseNav-Weil positivity receipt
         run: python scripts/run_phasenav_weil_probe.py
 
+      - name: Run PhaseNav-Weil arithmetic receipt
+        run: python scripts/run_phasenav_weil_arithmetic.py
+
       - name: Install LaTeX toolchain
         run: |
           sudo apt-get update

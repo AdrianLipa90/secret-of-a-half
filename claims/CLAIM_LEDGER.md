@@ -26,6 +26,9 @@
 | SOH-C005 | The complete arithmetic PhaseNav–Weil operator is positive on a dense admissible test-channel family and its null structure forces native closure. | Open positivity bridge | `docs/construction/PHASENAV_WEIL_OPERATOR.md` | Prime-side explicit formula, regularization and closure implication unproved |
 | SOH-T003 | Under SOH-C005 and the exact Weil correspondence, every non-trivial zero lies on \(\operatorname{Re}s=1/2\). | Conditional theorem | SOH-L011 and SOH-C005 | Depends on SOH-C005 |
 
+| SOH-L012 | The Gaussian PhaseNav–Weil matrix test has the declared closed Fourier transform under the `exp(-2 pi i x r)` convention. | Exact analytic lemma | Native `.pnv`, derivation and Fourier-transform regression | None |
+| SOH-N003 | The declared prime-side matrix is stable between the two prime cutoffs and matches the low-height spectral receipt. | Numerical arithmetic audit | JSON receipt and regression tests | One localized profile; cutoffs remain finite |
+
 ## Promotion rule
 
 An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of the Riemann Hypothesis left unproved. Numerical agreement cannot promote a claim to exact status.

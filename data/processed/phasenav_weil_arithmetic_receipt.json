@@ -1,0 +1,79 @@
+{
+  "arithmetic_sum_uses_zero_list": false,
+  "audit_prime_cutoff": 100000,
+  "components": {
+    "diagonal": {
+      "archimedean": {
+        "imag": 0.0,
+        "real": 0.6887729868554598
+      },
+      "conductor": {
+        "imag": 0.0,
+        "real": -0.4036529234825273
+      },
+      "pole": {
+        "imag": 0.0,
+        "real": -6.414686235384616e-56
+      },
+      "prime": {
+        "imag": 0.0,
+        "real": 0.7148799366271328
+      },
+      "total": {
+        "imag": 0.0,
+        "real": 1.0000000000000653
+      }
+    },
+    "off_diagonal": {
+      "archimedean": {
+        "imag": 0.008053584792092238,
+        "real": 0.6377083779253891
+      },
+      "conductor": {
+        "imag": 0.0,
+        "real": -0.37366820567864123
+      },
+      "pole": {
+        "imag": -5.717465674860715e-57,
+        "real": -6.573781603102098e-56
+      },
+      "prime": {
+        "imag": -0.008053584792087544,
+        "real": 0.7359598277531869
+      },
+      "total": {
+        "imag": 4.69416172599324e-15,
+        "real": 0.9999999999999348
+      }
+    }
+  },
+  "cutoff_stability": {
+    "max_entry_error": 2.0370430092110533e-13,
+    "pass": true
+  },
+  "eigenvalues": {
+    "lambda_max": 2.0,
+    "lambda_min": 1.304512053934559e-13
+  },
+  "matrix": {
+    "a": 1.0000000000000653,
+    "b": {
+      "imag": 4.69416172599324e-15,
+      "real": 0.9999999999999348
+    },
+    "d": 1.0000000000000653
+  },
+  "prime_cutoff": 10000,
+  "program": "SECRET_OF_HALF_WEIL_ARITHMETIC",
+  "psd_sample": {
+    "pass": true
+  },
+  "spectral_cross_check": {
+    "max_entry_error": 5.334528366157965e-16,
+    "pass": true,
+    "reference_role": "validation_only_not_arithmetic_input"
+  },
+  "status": "ARITHMETIC_AUDIT_NOT_PROOF",
+  "target_ordinate_is_declared_probe_centre": true,
+  "version": "0.2.0"
+}

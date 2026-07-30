@@ -31,3 +31,12 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Confirmed a declared synthetic off-axis quartet produces a stable negative eigenvalue.
 - Added `SOH-L011`, `SOH-N002`, `SOH-C005` and `SOH-T003` with exact, numerical, open and conditional status kept separate.
 - The complete arithmetic positivity and native-closure implication remain open; no proof of RH is claimed.
+
+## 2026-07-30 — PhaseNav–Weil arithmetic operator v0.2
+
+- Added a third authoritative `.pnv` source for the prime-side explicit-formula evaluation.
+- Added the closed Gaussian Fourier transform and the pole, conductor, gamma and prime-power terms.
+- Added cutoff-stability, PSD-sample and spectral-normalization regression checks.
+- Added a deterministic arithmetic JSON receipt generated without a zero list as input.
+- Added `SOH-L012` and `SOH-N003`; `SOH-C005` remains open.
+- Kept the 92-page Version 0.2 monograph unchanged pending the next coordinated monograph release.

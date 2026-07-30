@@ -127,6 +127,18 @@
       "status": "conditional",
       "statement": "Under SOH-C005 and the exact Weil correspondence, every non-trivial zero lies on Re(s)=1/2.",
       "location": "PhaseNav-Weil Operator v0.1"
+    },
+    {
+      "id": "SOH-L012",
+      "status": "exact_analytic_lemma",
+      "statement": "The Gaussian PhaseNav-Weil matrix test has the declared closed Fourier transform under the exp(-2 pi i x r) convention.",
+      "location": "PhaseNav-Weil Arithmetic v0.2, Section 2"
+    },
+    {
+      "id": "SOH-N003",
+      "status": "numerical_arithmetic_audit",
+      "statement": "The declared prime-side matrix is stable between the two prime cutoffs and matches the low-height spectral receipt.",
+      "location": "PhaseNav-Weil Arithmetic receipt v0.2"
     }
   ]
 }
