@@ -105,6 +105,42 @@
       "location": "PhaseNav Construction, Section 16.8"
     },
     {
+      "id": "SOH-L011",
+      "status": "exact_finite_lemma",
+      "statement": "For an involution-fixed finite centred zero fixture, the PhaseNav-Weil matrix reduces to a positive-semidefinite Gram matrix.",
+      "location": "PhaseNav-Weil Operator v0.1, Section 2"
+    },
+    {
+      "id": "SOH-N002",
+      "status": "numerical_falsification_witness",
+      "statement": "The declared two-channel Gaussian profile detects a synthetic off-axis quartet through a negative minimum eigenvalue.",
+      "location": "PhaseNav-Weil receipt v0.1"
+    },
+    {
+      "id": "SOH-C005",
+      "status": "open_positivity_bridge",
+      "statement": "The complete arithmetic PhaseNav-Weil operator is positive on a dense admissible test-channel family and its null structure forces native closure.",
+      "location": "PhaseNav-Weil programme; Chapters 17 and 19"
+    },
+    {
+      "id": "SOH-T003",
+      "status": "conditional",
+      "statement": "Under SOH-C005 and the exact Weil correspondence, every non-trivial zero lies on Re(s)=1/2.",
+      "location": "PhaseNav-Weil Operator v0.1"
+    },
+    {
+      "id": "SOH-L012",
+      "status": "exact_analytic_lemma",
+      "statement": "The Gaussian PhaseNav-Weil matrix test has the declared closed Fourier transform under the exp(-2 pi i x r) convention.",
+      "location": "PhaseNav-Weil Arithmetic v0.2, Section 2"
+    },
+    {
+      "id": "SOH-N003",
+      "status": "numerical_arithmetic_audit",
+      "statement": "The declared prime-side matrix is stable between the two prime cutoffs and matches the low-height spectral receipt.",
+      "location": "PhaseNav-Weil Arithmetic receipt v0.2"
+    },
+    {
       "id": "SOH-L013",
       "status": "exact_functional_analytic_lemma",
       "statement": "Finite spans of translated-scaled Hermite PhaseNav channels are dense in Schwartz space.",
