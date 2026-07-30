@@ -1,0 +1,177 @@
+{
+  "all_operator_norm_targets_pass": true,
+  "all_shell_checks_pass": true,
+  "base_head": "25061583faece869604cebd63d9933fe67317dfb",
+  "claim_boundary": {
+    "exact": [
+      "reciprocal compactification identity",
+      "flat endpoint extension",
+      "incomplete-gamma tail formula",
+      "entrywise von-Mangoldt majorant",
+      "finite-section max-row-sum norm envelope"
+    ],
+    "numerical": "high-precision evaluation for N<=6 at Q=100000",
+    "open": [
+      "uniform basis-size control",
+      "global arithmetic positivity",
+      "null-structure implication to native closure"
+    ],
+    "proof_of_rh": false
+  },
+  "gaussian_width": 0.8,
+  "integral_checks": [
+    {
+      "degree": 0,
+      "gamma_value": "1.398341663705786949050852e-20",
+      "log_relative_error": 1.1034735059969775e-79,
+      "monotonicity_margin": 10.657170388434302,
+      "reciprocal_relative_error": 2.2926928292152945e-68
+    },
+    {
+      "degree": 1,
+      "gamma_value": "2.032725314970701889805121e-19",
+      "log_relative_error": 1.0908485877343311e-79,
+      "monotonicity_margin": 10.201239220620538,
+      "reciprocal_relative_error": 4.4503579543645e-68
+    },
+    {
+      "degree": 2,
+      "gamma_value": "2.955199016720229544221113e-18",
+      "log_relative_error": 1.0767724540127318e-79,
+      "monotonicity_margin": 9.847377681611691,
+      "reciprocal_relative_error": 8.632803586058554e-68
+    },
+    {
+      "degree": 3,
+      "gamma_value": "4.296731524778330125820864e-17",
+      "log_relative_error": 1.0623503980878545e-79,
+      "monotonicity_margin": 9.547668367836517,
+      "reciprocal_relative_error": 6.435051288616636e-72
+    },
+    {
+      "degree": 4,
+      "gamma_value": "6.24789869383833236497242e-16",
+      "log_relative_error": 1.0640346057818045e-79,
+      "monotonicity_margin": 9.28294507288875,
+      "reciprocal_relative_error": 1.3329040881071736e-71
+    },
+    {
+      "degree": 5,
+      "gamma_value": "9.086044686826454230039479e-15",
+      "log_relative_error": 1.0387643750799158e-79,
+      "monotonicity_margin": 9.043230141104196,
+      "reciprocal_relative_error": 2.7517024288597127e-71
+    },
+    {
+      "degree": 6,
+      "gamma_value": "1.321483553246396676072877e-13",
+      "log_relative_error": 1.0157752180265413e-79,
+      "monotonicity_margin": 8.822543429413944,
+      "reciprocal_relative_error": 1.1971636498169951e-79
+    },
+    {
+      "degree": 7,
+      "gamma_value": "1.922186673125914648357965e-12",
+      "log_relative_error": 1.0175738677860635e-79,
+      "monotonicity_margin": 8.616965266211544,
+      "reciprocal_relative_error": 1.1971457268071336e-79
+    },
+    {
+      "degree": 8,
+      "gamma_value": "2.796257701345679225190703e-11",
+      "log_relative_error": 1.0094665957246267e-79,
+      "monotonicity_margin": 8.423761344544225,
+      "reciprocal_relative_error": 1.1740535406797289e-79
+    },
+    {
+      "degree": 9,
+      "gamma_value": "4.068249777316769143558075e-10",
+      "log_relative_error": 1.001548036434601e-79,
+      "monotonicity_margin": 8.240934373667244,
+      "reciprocal_relative_error": 1.1584170059966469e-79
+    },
+    {
+      "degree": 10,
+      "gamma_value": "5.919537697188471777178704e-9",
+      "log_relative_error": 9.686265145656671e-80,
+      "monotonicity_margin": 8.066972730269487,
+      "reciprocal_relative_error": 1.1676593600243658e-79
+    }
+  ],
+  "integral_identity_pass": true,
+  "map_role": "reciprocal_compactification_of_logarithmic_prime_tail",
+  "maps_zeta_zeros": false,
+  "max_basis_size": 6,
+  "max_degree": 10,
+  "max_log_relative_error": 1.1034735059969775e-79,
+  "max_reciprocal_relative_error": 8.632803586058554e-68,
+  "prime_shell_regression": [
+    {
+      "full_tail_bound": 4.451059758202416e-21,
+      "left_order": 0,
+      "pass": true,
+      "right_order": 0,
+      "shell_abs": 1.822583180550889e-22,
+      "upper_cutoff": 200000
+    },
+    {
+      "full_tail_bound": 1.5604544791421792e-16,
+      "left_order": 2,
+      "pass": true,
+      "right_order": 3,
+      "shell_abs": 2.45456144235211e-18,
+      "upper_cutoff": 200000
+    },
+    {
+      "full_tail_bound": 6.155991053261891e-13,
+      "left_order": 5,
+      "pass": true,
+      "right_order": 5,
+      "shell_abs": 1.4146380029250409e-14,
+      "upper_cutoff": 200000
+    }
+  ],
+  "program": "SECRET_OF_HALF_WEIL_PRIME_TAIL_CERTIFICATE",
+  "sections": [
+    {
+      "basis_size": 1,
+      "max_entry_bound": 4.451059758202416e-21,
+      "operator_norm_bound": 4.451059758202416e-21,
+      "target_pass": true
+    },
+    {
+      "basis_size": 2,
+      "max_entry_bound": 4.747855910895357e-19,
+      "operator_norm_bound": 5.205379852728786e-19,
+      "target_pass": true
+    },
+    {
+      "basis_size": 3,
+      "max_entry_bound": 2.5804719148965046e-17,
+      "operator_norm_bound": 2.962122984839699e-17,
+      "target_pass": true
+    },
+    {
+      "basis_size": 4,
+      "max_entry_bound": 9.523302505409095e-16,
+      "operator_norm_bound": 1.1312236094065214e-15,
+      "target_pass": true
+    },
+    {
+      "basis_size": 5,
+      "max_entry_bound": 2.6835462135238283e-14,
+      "operator_norm_bound": 3.280365246530568e-14,
+      "target_pass": true
+    },
+    {
+      "basis_size": 6,
+      "max_entry_bound": 6.155991053261891e-13,
+      "operator_norm_bound": 7.717202888999335e-13,
+      "target_pass": true
+    }
+  ],
+  "spectral_zero_input": false,
+  "status": "ANALYTIC_TAIL_CERTIFICATE_NOT_PROOF",
+  "tail_cutoff": 100000,
+  "version": "0.5.0"
+}

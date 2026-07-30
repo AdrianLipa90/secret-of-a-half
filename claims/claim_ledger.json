@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.5",
   "date": "2026-07-30",
   "claims": [
     {
@@ -105,40 +105,76 @@
       "location": "PhaseNav Construction, Section 16.8"
     },
     {
-      "id": "SOH-L011",
-      "status": "exact_finite_lemma",
-      "statement": "For an involution-fixed finite centred zero fixture, the PhaseNav-Weil matrix reduces to a positive-semidefinite Gram matrix.",
-      "location": "PhaseNav-Weil Operator v0.1, Section 2"
+      "id": "SOH-L013",
+      "status": "exact_functional_analytic_lemma",
+      "statement": "Finite spans of translated-scaled Hermite PhaseNav channels are dense in Schwartz space.",
+      "location": "Chapter 17"
     },
     {
-      "id": "SOH-N002",
-      "status": "numerical_falsification_witness",
-      "statement": "The declared two-channel Gaussian profile detects a synthetic off-axis quartet through a negative minimum eigenvalue.",
-      "location": "PhaseNav-Weil receipt v0.1"
-    },
-    {
-      "id": "SOH-C005",
-      "status": "open_positivity_bridge",
-      "statement": "The complete arithmetic PhaseNav-Weil operator is positive on a dense admissible test-channel family and its null structure forces native closure.",
-      "location": "PhaseNav-Weil Operator v0.1, Section 6"
-    },
-    {
-      "id": "SOH-T003",
-      "status": "conditional",
-      "statement": "Under SOH-C005 and the exact Weil correspondence, every non-trivial zero lies on Re(s)=1/2.",
-      "location": "PhaseNav-Weil Operator v0.1"
-    },
-    {
-      "id": "SOH-L012",
+      "id": "SOH-L014",
       "status": "exact_analytic_lemma",
-      "statement": "The Gaussian PhaseNav-Weil matrix test has the declared closed Fourier transform under the exp(-2 pi i x r) convention.",
-      "location": "PhaseNav-Weil Arithmetic v0.2, Section 2"
+      "statement": "The Hermite kernel has the declared closed Fourier transform and Hhat_mn(0)=delta_mn.",
+      "location": "Chapter 17"
     },
     {
-      "id": "SOH-N003",
-      "status": "numerical_arithmetic_audit",
-      "statement": "The declared prime-side matrix is stable between the two prime cutoffs and matches the low-height spectral receipt.",
-      "location": "PhaseNav-Weil Arithmetic receipt v0.2"
+      "id": "SOH-T004",
+      "status": "conditional_reduction_theorem",
+      "statement": "PSD of every finite Hermite section plus continuity extends non-negativity to the dense core.",
+      "location": "Chapter 17"
+    },
+    {
+      "id": "SOH-N004",
+      "status": "numerical_audit",
+      "statement": "The finite Hermite ladder through basis size six is cutoff-audited and PSD-tested.",
+      "location": "Hermite ladder receipt v0.3"
+    },
+    {
+      "id": "SOH-L015",
+      "status": "exact",
+      "statement": "Binary complement is conjugate to reciprocal inversion in projective odds coordinates.",
+      "location": "Chapter 18, Theorem 18.3"
+    },
+    {
+      "id": "SOH-L016",
+      "status": "exact",
+      "statement": "The unique positive reciprocal fixed point corresponds to p=1/2.",
+      "location": "Chapter 18, Corollary 18.4"
+    },
+    {
+      "id": "SOH-L017",
+      "status": "exact_information_geometric_lemma",
+      "statement": "p=1/2 is the Fisher-Rao geodesic midpoint between the two labelled pure states.",
+      "location": "Chapter 18, Theorem 18.5"
+    },
+    {
+      "id": "SOH-H001",
+      "status": "exploratory_hypothesis",
+      "statement": "DEFINED_ZERO and UNDEFINED_BOTTOM are interpreted as informational boundary labels; IEEE NaN is not a numeric endpoint.",
+      "location": "Chapter 18"
+    },
+    {
+      "id": "SOH-L018",
+      "status": "exact_analytic_lemma",
+      "statement": "The logarithmic prime tail is compactified by z_tail=1/log(x) to a finite interval with a smooth flat endpoint.",
+      "location": "Chapter 19, Reciprocal Compactification"
+    },
+    {
+      "id": "SOH-L019",
+      "status": "exact_analytic_theorem",
+      "statement": "Every fixed Hermite entry has the declared upper-incomplete-gamma prime-tail majorant under an explicit monotonicity condition.",
+      "location": "Chapter 19, Prime-Tail Certificate"
+    },
+    {
+      "id": "SOH-L020",
+      "status": "exact_finite_section_theorem",
+      "statement": "Entrywise prime-tail certificates imply a finite-section operator-norm bound and Weyl eigenvalue enclosure.",
+      "location": "Chapter 19, Finite-Section Norm Enclosure"
+    },
+    {
+      "id": "SOH-N005",
+      "status": "numerical_certificate",
+      "statement": "For w=0.8, Q=100000 and N<=6, the largest certified prime-tail operator-norm bound is 7.717202888999335e-13.",
+      "location": "Prime-tail receipt v0.5"
     }
   ]
 }
