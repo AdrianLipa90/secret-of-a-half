@@ -40,3 +40,18 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Added a deterministic arithmetic JSON receipt generated without a zero list as input.
 - Added `SOH-L012` and `SOH-N003`; `SOH-C005` remains open.
 - Kept the 92-page Version 0.2 monograph unchanged pending the next coordinated monograph release.
+
+## 2026-07-30 — PhaseNav–Weil Hermite ladder v0.3
+
+- Added an explicit translated-scaled Hermite dense core for the PhaseNav–Weil programme.
+- Added finite prime-side principal matrices through basis size six, cutoff audits and a synthetic off-axis falsification witness.
+- Added `SOH-L013`, `SOH-L014`, `SOH-T004` and `SOH-N004`; global positivity remains open.
+
+## 2026-07-30 — Zero–Undefined Reciprocal Duality v0.4
+
+- Added a labelled binary simplex with `DEFINED_ZERO` and `UNDEFINED_BOTTOM` vertices.
+- Added the exact conjugacy between complement and reciprocal inversion in odds coordinates.
+- Added the unique self-dual half, spinor fixed state and Fisher–Rao midpoint theorem.
+- Added an explicit IEEE-NaN guard: NaN is an implementation marker, not a numeric endpoint.
+- Added native PhaseNav source, executor, receipt, tests and monograph Chapter 18.
+- Added `SOH-L015`, `SOH-L016`, `SOH-L017` and exploratory `SOH-H001`; no RH proof is claimed.

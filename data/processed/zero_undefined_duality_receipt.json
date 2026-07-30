@@ -1,0 +1,43 @@
+{
+  "base_head": "5c4883d795ac0556a0d76aed88f50477a4cf1c1c",
+  "claim_boundary": {
+    "exact_geometry": true,
+    "proof_of_rh": false,
+    "undefined_zero_ontology": "EXPLORATORY"
+  },
+  "entropy": {
+    "at_half": 0.6931471805599453,
+    "ln_2": 0.6931471805599453,
+    "residual": 0.0
+  },
+  "fisher_rao": {
+    "distance_0_to_half": 1.5707963267948968,
+    "distance_half_to_1": 1.5707963267948963,
+    "midpoint_residual": 4.440892098500626e-16,
+    "total_distance": 3.141592653589793
+  },
+  "ieee_nan_is_numeric_endpoint": false,
+  "ieee_nan_marker_maps_to": "UNDEFINED_BOTTOM",
+  "max_conjugacy_residual": 3.5705665113572895e-16,
+  "program": "SECRET_OF_HALF_ZERO_UNDEFINED_DUALITY",
+  "projective_endpoints": {
+    "p_0": 0.0,
+    "p_1": "INFINITY"
+  },
+  "self_dual": {
+    "amplitude_state": [
+      0.7071067811865476,
+      0.7071067811865476
+    ],
+    "odds": 1.0,
+    "p": 0.5,
+    "swap_residual": 0.0
+  },
+  "status": "EXACT_GEOMETRY_EXPLORATORY_ONTOLOGY_NOT_RH_PROOF",
+  "version": "0.4.0",
+  "vertices": [
+    "DEFINED_ZERO",
+    "UNDEFINED_BOTTOM"
+  ],
+  "zero_marker_maps_to": "DEFINED_ZERO"
+}
