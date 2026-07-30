@@ -55,3 +55,13 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Added an explicit IEEE-NaN guard: NaN is an implementation marker, not a numeric endpoint.
 - Added native PhaseNav source, executor, receipt, tests and monograph Chapter 18.
 - Added `SOH-L015`, `SOH-L016`, `SOH-L017` and exploratory `SOH-H001`; no RH proof is claimed.
+
+## 2026-07-30 — PhaseNav–Weil prime-tail certificate v0.5
+
+- Added a reciprocal compactification of the logarithmic prime tail using `z_tail=1/log(x)`.
+- Added an exact incomplete-gamma formula and entrywise von-Mangoldt majorant for every fixed Hermite matrix entry.
+- Added finite-section operator-norm and Weyl eigenvalue enclosures.
+- Certified the declared `N<=6`, `Q=100000` prime-tail norm by `7.717202889e-13`.
+- Added native PhaseNav source, executor, deterministic receipt, regression tests and monograph Chapter 19.
+- Added `SOH-L018`, `SOH-L019`, `SOH-L020` and `SOH-N005`.
+- Controlled cutoff removal is now closed for each fixed declared finite section; uniform control as the basis size tends to infinity remains open.

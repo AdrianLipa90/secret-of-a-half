@@ -11,7 +11,12 @@ from .zero_undefined_duality import (
     reciprocal,
     run_duality_audit,
 )
-
+from .phasenav_weil_prime_tail import (
+    PrimeTailProgram,
+    entry_tail_bound,
+    operator_norm_tail_bound,
+    run_prime_tail_certificate,
+)
 from .phasenav_theta_bridge import (
     NativePhaseState,
     PhaseNavProgram,
@@ -28,15 +33,19 @@ from .phasenav_theta_bridge import (
 __all__ = [
     "NativePhaseState",
     "PhaseNavProgram",
+    "PrimeTailProgram",
     "Rotor",
     "ThetaNode",
     "binary_entropy",
     "closure_defect",
     "complementary_amplitude",
     "covariance_residual",
+    "entry_tail_bound",
     "involution",
     "native_closed",
+    "operator_norm_tail_bound",
     "phase_state",
+    "run_prime_tail_certificate",
     "theta_detector",
     "zeta_involution",
     "DEFINED_ZERO",

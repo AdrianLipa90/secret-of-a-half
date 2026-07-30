@@ -10,6 +10,7 @@ From the repository root:
 python scripts/generate_monograph_assets.py
 python scripts/run_phasenav_weil_hermite_ladder.py
 python scripts/run_zero_undefined_duality.py
+python scripts/run_phasenav_weil_prime_tail.py
 cd monograph
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 bibtex main
@@ -19,18 +20,19 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 
 ## Outputs
 
-- `main.pdf` — compiled 97-page Version 0.4 monograph;
+- `main.pdf` — compiled 103-page Version 0.5 monograph;
 - `figures/` — deterministic PDF and PNG figures;
 - `generated/` — generated LaTeX tables;
 - `main.log` — TeX build log.
 
-## Version 0.4 additions
+## Version 0.5 additions
 
-- Chapter 17: explicit PhaseNav–Weil Hermite dense-core ladder;
-- Chapter 18: zero–undefined reciprocal duality, spinor fixed state and Fisher–Rao midpoint;
-- explicit NaN boundary guard;
-- updated claim ledger and executable receipts.
+- Chapter 19: reciprocal compactification of the logarithmic prime tail;
+- exact monotonicity threshold and upper-incomplete-gamma tail formula;
+- entrywise prime-tail certificates;
+- finite-section operator-norm and Weyl eigenvalue enclosures;
+- deterministic `N<=6`, `Q=100000` receipt.
 
 ## Claim boundary
 
-The new reciprocal and information-geometric lemmas are exact. The interpretation of `UNDEFINED_BOTTOM` as an informational endpoint is exploratory. Global PhaseNav–Weil positivity, native zero closure, and the canonical bridge from every non-trivial zeta zero remain open. Version 0.4 does not claim a proof of the Riemann Hypothesis.
+Controlled prime-cutoff removal is proved for every fixed declared finite Hermite section. Uniform control as the basis size tends to infinity, positivity of all sections, continuity of the full regularized Weil form, and the null-space implication to native closure remain open. Version 0.5 does not claim a proof of the Riemann Hypothesis.

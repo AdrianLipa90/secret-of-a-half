@@ -1,50 +1,30 @@
 # Secret of a Half
 
-**Secret of a Half** is an independent research repository devoted to a precise mathematical investigation of why the value
+**Secret of a Half** is an independent research repository devoted to a precise mathematical investigation of why
 
 \[
 \operatorname{Re}(s)=\frac12
 \]
 
-appears as the distinguished symmetry axis in the analytic structure surrounding the Riemann zeta function.
+is the distinguished symmetry axis in the analytic structure surrounding the Riemann zeta function.
 
-The starting ansatz links four structures:
-
-1. binary complementarity and the Shannon value \(\ln 2\);
-2. exact destructive interference of a normalized two-channel state;
-3. spinorial phase closure and the sign acquired under a \(2\pi\) rotation;
-4. the zeta involution \(s\mapsto 1-\overline{s}\), whose fixed set is \(\operatorname{Re}(s)=1/2\).
+The programme links binary complementarity, exact two-channel cancellation, spinorial phase closure, the zeta involution, PhaseNav theta states, Weil positivity, Hermite dense-core analysis, reciprocal self-duality, and explicit prime-tail control.
 
 ## Research status
 
-This repository begins with a **structural ansatz**, not a claimed proof of the Riemann Hypothesis.
+This repository develops a **structural ansatz and executable research programme**, not a claimed proof of the Riemann Hypothesis.
 
-The initial programme separates:
-
-- exact lemmas that can already be proved;
-- conditional theorems whose hypotheses are explicit;
-- numerical or symbolic experiments;
-- the unresolved bridge required to connect every non-trivial zeta zero to the proposed information-spinor cancellation mechanism.
-
-The central open task is to construct a canonical map or operator for which vanishing is equivalent to a non-trivial zero of the completed zeta function while preserving the required symmetry, positivity and spectral structure.
+Exact lemmas, conditional theorems, numerical certificates, falsification witnesses, and exploratory interpretations are kept visibly separate. The central open task remains construction of a complete arithmetic operator whose positivity and null structure canonically force every non-trivial completed-zeta zero into the self-dual half-axis state.
 
 ## Initial mathematical core
 
-For a normalized complementary state
+For
 
 \[
 |\psi\rangle=\sqrt{\sigma}\,|0\rangle+e^{i\phi}\sqrt{1-\sigma}\,|1\rangle,
-\qquad 0<\sigma<1,
 \]
 
-the squared amplitude of exact channel cancellation is
-
-\[
-\left|\sqrt{\sigma}+e^{i\phi}\sqrt{1-\sigma}\right|^2
-=1+2\sqrt{\sigma(1-\sigma)}\cos\phi.
-\]
-
-It vanishes exactly when
+exact equal-gain cancellation occurs only at
 
 \[
 \sigma=\frac12,
@@ -52,135 +32,89 @@ It vanishes exactly when
 \phi\equiv\pi\pmod{2\pi}.
 \]
 
-Independently, binary Shannon entropy
-
-\[
-H(\sigma)=-\sigma\ln\sigma-(1-\sigma)\ln(1-\sigma)
-\]
-
-has its unique maximum at \(\sigma=1/2\), where \(H=\ln2\).
-
-These facts identify the half-axis as the unique point of balanced binary distinction and exact complementary cancellation. They do not by themselves prove that every non-trivial zero of \(\zeta(s)\) lies there.
-
-## Repository layout
-
-```text
-secret-of-a-half/
-├── README.md
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── pyproject.toml
-├── construction/
-│   └── phasenav/
-├── claims/
-│   ├── CLAIM_LEDGER.md
-│   └── claim_ledger.json
-├── data/
-│   ├── raw/
-│   └── processed/
-├── docs/
-│   ├── ansatz/
-│   ├── derivations/
-│   └── open-problems/
-├── figures/
-├── logs/
-├── monograph/
-│   ├── chapters/
-│   └── figures/
-├── notebooks/
-├── references/
-├── scripts/
-├── src/
-│   └── secret_of_a_half/
-└── tests/
-```
+Binary Shannon entropy is also uniquely maximal at \(\sigma=1/2\), where it equals \(\ln2\). These facts identify the half as the balanced binary state, but do not by themselves constrain all zeta zeros.
 
 ## Working principles
 
-- No claim is promoted from conjectural to proved without a written derivation or reproducible verification.
-- Exact results, conditional results, numerical evidence and interpretation remain visibly separated.
+- No claim is promoted without a written proof or reproducible construction.
+- Exact, conditional, numerical, and exploratory layers remain separate.
 - Change history is append-only.
-- Existing projects are not treated as dependencies unless an explicit future decision introduces them.
-- This repository is autonomous: its definitions, assumptions and proofs must stand on their own.
+- Python executors audit native `.pnv` constructions; they are not declared as the source of those constructions.
+- No arithmetic receipt consumes a list of zeta zeros unless explicitly marked as a validation-only fixture.
+- The project remains autonomous and does not claim RH before the complete bridge is closed.
 
-## Planned first milestones
+## Monograph Version 0.5
 
-1. Formalize the binary-complementarity axioms.
-2. Prove the cancellation, entropy and involution lemmas.
-3. State the conditional critical-line theorem with all hypotheses exposed.
-4. Construct and test candidate zeta-state maps.
-5. Investigate Hilbert–Pólya, de Branges, Weil and positivity routes without conflating analogy with proof.
-6. Build the monograph from the claim ledger and verified derivations.
+The modular LaTeX monograph in `monograph/` now contains 19 chapters and five appendices. GitHub Actions rebuilds the validated **103-page A4 PDF** and publishes it as the `secret-of-a-half-monograph-v0.5` artifact.
 
-## Monograph Version 0.2
+The newest chapters are:
 
-The complete monograph is maintained as modular LaTeX in `monograph/`. GitHub Actions rebuilds the validated 92-page PDF and publishes it as the `secret-of-a-half-monograph-v0.2` workflow artifact. It contains 16 chapters, five appendices, deterministic figures, numerical regression tables, the native PhaseNav construction, and a full claim ledger.
+- Chapter 17 — PhaseNav–Weil Hermite dense-core ladder;
+- Chapter 18 — zero–undefined reciprocal self-duality;
+- Chapter 19 — reciprocal compactification and the prime-tail certificate.
 
-Its strongest result is conditional: once a canonical, regular, equal-gain zeta-state map satisfying the stated zero-equivalence and covariance requirements is constructed, the critical-line conclusion follows. That canonical bridge remains open.
+## Native PhaseNav theta construction v0.1
 
-## Native PhaseNav Construction v0.1
-
-The first executable bridge construction is now defined natively in
-`construction/phasenav/secret_of_half_theta_bridge.pnv`.
-
-It maps the symmetric theta-Mellin representation of the completed zeta function
-to 18 complementary rotor pairs, giving a 36-dimensional PhaseNav state. The
-construction proves exactly that its normalized self-dual closure defect is
+`construction/phasenav/secret_of_half_theta_bridge.pnv` maps the symmetric theta–Mellin representation to 18 complementary rotor pairs in 36 dimensions. Its exact normalized closure defect is
 
 \[
 \mathcal C(s)=\left(\operatorname{Re}(s)-\frac12\right)^2.
 \]
 
-The finite detector approximates \(\xi(s)\), while the continuous detector is the
-classical theta-Mellin identity. The remaining open statement is explicit:
-every non-trivial zero must be shown to close in the canonical self-dual
-PhaseNav shell. This is `SOH-C004`; it is not marked as proved.
+The continuous detector equals the classical completed-zeta theta–Mellin expression. The statement that every non-trivial zero closes in the canonical self-dual shell remains open as `SOH-C004`.
 
-The Python implementation parses and executes the `.pnv` source. It is an
-auditor of the native program, not the source of the construction.
+## PhaseNav–Weil programme
 
-## Native PhaseNav–Weil Positivity Probe v0.1
+### Finite positivity probe v0.1
 
-The second native PhaseNav construction is defined in
-`construction/phasenav/secret_of_half_weil_operator.pnv`.
+The two-channel finite witness is PSD for an involution-fixed on-axis fixture and develops a stable negative eigenvalue for a declared synthetic off-axis quartet. This establishes falsification sensitivity, not global positivity.
 
-It builds a two-channel, involution-coupled finite Hermitian witness in centred
-coordinates \(z=s-1/2\). For an involution-fixed finite zero fixture the matrix
-reduces exactly to a positive-semidefinite Gram matrix. Under the declared
-Gaussian profile, replacing the first on-axis conjugate pair by a synthetic
-off-axis quartet produces a stable negative eigenvalue.
+### Prime-side arithmetic operator v0.2
 
-The deterministic receipt is:
+The explicit-formula calculation uses pole, conductor, archimedean gamma, and prime-power terms without consuming a zero list. It closes the first executable primes-to-phase-to-spectrum audit loop.
+
+### Hermite dense-core ladder v0.3
+
+Translated-scaled Hermite channels give an explicit Schwartz dense core. Principal arithmetic matrices through basis size six are cutoff-audited and PSD-tested, while an off-axis validation fixture retains a negative mode.
+
+### Zero–undefined reciprocal duality v0.4
+
+Binary complement is conjugate to reciprocal inversion in projective odds coordinates. The unique positive reciprocal fixed point, the positive swap-fixed spinor, the Fisher–Rao midpoint, and the entropy maximum all occur at \(p=1/2\). `UNDEFINED_BOTTOM` is an abstract label; IEEE `NaN` never enters arithmetic.
+
+### Prime-tail certificate v0.5
+
+The omitted prime-power tail is controlled analytically. With
+
+\[
+u=\log x,
+\qquad
+z_{\rm t}=\frac1u,
+\]
+
+the logarithmic half-line is compactified to a finite interval with a flat endpoint. The tail majorant has a closed upper-incomplete-gamma form.
+
+For the declared profile \(w=0.8\), \(Q=100000\), and \(N\le6\),
+
+\[
+\|E_N(Q)\|_2\le7.717202888999335\times10^{-13}.
+\]
+
+This closes controlled cutoff removal for every fixed declared finite section. A useful bound uniform as the basis size tends to infinity, global positivity, and the null-space implication to native closure remain open.
+
+## Repository layout
 
 ```text
-on-axis control lambda_min:        +1.304512053935e-13
-synthetic off-axis lambda_min:     -1.989005564501e-03
+secret-of-a-half/
+├── construction/phasenav/   # authoritative native programmes
+├── claims/                   # Markdown and structured claim ledgers
+├── data/processed/           # deterministic receipts
+├── docs/construction/        # mathematical derivations
+├── logs/                     # append-only process records
+├── monograph/                # modular LaTeX monograph
+├── scripts/                  # receipt generators
+├── src/secret_of_a_half/     # parsers and auditors
+└── tests/                    # regression and boundary tests
 ```
-
-This establishes falsification sensitivity of the finite probe. It does not
-establish positivity of the complete arithmetic Weil form and does not prove
-the Riemann Hypothesis. The new open promotion target is `SOH-C005`.
-
-## Native PhaseNav–Weil Arithmetic Operator v0.2
-
-The next construction is defined in
-`construction/phasenav/secret_of_half_weil_arithmetic.pnv`.
-
-It evaluates the localized two-channel Weil matrix from prime powers, the
-archimedean gamma factor, conductor and pole terms. The arithmetic sum does not
-consume a zero list. Its deterministic result matches the earlier low-height
-spectral receipt within the declared numerical tolerance:
-
-```text
-arithmetic lambda_min:        +1.30e-13
-arithmetic lambda_max:        +2.00e+00
-prime-cutoff stability:       PASS
-spectral normalization check: PASS
-```
-
-This closes the first executable prime-to-phase-to-spectrum audit loop. It is
-one positive localized sample, not a proof of dense Weil positivity; `SOH-C005`
-remains open.
 
 ## Author
 
