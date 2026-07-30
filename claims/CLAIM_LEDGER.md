@@ -1,4 +1,4 @@
-# Claim Ledger — Version 0.5
+# Claim Ledger — Version 0.6
 
 | ID | Statement | Status | Evidence / location | Blocking gap |
 |---|---|---|---|---|
@@ -21,7 +21,7 @@
 | SOH-N001 | The 18-pair detector is a low-height numerical quadrature approximation to \(\xi(s)\). | Numerical | CSV receipt and tests | Finite quadrature |
 | SOH-L011 | For an involution-fixed finite fixture, the PhaseNav–Weil matrix is a PSD Gram matrix. | Exact finite lemma | Native `.pnv` and tests | Not the complete arithmetic criterion |
 | SOH-N002 | The two-channel Gaussian profile detects a synthetic off-axis quartet through a negative eigenvalue. | Numerical falsification witness | JSON receipt and tests | Synthetic finite fixture |
-| SOH-C005 | The complete arithmetic PhaseNav–Weil operator is positive on a dense admissible family and its null structure forces native closure. | Open positivity bridge | PhaseNav–Weil docs | Uniform positivity, basis-uniform cutoff control, regularization, closure implication |
+| SOH-C005 | The complete arithmetic PhaseNav–Weil operator is positive on a dense admissible family and its null structure forces native closure. | Open positivity bridge | PhaseNav–Weil docs | Fixed-cutoff uniformity, positivity, regularization, closure implication |
 | SOH-T003 | Under SOH-C005 and exact Weil correspondence, all non-trivial zeros lie on the half-axis. | Conditional | PhaseNav–Weil operator | SOH-C005 |
 | SOH-L012 | The Gaussian matrix test has the declared closed Fourier transform. | Exact analytic lemma | Arithmetic v0.2 docs and tests | None |
 | SOH-N003 | The declared prime-side matrix is cutoff-stable and matches the low-height spectral receipt. | Numerical audit | Arithmetic JSON receipt | One profile and finite cutoffs |
@@ -37,7 +37,9 @@
 | SOH-L019 | Every fixed Hermite matrix entry has the declared upper-incomplete-gamma prime-tail majorant under an explicit monotonicity condition. | Exact analytic theorem | Chapter 19, Theorems 19.2 and 19.4 | None |
 | SOH-L020 | Entrywise prime-tail certificates imply a finite-section operator-norm bound and a Weyl eigenvalue enclosure. | Exact finite-section theorem | Chapter 19, Corollary 19.5 | None |
 | SOH-N005 | For \(w=0.8\), \(Q=100000\), and \(N\le6\), the largest certified prime-tail operator-norm bound is \(7.717202889\times10^{-13}\). | Numerical certificate | Prime-tail JSON receipt and tests | Fixed finite sections only |
+| SOH-L021 | For every \(c>0\), the basis-adaptive schedule \(Q_N=e^{cN}\) forces the stated coarse Hermite finite-section prime-tail envelope to zero. | Exact asymptotic theorem | Chapter 20, Theorem 20.3 | Does not imply fixed-cutoff uniformity or positivity |
+| SOH-N006 | For \(w=0.8\), \(Q_0=100000\), \(\log Q_N=\max(\log Q_0,2N)\), and \(N\le20\), all sharp certificates pass \(10^{-12}\), with maximum \(3.280365246530569\times10^{-14}\) at \(N=5\). | Numerical certificate | Adaptive-cutoff JSON receipt and tests | Finite audit through \(N=20\) |
 
 ## Promotion rule
 
-An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of the Riemann Hypothesis left unproved. Numerical agreement cannot promote a claim to exact status. IEEE NaN is not a numeric endpoint in SOH-H001. The reciprocal tail coordinate in SOH-L018 is not a map of zeta zeros.
+An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of the Riemann Hypothesis left unproved. Numerical agreement cannot promote a claim to exact status. IEEE NaN is not a numeric endpoint in SOH-H001. The reciprocal tail coordinate in SOH-L018 and the adaptive schedule in SOH-L021 are not maps of zeta zeros.

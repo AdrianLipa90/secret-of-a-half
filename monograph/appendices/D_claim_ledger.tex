@@ -3,7 +3,7 @@
 
 \small
 \begin{longtable}{@{}p{0.10\textwidth}p{0.47\textwidth}p{0.14\textwidth}p{0.15\textwidth}@{}}
-\caption{Principal claims and their status in Version 0.5.}\label{tab:claim-ledger}\\
+\caption{Principal claims and their status in Version 0.6.}\label{tab:claim-ledger}\\
 \toprule
 ID & Statement & Status & Location\\
 \midrule
@@ -51,4 +51,8 @@ An open claim may be promoted only when its complete proof or reproducible const
 \item[SOH-L019, exact.] Every fixed Hermite entry has the declared incomplete-gamma prime-tail majorant.
 \item[SOH-L020, exact finite section.] Entrywise tail certificates give an operator-norm and eigenvalue enclosure for every fixed finite section.
 \item[SOH-N005, numerical.] For $N\le6$, $Q=100000$, the maximum certified tail norm is $7.7172\times10^{-13}$.
+\item[SOH-L021, exact asymptotic.] Every exponential adaptive schedule $Q_N=e^{cN}$ with $c>0$ forces the declared coarse tail envelope to zero.
+\item[SOH-N006, numerical.] For $w=0.8$, $Q_0=100000$, $c=2$, and $N\le20$, the maximum sharp certificate is $3.280365246530569\times10^{-14}$ at $N=5$.
 \end{description}
+
+The adaptive theorem controls a diagonal sequence of basis sizes and cutoffs. It does not prove fixed-cutoff uniformity, positivity of all infinite-cutoff sections, or the null-space bridge.

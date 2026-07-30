@@ -1,0 +1,54 @@
+{
+  "all_target_pass": true,
+  "base_cutoff": 100000,
+  "base_head": "c31969c6fa4d40d9d9bf8effbe78800f77d1204d",
+  "claim_boundary": {
+    "exact": [
+      "adaptive logarithmic cutoff definition",
+      "elementary h(U)/alpha(U) tail envelope",
+      "coarse Hermite coefficient and finite-section norm envelope",
+      "for every c>0, Q_N=exp(c*N) forces the coarse envelope to zero"
+    ],
+    "numerical": "exact v0.5 tail certificate evaluated for N<=20",
+    "open": [
+      "fixed-cutoff uniformity in basis size",
+      "global arithmetic positivity",
+      "null-structure implication to native closure"
+    ],
+    "proof_of_rh": false
+  },
+  "coarse_envelope_decreasing_on_final_window": true,
+  "gaussian_width": 0.8,
+  "log_cutoff_slope": 2.0,
+  "max_basis_size": 20,
+  "maximum_bound_basis_size": 5,
+  "maximum_certified_bound": 3.280365246530569e-14,
+  "operator_norm_target": 1e-12,
+  "program": "SECRET_OF_HALF_WEIL_ADAPTIVE_CUTOFF_SCHEDULE",
+  "schedule": "log_Q_N=max(log_Q0,c*N)",
+  "sections": [
+    {"basis_size":1,"coarse_log_envelope":-46.85028326932997,"cutoff":100000,"decay_rate":8.407614123127338,"log_cutoff":11.512925464970229,"operator_norm_bound":4.451059758202416e-21,"target_pass":true},
+    {"basis_size":2,"coarse_log_envelope":-38.03044114286497,"cutoff":100000,"decay_rate":8.233896330366038,"log_cutoff":11.512925464970229,"operator_norm_bound":5.205379852728786e-19,"target_pass":true},
+    {"basis_size":3,"coarse_log_envelope":-29.09237076092272,"cutoff":100000,"decay_rate":8.060178537604738,"log_cutoff":11.512925464970229,"operator_norm_bound":2.962122984839699e-17,"target_pass":true},
+    {"basis_size":4,"coarse_log_envelope":-19.98393671975786,"cutoff":100000,"decay_rate":7.886460744843436,"log_cutoff":11.512925464970229,"operator_norm_bound":1.1312236094065214e-15,"target_pass":true},
+    {"basis_size":5,"coarse_log_envelope":-10.716412326732915,"cutoff":100000,"decay_rate":7.712742952082136,"log_cutoff":11.512925464970229,"operator_norm_bound":3.280365246530569e-14,"target_pass":true},
+    {"basis_size":6,"coarse_log_envelope":-5.135322433100638,"cutoff":162755,"decay_rate":7.958333333333331,"log_cutoff":12.0,"operator_norm_bound":1.637555793381492e-14,"target_pass":true},
+    {"basis_size":7,"coarse_log_envelope":-13.026272431729193,"cutoff":1202605,"decay_rate":9.50892857142857,"log_cutoff":14.0,"operator_norm_bound":7.864205571317025e-21,"target_pass":true},
+    {"basis_size":8,"coarse_log_envelope":-23.595315108003835,"cutoff":8886111,"decay_rate":11.062499999999998,"log_cutoff":16.0,"operator_norm_bound":1.979519706809121e-28,"target_pass":true},
+    {"basis_size":9,"coarse_log_envelope":-36.90115755855102,"cutoff":65659970,"decay_rate":12.618055555555552,"log_cutoff":18.0,"operator_norm_bound":2.5455011541993345e-37,"target_pass":true},
+    {"basis_size":10,"coarse_log_envelope":-52.9887410730935,"cutoff":485165196,"decay_rate":14.174999999999997,"log_cutoff":20.0,"operator_norm_bound":1.640279282846203e-47,"target_pass":true},
+    {"basis_size":11,"coarse_log_envelope":-71.89360633170274,"cutoff":3584912847,"decay_rate":15.732954545454541,"log_cutoff":22.0,"operator_norm_bound":5.217691825649085e-59,"target_pass":true},
+    {"basis_size":12,"coarse_log_envelope":-93.64458024488866,"cutoff":26489122130,"decay_rate":17.291666666666664,"log_cutoff":24.0,"operator_norm_bound":8.095689547004982e-72,"target_pass":true},
+    {"basis_size":13,"coarse_log_envelope":-118.26552341561928,"cutoff":195729609429,"decay_rate":18.850961538461537,"log_cutoff":26.0,"operator_norm_bound":6.067365738942852e-86,"target_pass":true},
+    {"basis_size":14,"coarse_log_envelope":-145.77651719581723,"cutoff":1446257064292,"decay_rate":20.41071428571428,"log_cutoff":28.0,"operator_norm_bound":2.1786707039093004e-101,"target_pass":true},
+    {"basis_size":15,"coarse_log_envelope":-176.19469902857665,"cutoff":10686474581525,"decay_rate":21.97083333333333,"log_cutoff":30.0,"operator_norm_bound":3.72266446954133e-118,"target_pass":true},
+    {"basis_size":16,"coarse_log_envelope":-209.53486773111368,"cutoff":78962960182681,"decay_rate":23.531249999999996,"log_cutoff":32.0,"operator_norm_bound":3.0091607519936025e-136,"target_pass":true},
+    {"basis_size":17,"coarse_log_envelope":-245.80993302414797,"cutoff":583461742527455,"decay_rate":25.09191176470588,"log_cutoff":34.0,"operator_norm_bound":1.1449053040658694e-155,"target_pass":true},
+    {"basis_size":18,"coarse_log_envelope":-285.03125649770755,"cutoff":4311231547115195,"decay_rate":26.65277777777777,"log_cutoff":36.0,"operator_norm_bound":2.0413132432333123e-176,"target_pass":true},
+    {"basis_size":19,"coarse_log_envelope":-327.20891499164264,"cutoff":31855931757113756,"decay_rate":28.213815789473678,"log_cutoff":38.0,"operator_norm_bound":1.698942309420063e-198,"target_pass":true},
+    {"basis_size":20,"coarse_log_envelope":-372.35190731448284,"cutoff":235385266837020000,"decay_rate":29.77499999999999,"log_cutoff":40.0,"operator_norm_bound":6.577796910855714e-222,"target_pass":true}
+  ],
+  "spectral_zero_input": false,
+  "status": "BASIS_ADAPTIVE_CUTOFF_CERTIFICATE_NOT_PROOF",
+  "version": "0.6.0"
+}
