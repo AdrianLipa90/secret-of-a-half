@@ -22,3 +22,12 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Confirmed the expanded monograph contains 16 chapters and five appendices.
 - Kept generated figures and the compiled PDF out of source history; GitHub Actions reproduces and publishes the PDF artifact.
 - Added the full native PhaseNav parser, executor, tests, numerical receipts and source manifest.
+
+## 2026-07-30 — PhaseNav–Weil positivity probe v0.1
+
+- Added a second authoritative `.pnv` construction for an involution-coupled finite Weil witness.
+- Added a standard-library executor, JSON receipt and five regression tests.
+- Confirmed the on-axis finite fixture is positive semidefinite to roundoff.
+- Confirmed a declared synthetic off-axis quartet produces a stable negative eigenvalue.
+- Added `SOH-L011`, `SOH-N002`, `SOH-C005` and `SOH-T003` with exact, numerical, open and conditional status kept separate.
+- The complete arithmetic positivity and native-closure implication remain open; no proof of RH is claimed.

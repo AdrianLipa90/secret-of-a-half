@@ -139,6 +139,28 @@ PhaseNav shell. This is `SOH-C004`; it is not marked as proved.
 The Python implementation parses and executes the `.pnv` source. It is an
 auditor of the native program, not the source of the construction.
 
+## Native PhaseNav–Weil Positivity Probe v0.1
+
+The second native PhaseNav construction is defined in
+`construction/phasenav/secret_of_half_weil_operator.pnv`.
+
+It builds a two-channel, involution-coupled finite Hermitian witness in centred
+coordinates \(z=s-1/2\). For an involution-fixed finite zero fixture the matrix
+reduces exactly to a positive-semidefinite Gram matrix. Under the declared
+Gaussian profile, replacing the first on-axis conjugate pair by a synthetic
+off-axis quartet produces a stable negative eigenvalue.
+
+The deterministic receipt is:
+
+```text
+on-axis control lambda_min:        +1.304512053935e-13
+synthetic off-axis lambda_min:     -1.989005564501e-03
+```
+
+This establishes falsification sensitivity of the finite probe. It does not
+establish positivity of the complete arithmetic Weil form and does not prove
+the Riemann Hypothesis. The new open promotion target is `SOH-C005`.
+
 ## Author
 
 Adrian Lipa

@@ -36,6 +36,9 @@ jobs:
       - name: Run native PhaseNav receipt
         run: python scripts/run_phasenav_theta_bridge.py
 
+      - name: Run PhaseNav-Weil positivity receipt
+        run: python scripts/run_phasenav_weil_probe.py
+
       - name: Install LaTeX toolchain
         run: |
           sudo apt-get update

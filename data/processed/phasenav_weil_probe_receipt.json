@@ -1,0 +1,18 @@
+{
+  "gaussian_width": 0.8,
+  "on_axis_control": {
+    "lambda_max": 2.0000000000001306,
+    "lambda_min": 1.304512053934559e-13,
+    "pass": true
+  },
+  "program": "SECRET_OF_HALF_WEIL_OPERATOR",
+  "status": "NUMERICAL_WITNESS_NOT_PROOF",
+  "synthetic_delta": 0.1,
+  "synthetic_off_axis": {
+    "lambda_max": 4.027671100606939,
+    "lambda_min": -0.0019890055645013225,
+    "pass": true
+  },
+  "target_ordinate": 14.134725141734695,
+  "version": "0.1.0"
+}

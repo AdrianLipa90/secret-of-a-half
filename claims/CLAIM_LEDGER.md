@@ -21,6 +21,11 @@
 | SOH-T002 | Under SOH-C004, every non-trivial zero lies on $\operatorname{Re}s=1/2$. | Conditional theorem | SOH-L009 and SOH-L010 | Depends on SOH-C004 |
 | SOH-N001 | The 18-pair detector is a low-height numerical quadrature approximation to $\xi(s)$. | Numerical construction | Regression tests and CSV receipt | Finite quadrature is not exact globally |
 
+| SOH-L011 | For an involution-fixed finite centred zero fixture, the PhaseNav–Weil matrix reduces to a positive-semidefinite Gram matrix. | Exact finite lemma | Native `.pnv` source, derivation and regression test | Does not establish the complete arithmetic Weil criterion |
+| SOH-N002 | The declared two-channel Gaussian profile detects a synthetic off-axis quartet through a negative minimum eigenvalue. | Numerical falsification witness | JSON receipt and regression tests | Synthetic finite fixture; not evidence for global positivity |
+| SOH-C005 | The complete arithmetic PhaseNav–Weil operator is positive on a dense admissible test-channel family and its null structure forces native closure. | Open positivity bridge | `docs/construction/PHASENAV_WEIL_OPERATOR.md` | Prime-side explicit formula, regularization and closure implication unproved |
+| SOH-T003 | Under SOH-C005 and the exact Weil correspondence, every non-trivial zero lies on \(\operatorname{Re}s=1/2\). | Conditional theorem | SOH-L011 and SOH-C005 | Depends on SOH-C005 |
+
 ## Promotion rule
 
 An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of the Riemann Hypothesis left unproved. Numerical agreement cannot promote a claim to exact status.
