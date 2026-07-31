@@ -1,0 +1,112 @@
+{
+  "experiment": "DHSE-001",
+  "stage": "M-exact-continuous-forcing-theorem",
+  "parameters": {
+    "primitive_map_count": 952,
+    "lengths": [1, 2, 3, 4],
+    "radius": [1, 10],
+    "centre_domain": "all positive q classified by exact rational breakpoints"
+  },
+  "length_theorems": [
+    {
+      "length": 1,
+      "word_count": 2,
+      "ordered_pair_count": 906304,
+      "pair_word_event_count": 1812608,
+      "nonempty_forcing_interval_count": 188496,
+      "breakpoint_count": 44,
+      "reciprocal_endpoint_symmetry": true,
+      "sweep": {
+        "maximum": 39984,
+        "q1_count": 24752,
+        "q1_is_global_maximum": false,
+        "q1_is_unique_global_maximum": false,
+        "point_maximizers": [[9, 11], [11, 12], [12, 11], [11, 9]],
+        "open_interval_maximizers": [
+          {"left": [9, 11], "right": [11, 12]},
+          {"left": [12, 11], "right": [11, 9]}
+        ],
+        "maximizer_components": [
+          {"left": [9, 11], "right": [11, 12], "left_closed": true, "right_closed": true},
+          {"left": [12, 11], "right": [11, 9], "left_closed": true, "right_closed": true}
+        ]
+      },
+      "technical_status": "PASS"
+    },
+    {
+      "length": 2,
+      "word_count": 4,
+      "ordered_pair_count": 906304,
+      "pair_word_event_count": 3625216,
+      "nonempty_forcing_interval_count": 1741094,
+      "breakpoint_count": 3359,
+      "reciprocal_endpoint_symmetry": true,
+      "sweep": {
+        "maximum": 314690,
+        "q1_count": 314690,
+        "q1_is_global_maximum": true,
+        "q1_is_unique_global_maximum": true,
+        "point_maximizers": [[1, 1]],
+        "open_interval_maximizers": [],
+        "maximizer_components": [
+          {"left": [1, 1], "right": [1, 1], "left_closed": true, "right_closed": true}
+        ]
+      },
+      "technical_status": "PASS"
+    },
+    {
+      "length": 3,
+      "word_count": 8,
+      "ordered_pair_count": 906304,
+      "pair_word_event_count": 7250432,
+      "nonempty_forcing_interval_count": 5068044,
+      "breakpoint_count": 150239,
+      "reciprocal_endpoint_symmetry": true,
+      "sweep": {
+        "maximum": 943740,
+        "q1_count": 943740,
+        "q1_is_global_maximum": true,
+        "q1_is_unique_global_maximum": true,
+        "point_maximizers": [[1, 1]],
+        "open_interval_maximizers": [],
+        "maximizer_components": [
+          {"left": [1, 1], "right": [1, 1], "left_closed": true, "right_closed": true}
+        ]
+      },
+      "technical_status": "PASS"
+    },
+    {
+      "length": 4,
+      "word_count": 16,
+      "ordered_pair_count": 906304,
+      "pair_word_event_count": 14500864,
+      "nonempty_forcing_interval_count": 11594096,
+      "breakpoint_count": 1595693,
+      "reciprocal_endpoint_symmetry": true,
+      "sweep": {
+        "maximum": 2224570,
+        "q1_count": 2219236,
+        "q1_is_global_maximum": false,
+        "q1_is_unique_global_maximum": false,
+        "point_maximizers": [[9882, 9911], [341, 342], [342, 341], [9911, 9882]],
+        "open_interval_maximizers": [
+          {"left": [9882, 9911], "right": [341, 342]},
+          {"left": [342, 341], "right": [9911, 9882]}
+        ],
+        "maximizer_components": [
+          {"left": [9882, 9911], "right": [341, 342], "left_closed": true, "right_closed": true},
+          {"left": [342, 341], "right": [9911, 9882], "left_closed": true, "right_closed": true}
+        ]
+      },
+      "technical_status": "PASS"
+    }
+  ],
+  "summary": {
+    "unique_self_dual_global_maximum_lengths": [2, 3],
+    "reciprocal_split_maximum_lengths": [1, 4],
+    "conclusion": "CONTINUOUS_MAXIMUM_CLASSIFIED_WITH_LENGTH_DEPENDENT_SPLITTING"
+  },
+  "technical_status": "PASS",
+  "scientific_status": "CONTINUOUS_MAXIMUM_CLASSIFIED_WITH_LENGTH_DEPENDENT_SPLITTING",
+  "interpretation_boundary": "This is an exact exhaustive theorem only for the primitive K=6 positive integer Möbius universe, radius 1/10 and word lengths 1..4. It proves that reciprocal symmetry alone does not force a central maximum."
+}
