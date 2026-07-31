@@ -1,6 +1,16 @@
 name: DHSE-001 validation
 
 on:
+  push:
+    branches: [experiment/dhse-001]
+    paths:
+      - "src/secret_of_a_half/dhse_001*.py"
+      - "tests/test_dhse_001*.py"
+      - "scripts/run_dhse_001*.py"
+      - "data/processed/dhse_001*.json"
+      - "construction/phasenav/secret_of_half_dhse_001*.pnv"
+      - "docs/experiments/DHSE-001*.md"
+      - ".github/workflows/dhse-001-validation.yml"
   pull_request:
     branches: [main]
     paths:
