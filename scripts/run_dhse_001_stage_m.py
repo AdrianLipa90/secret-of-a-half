@@ -13,11 +13,10 @@ OUTPUT = ROOT / "data" / "processed" / "dhse_001_stage_m_receipt.json"
 
 def main() -> None:
     receipt = run_stage_m()
-    rendered = json.dumps(receipt, indent=2, ensure_ascii=False) + "\n"
-    persisted = OUTPUT.read_text(encoding="utf-8")
-    if persisted != rendered:
+    persisted = json.loads(OUTPUT.read_text(encoding="utf-8"))
+    if persisted != receipt:
         raise SystemExit("Stage M receipt mismatch; regenerate and review the diff")
-    print(rendered, end="")
+    print(json.dumps(receipt, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":
