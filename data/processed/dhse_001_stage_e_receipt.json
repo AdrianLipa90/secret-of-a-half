@@ -1,0 +1,96 @@
+{
+  "counts": {
+    "admissible_left_matrices": 41,
+    "admissible_pairs": 3075,
+    "admissible_right_matrices": 75,
+    "forcing_counts_by_l1_distance": {
+      "0": 1,
+      "1": 1,
+      "2": 7,
+      "3": 19,
+      "4": 28,
+      "5": 39,
+      "6": 32,
+      "7": 15,
+      "8": 3
+    },
+    "forcing_fraction": [
+      29,
+      615
+    ],
+    "universal_lr_forcing_pairs": 145
+  },
+  "experiment": "DHSE-001",
+  "interpretation_boundary": "The LR whole-line forcing mechanism persists for a minority of admissible integer coefficient perturbations around the selected Möbius pair. This is local structural persistence, not an operator-independent halfway law.",
+  "nearest_nonbase_persistence": {
+    "examples": [
+      {
+        "composition": [
+          6,
+          7,
+          5,
+          7
+        ],
+        "image": [
+          [
+            1,
+            1
+          ],
+          [
+            6,
+            5
+          ]
+        ],
+        "l1_distance_from_base_pair": 1,
+        "left": [
+          1,
+          1,
+          2,
+          3
+        ],
+        "right": [
+          4,
+          1,
+          1,
+          2
+        ]
+      }
+    ],
+    "minimum_l1_distance": 1
+  },
+  "parameters": {
+    "admissibility": "a>0,b>=0,c>=0,d>0,ad-bc>0",
+    "base_left": [
+      1,
+      1,
+      2,
+      3
+    ],
+    "base_right": [
+      3,
+      1,
+      1,
+      2
+    ],
+    "coefficient_delta": 1,
+    "target_ball": [
+      [
+        9,
+        11
+      ],
+      [
+        11,
+        9
+      ]
+    ]
+  },
+  "scientific_status": "EXPLORATORY_SENSITIVITY_ONLY",
+  "stage": "E-exploratory-coefficient-neighbourhood",
+  "status": "EXPLORATORY_NOT_PREREGISTERED",
+  "summary": {
+    "base_pair_is_isolated": false,
+    "conclusion": "LOCALLY_PERSISTENT_BUT_SPARSE",
+    "forcing_is_generic_in_local_neighbourhood": false
+  },
+  "technical_status": "PASS"
+}

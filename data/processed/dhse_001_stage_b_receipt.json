@@ -1,0 +1,289 @@
+{
+  "experiment": "DHSE-001",
+  "stage": "B-preregistered-centre-blind-scan",
+  "base_seed": "secret-of-a-half:DHSE-001",
+  "parameters": {
+    "ensemble_size": 64,
+    "steps": 384,
+    "burn_in": 64,
+    "radius": [
+      1,
+      10
+    ],
+    "centres_odds": [
+      [
+        1,
+        16
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        8,
+        1
+      ],
+      [
+        16,
+        1
+      ]
+    ],
+    "target_odds": [
+      1,
+      1
+    ],
+    "pass_ratio": [
+      5,
+      4
+    ],
+    "required_experimental_family_passes": 3
+  },
+  "primary_rule": "A family passes iff q=1 has strictly greatest occupancy within projective residual radius 1/10 and occupancy is at least 5/4 of the median of the eight non-target centres. Robust effect requires at least 3 of 4 non-calibration families.",
+  "families": [
+    {
+      "family": "reciprocal_calibration",
+      "calibration_only": true,
+      "maps": {
+        "L": [
+          1,
+          0,
+          1,
+          1
+        ],
+        "R": [
+          1,
+          1,
+          0,
+          1
+        ],
+        "form": "(a*z+b)/(c*z+d)"
+      },
+      "reciprocal_conjugacy_sample_matches": 10,
+      "reciprocal_conjugacy_sample_comparisons": 10,
+      "observed_states": 20544,
+      "observed_transitions": 20480,
+      "primary_statistic": {
+        "target_odds": [
+          1,
+          1
+        ],
+        "target_occupancy": [
+          5,
+          107
+        ],
+        "control_median_occupancy": [
+          1921,
+          41088
+        ],
+        "target_to_control_median_ratio": [
+          1920,
+          1921
+        ],
+        "target_rank": 5,
+        "strict_first": false,
+        "family_pass": false
+      }
+    },
+    {
+      "family": "affine_skew",
+      "calibration_only": false,
+      "maps": {
+        "L": [
+          2,
+          1,
+          0,
+          3
+        ],
+        "R": [
+          3,
+          2,
+          0,
+          2
+        ],
+        "form": "(a*z+b)/(c*z+d)"
+      },
+      "reciprocal_conjugacy_sample_matches": 0,
+      "reciprocal_conjugacy_sample_comparisons": 10,
+      "observed_states": 20544,
+      "observed_transitions": 20480,
+      "primary_statistic": {
+        "target_odds": [
+          1,
+          1
+        ],
+        "target_occupancy": [
+          7,
+          20544
+        ],
+        "control_median_occupancy": [
+          35,
+          13696
+        ],
+        "target_to_control_median_ratio": [
+          2,
+          15
+        ],
+        "target_rank": 5,
+        "strict_first": false,
+        "family_pass": false
+      }
+    },
+    {
+      "family": "mobius_skew",
+      "calibration_only": false,
+      "maps": {
+        "L": [
+          1,
+          1,
+          2,
+          3
+        ],
+        "R": [
+          3,
+          1,
+          1,
+          2
+        ],
+        "form": "(a*z+b)/(c*z+d)"
+      },
+      "reciprocal_conjugacy_sample_matches": 0,
+      "reciprocal_conjugacy_sample_comparisons": 10,
+      "observed_states": 20544,
+      "observed_transitions": 20480,
+      "primary_statistic": {
+        "target_odds": [
+          1,
+          1
+        ],
+        "target_occupancy": [
+          5147,
+          20544
+        ],
+        "control_median_occupancy": [
+          0,
+          1
+        ],
+        "target_to_control_median_ratio": null,
+        "target_rank": 1,
+        "strict_first": true,
+        "family_pass": true
+      }
+    },
+    {
+      "family": "scale_translate",
+      "calibration_only": false,
+      "maps": {
+        "L": [
+          2,
+          0,
+          0,
+          1
+        ],
+        "R": [
+          1,
+          3,
+          0,
+          1
+        ],
+        "form": "(a*z+b)/(c*z+d)"
+      },
+      "reciprocal_conjugacy_sample_matches": 0,
+      "reciprocal_conjugacy_sample_comparisons": 10,
+      "observed_states": 20544,
+      "observed_transitions": 20480,
+      "primary_statistic": {
+        "target_odds": [
+          1,
+          1
+        ],
+        "target_occupancy": [
+          0,
+          1
+        ],
+        "control_median_occupancy": [
+          0,
+          1
+        ],
+        "target_to_control_median_ratio": null,
+        "target_rank": 1,
+        "strict_first": false,
+        "family_pass": false
+      }
+    },
+    {
+      "family": "collatz_stream",
+      "calibration_only": false,
+      "maps": {
+        "L": [
+          1,
+          0,
+          0,
+          2
+        ],
+        "R": [
+          3,
+          1,
+          0,
+          2
+        ],
+        "form": "(a*z+b)/(c*z+d)"
+      },
+      "reciprocal_conjugacy_sample_matches": 2,
+      "reciprocal_conjugacy_sample_comparisons": 10,
+      "observed_states": 20544,
+      "observed_transitions": 20480,
+      "primary_statistic": {
+        "target_odds": [
+          1,
+          1
+        ],
+        "target_occupancy": [
+          1903,
+          20544
+        ],
+        "control_median_occupancy": [
+          659,
+          13696
+        ],
+        "target_to_control_median_ratio": [
+          3806,
+          1977
+        ],
+        "target_rank": 3,
+        "strict_first": false,
+        "family_pass": false
+      }
+    }
+  ],
+  "summary": {
+    "experimental_family_pass_count": 1,
+    "passing_experimental_families": [
+      "mobius_skew"
+    ],
+    "conclusion": "FAMILY_DEPENDENT"
+  },
+  "technical_status": "PASS",
+  "scientific_status": "FAMILY_DEPENDENT",
+  "interpretation_boundary": "This scan concerns exact-rational trajectory occupancy around q=1 in a declared projective coordinate. It neither orders IEEE NaN with zero nor promotes the abstract undefined label to a numeric endpoint.",
+  "full_receipt_sha256": "d0457d72fedf988bf79287fdbc8d45cd80b266c45d160f5a60d4b5f0827c5ca3"
+}
