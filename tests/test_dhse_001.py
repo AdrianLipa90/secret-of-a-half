@@ -1,4 +1,6 @@
 from fractions import Fraction
+import json
+from pathlib import Path
 
 from secret_of_a_half.dhse_001 import (
     LEFT,
@@ -53,3 +55,11 @@ def test_declared_experiment_receipt_passes_technical_calibration() -> None:
     assert receipt["operator"]["uses_explicit_half_constant"] is False
     assert receipt["results"]["exact_duality_all_steps"] is True
     assert receipt["results"]["same_bits_control_duality_matches"] < receipt["results"]["same_bits_control_total_states"]
+
+
+def test_persisted_receipt_is_reproducible() -> None:
+    root = Path(__file__).resolve().parents[1]
+    persisted = json.loads(
+        (root / "data" / "processed" / "dhse_001_receipt.json").read_text(encoding="utf-8")
+    )
+    assert persisted == run_experiment()
