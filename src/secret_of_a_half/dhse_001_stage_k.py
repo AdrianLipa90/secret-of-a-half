@@ -117,28 +117,20 @@ def weighted_length_census(length: int) -> dict[str, object]:
             for index in range(len(CENTRES))
         )
 
-        centre_rows = []
-        for index, centre in enumerate(CENTRES):
-            total = totals[index]
-            centre_rows.append(
-                {
-                    "odds": _pair(centre),
-                    "weighted_forcing_mass": total,
-                    "weighted_rate": _pair(Fraction(total, total_mass)),
-                    "rank": 1 + sum(other > total for other in totals),
-                    "word_masses": {
-                        word: accumulators[name]["word_counts"][word][index]
-                        for word in words
-                    },
-                }
-            )
-
         measure_rows.append(
             {
                 "measure": name,
                 "map_weight_total": map_weight_total,
                 "pair_word_total_mass": total_mass,
-                "centre_scan": centre_rows,
+                "centre_masses": totals,
+                "centre_ranks": [
+                    1 + sum(other > total for other in totals)
+                    for total in totals
+                ],
+                "target_word_masses": {
+                    word: accumulators[name]["word_counts"][word][TARGET_INDEX]
+                    for word in words
+                },
                 "target": {
                     "weighted_forcing_mass": target_mass,
                     "weighted_rate": _pair(target_rate),
