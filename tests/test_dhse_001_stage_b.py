@@ -11,6 +11,7 @@ from secret_of_a_half.dhse_001_stage_b import (
     reciprocal_conjugacy_matches,
     run_stage_b,
 )
+from secret_of_a_half.dhse_001_stage_b_receipt import compact_stage_b_receipt
 
 
 def test_centres_are_reciprocal_and_target_is_central() -> None:
@@ -63,4 +64,4 @@ def test_persisted_stage_b_receipt_is_reproducible() -> None:
     persisted = json.loads(
         (root / "data" / "processed" / "dhse_001_stage_b_receipt.json").read_text(encoding="utf-8")
     )
-    assert persisted == run_stage_b()
+    assert persisted == compact_stage_b_receipt()
