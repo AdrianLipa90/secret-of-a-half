@@ -1,4 +1,6 @@
 from fractions import Fraction
+import json
+from pathlib import Path
 
 from secret_of_a_half.dhse_001 import LEFT, RIGHT
 from secret_of_a_half.dhse_001_stage_b import RADIUS, TARGET, projective_residual
@@ -34,3 +36,11 @@ def test_stage_c_closes_observed_mobius_signal_exactly() -> None:
     assert audit["lr_words"] == 5147
     assert audit["hit_iff_lr_matches"] == audit["observed_states"]
     assert audit["counterexamples"] == []
+
+
+def test_persisted_stage_c_receipt_is_reproducible() -> None:
+    root = Path(__file__).resolve().parents[1]
+    persisted = json.loads(
+        (root / "data" / "processed" / "dhse_001_stage_c_receipt.json").read_text(encoding="utf-8")
+    )
+    assert persisted == run_stage_c()
