@@ -11,6 +11,7 @@ python scripts/generate_monograph_assets.py
 python scripts/run_phasenav_weil_hermite_ladder.py
 python scripts/run_zero_undefined_duality.py
 python scripts/run_phasenav_weil_prime_tail.py
+python scripts/run_phasenav_weil_adaptive_cutoff.py
 cd monograph
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 bibtex main
@@ -20,19 +21,23 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 
 ## Outputs
 
-- `main.pdf` — compiled 103-page Version 0.5 monograph;
+- `main.pdf` — compiled Version 0.6 monograph;
 - `figures/` — deterministic PDF and PNG figures;
 - `generated/` — generated LaTeX tables;
 - `main.log` — TeX build log.
 
-## Version 0.5 additions
+## Version 0.6 additions
 
-- Chapter 19: reciprocal compactification of the logarithmic prime tail;
-- exact monotonicity threshold and upper-incomplete-gamma tail formula;
-- entrywise prime-tail certificates;
-- finite-section operator-norm and Weyl eigenvalue enclosures;
-- deterministic `N<=6`, `Q=100000` receipt.
+- Chapter 20: basis-adaptive prime cutoffs;
+- elementary `h(U)/alpha(U)` tail envelope;
+- coarse Hermite finite-section majorant;
+- exact asymptotic collapse for every schedule `Q_N=exp(cN)`, `c>0`;
+- deterministic sharp-certificate audit through `N=20`.
 
 ## Claim boundary
 
-Controlled prime-cutoff removal is proved for every fixed declared finite Hermite section. Uniform control as the basis size tends to infinity, positivity of all sections, continuity of the full regularized Weil form, and the null-space implication to native closure remain open. Version 0.5 does not claim a proof of the Riemann Hypothesis.
+The adaptive diagonal tail is controlled when the cutoff grows exponentially
+with the basis size. One fixed cutoff uniform in all basis sizes, positivity of
+all infinite-cutoff sections, continuity of the full regularized Weil form and
+the null-space implication to native closure remain open. Version 0.6 does not
+claim a proof of the Riemann Hypothesis.

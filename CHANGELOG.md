@@ -65,3 +65,14 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Added native PhaseNav source, executor, deterministic receipt, regression tests and monograph Chapter 19.
 - Added `SOH-L018`, `SOH-L019`, `SOH-L020` and `SOH-N005`.
 - Controlled cutoff removal is now closed for each fixed declared finite section; uniform control as the basis size tends to infinity remains open.
+
+## 2026-07-30 — PhaseNav–Weil adaptive cutoff schedule v0.6
+
+- Added the basis-adaptive schedule `log Q_N=max(log 100000,2N)`.
+- Added an elementary `h(U)/alpha(U)` tail envelope and a coarse Hermite finite-section majorant.
+- Proved that every exponential schedule `Q_N=exp(cN)`, `c>0`, forces the coarse certified envelope to zero.
+- Audited the sharp v0.5 certificate through `N=20`.
+- Certified a maximum adaptive tail norm of `3.280365246530569e-14` at `N=5`.
+- Added native PhaseNav source, executor, deterministic receipt, eight tests, documentation and monograph Chapter 20.
+- Added `SOH-L021` and `SOH-N006`.
+- Fixed-cutoff uniformity, global positivity, form closure and the null-space implication remain open.

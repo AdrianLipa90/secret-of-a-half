@@ -1,0 +1,261 @@
+\chapter{Basis-Adaptive Prime Cutoffs}
+\label{ch:adaptive-cutoff}
+
+\Cref{ch:prime-tail-certificate} proves cutoff removal for every fixed finite
+Hermite section.  A different question appears when the basis size grows:
+can one choose the cutoff together with the section size so that the certified
+omitted tail still tends to zero?  This chapter answers that diagonal question
+in the affirmative.
+
+The result is deliberately narrower than fixed-cutoff uniformity.  The cutoff
+is allowed to depend on the basis size.  No claim is made that one finite
+cutoff controls every Hermite mode simultaneously.
+
+\section{Adaptive schedule}
+
+Let $N\ge1$ be the size of the Hermite principal section and write
+\[
+ D_N=2N-2
+\]
+for the largest polynomial degree appearing in its product kernels.  Fix a
+base cutoff $Q_0\ge3$ and a slope $c>0$.  Define
+\[
+ U_N=\log Q_N:=\max\{\log Q_0,cN\},
+ \qquad
+ Q_N=\left\lceil e^{U_N}\right\rceil.
+\]
+When the maximum is attained by the base term, $Q_N$ is understood to be
+exactly $Q_0$; this avoids introducing a floating-point successor of an
+integer cutoff.
+
+The reciprocal compactification from \Cref{ch:prime-tail-certificate} remains
+available at every section:
+\[
+ z_{{\rm t},N}=\frac1{\log x},
+ \qquad
+ 0\le z_{{\rm t},N}\le\frac1{U_N}.
+\]
+Thus increasing the basis size shrinks the compactified tail interval toward
+its flat endpoint.
+
+\section{An elementary integral envelope}
+
+For a degree $d\ge0$, set
+\[
+ h_d(u)
+ =
+ \frac{u^{d+1}}{w^d}
+ \exp\!\left(-\frac{u^2}{4w^2}+\frac u2\right),
+ \qquad u>0,
+\]
+and define its positive logarithmic decay rate
+\[
+ \alpha_d(u)
+ =
+ \frac{u}{2w^2}-\frac12-\frac{d+1}{u}.
+\]
+The identity
+\[
+ -\frac{d}{du}\log h_d(u)=\alpha_d(u)
+\]
+shows that $h_d$ is decreasing once $\alpha_d$ is positive.  Moreover,
+\[
+ \alpha_d'(u)
+ =
+ \frac1{2w^2}+\frac{d+1}{u^2}>0.
+\]
+
+\begin{lemma}[Elementary adaptive tail envelope]
+\label{lem:adaptive-elementary-tail}
+If $\alpha_d(U)>0$, then
+\[
+ \int_U^\infty h_d(u)\,du
+ \le
+ \frac{h_d(U)}{\alpha_d(U)}.
+\]
+\end{lemma}
+
+\begin{proof}
+For $u\ge U$, monotonicity of $\alpha_d$ gives
+$\alpha_d(u)\ge\alpha_d(U)$.  Hence
+\[
+ h_d'(u)=-\alpha_d(u)h_d(u)
+ \le -\alpha_d(U)h_d(u).
+\]
+Equivalently,
+\[
+ h_d(u)
+ \le
+ h_d(U)e^{-\alpha_d(U)(u-U)}.
+\]
+Integration over $[U,\infty)$ gives the result.
+\end{proof}
+
+This estimate is weaker than the exact incomplete-gamma expression of
+\Cref{ch:prime-tail-certificate}, but its dependence on $d$ and $U$ is
+transparent enough for an asymptotic proof.
+
+\section{A coarse Hermite-section envelope}
+
+For $0\le m,n<N$, the Hermite linearization contains at most $N$ terms.  Each
+coefficient obeys the elementary estimate
+\[
+ 2^k k!\binom{m}{k}\binom{n}{k}
+ \le
+ 2^{3N-3}(N-1)!.
+\]
+The normalized Fourier prefactor is at most one for the declared fixed width,
+and the operator norm is bounded by the maximum row sum.  Therefore it is
+sufficient to control the following deliberately coarse quantity:
+\[
+ \mathcal B_N(U)
+ :=
+ \frac{N^2\,2^{3N-3}(N-1)!}{\pi}
+ \frac{U^{2N-1}}{w^{2N-2}}
+ \frac{
+ \exp\!\left(-U^2/(4w^2)+U/2\right)
+ }{
+ \alpha_{2N-2}(U)
+ }.
+\]
+
+\begin{proposition}[Finite-section coarse majorant]
+\label{prop:adaptive-coarse-envelope}
+Whenever $\alpha_{2N-2}(U)>0$, the omitted prime-power tail of the
+$N\times N$ Hermite section satisfies
+\[
+ \|E_N(e^U)\|_2\le\mathcal B_N(U).
+\]
+\end{proposition}
+
+\begin{proof}
+Apply \Cref{lem:adaptive-elementary-tail} to every logarithmic degree in each
+entrywise certificate of \Cref{ch:prime-tail-certificate}.  Replace the number
+of Hermite terms, each coefficient and every degree by the declared upper
+bounds.  Finally sum at most $N$ entry bounds in each of $N$ rows.  All
+replacements are one-sided and non-negative, so the resulting expression is
+$\mathcal B_N(U)$.
+\end{proof}
+
+The purpose of this majorant is not numerical sharpness.  It isolates the
+quadratic Gaussian term that dominates the growth of the Hermite coefficients.
+
+\section{Exponential schedules defeat basis growth}
+
+\begin{theorem}[Adaptive cutoff collapse]
+\label{thm:adaptive-cutoff-collapse}
+Fix $w>0$ and $c>0$.  With $U_N=cN$,
+\[
+ \log\mathcal B_N(U_N)
+ =
+ -\frac{c^2}{4w^2}N^2+O(N\log N).
+\]
+Consequently,
+\[
+ \mathcal B_N(cN)\longrightarrow0
+ \qquad (N\to\infty).
+\]
+Thus the basis-adaptive schedule $Q_N=e^{cN}$ forces the certified coarse
+prime-tail envelope to zero for every positive slope $c$.
+\end{theorem}
+
+\begin{proof}
+Substituting $U_N=cN$ gives
+\[
+\begin{aligned}
+ \log\mathcal B_N(cN)
+ ={}&2\log N+(3N-3)\log2+\log((N-1)!)-\log\pi\\
+ &+(2N-1)\log(cN)-(2N-2)\log w\\
+ &-\frac{c^2}{4w^2}N^2+\frac c2N
+ -\log\alpha_{2N-2}(cN).
+\end{aligned}
+\]
+By Stirling's formula,
+$\log((N-1)!)=N\log N+O(N)$.  Every displayed term except the Gaussian one
+is $O(N\log N)$.  Furthermore,
+\[
+ \alpha_{2N-2}(cN)
+ =
+ \frac{cN}{2w^2}-\frac12-\frac{2N-1}{cN}
+\]
+is positive for all sufficiently large $N$ and contributes only $O(\log N)$
+after taking a logarithm.  The negative quadratic term therefore dominates,
+which proves both statements.
+\end{proof}
+
+\begin{remark}[What this theorem does not say]
+The theorem controls a diagonal sequence $(N,Q_N)$.  It does not prove that a
+single fixed $Q$ controls all $N$, nor that the infinite-cutoff matrices are
+positive.  Those are separate problems.
+\end{remark}
+
+\section{Native PhaseNav audit}
+
+The authoritative programme is
+\[
+ \texttt{construction/phasenav/secret\_of\_half\_weil\_adaptive\_cutoff\_schedule.pnv}.
+\]
+It declares
+\[
+ w=0.8,
+ \qquad
+ Q_0=100000,
+ \qquad
+ c=2,
+ \qquad
+ 1\le N\le20.
+\]
+The executor evaluates the sharp v0.5 incomplete-gamma certificate at each
+scheduled cutoff, while independently recording the coarse asymptotic
+envelope.
+
+For this declared schedule all twenty sharp certificates satisfy
+\[
+ \|E_N(Q_N)\|_2<10^{-12}.
+\]
+The maximum occurs before the exponential branch dominates:
+\[
+ \boxed{
+ \max_{1\le N\le20}\|E_N(Q_N)\|_2
+ \le
+ 3.280365246530569\times10^{-14}
+ }
+\]
+at $N=5$.  From $N=7$ onward the bound decreases rapidly; at $N=20$ it is
+approximately
+\[
+ 6.58\times10^{-222}.
+\]
+
+The numerical evaluation is a finite audit.  The asymptotic limit itself is
+provided by \Cref{thm:adaptive-cutoff-collapse}, not inferred from the twenty
+samples.
+
+\section{Claim ledger}
+
+\begin{description}
+\item[SOH-L021, exact.] For every fixed $c>0$, the exponential adaptive
+schedule $Q_N=e^{cN}$ forces the stated coarse finite-section prime-tail
+envelope to zero.
+
+\item[SOH-N006, numerical certificate.] For $w=0.8$, $Q_0=100000$, $c=2$ and
+$N\le20$, the sharp v0.5 certificates all pass $10^{-12}$ and have maximum
+$3.280365246530569\times10^{-14}$ at $N=5$.
+\end{description}
+
+\section{Remaining gap}
+
+The adaptive schedule removes one obstruction: increasing basis size need not
+invalidate controlled cutoff removal, provided the cutoff grows with the
+basis.  The following remain open:
+
+\begin{enumerate}
+\item a useful bound uniform in $N$ at one fixed cutoff;
+\item positivity of every infinite-cutoff finite Hermite section;
+\item closability and continuity of the complete arithmetic form;
+\item identification of its null space with native PhaseNav closure;
+\item the full bridge \texttt{SOH-C005}.
+\end{enumerate}
+
+Neither the analytic schedule nor its numerical audit proves the Riemann
+Hypothesis.
