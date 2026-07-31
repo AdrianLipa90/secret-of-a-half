@@ -1,0 +1,36 @@
+{
+  "experiment": "DHSE-001",
+  "stage": "C-analytic-mechanism-diagnosis",
+  "operator_family": "mobius_skew",
+  "composition": {
+    "word": "LR",
+    "meaning": "apply L, then R",
+    "matrix": [
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        7
+      ]
+    ],
+    "map": "(5*z+6)/(5*z+7)"
+  },
+  "theorem": {
+    "domain": "z>0",
+    "image_interval": "6/7 < R(L(z)) < 1",
+    "target_residual": "d_1(R(L(z)))=1/(10*z+13)<1/13<1/10",
+    "therefore": "every LR word forces a Stage B target hit"
+  },
+  "audit": {
+    "observed_states": 20544,
+    "target_hits": 5147,
+    "lr_words": 5147,
+    "hit_iff_lr_matches": 20544,
+    "counterexamples": []
+  },
+  "technical_status": "PASS",
+  "scientific_status": "OPERATOR_WORD_ARTIFACT_IDENTIFIED",
+  "interpretation": "The Stage B mobius_skew signal is completely explained by the LR two-step composition and the preregistered radius. It is not independent evidence for a universal halfway attractor."
+}
