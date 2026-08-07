@@ -54,6 +54,7 @@ def canonical_fraction_pair(value: Any) -> Any:
 
 
 def _canonical_fraction_sequence(value: Any) -> Any:
+    """Reduce each exact-rational pair in a schema-declared sequence field."""
     if not isinstance(value, list):
         return value
     return [canonical_fraction_pair(item) for item in value]
@@ -70,6 +71,7 @@ def canonicalize_stage_i_receipt(receipt: dict[str, Any]) -> dict[str, Any]:
     """
 
     def visit(value: Any) -> Any:
+        """Walk nested receipt values while normalizing only declared fields."""
         if isinstance(value, dict):
             normalized: dict[str, Any] = {}
             for key, item in value.items():
