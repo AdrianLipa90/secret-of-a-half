@@ -2,7 +2,9 @@ name: Build and test
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - agent/sigma-identity-holonomy-v0.7
   pull_request:
   workflow_dispatch:
 
@@ -13,8 +15,16 @@ jobs:
   validation:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out exact event revision
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Verify checkout provenance
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha || github.sha }}"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -27,11 +37,32 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e . pytest numpy matplotlib mpmath
 
-      - name: Run regression tests
+      - name: Run focused identity-holonomy solver tests
+        run: python -m pytest tests/test_identity_holonomy_solver.py -q
+
+      - name: Run full regression suite
         run: python -m pytest -q
 
-      - name: Generate deterministic assets
+      - name: Generate deterministic baseline assets
         run: python scripts/generate_monograph_assets.py
+
+      - name: Generate v0.7 identity-holonomy assets
+        run: python scripts/generate_identity_holonomy_assets.py
+
+      - name: Run identity-holonomy solver receipt
+        run: |
+          python scripts/run_identity_holonomy_solver.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('data/processed/identity_holonomy_solver_receipt.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          assert data['half_axis_consensus'] is True
+          assert data['riemann_hypothesis_derived'] is False
+          assert data['verdict']['canonical_zero_state'] == 'OPEN'
+          assert set(data['cross_factorization_24'].values()) == {24}
+          print('IDENTITY-HOLONOMY RECEIPT PASS')
+          PY
 
       - name: Run native PhaseNav receipt
         run: python scripts/run_phasenav_theta_bridge.py
@@ -65,19 +96,26 @@ jobs:
             texlive-bibtex-extra \
             lmodern
 
-      - name: Compile monograph
+      - name: Compile and preflight monograph
         working-directory: monograph
         run: |
+          set -euo pipefail
           pdflatex -interaction=nonstopmode -halt-on-error main.tex
           bibtex main
           pdflatex -interaction=nonstopmode -halt-on-error main.tex
           pdflatex -interaction=nonstopmode -halt-on-error main.tex
-          test "$(pdfinfo main.pdf | awk '/^Pages:/ {print $2}')" = "108"
-          ! grep -E "Overfull|undefined references|Citation.*undefined" main.log
+          PAGES="$(pdfinfo main.pdf | awk '/^Pages:/ {print $2}')"
+          test "$PAGES" -ge 125
+          ! grep -E "Overfull|undefined references|Citation.*undefined|multiply defined" main.log
+          ! pdffonts main.pdf | grep -q "Type 3"
+          echo "V0.7 MONOGRAPH PREFLIGHT PASS: ${PAGES} pages"
 
-      - name: Upload compiled monograph
+      - name: Upload compiled monograph and solver receipt
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.6
-          path: monograph/main.pdf
+          name: secret-of-a-half-monograph-v0.7
+          path: |
+            monograph/main.pdf
+            monograph/main.log
+            data/processed/identity_holonomy_solver_receipt.json
           if-no-files-found: error
