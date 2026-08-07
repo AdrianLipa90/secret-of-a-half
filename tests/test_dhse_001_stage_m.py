@@ -4,9 +4,26 @@ from pathlib import Path
 
 from secret_of_a_half.dhse_001_stage_m import (
     exact_sweep,
+    int64_safety_certificate,
     reciprocal_endpoint_symmetry,
     run_stage_m,
 )
+
+
+def test_int64_certificate_covers_declared_stage_m_lengths() -> None:
+    certificates = [int64_safety_certificate(length) for length in (1, 2, 3, 4)]
+    assert all(row["safe"] for row in certificates)
+
+    length_four = certificates[-1]
+    assert length_four["matrix_entry_bound"] == 20736
+    assert length_four["comparison_product_bound"] == 52027785216
+    assert length_four["comparison_product_bound"] < length_four["int64_max"]
+
+
+def test_int64_certificate_rejects_unproved_large_word_length() -> None:
+    certificate = int64_safety_certificate(8)
+    assert certificate["safe"] is False
+    assert certificate["comparison_product_bound"] > certificate["int64_max"]
 
 
 def test_exact_sweep_distinguishes_symmetry_from_central_maximum() -> None:
