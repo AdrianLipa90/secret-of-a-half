@@ -68,16 +68,20 @@ jobs:
       - name: Compile monograph
         working-directory: monograph
         run: |
+          set -euo pipefail
           pdflatex -interaction=nonstopmode -halt-on-error main.tex
           bibtex main
           pdflatex -interaction=nonstopmode -halt-on-error main.tex
           pdflatex -interaction=nonstopmode -halt-on-error main.tex
-          test "$(pdfinfo main.pdf | awk '/^Pages:/ {print $2}')" = "108"
+          test -s main.pdf
+          PAGES="$(pdfinfo main.pdf | awk '/^Pages:/ {print $2}')"
+          echo "Compiled monograph pages: $PAGES"
+          test "$PAGES" -ge 108
           ! grep -E "Overfull|undefined references|Citation.*undefined" main.log
 
       - name: Upload compiled monograph
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.6
+          name: secret-of-a-half-monograph-v0.6.1-review
           path: monograph/main.pdf
           if-no-files-found: error
