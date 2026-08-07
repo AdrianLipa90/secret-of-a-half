@@ -1,4 +1,4 @@
-# Claim Ledger — Version 0.6
+# Claim Ledger — Version 0.6.1 review
 
 | ID | Statement | Status | Evidence / location | Blocking gap |
 |---|---|---|---|---|
@@ -39,7 +39,9 @@
 | SOH-N005 | For \(w=0.8\), \(Q=100000\), and \(N\le6\), the largest certified prime-tail operator-norm bound is \(7.717202889\times10^{-13}\). | Numerical certificate | Prime-tail JSON receipt and tests | Fixed finite sections only |
 | SOH-L021 | For every \(c>0\), the basis-adaptive schedule \(Q_N=e^{cN}\) forces the stated coarse Hermite finite-section prime-tail envelope to zero. | Exact asymptotic theorem | Chapter 20, Theorem 20.3 | Does not imply fixed-cutoff uniformity or positivity |
 | SOH-N006 | For \(w=0.8\), \(Q_0=100000\), \(\log Q_N=\max(\log Q_0,2N)\), and \(N\le20\), all sharp certificates pass \(10^{-12}\), with maximum \(3.280365246530569\times10^{-14}\) at \(N=5\). | Numerical certificate | Adaptive-cutoff JSON receipt and tests | Finite audit through \(N=20\) |
+| SOH-L022 | For the complete primitive \(K=6\) positive integer Möbius universe at projective radius \(1/10\) and word lengths 1–4, the forcing-count function is exactly classified on all \(q>0\); \(q=1\) is the unique global maximizer at lengths 2 and 3, while lengths 1 and 4 have reciprocal off-centre maximizer sets. | Exact finite computer-assisted theorem | DHSE-001 Stage M continuous theorem; Chapter 18 | Finite \(K=6\), radius \(1/10\), lengths 1–4 only |
+| SOH-D001 | Reciprocal symmetry \(N_n(q)=N_n(1/q)\) alone does not force a global maximum at the self-dual point \(q=1\); Stage-M lengths 1 and 4 are exact counterexamples in the declared finite universe. | Exact finite counterexample | DHSE-001 Stage M continuous theorem; Chapter 18 | No all-operator or all-length generalization claimed |
 
 ## Promotion rule
 
-An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of the Riemann Hypothesis left unproved. Numerical agreement cannot promote a claim to exact status. IEEE NaN is not a numeric endpoint in SOH-H001. The reciprocal tail coordinate in SOH-L018 and the adaptive schedule in SOH-L021 are not maps of zeta zeros.
+An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of the Riemann Hypothesis left unproved. Numerical agreement cannot promote a claim to exact status. IEEE NaN is not a numeric endpoint in SOH-H001. The reciprocal tail coordinate in SOH-L018 and the adaptive schedule in SOH-L021 are not maps of zeta zeros. SOH-L022 and SOH-D001 are exact only on their explicitly declared finite Stage-M universe and do not close SOH-C004 or SOH-C005.
