@@ -17,13 +17,44 @@ FIG = ROOT / "monograph" / "figures"
 FIG.mkdir(parents=True, exist_ok=True)
 
 
+def route_residual_arrays(sigma: np.ndarray) -> dict[str, np.ndarray]:
+    """Vectorized form of the four scalar balance residuals used by the solver.
+
+    This is plotting/runtime support only.  The scalar solver remains the canonical
+    logical implementation; the vectorized expressions are regression-checked at
+    representative points before figures are emitted.
+    """
+    s = np.asarray(sigma, dtype=float)
+    if np.any((s <= 0.0) | (s >= 1.0)):
+        raise ValueError("sigma values must lie in (0,1)")
+    ln2 = np.log(2.0)
+    entropy = -(s * np.log(s) + (1.0 - s) * np.log(1.0 - s))
+    cancellation = np.abs(np.sqrt(s) - np.sqrt(1.0 - s)) ** 2
+    berry = np.abs(np.exp(-2j * np.pi * (1.0 - s)) + 1.0) ** 2
+    return {
+        "complement": (2.0 * s - 1.0) ** 2,
+        "entropy": ln2 - entropy,
+        "cancellation": cancellation,
+        "berry_minus_one": berry,
+    }
+
+
+def _validate_vectorization() -> None:
+    for value in (0.125, 0.333, 0.5, 0.777, 0.875):
+        scalar = route_residuals(value)
+        vector = route_residual_arrays(np.asarray([value]))
+        for key, expected in scalar.items():
+            observed = float(vector[key][0])
+            if not np.isclose(observed, expected, rtol=1e-12, atol=1e-14):
+                raise RuntimeError(
+                    f"vectorized residual mismatch for {key} at sigma={value}: "
+                    f"{observed} != {expected}"
+                )
+
+
 def half_axis_routes() -> None:
     sigma = np.linspace(0.02, 0.98, 801)
-    series = {key: [] for key in route_residuals(0.5)}
-    for value in sigma:
-        residuals = route_residuals(float(value))
-        for key, residual in residuals.items():
-            series[key].append(residual)
+    series = route_residual_arrays(sigma)
     fig, ax = plt.subplots(figsize=(8.0, 4.8))
     for key, values in series.items():
         ax.plot(sigma, values, label=key.replace("_", " "))
@@ -96,6 +127,7 @@ def relation_graph() -> None:
 
 
 def main() -> None:
+    _validate_vectorization()
     half_axis_routes()
     cycle_hierarchy()
     relation_graph()
