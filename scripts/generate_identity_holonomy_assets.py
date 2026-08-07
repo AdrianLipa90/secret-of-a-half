@@ -9,6 +9,9 @@ import numpy as np
 
 from secret_of_a_half.identity_holonomy_solver import route_residuals
 
+plt.rcParams["pdf.fonttype"] = 42
+plt.rcParams["ps.fonttype"] = 42
+
 ROOT = Path(__file__).resolve().parents[1]
 FIG = ROOT / "monograph" / "figures"
 FIG.mkdir(parents=True, exist_ok=True)
