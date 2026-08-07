@@ -3,7 +3,7 @@
 
 \small
 \begin{longtable}{@{}p{0.10\textwidth}p{0.47\textwidth}p{0.14\textwidth}p{0.15\textwidth}@{}}
-\caption{Principal claims and their status in Version 0.6.}\label{tab:claim-ledger}\\
+\caption{Principal claims and their status in Version 0.6 review line.}\label{tab:claim-ledger}\\
 \toprule
 ID & Statement & Status & Location\\
 \midrule
@@ -29,6 +29,8 @@ SOH-L010 & The continuous paired theta detector equals $\xi(s)$. & Exact classic
 SOH-C004 & Every non-trivial zero closes in the canonical self-dual PhaseNav shell. & Open bridge & Postulate~\ref{post:pn-open-bridge}\\
 SOH-T002 & Under SOH-C004, all non-trivial zeros lie on $\Re s=1/2$. & Conditional & \Cref{thm:pn-conditional-rh}\\
 SOH-N001 & The eighteen-pair detector is a low-height numerical approximation. & Numerical & \Cref{chap:phasenav-native}\\
+SOH-L022 & In the primitive $K=6$ positive M\"obius universe at $r=1/10$, the complete Stage M forcing landscape is exactly classified for word lengths $1$--$4$; $q=1$ is uniquely maximal only at lengths 2 and 3. & Exact finite computer-assisted & \Cref{sec:half-self-dual-not-maximum}\\
+SOH-D001 & Reciprocal symmetry $N(q)=N(1/q)$ alone does not force a global maximum at $q=1$; lengths 1 and 4 give exact counterexamples in the declared finite universe. & Exact finite counterexample & \Cref{sec:half-self-dual-not-maximum}\\
 \bottomrule
 \end{longtable}
 \normalsize
@@ -37,7 +39,7 @@ SOH-N001 & The eighteen-pair detector is a low-height numerical approximation. &
 
 An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of RH left unproved. Numerical agreement cannot promote a claim to exact status.
 
-\subsection*{PhaseNav--Weil Hermite ladder, reciprocal duality, and prime-tail control}
+\subsection*{PhaseNav--Weil Hermite ladder, reciprocal duality, prime-tail control, and DHSE finite classification}
 \begin{description}
 \item[SOH-L013, exact.] Finite spans of the translated-scaled Hermite channels are dense in Schwartz space.
 \item[SOH-L014, exact.] The Hermite kernel has the declared closed Fourier transform and $\widehat H_{mn}(0)=\delta_{mn}$.
@@ -53,6 +55,8 @@ An open claim may be promoted only when its complete proof or reproducible const
 \item[SOH-N005, numerical.] For $N\le6$, $Q=100000$, the maximum certified tail norm is $7.7172\times10^{-13}$.
 \item[SOH-L021, exact asymptotic.] Every exponential adaptive schedule $Q_N=e^{cN}$ with $c>0$ forces the declared coarse tail envelope to zero.
 \item[SOH-N006, numerical.] For $w=0.8$, $Q_0=100000$, $c=2$, and $N\le20$, the maximum sharp certificate is $3.280365246530569\times10^{-14}$ at $N=5$.
+\item[SOH-L022, exact finite computer-assisted.] Stage M classifies the forcing-count step function on all $q>0$ for the declared primitive $K=6$, $r=1/10$, lengths $1$--$4$ universe.
+\item[SOH-D001, exact finite counterexample.] Reciprocal symmetry by itself is insufficient to infer a self-dual maximum; the length-1 and length-4 sectors split away from $q=1$.
 \end{description}
 
-The adaptive theorem controls a diagonal sequence of basis sizes and cutoffs. It does not prove fixed-cutoff uniformity, positivity of all infinite-cutoff sections, or the null-space bridge.
+The adaptive theorem controls a diagonal sequence of basis sizes and cutoffs. It does not prove fixed-cutoff uniformity, positivity of all infinite-cutoff sections, or the null-space bridge.  Likewise, DHSE Stage M is exact only on its explicitly finite operator universe and declared word lengths; it is not an all-length or all-operator theorem and does not close the zeta bridge.
