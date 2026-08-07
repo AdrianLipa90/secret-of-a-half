@@ -20,7 +20,7 @@ FIG.mkdir(parents=True, exist_ok=True)
 def route_residual_arrays(sigma: np.ndarray) -> dict[str, np.ndarray]:
     """Vectorized form of the four scalar balance residuals used by the solver.
 
-    This is plotting/runtime support only.  The scalar solver remains the canonical
+    This is plotting/runtime support only. The scalar solver remains the canonical
     logical implementation; the vectorized expressions are regression-checked at
     representative points before figures are emitted.
     """
@@ -85,44 +85,67 @@ def cycle_hierarchy() -> None:
 
 
 def relation_graph() -> None:
+    """Render a compact logical map; OPEN edges remain visibly separated."""
     nodes = {
-        "Sigma=1/2": (0.0, 0.0),
-        "entropy ln2": (-2.2, 1.2),
-        "Bloch equator": (0.0, 1.5),
-        "Berry -1": (2.2, 1.2),
-        "cancellation": (2.4, -0.8),
-        "centered zeta axis": (-2.4, -0.8),
-        "q in R/Z": (-0.8, -2.0),
-        "spinor double cover": (1.5, -2.0),
-        "canonical zero state": (0.0, -3.2),
-        "RH (open)": (0.0, -4.4),
+        "entropy ln2": (-2.8, 1.25),
+        "centered zeta axis": (-2.8, 0.0),
+        "q in R/Z": (-2.8, -1.35),
+        "Sigma=1/2": (0.0, 0.25),
+        "Bloch equator": (0.0, 1.55),
+        "canonical zero state": (0.0, -1.55),
+        "Berry -1": (2.8, 1.55),
+        "cancellation": (2.8, 0.35),
+        "spinor double cover": (2.8, -0.95),
+        "RH (open)": (2.8, -2.0),
     }
     edges = [
         ("Sigma=1/2", "entropy ln2", "exact"),
         ("Sigma=1/2", "Bloch equator", "standard"),
-        ("Bloch equator", "Berry -1", "holonomy"),
+        ("Bloch equator", "Berry -1", "holonomy: 1/2 turn"),
         ("Sigma=1/2", "cancellation", "exact + half-turn"),
         ("centered zeta axis", "Sigma=1/2", "fixed-axis crosswalk"),
         ("q in R/Z", "spinor double cover", "double cover"),
         ("canonical zero state", "Sigma=1/2", "OPEN bridge"),
         ("canonical zero state", "RH (open)", "OPEN"),
     ]
-    fig, ax = plt.subplots(figsize=(8.0, 7.0))
+
+    fig, ax = plt.subplots(figsize=(8.4, 5.8))
+    xs = [xy[0] for xy in nodes.values()]
+    ys = [xy[1] for xy in nodes.values()]
+    ax.scatter(xs, ys, s=105, zorder=3)
+
     for source, target, label in edges:
         x1, y1 = nodes[source]
         x2, y2 = nodes[target]
-        ax.annotate("", xy=(x2, y2), xytext=(x1, y1), arrowprops={"arrowstyle": "->"})
-        ax.text((x1+x2)/2, (y1+y2)/2, label, fontsize=7, ha="center", va="center")
+        ax.annotate(
+            "",
+            xy=(x2, y2),
+            xytext=(x1, y1),
+            arrowprops={"arrowstyle": "->", "shrinkA": 8, "shrinkB": 8, "linewidth": 0.9},
+            zorder=1,
+        )
+        ax.text(
+            (x1 + x2) / 2,
+            (y1 + y2) / 2 + 0.10,
+            label,
+            fontsize=7.3,
+            ha="center",
+            va="center",
+            bbox={"boxstyle": "round,pad=0.12", "facecolor": "white", "edgecolor": "none", "alpha": 0.92},
+            zorder=4,
+        )
+
     for label, (x, y) in nodes.items():
-        ax.scatter([x], [y], s=90)
-        ax.text(x, y + 0.16, label, ha="center", va="bottom", fontsize=8)
-    ax.set_title("Typed relation graph: pair does not imply holonomy")
-    ax.set_xlim(-3.2, 3.2)
-    ax.set_ylim(-4.8, 2.0)
-    ax.set_aspect("equal", adjustable="box")
+        dy = 0.18 if y >= -1.5 else -0.22
+        va = "bottom" if dy > 0 else "top"
+        ax.text(x, y + dy, label, ha="center", va=va, fontsize=8.3, zorder=5)
+
+    ax.set_title("Typed relation graph: semantic pairing does not imply holonomy")
+    ax.set_xlim(-3.6, 3.6)
+    ax.set_ylim(-2.55, 2.1)
     ax.axis("off")
-    fig.tight_layout()
-    fig.savefig(FIG / "typed_identity_relation_graph.pdf")
+    fig.tight_layout(pad=0.6)
+    fig.savefig(FIG / "typed_identity_relation_graph.pdf", bbox_inches="tight")
     plt.close(fig)
 
 
