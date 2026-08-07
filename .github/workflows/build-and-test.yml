@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: build-and-test-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validation:
     runs-on: ubuntu-latest
@@ -27,8 +31,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e . pytest numpy matplotlib mpmath
 
-      - name: Run regression tests
-        run: python -m pytest -q
+      - name: Run general regression tests
+        # Stage M is intentionally excluded here because its exact exhaustive
+        # certificate has a dedicated DHSE workflow/job. Running it twice on
+        # every PR head wastes CI resources without adding independent coverage.
+        run: python -m pytest -q --ignore=tests/test_dhse_001_stage_m.py
 
       - name: Generate deterministic assets
         run: python scripts/generate_monograph_assets.py
