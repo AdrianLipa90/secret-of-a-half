@@ -1,50 +1,28 @@
 # Secret of a Half
 
-**Secret of a Half** is an independent research repository devoted to a precise mathematical investigation of why the value
+**Secret of a Half** is an independent mathematical research repository devoted to the distinguished axis
 
 \[
 \operatorname{Re}(s)=\frac12
 \]
 
-appears as the distinguished symmetry axis in the analytic structure surrounding the Riemann zeta function.
+in the analytic structure surrounding the Riemann zeta function.
 
-The starting ansatz links four structures:
+**Current research branch:** `agent/sigma-identity-holonomy-v0.7`  
+**Monograph:** *The Secret of a Half*, v0.7 — 7 August 2026  
+**Research status:** exact and conditional mathematics plus explicitly separated numerical/model layers; **no proof of the Riemann Hypothesis is claimed**.
 
-1. binary complementarity and the Shannon value \(\ln 2\);
-2. exact destructive interference of a normalized two-channel state;
-3. spinorial phase closure and the sign acquired under a \(2\pi\) rotation;
-4. the zeta involution \(s\mapsto 1-\overline{s}\), whose fixed set is \(\operatorname{Re}(s)=1/2\).
+## Current mathematical core
 
-## Research status
-
-This repository begins with a **structural ansatz**, not a claimed proof of the Riemann Hypothesis.
-
-The initial programme separates:
-
-- exact lemmas that can already be proved;
-- conditional theorems whose hypotheses are explicit;
-- numerical or symbolic experiments;
-- the unresolved bridge required to connect every non-trivial zeta zero to the proposed information-spinor cancellation mechanism.
-
-The central open task is to construct a canonical map or operator for which vanishing is equivalent to a non-trivial zero of the completed zeta function while preserving the required symmetry, positivity and spectral structure.
-
-## Initial mathematical core
-
-For a normalized complementary state
+For the normalized complementary amplitude
 
 \[
-|\psi\rangle=\sqrt{\sigma}\,|0\rangle+e^{i\phi}\sqrt{1-\sigma}\,|1\rangle,
+\mathcal A(\sigma,\phi)
+=\sqrt{\sigma}+e^{i\phi}\sqrt{1-\sigma},
 \qquad 0<\sigma<1,
 \]
 
-the squared amplitude of exact channel cancellation is
-
-\[
-\left|\sqrt{\sigma}+e^{i\phi}\sqrt{1-\sigma}\right|^2
-=1+2\sqrt{\sigma(1-\sigma)}\cos\phi.
-\]
-
-It vanishes exactly when
+exact equal-gain cancellation occurs iff
 
 \[
 \sigma=\frac12,
@@ -52,135 +30,261 @@ It vanishes exactly when
 \phi\equiv\pi\pmod{2\pi}.
 \]
 
-Independently, binary Shannon entropy
+Independently,
 
 \[
-H(\sigma)=-\sigma\ln\sigma-(1-\sigma)\ln(1-\sigma)
+H_2(\sigma)
+=-\sigma\ln\sigma-(1-\sigma)\ln(1-\sigma)
 \]
 
-has its unique maximum at \(\sigma=1/2\), where \(H=\ln2\).
+has its unique maximum at `sigma=1/2`, with value `ln(2)`, while
 
-These facts identify the half-axis as the unique point of balanced binary distinction and exact complementary cancellation. They do not by themselves prove that every non-trivial zero of \(\zeta(s)\) lies there.
+\[
+\mathcal J(s)=1-\overline{s}
+\]
 
-## Repository layout
+has fixed set `Re(s)=1/2`. In the declared binary qubit representation the same point is the Bloch equator and an equatorial loop carries Berry holonomy `-1`.
+
+These are exact/standard results in their stated domains. They do **not** by themselves imply that every non-trivial zeta zero belongs to the required binary/native state representation.
+
+## v0.7: Sigma as an identity axis
+
+Version 0.7 centers the binary coordinate at
+
+\[
+\Sigma_\star=\frac12,
+\qquad
+x=\sigma-\frac12.
+\]
+
+Complement becomes the geometric orientation reversal
+
+\[
+x\mapsto-x.
+\]
+
+This gives a concrete computational meaning to signed centered coordinates:
+
+- negative = orientation on one side of the selected axis;
+- zero = vanishing displacement / fixed axis;
+- positive = the opposite orientation.
+
+The broader statement that a system's `Sigma` is an evolving invariant defining its persistent self is a TIR/PhaseNav modelling principle. The binary fixed-axis result above is exact; the universal physical interpretation is not promoted to theorem status.
+
+## Recurrence before radians
+
+A projective cycle is represented first by
+
+\[
+q\in\mathbb R/\mathbb Z,
+\qquad
+f_q=\frac{\Delta N}{\Delta t},
+\]
+
+where frequency is winding count per elapsed parameter. Only afterwards is an angular representation chosen:
+
+\[
+\phi=Cq.
+\]
+
+For radians, `C=2*pi`. Spin-1/2 supplies the projective/spinor double-cover relation before the conventional `2*pi/4*pi` notation is introduced.
+
+The TIR/Metatime information-cycle assignment remains explicitly model-level:
+
+\[
+\frac{dI}{dq}=\frac{\ln2}{12}.
+\]
+
+Given that assignment,
+
+\[
+\frac{dI}{d\phi}=\frac{\ln2}{12C},
+\]
+
+and at `C=2*pi`
+
+\[
+\kappa=\frac{\ln2}{24\pi}.
+\]
+
+The arithmetic identity
+
+\[
+24=8\cdot3=12\cdot2=6\cdot4
+\]
+
+is exact. Assigning those factors to mixing sectors/flavours, projective cycles, or spinor cycles is model semantics and is not counted as three independent physical derivations.
+
+## Typed identity/holonomy solver
+
+The v0.7 solver is implemented in:
 
 ```text
-secret-of-a-half/
-├── README.md
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── pyproject.toml
-├── construction/
-│   └── phasenav/
-├── claims/
-│   ├── CLAIM_LEDGER.md
-│   └── claim_ledger.json
-├── data/
-│   ├── raw/
-│   └── processed/
-├── docs/
-│   ├── ansatz/
-│   ├── derivations/
-│   └── open-problems/
-├── figures/
-├── logs/
-├── monograph/
-│   ├── chapters/
-│   └── figures/
-├── notebooks/
-├── references/
-├── scripts/
-├── src/
-│   └── secret_of_a_half/
-└── tests/
+src/secret_of_a_half/identity_holonomy_solver.py
+scripts/run_identity_holonomy_solver.py
 ```
 
-## Working principles
+It uses four rule statuses:
 
-- No claim is promoted from conjectural to proved without a written derivation or reproducible verification.
-- Exact results, conditional results, numerical evidence and interpretation remain visibly separated.
-- Change history is append-only.
-- Existing projects are not treated as dependencies unless an explicit future decision introduces them.
-- This repository is autonomous: its definitions, assumptions and proofs must stand on their own.
+```text
+EXACT
+STANDARD
+MODEL
+OPEN
+```
 
-## Planned first milestones
+and typed relations such as fixed point, dual, implication, representation, and holonomic edges. Rules may have multiple premises.
 
-1. Formalize the binary-complementarity axioms.
-2. Prove the cancellation, entropy and involution lemmas.
-3. State the conditional critical-line theorem with all hypotheses exposed.
-4. Construct and test candidate zeta-state maps.
-5. Investigate Hilbert–Pólya, de Branges, Weil and positivity routes without conflating analogy with proof.
-6. Build the monograph from the claim ledger and verified derivations.
+Default closure admits only `EXACT` and `STANDARD`. Explicit model closure additionally admits `MODEL`. `OPEN` is never auto-promoted.
 
-## Monograph Version 0.2
+Four independent numerical/symbolic routes are cross-checked:
 
-The complete monograph is maintained as modular LaTeX in `monograph/`. GitHub Actions rebuilds the validated 92-page PDF and publishes it as the `secret-of-a-half-monograph-v0.2` workflow artifact. It contains 16 chapters, five appendices, deterministic figures, numerical regression tables, the native PhaseNav construction, and a full claim ledger.
+```text
+complement fixed point        -> sigma = 1/2
+binary-entropy stationarity   -> sigma = 1/2
+equal-gain cancellation       -> sigma = 1/2
+Berry -1 holonomy residual    -> sigma = 1/2
+```
 
-Its strongest result is conditional: once a canonical, regular, equal-gain zeta-state map satisfying the stated zero-equivalence and covariance requirements is constructed, the critical-line conclusion follows. That canonical bridge remains open.
+The executable receipt is written to:
 
-## Native PhaseNav Construction v0.1
+```text
+data/processed/identity_holonomy_solver_receipt.json
+```
 
-The first executable bridge construction is now defined natively in
-`construction/phasenav/secret_of_half_theta_bridge.pnv`.
+The receipt must retain:
 
-It maps the symmetric theta-Mellin representation of the completed zeta function
-to 18 complementary rotor pairs, giving a 36-dimensional PhaseNav state. The
-construction proves exactly that its normalized self-dual closure defect is
+```text
+half_axis_consensus = true
+riemann_hypothesis_derived = false
+canonical_zero_state = OPEN
+```
+
+The missing bridge is the canonical zero-state/native-closure implication `SOH-C004`.
+
+## Geometry-first CIEL/PhaseNav dependencies
+
+The companion `noema-phasenav-core` branch `canon/sigma-identity-cycle-v1` contains the low-level package:
+
+```text
+ciel_geometry.phasenav.dependencies
+```
+
+with dependency direction:
+
+```text
+identity axes / centered coordinates
+        -> normalized cycles and winding
+        -> phase crystal (R/Z)^N
+        -> typed relations + optional normalized holonomy
+        -> tangent/log-map vectorization
+        -> higher PhaseNav operators
+```
+
+On the phase crystal, vector signs arise from shortest oriented tangent displacement and zero from vanishing displacement. Opaque stable IDs may still provide deterministic computational embeddings, but generated proximity is not semantic evidence by itself.
+
+Holonomy is attached only to eligible paths with a declared connection/transport law. A semantic pair does not automatically receive a phase.
+
+The native v0.7 declaration is:
+
+```text
+construction/phasenav/secret_of_half_identity_holonomy_v0_7.pnv
+```
+
+## Native PhaseNav theta bridge
+
+The original native bridge remains:
+
+```text
+construction/phasenav/secret_of_half_theta_bridge.pnv
+```
+
+It maps the symmetric theta-Mellin representation to complementary PhaseNav rotor pairs and proves for the declared native state that the normalized self-dual closure defect is
 
 \[
 \mathcal C(s)=\left(\operatorname{Re}(s)-\frac12\right)^2.
 \]
 
-The finite detector approximates \(\xi(s)\), while the continuous detector is the
-classical theta-Mellin identity. The remaining open statement is explicit:
-every non-trivial zero must be shown to close in the canonical self-dual
-PhaseNav shell. This is `SOH-C004`; it is not marked as proved.
+The continuous detector is the classical theta-Mellin representation of `xi(s)`. The open statement is still that every non-trivial zero must be forced into the canonical self-dual PhaseNav shell. That is `SOH-C004` and remains **OPEN**.
 
-The Python implementation parses and executes the `.pnv` source. It is an
-auditor of the native program, not the source of the construction.
+## PhaseNav–Weil programme
 
-## Native PhaseNav–Weil Positivity Probe v0.1
+Existing PhaseNav–Weil, Hermite, reciprocal-duality, prime-tail and adaptive-cutoff constructions remain intact. Their finite-section receipts retain their original claim status. Version 0.7 does not reinterpret finite PSD checks as a proof of dense Weil positivity.
 
-The second native PhaseNav construction is defined in
-`construction/phasenav/secret_of_half_weil_operator.pnv`.
+Likewise, **DHSE-001 remains separate**. v0.7 does not modify its sources, receipts, thresholds, branch policy, or promotion rules.
 
-It builds a two-channel, involution-coupled finite Hermitian witness in centred
-coordinates \(z=s-1/2\). For an involution-fixed finite zero fixture the matrix
-reduces exactly to a positive-semidefinite Gram matrix. Under the declared
-Gaussian profile, replacing the first on-axis conjugate pair by a synthetic
-off-axis quartet produces a stable negative eigenvalue.
+## TIR cross-reference boundary
 
-The deterministic receipt is:
+The parent TIR programme is cross-referenced for:
 
-```text
-on-axis control lambda_min:        +1.304512053935e-13
-synthetic off-axis lambda_min:     -1.989005564501e-03
-```
+- `kappa = ln(2)/(24*pi)` and its claim boundary;
+- Poincare/phase geometry;
+- flavour/mixing architecture;
+- broader holonomic relation semantics;
+- the model-level split `information arithmetic -> energy/matter` and `phase geometry -> time/space`.
 
-This establishes falsification sensitivity of the finite probe. It does not
-establish positivity of the complete arithmetic Weil form and does not prove
-the Riemann Hypothesis. The new open promotion target is `SOH-C005`.
+The derivation of physical `t` from `tau` is explicitly deferred. The broader TIR object `W_[ij]` is referenced only; its dynamics are not imported into the Secret-of-a-Half proof chain.
 
-## Native PhaseNav–Weil Arithmetic Operator v0.2
+## Monograph v0.7
 
-The next construction is defined in
-`construction/phasenav/secret_of_half_weil_arithmetic.pnv`.
-
-It evaluates the localized two-channel Weil matrix from prime powers, the
-archimedean gamma factor, conductor and pole terms. The arithmetic sum does not
-consume a zero list. Its deterministic result matches the earlier low-height
-spectral receipt within the declared numerical tolerance:
+The monograph source is modular LaTeX under `monograph/`. The v0.7 branch adds three chapters:
 
 ```text
-arithmetic lambda_min:        +1.30e-13
-arithmetic lambda_max:        +2.00e+00
-prime-cutoff stability:       PASS
-spectral normalization check: PASS
+21_identity_axis_and_normalized_recurrence.tex
+22_holonomic_relation_graph_and_geometry_dependencies.tex
+23_typed_solver_and_tir_crosswalk.tex
 ```
 
-This closes the first executable prime-to-phase-to-spectrum audit loop. It is
-one positive localized sample, not a proof of dense Weil positivity; `SOH-C005`
-remains open.
+and three deterministic generated figures. The local verified build is over 100 pages; CI enforces a floor of 125 pages together with no unresolved references/citations, no overfull boxes, and no Type 3 fonts in the compiled PDF.
+
+## Reproduce v0.7
+
+```bash
+python -m pip install -e . pytest numpy matplotlib mpmath
+python -m pytest tests/test_identity_holonomy_solver.py -q
+python scripts/run_identity_holonomy_solver.py
+python scripts/generate_monograph_assets.py
+python scripts/generate_identity_holonomy_assets.py
+python -m pytest -q
+
+cd monograph
+pdflatex -interaction=nonstopmode -halt-on-error main.tex
+bibtex main
+pdflatex -interaction=nonstopmode -halt-on-error main.tex
+pdflatex -interaction=nonstopmode -halt-on-error main.tex
+```
+
+## Claim discipline
+
+The authoritative claim ledger is `claims/CLAIM_LEDGER.md`. Current v0.7 additions include:
+
+- `SOH-L022`: normalized recurrence / winding frequency;
+- `SOH-L023`: four-route half-axis cross-check;
+- `SOH-L024`: exact integer cross-factorization of 24;
+- `SOH-C006`: twelve-cycle information assignment — MODEL;
+- `SOH-T005`: conditional `kappa` reconstruction;
+- `SOH-L025`: typed solver firewall;
+- `SOH-H002`: geometry-first sign/zero implementation model;
+- `SOH-L026`: normalized-turn holonomy composition.
+
+No claim may be promoted from OPEN/MODEL to exact without an explicit proof or reproducible construction whose dependencies are themselves established.
+
+## Repository layout
+
+```text
+secret-of-a-half/
+├── claims/
+├── construction/phasenav/
+├── data/processed/
+├── docs/
+├── monograph/
+│   ├── chapters/
+│   └── figures/
+├── references/
+├── scripts/
+├── src/secret_of_a_half/
+└── tests/
+```
 
 ## Author
 
