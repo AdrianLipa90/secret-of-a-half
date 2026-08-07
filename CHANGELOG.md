@@ -76,3 +76,19 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Added native PhaseNav source, executor, deterministic receipt, eight tests, documentation and monograph Chapter 20.
 - Added `SOH-L021` and `SOH-N006`.
 - Fixed-cutoff uniformity, global positivity, form closure and the null-space implication remain open.
+
+## 2026-08-07 — Identity axis, normalized holonomy, and typed solver v0.7
+
+- Formalized `sigma=1/2` as the binary identity axis and centered complement as orientation reversal `x -> -x`.
+- Defined projective recurrence by `q in R/Z` and winding rate before choosing a radian representation.
+- Separated projective and spinor return through the standard double cover.
+- Added the exact arithmetic cross-factorization `24=8*3=12*2=6*4` while keeping the physical factor assignments model-level.
+- Added the TIR/Metatime conditional reconstruction `dI/dphi=(ln2/12)/C`, with `kappa=ln2/(24*pi)` at `C=2*pi`; the twelve-cycle information assignment remains a model postulate.
+- Added a typed relation graph in which semantic pairing and holonomy eligibility are distinct concepts.
+- Added the executable identity/holonomy solver with `EXACT`, `STANDARD`, `MODEL`, and `OPEN` rule gates and a machine-readable RH firewall.
+- Added four independent half-axis route checks: complement, Shannon stationarity, equal-gain cancellation, and Berry `-1` residual.
+- Added the native PhaseNav v0.7 declaration and cross-references to the CIEL/PhaseNav geometry dependency package and parent TIR programme.
+- Added monograph Chapters 21--23, three deterministic figures, bibliography entries, claim-ledger records SOH-L022 through SOH-L026 plus SOH-C006/SOH-T005/SOH-H002, and v0.7 CI publication gates.
+- Local verification on the exact `main` snapshot plus v0.7 overlay: focused solver tests `9/9 PASS`; core/native-theta/zero-duality/solver regression `31/31 PASS`; monograph compilation `125 pages`, zero overfull boxes, zero undefined citations/references, and no Type 3 fonts in the final PDF.
+- Historical full-suite DHSE receipt hash mismatch observed on the local Python 3.13 environment predates v0.7 and was not modified or relabelled.
+- `SOH-C004` remains OPEN and the Riemann Hypothesis remains NOT DERIVED.
