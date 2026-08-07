@@ -1,99 +1,58 @@
 \chapter{Holonomic Relation Graphs and Geometry-First Dependencies}
 \label{chap:geometry-dependencies}
 
-\section{Pairs are relations, not exclusive partners}
-
+\section{Pairs are typed relations}
 The phrase ``every structure has a pair'' is useful only after the word
-\emph{pair} is typed.  The half-axis is paired with binary complement through a
-fixed-point relation, with Shannon entropy through an extremal relation, with
-the Bloch equator through a representation map, and with destructive
-interference through a cancellation theorem.  These are not four copies of one
-edge.  They carry different mathematical content.
-
-Accordingly, the v0.7 representation is a graph
-\begin{equation}
+\emph{pair} is typed. The half-axis is related to complement by a fixed-point
+relation, to Shannon entropy by an extremal relation, to the Bloch equator by a
+representation map, and to destructive interference by a cancellation theorem.
+These are distinct edges. The representation is therefore a graph
+\[
  \mathcal G=(V,E),
- \label{eq:semantic-relation-graph}
-\end{equation}
-not a partition of $V$ into disjoint two-element sets.  The requirement is
-\begin{equation}
- \deg(v)\ge1
- \qquad\text{for every declared semantic node }v,
- \label{eq:no-isolated-semantic-node}
-\end{equation}
-while nodes may have several typed neighbours.  This allows one concept to be
-related simultaneously to its dual, its representation, its consequence and
-its cross-reference.
+\]
+with $\deg(v)\ge1$ for every declared semantic node, not a partition into
+exclusive two-element sets.
 
-\section{Relation types}
-
-For the present programme it is sufficient to distinguish at least the
-following edge classes:
-\begin{description}
- \item[Fixed point.] A map $F$ selects a node by $F(v)=v$.
- \item[Dual.] Two nodes are exchanged by an involution or reciprocal map.
- \item[Implies.] A set of premises logically entails a conclusion.
- \item[Represents.] Two descriptions are coordinates of the same declared
- mathematical object inside a stated representation.
- \item[Holonomic.] A connection/path law assigns a loop or path phase.
- \item[Cross-reference.] A result is imported from another TIR/PhaseNav module
- without claiming that the two objects are identical.
-\end{description}
-
-The distinction immediately resolves a recurring ambiguity.  A semantic pair
-does not automatically carry a phase.  Holonomy is meaningful only when a
-connection and a closed or composable path have been specified.
+We distinguish fixed-point, dual, implication, representation, holonomic, and
+cross-reference edges. A semantic pair does not automatically carry a phase:
+holonomy is meaningful only when a connection and a closed or composable path
+have been specified.
 
 \section{Normalized holonomy}
-
-At the primitive level, PhaseNav need not store holonomy in radians.  Let an
-eligible edge $e$ carry
-\begin{equation}
+At the primitive level let an eligible edge carry
+\[
  h(e)\in\mathbb R/\mathbb Z
- \label{eq:normalized-holonomy-edge}
-\end{equation}
-measured in turns.  A half-turn has $h=1/2$ and a full closure has $h=0$ modulo
-one.  If a path
+\]
+in turns. A half-turn has $h=1/2$; a full closure has $h=0$ modulo one. For a
+composable path $P$,
 \begin{equation}
- P=(v_0,e_1,v_1,\ldots,e_n,v_n)
-\end{equation}
-consists of compatible holonomic edges, define
-\begin{equation}
- h(P)=\sum_{k=1}^{n}h(e_k)\pmod1.
+ h(P)=\sum_{e\in P}h(e)\pmod1,
+ \qquad
+ \mathcal U(P)=\exp(2\pi i\,h(P)).
  \label{eq:path-holonomy-sum}
 \end{equation}
-A complex $U(1)$ representative may then be introduced as
-\begin{equation}
- \mathcal U(P)=\exp(2\pi i\,h(P)).
- \label{eq:u1-turn-representation}
-\end{equation}
-The representation uses radians; the path composition law does not require
+The complex representative uses radians; path composition does not require
 radians as a primitive.
 
-The Berry phase is a standard $U(1)$ connection holonomy on a quantum-state
-bundle \citep{berry1984,simon1983}.  The Aharonov--Bohm phase is likewise a
-$U(1)$ holonomy of an electromagnetic connection \citep{aharonovbohm1959}.
-Their common bundle structure is stronger than a metaphor but weaker than an
-identification of physical potentials.  The present monograph uses Berry
-holonomy directly; Aharonov--Bohm appears only as a structural cross-reference
-to the wider TIR holonomy programme.
+Berry phase is a standard $U(1)$ connection holonomy on a quantum-state bundle
+\citep{berry1984,simon1983}. The Aharonov--Bohm phase is likewise a $U(1)$
+holonomy of an electromagnetic connection \citep{aharonovbohm1959}. Their
+common bundle structure does not identify their physical potentials.
 
-\section{The typed half-axis graph}
-
-A minimal graph relevant to this monograph contains the following edges:
+\section{Typed half-axis graph}
 \begin{longtable}{@{}p{0.20\textwidth}p{0.22\textwidth}p{0.19\textwidth}p{0.29\textwidth}@{}}
 \toprule
 Source & Target & Type/status & Meaning\\
 \midrule
 $\sigma=1/2$ & complement fixedness & fixed point / exact & $\sigma=1-\sigma$.\\
 $\sigma=1/2$ & $H_2=\ln2$ & implication / exact & unique entropy maximum.\\
-$\sigma=1/2$ & Bloch equator & representation / standard & $n_z=2\sigma-1=0$.\\
+$\sigma=1/2$ & Bloch equator & representation / standard & $n_z=0$.\\
 Bloch equator & Berry $-1$ & holonomic / standard & equatorial loop, $h=1/2$.\\
 $\sigma=1/2$ + half-turn & cancellation zero & implication / exact & equal-gain detector.\\
 $q\in\mathbb R/\mathbb Z$ & projective cycle & representation / exact & normalized recurrence.\\
-projective cycle & spinor return & holonomic / standard & double cover, sheet flip.\\
-centered zeta axis & reciprocal axis & dual / exact & ambient axis set invariance.\\
-$12$ projective cycles & $\ln2/12$ per turn & implication / model & information-cycle assignment.\\
+projective cycle & spinor return & holonomic / standard & double cover.\\
+centered zeta axis & reciprocal axis & dual / exact & ambient-axis set invariance.\\
+12 projective cycles & $\ln2/12$ per turn & implication / model & information-cycle assignment.\\
 $\ln2/12$ + $C=2\pi$ & $\kappa$ & implication / model & conditional angular density.\\
 canonical zero state & native closure & implication / open & SOH-C004.\\
 \bottomrule
@@ -102,191 +61,92 @@ canonical zero state & native closure & implication / open & SOH-C004.\\
 \begin{figure}[htbp]
  \centering
  \includegraphics[width=0.88\textwidth]{typed_identity_relation_graph.pdf}
- \caption{A compact view of the typed relation graph.  The dashed logical
- boundary is semantic rather than graphical: an OPEN edge remains OPEN even if
- it connects nodes already embedded in the same figure.}
+ \caption{Typed relation graph. The logical boundary is semantic rather than
+ graphical: an OPEN edge remains OPEN even when its endpoints are embedded in
+ the same graph.}
  \label{fig:typed-relation-graph}
 \end{figure}
 
-The graph makes one logical fact visually unavoidable: proximity and
-connectivity are not proof.  A path can exist through a semantic graph while an
-edge on that path remains a postulate.
-
 \section{Geometry-first dependency direction}
-
-The companion CIEL/PhaseNav branch introduces a low-level package
-\begin{center}
- \texttt{ciel\_geometry.phasenav.dependencies}
-\end{center}
-whose dependency direction is intentionally one-way:
+The companion CIEL/PhaseNav branch introduces
+\texttt{ciel\_geometry.phasenav.dependencies} with one-way dependency:
 \begin{equation}
-\boxed{
-\begin{array}{c}
-\text{identity axes and centered coordinates}\\
-\text{normalized cycles and winding}\\
-\text{phase crystal }(\mathbb R/\mathbb Z)^N\\
-\text{typed relations with optional holonomy}
-\end{array}
-\longrightarrow
-\text{tangent/log-map vectors}
-\longrightarrow
-\text{higher PhaseNav operators}.
-}
+\begin{aligned}
+\text{identity axes / centered coordinates}
+&\longrightarrow \text{normalized cycles / winding}\\
+&\longrightarrow \text{phase crystal }(\mathbb R/\mathbb Z)^N\\
+&\longrightarrow \text{typed relations + optional holonomy}\\
+&\longrightarrow \text{tangent/log-map vectors}
+\longrightarrow \text{higher operators}.
+\end{aligned}
 \label{eq:dependency-direction}
 \end{equation}
-The essential design constraint is that vectorization consumes geometry rather
-than generating geometry from opaque identifiers.
-
-Earlier experimental PhaseNav registries can deterministically map a stable
-identifier into a high-dimensional vector.  Such a map is useful for a
-repeatable computational embedding, but its geometry is not evidence that two
-concepts are semantically related.  Version 0.7 therefore separates three
-layers:
-\begin{enumerate}
- \item declared semantic provenance;
- \item generated candidate geometry;
- \item proof status of any inference that uses the relation.
-\end{enumerate}
-This separation mirrors the distinction between a numerical embedding and a
-mathematical theorem.
+Vectorization consumes geometry rather than treating opaque identifiers as
+evidence-bearing coordinates. Stable-ID embeddings may remain useful as
+deterministic computational embeddings, but geometric proximity produced by a
+hash does not prove semantic relatedness.
 
 \section{The phase crystal}
+Let
+\[
+ \mathbb T^N=(\mathbb R/\mathbb Z)^N
+\]
+with $N=36$ in the current PhaseNav geometry. For $q,r\in\mathbb T^N$ define
+\[
+ \Delta_k(q,r)=
+ \left(r_k-q_k+\frac12\right)\bmod1-\frac12
+\]
+and
+\[
+ \mathbf v(q\to r)=(\Delta_1,\ldots,\Delta_N)\in[-1/2,1/2)^N.
+\]
+This local tangent/log-map vectorization generates negative and positive
+components as opposite shortest-path orientations and zero as coincident
+coordinates. Exactly antipodal coordinates require a branch convention.
 
-Let the PhaseNav crystal be
-\begin{equation}
- \mathbb T^N=(\mathbb R/\mathbb Z)^N,
- \label{eq:phase-crystal}
-\end{equation}
-with $N=36$ for the current native geometry.  For two states
-$q=(q_1,\ldots,q_N)$ and $r=(r_1,\ldots,r_N)$, define the componentwise shortest
-oriented tangent
-\begin{equation}
- \Delta_k(q,r)
- =\left(r_k-q_k+\frac12\right)\bmod1-\frac12.
- \label{eq:phase-crystal-logmap}
-\end{equation}
-Then
-\begin{equation}
- \mathbf v(q\to r)
- =(\Delta_1,\ldots,\Delta_N)\in[-1/2,1/2)^N
- \label{eq:phase-crystal-vector}
-\end{equation}
-is a natural local vectorization operator.  It is analogous to a logarithmic
-map in the sense that it converts a pair of points into a tangent displacement,
-with the usual caveat that at exactly antipodal coordinates the shortest branch
-requires a convention.
-
-This construction generates negative, zero and positive vector components
-without adding sign labels after the fact:
-\begin{equation}
- \Delta_k<0\;\text{and}\;\Delta_k>0
-\end{equation}
-are opposite orientations, whereas $\Delta_k=0$ means that the two phase
-coordinates coincide.  For a centered binary coordinate, the same principle
-reduces to \cref{eq:identity-sign}.
-
-\section{From phase geometry to vector operators}
-
-Once a tangent vector is available, familiar operators become downstream
-objects.  For example, a local inner product may be defined by
-\begin{equation}
- \langle v,w\rangle_g=v^Tg(q)w,
- \label{eq:local-inner-product}
-\end{equation}
-where $g$ is a declared metric.  Projection, orthogonalization, curvature
-estimation and constrained updates can then be defined on the tangent space.
-The important point is architectural:
-\begin{equation}
- \text{metric/connection}
- \longrightarrow
- \text{tangent relation}
- \longrightarrow
- \text{vector operator},
-\end{equation}
-not the reverse.
-
-The same philosophy applies to semantic mass, density or viscosity fields.
-Those quantities may depend on geometry, but the fact that two stable IDs happen
-to be close under one deterministic embedding cannot establish a semantic law.
-An explicit provenance edge is still required.
+Once a tangent vector exists, local inner products, projections,
+orthogonalization, curvature estimates, constraints, density, and viscosity can
+be defined downstream. The architectural direction is metric/connection
+$\to$ tangent relation $\to$ vector operator, not the reverse.
 
 \section{Holonomy eligibility}
-
-The following rule is enforced conceptually and in the companion runtime:
 \begin{criterion}[Holonomy eligibility]
 \label{crit:holonomy-eligibility}
-A semantic edge may carry canonical holonomy only if
+A semantic edge may carry canonical holonomy only if:
 \begin{enumerate}[label=(H\arabic*)]
  \item a connection or equivalent phase-transport law is specified;
- \item the edge belongs to a closed loop or a composable path with a defined
- endpoint convention;
- \item the resulting phase is invariant under the permitted gauge changes, or
- the gauge dependence is explicitly part of the object;
- \item its claim status is independent of a purely generated semantic
- embedding.
+ \item the edge belongs to a closed loop or composable path with endpoint convention;
+ \item the resulting phase is gauge invariant under the permitted changes, or
+ its gauge dependence is explicitly part of the object;
+ \item its claim status is independent of a purely generated semantic embedding.
 \end{enumerate}
 \end{criterion}
+Thus paired sectors such as energy--matter or time--space do not automatically
+receive a $\pi$ phase.
 
-Hence the pair ``energy--matter'' does not automatically receive a $\pi$ phase,
-and neither does ``time--space''.  In the wider TIR interpretation these may be
-paired sectors, but holonomy requires additional geometric data.
-
-\section{Arithmetic and phase geometry as paired sectors}
-
-The current TIR crosswalk proposes the model-level split
-\begin{equation}
+\section{TIR crosswalk}
+The wider TIR programme currently proposes, at MODEL status,
+\[
  \text{information arithmetic}\longrightarrow\text{energy and matter},
- \label{eq:tir-arithmetic-sector}
-\end{equation}
+\]
 paired with
-\begin{equation}
+\[
  \text{phase geometry}\longrightarrow\text{time and space}.
- \label{eq:tir-phase-sector}
-\end{equation}
-This monograph does not use either arrow as an established law of physics.
-They are recorded because they define the intended dependency architecture of
-the broader programme.  In particular, a proposed derivation of physical time
-$t$ from a phase period $\tau$ is deferred.  No theorem in the present work
-requires it.
+\]
+Neither arrow is used as an established physical theorem here. A proposed
+derivation of physical time $t$ from a phase period $\tau$ is deferred. The
+broader TIR relation object $W_{ij}$ is cross-referenced only; no dynamics of
+$W_{ij}$ enters the proof chain.
 
-The useful part for Secret of a Half is more modest.  The native theta bridge
-already separates $\delta=\Re s-1/2$ from phase transport $t$.  The
-geometry-first dependency package provides a consistent way to represent that
-separation without conflating transverse identity with tangent evolution.
-
-\section{TIR $W_{ij}$ and scope boundary}
-
-The wider Theory of Informational Relations contains a relation object commonly
-denoted $W_{ij}$.  In the current work it is used only as a cross-reference to a
-broader holonomic relation/information architecture.  No definition, equation
-of motion or physical identification of $W_{ij}$ is imported into the proof
-chain here.  If a future version uses $W_{ij}$ as an executable edge weight, it
-must satisfy \cref{crit:holonomy-eligibility} and enter the claim ledger with an
-explicit status.
-
-\section{Native PhaseNav declaration}
-
-The v0.7 semantic source
+The native PhaseNav source
 \begin{center}
- \texttt{construction/phasenav/secret\_of\_half\_identity\_holonomy\_v0\_7.pnv}
+\texttt{construction/phasenav/secret\_of\_half\_identity\_holonomy\_v0\_7.pnv}
 \end{center}
-records the nodes, normalized holonomy turns, cross-factorizations, TIR
-cross-references and firewall status.  The declaration stores a half-turn as
-$1/2$ turn rather than as the primitive number $\pi$; the radian conversion is a
-representation step.
+records the typed nodes, normalized holonomy turns, cross-factorizations, TIR
+cross-references, and firewall. It is an integration layer and does not
+supersede the theta bridge, Weil/Hermite, reciprocal-tail, or DHSE programmes.
 
-This file does not supersede the theta-bridge, Weil, Hermite, reciprocal-tail or
-DHSE constructions.  It is an integration layer.  Existing numerical receipts
-remain untouched.
-
-\section{Claim boundary}
-
-The phase-crystal tangent formula, normalized path composition and semantic
-graph rules are exact definitions.  Berry and spinor holonomies use standard
-geometry and representation theory.  The TIR sector assignments, the
-information-cycle interpretation of twelve, and any physical identification of
-semantic edges remain model-level.
-
-\status{Version 0.7 introduces a geometry-first dependency discipline and a
-typed semantic relation graph.  Generated PhaseNav geometry is diagnostic until
-independent provenance promotes the relevant relation.}
+\status{The phase-crystal tangent formula and normalized path composition are
+exact definitions; Berry and spinor holonomies use standard structures.
+Physical TIR sector assignments remain model-level. Generated PhaseNav geometry
+is diagnostic until independent provenance promotes the relation.}
