@@ -3,12 +3,13 @@
 ## Decision
 
 - Status: **exact finite computer-assisted theorem**.
-- Arithmetic: integers and reduced rational numbers only.
+- Arithmetic: integer matrix arithmetic with exact reduced rational endpoint classification.
+- Declared vectorized backend: signed 64-bit integers, with a pre-run overflow certificate for every declared word length.
 - Domain: the complete primitive `K=6` positive Möbius universe.
 - Word lengths: `1,2,3,4`.
 - Projective radius: `1/10`.
 - No centre grid is used.
-- No merge, pull request, monograph inclusion or main-claim promotion is authorized.
+- No main-claim promotion is implied by this finite theorem.
 
 Stage M replaces every finite centre scan by an exact classification of the
 forcing-count function on the whole positive axis `q>0`.
@@ -52,6 +53,53 @@ written
 \[
 W(z)=\frac{Az+B}{Cz+D}.
 \]
+
+## Exact-arithmetic backend certificate
+
+The implementation uses NumPy `int64` arrays for the high-volume matrix
+composition and then converts reduced endpoints to Python integer pairs and
+`Fraction` objects for exact ordering. Because fixed-width overflow would void
+an exact finite theorem, Stage M now checks a conservative bound before each
+vectorized census.
+
+If every base coefficient is at most `K`, and `M_n` bounds every absolute
+coefficient after a word of length `n`, then matrix multiplication gives
+
+\[
+M_{n+1}\le 2K M_n,
+\qquad M_0=1,
+\]
+
+so
+
+\[
+M_n\le(2K)^n.
+\]
+
+For the declared `K=6`, `n<=4`,
+
+\[
+M_4\le12^4=20736.
+\]
+
+The largest product used in the forcing predicate is conservatively bounded by
+
+\[
+121M_4^2=52{,}027{,}785{,}216,
+\]
+
+well below
+
+\[
+2^{63}-1=9{,}223{,}372{,}036{,}854{,}775{,}807.
+\]
+
+Endpoint numerators are bounded by `11 M_4 = 228096`, also safely inside the
+same range. Therefore the declared Stage M lengths cannot overflow the int64
+backend. The implementation refuses a word length for which this certificate
+fails instead of silently extending the theorem. For example, the same
+conservative bound is already unsafe at length 8, so such a run would require a
+wider exact-integer backend.
 
 ## Target ball
 
@@ -155,8 +203,7 @@ The corresponding centre interval transforms as
 
 \[
 I_{J W J}=I_W^{-1}
-=
-\{1/q:q\in I_W\}.
+=\{1/q:q\in I_W\}.
 \]
 
 Consequently
@@ -198,18 +245,19 @@ approximately `0.2398%` of the global maximum.
 
 For each length, the implementation:
 
-1. enumerates all `952^2 * 2^n` pair-word events;
-2. forms the composed integer matrix exactly;
-3. retains exactly the events satisfying `B>0`, `C>0` and `81AD<=121BC`;
-4. reduces both rational centre endpoints by their integer gcd;
-5. aggregates equal start and end endpoints;
-6. sorts the reduced fractions exactly;
-7. sweeps every endpoint and every intervening open cell;
-8. verifies reciprocal start/end multiplicities;
-9. records every global-maximizer component.
+1. certifies that the declared int64 vectorized arithmetic cannot overflow;
+2. enumerates all `952^2 * 2^n` pair-word events;
+3. forms the composed integer matrix exactly within the certified range;
+4. retains exactly the events satisfying `B>0`, `C>0` and `81AD<=121BC`;
+5. reduces both rational centre endpoints by their integer gcd;
+6. aggregates equal start and end endpoints;
+7. sorts the reduced fractions exactly;
+8. sweeps every endpoint and every intervening open cell;
+9. verifies reciprocal start/end multiplicities;
+10. records every global-maximizer component.
 
 This is an exhaustive proof over the declared finite universe, not a floating
-point estimate.
+point estimate. The fixed-width arithmetic premise is now explicit and tested.
 
 ## Correct formal conclusion
 

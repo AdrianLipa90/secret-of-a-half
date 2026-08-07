@@ -8,7 +8,7 @@ from typing import DefaultDict
 
 import numpy as np
 
-from .dhse_001_stage_i import _pair, _word_matrix, words_of_length
+from .dhse_001_stage_i import SCALE, _pair, _word_matrix, words_of_length
 from .dhse_001_stage_j import EXPECTED_PRIMITIVE_MAP_COUNT, primitive_maps
 
 LENGTHS = (1, 2, 3, 4)
@@ -21,9 +21,44 @@ EXPECTED = {
 }
 
 EndpointCounts = DefaultDict[tuple[int, int], int]
+INT64_MAX = int(np.iinfo(np.int64).max)
+
+
+def int64_safety_certificate(length: int, scale: int = SCALE) -> dict[str, int | bool]:
+    """Prove that Stage-M fixed-width integer operations cannot overflow.
+
+    Every primitive base matrix has coefficients bounded by ``scale``.  If the
+    largest absolute coefficient after ``n`` letters is ``M_n``, one left
+    multiplication gives ``M_{n+1} <= 2*scale*M_n``.  Starting from the identity
+    therefore gives ``M_n <= (2*scale)**n``.
+
+    Stage M's largest comparison is ``121*B*C``.  Bounding both factors by the
+    matrix-entry bound gives a conservative exact upper bound that can be
+    checked before allocating the vectorized sweep.  This preserves NumPy's
+    fast int64 execution while making the finite-arithmetic premise explicit.
+    """
+    if length < 1:
+        raise ValueError("word length must be positive")
+    if scale < 1:
+        raise ValueError("scale must be positive")
+
+    matrix_entry_bound = (2 * scale) ** length
+    comparison_product_bound = 121 * matrix_entry_bound * matrix_entry_bound
+    endpoint_numerator_bound = 11 * matrix_entry_bound
+    maximum_required = max(comparison_product_bound, endpoint_numerator_bound)
+    return {
+        "length": length,
+        "scale": scale,
+        "matrix_entry_bound": matrix_entry_bound,
+        "comparison_product_bound": comparison_product_bound,
+        "endpoint_numerator_bound": endpoint_numerator_bound,
+        "int64_max": INT64_MAX,
+        "safe": maximum_required <= INT64_MAX,
+    }
 
 
 def _reduced_pairs(numerator: np.ndarray, denominator: np.ndarray) -> np.ndarray:
+    """Return gcd-reduced rational endpoint pairs in a sortable int64 dtype."""
     common = np.gcd(numerator, denominator)
     reduced_n = numerator // common
     reduced_d = denominator // common
@@ -34,6 +69,7 @@ def _reduced_pairs(numerator: np.ndarray, denominator: np.ndarray) -> np.ndarray
 
 
 def _accumulate(target: EndpointCounts, pairs: np.ndarray) -> None:
+    """Add multiplicities of reduced rational endpoint pairs to ``target``."""
     unique, counts = np.unique(pairs, return_counts=True)
     for numerator, denominator, count in zip(unique["n"], unique["d"], counts):
         target[(int(numerator), int(denominator))] += int(count)
@@ -42,6 +78,20 @@ def _accumulate(target: EndpointCounts, pairs: np.ndarray) -> None:
 def endpoint_census(
     length: int,
 ) -> tuple[dict[tuple[int, int], int], dict[tuple[int, int], int], int]:
+    """Enumerate every non-empty forcing interval for one declared word length.
+
+    The function first requires a successful fixed-width arithmetic certificate,
+    then exhaustively composes every binary word over every ordered pair of
+    primitive maps.  It returns exact lower-endpoint multiplicities, exact upper-
+    endpoint multiplicities, and the number of non-empty forcing intervals.
+    """
+    safety = int64_safety_certificate(length)
+    if not safety["safe"]:
+        raise OverflowError(
+            "Stage-M vectorized int64 arithmetic is not certified safe for "
+            f"length={length}, scale={SCALE}; use an exact wider-integer backend"
+        )
+
     maps = primitive_maps()
     size = len(maps)
     a, b, c, d = (maps[:, index] for index in range(4))
@@ -70,6 +120,7 @@ def endpoint_census(
 
 
 def _fraction_key(value: Fraction) -> tuple[int, int]:
+    """Convert an exact ``Fraction`` to the tuple key used by endpoint maps."""
     return value.numerator, value.denominator
 
 
@@ -77,6 +128,7 @@ def _maximizer_components(
     point_maximizers: tuple[Fraction, ...],
     open_maximizers: tuple[tuple[Fraction, Fraction], ...],
 ) -> list[dict[str, object]]:
+    """Merge point and open-cell maximizers into exact connected components."""
     point_set = set(point_maximizers)
     components: list[dict[str, object]] = []
     used_points: set[Fraction] = set()
@@ -122,6 +174,13 @@ def exact_sweep(
     starts: dict[tuple[int, int], int],
     ends: dict[tuple[int, int], int],
 ) -> dict[str, object]:
+    """Classify the exact global maximum over all positive centre coordinates.
+
+    Since each pair-word event contributes one closed rational interval, the
+    forcing count is a finite integer-valued step function.  Sweeping every
+    rational endpoint and every open cell therefore decides the global maximum
+    without a centre grid or floating-point tolerance.
+    """
     breakpoints = sorted(
         Fraction(numerator, denominator)
         for numerator, denominator in set(starts) | set(ends)
@@ -134,6 +193,7 @@ def exact_sweep(
     q1_count: int | None = None
 
     def register_point(point: Fraction, count: int) -> None:
+        """Record one breakpoint if its count reaches the current maximum."""
         nonlocal maximum, point_maximizers, open_maximizers
         if count > maximum:
             maximum = count
@@ -143,6 +203,7 @@ def exact_sweep(
             point_maximizers.append(point)
 
     def register_open(left: Fraction, right: Fraction, count: int) -> None:
+        """Record one open cell if its constant count reaches the maximum."""
         nonlocal maximum, point_maximizers, open_maximizers
         if count > maximum:
             maximum = count
@@ -194,6 +255,7 @@ def reciprocal_endpoint_symmetry(
     starts: dict[tuple[int, int], int],
     ends: dict[tuple[int, int], int],
 ) -> bool:
+    """Check exact endpoint-multiplicity symmetry under reciprocal inversion."""
     return all(
         ends.get((denominator, numerator), 0) == count
         for (numerator, denominator), count in starts.items()
@@ -204,6 +266,7 @@ def reciprocal_endpoint_symmetry(
 
 
 def length_theorem(length: int) -> dict[str, object]:
+    """Build and validate the exact Stage-M theorem receipt for one word length."""
     starts, ends, interval_count = endpoint_census(length)
     sweep = exact_sweep(starts, ends)
     breakpoint_count = len(set(starts) | set(ends))
@@ -231,6 +294,7 @@ def length_theorem(length: int) -> dict[str, object]:
 
 @lru_cache(maxsize=1)
 def run_stage_m() -> dict[str, object]:
+    """Run all declared lengths and return the complete Stage-M theorem receipt."""
     rows = [length_theorem(length) for length in LENGTHS]
     by_length = {row["length"]: row for row in rows}
     exact_central_lengths = [

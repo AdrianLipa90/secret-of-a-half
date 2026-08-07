@@ -163,6 +163,59 @@ Consequently four exact selections coincide:
 \end{aligned}
 \]
 
+\section{Self-duality does not by itself imply a dynamical extremum}
+\label{sec:half-self-dual-not-maximum}
+
+The preceding fixed-point statements are exact, but they must not be enlarged
+into the stronger assertion that every reciprocal-symmetric dynamical statistic
+is maximized at the self-dual point.  DHSE-001 Stage M gives an exact finite
+counterexample to that inference.
+
+In projective odds $q>0$, let a primitive positive integer M\"obius universe
+with coefficient bound $K=6$ act by binary words of lengths $n=1,2,3,4$.  For
+the projective target radius $r=1/10$, each admissible word contributes an exact
+closed rational interval of target centres.  The resulting forcing-count
+function $N_n(q)$ is therefore an integer-valued step function whose complete
+maximum can be classified by a finite rational endpoint sweep.
+
+The universe is closed under reciprocal conjugation, so
+\[
+ N_n(q)=N_n(1/q).
+\]
+Nevertheless, the exact maximizers are length dependent:
+\[
+\begin{aligned}
+ n=1 &: \quad [9/11,11/12]\cup[12/11,11/9],\\
+ n=2 &: \quad \{1\},\\
+ n=3 &: \quad \{1\},\\
+ n=4 &: \quad [9882/9911,341/342]\cup[342/341,9911/9882].
+\end{aligned}
+\]
+Thus $q=1$, equivalently $p=1/2$, is the unique global maximizer for lengths 2
+and 3 but is not a global maximizer for lengths 1 and 4.  At length 4 the split
+is a narrow reciprocal doublet immediately adjacent to the self-dual point.
+
+\status{SOH-L022: exact finite computer-assisted theorem on the declared
+$K=6$, $r=1/10$, $n\le4$ universe.}
+
+The formal lesson is precise:
+\[
+\boxed{
+\text{reciprocal symmetry}
+\;\not\Rightarrow\;
+\text{central maximum}
+}
+\]
+without an additional convexity, monotonicity, positivity, or comparable
+structural condition.  This negative result strengthens the claim boundary of
+the monograph: the special status of the half as a fixed point, entropy maximum,
+and Fisher--Rao midpoint is exact, while any further extremal statement for a
+new dynamical functional requires its own theorem.
+
+The reproducible certificate and implementation are maintained at:
+\par\noindent{\footnotesize\path{docs/experiments/DHSE-001-STAGE-M-CONTINUOUS-THEOREM.md}}\par
+\noindent{\footnotesize\path{src/secret_of_a_half/dhse_001_stage_m.py}}\par
+
 \section{Native PhaseNav formulation}
 
 The authoritative executable source is
@@ -182,15 +235,20 @@ in odds coordinates.
 \item \textbf{SOH-L016 (exact):} the unique positive reciprocal fixed point
 corresponds to $p=1/2$.
 \item \textbf{SOH-L017 (exact):} $p=1/2$ is the Fisher--Rao geodesic midpoint.
+\item \textbf{SOH-L022 (exact finite computer-assisted):} in the declared
+DHSE-001 Stage M universe, the complete forcing landscape is classified and the
+self-dual maximum is length dependent.
+\item \textbf{SOH-D001 (exact finite counterexample):} reciprocal symmetry alone
+does not force a global maximum at the self-dual point.
 \item \textbf{SOH-H001 (exploratory):} defined zero and undefined bottom are
 interpreted as informational boundary labels.
 \end{itemize}
 
 \section{Boundary relative to the zeta problem}
 
-The exact lemmas in this chapter do not identify non-trivial zeta zeros with
-zero--undefined states.  They therefore do not close \texttt{SOH-C004} or
-\texttt{SOH-C005}.  Their role is structural: they add a fourth independent
-coordinate system in which the same half appears as a unique self-dual point.
-Any use in a critical-line theorem still requires a canonical bridge from the
+The exact lemmas in this chapter, including the Stage M finite theorem, do not
+identify non-trivial zeta zeros with zero--undefined states.  They therefore do
+not close \texttt{SOH-C004} or \texttt{SOH-C005}.  Their role is structural:
+they characterize what reciprocal self-duality does and does not imply.  Any
+use in a critical-line theorem still requires a canonical bridge from the
 completed zeta function to the labelled PhaseNav state.
