@@ -1,13 +1,13 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-The real part $1/2$ occurs in the theory of the Riemann zeta function as the symmetry axis of its non-trivial zeros. This monograph asks a narrower question than the Riemann Hypothesis itself: can the distinguished role of the half-axis be explained by a common structural mechanism joining binary complementarity, information balance, two-channel interference, spinorial phase, and the anti-linear symmetry of the completed zeta function?
+The real part $1/2$ occurs in the theory of the Riemann zeta function as the symmetry axis of its non-trivial zeros. This monograph asks a narrower question than the Riemann Hypothesis itself: can the distinguished role of the half-axis be explained by a common structural mechanism joining binary complementarity, information balance, two-channel interference, spinorial phase, recurrence, and the anti-linear symmetry of the completed zeta function?
 
 The exact part of the programme is developed first. Binary Shannon entropy has its unique maximum at $\sigma=1/2$, with value $\ln 2$. A normalized equal-gain two-channel amplitude
 \[
 \Acomp(\sigma,\phi)=\sqrt{\sigma}+e^{i\phi}\sqrt{1-\sigma}
 \]
-vanishes if and only if $\sigma=1/2$ and $\phi\equiv\pi\pmod{2\pi}$. The involution $\J(s)=1-\overline{s}$ has fixed set $\Re s=1/2$. If the spinorial sign is parameterized by $e^{2\pi i\sigma}$, then the sign $-1$ also selects $\sigma=1/2$ in the open unit interval. These statements combine into an exact ``triple coincidence'' theorem inside the explicitly defined binary-spinor model.
+vanishes if and only if $\sigma=1/2$ and $\phi\equiv\pi\pmod{2\pi}$. The involution $\J(s)=1-\overline{s}$ has fixed set $\Re s=1/2$. In the binary qubit representation, $\sigma=1/2$ is the Bloch equator and an equatorial loop carries the $-1$ Berry holonomy. These statements combine into an exact coincidence theorem inside the explicitly defined binary-spinor model.
 
 A non-metaphorical bridge to zeta theory is provided by the Dirichlet eta function,
 \[
@@ -15,13 +15,19 @@ A non-metaphorical bridge to zeta theory is provided by the Dirichlet eta functi
 \]
 with $\eta(1)=\ln2$. Within the open critical strip, the eta and zeta zero sets coincide because the binary prefactor has no zeros there. This establishes a genuine relation among alternating binary sign, $\ln2$, and the non-trivial zeta zeros. It does not determine the horizontal location of those zeros.
 
-The central conditional theorem is then stated. If there exists a canonical, involution-covariant Hilbert-space state map whose fixed readout vanishes exactly with $\xi(s)$ and whose normalized channel weights are $\Re s$ and $1-\Re s$, then every non-trivial zero lies on $\Re s=1/2$. The theorem is short; the construction of such a map is the entire unresolved burden. Several tempting shortcuts are shown to fail: symmetry alone produces zero quartets rather than fixed points, eta alternation adds a separate line of prefactor zeros, unequal channel metrics move the balance point away from one half, and a pointwise normalized factorization can be engineered non-canonically.
+The native PhaseNav programme constructs a paired theta--Mellin state whose covariance under $s\mapsto1-\overline{s}$ is exact and whose normalized radial closure defect is identically $(\Re s-1/2)^2$. Weil/Hermite finite sections, reciprocal compactification, certified prime tails, adaptive cutoff control and DHSE experiments are retained with their original claim boundaries. Their numerical receipts are evidence for the declared finite computations, not substitutes for the missing analytic bridge.
 
-The monograph closes by formulating operator, positivity-kernel, de Branges, Li-coefficient, and theta-kernel routes as concrete research programmes. Numerical calculations are used only as regression tests for identities and software, never as substitutes for proof.
+Version 0.7 reorganizes the half as an \emph{identity axis}. The centered coordinate $x=\sigma-1/2$ turns complement into orientation reversal $x\mapsto-x$, so negative, zero and positive tangent components can be generated geometrically relative to an axis. Phase recurrence is defined first by $q\in\mathbb R/\mathbb Z$ and winding frequency; radians enter only through an explicit closure map $\phi=Cq$. Spin-$1/2$ then supplies a double-cover return relation before the conventional $2\pi/4\pi$ notation is imposed. The TIR/Metatime normalization $\kappa=\ln2/(24\pi)$ is reconstructed conditionally as $(\ln2/12)/C$ at $C=2\pi$ while the twelve-cycle assignment remains explicitly model-level.
+
+A typed solver records fixed-point, dual, implication, representation, holonomic and cross-reference relations with statuses EXACT, STANDARD, MODEL and OPEN. Exact closure cannot consume MODEL assumptions; explicit model closure cannot consume OPEN bridges. Consequently the software can derive the common half-axis by several independent routes and reproduce the conditional $\kappa$ arithmetic while still reporting the canonical zeta zero-state/native-closure implication as missing. The Riemann Hypothesis therefore remains machine-checkably underived.
+
+The central conditional theorem is unchanged in logical status. If there exists a canonical, involution-covariant state representation whose zero states are forced into the native self-dual shell, then every non-trivial zero lies on $\Re s=1/2$. The theorem is short; construction or proof of that forcing mechanism remains the unresolved burden.
 
 \chapter*{Streszczenie}
 \addcontentsline{toc}{chapter}{Streszczenie}
 
-Monografia bada, dlaczego wartość $1/2$ pojawia się jako wyróżniona oś symetrii w teorii funkcji dzeta Riemanna. Punktem wyjścia jest autonomiczny ansatz łączący cztery struktury: binarną komplementarność i wartość Shannona $\ln2$, dokładną interferencję destruktywną dwóch znormalizowanych kanałów, spinorialny znak fazowy $-1$ oraz antyliniową inwolucję $s\mapsto1-\overline{s}$.
+Monografia bada, dlaczego wartość $1/2$ pojawia się jako wyróżniona oś symetrii w teorii funkcji dzeta Riemanna. Punktem wyjścia jest autonomiczny ansatz łączący binarną komplementarność i wartość Shannona $\ln2$, dokładną interferencję destruktywną dwóch znormalizowanych kanałów, geometrię Blocha i holonomię Berry'ego, spinorialny znak fazowy $-1$ oraz antyliniową inwolucję $s\mapsto1-\overline{s}$.
 
-Udowodnione zostają ścisłe lematy wybierające $\sigma=1/2$ jako jedyny punkt równowagi informacji i dokładnego znoszenia amplitud przy równych metrykach kanałów. Funkcja eta Dirichleta daje ścisły most do funkcji dzeta: w otwartym pasku krytycznym ich zera są równoważne. Nie jest to jednak dowód hipotezy Riemanna. Brakuje kanonicznej mapy stanu lub samosprzężonego operatora, który przekształcałby każde zero $\xi(s)$ w opisany mechanizm dwukanałowego znoszenia bez ukrytego dopasowania i bez założenia tezy w konstrukcji.
+W wersji 0.7 punkt $1/2$ zostaje sformalizowany jako oś tożsamości w binarnym przekroju: współrzędna $x=\sigma-1/2$ zamienia komplement w odwrócenie orientacji. Rekurencja jest opisywana przez $q\in\mathbb R/\mathbb Z$ przed wyborem radianów, a podwójne pokrycie spinora rozdziela okres projektowy od pełnego powrotu spinora. Powstaje również jawny graf par semantycznych i krawędzi holonomicznych oraz solver rozróżniający twierdzenia ścisłe, standardowe wyniki, postulaty modelu i otwarte mosty.
+
+Udowodnione lemmas nadal wybierają $\sigma=1/2$ jako jedyny punkt równowagi informacji i dokładnego znoszenia amplitud przy równych metrykach kanałów. Natywna konstrukcja theta--Mellina ma dokładny defekt domknięcia $(\Re s-1/2)^2$. Nie jest to jednak dowód hipotezy Riemanna. Brakuje kanonicznego twierdzenia, które wymuszałoby, aby każde nietrywialne zero $\xi(s)$ należało do tej samodualnej powłoki. Solver zachowuje ten brak jako krawędź OPEN i nie pozwala na jej automatyczną promocję.
