@@ -72,8 +72,10 @@ def test_persisted_stage_b_receipt_preserves_payload_and_historical_fingerprint(
 
     # The compact scientific/decision payload is reproducible.  The historical
     # full-receipt hash is retained as provenance rather than silently rewritten
-    # when a non-decision serialization detail changes upstream.
+    # when a non-decision serialization detail changes upstream.  The current
+    # runtime is allowed to recover the historical whole-object fingerprint in a
+    # future implementation; such recovery would strengthen provenance and must
+    # not itself make this compatibility test fail.
     assert payload_without_full_receipt_hash(persisted) == payload_without_full_receipt_hash(current)
     assert persisted["full_receipt_sha256"] == STAGE_B_HISTORICAL_FULL_RECEIPT_SHA256
     assert len(current["full_receipt_sha256"]) == 64
-    assert current["full_receipt_sha256"] != persisted["full_receipt_sha256"]
