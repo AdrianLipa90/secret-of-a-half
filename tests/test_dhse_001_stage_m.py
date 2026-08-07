@@ -27,13 +27,15 @@ def test_int64_certificate_rejects_unproved_large_word_length() -> None:
 
 
 def test_exact_sweep_distinguishes_symmetry_from_central_maximum() -> None:
+    # Two reciprocal intervals, [1/2, 2/3] and [3/2, 2], leave q=1 outside
+    # the forcing set while preserving exact endpoint reciprocity.
     starts = {
         (1, 2): 1,
-        (2, 1): 1,
+        (3, 2): 1,
     }
     ends = {
         (2, 3): 1,
-        (3, 2): 1,
+        (2, 1): 1,
     }
     result = exact_sweep(starts, ends)
     assert result["maximum"] == 1
