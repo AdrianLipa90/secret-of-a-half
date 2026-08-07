@@ -26,6 +26,16 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      - name: Audit runtime dependency boundary
+        run: python scripts/audit_runtime_dependency_boundary.py
+
+      - name: Upload dependency boundary receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: secret-of-a-half-runtime-dependency-boundary-v1
+          path: data/processed/runtime_dependency_boundary.json
+          if-no-files-found: error
+
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
