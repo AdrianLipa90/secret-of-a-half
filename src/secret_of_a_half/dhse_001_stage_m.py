@@ -8,7 +8,7 @@ from typing import DefaultDict
 
 import numpy as np
 
-from .dhse_001_stage_i import _pair, _word_matrix, words_of_length
+from .dhse_001_stage_i import SCALE, _pair, _word_matrix, words_of_length
 from .dhse_001_stage_j import EXPECTED_PRIMITIVE_MAP_COUNT, primitive_maps
 
 LENGTHS = (1, 2, 3, 4)
@@ -21,6 +21,40 @@ EXPECTED = {
 }
 
 EndpointCounts = DefaultDict[tuple[int, int], int]
+INT64_MAX = int(np.iinfo(np.int64).max)
+
+
+def int64_safety_certificate(length: int, scale: int = SCALE) -> dict[str, int | bool]:
+    """Prove that Stage-M fixed-width integer operations cannot overflow.
+
+    Every primitive base matrix has coefficients bounded by ``scale``.  If the
+    largest absolute coefficient after ``n`` letters is ``M_n``, one left
+    multiplication gives ``M_{n+1} <= 2*scale*M_n``.  Starting from the identity
+    therefore gives ``M_n <= (2*scale)**n``.
+
+    Stage M's largest comparison is ``121*B*C``.  Bounding both factors by the
+    matrix-entry bound gives a conservative exact upper bound that can be
+    checked before allocating the vectorized sweep.  This preserves NumPy's
+    fast int64 execution while making the finite-arithmetic premise explicit.
+    """
+    if length < 1:
+        raise ValueError("word length must be positive")
+    if scale < 1:
+        raise ValueError("scale must be positive")
+
+    matrix_entry_bound = (2 * scale) ** length
+    comparison_product_bound = 121 * matrix_entry_bound * matrix_entry_bound
+    endpoint_numerator_bound = 11 * matrix_entry_bound
+    maximum_required = max(comparison_product_bound, endpoint_numerator_bound)
+    return {
+        "length": length,
+        "scale": scale,
+        "matrix_entry_bound": matrix_entry_bound,
+        "comparison_product_bound": comparison_product_bound,
+        "endpoint_numerator_bound": endpoint_numerator_bound,
+        "int64_max": INT64_MAX,
+        "safe": maximum_required <= INT64_MAX,
+    }
 
 
 def _reduced_pairs(numerator: np.ndarray, denominator: np.ndarray) -> np.ndarray:
@@ -42,6 +76,13 @@ def _accumulate(target: EndpointCounts, pairs: np.ndarray) -> None:
 def endpoint_census(
     length: int,
 ) -> tuple[dict[tuple[int, int], int], dict[tuple[int, int], int], int]:
+    safety = int64_safety_certificate(length)
+    if not safety["safe"]:
+        raise OverflowError(
+            "Stage-M vectorized int64 arithmetic is not certified safe for "
+            f"length={length}, scale={SCALE}; use an exact wider-integer backend"
+        )
+
     maps = primitive_maps()
     size = len(maps)
     a, b, c, d = (maps[:, index] for index in range(4))
