@@ -9,7 +9,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from collections import deque
 import cmath
 import math
 from typing import Iterable, Mapping
@@ -202,7 +201,7 @@ HALF_AXIS_RULES = (
     Rule(("binary_information", "twelve_projective_cycles"), "information_per_turn_ln2_over_12", ClaimStatus.MODEL, RelationKind.IMPLIES, "TIR/Metatime cycle assignment"),
     Rule(("information_per_turn_ln2_over_12", "radian_closure"), "kappa_ln2_over_24pi", ClaimStatus.MODEL, RelationKind.IMPLIES, "TIR kappa crosswalk"),
     Rule(("eight_mix_sectors", "three_flavours"), "twenty_four_count", ClaimStatus.MODEL, RelationKind.IMPLIES, "8*3=24 semantic assignment"),
-    Rule(("twenty_four_count", "half_turn_phase"), "twenty_four_pi_normalization", ClaimStatus.MODEL, RelationKind.HOLONOMIC, "24 half-turn units", 0.5),
+    Rule(("twenty_four_count", "half_turn_phase"), "twenty_four_pi_normalization", ClaimStatus.MODEL, RelationKind.HOLONOMIC, "24 half-turn units = 12 full turns", 0.0),
     Rule(("xi_zero", "canonical_zero_state"), "native_closed", ClaimStatus.OPEN, RelationKind.IMPLIES, "SOH-C004"),
     Rule(("native_closed",), "half_axis", ClaimStatus.EXACT, RelationKind.IMPLIES, "SOH-L009"),
     Rule(("xi_zero", "half_axis"), "zero_on_half_axis", ClaimStatus.EXACT, RelationKind.IMPLIES, "definition within zero state"),
@@ -213,6 +212,7 @@ DEFAULT_SOLVER = ClaimSolver(HALF_AXIS_RULES)
 
 
 def bisect_root(fn, lo: float, hi: float, *, tol: float = 1e-14, max_iter: int = 256) -> float:
+    """Bracketed solver for a sign-changing scalar equation."""
     flo = float(fn(lo))
     fhi = float(fn(hi))
     if flo == 0.0:
@@ -234,6 +234,30 @@ def bisect_root(fn, lo: float, hi: float, *, tol: float = 1e-14, max_iter: int =
     return 0.5 * (a + b)
 
 
+def golden_section_minimum(fn, lo: float, hi: float, *, tol: float = 1e-14, max_iter: int = 256) -> float:
+    """Derivative-free minimizer used for non-negative residuals that touch zero."""
+    a, b = float(lo), float(hi)
+    if not a < b:
+        raise ValueError("lo must be less than hi")
+    invphi = (math.sqrt(5.0) - 1.0) / 2.0
+    c = b - invphi * (b - a)
+    d = a + invphi * (b - a)
+    fc = float(fn(c))
+    fd = float(fn(d))
+    for _ in range(max_iter):
+        if b - a <= tol:
+            break
+        if fc <= fd:
+            b, d, fd = d, c, fc
+            c = b - invphi * (b - a)
+            fc = float(fn(c))
+        else:
+            a, c, fc = c, d, fd
+            d = a + invphi * (b - a)
+            fd = float(fn(d))
+    return 0.5 * (a + b)
+
+
 def berry_holonomy(sigma: float) -> complex:
     """Holonomy for one azimuthal loop of the binary qubit family."""
     if not 0.0 <= sigma <= 1.0:
@@ -251,10 +275,13 @@ def solve_half_axis_routes() -> dict[str, float]:
         1e-12,
         1.0 - 1e-12,
     )
-    # On (0,1), Re(U_B)+1 has a unique zero at the nontrivial -1 holonomy.
-    berry = 0.5
-    if abs(berry_holonomy(berry) + 1.0) > 1e-12:
-        raise RuntimeError("Berry half-axis route failed")
+    berry = golden_section_minimum(
+        lambda s: abs(berry_holonomy(s) + 1.0) ** 2,
+        0.25,
+        0.75,
+    )
+    if abs(berry_holonomy(berry) + 1.0) > 1e-10:
+        raise RuntimeError("failed to isolate the interior -1 Berry-holonomy solution")
     return {
         "complement": complement,
         "entropy": entropy,
