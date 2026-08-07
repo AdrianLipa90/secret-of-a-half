@@ -10,6 +10,7 @@ from secret_of_a_half.dhse_001_stage_i import (
     run_stage_i,
     words_of_length,
 )
+from secret_of_a_half.receipt_provenance import canonicalize_stage_i_receipt
 
 
 def test_word_sets_are_complete() -> None:
@@ -65,9 +66,15 @@ def test_target_rate_is_nondecreasing_over_declared_lengths() -> None:
     assert receipt["secondary"]["target_rate_trend"] == "NONDECREASING"
 
 
-def test_persisted_stage_i_receipt_is_reproducible() -> None:
+def test_persisted_stage_i_receipt_is_exact_after_rational_canonicalization() -> None:
     root = Path(__file__).resolve().parents[1]
     persisted = json.loads(
         (root / "data" / "processed" / "dhse_001_stage_i_receipt.json").read_text(encoding="utf-8")
     )
-    assert persisted == run_stage_i()
+    current = run_stage_i()
+
+    # The historical JSON contains a few unreduced rational pairs.  The runtime
+    # uses Fraction and emits their reduced forms.  Canonicalize only the
+    # schema-declared rational fields; all counts, words, gates and statuses must
+    # still compare byte-for-byte as JSON values after that exact reduction.
+    assert canonicalize_stage_i_receipt(persisted) == canonicalize_stage_i_receipt(current)
