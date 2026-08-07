@@ -58,12 +58,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
-            poppler-utils \
+            latexmk \
+            lmodern \
             texlive-latex-base \
+            texlive-latex-recommended \
             texlive-latex-extra \
             texlive-fonts-recommended \
-            texlive-bibtex-extra \
-            lmodern
+            texlive-science \
+            poppler-utils
 
       - name: Compile monograph
         working-directory: monograph
