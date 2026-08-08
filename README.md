@@ -19,14 +19,17 @@ The starting ansatz links four structures:
 
 This repository begins with a **structural ansatz**, not a claimed proof of the Riemann Hypothesis.
 
-The initial programme separates:
+The programme separates:
 
 - exact lemmas that can already be proved;
 - conditional theorems whose hypotheses are explicit;
 - numerical or symbolic experiments;
+- executable PhaseNav/NOEMA dependency state;
 - the unresolved bridge required to connect every non-trivial zeta zero to the proposed information-spinor cancellation mechanism.
 
 The central open task is to construct a canonical map or operator for which vanishing is equivalent to a non-trivial zero of the completed zeta function while preserving the required symmetry, positivity and spectral structure.
+
+The current canonical dependency integration is **v0.7**. It introduces a typed PhaseNav routing/provenance boundary without changing the proof status of the mathematical programme. In particular, `SOH-C004` and `SOH-C005` remain OPEN.
 
 ## Initial mathematical core
 
@@ -80,6 +83,7 @@ secret-of-a-half/
 │   └── processed/
 ├── docs/
 │   ├── ansatz/
+│   ├── construction/
 │   ├── derivations/
 │   └── open-problems/
 ├── figures/
@@ -99,28 +103,40 @@ secret-of-a-half/
 
 - No claim is promoted from conjectural to proved without a written derivation or reproducible verification.
 - Exact results, conditional results, numerical evidence and interpretation remain visibly separated.
-- Change history is append-only.
-- Existing projects are not treated as dependencies unless an explicit future decision introduces them.
-- This repository is autonomous: its definitions, assumptions and proofs must stand on their own.
+- Change history and corrective receipts are append-only where historical provenance is involved.
+- External software projects become executable dependencies only through explicit, versioned contracts with exact commit provenance.
+- The mathematical claim ledger remains autonomous: a PhaseNav route, NOEMA memory record, TIR phenomenological relation, or finite numerical sample cannot promote an open mathematical claim.
+- Intrinsic scientific state must not be identified with its transport representation.
 
-## Planned first milestones
+## Historical monograph baseline: Version 0.2
 
-1. Formalize the binary-complementarity axioms.
-2. Prove the cancellation, entropy and involution lemmas.
-3. State the conditional critical-line theorem with all hypotheses exposed.
-4. Construct and test candidate zeta-state maps.
-5. Investigate Hilbert–Pólya, de Branges, Weil and positivity routes without conflating analogy with proof.
-6. Build the monograph from the claim ledger and verified derivations.
+Version 0.2 was the validated 92-page baseline: 16 chapters, five appendices, deterministic figures, numerical regression tables, the native PhaseNav construction, and a full claim ledger. The 92-page count is historical provenance, not a permanent build invariant.
 
-## Monograph Version 0.2
+Its strongest result was conditional: once a canonical, regular, equal-gain zeta-state map satisfying the stated zero-equivalence and covariance requirements is constructed, the critical-line conclusion follows. That canonical bridge remains open.
 
-The complete monograph is maintained as modular LaTeX in `monograph/`. GitHub Actions rebuilds the validated 92-page PDF and publishes it as the `secret-of-a-half-monograph-v0.2` workflow artifact. It contains 16 chapters, five appendices, deterministic figures, numerical regression tables, the native PhaseNav construction, and a full claim ledger.
+## Current monograph: Version 0.7
 
-Its strongest result is conditional: once a canonical, regular, equal-gain zeta-state map satisfying the stated zero-equivalence and covariance requirements is constructed, the critical-line conclusion follows. That canonical bridge remains open.
+The modular LaTeX monograph in `monograph/` now includes Chapter 21, **Canonical PhaseNav Dependencies and the Proof Firewall**. CI compiles the current PDF and publishes `secret-of-a-half-monograph-v0.7`; the current page count is recorded by the build rather than hard-coded as a scientific gate.
+
+Version 0.7 binds the repository to:
+
+- PhaseNav hard canon `1.2.0` / dependency layer `0.7.0`, commit `54f65f2ca7d35cdd98f0ab8984cc1a8d74444a96`;
+- NOEMA dependency/provenance contract, commit `42a0a8916e81ca27f2213bf0f28538f046c2e89a`.
+
+The recovered TIR coefficient state `(h,a,b,c)` remains intrinsically 4D, while PhaseNav uses a separate 36D routing envelope. Vectorization is transport and routing; it is not scientific promotion.
+
+The v0.7 assignment ledger distinguishes:
+
+- `ROLE_ROUTER_HABC = STRUCTURAL_ROLE_ROUTING_PASS`;
+- `ORBIT_DIRECTION = IMPLEMENTED_PROJECT_ORBITAL_RULE`;
+- `RELATIONAL_GRADIENT = IMPLEMENTED_SOURCE_OPERATOR_CANDIDATE_TIR_BINDING`;
+- `TIR_SLOT_BINDING = OPEN`.
+
+Measured masses, measured Yukawa couplings, and coefficient-enriched routing vectors are forbidden as parents of the prospective assignment derivation.
 
 ## Native PhaseNav Construction v0.1
 
-The first executable bridge construction is now defined natively in
+The first executable bridge construction is defined natively in
 `construction/phasenav/secret_of_half_theta_bridge.pnv`.
 
 It maps the symmetric theta-Mellin representation of the completed zeta function
@@ -159,7 +175,7 @@ synthetic off-axis lambda_min:     -1.989005564501e-03
 
 This establishes falsification sensitivity of the finite probe. It does not
 establish positivity of the complete arithmetic Weil form and does not prove
-the Riemann Hypothesis. The new open promotion target is `SOH-C005`.
+the Riemann Hypothesis. The open promotion target remains `SOH-C005`.
 
 ## Native PhaseNav–Weil Arithmetic Operator v0.2
 
@@ -181,6 +197,16 @@ spectral normalization check: PASS
 This closes the first executable prime-to-phase-to-spectrum audit loop. It is
 one positive localized sample, not a proof of dense Weil positivity; `SOH-C005`
 remains open.
+
+## v0.7 receipt hygiene
+
+The v0.7 validation also recovered three historical technical debts without rewriting their original evidence:
+
+- Stage B: an old full-receipt SHA mismatch is recorded append-only while the compact scientific/technical projection remains reproducible;
+- Stage I: legacy unreduced rational pairs are compared after exact canonical rational reduction, with the historical JSON retained unchanged;
+- Stage M: the reciprocal-interval test fixture was corrected so lower endpoints map to reciprocal upper endpoints; the operator itself was not changed.
+
+The repair ledger is `data/processed/DHSE_001_RECEIPT_REPAIR_V0_7.json`. These corrections do not promote any scientific claim.
 
 ## Author
 

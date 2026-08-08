@@ -4,11 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "secret-of-a-half"
-version = "0.6.0"
-description = "Information-spinor, native PhaseNav, Weil-Hermite, reciprocal self-duality, prime-tail certification, and adaptive-cutoff workspace."
+version = "0.7.0"
+description = "Information-spinor, native PhaseNav, Weil-Hermite, reciprocal self-duality, prime-tail certification, adaptive-cutoff workspace, and canonical PhaseNav/NOEMA dependency firewall."
 requires-python = ">=3.10"
 authors = [{name = "Adrian Lipa"}]
-dependencies = []
+dependencies = [
+    "numpy>=1.24",
+    "mpmath>=1.3",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+monograph = ["matplotlib>=3.7"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

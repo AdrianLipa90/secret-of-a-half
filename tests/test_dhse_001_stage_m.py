@@ -10,13 +10,16 @@ from secret_of_a_half.dhse_001_stage_m import (
 
 
 def test_exact_sweep_distinguishes_symmetry_from_central_maximum() -> None:
+    # Two disjoint reciprocal intervals:
+    # [1/2, 2/3] <-> [3/2, 2].  Under q -> 1/q orientation reverses, so a
+    # lower endpoint maps to the reciprocal upper endpoint of its partner.
     starts = {
         (1, 2): 1,
-        (2, 1): 1,
+        (3, 2): 1,
     }
     ends = {
         (2, 3): 1,
-        (3, 2): 1,
+        (2, 1): 1,
     }
     result = exact_sweep(starts, ends)
     assert result["maximum"] == 1
