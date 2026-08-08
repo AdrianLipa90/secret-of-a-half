@@ -1,0 +1,29 @@
+{
+  "schema": "secret-of-a-half/atomic-assignment-canon/v0.6",
+  "status": "PASS_DEPENDENCY_EXPORT_WITH_OPEN_BINDING",
+  "source_package_zip_sha256": "3402beb604ad1b332880706bee1a26913a8c1ae3239295d04e242177e5dfae87",
+  "validation": {
+    "pytest": "28 PASS",
+    "skill": "PASS",
+    "phase_nav_v36": "PASS",
+    "foundation_regression": "PASS"
+  },
+  "canonized": [
+    "atomic slot role routing",
+    "mass-free relational-gradient orientation operator as project runtime rule",
+    "directed orbital sign convention",
+    "no-circularity proof firewall"
+  ],
+  "not_canonized": {
+    "gradient_to_TIR_coefficient_binding": "OPEN_PROSPECTIVE_VALIDATION_REQUIRED",
+    "collatz_stopping_sign_pattern": "RETROSPECTIVE_CANDIDATE_NEEDS_PROSPECTIVE_TEST",
+    "collatz_destination_curvature_magnitude": "RETROSPECTIVE_CANDIDATE_UNDERDETERMINED",
+    "SOH-C004": "OPEN",
+    "SOH-C005": "OPEN"
+  },
+  "mass_inputs_used": false,
+  "coefficient_inputs_used": false,
+  "routing_dimension": 36,
+  "github_target": "agent/atomic-assignment-canon-v0.6",
+  "main_write": false
+}
