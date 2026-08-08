@@ -1,0 +1,17 @@
+{
+  "action_lattice_berry_holonomy": 3.40935260610257e-05,
+  "canon_promoted": false,
+  "coefficient_audit": {
+    "assignment_open_count": 10,
+    "magnitude_unparented_count": 0
+  },
+  "graph_sha256": "b2fec0c566aac74c7b62af6911cbbabc7c2785db231ef05487c55ea52d900328",
+  "intrinsic_coefficient_dim": 4,
+  "open_claims": [
+    "SOH-C004",
+    "SOH-C005"
+  ],
+  "schema": "secret-of-a-half/tir-foundation-bridge/v0.5",
+  "status": "PASS_DEPENDENCY_EXPORT",
+  "vector_dim_routing": 36
+}
