@@ -1,0 +1,29 @@
+{
+  "schema": "secret-of-a-half.dhse-receipt-repair/v0.7",
+  "date": "2026-08-08",
+  "policy": "append_only_historical_receipts",
+  "stage_b": {
+    "status": "HISTORICAL_FULL_HASH_MISMATCH_RECORDED",
+    "historical_full_receipt_sha256": "d0457d72fedf988bf79287fdbc8d45cd80b266c45d160f5a60d4b5f0827c5ca3",
+    "current_recomputed_full_receipt_sha256": "b37f355c8deea06e2808a294413cf36c63eb2174589b7614311b566ebe11c302",
+    "compact_projection_fields_match": true,
+    "historical_receipt_overwritten": false,
+    "scientific_status_changed": false
+  },
+  "stage_i": {
+    "status": "LEGACY_NONCANONICAL_RATIONAL_SERIALIZATION",
+    "normalization": "recursively reduce every two-integer rational pair using exact Fraction semantics before semantic comparison",
+    "example": {
+      "legacy_pair": [2183, 2302658],
+      "canonical_pair": [59, 62234]
+    },
+    "historical_receipt_overwritten": false,
+    "scientific_status_changed": false
+  },
+  "stage_m": {
+    "status": "TEST_FIXTURE_CORRECTION",
+    "operator_changed": false,
+    "reason": "under q -> 1/q, reciprocal interval symmetry maps lower endpoints to reciprocal upper endpoints; separately reciprocal start/end sets are insufficient"
+  },
+  "scientific_promotion": "NOT_PERFORMED"
+}
