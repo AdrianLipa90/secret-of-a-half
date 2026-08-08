@@ -5,13 +5,20 @@
     "assignment_open_count": 10,
     "magnitude_unparented_count": 0
   },
+  "github_target": "main",
   "graph_sha256": "b2fec0c566aac74c7b62af6911cbbabc7c2785db231ef05487c55ea52d900328",
   "intrinsic_coefficient_dim": 4,
+  "merge": {
+    "method": "rebase",
+    "pr": 13,
+    "merged": true,
+    "merge_commit_sha": "d7d06a6430d48ad7439192e207553c8b9a6a03cd"
+  },
   "open_claims": [
     "SOH-C004",
     "SOH-C005"
   ],
   "schema": "secret-of-a-half/tir-foundation-bridge/v0.5",
-  "status": "PASS_DEPENDENCY_EXPORT",
+  "status": "PASS_MERGED_MAIN",
   "vector_dim_routing": 36
 }
