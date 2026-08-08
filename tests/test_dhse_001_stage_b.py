@@ -59,9 +59,25 @@ def test_zero_control_median_rule_is_explicit_in_receipt() -> None:
         assert stat["family_pass"] is stat["strict_first"]
 
 
-def test_persisted_stage_b_receipt_is_reproducible() -> None:
+def test_persisted_stage_b_projection_is_reproducible_with_hash_migration() -> None:
     root = Path(__file__).resolve().parents[1]
     persisted = json.loads(
         (root / "data" / "processed" / "dhse_001_stage_b_receipt.json").read_text(encoding="utf-8")
     )
-    assert persisted == compact_stage_b_receipt()
+    repair = json.loads(
+        (root / "data" / "processed" / "DHSE_001_RECEIPT_REPAIR_V0_7.json").read_text(encoding="utf-8")
+    )["stage_b"]
+    current = compact_stage_b_receipt()
+
+    historical_hash = persisted.pop("full_receipt_sha256")
+    current_hash = current.pop("full_receipt_sha256")
+
+    # The compact scientific/technical projection is reproducible.  The old
+    # full-receipt digest is preserved as historical provenance rather than
+    # silently rewritten after the mismatch was discovered.
+    assert persisted == current
+    assert historical_hash == repair["historical_full_receipt_sha256"]
+    assert current_hash == repair["current_recomputed_full_receipt_sha256"]
+    assert historical_hash != current_hash
+    assert repair["historical_receipt_overwritten"] is False
+    assert repair["scientific_status_changed"] is False
