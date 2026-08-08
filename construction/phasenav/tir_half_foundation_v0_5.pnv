@@ -1,0 +1,48 @@
+# Secret-of-a-Half × TIR dependency bridge v0.5
+# Status: integration bridge; NOT RH proof; NOT canon promotion.
+#
+# Intrinsic coefficient state is 4D.
+# PhaseNav routing/holonomy representation is 36D.
+# Do not identify the two spaces.
+
+─── FOUNDATION / INFORMATION-PHASE AXIS ───
+Μ(HALF) = 1/2
+Μ(INFO_PER_CYCLE) = LN(2)/12
+Μ(PHASE_CLOSURE_C) = 2*PI
+Μ(KAPPA) = INFO_PER_CYCLE / PHASE_CLOSURE_C
+Μ(KAPPA) = LN(2)/(24*PI)
+
+─── PROJECT ARITHMETIC CONSTANTS ───
+Μ(L3) = COLLATZ_DEPTH(3) = 7
+Μ(L4) = 5 - 3 = 2
+Μ(L5) = 5
+
+─── DISCRETE ACTION GENERATOR ───
+Μ(G(h,a,b,c)) = h/2 + a*KAPPA + b*KAPPA/L3 + c*KAPPA^2/2
+
+Μ(ELECTRON_ACTION_COEFF) = (1,-3,+1,-1)
+Μ(E_TO_MU_RELEASE_COEFF) = (0,L5,L4,L3+1)
+Μ(MU_TO_TAU_RELEASE_COEFF) = (0,3,-1,-L3)
+
+Μ(S_e) = G(ELECTRON_ACTION_COEFF)
+Μ(R_e_mu) = G(E_TO_MU_RELEASE_COEFF)
+Μ(R_mu_tau) = G(MU_TO_TAU_RELEASE_COEFF)
+
+─── EXACT LATTICE IDENTITIES ───
+Μ(R_e_tau_COEFF) = (0,L3+1,1,1)
+Μ(S_mu_COEFF) = (1,-(L3+1),-1,-(L3+2))
+Μ(S_tau_COEFF) = (1,-(L3+4),0,-2)
+
+─── PHASENAV INTEGRATION RECEIPT ───
+Μ(VECTOR_DIM_ROUTING) = 36
+Μ(INTRINSIC_COEFF_DIM) = 4
+Μ(ACTION_LATTICE_BERRY_HOLONOMY) = 3.4093526061025701e-05
+Μ(GRAPH_SHA256) = b2fec0c566aac74c7b62af6911cbbabc7c2785db231ef05487c55ea52d900328
+
+─── EPISTEMIC FIREWALL ───
+Μ(COEFFICIENT_MAGNITUDE_UNPARENTED) = 0
+Μ(ASSIGNMENT_RULE_OPEN_COUNT) = 10
+Μ(OPEN_ASSIGNMENT_TARGET) = GEOMETRY_HOLONOMY_TO_SIGN_ORIENTATION_ROLE
+Μ(SOH_C004) = OPEN
+Μ(SOH_C005) = OPEN
+Μ(CANON_PROMOTION) = FALSE
