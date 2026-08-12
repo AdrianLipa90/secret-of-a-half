@@ -76,3 +76,17 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Added native PhaseNav source, executor, deterministic receipt, eight tests, documentation and monograph Chapter 20.
 - Added `SOH-L021` and `SOH-N006`.
 - Fixed-cutoff uniformity, global positivity, form closure and the null-space implication remain open.
+
+## 2026-08-07 — Version 0.6.1 review: Stage M exactness and TIR cross-review
+
+- Audited DHSE-001 Stage M as an exact finite computer-assisted theorem on the declared primitive `K=6`, radius `1/10`, word-length `1..4` universe.
+- Added a conservative pre-run `int64` overflow certificate; uncertified larger word lengths are refused rather than silently evaluated with fixed-width arithmetic.
+- Registered `SOH-L022`: exact rational classification of the complete forcing-count step function on all positive projective centres for the declared Stage-M universe.
+- Registered `SOH-D001`: reciprocal symmetry `N_n(q)=N_n(1/q)` alone does not force a global maximum at the self-dual point; word lengths 1 and 4 are exact finite counterexamples.
+- Synchronized the machine-readable, Markdown and LaTeX claim ledgers and integrated the result into Chapter 18 without closing `SOH-C004` or `SOH-C005`.
+- Added explicit runtime dependencies `numpy` and `mpmath` to `pyproject.toml` after CI exposed the undeclared dependency.
+- Preserved the historical Stage-B full-receipt fingerprint while separating it from exact compact decision-payload reproducibility.
+- Canonicalized only schema-declared Stage-I rational fields for historical/current receipt comparison; historical unreduced rational pairs remain immutable.
+- Added `DHSE-001-RECEIPT-PROVENANCE-AUDIT-2026-08-07.md` and receipt compatibility helpers instead of rewriting old receipts to satisfy regression tests.
+- Updated monograph metadata to `0.6.1-review — 7 August 2026` and documented the review-line build and claim boundaries.
+- Cross-review with TIR treats half-side fixed-point/entropy results as exact, TIR normalization as a model definition, and downstream phase-rate closure as exact only conditional on those definitions.

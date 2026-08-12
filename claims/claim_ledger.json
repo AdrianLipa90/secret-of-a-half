@@ -1,6 +1,6 @@
 {
-  "version": "0.6",
-  "date": "2026-07-30",
+  "version": "0.6.1-review",
+  "date": "2026-08-07",
   "claims": [
     {"id":"SOH-L001","status":"exact","statement":"Binary Shannon entropy is uniquely maximal at sigma=1/2, with value ln 2.","location":"Theorem 4.1"},
     {"id":"SOH-L002","status":"exact","statement":"Equal-gain normalized two-channel cancellation occurs only at sigma=1/2 and relative phase pi.","location":"Theorem 5.1"},
@@ -38,7 +38,9 @@
     {"id":"SOH-L020","status":"exact_finite_section_theorem","statement":"Entrywise prime-tail certificates imply a finite-section operator-norm bound and Weyl eigenvalue enclosure.","location":"Monograph Chapter 19"},
     {"id":"SOH-N005","status":"numerical_certificate","statement":"For w=0.8, Q=100000 and N<=6, the largest certified prime-tail operator-norm bound is 7.717202888999335e-13.","location":"Prime-tail receipt v0.5"},
     {"id":"SOH-L021","status":"exact_asymptotic_theorem","statement":"For every c>0, the basis-adaptive schedule Q_N=exp(cN) forces the declared coarse Hermite finite-section prime-tail envelope to zero.","location":"Monograph Chapter 20, Adaptive Cutoff Collapse"},
-    {"id":"SOH-N006","status":"numerical_certificate","statement":"For w=0.8, Q0=100000, log Q_N=max(log Q0,2N), and N<=20, all sharp certificates pass 1e-12, with maximum 3.280365246530569e-14 at N=5.","location":"Adaptive-cutoff receipt v0.6"}
+    {"id":"SOH-N006","status":"numerical_certificate","statement":"For w=0.8, Q0=100000, log Q_N=max(log Q0,2N), and N<=20, all sharp certificates pass 1e-12, with maximum 3.280365246530569e-14 at N=5.","location":"Adaptive-cutoff receipt v0.6"},
+    {"id":"SOH-L022","status":"exact_finite_computer_assisted_theorem","statement":"For the complete primitive K=6 positive integer Mobius universe at projective radius 1/10 and word lengths 1..4, the forcing-count function is an exactly classified rational step function; q=1 is the unique global maximizer at lengths 2 and 3, while lengths 1 and 4 have reciprocal off-centre maximizer sets.","location":"DHSE-001 Stage M continuous theorem"},
+    {"id":"SOH-D001","status":"exact_finite_counterexample","statement":"Reciprocal symmetry N(q)=N(1/q) alone does not force the self-dual point q=1 to be a global maximum; DHSE-001 Stage M lengths 1 and 4 are exact counterexamples in the declared finite universe.","location":"DHSE-001 Stage M continuous theorem"}
   ],
   "nan_boundary": "IEEE NaN is an implementation marker, not a numeric endpoint.",
   "proof_of_rh": false
