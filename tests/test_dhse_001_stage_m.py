@@ -2,17 +2,42 @@ from fractions import Fraction
 import json
 from pathlib import Path
 
+import pytest
+
 from secret_of_a_half.dhse_001_stage_m import (
+    LENGTHS,
+    endpoint_census,
     exact_sweep,
+    int64_safety_certificate,
     reciprocal_endpoint_symmetry,
     run_stage_m,
 )
 
 
+def test_int64_certificate_covers_declared_stage_m_lengths() -> None:
+    certificates = [int64_safety_certificate(length) for length in LENGTHS]
+    assert all(row["safe"] for row in certificates)
+
+    length_four = int64_safety_certificate(4)
+    assert length_four["matrix_entry_bound"] == 20736
+    assert length_four["comparison_product_bound"] == 52027785216
+    assert length_four["comparison_product_bound"] < length_four["int64_max"]
+
+
+def test_int64_certificate_rejects_unproved_large_word_length() -> None:
+    certificate = int64_safety_certificate(8)
+    assert certificate["safe"] is False
+    assert certificate["comparison_product_bound"] > certificate["int64_max"]
+
+    # Exercise the actual public census path: refusal must occur before any
+    # pair-word enumeration can start on uncertified fixed-width arithmetic.
+    with pytest.raises(OverflowError, match="not certified safe"):
+        endpoint_census(8)
+
+
 def test_exact_sweep_distinguishes_symmetry_from_central_maximum() -> None:
-    # Two disjoint reciprocal intervals:
-    # [1/2, 2/3] <-> [3/2, 2].  Under q -> 1/q orientation reverses, so a
-    # lower endpoint maps to the reciprocal upper endpoint of its partner.
+    # Two reciprocal intervals, [1/2, 2/3] and [3/2, 2], leave q=1 outside
+    # the forcing set while preserving exact endpoint reciprocity.
     starts = {
         (1, 2): 1,
         (3, 2): 1,

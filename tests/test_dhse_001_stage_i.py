@@ -10,23 +10,7 @@ from secret_of_a_half.dhse_001_stage_i import (
     run_stage_i,
     words_of_length,
 )
-
-
-def _canonicalize_rational_pairs(value):
-    """Reduce legacy two-integer exact-rational pairs recursively.
-
-    Stage I contains no two-integer coefficient vectors: every two-integer list
-    in its receipt schema is an exact rational pair.  This migration therefore
-    preserves value while removing the historical non-reduced serialization.
-    """
-    if isinstance(value, dict):
-        return {key: _canonicalize_rational_pairs(item) for key, item in value.items()}
-    if isinstance(value, list):
-        if len(value) == 2 and all(type(item) is int for item in value) and value[1] != 0:
-            fraction = Fraction(value[0], value[1])
-            return [fraction.numerator, fraction.denominator]
-        return [_canonicalize_rational_pairs(item) for item in value]
-    return value
+from secret_of_a_half.receipt_provenance import canonicalize_stage_i_receipt
 
 
 def test_word_sets_are_complete() -> None:
@@ -82,18 +66,15 @@ def test_target_rate_is_nondecreasing_over_declared_lengths() -> None:
     assert receipt["secondary"]["target_rate_trend"] == "NONDECREASING"
 
 
-def test_persisted_stage_i_receipt_is_semantically_reproducible_after_v07_migration() -> None:
+def test_persisted_stage_i_receipt_is_exact_after_rational_canonicalization() -> None:
     root = Path(__file__).resolve().parents[1]
     persisted = json.loads(
         (root / "data" / "processed" / "dhse_001_stage_i_receipt.json").read_text(encoding="utf-8")
     )
-    repair = json.loads(
-        (root / "data" / "processed" / "DHSE_001_RECEIPT_REPAIR_V0_7.json").read_text(encoding="utf-8")
-    )["stage_i"]
     current = run_stage_i()
 
-    assert _canonicalize_rational_pairs(persisted) == _canonicalize_rational_pairs(current)
-    assert repair["status"] == "LEGACY_NONCANONICAL_RATIONAL_SERIALIZATION"
-    assert repair["historical_receipt_overwritten"] is False
-    assert repair["scientific_status_changed"] is False
-    assert _canonicalize_rational_pairs(repair["example"]["legacy_pair"]) == repair["example"]["canonical_pair"]
+    # The historical JSON contains a few unreduced rational pairs.  The runtime
+    # uses Fraction and emits their reduced forms.  Canonicalize only the
+    # schema-declared rational fields; all counts, words, gates and statuses must
+    # still compare byte-for-byte as JSON values after that exact reduction.
+    assert canonicalize_stage_i_receipt(persisted) == canonicalize_stage_i_receipt(current)
