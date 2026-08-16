@@ -1,0 +1,8 @@
+{
+  "schema": "PHASENAV_TIR_HALF_CANON_FREEZE_V2",
+  "status": "FROZEN_PROJECT_CANON",
+  "authority": "USER007_EXPLICIT_2026-08-16_PROMOTION",
+  "supersedes": "PHASENAV_TIR_HALF_CANON_FREEZE_V1",
+  "frozen_invariants": ["Omega/K/unit-circle/B/V critical-axis geometry exact","negative inverse z_L=-1/Omega is exact Li coordinate bridge","local reciprocal-conjugate quartet Li formula and growth-radius theorem exact","off-circle quartet gives exact negative Li subsequence witness","global Li positivity iff RH retained as exact classical equivalence/reduction","full Weil positivity iff RH retained as exact criterion/reduction under standard admissible setup","log-radial prime-shift representation and termwise-positivity no-go retained","SOH-C005 and full RH remain OPEN"],
+  "mutation_policy": "IMMUTABLE_BY_POLICY; any later semantic change requires PHASENAV_TIR_HALF_CANON_FREEZE_V3"
+}

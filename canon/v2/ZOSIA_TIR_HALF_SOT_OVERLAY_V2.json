@@ -1,0 +1,10 @@
+{
+  "schema": "ZOSIA_TIR_HALF_SOT_OVERLAY_V2",
+  "status": "ACTIVE_PROJECT_SEMANTIC_SOT_OVERLAY",
+  "authority": "USER007_EXPLICIT_2026-08-16_PROMOTION",
+  "created_utc": "2026-08-16",
+  "scope": {"project_semantic_sot": true, "external_scientific_truth_claimed": false, "append_only": true, "v1_mutated": false},
+  "promoted_exact_ids": ["SOH-L012","SOH-L013","SOH-L014","SOH-L015","SOH-L016","SOH-L017","SOH-L018","SOH-L019","SOH-L020","SOH-L021","SOH-L022","SOH-L023","SOH-L024","SOH-L025","SOH-L026","SOH-L027","SOH-L028","SOH-L029","SOH-L030","SOH-L031","SOH-L032"],
+  "open_bridges": ["SOH-C005","RH"],
+  "current_frontier": "Prove A_a >= 0 for every a > 0 from independent prime/theta/operator structure without assuming an RH-equivalent premise."
+}
