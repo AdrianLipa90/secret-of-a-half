@@ -42,11 +42,16 @@ def main() -> None:
     if r"\maketitle" in main_text:
         fail("main.tex must not create a second title page via \\maketitle")
 
-    all_tex = "\n".join(p.read_text(encoding="utf-8") for p in MONO.rglob("*.tex"))
-    if "Streszczenie" in all_tex:
-        fail("non-English frontmatter marker Streszczenie remains in active monograph")
-    if "Version 0.6.1-review" in all_tex or "Version 0.7" in all_tex:
-        fail("stale monograph version marker remains in active TeX")
+    frontmatter_text = "\n".join(
+        [main_text]
+        + [p.read_text(encoding="utf-8") for p in (MONO / "frontmatter").glob("*.tex")]
+    )
+    if "Streszczenie" in frontmatter_text:
+        fail("non-English frontmatter marker Streszczenie remains active")
+    if "Version 0.6.1-review" in frontmatter_text or "Version 0.7 --" in frontmatter_text:
+        fail("stale active version marker remains in title/frontmatter")
+    if "Version 0.9 Integrated Canon V2" not in frontmatter_text:
+        fail("v0.9 Integrated Canon V2 marker missing from active title/frontmatter")
 
     collision_checks = {
         "18_zero_undefined_reciprocal_duality.tex": ("SOH-L015", "SOH-L016", "SOH-L017", "SOH-L022"),
@@ -56,7 +61,6 @@ def main() -> None:
     for filename, forbidden in collision_checks.items():
         text = (CHAPTERS / filename).read_text(encoding="utf-8")
         for claim_id in forbidden:
-            # Historical migration prose may name old IDs only when explicitly marked pre-v0.9/old.
             lines = [ln for ln in text.splitlines() if claim_id in ln]
             for line in lines:
                 if "Pre-v0.9" not in line and "pre-v0.9" not in line and "old" not in line:
