@@ -1,9 +1,14 @@
-\chapter{Monograph Claim Ledger}
+\chapter{Canonical Claim Ledger}
 \label{app:claims}
 
+This appendix is the canonical monograph-side claim map for Version 0.9
+Integrated Canon V2. Historical pre-v0.9 identifiers that collided with the
+promoted Li/Weil line are preserved only as aliases; the active meanings of
+SOH-L012--SOH-L032 are unique and are those of \cref{chap:li-negative-inverse}.
+
+\section{Stable foundation and open bridges}
 \small
-\begin{longtable}{@{}p{0.10\textwidth}p{0.47\textwidth}p{0.14\textwidth}p{0.15\textwidth}@{}}
-\caption{Principal claims and their status in Version 0.6.1-review.}\label{tab:claim-ledger}\\
+\begin{longtable}{@{}p{0.12\textwidth}p{0.49\textwidth}p{0.16\textwidth}p{0.13\textwidth}@{}}
 \toprule
 ID & Statement & Status & Location\\
 \midrule
@@ -12,51 +17,105 @@ ID & Statement & Status & Location\\
 ID & Statement & Status & Location\\
 \midrule
 \endhead
-SOH-L001 & Binary Shannon entropy is uniquely maximal at $\sigma=1/2$, with value $\ln2$. & Exact & \Cref{lem:entropy-max}\\
-SOH-L002 & Equal-gain normalized two-channel cancellation occurs only at $\sigma=1/2$ and phase $\pi$. & Exact & \Cref{lem:exact-cancellation}\\
-SOH-L003 & The fixed set of $\J(s)=1-\bar s$ is the critical line. & Exact & \Cref{lem:J-fixed}\\
-SOH-L004 & Entropy deficit from balance equals a Bernoulli KL divergence and is positive. & Exact & \Cref{prop:entropy-deficit}\\
-SOH-L005 & The binary-spinor complement, entropy, sign, and phase-locked cancellation conditions are equivalent. & Exact model theorem & \Cref{thm:triple-coincidence}\\
-SOH-L006 & Eta and zeta have identical zero sets with multiplicity in the open critical strip. & Exact classical & \Cref{prop:eta-zeta-equivalence}\\
-SOH-L007 & Unequal channel gains shift the cancellation point to $|b|^2/(|a|^2+|b|^2)$. & Exact & \Cref{thm:weighted-cancellation}\\
-SOH-C001 & A canonical zeta-state map converts every non-trivial zero into equal-gain complementary cancellation. & Open bridge & \Cref{post:zero-equivalence}\\
-SOH-T001 & Under SOH-C001 and the channel assumptions, all non-trivial zeros lie on $\Re s=1/2$. & Conditional & \Cref{thm:conditional-rh}\\
-SOH-C002 & A theta-kernel or analytic-vector construction satisfies the canonical bridge requirements. & Open programme & \Cref{chap:candidates}\\
-SOH-C003 & A self-adjoint operator has spectral determinant proportional to $\XiR$. & Open spectral route & \Cref{thm:spectral-conditional}\\
-SOH-L008 & The native paired theta state satisfies $P(\J s)=X\overline{P(s)}$. & Exact & \Cref{thm:pn-covariance}\\
-SOH-L009 & The native closure defect equals $(\Re s-1/2)^2$. & Exact & \Cref{thm:pn-closure}\\
-SOH-L010 & The continuous paired theta detector equals $\xi(s)$. & Exact classical & Prop.~\ref{prop:pn-detector}\\
-SOH-C004 & Every non-trivial zero closes in the canonical self-dual PhaseNav shell. & Open bridge & Postulate~\ref{post:pn-open-bridge}\\
-SOH-T002 & Under SOH-C004, all non-trivial zeros lie on $\Re s=1/2$. & Conditional & \Cref{thm:pn-conditional-rh}\\
-SOH-N001 & The eighteen-pair detector is a low-height numerical approximation. & Numerical & \Cref{chap:phasenav-native}\\
-SOH-L022 & In the primitive $K=6$ positive M\"obius universe at $r=1/10$, the complete Stage M forcing landscape is exactly classified for word lengths $1$--$4$; $q=1$ is uniquely maximal only at lengths 2 and 3. & Exact finite computer-assisted & \Cref{sec:half-self-dual-not-maximum}\\
-SOH-D001 & Reciprocal symmetry $N(q)=N(1/q)$ alone does not force a global maximum at $q=1$; lengths 1 and 4 give exact counterexamples in the declared finite universe. & Exact finite counterexample & \Cref{sec:half-self-dual-not-maximum}\\
+SOH-L001 & Binary Shannon entropy is uniquely maximal at $\sigma=1/2$, with value $\ln2$. & Exact & Ch.~4\\
+SOH-L002 & Equal-gain normalized two-channel cancellation occurs only at $\sigma=1/2$ and relative phase $\pi$. & Exact & Ch.~5\\
+SOH-L003 & The fixed set of $K(s)=1-\bar s$ is $\Re s=1/2$. & Exact & Ch.~3\\
+SOH-L004 & Entropy deficit from balance equals a Bernoulli KL divergence and is positive away from $1/2$. & Exact & Ch.~4\\
+SOH-L005 & The declared binary-spinor balance conditions select $\sigma=1/2$. & Exact model theorem & Ch.~6\\
+SOH-L006 & Eta and zeta have identical zero sets with multiplicity in the open critical strip. & Exact classical & Ch.~7\\
+SOH-L007 & Unequal channel gains shift cancellation to $|b|^2/(|a|^2+|b|^2)$. & Exact & App.~B\\
+SOH-L008 & The native paired theta state satisfies the declared $K$-covariance. & Exact & Ch.~16\\
+SOH-L009 & The normalized native closure defect is $(\Re s-1/2)^2$. & Exact & Ch.~16\\
+SOH-L010 & The continuous paired theta-Mellin detector equals $\xi(s)$. & Exact classical & Ch.~16\\
+SOH-L011 & An involution-fixed finite PhaseNav--Weil fixture reduces to a PSD Gram matrix. & Exact finite & Weil probe\\
+SOH-C001 & A canonical zeta-state map converts every non-trivial zero into equal-gain complementary cancellation. & OPEN & Chs.~8--9\\
+SOH-C002 & A theta/analytic-vector/positivity construction satisfies the canonical bridge requirements. & OPEN & Ch.~11\\
+SOH-C003 & A self-adjoint spectral construction has the required zeta determinant. & OPEN & Ch.~12\\
+SOH-C004 & Every non-trivial $\xi$ zero closes in the canonical self-dual PhaseNav shell. & OPEN & Ch.~16\\
+SOH-C005 & The complete arithmetic Weil form is non-negative on the full admissible test family by an independent, non-circular proof. & OPEN & Ch.~25\\
 \bottomrule
 \end{longtable}
 \normalsize
 
-\section{Promotion rule}
+\section{Version 0.9 promoted Li/Weil line}
+\small
+\begin{longtable}{@{}p{0.12\textwidth}p{0.61\textwidth}p{0.17\textwidth}@{}}
+\toprule
+ID & Canonical statement & Status\\
+\midrule
+\endfirsthead
+\toprule
+ID & Canonical statement & Status\\
+\midrule
+\endhead
+SOH-L012 & $\Omega(s)=s/(1-s)$ maps the critical line to the unit circle. & Exact\\
+SOH-L013 & $\Omega(K(s))=1/\overline{\Omega(s)}$. & Exact\\
+SOH-L014 & $\Re s=1/2\iff|\Omega(s)|=1$. & Exact\\
+SOH-L015 & RH is equivalent to all transformed non-trivial zeros lying on $|\Omega|=1$. & Exact reformulation\\
+SOH-L016 & $B=\log|\Omega|$ is $K$-odd and $V=B^2$ vanishes exactly on the critical line. & Exact\\
+SOH-L017 & $z_L=1-1/s=-1/\Omega$. & Exact\\
+SOH-L018 & $z_L(K(s))=1/\overline{z_L(s)}$. & Exact\\
+SOH-L019 & Li coefficients are the standard symmetric zero power sums in $z_L$. & Exact classical\\
+SOH-L020 & A reciprocal-conjugate quartet contributes $4-2(R^n+R^{-n})\cos(n\phi)$. & Exact\\
+SOH-L021 & The local quartet growth radius is $\max(R,R^{-1})=e^{|B|}$. & Exact\\
+SOH-L022 & $V=(\log\mathscr R)^2$ for the local Li growth radius. & Exact\\
+SOH-L023 & Every off-circle reciprocal-conjugate quartet has local Li liminf $=-\infty$. & Exact\\
+SOH-L024 & An off-axis zero maps to a Li generating-function singularity inside the unit disk on the corresponding symmetry side. & Exact\\
+SOH-L025 & Global Li non-negativity for all orders is equivalent to RH. & Exact classical criterion\\
+SOH-L026 & Full admissible Weil positivity is equivalent to RH under the standard criterion. & Exact classical criterion\\
+SOH-L027 & $B=\log|\Omega|$ is an additive log-radial coordinate used alongside the prime-shift representation. & Exact coordinate reduction\\
+SOH-L028 & Prime arithmetic support occurs at additive shifts $\pm\log n$ under the stated screw/Weil normalization. & Exact normalization\\
+SOH-L029 & A single positive-weight hinge kernel is indefinite; the displayed two-point minor has determinant $-a^2/4$. & Exact no-go\\
+SOH-L030 & Positivity of von Mangoldt weights alone cannot establish SOH-C005 term by term. & Exact no-go\\
+SOH-L031 & Localized SOH-C005 is equivalent to non-negativity of the localized spectral floor. & Exact reduction\\
+SOH-L032 & The localized spectral floor is non-increasing with $a$ because the Rayleigh test domains $C_c^\infty(-a,a)$ are nested. & Exact domain monotonicity\\
+\bottomrule
+\end{longtable}
+\normalsize
 
-An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of RH left unproved. Numerical agreement cannot promote a claim to exact status.
+\section{Domain-specific exact results retained after migration}
 
-\subsection*{PhaseNav--Weil Hermite ladder, reciprocal duality, prime-tail control, and DHSE finite classification}
 \begin{description}
-\item[SOH-L013, exact.] Finite spans of the translated-scaled Hermite channels are dense in Schwartz space.
-\item[SOH-L014, exact.] The Hermite kernel has the declared closed Fourier transform and $\widehat H_{mn}(0)=\delta_{mn}$.
-\item[SOH-T004, conditional.] Positivity of every finite Hermite section plus continuity extends non-negativity to the dense core.
-\item[SOH-N004, numerical.] The finite ladder through the declared basis size is cutoff-audited and PSD-tested.
-\item[SOH-L015, exact.] Binary complement is conjugate to reciprocal inversion in projective odds coordinates.
-\item[SOH-L016, exact.] The unique positive reciprocal fixed point corresponds to $p=1/2$.
-\item[SOH-L017, exact.] The half is the Fisher--Rao geodesic midpoint of the two labelled pure states.
-\item[SOH-H001, exploratory.] Defined zero and undefined bottom are interpreted as informational boundary labels.
-\item[SOH-L018, exact.] The logarithmic prime tail is compactified by $z_{\rm t}=1/\log x$ to a finite interval with a flat endpoint.
-\item[SOH-L019, exact.] Every fixed Hermite entry has the declared incomplete-gamma prime-tail majorant.
-\item[SOH-L020, exact finite section.] Entrywise tail certificates give an operator-norm and eigenvalue enclosure for every fixed finite section.
-\item[SOH-N005, numerical.] For $N\le6$, $Q=100000$, the maximum certified tail norm is $7.7172\times10^{-13}$.
-\item[SOH-L021, exact asymptotic.] Every exponential adaptive schedule $Q_N=e^{cN}$ with $c>0$ forces the declared coarse tail envelope to zero.
-\item[SOH-N006, numerical.] For $w=0.8$, $Q_0=100000$, $c=2$, and $N\le20$, the maximum sharp certificate is $3.280365246530569\times10^{-14}$ at $N=5$.
-\item[SOH-L022, exact finite computer-assisted.] Stage M classifies the forcing-count step function on all $q>0$ for the declared primitive $K=6$, $r=1/10$, lengths $1$--$4$ universe.
-\item[SOH-D001, exact finite counterexample.] Reciprocal symmetry by itself is insufficient to infer a self-dual maximum; the length-1 and length-4 sectors split away from $q=1$.
+\item[SOH-WA001.] The Gaussian PhaseNav--Weil matrix test has the declared closed Fourier transform.
+\item[SOH-HM001.] Finite spans of the translated-scaled Hermite channels are dense in Schwartz space.
+\item[SOH-HM002.] The Hermite product kernel has the declared Fourier transform and $\widehat H_{mn}(0)=\delta_{mn}$.
+\item[SOH-ZU001.] Binary complement is conjugate to reciprocal inversion in projective odds coordinates.
+\item[SOH-ZU002.] The unique positive reciprocal fixed point corresponds to $p=1/2$.
+\item[SOH-ZU003.] $p=1/2$ is the Fisher--Rao geodesic midpoint of the labelled pure states.
+\item[SOH-PT001.] The logarithmic prime tail compactifies by $z_{\rm t}=1/\log x$ to a finite interval with a flat endpoint.
+\item[SOH-PT002.] Every fixed Hermite entry has the declared incomplete-gamma tail majorant.
+\item[SOH-PT003.] Entrywise tail certificates imply a finite-section operator-norm and Weyl eigenvalue enclosure.
+\item[SOH-AC001.] Every exponential adaptive schedule $Q_N=e^{cN}$ with $c>0$ forces the declared coarse tail envelope to zero.
+\item[SOH-DHSE-M001.] Stage M exactly classifies the declared finite forcing-count landscape for $K=6$, $r=1/10$, and word lengths $1$--$4$.
+\item[SOH-D001.] Reciprocal symmetry alone does not force a self-dual global maximum in the declared Stage-M universe.
 \end{description}
 
-The adaptive theorem controls a diagonal sequence of basis sizes and cutoffs. It does not prove fixed-cutoff uniformity, positivity of all infinite-cutoff sections, or the null-space bridge.  Likewise, DHSE Stage M is exact only on its explicitly finite operator universe and declared word lengths; it is not an all-length or all-operator theorem and does not close the zeta bridge.
+\section{Historical alias map}
+
+The following aliases preserve provenance of pre-v0.9 material without creating
+multiple active meanings for one identifier:
+\[
+\begin{array}{rcl@{\qquad}rcl}
+\text{old L012}&\to&\text{SOH-WA001}, &
+\text{old L013}&\to&\text{SOH-HM001},\\
+\text{old L014}&\to&\text{SOH-HM002}, &
+\text{old L015}&\to&\text{SOH-ZU001},\\
+\text{old L016}&\to&\text{SOH-ZU002}, &
+\text{old L017}&\to&\text{SOH-ZU003},\\
+\text{old L018}&\to&\text{SOH-PT001}, &
+\text{old L019}&\to&\text{SOH-PT002},\\
+\text{old L020}&\to&\text{SOH-PT003}, &
+\text{old L021}&\to&\text{SOH-AC001},\\
+\text{old L022}&\to&\text{SOH-DHSE-M001}.&&
+\end{array}
+\]
+The prefix ``old'' means a pre-v0.9 snapshot only. In Version 0.9 and later,
+unqualified SOH-L012--SOH-L032 always denote the promoted Li/Weil line above.
+
+\section{Promotion and proof firewall}
+
+An OPEN claim may be promoted only when its complete proof or reproducible
+construction is present, every dependency is explicit, and no dependency is
+merely an RH-equivalent statement left unproved. Numerical agreement cannot
+promote a claim to exact status. The current terminal obstruction remains
+SOH-C005; therefore the Riemann Hypothesis remains OPEN in this monograph.
