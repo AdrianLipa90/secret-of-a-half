@@ -58,12 +58,14 @@ def main() -> None:
         "19_phasenav_weil_prime_tail_certificate.tex": ("SOH-L018", "SOH-L019", "SOH-L020"),
         "20_phasenav_weil_adaptive_cutoff.tex": ("SOH-L021",),
     }
+    declaration_markers = (r"\textbf{", r"\item[", r"\status{")
     for filename, forbidden in collision_checks.items():
         text = (CHAPTERS / filename).read_text(encoding="utf-8")
         for claim_id in forbidden:
-            lines = [ln for ln in text.splitlines() if claim_id in ln]
-            for line in lines:
-                if "Pre-v0.9" not in line and "pre-v0.9" not in line and "old" not in line:
+            for line in text.splitlines():
+                if claim_id not in line:
+                    continue
+                if any(marker in line for marker in declaration_markers):
                     fail(f"legacy claim collision {claim_id} remains active in {filename}: {line.strip()}")
 
     ledger = json.loads((ROOT / "claims" / "claim_ledger.json").read_text(encoding="utf-8"))
