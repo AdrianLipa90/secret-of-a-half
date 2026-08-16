@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       fail-fast: false
-      max-parallel: 9
+      max-parallel: 10
       matrix:
         lane:
           - general-tests
@@ -28,6 +28,7 @@ jobs:
           - hermite-ladder
           - reciprocal-duality
           - prime-tail
+          - c005-cross-block-prime-tail
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -68,6 +69,9 @@ jobs:
             prime-tail)
               python scripts/run_phasenav_weil_prime_tail.py
               ;;
+            c005-cross-block-prime-tail)
+              python scripts/run_c005_cross_block_prime_tail.py
+              ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
               ;;
@@ -96,8 +100,14 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e . pytest numpy matplotlib mpmath
 
-      - name: Generate deterministic assets
+      - name: Audit monograph completeness and claim IDs
+        run: python scripts/audit_monograph_integration.py
+
+      - name: Generate deterministic core assets
         run: python scripts/generate_monograph_assets.py
+
+      - name: Generate identity and holonomy assets
+        run: python scripts/generate_identity_holonomy_assets.py
 
       - name: Install LaTeX toolchain
         run: |
@@ -109,6 +119,7 @@ jobs:
             texlive-latex-recommended \
             texlive-latex-extra \
             texlive-fonts-recommended \
+            texlive-bibtex-extra \
             texlive-science \
             poppler-utils
 
@@ -124,7 +135,7 @@ jobs:
           PAGES="$(pdfinfo main.pdf | awk '/^Pages:/ {print $2}')"
           echo "Compiled monograph pages: $PAGES"
           test "$PAGES" -ge 108
-          ! grep -E "Overfull|undefined references|Citation.*undefined" main.log
+          ! grep -E "Overfull|undefined references|Citation.*undefined|multiply defined" main.log
 
       - name: Upload compiled monograph
         if: success()
