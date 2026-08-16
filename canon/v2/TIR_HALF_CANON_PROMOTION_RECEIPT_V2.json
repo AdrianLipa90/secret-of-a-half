@@ -1,0 +1,9 @@
+{
+  "schema": "TIR_HALF_CANON_PROMOTION_RECEIPT_V2",
+  "status": "PASS_PROMOTED_EXACT_SUBSET_ONLY",
+  "authority": "USER007_EXPLICIT_2026-08-16_PROMOTION",
+  "promoted_exact_ids": ["SOH-L012","SOH-L013","SOH-L014","SOH-L015","SOH-L016","SOH-L017","SOH-L018","SOH-L019","SOH-L020","SOH-L021","SOH-L022","SOH-L023","SOH-L024","SOH-L025","SOH-L026","SOH-L027","SOH-L028","SOH-L029","SOH-L030","SOH-L031","SOH-L032"],
+  "kept_open": ["SOH-C005","RH"],
+  "branch": "canon/v0.9-li-weil-promotion-v2",
+  "main_mutated": false
+}
