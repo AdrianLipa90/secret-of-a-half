@@ -1,47 +1,48 @@
-# Claim Ledger — Version 0.6.1 review
+# Claim Ledger — Version 0.9 Integrated Canon V2
 
-| ID | Statement | Status | Evidence / location | Blocking gap |
-|---|---|---|---|---|
-| SOH-L001 | Binary Shannon entropy is uniquely maximal at \(\sigma=1/2\), with value \(\ln 2\). | Exact | Monograph, Theorem 4.1 | None |
-| SOH-L002 | Equal-gain normalized two-channel cancellation occurs only at \(\sigma=1/2\) and relative phase \(\pi\). | Exact | Monograph, Theorem 5.1 | None |
-| SOH-L003 | The fixed set of \(\mathcal J(s)=1-\overline{s}\) is \(\operatorname{Re}s=1/2\). | Exact | Monograph, Theorem 3.2 | None |
-| SOH-L004 | The entropy deficit from balance equals a Bernoulli KL divergence and is strictly positive away from \(1/2\). | Exact | Monograph, Theorem 4.2 | None |
-| SOH-L005 | Within the binary-spinor model, complement symmetry, maximal entropy, spinorial sign and phase-locked cancellation are equivalent to \(\sigma=1/2\). | Exact model theorem | Monograph, Theorem 6.1 | Explicit model assumptions |
-| SOH-L006 | In the open critical strip, \(\eta\) and \(\zeta\) have the same zeros with multiplicity. | Exact classical | Monograph, Theorem 7.1 | None |
-| SOH-L007 | Unequal channel gains shift cancellation to \(|b|^2/(|a|^2+|b|^2)\). | Exact | Monograph, Theorem B.1 | None |
-| SOH-C001 | A canonical regular, covariant, gauge-independent zeta-state map converts every non-trivial zero into equal-gain cancellation. | Open bridge | Monograph, Chapter 8 | Canonical construction |
-| SOH-T001 | Under SOH-C001 and the channel hypotheses, every non-trivial zero lies on \(\operatorname{Re}s=1/2\). | Conditional | Monograph, Theorem 9.1 | SOH-C001 |
-| SOH-C002 | A theta-kernel, analytic-vector, positivity or reproducing-kernel construction satisfies the canonical bridge. | Open programme | Monograph, Chapter 11 | Positivity and zero-equivalence |
-| SOH-C003 | A self-adjoint operator has spectral determinant proportional to \(\Xi\). | Open spectral route | Monograph, Chapter 12 | Operator construction |
-| SOH-L008 | The native paired theta state satisfies \(P(J(s))=X\overline{P(s)}\). | Exact | Native PhaseNav source and tests | None |
-| SOH-L009 | The normalized native closure defect equals \((\operatorname{Re}s-1/2)^2\). | Exact | Monograph, Theorem 16.2 | None |
-| SOH-L010 | The continuous paired theta-Mellin detector equals \(\xi(s)\). | Exact classical | Monograph, Proposition 16.3 | None |
-| SOH-C004 | Every non-trivial \(\xi\) zero closes in the canonical self-dual PhaseNav shell. | Open bridge | Postulate 16.4 | Positivity or uniqueness theorem |
-| SOH-T002 | Under SOH-C004, every non-trivial zero lies on \(\operatorname{Re}s=1/2\). | Conditional | Monograph, Theorem 16.5 | SOH-C004 |
-| SOH-N001 | The 18-pair detector is a low-height numerical quadrature approximation to \(\xi(s)\). | Numerical | CSV receipt and tests | Finite quadrature |
-| SOH-L011 | For an involution-fixed finite fixture, the PhaseNav–Weil matrix is a PSD Gram matrix. | Exact finite lemma | Native `.pnv` and tests | Not the complete arithmetic criterion |
-| SOH-N002 | The two-channel Gaussian profile detects a synthetic off-axis quartet through a negative eigenvalue. | Numerical falsification witness | JSON receipt and tests | Synthetic finite fixture |
-| SOH-C005 | The complete arithmetic PhaseNav–Weil operator is positive on a dense admissible family and its null structure forces native closure. | Open positivity bridge | PhaseNav–Weil docs | Fixed-cutoff uniformity, positivity, regularization, closure implication |
-| SOH-T003 | Under SOH-C005 and exact Weil correspondence, all non-trivial zeros lie on the half-axis. | Conditional | PhaseNav–Weil operator | SOH-C005 |
-| SOH-L012 | The Gaussian matrix test has the declared closed Fourier transform. | Exact analytic lemma | Arithmetic v0.2 docs and tests | None |
-| SOH-N003 | The declared prime-side matrix is cutoff-stable and matches the low-height spectral receipt. | Numerical audit | Arithmetic JSON receipt | One profile and finite cutoffs |
-| SOH-L013 | Finite spans of translated-scaled Hermite PhaseNav channels are dense in Schwartz space. | Exact functional-analytic lemma | Chapter 17 and Hermite basis theorem | None |
-| SOH-L014 | The Hermite kernel has the declared closed Fourier transform and \(\widehat H_{mn}(0)=\delta_{mn}\). | Exact analytic lemma | Chapter 17 and regression tests | None |
-| SOH-T004 | PSD of every finite Hermite section plus continuity extends non-negativity to the dense core. | Conditional reduction theorem | Chapter 17 | Uniform PSD and continuity |
-| SOH-N004 | The finite Hermite ladder through basis size six is cutoff-audited and PSD-tested. | Numerical audit | Deterministic receipt | Finite basis and cutoffs |
-| SOH-L015 | Binary complement is conjugate to reciprocal inversion in projective odds coordinates. | Exact lemma | Chapter 18, Theorem 18.3 | None |
-| SOH-L016 | The unique positive reciprocal fixed point corresponds to the unique complement-fixed weight \(p=1/2\). | Exact lemma | Chapter 18, Corollary 18.4 | None |
-| SOH-L017 | \(p=1/2\) is the Fisher–Rao geodesic midpoint between the two labelled pure states. | Exact information-geometric lemma | Chapter 18, Theorem 18.5 | None |
-| SOH-H001 | `DEFINED_ZERO` and `UNDEFINED_BOTTOM` are interpreted as informational boundary labels. | Exploratory hypothesis | Chapter 18 and native `.pnv` | Canonical physical or zeta-state interpretation |
-| SOH-L018 | The logarithmic prime tail is compactified by \(z_{\rm t}=1/\log x\) to a finite interval whose new endpoint is smooth and flat. | Exact analytic lemma | Chapter 19, Theorem 19.3 | None |
-| SOH-L019 | Every fixed Hermite matrix entry has the declared upper-incomplete-gamma prime-tail majorant under an explicit monotonicity condition. | Exact analytic theorem | Chapter 19, Theorems 19.2 and 19.4 | None |
-| SOH-L020 | Entrywise prime-tail certificates imply a finite-section operator-norm bound and a Weyl eigenvalue enclosure. | Exact finite-section theorem | Chapter 19, Corollary 19.5 | None |
-| SOH-N005 | For \(w=0.8\), \(Q=100000\), and \(N\le6\), the largest certified prime-tail operator-norm bound is \(7.717202889\times10^{-13}\). | Numerical certificate | Prime-tail JSON receipt and tests | Fixed finite sections only |
-| SOH-L021 | For every \(c>0\), the basis-adaptive schedule \(Q_N=e^{cN}\) forces the stated coarse Hermite finite-section prime-tail envelope to zero. | Exact asymptotic theorem | Chapter 20, Theorem 20.3 | Does not imply fixed-cutoff uniformity or positivity |
-| SOH-N006 | For \(w=0.8\), \(Q_0=100000\), \(\log Q_N=\max(\log Q_0,2N)\), and \(N\le20\), all sharp certificates pass \(10^{-12}\), with maximum \(3.280365246530569\times10^{-14}\) at \(N=5\). | Numerical certificate | Adaptive-cutoff JSON receipt and tests | Finite audit through \(N=20\) |
-| SOH-L022 | For the complete primitive \(K=6\) positive integer Möbius universe at projective radius \(1/10\) and word lengths 1–4, the forcing-count function is exactly classified on all \(q>0\); \(q=1\) is the unique global maximizer at lengths 2 and 3, while lengths 1 and 4 have reciprocal off-centre maximizer sets. | Exact finite computer-assisted theorem | DHSE-001 Stage M continuous theorem; Chapter 18 | Finite \(K=6\), radius \(1/10\), lengths 1–4 only |
-| SOH-D001 | Reciprocal symmetry \(N_n(q)=N_n(1/q)\) alone does not force a global maximum at the self-dual point \(q=1\); Stage-M lengths 1 and 4 are exact counterexamples in the declared finite universe. | Exact finite counterexample | DHSE-001 Stage M continuous theorem; Chapter 18 | No all-operator or all-length generalization claimed |
+The machine-readable source of truth is [`claim_ledger.json`](claim_ledger.json). The previous 0.6.1-review ledger is preserved unchanged at [`archive/claim_ledger_v0.6.1_review.json`](archive/claim_ledger_v0.6.1_review.json).
+
+## Canonical V2 line
+
+`SOH-L001`–`SOH-L011` retain their established meanings. `SOH-L012`–`SOH-L032` are now exclusively the promoted V2 critical-axis / Li / Weil line:
+
+| Range | Canonical content | Status |
+|---|---|---|
+| L012–L016 | Projective coordinate `Omega=s/(1-s)`, anti-linear reciprocal conjugacy, unit-circle critical axis, `B=log|Omega|`, `V=B^2` | Exact / exact reformulation |
+| L017–L023 | Li coordinate `z_L=1-1/s=-1/Omega`, reciprocal-conjugate quartet formula, local growth radius and off-circle negative subsequence | Exact |
+| L024–L026 | Li generating singularity, global Li criterion, global Weil positivity criterion | Exact classical criteria / reformulations |
+| L027–L030 | Log-radial prime shifts and the positive-weight hinge no-go lemma | Exact reductions / no-go |
+| L031–L032 | Localized arithmetic Weil spectral floor and nested-domain monotonicity | Exact reduction / domain monotonicity |
+
+## Legacy-ID migration
+
+Several development snapshots used numbers L012–L022 for earlier arithmetic results. Those statements remain canonical under domain IDs; the old numeric names are deprecated aliases only.
+
+| Historical pre-v0.9 ID | Current canonical ID | Content |
+|---|---|---|
+| L012 | SOH-WA001 | Gaussian Weil arithmetic Fourier transform |
+| L013 | SOH-HM001 | Hermite finite-span density |
+| L014 | SOH-HM002 | Hermite kernel Fourier transform |
+| L015 | SOH-ZU001 | complement / reciprocal-odds conjugacy |
+| L016 | SOH-ZU002 | unique positive reciprocal fixed point |
+| L017 | SOH-ZU003 | Fisher–Rao midpoint |
+| L018 | SOH-PT001 | reciprocal prime-tail compactification |
+| L019 | SOH-PT002 | incomplete-gamma prime-tail majorant |
+| L020 | SOH-PT003 | finite-section norm / Weyl enclosure |
+| L021 | SOH-AC001 | adaptive cutoff collapse |
+| L022 | SOH-DHSE-M001 | finite Stage-M classification |
+
+Historical prose in development chapters that displays one of these old numeric IDs is governed by this migration table. It does **not** redefine the current V2 `SOH-L012`–`SOH-L032` identifiers.
+
+## Open firewall
+
+`SOH-C001`–`SOH-C005` remain open according to their stated scope. In particular:
+
+- **SOH-C005 remains OPEN:** independently prove the full admissible arithmetic Weil form non-negative, equivalently establish the corresponding global Li positivity, without assuming an RH-equivalent premise.
+- **RH remains OPEN.**
+
+Finite PSD receipts, exact coordinate equivalences, local quartet theorems, prime-tail certificates, and localized operator reductions do not by themselves close SOH-C005.
 
 ## Promotion rule
 
-An open claim may be promoted only when its complete proof or reproducible construction is present, every dependency is listed, and no dependency is merely an equivalent formulation of the Riemann Hypothesis left unproved. Numerical agreement cannot promote a claim to exact status. IEEE NaN is not a numeric endpoint in SOH-H001. The reciprocal tail coordinate in SOH-L018 and the adaptive schedule in SOH-L021 are not maps of zeta zeros. SOH-L022 and SOH-D001 are exact only on their explicitly declared finite Stage-M universe and do not close SOH-C004 or SOH-C005.
+A claim may be promoted only when its proof or reproducible construction is complete at the declared scope, all dependencies are explicit, and no dependency merely assumes an equivalent form of the desired conclusion. Numerical agreement does not promote a claim to exact status. Model assignments remain model-level unless independently validated.
