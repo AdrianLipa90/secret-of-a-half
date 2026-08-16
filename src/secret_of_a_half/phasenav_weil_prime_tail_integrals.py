@@ -1,10 +1,11 @@
-"""Analytic integral identities and finite-section envelopes for the prime tail."""
+"""Analytic integral identities and finite-/cross-section envelopes for the prime tail."""
 from __future__ import annotations
 import math
 import mpmath as mp
 import numpy as np
 from .phasenav_weil_hermite_core import channel_normalization, hermite_linearization_terms
 from .phasenav_weil_prime_tail_program import monotonicity_margin
+
 
 def tail_term_integral_gamma(degree: int, cutoff: int, width: float) -> mp.mpf:
     """Closed upper-incomplete-gamma form of one logarithmic tail integral.
@@ -119,6 +120,67 @@ def entry_bound_matrix(
             result[left, right] = value
             result[right, left] = value
     return result
+
+
+def rectangular_entry_bound_matrix(
+    left_start: int,
+    left_stop: int,
+    right_start: int,
+    right_stop: int,
+    cutoff: int,
+    width: float,
+) -> np.ndarray:
+    """Entrywise majorants for a rectangular Hermite coupling block.
+
+    This is the prime-tail analogue of P_N T (I-P_N) restricted to a finite
+    right window.  It does not include the retained-prime, archimedean,
+    boundary, or regularization parts of the full localized Weil operator.
+    """
+    if min(left_start, right_start) < 0:
+        raise ValueError("Hermite orders must be non-negative")
+    if left_stop <= left_start or right_stop <= right_start:
+        raise ValueError("index windows must be non-empty")
+    result = np.empty((left_stop - left_start, right_stop - right_start), dtype=float)
+    for row, left in enumerate(range(left_start, left_stop)):
+        for column, right in enumerate(range(right_start, right_stop)):
+            result[row, column] = float(entry_tail_bound(left, right, cutoff, width))
+    return result
+
+
+def rectangular_operator_norm_tail_bound(
+    left_start: int,
+    left_stop: int,
+    right_start: int,
+    right_stop: int,
+    cutoff: int,
+    width: float,
+) -> float:
+    """Certified spectral-norm envelope for a finite rectangular tail block.
+
+    Uses ||A||_2 <= sqrt(||A||_1 ||A||_inf) on the non-negative matrix of
+    entrywise absolute majorants.
+    """
+    bounds = rectangular_entry_bound_matrix(
+        left_start, left_stop, right_start, right_stop, cutoff, width
+    )
+    norm_inf = float(np.max(np.sum(bounds, axis=1)))
+    norm_one = float(np.max(np.sum(bounds, axis=0)))
+    return math.sqrt(norm_one * norm_inf)
+
+
+def high_index_block_tail_bound(
+    start_order: int,
+    stop_order: int,
+    cutoff: int,
+    width: float,
+) -> float:
+    """Spectral-norm envelope for an omitted prime-tail high-index square block."""
+    if start_order < 0 or stop_order <= start_order:
+        raise ValueError("invalid high-index window")
+    bounds = rectangular_entry_bound_matrix(
+        start_order, stop_order, start_order, stop_order, cutoff, width
+    )
+    return float(np.max(np.sum(bounds, axis=1)))
 
 
 def operator_norm_tail_bound(
