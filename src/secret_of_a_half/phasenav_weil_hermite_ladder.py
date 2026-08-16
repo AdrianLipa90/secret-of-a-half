@@ -14,6 +14,7 @@ from .phasenav_weil_hermite_core import (
 from .phasenav_weil_hermite_arithmetic import (
     MatrixComponents,
     arithmetic_matrix,
+    arithmetic_rectangular_components,
     prime_power_terms,
 )
 from .phasenav_weil_hermite_audit import (
@@ -26,6 +27,7 @@ __all__ = [
     "HermiteLadderProgram",
     "MatrixComponents",
     "arithmetic_matrix",
+    "arithmetic_rectangular_components",
     "channel_normalization",
     "channel_value",
     "default_program_path",
