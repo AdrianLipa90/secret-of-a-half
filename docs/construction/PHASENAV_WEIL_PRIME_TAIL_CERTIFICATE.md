@@ -1,186 +1,176 @@
-# Native PhaseNav–Weil Prime-Tail Certificate v0.5
+# PhaseNav–Weil Prime-Tail Certificate v0.5
 
-## Status
+## Scope
 
-This construction replaces a purely empirical prime-cutoff comparison by an
-explicit analytic majorant for every fixed finite Hermite section. It does not
-prove global PhaseNav–Weil positivity and does not prove the Riemann
-Hypothesis.
+This module certifies the omitted prime-power tail of each fixed finite
+Hermite principal section of the arithmetic PhaseNav–Weil operator.
 
-The authoritative profile is:
+It does **not** map zeta zeros. It does **not** establish global positivity or
+prove the Riemann Hypothesis.
 
-```text
-construction/phasenav/secret_of_half_weil_prime_tail_certificate.pnv
-```
+## Tail coordinate
 
-The reciprocal map is applied to the logarithmic tail coordinate. It is not a
-map of zeta zeros.
-
-## 1. Omitted prime-power tail
-
-For Hermite orders `m,n`, let
+For the omitted range \(x>Q\), use
 
 \[
-R_{mn}(Q)=-\frac1{2\pi}\sum_{q>Q}\frac{\Lambda(q)}{\sqrt q}
-\left[
-\widehat H_{mn}\!\left(\frac{\log q}{2\pi}\right)+
-\widehat H_{mn}\!\left(-\frac{\log q}{2\pi}\right)
-\right].
-\]
-
-Writing
-
-\[
-d_k=m+n-2k,\qquad
-c_k=2^k k!\binom mk\binom nk,
-\]
-
-and
-
-\[
-A_{mn}=\frac1{\sqrt{2^{m+n}m!n!}},
-\]
-
-the closed Hermite Fourier transform gives
-
-\[
-\left|\widehat H_{mn}(\pm x)\right|
-\le
-A_{mn}e^{-\kappa^2/4}\sum_k c_k\kappa^{d_k},
+u=\log x,
 \qquad
-\kappa=\frac{2\pi |x|}{w}.
+z_{\rm t}=\frac1u.
 \]
 
-Since `Lambda(q) <= log(q)`, prime powers can be majorized by all integers.
-For each degree `d`, the resulting positive summand is decreasing once
+The logarithmic half-line \(u\in[\log Q,\infty)\) becomes the compact interval
+
+\[
+z_{\rm t}\in\left(0,\frac1{\log Q}\right].
+\]
+
+After the substitution, the degree-\(d\) majorant density is
+
+\[
+\frac1{w^d}
+z_{\rm t}^{-(d+3)}
+\exp\!\left(
+-\frac1{4w^2z_{\rm t}^2}
++\frac1{2z_{\rm t}}
+\right).
+\]
+
+It extends by zero to a smooth flat endpoint at \(z_{\rm t}=0\).
+
+## Monotonicity threshold
+
+For
+
+\[
+g_d(x)=x^{-1/2}(\log x)^{d+1}
+\exp\!\left[-\frac{(\log x)^2}{4w^2}\right],
+\]
+
+the integral test is valid once
 
 \[
 \log Q\ge
-\tau_d(w)=\frac{\sqrt{w^4+8w^2(d+1)}-w^2}{2}.
+\tau_d(w)
+=
+\frac{\sqrt{w^4+8w^2(d+1)}-w^2}{2}.
 \]
 
-Therefore
+The declared profile has positive margin for every degree through \(10\).
+
+## Closed integral
+
+Define
 
 \[
-|R_{mn}(Q)|\le
-\frac{A_{mn}}{\pi}\sum_k c_k J_{d_k}(Q,w),
-\]
-
-where
-
-\[
-J_d(Q,w)=\frac1{w^d}\int_Q^\infty
+I_d(Q,w)=
+\frac1{w^d}
+\int_Q^\infty
 (\log x)^{d+1}x^{-1/2}
-\exp\!\left[-\frac{(\log x)^2}{4w^2}\right]dx.
+e^{-(\log x)^2/(4w^2)}\,dx.
 \]
 
-## 2. Reciprocal compactification
-
-Set
+With
 
 \[
-u=\log x,\qquad z_{\rm t}=\frac1u.
+a_Q=\frac{\log Q-w^2}{2w},
 \]
 
-Then the infinite half-line is mapped to the compact interval
+the exact upper-incomplete-gamma representation is
 
 \[
-[\log Q,\infty)\longrightarrow
-\left(0,\frac1{\log Q}\right],
-\]
-
-and
-
-\[
-J_d(Q,w)=\frac1{w^d}
-\int_0^{1/\log Q}
-z_{\rm t}^{-(d+3)}
-\exp\!\left[-\frac1{4w^2z_{\rm t}^2}+\frac1{2z_{\rm t}}\right]
-dz_{\rm t}.
-\]
-
-The integrand extends to `z_t=0` with value zero and is flat there. The
-Gaussian `exp(-const/z_t^2)` dominates every algebraic factor.
-
-## 3. Closed incomplete-gamma expression
-
-Completing the square in the log coordinate and expanding the shifted integer
-power gives
-
-\[
-\begin{aligned}
-J_d(Q,w)
-={}&\frac{e^{w^2/4}}{w^d}
+I_d(Q,w)=
+\frac{e^{w^2/4}}{w^d}
 \sum_{j=0}^{d+1}
-\binom{d+1}{j}w^{2(d+1-j)}2^jw^{j+1}\\
-&\times
-\Gamma\!\left(
-\frac{j+1}{2},
-\left(\frac{\log Q-w^2}{2w}\right)^2
-\right).
-\end{aligned}
+\binom{d+1}{j}
+w^{2(d+1-j)}
+2^j w^{j+1}
+\Gamma\!\left(\frac{j+1}{2},a_Q^2\right).
 \]
 
-The implementation verifies equality of the log-half-line, reciprocal-compact,
-and gamma representations at high precision.
+The executor verifies this expression independently against direct
+\(u=\log x\) quadrature and compact \(z_{\rm t}=1/u\) quadrature.
 
-## 4. Matrix certificate
+## Entrywise bound
 
-Let `B_N(Q)` be the symmetric matrix of entrywise bounds. If `E_N(Q)` is the
-omitted prime-tail matrix, then
+For the Hermite product-kernel coefficients \(c_{mn,d}\) and prefactor
+\(A_{mn}\),
+
+\[
+|E_{mn}(Q)|
+\le
+B_{mn}(Q)
+=
+\frac{A_{mn}}{\pi}
+\sum_d c_{mn,d}I_d(Q,w).
+\]
+
+The proof uses only:
+
+1. \(\Lambda(n)\le\log n\);
+2. replacement of prime-power support by all integers;
+3. the explicit monotonicity threshold;
+4. the integral test.
+
+No prime number theorem or zero-free hypothesis is used.
+
+## Finite-section operator norm
+
+For the \(N\times N\) tail matrix,
 
 \[
 \|E_N(Q)\|_2
-\le \sqrt{\|E_N(Q)\|_1\|E_N(Q)\|_\infty}
-\le \max_m\sum_n B_{mn}(Q).
+\le
+\max_m\sum_{n=0}^{N-1}B_{mn}(Q).
 \]
 
-Consequently, Weyl's inequality gives
+Weyl perturbation then gives the same bound on the displacement of every
+ordered eigenvalue between the finite-cutoff and infinite-cutoff matrices.
+
+## Declared receipt
+
+For
 
 \[
-\lambda_{\min}(W_N^{(\infty)})
-\ge
-\lambda_{\min}(W_N^{(Q)})-\|E_N(Q)\|_2.
+w=0.8,
+\qquad
+Q=100000,
+\qquad
+N\le6,
 \]
 
-This is a controlled cutoff-removal statement for each fixed finite section.
-Uniform control as `N -> infinity` remains open.
+the largest certified operator-norm envelope is
 
-## 5. Deterministic receipt
+\[
+\boxed{
+7.717202888999335\times10^{-13}
+}.
+\]
 
-For `w=0.8`, `Q=100000`, and `N<=6`:
+The deterministic receipt also checks selected finite prime-power shells
+between \(Q\) and \(2Q\) against the complete analytic majorant.
 
-| N | max entry bound | operator-norm bound |
-|---:|---:|---:|
-| 1 | 4.4511e-21 | 4.4511e-21 |
-| 2 | 4.7479e-19 | 5.2054e-19 |
-| 3 | 2.5805e-17 | 2.9621e-17 |
-| 4 | 9.5233e-16 | 1.1312e-15 |
-| 5 | 2.6835e-14 | 3.2804e-14 |
-| 6 | 6.1560e-13 | 7.7172e-13 |
-
-The finite shell `100000 < q <= 200000` is independently checked for entries
-`(0,0)`, `(2,3)`, and `(5,5)` and lies below the corresponding full-tail
-majorant.
-
-## 6. Claim boundary
+## Claim boundary
 
 Exact:
 
-- reciprocal compactification of the log tail;
-- flat extension at the reciprocal endpoint;
-- incomplete-gamma identity;
-- entrywise von-Mangoldt majorant;
-- finite-section operator-norm envelope and Weyl enclosure.
+- reciprocal compactification identity;
+- flat endpoint extension;
+- incomplete-gamma formula;
+- entrywise von Mangoldt majorant;
+- fixed finite-section norm and eigenvalue enclosure.
 
 Numerical:
 
-- high-precision evaluation for the declared `N<=6`, `Q=100000` profile;
-- finite shell regression checks.
+- high-precision receipt for the declared \(w,Q,N\);
+- finite-shell regression checks.
 
 Open:
 
-- a useful bound uniform in basis size;
-- global positivity of every Hermite section;
-- continuity of the complete regularized form;
-- the null-space implication to native theta-shell closure.
+- a useful estimate uniform as \(N\to\infty\);
+- positivity of all infinite-cutoff sections;
+- closure of the full arithmetic form;
+- the null-space implication to native PhaseNav closure;
+- `SOH-C005`.
+
+The authoritative source is
+`construction/phasenav/secret_of_half_weil_prime_tail_certificate.pnv`.

@@ -1,0 +1,376 @@
+\chapter{Reciprocal Compactification and the Prime-Tail Certificate}
+\label{ch:prime-tail-certificate}
+
+The Hermite ladder of \Cref{ch:phasenav-weil-hermite-ladder} replaces one
+localized witness by a concrete dense family and finite principal sections.
+Its arithmetic matrices are nevertheless evaluated with a finite prime-power
+cutoff. This chapter supplies an explicit error certificate for removing that
+cutoff in every fixed finite Hermite section.
+
+The reciprocal map used here is not a map of zeta zeros. It acts only on the
+logarithmic coordinate of the omitted prime tail:
+\[
+ u=\log x,
+ \qquad
+ z_{\rm t}=\frac1u.
+\]
+Its purpose is analytic compactification: the half-line
+$u\in[\log Q,\infty)$ becomes the finite interval
+$z_{\rm t}\in(0,1/\log Q]$.
+
+\section{The omitted prime-power matrix}
+
+Fix the Gaussian width $w>0$ and the translated Hermite channels from
+\Cref{ch:phasenav-weil-hermite-ladder}. Under the Fourier convention
+\[
+ \widehat f(\xi)
+ =
+ \int_{\R} f(r)e^{-2\pi i\xi r}\,dr,
+\]
+the product kernel has the form
+\[
+ \widehat H_{mn}(\xi)
+ =
+ A_{mn}\,
+ e^{-2\pi i\gamma_0\xi}
+ e^{-\kappa^2/4}
+ \sum_{d\in D_{mn}} c_{mn,d}(-i\kappa)^d,
+ \qquad
+ \kappa=\frac{2\pi\xi}{w},
+\]
+where
+\[
+ A_{mn}
+ =
+ \frac{\sqrt{\pi}}{w}
+ \left(
+ \frac{w}{\sqrt{\pi}\,2^m m!}
+ \right)^{1/2}
+ \left(
+ \frac{w}{\sqrt{\pi}\,2^n n!}
+ \right)^{1/2},
+\]
+and the degrees and coefficients are obtained from the exact Hermite
+linearization
+\[
+ H_m(y)H_n(y)
+ =
+ \sum_{k=0}^{\min(m,n)}
+ 2^k k!\binom{m}{k}\binom{n}{k}
+ H_{m+n-2k}(y).
+\]
+
+For a cutoff $Q\ge3$, define the omitted prime-power contribution
+\[
+ E_{mn}(Q)
+ =
+ -\frac1{2\pi}
+ \sum_{\substack{q>Q\\q=p^\ell}}
+ \frac{\Lambda(q)}{\sqrt q}
+ \left[
+ \widehat H_{mn}\!\left(\frac{\log q}{2\pi}\right)
+ +
+ \widehat H_{mn}\!\left(-\frac{\log q}{2\pi}\right)
+ \right].
+\]
+No zero list occurs in this definition.
+
+\section{Monotonicity beyond an explicit threshold}
+
+For a polynomial degree $d\ge0$, introduce
+\[
+ g_d(x)
+ =
+ x^{-1/2}(\log x)^{d+1}
+ \exp\!\left[-\frac{(\log x)^2}{4w^2}\right],
+ \qquad x>1.
+\]
+
+\begin{lemma}[Explicit monotonicity threshold]
+\label{lem:tail-monotonicity}
+The function $g_d$ is decreasing whenever
+\[
+ \log x\ge
+ \tau_d(w)
+ :=
+ \frac{\sqrt{w^4+8w^2(d+1)}-w^2}{2}.
+\]
+\end{lemma}
+
+\begin{proof}
+Put $u=\log x$. The logarithmic derivative with respect to $u$ is
+\[
+ \frac{d}{du}\log g_d(e^u)
+ =
+ -\frac12+\frac{d+1}{u}-\frac{u}{2w^2}.
+\]
+It is non-positive precisely when
+\[
+ u^2+w^2u-2w^2(d+1)\ge0.
+\]
+The positive root of the quadratic is $\tau_d(w)$.
+\end{proof}
+
+Consequently, when $\log Q\ge\tau_d(w)$, the integral test gives
+\[
+ \sum_{n>Q}g_d(n)
+ \le
+ \int_Q^\infty g_d(x)\,dx.
+\]
+This step uses only positivity and monotonicity. It does not use the prime
+number theorem or any hypothesis about zeta zeros.
+
+\section{Closed incomplete-gamma form}
+
+Define
+\[
+ I_d(Q,w)
+ =
+ \frac1{w^d}
+ \int_Q^\infty
+ (\log x)^{d+1}x^{-1/2}
+ \exp\!\left[-\frac{(\log x)^2}{4w^2}\right]dx.
+\]
+
+\begin{theorem}[Prime-tail integral in closed form]
+\label{thm:tail-gamma}
+Let
+\[
+ a_Q=\frac{\log Q-w^2}{2w}.
+\]
+For $\log Q>w^2$,
+\[
+ I_d(Q,w)
+ =
+ \frac{e^{w^2/4}}{w^d}
+ \sum_{j=0}^{d+1}
+ \binom{d+1}{j}
+ w^{2(d+1-j)}
+ 2^j w^{j+1}
+ \Gamma\!\left(\frac{j+1}{2},a_Q^2\right),
+\]
+where $\Gamma(s,a)$ is the upper incomplete gamma function.
+\end{theorem}
+
+\begin{proof}
+With $u=\log x$,
+\[
+ I_d(Q,w)
+ =
+ \frac1{w^d}
+ \int_{\log Q}^{\infty}
+ u^{d+1}
+ \exp\!\left(-\frac{u^2}{4w^2}+\frac u2\right)du.
+\]
+Complete the square:
+\[
+ -\frac{u^2}{4w^2}+\frac u2
+ =
+ \frac{w^2}{4}
+ -
+ \frac{(u-w^2)^2}{4w^2}.
+\]
+Set $a=(u-w^2)/(2w)$, expand
+$(2wa+w^2)^{d+1}$, and use
+\[
+ \int_{a_Q}^{\infty}a^j e^{-a^2}\,da
+ =
+ \frac12\Gamma\!\left(\frac{j+1}{2},a_Q^2\right).
+\]
+Collecting powers gives the stated expression.
+\end{proof}
+
+\section{Reciprocal compactification}
+
+The same integral admits a finite-interval representation. Set
+\[
+ z_{\rm t}=\frac1u=\frac1{\log x}.
+\]
+Then
+\[
+ I_d(Q,w)
+ =
+ \frac1{w^d}
+ \int_0^{1/\log Q}
+ z_{\rm t}^{-(d+3)}
+ \exp\!\left[
+ -\frac1{4w^2z_{\rm t}^2}
+ +\frac1{2z_{\rm t}}
+ \right]dz_{\rm t}.
+\]
+
+\begin{theorem}[Flat reciprocal endpoint]
+\label{thm:tail-reciprocal-flat}
+Define the integrand at $z_{\rm t}=0$ to be zero. The reciprocal tail
+integrand extends smoothly to the closed interval
+$[0,1/\log Q]$, and every derivative at the new endpoint vanishes.
+\end{theorem}
+
+\begin{proof}
+For sufficiently small positive $z_{\rm t}$, the exponent is dominated by
+$-1/(4w^2z_{\rm t}^2)$. Multiplication by any fixed negative power of
+$z_{\rm t}$, including those produced by repeated differentiation, cannot
+overcome this Gaussian decay. Hence the function and all of its derivatives
+tend to zero at the endpoint.
+\end{proof}
+
+The map $z_{\rm t}=1/\log x$ therefore converts the infinite tail into a
+compact quadrature domain without introducing a singular boundary
+contribution. This is the precise role of the reciprocal map.
+
+\section{Entrywise prime-tail certificate}
+
+The elementary von Mangoldt bound
+\[
+ 0\le\Lambda(n)\le\log n
+\]
+and the triangle inequality imply the following unconditional estimate.
+
+\begin{theorem}[Fixed-entry cutoff certificate]
+\label{thm:entry-tail-certificate}
+Assume
+\[
+ \log Q\ge
+ \max_{d\in D_{mn}}\tau_d(w).
+\]
+Then
+\[
+ |E_{mn}(Q)|
+ \le
+ B_{mn}(Q)
+ :=
+ \frac{A_{mn}}{\pi}
+ \sum_{d\in D_{mn}}
+ c_{mn,d}\,I_d(Q,w).
+\]
+In particular, $B_{mn}(Q)\to0$ as $Q\to\infty$ for each fixed pair
+$(m,n)$.
+\end{theorem}
+
+\begin{proof}
+At the prime-power point $\xi=\log q/(2\pi)$ one has
+$\kappa=\log q/w$. The unit-modulus translation phase disappears after
+taking absolute values, while the two Fourier terms contribute a factor at
+most two. Thus
+\[
+ |E_{mn}(Q)|
+ \le
+ \frac{A_{mn}}{\pi}
+ \sum_{d\in D_{mn}}c_{mn,d}
+ \sum_{\substack{q>Q\\q=p^\ell}}
+ \frac{\Lambda(q)}{\sqrt q}
+ \left(\frac{\log q}{w}\right)^d
+ e^{-(\log q)^2/(4w^2)}.
+\]
+Replace the prime-power support by all integers, use
+$\Lambda(q)\le\log q$, and apply \Cref{lem:tail-monotonicity} and the
+integral test. The result is exactly the stated sum of $I_d(Q,w)$.
+\end{proof}
+
+\section{Finite-section norm and eigenvalue enclosure}
+
+Let $E_N(Q)$ be the $N\times N$ Hermitian matrix with entries $E_{mn}(Q)$,
+and let $B_N(Q)$ be the non-negative symmetric matrix with entries
+$B_{mn}(Q)$ for $0\le m,n<N$.
+
+\begin{corollary}[Operator-norm certificate]
+\label{cor:operator-tail-certificate}
+For every fixed finite section,
+\[
+ \|E_N(Q)\|_2
+ \le
+ \|B_N(Q)\|_\infty
+ =
+ \max_{0\le m<N}
+ \sum_{n=0}^{N-1}B_{mn}(Q).
+\]
+If $W_N(Q)$ is the cutoff matrix and $W_N(\infty)$ its convergent
+prime-side limit, then each ordered eigenvalue satisfies
+\[
+ \left|
+ \lambda_j\!\left(W_N(\infty)\right)
+ -
+ \lambda_j\!\left(W_N(Q)\right)
+ \right|
+ \le
+ \|B_N(Q)\|_\infty.
+\]
+\end{corollary}
+
+\begin{proof}
+Entrywise domination gives
+$\|E_N(Q)\|_\infty\le\|B_N(Q)\|_\infty$. Since $E_N(Q)$ is Hermitian,
+its spectral norm is bounded by the maximum absolute row sum. The
+eigenvalue statement is Weyl's perturbation inequality.
+\end{proof}
+
+This replaces an empirical difference between two cutoffs by a one-sided
+certificate for the entire omitted tail.
+
+\section{Declared numerical receipt}
+
+The native programme
+\[
+ \texttt{construction/phasenav/secret\_of\_half\_weil\_prime\_tail\_certificate.pnv}
+\]
+declares
+\[
+ w=0.8,
+ \qquad
+ Q=100000,
+ \qquad
+ 1\le N\le6.
+\]
+The executor evaluates the gamma expression, direct logarithmic integral, and
+reciprocal compact-interval integral independently. Their largest relative
+disagreement is below the declared high-precision tolerance.
+
+For the largest declared section,
+\[
+ \boxed{
+ \|E_6(100000)\|_2
+ \le
+ 7.717202888999335\times10^{-13}
+ }.
+\]
+Finite shells between $Q$ and $2Q$ are also checked directly against the full
+tail majorant. These shell checks are regression tests, not ingredients of
+the analytic proof.
+
+\section{Claim boundary}
+
+The results of this chapter establish:
+
+\begin{description}
+\item[SOH-L018, exact.]
+The reciprocal logarithmic coordinate compactifies the prime tail to a finite
+interval with a smooth flat endpoint.
+
+\item[SOH-L019, exact.]
+Every fixed Hermite matrix entry has an explicit incomplete-gamma majorant
+under the stated monotonicity condition.
+
+\item[SOH-L020, exact finite-section theorem.]
+The entrywise certificates produce an operator-norm error bound and an
+eigenvalue enclosure for every fixed finite principal section.
+
+\item[SOH-N005, numerical certificate.]
+For the declared $w$, $Q$, and $N\le6$, the largest certified norm bound is
+$7.717202888999335\times10^{-13}$.
+\end{description}
+
+The following statements remain open:
+
+\begin{enumerate}
+\item a useful estimate uniform as $N\to\infty$;
+\item positivity of every infinite-cutoff finite section;
+\item continuity and closure of the complete arithmetic form on the required
+domain;
+\item the implication from its null structure to the canonical native
+PhaseNav closure;
+\item the complete bridge represented by \texttt{SOH-C005}.
+\end{enumerate}
+
+Accordingly, controlled cutoff removal is now available for each fixed finite
+section, but this chapter does not establish global Weil positivity and does
+not prove the Riemann Hypothesis.
