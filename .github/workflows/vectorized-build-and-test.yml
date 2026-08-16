@@ -1,0 +1,153 @@
+name: Vectorized build and test experiment
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vectorized-build-and-test-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python-vector:
+    name: vector / ${{ matrix.lane }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 9
+      matrix:
+        lane:
+          - general-tests
+          - theta-bridge
+          - weil-positivity
+          - weil-arithmetic
+          - hermite-ladder
+          - reciprocal-duality
+          - prime-tail
+          - adaptive-cutoff
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . pytest numpy matplotlib mpmath
+
+      - name: Execute vector lane
+        run: |
+          case "${{ matrix.lane }}" in
+            general-tests)
+              python -m pytest -q --ignore=tests/test_dhse_001_stage_m.py
+              ;;
+            theta-bridge)
+              python scripts/run_phasenav_theta_bridge.py
+              ;;
+            weil-positivity)
+              python scripts/run_phasenav_weil_probe.py
+              ;;
+            weil-arithmetic)
+              python scripts/run_phasenav_weil_arithmetic.py
+              ;;
+            hermite-ladder)
+              python scripts/run_phasenav_weil_hermite_ladder.py
+              ;;
+            reciprocal-duality)
+              python scripts/run_zero_undefined_duality.py
+              ;;
+            prime-tail)
+              python scripts/run_phasenav_weil_prime_tail.py
+              ;;
+            adaptive-cutoff)
+              python scripts/run_phasenav_weil_adaptive_cutoff.py
+              ;;
+            *)
+              echo "Unknown vector lane: ${{ matrix.lane }}" >&2
+              exit 2
+              ;;
+          esac
+
+  monograph:
+    name: vector / monograph
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e . pytest numpy matplotlib mpmath
+
+      - name: Generate deterministic assets
+        run: python scripts/generate_monograph_assets.py
+
+      - name: Install LaTeX toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            latexmk \
+            lmodern \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-science \
+            poppler-utils
+
+      - name: Compile monograph
+        working-directory: monograph
+        run: |
+          set -euo pipefail
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          bibtex main
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex
+          test -s main.pdf
+          PAGES="$(pdfinfo main.pdf | awk '/^Pages:/ {print $2}')"
+          echo "Compiled monograph pages: $PAGES"
+          test "$PAGES" -ge 108
+          ! grep -E "Overfull|undefined references|Citation.*undefined" main.log
+
+      - name: Upload compiled monograph
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: secret-of-a-half-monograph-vectorized-benchmark
+          path: monograph/main.pdf
+          if-no-files-found: error
+
+  reducer:
+    name: vector / reducer
+    runs-on: ubuntu-latest
+    if: always()
+    needs:
+      - python-vector
+      - monograph
+    steps:
+      - name: Reduce lane status
+        env:
+          PYTHON_VECTOR_RESULT: ${{ needs.python-vector.result }}
+          MONOGRAPH_RESULT: ${{ needs.monograph.result }}
+        run: |
+          echo "python-vector=$PYTHON_VECTOR_RESULT"
+          echo "monograph=$MONOGRAPH_RESULT"
+          test "$PYTHON_VECTOR_RESULT" = "success"
+          test "$MONOGRAPH_RESULT" = "success"
