@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       fail-fast: false
-      max-parallel: 11
+      max-parallel: 14
       matrix:
         lane:
           - general-tests
@@ -30,6 +30,10 @@ jobs:
           - prime-tail
           - c005-cross-block-prime-tail
           - c005-finite-ladder-coupling
+          - c005-infinite-window-schedule
+          - c005-growing-window-tail
+          - c005-twisted-prime
+          - c005-full-operator-cancellation
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -75,6 +79,18 @@ jobs:
               ;;
             c005-finite-ladder-coupling)
               python scripts/run_c005_finite_ladder_coupling.py
+              ;;
+            c005-infinite-window-schedule)
+              python scripts/run_c005_infinite_window_schedule.py
+              ;;
+            c005-growing-window-tail)
+              python scripts/run_c005_growing_window_tail_diagnostic.py
+              ;;
+            c005-twisted-prime)
+              python scripts/run_c005_twisted_prime_summation.py
+              ;;
+            c005-full-operator-cancellation)
+              python scripts/run_c005_full_operator_cancellation.py
               ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
