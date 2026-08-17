@@ -1,0 +1,146 @@
+\chapter{Xi Scale-Defect Antisymmetry on the Centered Uroboros Cell}
+\label{chap:xi-scale-defect}
+
+\status{PROVED as a consequence of the completed xi functional equation and the explicit scale quotient. No zero-location or RH claim is made.}
+
+Chapter~\ref{chap:uroboros-torus} introduced the explicit dilation quotient associated with the scale \(32=2^5\).  The present chapter asks whether the transformed completed xi function itself can be periodic under that dilation.  The answer is no; the exact Riemann symmetry instead produces an antisymmetric scale defect and a reciprocal fundamental cell centered on the self-dual point.
+
+\section{Dilation and inversion}
+
+Let
+\[
+X(u)=\xi\!\left(\frac{u}{1+u}\right),\qquad u>0.
+\]
+The xi functional equation gives
+\[
+\boxed{X(u)=X(1/u).}
+\]
+
+For a fixed scale \(a>1\), define
+\[
+T_a(u)=au,\qquad J(u)=\frac1u.
+\]
+Then
+\[
+JT_aJ(u)=\frac{u}{a}=T_a^{-1}(u),
+\]
+so
+\[
+\boxed{JT_aJ=T_a^{-1}.}
+\]
+Thus inversion normalizes the dilation subgroup \(a^{\mathbb Z}\) and therefore descends to the quotient
+\[
+\mathbb C^*/a^{\mathbb Z}.
+\]
+
+For \(a=32\), a reciprocal radial fundamental cell is
+\[
+\boxed{32^{-1/2}\le |u|\le32^{1/2}.}
+\]
+The ordinary Riemann inversion \(u\mapsto1/u\) exchanges the two boundaries and fixes the central positive point \(u=1\), corresponding to \(s=1/2\).
+
+\section{Exact scale-defect antisymmetry}
+
+Define
+\[
+\Delta_a(u)=X(au)-X(u).
+\]
+Then
+\[
+\begin{aligned}
+\Delta_a\!\left(\frac1{au}\right)
+&=X(1/u)-X(1/(au))\\
+&=X(u)-X(au)\\
+&=-\Delta_a(u).
+\end{aligned}
+\]
+Hence:
+
+\begin{theorem}[SOH-G008 scale-defect antisymmetry]
+For every \(a>1\) and every positive \(u\),
+\[
+\boxed{\Delta_a(1/(au))=-\Delta_a(u).}
+\]
+The defect involution \(u\mapsto1/(au)\) has the unique positive fixed point \(u=a^{-1/2}\), so
+\[
+\boxed{\Delta_a(a^{-1/2})=0}
+\]
+and therefore
+\[
+\boxed{X(a^{1/2})=X(a^{-1/2}).}
+\]
+\end{theorem}
+
+For the Uroboros scale,
+\[
+\boxed{X(\sqrt{32})=X(1/\sqrt{32}).}
+\]
+This is not a scale-periodicity assumption.  It follows from the ordinary reciprocal symmetry because the endpoints are reciprocal.
+
+\section{Logarithmic centering}
+
+Write
+\[
+\lambda=\log u,\qquad Y(\lambda)=X(e^\lambda),\qquad L=\log a.
+\]
+Then
+\[
+Y(-\lambda)=Y(\lambda),
+\]
+while
+\[
+d_L(\lambda)=Y(\lambda+L)-Y(\lambda)
+\]
+satisfies
+\[
+\boxed{d_L(-L-\lambda)=-d_L(\lambda).}
+\]
+The reciprocal fundamental interval
+\[
+[-L/2,L/2]
+\]
+is centered at \(\lambda=0\), exactly the self-dual point \(u=1\leftrightarrow s=1/2\).
+
+\section{No-go for exact scale periodicity}
+
+Suppose that for some \(a>1\),
+\[
+X(au)=X(u)
+\]
+held for every positive \(u\).  Iteration would give
+\[
+X(u)=X(a^n u).
+\]
+As \(n\to\infty\), the corresponding Riemann coordinate approaches \(s=1\), and continuity of \(\xi\) gives
+\[
+X(u)=\xi(1)=\frac12
+\]
+for every positive \(u\).  Hence \(\xi\) would be constant on the interval \((0,1)\) and therefore constant everywhere by the identity theorem, contradicting the nonconstancy of the completed xi function.  Consequently
+\[
+\boxed{X(au)=X(u)\text{ globally is impossible for every }a>1.}
+\]
+
+Likewise, if
+\[
+X(au)=cX(u)
+\]
+with a constant multiplier \(c\), then taking \(u\to\infty\) gives \(1/2=c/2\), hence \(c=1\), reducing to the impossible periodic case.
+
+\section{What survives of the torus picture}
+
+The completed xi function does not descend to the Uroboros quotient as an ordinary scale-periodic function.  What survives exactly is:
+\begin{itemize}
+\item the quotient itself, once the scale identification is imposed;
+\item the descended reciprocal involution because \(JT_aJ=T_a^{-1}\);
+\item the self-dual centered cell;
+\item the antisymmetric scale defect \(\Delta_a\);
+\item the exact equality of xi values at reciprocal cell boundaries.
+\end{itemize}
+
+\section{Proof firewall}
+
+No nonconstant factor of automorphy
+\[
+X(au)=M_a(u)X(u)
+\]
+has been independently derived.  Defining \(M_a\) as the quotient \(X(au)/X(u)\) would be tautological away from zeros and is not promoted as a proof mechanism.  No zero-location result follows from SOH-G008 alone.  SOH-G003 and the Riemann Hypothesis remain OPEN.

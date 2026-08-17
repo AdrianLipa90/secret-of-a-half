@@ -84,6 +84,15 @@ jobs:
       - name: Run SOH-G005 PF3 finite diagnostic
         run: python scripts/run_soh_g005_pf3_diagnostic.py
 
+      - name: Run SOH-G007 Uroboros conjugacy receipt
+        run: python scripts/run_soh_g007_uroboros_receipt.py
+
+      - name: Run SOH-G008 xi scale-defect receipt
+        run: python scripts/run_soh_g008_scale_defect.py
+
+      - name: Run SOH-G009 Bloch rapidity receipt
+        run: python scripts/run_soh_g009_bloch_rapidity.py
+
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
 
