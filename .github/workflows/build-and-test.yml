@@ -75,6 +75,9 @@ jobs:
       - name: Run SOH-C005 full-operator cancellation receipt
         run: python scripts/run_c005_full_operator_cancellation.py
 
+      - name: Run SOH-C005 growing-M full-operator stability diagnostic
+        run: python scripts/run_c005_full_operator_stability.py
+
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
 
