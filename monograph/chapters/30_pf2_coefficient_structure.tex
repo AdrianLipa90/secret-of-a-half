@@ -3,7 +3,7 @@
 
 \status{PROVED at order two. PF$_\infty$, real-rootedness of $F$, and RH remain open.}
 
-Chapter~\ref{ch:global-log-concavity} proves strict log-concavity of the exact Riemann kernel on the positive half-line, and Chapter~\ref{chap:modular-kernel-compactification} places the same kernel in the self-dual compact coordinate.  The present chapter extracts the first nontrivial total-positivity consequence for the Taylor coefficients of the quotient entire function.
+Chapter~\ref{ch:global-log-concavity} establishes strict log-concavity of the compactified kernel weight and records Gershon's independent prior proof of strict log-concavity (TP$_2$) for the classical Riemann Xi kernel $\Phi$~\cite{gershon2026logconcavity}. Chapter~\ref{chap:modular-kernel-compactification} places the same kernel in the self-dual compact coordinate. The present chapter extracts the first nontrivial total-positivity consequence for the Taylor coefficients of the quotient entire function. The PF$_2$ deduction below uses the log-concavity of $\Phi$; that input is therefore explicitly attributed to Gershon as prior literature as well as being independently rederived in the SOH programme.
 
 \section{Normalized moments}
 
@@ -19,7 +19,7 @@ A classical moment inequality for a nonnegative log-concave function \(f\) on \(
 \[
 R(p)=\frac{1}{\Gamma(p+1)}\int_0^\infty x^p f(x)\,dx
 \]
-is log-concave in \(p>-1\); see \citet{karlinproschanbarlow1961}.  Applying this to the already-proved log-concave Riemann kernel \(f=\Phi\) gives
+is log-concave in \(p>-1\); see \citet{karlinproschanbarlow1961}. Applying this to the log-concave Riemann kernel \(f=\Phi\), whose strict log-concavity has the independent 2026 proof of Gershon~\cite{gershon2026logconcavity}, gives
 \[
 a_k=R(2k).
 \]
@@ -30,7 +30,7 @@ Restriction of a log-concave function to the arithmetic progression \(0,2,4,\ldo
 
 \section{PF2 theorem}
 
-All \(a_k\) are positive.  Therefore the preceding inequalities are precisely the adjacent order-two Toeplitz minors:
+All \(a_k\) are positive. Therefore the preceding inequalities are precisely the adjacent order-two Toeplitz minors:
 \[
 \det\begin{pmatrix}
 a_k&a_{k+1}\\
@@ -48,7 +48,7 @@ F(w)=\xi\!\left(\frac12+\sqrt w\right)
 is a P\'olya-frequency sequence of order two (PF$_2$).
 \end{theorem}
 
-This is a genuine coefficient-level zero-preserving constraint stronger than coefficient positivity.
+This is a coefficient-level total-positivity constraint stronger than coefficient positivity. The novelty claim, if any, is confined to this downstream coefficient deduction and not to the prior TP$_2$ log-concavity theorem for $\Phi$.
 
 \section{Why Hankel positivity is not enough}
 
@@ -58,11 +58,11 @@ The raw moment sequence satisfies
 =\int_0^\infty\Phi(y)
 \left(\sum_i c_i y^{2i}\right)^2dy\ge0.
 \]
-Thus positivity of the Hankel moment matrices follows automatically from positivity of the measure and does not add zero-location information.  It is therefore not promoted as a proof mechanism.
+Thus positivity of the Hankel moment matrices follows automatically from positivity of the measure and does not add zero-location information. It is therefore not promoted as a proof mechanism.
 
 \section{The remaining total-positivity hierarchy}
 
-The classical theory of totally positive sequences connects PF$_\infty$ with generating functions having the appropriate real nonpositive zero structure; see \citet{aissenedreischoenbergwhitney1951}.  Accordingly the active hierarchy is
+The classical theory of totally positive sequences connects PF$_\infty$ with generating functions having the appropriate real nonpositive zero structure; see \citet{aissenedreischoenbergwhitney1951}. Accordingly the active hierarchy is
 \[
 \mathrm{PF}_2
 \longrightarrow
@@ -70,4 +70,4 @@ The classical theory of totally positive sequences connects PF$_\infty$ with gen
 \longrightarrow\cdots\longrightarrow
 \mathrm{PF}_\infty.
 \]
-SOH-G005 proves only the first level.  No statement in this chapter promotes PF$_2$ to PF$_\infty$ or promotes the result to SOH-G003 or RH.
+SOH-G005 proves only the first level. No statement in this chapter promotes PF$_2$ to PF$_\infty$ or promotes the result to SOH-G003 or RH.
