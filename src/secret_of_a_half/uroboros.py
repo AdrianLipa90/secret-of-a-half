@@ -1,7 +1,8 @@
-"""Exact SOH-G007 Uroboros / Collatz–Riemann conjugacy maps.
+"""Exact SOH-G007/G008 Uroboros and Collatz–Riemann maps.
 
-This module implements algebraic identities only. It does not assume the
-Collatz conjecture, assert a 32-scaling law for xi, or prove RH.
+The module separates proved algebraic identities from the optional Uroboros
+scale-identification convention.  It does not assume the Collatz conjecture,
+assert scale-periodicity of xi, or prove RH.
 """
 from __future__ import annotations
 
@@ -12,6 +13,10 @@ from fractions import Fraction
 from numbers import Real
 from typing import Iterable
 
+import mpmath as mp
+
+from .riemann_kernel import completed_xi
+
 UROBOROS_SCALE = 32
 LOG_UROBOROS_SCALE = 5.0 * math.log(2.0)
 
@@ -21,6 +26,13 @@ def _positive_real(value: Real, *, name: str) -> float:
     if not math.isfinite(x) or x <= 0.0:
         raise ValueError(f"{name} must be finite and strictly positive")
     return x
+
+
+def _scale(value: Real) -> float:
+    scale = _positive_real(value, name="scale")
+    if scale <= 1.0:
+        raise ValueError("scale must be greater than 1")
+    return scale
 
 
 def x_to_u(x: Real) -> float:
@@ -125,7 +137,7 @@ class TorusCoordinate:
 
 
 def torus_coordinate(u: complex) -> TorusCoordinate:
-    """Reduce nonzero complex u modulo u~32u and phase 2π periodicity."""
+    """Reduce nonzero complex ``u`` modulo ``u~32u`` and phase periodicity."""
     u = complex(u)
     if u == 0 or not (math.isfinite(u.real) and math.isfinite(u.imag)):
         raise ValueError("u must be finite and nonzero")
@@ -133,6 +145,37 @@ def torus_coordinate(u: complex) -> TorusCoordinate:
         radial=math.log(abs(u)) % LOG_UROBOROS_SCALE,
         phase=cmath.phase(u) % (2.0 * math.pi),
     )
+
+
+def centered_scale_bounds(scale: Real = UROBOROS_SCALE) -> tuple[float, float]:
+    """Return the reciprocal cell boundaries ``a^-1/2`` and ``a^1/2``."""
+    a = _scale(scale)
+    root = math.sqrt(a)
+    return 1.0 / root, root
+
+
+def scale_defect_involution_u(u: Real, scale: Real = UROBOROS_SCALE) -> float:
+    """Return the involution ``u -> 1/(a u)`` for an ``a``-scale defect."""
+    a = _scale(scale)
+    u = _positive_real(u, name="u")
+    return 1.0 / (a * u)
+
+
+def xi_in_u(u: Real | mp.mpf) -> mp.mpc:
+    """Evaluate ``X(u)=xi(u/(1+u))`` on the positive real ``u`` axis."""
+    uu = mp.mpf(u)
+    if not mp.isfinite(uu) or uu <= 0:
+        raise ValueError("u must be finite and strictly positive")
+    return completed_xi(uu / (1 + uu))
+
+
+def xi_scale_defect(u: Real | mp.mpf, scale: Real = UROBOROS_SCALE) -> mp.mpc:
+    """Return ``Delta_a(u)=X(a u)-X(u)`` without assuming scale-periodicity."""
+    a = mp.mpf(_scale(scale))
+    uu = mp.mpf(u)
+    if not mp.isfinite(uu) or uu <= 0:
+        raise ValueError("u must be finite and strictly positive")
+    return xi_in_u(a * uu) - xi_in_u(uu)
 
 
 def halving_orbit(values: Iterable[Real]) -> list[float]:
