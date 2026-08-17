@@ -1,0 +1,143 @@
+\chapter{The Positive Riemann Kernel and the Real-Rootedness Frontier}
+\label{chap:positive-riemann-kernel}
+
+\status{Exact positive-kernel representation; SOH-G003 remains open.}
+
+\section{Purpose}
+
+Chapter~\ref{ch:compactified-inverse-boundary} reduces the Riemann Hypothesis to real-rootedness of the quotient entire function
+\[
+ \xi\!\left(\frac12+z\right)=F(z^2).
+\]
+This chapter starts from the canonical theta--Mellin identity of Chapter~\ref{chap:phasenav-native} and derives the exact positive half-line kernel governing that quotient problem. No finite Hermite section and no known zero ordinate is used.
+
+\section{Transfer from theta--Mellin to a positive kernel}
+
+From \cref{eq:xi-theta-native-u}, write
+\[
+ A(u)=\psi(e^u)e^{u/4},
+ \qquad s=\frac12+z.
+\]
+Then
+\[
+ \xi\!\left(\frac12+z\right)
+ =\frac12+\left(z^2-\frac14\right)
+ \int_0^\infty A(u)\cosh\!\left(\frac{zu}{2}\right)\,du.
+\]
+Set $u=2y$ and
+\[
+ B(y)=2\psi(e^{2y})e^{y/2}.
+\]
+Hence
+\[
+ \xi\!\left(\frac12+z\right)
+ =\frac12+\left(z^2-\frac14\right)
+ \int_0^\infty B(y)\cosh(zy)\,dy.
+\]
+Because $(d^2/dy^2)\cosh(zy)=z^2\cosh(zy)$, two integrations by parts give
+\[
+ \left(z^2-\frac14\right)
+ \int_0^\infty B(y)\cosh(zy)\,dy
+ =B'(0)+\int_0^\infty
+ \left(B''(y)-\frac14B(y)\right)\cosh(zy)\,dy.
+\]
+The theta modular relation gives $B'(0)=-1/2$, cancelling the explicit constant. Therefore
+\begin{equation}
+ \boxed{
+ \xi\!\left(\frac12+z\right)
+ =\int_0^\infty \Phi(y)\cosh(zy)\,dy,
+ }
+ \label{eq:positive-riemann-kernel}
+\end{equation}
+where
+\[
+ \Phi(y)=B''(y)-\frac14B(y).
+\]
+
+\section{Explicit termwise-positive form}
+
+For $a=\pi n^2$ let
+\[
+ B_n(y)=2\exp\!\left(\frac y2-ae^{2y}\right).
+\]
+A direct differentiation gives
+\[
+ B_n''(y)-\frac14B_n(y)
+ =4a e^{5y/2}\left(2ae^{2y}-3\right)e^{-ae^{2y}}.
+\]
+Summing over $n\ge1$ yields
+\begin{equation}
+ \boxed{
+ \Phi(y)=4\sum_{n=1}^{\infty}
+ \pi n^2e^{5y/2}
+ \left(2\pi n^2e^{2y}-3\right)
+ e^{-\pi n^2e^{2y}}.
+ }
+ \label{eq:explicit-positive-riemann-kernel}
+\end{equation}
+For $y\ge0$ and $n\ge1$,
+\[
+ 2\pi n^2e^{2y}-3\ge2\pi-3>0.
+\]
+Thus every summand is strictly positive and
+\begin{equation}
+ \boxed{\Phi(y)>0\qquad(y\ge0).}
+ \label{eq:riemann-kernel-positive}
+\end{equation}
+
+\section{Moments and the quotient function}
+
+Expanding \cref{eq:positive-riemann-kernel} gives
+\[
+ F(w)=\sum_{k=0}^{\infty}
+ \frac{\mu_{2k}}{(2k)!}w^k,
+ \qquad
+ \mu_{2k}=\int_0^\infty \Phi(y)y^{2k}\,dy.
+\]
+By \cref{eq:riemann-kernel-positive},
+\[
+ \mu_{2k}>0
+\]
+for every $k\ge0$. Hence every Taylor coefficient of $F$ is strictly positive and
+\[
+ \boxed{F(x)>0\qquad(x\ge0).}
+\]
+This rederives inside the canonical theta route the coefficient-positivity fact used in Chapter~\ref{ch:compactified-inverse-boundary}.
+
+\section{Classical universal-factor boundary}
+
+De Bruijn's analysis of trigonometric integrals develops P\'olya's universal-factor machinery and explicitly discusses its limited progress toward the Riemann problem \citep{debruijn1950roots}. In particular, the existence of a positive rapidly decreasing kernel is not by itself a theorem of real-rootedness for the Riemann transform. The present programme therefore treats positivity as an exact input, not as a disguised conclusion.
+
+Two stronger one-sided-transform candidates were also falsified numerically at high precision. Define
+\[
+ E(z)=\int_0^\infty\Phi(y)e^{zy}\,dy,
+ \qquad
+ \xi\!\left(\frac12+z\right)=\frac{E(z)+E(-z)}2.
+\]
+The global inequalities
+\[
+ |E(z)|>|E(-z)|\quad(\Re z>0)
+\]
+and
+\[
+ \Re\frac{E(z)}{E(-z)}>0\quad(\Re z>0)
+\]
+are false for the exact kernel. They are therefore excluded from the proof route rather than weakened after the fact.
+
+\section{Active proof target}
+
+The exact kernel representation sharpens the remaining task without changing its logical status:
+\begin{problem}[SOH-G003, kernel form]
+Prove that the entire function
+\[
+ F(w)=\int_0^\infty\Phi(y)\cosh(y\sqrt w)\,dy
+\]
+has only real zeros.
+\end{problem}
+Since $F(x)>0$ for $x\ge0$, any proof of real-rootedness automatically places every zero on the negative half-axis and therefore, by Chapter~\ref{ch:compactified-inverse-boundary}, on the unique self-dual layer $\Re s=1/2$.
+
+\gap{The kernel, its positivity, its moment representation, and exclusion of the positive real axis are exact. What remains open is a genuinely kernel-specific mechanism forcing real-rootedness; generic positivity and the tested one-sided transform inequalities do not suffice.}
+
+\begin{warning}
+No statement in this chapter proves SOH-G003 or the Riemann Hypothesis. The chapter removes two invalid shortcuts and isolates the exact positive kernel on which any further analytic argument must operate.
+\end{warning}
