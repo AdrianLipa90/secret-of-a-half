@@ -20,7 +20,7 @@ is the exact global geometric coordinate for the reciprocal boundary pair. It se
 
 with the unique self-dual layer \(q=1/2\).
 
-Because \(q\) contains an absolute value, it is not holomorphic. The analytic zero problem should therefore be expressed in a holomorphic quotient coordinate that carries the same inversion symmetry.
+Because \(q\) contains an absolute value, it is not holomorphic. The analytic zero problem should therefore be expressed in a holomorphic quotient coordinate carrying the same inversion symmetry.
 
 ## 2. Centered entire function and exact quotient
 
@@ -38,16 +38,16 @@ The functional equation \(\xi(s)=\xi(1-s)\) gives
 \Xi_c(z)=\Xi_c(-z).
 \]
 
-Hence \(\Xi_c\) is an even entire function. Its Taylor expansion contains only even powers,
+Hence \(\Xi_c\) is even entire. Write
 
 \[
-\Xi_c(z)=\sum_{n=0}^{\infty} a_{2n}z^{2n}.
+\Xi_c(z)=\sum_{n=0}^{\infty} a_n z^{2n}.
 \]
 
 Therefore there exists a unique entire function
 
 \[
-\boxed{F(w):=\sum_{n=0}^{\infty}a_{2n}w^n}
+\boxed{F(w):=\sum_{n=0}^{\infty}a_n w^n}
 \]
 
 such that
@@ -69,11 +69,10 @@ s=\frac{u}{1+u},\qquad u=\Omega(s),
 we have
 
 \[
-z=s-\frac12
-=\frac{u-1}{2(u+1)}.
+z=s-\frac12=\frac{u-1}{2(u+1)}.
 \]
 
-Thus the quotient coordinate is
+Thus
 
 \[
 \boxed{
@@ -84,10 +83,7 @@ w=z^2=\frac{(u-1)^2}{4(u+1)^2}.
 It is invariant under reciprocal inversion:
 
 \[
-w(1/u)
-=\frac{(1/u-1)^2}{4(1/u+1)^2}
-=\frac{(u-1)^2}{4(u+1)^2}
-=w(u).
+w(1/u)=w(u).
 \]
 
 Therefore the functional involution \(u\leftrightarrow 1/u\) is exactly quotiented out by \(w\).
@@ -108,10 +104,10 @@ w=-\frac14\tan^2\frac{\theta}{2}\in(-\infty,0].
 }
 \]
 
-Conversely, if \(w=z^2\le 0\) is real, then \(z\) is purely imaginary, hence
+Conversely, if \(w=z^2\le0\) is real, then \(z\) is purely imaginary, hence
 
 \[
-\Re s=\frac12
+\Re s=\frac12,
 \]
 
 and therefore \(|u|=1\) and \(q=1/2\).
@@ -165,33 +161,39 @@ G(x)=0\Longrightarrow x\in[0,\infty).
 }
 \]
 
-Thus SOH-G001 can be stated without modulus as a real-rootedness problem for a single entire quotient function.
+Thus SOH-G001 becomes a real-rootedness problem for one entire quotient function.
 
-## 6. Relation to the compactified radius
+## 6. Independent positivity of the quotient coefficients
 
-The geometric and analytic reductions are complementary rather than competing:
+A classical integral-formula result for the Taylor expansion of \(\xi\) at \(s=1/2\) proves that its non-zero centered even Taylor coefficients are positive; see DeFranco, arXiv:1907.08984.
 
-- \(q\) makes the global projective boundary geometry explicit and has the unique self-dual value \(1/2\);
-- \(w=z^2\) is holomorphic and quotients the functional involution exactly;
-- the self-dual layer \(q=1/2\) is mapped by \(w\) to the negative real half-axis.
-
-Hence the remaining bridge may be written equivalently as
+In the normalization above this gives
 
 \[
-X(u)=0\Rightarrow q(u)=\frac12,
+\boxed{a_n>0\quad(n\ge0)}
 \]
 
-or
+for the non-zero coefficients of \(F\). Therefore
 
 \[
-F(w)=0\Rightarrow w\le 0.
+\boxed{F(x)>0\quad\text{for every }x\ge0.}
 \]
 
-The second form is the analytically useful one.
+Hence \(F\) has no zero on the non-negative real axis, independently of RH.
 
-## 7. New proof target
+This sharpens the quotient target:
 
-**SOH-G002 — quotient real-rootedness target**
+\[
+\boxed{
+\text{RH}\iff\text{every zero of }F\text{ is real}.
+}
+\]
+
+Indeed, if all zeros of \(F\) are real, coefficient positivity excludes \([0,\infty)\), so every zero must lie in \(( -\infty,0)\). Conversely, RH already implies all quotient zeros lie on the non-positive real axis.
+
+## 7. Minimal proof target
+
+**SOH-G003 — quotient real-zero target**
 
 Prove that the entire function \(F\) defined by
 
@@ -199,11 +201,37 @@ Prove that the entire function \(F\) defined by
 \xi\!\left(\frac12+z\right)=F(z^2)
 \]
 
-has only non-positive real zeros.
+has only real zeros.
 
-This is exactly equivalent to SOH-G001 and RH; it is not an additional assumption and not a proof by itself.
+Because the coefficients of \(F\) are positive, no separate sign/location argument is then needed: real-rootedness automatically places every zero on the negative real half-axis.
 
-## 8. Firewall
+Thus the active chain is
+
+\[
+\boxed{
+\text{SOH-G003}
+\Longrightarrow
+F^{-1}(0)\subset(-\infty,0)
+\Longrightarrow
+q=\frac12
+\Longrightarrow
+\Re s=\frac12.
+}
+\]
+
+SOH-G003 is exactly RH-equivalent; it is not yet proved.
+
+## 8. Relation to the compactified radius
+
+The geometric and analytic reductions are complementary:
+
+- \(q\) makes the projective boundary geometry explicit and has the unique self-dual value \(1/2\);
+- \(w=z^2\) is holomorphic and quotients the functional involution exactly;
+- the self-dual layer \(q=1/2\) maps to the negative real half-axis;
+- coefficient positivity excludes the opposite real half-axis;
+- the only remaining issue is whether quotient zeros can leave the real axis.
+
+## 9. Firewall
 
 **EXACT:**
 
@@ -211,8 +239,10 @@ This is exactly equivalent to SOH-G001 and RH; it is not an additional assumptio
 2. There is a unique entire \(F\) with \(\Xi_c(z)=F(z^2)\).
 3. \(w=(u-1)^2/[4(u+1)^2]\) is invariant under \(u\mapsto1/u\).
 4. The unit circle \(|u|=1\) maps exactly to \(( -\infty,0]\) in the \(w\)-coordinate.
-5. RH is equivalent to real-rootedness of \(F\) on the non-positive real axis.
+5. The non-zero centered Taylor coefficients are positive (external analytic theorem; DeFranco 2019).
+6. Therefore \(F(x)>0\) for \(x\ge0\).
+7. RH is equivalent to all zeros of \(F\) being real.
 
-**OPEN:** SOH-G002 / SOH-G001 / RH.
+**OPEN:** SOH-G003 / SOH-G002 / SOH-G001 / RH.
 
-No finite-Hermite or moving-boundary condition is required to formulate this target.
+Finite-Hermite and moving-boundary diagnostics are not prerequisites for this target.
