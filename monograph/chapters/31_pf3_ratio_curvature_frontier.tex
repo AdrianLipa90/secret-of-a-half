@@ -1,0 +1,88 @@
+\chapter{PF3 Ratio-Curvature Frontier}
+\label{chap:pf3-ratio-curvature}
+
+\status{Exact algebraic reduction proved; PF3 remains open.}
+
+The previous chapter proves that the normalized Taylor coefficients
+\[
+F(w)=\sum_{k\ge0}a_k w^k,
+\qquad
+ a_k=\frac{m_k}{(2k)!},
+\]
+form a PF$_2$ sequence.  Equivalently, with
+\[
+r_k:=\frac{a_k}{a_{k-1}},
+\]
+the ratios $r_k$ are nonincreasing.
+
+\section{The first genuinely new minor}
+
+For $k\ge2$ define the solid order-three Toeplitz minor
+\[
+\Delta_k=
+\det\begin{pmatrix}
+ a_k&a_{k+1}&a_{k+2}\\
+ a_{k-1}&a_k&a_{k+1}\\
+ a_{k-2}&a_{k-1}&a_k
+\end{pmatrix}.
+\]
+Direct expansion gives
+\[
+\Delta_k=
+-a_{k-2}a_ka_{k+2}
++a_{k-2}a_{k+1}^2
++a_{k-1}^2a_{k+2}
+-2a_{k-1}a_ka_{k+1}
++a_k^3.
+\]
+
+Set
+\[
+u_k=\frac{r_k}{r_{k-1}},\qquad
+v_k=\frac{r_{k+1}}{r_k},\qquad
+w_k=\frac{r_{k+2}}{r_{k+1}}.
+\]
+After division by a strictly positive factor, the sign of $\Delta_k$ is the sign of
+\[
+\boxed{
+M_k=1-2v_k+v_k^2(u_k+w_k-u_kw_k).
+}
+\]
+Hence
+\[
+\boxed{\Delta_k\ge0\iff M_k\ge0.}
+\]
+
+\section{Why PF2 does not already imply PF3}
+
+PF$_2$ supplies only
+\[
+0<u_k,v_k,w_k\le1.
+\]
+Those inequalities do not force $M_k\ge0$.  Thus PF$_3$ requires a new quantitative property: control of the discrete curvature of the adjacent ratio sequence, not merely monotonicity of the ratios themselves.
+
+\section{Finite diagnostic}
+
+A high-precision falsification screen evaluates $u_k,v_k,w_k$, the exact margin $M_k$, and the corresponding Toeplitz determinant, and verifies numerical reconstruction of the determinant from the ratio formula.  In the sampled range the observed pattern is
+\[
+u_k<v_k<w_k<1,
+\qquad
+M_k>0.
+\]
+This is explicitly a finite diagnostic and is not promoted to a theorem.
+
+\section{Open analytic target}
+
+Let
+\[
+R(p)=\frac{1}{\Gamma(p+1)}\int_0^\infty y^p\Phi(y)\,dy,
+\qquad a_k=R(2k).
+\]
+The SOH-G005 theorem gives concavity of $\log R$ and therefore PF$_2$.  The next target is a quantitative bound on the change of the adjacent ratios strong enough to imply
+\[
+M_k\ge0\quad\text{for every }k.
+\]
+
+\begin{warning}
+The exact reduction of PF$_3$ to the ratio-curvature margin is proved.  Global positivity of that margin, all order-three Toeplitz minors, PF$_3$, PF$_\infty$, SOH-G003 real-rootedness, and the Riemann Hypothesis remain open.
+\end{warning}
