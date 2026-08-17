@@ -1,0 +1,159 @@
+\chapter{Global Log-Concavity of the Compactified Riemann Kernel}
+\label{ch:global-log-concavity}
+
+\status{PROVED at the kernel-weight level. This chapter does not prove real-rootedness of the quotient entire function and does not prove RH.}
+
+Chapter~\ref{chap:modular-kernel-compactification} introduced the exact compactified positive kernel
+\[
+\xi\!\left(\frac12+z\right)
+=\int_0^1 W(\eta)\cosh\!\left(z\operatorname{artanh}\eta\right)\,d\eta,
+\qquad W(\eta)>0.
+\]
+The present chapter proves a new global shape theorem for that exact weight.
+
+\section{Theta channels}
+
+Write
+\[
+\Phi(y)=\sum_{n\ge1}\phi_n(y),
+\qquad
+\phi_n(y)=4a_n e^{5y/2}(2r_n-3)e^{-r_n},
+\]
+with
+\[
+a_n=\pi n^2,
+\qquad
+r_n=a_n e^{2y},
+\qquad
+y\ge0.
+\]
+Set \(g_n=\log\phi_n\). Direct differentiation gives
+\[
+g_n'=\frac52+\frac{4r_n}{2r_n-3}-2r_n,
+\]
+and
+\[
+g_n''=-4r_n-\frac{24r_n}{(2r_n-3)^2}.
+\]
+Since \(r_n\ge\pi>3\), the function \(4r/(2r-3)\) decreases from at most \(4\) toward \(2\). Hence
+\[
+g_n'\le\frac12,
+\qquad
+g_n''<-12.
+\]
+
+Let \(\tau=\tanh y\) and define
+\[
+A_n:=g_n''+2\tau g_n'+2(1+\tau^2).
+\]
+Then
+\[
+\boxed{A_n<-7}
+\]
+uniformly for every \(n\ge1\) and \(y\ge0\).
+
+\section{Mixture curvature and the only obstruction}
+
+With
+\[
+p_n=\frac{\phi_n}{\Phi},
+\]
+we have the exact log-sum identity
+\[
+(\log\Phi)''
+=\sum_n p_n g_n''+\operatorname{Var}_p(g_n'),
+\]
+and therefore
+\[
+\mathcal M(y):=(\log\Phi)''+2\tau(\log\Phi)'+2(1+\tau^2)
+=\sum_n p_nA_n+\operatorname{Var}_p(g_n').
+\]
+The single-channel contribution is uniformly below \(-7\); only the slope variance can oppose that negative margin.
+
+\section{A uniform variance bound}
+
+Variance is bounded by the second moment about the \(n=1\) channel:
+\[
+\operatorname{Var}_p(g_n')
+\le\sum_{n\ge2}p_n|g_n'-g_1'|^2.
+\]
+Put \(t=e^{2y}\ge1\) and \(m=n^2-1\). The exact ratio is
+\[
+\frac{\phi_n}{\phi_1}
+=n^2\frac{2\pi n^2t-3}{2\pi t-3}e^{-\pi mt}.
+\]
+Because \(\pi t>3\),
+\[
+\frac{\phi_n}{\phi_1}<2n^4e^{-\pi mt}.
+\]
+Also, monotonicity of \(4r/(2r-3)\) gives
+\[
+|g_n'-g_1'|\le2\pi mt+2.
+\]
+For each fixed \(m\ge3\),
+\[
+e^{-\pi mt}(2\pi mt+2)^2
+\]
+is strictly decreasing in \(t\ge1\), so the worst case occurs at \(t=1\). Using
+\[
+3<\pi<\frac{22}{7}
+\]
+and \(m\ge3\),
+\[
+2\pi m+2<7m,
+\qquad
+e^{-\pi m}<e^{-3m}.
+\]
+Thus
+\[
+\operatorname{Var}_p(g_n')
+<98\sum_{n\ge2}n^4(n^2-1)^2e^{-3(n^2-1)}.
+\]
+
+The \(n=2\) contribution is
+\[
+14112e^{-9}<1.764,
+\]
+where the elementary estimate \(e^3>20\) gives \(e^9>8000\). For \(n\ge3\), the first term is below \(2\times10^{-5}\), and the ratio of successive terms is below \(10^{-8}\). Hence
+\[
+\boxed{\operatorname{Var}_p(g_n')<1.765<2}
+\]
+uniformly on \(y\ge0\).
+
+\section{SOH-G004 theorem}
+
+Combining the preceding estimates,
+\[
+\mathcal M(y)<-7+2=-5<0.
+\]
+Since
+\[
+\eta=\tanh y,
+\qquad
+W(\eta)=\frac{\Phi(y)}{1-\eta^2},
+\]
+direct differentiation yields
+\[
+\frac{d^2}{d\eta^2}\log W(\eta)
+=\frac{\mathcal M(y)}{(1-\eta^2)^2}.
+\]
+Therefore:
+
+\begin{theorem}[SOH-G004]
+For the exact compactified Riemann kernel weight \(W\),
+\[
+\boxed{
+\frac{d^2}{d\eta^2}\log W(\eta)<0
+\qquad(0\le\eta<1).
+}
+\]
+Hence \(W\) is strictly log-concave on its full compact radial interval.
+\end{theorem}
+
+\section{Proof firewall}
+
+Strict positivity and strict log-concavity are now proved global properties of the exact compactified kernel. They do not, without an additional theorem, imply that
+\[
+F(w)=\int_0^1W(\eta)\cosh\!\left(\sqrt w\,\operatorname{artanh}\eta\right)d\eta
+\]
+has only real zeros. Accordingly, SOH-G003 remains OPEN. The next proof frontier is to identify and prove a zero-preserving property stronger than log-concavity, while retaining the exact kernel and the self-dual compactification.
