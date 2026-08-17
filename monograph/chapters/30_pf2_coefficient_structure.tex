@@ -1,0 +1,73 @@
+\chapter{PF2 Coefficient Structure from Kernel Log-Concavity}
+\label{chap:pf2-coefficient-structure}
+
+\status{PROVED at order two. PF$_\infty$, real-rootedness of $F$, and RH remain open.}
+
+Chapter~\ref{ch:global-log-concavity} proves strict log-concavity of the exact Riemann kernel on the positive half-line, and Chapter~\ref{chap:modular-kernel-compactification} places the same kernel in the self-dual compact coordinate.  The present chapter extracts the first nontrivial total-positivity consequence for the Taylor coefficients of the quotient entire function.
+
+\section{Normalized moments}
+
+Write
+\[
+F(w)=\sum_{k\ge0}a_kw^k,
+\qquad
+ a_k=\frac{m_k}{(2k)!},
+\qquad
+ m_k=\int_0^\infty y^{2k}\Phi(y)\,dy.
+\]
+A classical moment inequality for a nonnegative log-concave function \(f\) on \([0,\infty)\) states that
+\[
+R(p)=\frac{1}{\Gamma(p+1)}\int_0^\infty x^p f(x)\,dx
+\]
+is log-concave in \(p>-1\); see \citet{karlinproschanbarlow1961}.  Applying this to the already-proved log-concave Riemann kernel \(f=\Phi\) gives
+\[
+a_k=R(2k).
+\]
+Restriction of a log-concave function to the arithmetic progression \(0,2,4,\ldots\) yields
+\[
+\boxed{a_k^2\ge a_{k-1}a_{k+1}\qquad(k\ge1).}
+\]
+
+\section{PF2 theorem}
+
+All \(a_k\) are positive.  Therefore the preceding inequalities are precisely the adjacent order-two Toeplitz minors:
+\[
+\det\begin{pmatrix}
+a_k&a_{k+1}\\
+a_{k-1}&a_k
+\end{pmatrix}
+=a_k^2-a_{k-1}a_{k+1}\ge0.
+\]
+Hence:
+
+\begin{theorem}[SOH-G005]
+The Taylor coefficient sequence \((a_k)_{k\ge0}\) of
+\[
+F(w)=\xi\!\left(\frac12+\sqrt w\right)
+\]
+is a P\'olya-frequency sequence of order two (PF$_2$).
+\end{theorem}
+
+This is a genuine coefficient-level zero-preserving constraint stronger than coefficient positivity.
+
+\section{Why Hankel positivity is not enough}
+
+The raw moment sequence satisfies
+\[
+\sum_{i,j}c_ic_jm_{i+j}
+=\int_0^\infty\Phi(y)
+\left(\sum_i c_i y^{2i}\right)^2dy\ge0.
+\]
+Thus positivity of the Hankel moment matrices follows automatically from positivity of the measure and does not add zero-location information.  It is therefore not promoted as a proof mechanism.
+
+\section{The remaining total-positivity hierarchy}
+
+The classical theory of totally positive sequences connects PF$_\infty$ with generating functions having the appropriate real nonpositive zero structure; see \citet{aissenedreischoenbergwhitney1951}.  Accordingly the active hierarchy is
+\[
+\mathrm{PF}_2
+\longrightarrow
+\mathrm{PF}_3
+\longrightarrow\cdots\longrightarrow
+\mathrm{PF}_\infty.
+\]
+SOH-G005 proves only the first level.  No statement in this chapter promotes PF$_2$ to PF$_\infty$ or promotes the result to SOH-G003 or RH.

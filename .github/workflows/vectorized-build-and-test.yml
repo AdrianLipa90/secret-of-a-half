@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       fail-fast: false
-      max-parallel: 15
+      max-parallel: 16
       matrix:
         lane:
           - general-tests
@@ -35,6 +35,7 @@ jobs:
           - c005-twisted-prime
           - c005-full-operator-cancellation
           - soh-g004-log-concavity
+          - soh-g005-pf3-diagnostic
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -95,6 +96,9 @@ jobs:
               ;;
             soh-g004-log-concavity)
               python scripts/run_soh_g004_global_log_concavity.py
+              ;;
+            soh-g005-pf3-diagnostic)
+              python scripts/run_soh_g005_pf3_diagnostic.py
               ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
