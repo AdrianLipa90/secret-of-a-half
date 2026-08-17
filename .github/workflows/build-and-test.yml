@@ -69,6 +69,9 @@ jobs:
       - name: Run SOH-C005 growing-window tail diagnostic
         run: python scripts/run_c005_growing_window_tail_diagnostic.py
 
+      - name: Run SOH-C005 twisted-prime summation receipt
+        run: python scripts/run_c005_twisted_prime_summation.py
+
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
 
