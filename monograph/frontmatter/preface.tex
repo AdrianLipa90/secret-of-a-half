@@ -1,23 +1,25 @@
 \chapter*{Preface and Reader's Guide}
 \addcontentsline{toc}{chapter}{Preface and Reader's Guide}
 
-The purpose of this text is not to make the number $1/2$ look mysterious. The purpose is to separate three logically different questions that are often blended together:
+The purpose of this text is to keep distinct three questions that are easily conflated:
 \begin{enumerate}
-  \item Why is $1/2$ the centre of the zeta functional symmetry?
-  \item Why does $1/2$ recur in binary balance, equal-amplitude cancellation, and spinorial sign closure?
+  \item Why is $1/2$ the centre of the functional symmetry of the completed zeta function?
+  \item Why does the same half recur in binary balance, equal-amplitude cancellation, projective self-duality, and spinorial phase closure?
   \item Why should every non-trivial zeta zero be fixed by the symmetry rather than merely paired by it?
 \end{enumerate}
-The first two questions admit exact answers. The third is the Riemann Hypothesis and remains open \citep{clay2026,bombieri2006}.
+The first two questions admit exact answers in the declared mathematical representations. The third is the Riemann Hypothesis and remains open \citep{clay2026,bombieri2006}.
 
-The text therefore uses a claim discipline. Every principal assertion is labelled as one of the following:
+Version 0.9 applies a typed claim discipline throughout the integrated monograph:
 \begin{description}
-  \item[Exact lemma or theorem.] A complete derivation is supplied from stated definitions.
-  \item[Conditional theorem.] The conclusion is rigorous once its hypotheses are granted, but at least one hypothesis is not established.
-  \item[Candidate route.] A construction is proposed with explicit success and failure conditions.
-  \item[Interpretation.] A conceptual reading that is not itself a mathematical implication.
-  \item[Numerical regression.] A finite computation checking code or an identity at sampled points.
+  \item[Exact or standard.] A complete derivation is supplied from stated definitions, or a classical theorem is invoked with its assumptions and citation.
+  \item[Conditional.] The conclusion follows rigorously once a named unproved hypothesis is granted.
+  \item[Model.] A TIR/PhaseNav assignment used only inside an explicitly declared modelling layer.
+  \item[Open.] A missing bridge that is never promoted automatically.
+  \item[Numerical.] A finite computation, regression check, or certificate with a stated finite scope.
 \end{description}
 
-The monograph is autonomous. It does not use another theoretical repository as an unstated dependency, and it does not import fitted constants. The independent objects are the classical zeta and xi functions, binary entropy, a two-dimensional Hilbert space, and explicit symmetry maps. This independence is deliberate: if the ansatz is valuable, it must survive on definitions that a reader can inspect without access to any external private formalism.
+The current canonical claim IDs SOH-L012--SOH-L032 belong to the V2 integration developed in \cref{chap:li-negative-inverse}. Earlier development snapshots used several of those numbers for Hermite, reciprocal-tail, and DHSE results. No result is discarded: the earlier statements are retained under domain-specific canonical IDs and their historical aliases are documented in \cref{app:claims}. This prevents one identifier from denoting two different propositions in the current monograph.
 
-Readers interested only in the mathematical core may proceed directly to \cref{chap:symmetry,chap:entropy,chap:cancellation,chap:eta,chap:conditional}. Readers assessing publication claims should also read \cref{chap:nogo,chap:candidates,chap:falsification}. The appendices collect the elementary calculations, numerical tables, and a claim ledger.
+Readers interested in the elementary mathematical core may begin with \cref{chap:symmetry,chap:entropy,chap:cancellation,chap:eta}. The native arithmetic programme occupies \cref{chap:phasenav-native,ch:hermite-ladder,ch:prime-tail-certificate,ch:adaptive-cutoff}. The geometry-first identity, holonomy, and typed-solver integration follows in \cref{chap:identity-axis,chap:geometry-dependencies,chap:typed-solver}. The final synthesis in \cref{chap:li-negative-inverse} connects the projective half-axis map to Li's negative inverse and to the global Weil positivity frontier.
+
+The central proof firewall is unchanged by the additional structure: exact reformulations, exact no-go lemmas, and finite positive-semidefinite receipts do not prove the global arithmetic positivity statement. SOH-C005 and the Riemann Hypothesis therefore remain explicitly OPEN.

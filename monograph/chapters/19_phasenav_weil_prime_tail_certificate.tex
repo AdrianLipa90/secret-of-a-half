@@ -3,8 +3,8 @@
 
 The Hermite ladder of \Cref{ch:hermite-ladder} replaced one localized
 test by a countable dense family, but its arithmetic evaluation still used a
-finite prime-power cutoff.  This chapter controls that omission for every
-fixed finite section.  The key transformation is reciprocal, but it acts on
+finite prime-power cutoff. This chapter controls that omission for every
+fixed finite section. The key transformation is reciprocal, but it acts on
 the logarithmic tail coordinate rather than on a zeta zero.
 
 \section{The omitted arithmetic tail}
@@ -61,7 +61,7 @@ Writing $u=\log x$ gives
  =\frac{d+1}{u}-\frac12-\frac{u}{2w^2}.
 \]
 The right-hand side is non-positive precisely when
-$u^2+w^2u-2w^2(d+1)\ge0$.  Its positive root is $\tau_d(w)$.
+$u^2+w^2u-2w^2(d+1)\ge0$. Its positive root is $\tau_d(w)$.
 \end{proof}
 
 Since $\Lambda(q)\le\log q$, and prime powers form a subset of the positive
@@ -70,7 +70,7 @@ majorant.
 
 \begin{theorem}[Fixed-entry prime-tail certificate]
 \label{thm:prime-tail-entry-certificate}
-Assume $\log Q\ge\tau_{m+n}(w)$.  Then
+Assume $\log Q\ge\tau_{m+n}(w)$. Then
 \[
  |R_{mn}(Q)|\le B_{mn}(Q,w),
 \]
@@ -88,8 +88,8 @@ and
 \end{theorem}
 
 \begin{proof}
-Apply the Fourier majorant to both signs of the transform.  The factor two
-cancels the $2$ in the explicit-formula coefficient $1/(2\pi)$.  Replace
+Apply the Fourier majorant to both signs of the transform. The factor two
+cancels the $2$ in the explicit-formula coefficient $1/(2\pi)$. Replace
 $\Lambda(q)$ by $\log q$, enlarge the prime-power sum to all integers, and
 apply \Cref{lem:tail-monotone-threshold} term by term.
 \end{proof}
@@ -103,7 +103,7 @@ Set
  z_{\rm t}=\frac1u.
 \]
 The suffix distinguishes this tail coordinate from the centred zeta coordinate
-and from the odds coordinate of \Cref{ch:zero-undefined}.  The map sends
+and from the odds coordinate of \Cref{ch:zero-undefined}. The map sends
 \[
  [\log Q,\infty)
  \longrightarrow
@@ -126,14 +126,14 @@ value zero, and every derivative at that endpoint vanishes.
 
 \begin{proof}
 The integral identity follows from $z_{\rm t}=1/u$ and
-$du=-z_{\rm t}^{-2}dz_{\rm t}$.  Near zero, the exponent is bounded above by
-$-c/z_{\rm t}^2$ for some $c>0$.  Every derivative is a finite sum of a
+$du=-z_{\rm t}^{-2}dz_{\rm t}$. Near zero, the exponent is bounded above by
+$-c/z_{\rm t}^2$ for some $c>0$. Every derivative is a finite sum of a
 rational power of $z_{\rm t}$ times the same exponential, so it tends to zero
 faster than any power.
 \end{proof}
 
 Thus the infinite arithmetic tail becomes a compact interval with a flat
-endpoint.  The map $1/z$ is being used as a computational compactification;
+endpoint. The map $1/z$ is being used as a computational compactification;
 it does not relocate or assume anything about zeta zeros.
 
 \section{Closed incomplete-gamma form}
@@ -197,7 +197,7 @@ Consequently,
 
 \begin{proof}
 The entrywise majorant and symmetry give
-$\|E_N\|_1,\|E_N\|_\infty\le\max_m\sum_nB_{mn}$.  Apply
+$\|E_N\|_1,\|E_N\|_\infty\le\max_m\sum_nB_{mn}$. Apply
 $\|E_N\|_2\le\sqrt{\|E_N\|_1\|E_N\|_\infty}$ and then Weyl's eigenvalue
 perturbation inequality.
 \end{proof}
@@ -218,25 +218,30 @@ N & \max_{m,n<N}B_{mn} & \varepsilon_N\\
 \end{array}
 \]
 All degrees through ten satisfy the monotonicity condition with margin greater
-than eight in the log coordinate.  The three integral representations agree
-to substantially better than the declared $10^{-30}$ tolerance.  Finite shell
+than eight in the log coordinate. The three integral representations agree
+to substantially better than the declared $10^{-30}$ tolerance. Finite shell
 checks over $100000<q\le200000$ also lie below their full-tail majorants.
 
 \section{Claim boundary}
 
 \begin{itemize}
-\item \textbf{SOH-L018 (exact):} the logarithmic prime tail admits reciprocal
+\item \textbf{SOH-PT001 (exact):} the logarithmic prime tail admits reciprocal
 compactification to a finite interval with a flat endpoint.
-\item \textbf{SOH-L019 (exact):} each Hermite entry has the stated
+\item \textbf{SOH-PT002 (exact):} each Hermite entry has the stated
 incomplete-gamma majorant under the explicit monotonicity condition.
-\item \textbf{SOH-L020 (exact finite-section theorem):} entrywise certificates
+\item \textbf{SOH-PT003 (exact finite-section theorem):} entrywise certificates
 give an operator-norm and Weyl eigenvalue enclosure for every fixed section.
 \item \textbf{SOH-N005 (numerical):} the declared $N\le6$, $Q=100000$ envelope
 has maximum norm bound $7.7172\times10^{-13}$.
 \end{itemize}
 
+Pre-v0.9 snapshots used SOH-L018--SOH-L020 for the three exact statements above.
+The canonical migration to SOH-PT001--SOH-PT003 is recorded in
+\cref{app:claims}; SOH-L018--SOH-L020 now belong exclusively to the V2 Li/Weil
+claim line of \cref{chap:li-negative-inverse}.
+
 The result closes controlled cutoff removal for each declared fixed finite
-section.  It does not prove positivity of those sections, does not provide a
+section. It does not prove positivity of those sections, does not provide a
 useful bound uniform as $N\to\infty$, and does not prove that a null mode forces
-native theta-shell closure.  Those are the remaining parts of
+native theta-shell closure. Those are remaining components of
 \texttt{SOH-C005}.

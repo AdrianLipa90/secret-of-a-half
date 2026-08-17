@@ -1,27 +1,24 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-The real part $1/2$ occurs in the theory of the Riemann zeta function as the symmetry axis of its non-trivial zeros. This monograph asks a narrower question than the Riemann Hypothesis itself: can the distinguished role of the half-axis be explained by a common structural mechanism joining binary complementarity, information balance, two-channel interference, spinorial phase, and the anti-linear symmetry of the completed zeta function?
+This monograph studies why the real value $1/2$ is structurally distinguished in the analytic geometry surrounding the Riemann zeta function while maintaining a strict separation between exact mathematics, finite numerical evidence, model assignments, conditional implications, and open proof obligations.
 
-The exact part of the programme is developed first. Binary Shannon entropy has its unique maximum at $\sigma=1/2$, with value $\ln 2$. A normalized equal-gain two-channel amplitude
+The elementary layer establishes several exact selections of the half. Binary Shannon entropy is uniquely maximal at $\sigma=1/2$ with value $\ln2$. A normalized equal-gain two-channel amplitude vanishes exactly at equal weights and relative phase $\pi$. The anti-linear involution $K(s)=1-\overline{s}$ has fixed set $\Re s=1/2$, and the corresponding binary spinor geometry places balanced states on the Bloch equator. The Dirichlet eta function supplies a classical bridge between alternating sign, $\ln2$, and the non-trivial zeta zeros without determining their horizontal location.
+
+The native PhaseNav construction develops this structure through paired theta channels, a Hermite dense core for the Weil quadratic form, reciprocal compactification of prime-power tails, certified finite-section tail bounds, and a basis-adaptive cutoff theorem. The identity-axis and holonomy layer then separates transverse displacement from tangent recurrence and records the logical architecture in a typed solver that prevents OPEN or MODEL premises from being silently promoted to proof-level conclusions.
+
+Version 0.9 integrates the projective coordinate
 \[
-\Acomp(\sigma,\phi)=\sqrt{\sigma}+e^{i\phi}\sqrt{1-\sigma}
+\Omega(s)=\frac{s}{1-s}
 \]
-vanishes if and only if $\sigma=1/2$ and $\phi\equiv\pi\pmod{2\pi}$. The involution $\J(s)=1-\overline{s}$ has fixed set $\Re s=1/2$. If the spinorial sign is parameterized by $e^{2\pi i\sigma}$, then the sign $-1$ also selects $\sigma=1/2$ in the open unit interval. These statements combine into an exact ``triple coincidence'' theorem inside the explicitly defined binary-spinor model.
-
-A non-metaphorical bridge to zeta theory is provided by the Dirichlet eta function,
+with the negative-inverse Li coordinate
 \[
-\eta(s)=\sum_{n\ge1}(-1)^{n-1}n^{-s}=(1-2^{1-s})\zeta(s),
+z_L(s)=1-\frac1s=-\frac1{\Omega(s)}.
 \]
-with $\eta(1)=\ln2$. Within the open critical strip, the eta and zeta zero sets coincide because the binary prefactor has no zeros there. This establishes a genuine relation among alternating binary sign, $\ln2$, and the non-trivial zeta zeros. It does not determine the horizontal location of those zeros.
+The critical line is mapped exactly to the unit circle in either coordinate. For a reciprocal-conjugate quartet $z=Re^{i\phi}$, the local Li contribution is
+\[
+L_n=4-2(R^n+R^{-n})\cos(n\phi),
+\]
+which yields an exact local growth radius $\max(R,R^{-1})$ and an unbounded negative subsequence whenever $R\ne1$. These local facts are then connected to the global Li criterion and to Weil positivity. A separate no-go lemma shows that positive von Mangoldt weights do not make the prime contribution positive semidefinite term by term.
 
-The central conditional theorem is then stated. If there exists a canonical, involution-covariant Hilbert-space state map whose fixed readout vanishes exactly with $\xi(s)$ and whose normalized channel weights are $\Re s$ and $1-\Re s$, then every non-trivial zero lies on $\Re s=1/2$. The theorem is short; the construction of such a map is the entire unresolved burden. Several tempting shortcuts are shown to fail: symmetry alone produces zero quartets rather than fixed points, eta alternation adds a separate line of prefactor zeros, unequal channel metrics move the balance point away from one half, and a pointwise normalized factorization can be engineered non-canonically.
-
-The monograph closes by formulating operator, positivity-kernel, de Branges, Li-coefficient, and theta-kernel routes as concrete research programmes. Numerical calculations are used only as regression tests for identities and software, never as substitutes for proof.
-
-\chapter*{Streszczenie}
-\addcontentsline{toc}{chapter}{Streszczenie}
-
-Monografia bada, dlaczego wartość $1/2$ pojawia się jako wyróżniona oś symetrii w teorii funkcji dzeta Riemanna. Punktem wyjścia jest autonomiczny ansatz łączący cztery struktury: binarną komplementarność i wartość Shannona $\ln2$, dokładną interferencję destruktywną dwóch znormalizowanych kanałów, spinorialny znak fazowy $-1$ oraz antyliniową inwolucję $s\mapsto1-\overline{s}$.
-
-Udowodnione zostają ścisłe lematy wybierające $\sigma=1/2$ jako jedyny punkt równowagi informacji i dokładnego znoszenia amplitud przy równych metrykach kanałów. Funkcja eta Dirichleta daje ścisły most do funkcji dzeta: w otwartym pasku krytycznym ich zera są równoważne. Nie jest to jednak dowód hipotezy Riemanna. Brakuje kanonicznej mapy stanu lub samosprzężonego operatora, który przekształcałby każde zero $\xi(s)$ w opisany mechanizm dwukanałowego znoszenia bez ukrytego dopasowania i bez założenia tezy w konstrukcji.
+The resulting frontier is explicit: under the standard Weil criterion, the unresolved global task is to prove the arithmetic quadratic form non-negative on the complete admissible test class, equivalently to establish the corresponding global Li positivity, without assuming an RH-equivalent premise. The localized problem may be expressed through the lowest spectral value of a self-adjoint arithmetic Weil operator. The present monograph sharpens and audits that reduction; it does not claim a proof of the Riemann Hypothesis.

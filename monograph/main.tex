@@ -5,7 +5,7 @@
 \usepackage{lmodern}
 \usepackage{microtype}
 \usepackage[a4paper,margin=27mm,headheight=15pt]{geometry}
-\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
 \usepackage{graphicx}
 \usepackage{booktabs,longtable,array}
 \usepackage{enumitem}
@@ -69,14 +69,14 @@
 \newcommand{\half}{\tfrac12}
 
 \title{\textbf{The Secret of a Half}\\[0.5em]
-\Large Binary Complementarity, Spinorial Phase, and the Critical Axis of the Riemann Zeta Function}
+\Large Binary Complementarity, Spinorial Phase, Negative Inversion, and the Critical Axis of the Riemann Zeta Function}
 \author{Adrian Lipa}
-\date{Research Monograph, Version 0.7\\8 August 2026}
+\date{Research Monograph, Version 0.9 Integrated Canon V2\\16 August 2026}
 \hypersetup{
-  pdftitle={The Secret of a Half: Binary Complementarity, Spinorial Phase, and the Critical Axis of the Riemann Zeta Function},
+  pdftitle={The Secret of a Half: Binary Complementarity, Spinorial Phase, Negative Inversion, and the Critical Axis of the Riemann Zeta Function},
   pdfauthor={Adrian Lipa},
-  pdfsubject={Information-spinor critical-axis ansatz, PhaseNav-Weil programme, reciprocal self-duality, prime-tail certification, adaptive cutoff control, and canonical PhaseNav dependency firewall},
-  pdfkeywords={Riemann zeta function, critical line, binary entropy, spinor, PhaseNav, NOEMA, Weil criterion, Hermite basis, reciprocal compactification, prime tail, adaptive cutoff, dependency firewall}
+  pdfsubject={Integrated PhaseNav critical-axis programme with Li negative-inverse geometry, Weil positivity reductions, Hermite and prime-tail certificates, typed solver, and explicit open-proof firewall},
+  pdfkeywords={Riemann zeta function, critical line, Li criterion, Weil criterion, negative inversion, binary entropy, spinor, PhaseNav, NOEMA, Hermite basis, reciprocal compactification, prime tail}
 }
 
 \begin{document}
@@ -120,6 +120,14 @@
 \include{chapters/20_phasenav_weil_adaptive_cutoff}
 \include{chapters/21_phasenav_dependency_canon}
 
+\part{Integrated Identity, Holonomy, and Solver Architecture}
+\include{chapters/22_identity_axis_and_normalized_recurrence}
+\include{chapters/23_holonomic_relation_graph_and_geometry_dependencies}
+\include{chapters/24_typed_solver_and_tir_crosswalk}
+
+\part{Li Negative Inversion and the Global Weil Frontier}
+\include{chapters/25_li_negative_inverse_and_weil_frontier}
+
 \appendix
 \part{Appendices}
 \include{appendices/A_elementary_proofs}
@@ -130,5 +138,5 @@
 
 \backmatter
 \bibliographystyle{plainnat}
-\bibliography{../references/references}
+\bibliography{../references/references,../references/v09}
 \end{document}

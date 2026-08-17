@@ -1,19 +1,19 @@
 \chapter{Zero, Undefinedness, and Reciprocal Self-Duality}
 \label{ch:zero-undefined}
 
-This chapter formalizes a new interpretive hypothesis: the half may be read as
-the balanced state between a defined zero and an undefined informational
-state.  The exact content is a labelled-state geometry.  The interpretation of
-one label as ``undefined'' remains exploratory.
+This chapter formalizes an exploratory hypothesis: the half may be represented as
+the balanced state between a defined-zero label and an undefined informational
+label. The exact content is a labelled-state geometry. Any physical or zeta-state
+identification of those labels remains exploratory and is not used as a theorem.
 
 \section{The NaN boundary warning}
 
 \begin{warning}[NaN is not a numeric endpoint]
 IEEE floating-point \texttt{NaN} is not a real number and is not ordered with
-zero.  Consequently, the statement that $1/2$ is numerically between
+zero. Consequently, the statement that $1/2$ is numerically between
 \texttt{NaN} and $0$ is not a well-formed assertion in the usual order on
-$\mathbb R$.  In this chapter \texttt{NaN} appears only as a possible
-implementation marker for an abstract state label.  It never enters arithmetic.
+$\mathbb R$. In this chapter \texttt{NaN} appears only as a possible
+implementation marker for an abstract state label. It never enters arithmetic.
 \end{warning}
 
 Let
@@ -22,7 +22,7 @@ Let
  \qquad
  U=\texttt{UNDEFINED\_BOTTOM}
 \]
-be two labels.  They are vertices of a binary simplex, not numerical values to
+be two labels. They are vertices of a binary simplex, not numerical values to
 be added together.
 
 \section{The labelled binary simplex}
@@ -106,7 +106,7 @@ The exchange matrix
 \[
  X=\begin{pmatrix}0&1\\1&0\end{pmatrix}
 \]
-satisfies $X\Psi(p)=\Psi(1-p)$.  Its unique positive normalized fixed state is
+satisfies $X\Psi(p)=\Psi(1-p)$. Its unique positive normalized fixed state is
 \[
  \Psi\!\left(\frac12\right)
  =\frac1{\sqrt2}
@@ -168,13 +168,13 @@ Consequently four exact selections coincide:
 
 The preceding fixed-point statements are exact, but they must not be enlarged
 into the stronger assertion that every reciprocal-symmetric dynamical statistic
-is maximized at the self-dual point.  DHSE-001 Stage M gives an exact finite
+is maximized at the self-dual point. DHSE-001 Stage M gives an exact finite
 counterexample to that inference.
 
 In projective odds $q>0$, let a primitive positive integer M\"obius universe
-with coefficient bound $K=6$ act by binary words of lengths $n=1,2,3,4$.  For
+with coefficient bound $K=6$ act by binary words of lengths $n=1,2,3,4$. For
 the projective target radius $r=1/10$, each admissible word contributes an exact
-closed rational interval of target centres.  The resulting forcing-count
+closed rational interval of target centres. The resulting forcing-count
 function $N_n(q)$ is therefore an integer-valued step function whose complete
 maximum can be classified by a finite rational endpoint sweep.
 
@@ -192,10 +192,10 @@ Nevertheless, the exact maximizers are length dependent:
 \end{aligned}
 \]
 Thus $q=1$, equivalently $p=1/2$, is the unique global maximizer for lengths 2
-and 3 but is not a global maximizer for lengths 1 and 4.  At length 4 the split
+and 3 but is not a global maximizer for lengths 1 and 4. At length 4 the split
 is a narrow reciprocal doublet immediately adjacent to the self-dual point.
 
-\status{SOH-L022: exact finite computer-assisted theorem on the declared
+\status{SOH-DHSE-M001: exact finite computer-assisted theorem on the declared
 $K=6$, $r=1/10$, $n\le4$ universe.}
 
 The formal lesson is precise:
@@ -207,7 +207,7 @@ The formal lesson is precise:
 }
 \]
 without an additional convexity, monotonicity, positivity, or comparable
-structural condition.  This negative result strengthens the claim boundary of
+structural condition. This negative result strengthens the claim boundary of
 the monograph: the special status of the half as a fixed point, entropy maximum,
 and Fisher--Rao midpoint is exact, while any further extremal statement for a
 new dynamical functional requires its own theorem.
@@ -224,31 +224,37 @@ The authoritative executable source is
 \end{center}
 It declares the vertices, complement orbit, projective odds transform,
 reciprocal orbit, spinor embedding, Fisher--Rao coordinate and the explicit
-NaN guard.  Python parses and audits that source; it is not the source of the
+NaN guard. Python parses and audits that source; it is not the source of the
 construction.
 
 \section{Claim ledger}
 
 \begin{itemize}
-\item \textbf{SOH-L015 (exact):} complement is conjugate to reciprocal inversion
+\item \textbf{SOH-ZU001 (exact):} complement is conjugate to reciprocal inversion
 in odds coordinates.
-\item \textbf{SOH-L016 (exact):} the unique positive reciprocal fixed point
+\item \textbf{SOH-ZU002 (exact):} the unique positive reciprocal fixed point
 corresponds to $p=1/2$.
-\item \textbf{SOH-L017 (exact):} $p=1/2$ is the Fisher--Rao geodesic midpoint.
-\item \textbf{SOH-L022 (exact finite computer-assisted):} in the declared
+\item \textbf{SOH-ZU003 (exact):} $p=1/2$ is the Fisher--Rao geodesic midpoint.
+\item \textbf{SOH-DHSE-M001 (exact finite computer-assisted):} in the declared
 DHSE-001 Stage M universe, the complete forcing landscape is classified and the
 self-dual maximum is length dependent.
 \item \textbf{SOH-D001 (exact finite counterexample):} reciprocal symmetry alone
 does not force a global maximum at the self-dual point.
-\item \textbf{SOH-H001 (exploratory):} defined zero and undefined bottom are
-interpreted as informational boundary labels.
+\item \textbf{SOH-H001 (exploratory hypothesis):} the two abstract boundary labels
+are assigned the names \texttt{DEFINED\_ZERO} and \texttt{UNDEFINED\_BOTTOM};
+no numerical ordering or physical identification is inferred from those names.
 \end{itemize}
+
+Pre-v0.9 snapshots used SOH-L015, SOH-L016, SOH-L017, and SOH-L022 for these
+chapter-local results. The canonical v0.9 migration is recorded in
+\cref{app:claims}; unprefixed SOH-L012--SOH-L032 now refer only to the Li/Weil
+V2 claim line of \cref{chap:li-negative-inverse}.
 
 \section{Boundary relative to the zeta problem}
 
 The exact lemmas in this chapter, including the Stage M finite theorem, do not
-identify non-trivial zeta zeros with zero--undefined states.  They therefore do
-not close \texttt{SOH-C004} or \texttt{SOH-C005}.  Their role is structural:
-they characterize what reciprocal self-duality does and does not imply.  Any
+identify non-trivial zeta zeros with zero--undefined states. They therefore do
+not close \texttt{SOH-C004} or \texttt{SOH-C005}. Their role is structural:
+they characterize what reciprocal self-duality does and does not imply. Any
 use in a critical-line theorem still requires a canonical bridge from the
 completed zeta function to the labelled PhaseNav state.

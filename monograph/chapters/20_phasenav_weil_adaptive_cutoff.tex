@@ -2,13 +2,13 @@
 \label{ch:adaptive-cutoff}
 
 \Cref{ch:prime-tail-certificate} proves cutoff removal for every fixed finite
-Hermite section.  A different question appears when the basis size grows:
+Hermite section. A different question appears when the basis size grows:
 can one choose the cutoff together with the section size so that the certified
-omitted tail still tends to zero?  This chapter answers that diagonal question
+omitted tail still tends to zero? This chapter answers that diagonal question
 in the affirmative.
 
-The result is deliberately narrower than fixed-cutoff uniformity.  The cutoff
-is allowed to depend on the basis size.  No claim is made that one finite
+The result is deliberately narrower than fixed-cutoff uniformity. The cutoff
+is allowed to depend on the basis size. No claim is made that one finite
 cutoff controls every Hermite mode simultaneously.
 
 \section{Adaptive schedule}
@@ -17,8 +17,8 @@ Let $N\ge1$ be the size of the Hermite principal section and write
 \[
  D_N=2N-2
 \]
-for the largest polynomial degree appearing in its product kernels.  Fix a
-base cutoff $Q_0\ge3$ and a slope $c>0$.  Define
+for the largest polynomial degree appearing in its product kernels. Fix a
+base cutoff $Q_0\ge3$ and a slope $c>0$. Define
 \[
  U_N=\log Q_N:=\max\{\log Q_0,cN\},
  \qquad
@@ -58,7 +58,7 @@ The identity
 \[
  -\frac{d}{du}\log h_d(u)=\alpha_d(u)
 \]
-shows that $h_d$ is decreasing once $\alpha_d$ is positive.  Moreover,
+shows that $h_d$ is decreasing once $\alpha_d$ is positive. Moreover,
 \[
  \alpha_d'(u)
  =
@@ -77,7 +77,7 @@ If $\alpha_d(U)>0$, then
 
 \begin{proof}
 For $u\ge U$, monotonicity of $\alpha_d$ gives
-$\alpha_d(u)\ge\alpha_d(U)$.  Hence
+$\alpha_d(u)\ge\alpha_d(U)$. Hence
 \[
  h_d'(u)=-\alpha_d(u)h_d(u)
  \le -\alpha_d(U)h_d(u).
@@ -97,7 +97,7 @@ transparent enough for an asymptotic proof.
 
 \section{A coarse Hermite-section envelope}
 
-For $0\le m,n<N$, the Hermite linearization contains at most $N$ terms.  Each
+For $0\le m,n<N$, the Hermite linearization contains at most $N$ terms. Each
 coefficient obeys the elementary estimate
 \[
  2^k k!\binom{m}{k}\binom{n}{k}
@@ -105,7 +105,7 @@ coefficient obeys the elementary estimate
  2^{3N-3}(N-1)!.
 \]
 The normalized Fourier prefactor is at most one for the declared fixed width,
-and the operator norm is bounded by the maximum row sum.  Therefore it is
+and the operator norm is bounded by the maximum row sum. Therefore it is
 sufficient to control the following deliberately coarse quantity:
 \[
  \mathcal B_N(U)
@@ -130,21 +130,21 @@ $N\times N$ Hermite section satisfies
 
 \begin{proof}
 Apply \Cref{lem:adaptive-elementary-tail} to every logarithmic degree in each
-entrywise certificate of \Cref{ch:prime-tail-certificate}.  Replace the number
+entrywise certificate of \Cref{ch:prime-tail-certificate}. Replace the number
 of Hermite terms, each coefficient and every degree by the declared upper
-bounds.  Finally sum at most $N$ entry bounds in each of $N$ rows.  All
+bounds. Finally sum at most $N$ entry bounds in each of $N$ rows. All
 replacements are one-sided and non-negative, so the resulting expression is
 $\mathcal B_N(U)$.
 \end{proof}
 
-The purpose of this majorant is not numerical sharpness.  It isolates the
+The purpose of this majorant is not numerical sharpness. It isolates the
 quadratic Gaussian term that dominates the growth of the Hermite coefficients.
 
 \section{Exponential schedules defeat basis growth}
 
 \begin{theorem}[Adaptive cutoff collapse]
 \label{thm:adaptive-cutoff-collapse}
-Fix $w>0$ and $c>0$.  With $U_N=cN$,
+Fix $w>0$ and $c>0$. With $U_N=cN$,
 \[
  \log\mathcal B_N(U_N)
  =
@@ -171,22 +171,22 @@ Substituting $U_N=cN$ gives
 \end{aligned}
 \]
 By Stirling's formula,
-$\log((N-1)!)=N\log N+O(N)$.  Every displayed term except the Gaussian one
-is $O(N\log N)$.  Furthermore,
+$\log((N-1)!)=N\log N+O(N)$. Every displayed term except the Gaussian one
+is $O(N\log N)$. Furthermore,
 \[
  \alpha_{2N-2}(cN)
  =
  \frac{cN}{2w^2}-\frac12-\frac{2N-1}{cN}
 \]
 is positive for all sufficiently large $N$ and contributes only $O(\log N)$
-after taking a logarithm.  The negative quadratic term therefore dominates,
+after taking a logarithm. The negative quadratic term therefore dominates,
 which proves both statements.
 \end{proof}
 
 \begin{remark}[What this theorem does not say]
-The theorem controls a diagonal sequence $(N,Q_N)$.  It does not prove that a
+The theorem controls a diagonal sequence $(N,Q_N)$. It does not prove that a
 single fixed $Q$ controls all $N$, nor that the infinite-cutoff matrices are
-positive.  Those are separate problems.
+positive. Those are separate problems.
 \end{remark}
 
 \section{Native PhaseNav audit}
@@ -205,8 +205,8 @@ It declares
  \qquad
  1\le N\le20.
 \]
-The executor evaluates the sharp v0.5 incomplete-gamma certificate at each
-scheduled cutoff, while independently recording the coarse asymptotic
+The executor evaluates the sharp prime-tail incomplete-gamma certificate at
+each scheduled cutoff, while independently recording the coarse asymptotic
 envelope.
 
 For this declared schedule all twenty sharp certificates satisfy
@@ -221,33 +221,37 @@ The maximum occurs before the exponential branch dominates:
  3.280365246530569\times10^{-14}
  }
 \]
-at $N=5$.  From $N=7$ onward the bound decreases rapidly; at $N=20$ it is
+at $N=5$. From $N=7$ onward the bound decreases rapidly; at $N=20$ it is
 approximately
 \[
  6.58\times10^{-222}.
 \]
 
-The numerical evaluation is a finite audit.  The asymptotic limit itself is
+The numerical evaluation is a finite audit. The asymptotic limit itself is
 provided by \Cref{thm:adaptive-cutoff-collapse}, not inferred from the twenty
 samples.
 
 \section{Claim ledger}
 
 \begin{description}
-\item[SOH-L021, exact.] For every fixed $c>0$, the exponential adaptive
+\item[SOH-AC001, exact.] For every fixed $c>0$, the exponential adaptive
 schedule $Q_N=e^{cN}$ forces the stated coarse finite-section prime-tail
 envelope to zero.
 
 \item[SOH-N006, numerical certificate.] For $w=0.8$, $Q_0=100000$, $c=2$ and
-$N\le20$, the sharp v0.5 certificates all pass $10^{-12}$ and have maximum
+$N\le20$, the sharp certificates all pass $10^{-12}$ and have maximum
 $3.280365246530569\times10^{-14}$ at $N=5$.
 \end{description}
+
+Pre-v0.9 snapshots used SOH-L021 for the exact asymptotic theorem. The canonical
+v0.9 identifier is SOH-AC001; SOH-L021 now belongs exclusively to the local Li
+growth theorem of \cref{chap:li-negative-inverse}.
 
 \section{Remaining gap}
 
 The adaptive schedule removes one obstruction: increasing basis size need not
 invalidate controlled cutoff removal, provided the cutoff grows with the
-basis.  The following remain open:
+basis. The following remain open:
 
 \begin{enumerate}
 \item a useful bound uniform in $N$ at one fixed cutoff;
