@@ -18,7 +18,7 @@ jobs:
     timeout-minutes: 15
     strategy:
       fail-fast: false
-      max-parallel: 16
+      max-parallel: 17
       matrix:
         lane:
           - general-tests
@@ -36,6 +36,7 @@ jobs:
           - c005-full-operator-cancellation
           - c005-full-operator-stability
           - c005-moving-split
+          - c005-boundary-column
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -99,6 +100,9 @@ jobs:
               ;;
             c005-moving-split)
               python scripts/run_c005_moving_split_diagnostic.py
+              ;;
+            c005-boundary-column)
+              python scripts/run_c005_boundary_column_structure.py
               ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
