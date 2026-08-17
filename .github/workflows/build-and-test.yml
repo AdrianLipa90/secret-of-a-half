@@ -87,6 +87,9 @@ jobs:
       - name: Run SOH-G007 Uroboros conjugacy receipt
         run: python scripts/run_soh_g007_uroboros_receipt.py
 
+      - name: Run SOH-G008 xi scale-defect receipt
+        run: python scripts/run_soh_g008_scale_defect.py
+
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
 
