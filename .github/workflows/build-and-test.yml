@@ -78,6 +78,9 @@ jobs:
       - name: Run SOH-C005 growing-M full-operator stability diagnostic
         run: python scripts/run_c005_full_operator_stability.py
 
+      - name: Run SOH-C005 moving-split localization diagnostic
+        run: python scripts/run_c005_moving_split_diagnostic.py
+
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
 
