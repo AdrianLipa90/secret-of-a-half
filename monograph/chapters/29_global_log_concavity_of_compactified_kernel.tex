@@ -1,7 +1,7 @@
 \chapter{Global Log-Concavity of the Compactified Riemann Kernel}
 \label{ch:global-log-concavity}
 
-\status{PROVED at the kernel-weight level. This chapter does not prove real-rootedness of the quotient entire function and does not prove RH.}
+\status{PROVED at the compactified kernel-weight level. Strict log-concavity of the classical Xi kernel $\Phi$ has an independent prior 2026 proof by Gershon; this chapter does not claim priority for that result. It does not prove real-rootedness of the quotient entire function and does not prove RH.}
 
 Chapter~\ref{chap:modular-kernel-compactification} introduced the exact compactified positive kernel
 \[
@@ -9,7 +9,17 @@ Chapter~\ref{chap:modular-kernel-compactification} introduced the exact compacti
 =\int_0^1 W(\eta)\cosh\!\left(z\operatorname{artanh}\eta\right)\,d\eta,
 \qquad W(\eta)>0.
 \]
-The present chapter proves a new global shape theorem for that exact weight.
+This chapter derives a global shape theorem for that exact compactified weight.
+
+\section{Relation to Gershon's Xi-kernel result}
+
+Gershon's 2026 preprint proves strict log-concavity (TP$_2$) of the classical Riemann Xi kernel $\Phi$ on $[0,\infty)$, with both a rigorous interval-arithmetic proof and a purely analytic proof based on a convex-potential decomposition of the theta channels~\cite{gershon2026logconcavity}. Accordingly, strict log-concavity of $\Phi$ is treated here as an independently established prior result rather than as a novelty claim of the present programme.
+
+The derivation below was obtained independently inside the SOH programme and overlaps structurally with Gershon at the level of channelwise negative logarithmic curvature and suppression of higher theta modes. The specifically retained contribution of this chapter is the explicit mixture-variance estimate used to control the compactified weight
+\[
+W(\eta)=\frac{\Phi(\operatorname{artanh}\eta)}{1-\eta^2},
+\]
+and the resulting strict log-concavity statement for $W$ itself. Downstream uses of log-concavity in Chapters~30--31 must therefore cite Gershon whenever they rely on the already-known TP$_2$ property of $\Phi$, while distinguishing the later PF$_2$/PF$_3$ coefficient analysis from that precedent.
 
 \section{Theta channels}
 
@@ -68,7 +78,7 @@ and therefore
 \mathcal M(y):=(\log\Phi)''+2\tau(\log\Phi)'+2(1+\tau^2)
 =\sum_n p_nA_n+\operatorname{Var}_p(g_n').
 \]
-The single-channel contribution is uniformly below \(-7\); only the slope variance can oppose that negative margin.
+The single-channel contribution is uniformly below \(-7\); only the slope variance can oppose that negative margin. This decomposition is consistent with the channelwise convex-potential viewpoint used independently by Gershon~\cite{gershon2026logconcavity}.
 
 \section{A uniform variance bound}
 
@@ -150,9 +160,11 @@ For the exact compactified Riemann kernel weight \(W\),
 Hence \(W\) is strictly log-concave on its full compact radial interval.
 \end{theorem}
 
-\section{Proof firewall}
+\section{Proof firewall and attribution boundary}
 
-Strict positivity and strict log-concavity are now proved global properties of the exact compactified kernel. They do not, without an additional theorem, imply that
+The classical half-line kernel log-concavity result for $\Phi$ is credited to Gershon's 2026 work~\cite{gershon2026logconcavity}. The SOH derivation above is retained because it gives an explicit independent route and because the compactification introduces the additional Jacobian term that must be controlled to prove log-concavity of $W$. No priority claim is made here for the TP$_2$ property of $\Phi$ itself.
+
+Strict positivity and strict log-concavity, whether stated for $\Phi$ or for the compactified $W$, do not without an additional theorem imply that
 \[
 F(w)=\int_0^1W(\eta)\cosh\!\left(\sqrt w\,\operatorname{artanh}\eta\right)d\eta
 \]
