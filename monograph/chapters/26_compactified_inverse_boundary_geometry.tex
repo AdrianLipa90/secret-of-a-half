@@ -1,11 +1,11 @@
 \chapter{Compactified Inverse-Boundary Geometry and the Unique Half-Layer}
 \label{ch:compactified-inverse-boundary}
 
-\status{Exact global geometric reduction; the zerohood-to-self-duality implication remains open.}
+\status{Exact global geometric and quotient reduction; quotient real-rootedness remains open.}
 
 \section{Purpose}
 
-This chapter replaces an unnecessarily local proof emphasis with the global projective geometry already present in the inverse-boundary coordinate.  No Hermite finite-section assumption is used here.
+This chapter replaces an unnecessarily local proof emphasis with the global projective geometry already present in the inverse-boundary coordinate. No Hermite finite-section assumption is used here.
 
 Define
 \[
@@ -44,7 +44,7 @@ Define the compactified radial coordinate
 q(s):=\frac{R(s)}{1+R(s)}
 }
 \]
-with the extended values $q=0$ at $R=0$ and $q=1$ at $R=\infty$.  Hence
+with the extended values $q=0$ at $R=0$ and $q=1$ at $R=\infty$. Hence
 \[
 [0,\infty]\longrightarrow[0,1],
 \qquad
@@ -56,12 +56,9 @@ with the extended values $q=0$ at $R=0$ and $q=1$ at $R=\infty$.  Hence
 Under reciprocal inversion,
 \[
 q\left(R^{-1}\right)
-=
-\frac{R^{-1}}{1+R^{-1}}
-=
-\frac{1}{1+R}
-=
-1-q(R).
+=\frac{R^{-1}}{1+R^{-1}}
+=\frac{1}{1+R}
+=1-q(R).
 \]
 Thus the projective inversion becomes the ordinary complement involution
 \[
@@ -69,11 +66,11 @@ Thus the projective inversion becomes the ordinary complement involution
 \]
 
 \begin{theorem}[Compactified inverse-boundary half-axis theorem]
-The Möbius coordinate $\Omega(s)=s/(1-s)$ followed by the radial compactification $q=|\Omega|/(1+|\Omega|)$ sends the reciprocal boundary pair $0\leftrightarrow\infty$ to $0\leftrightarrow1$, conjugates radial inversion to $q\mapsto1-q$, and sends the critical line $\Re s=1/2$ exactly to the unique self-dual layer $q=1/2$.
+The Möbius coordinate $\Omega(s)=s/(1-s)$ followed by radial compactification $q=|\Omega|/(1+|\Omega|)$ sends the reciprocal boundary pair $0\leftrightarrow\infty$ to $0\leftrightarrow1$, conjugates radial inversion to $q\mapsto1-q$, and sends the critical line $\Re s=1/2$ exactly to the unique self-dual layer $q=1/2$.
 \end{theorem}
 
 \begin{proof}
-The complement involution $q\mapsto1-q$ has the unique fixed point $q=1/2$.  Moreover,
+The complement involution $q\mapsto1-q$ has the unique fixed point $q=1/2$. Moreover,
 \[
 q=\frac12
 \iff
@@ -81,7 +78,7 @@ q=\frac12
 \iff
 R=1.
 \]
-By the exact inverse-boundary relation already established in \cref{chap:li-negative-inverse},
+By \cref{chap:li-negative-inverse},
 \[
 R=|\Omega(s)|=1
 \iff
@@ -118,10 +115,8 @@ B(s)=\log R(s)=\log|\Omega(s)|,
 then
 \[
 \eta(s)
-=
-\frac{e^{B(s)}-1}{e^{B(s)}+1}
-=
-\boxed{\tanh\!\left(\frac{B(s)}{2}\right)}.
+=\frac{e^{B(s)}-1}{e^{B(s)}+1}
+=\boxed{\tanh\!\left(\frac{B(s)}{2}\right)}.
 \]
 Consequently,
 \[
@@ -135,9 +130,8 @@ q=\frac12
 \Re s=\frac12.
 }
 \]
-These are not distinct proof problems; they are equivalent coordinates for the same self-dual geometry.
 
-\section{Completed zeta and the minimal remaining bridge}
+\section{Completed zeta and the radial bridge}
 
 Set
 \[
@@ -146,19 +140,11 @@ X(u):=\xi\!\left(\frac{u}{1+u}\right),
 \]
 The Riemann Hypothesis is exactly equivalent to
 \[
-X(u)=0\Longrightarrow |u|=1.
+X(u)=0\Longrightarrow |u|=1,
 \]
-Using the compactified coordinate, this becomes
+and therefore to
 \[
-\boxed{
-X(u)=0\Longrightarrow q(u)=\frac12
-}
-\]
-or equivalently
-\[
-\boxed{
-X(u)=0\Longrightarrow \eta(u)=0.
-}
+\boxed{X(u)=0\Longrightarrow q(u)=\frac12.}
 \]
 
 \begin{problem}[SOH-G001: global self-dual zero closure]
@@ -166,10 +152,77 @@ Prove
 \[
 X(u)=0\Longrightarrow q(u)=\frac12.
 \]
-Equivalently, prove $X(u)=0\Rightarrow B(u)=0$ or $X(u)=0\Rightarrow\eta(u)=0$.
 \end{problem}
 
-\gap{The geometry itself is closed.  The only remaining analytic implication is from transformed zerohood to the unique self-dual radial layer.}
+\section{Holomorphic quotient of the inversion}
+
+The radial coordinate $q$ is geometrically canonical but not holomorphic. For the analytic zero problem put
+\[
+z=s-\frac12,
+\qquad
+\Xi_c(z)=\xi\!\left(\frac12+z\right).
+\]
+The functional equation gives $\Xi_c(z)=\Xi_c(-z)$. Hence $\Xi_c$ is even entire and there is a unique entire function $F$ such that
+\[
+\boxed{\Xi_c(z)=F(z^2).}
+\]
+Writing $u=\Omega(s)$ gives
+\[
+z=\frac{u-1}{2(u+1)},
+\qquad
+\boxed{w:=z^2=\frac{(u-1)^2}{4(u+1)^2}.}
+\]
+A direct calculation shows
+\[
+w(1/u)=w(u),
+\]
+so $w$ exactly quotients the functional inversion $u\leftrightarrow1/u$.
+
+For $|u|=1$, write $u=e^{i\theta}$. Then
+\[
+\frac{u-1}{u+1}=i\tan\frac{\theta}{2},
+\]
+therefore
+\[
+\boxed{w=-\frac14\tan^2\frac{\theta}{2}\in(-\infty,0].}
+\]
+Conversely $w=z^2\le0$ implies $z\in i\mathbb R$, hence $\Re s=1/2$. Thus
+\[
+\boxed{
+q=\frac12
+\iff |u|=1
+\iff w\in(-\infty,0].
+}
+\]
+
+\section{Coefficient positivity removes the positive real axis}
+
+Write
+\[
+F(w)=\sum_{n=0}^{\infty}a_n w^n.
+\]
+The positivity of the non-zero Taylor coefficients of $\xi$ about $s=1/2$ is established independently by integral formulas in \citet{defranco2019xi}. In this quotient normalization this gives $a_n>0$ for the non-zero coefficients. Hence
+\[
+\boxed{F(x)>0\qquad(x\ge0).}
+\]
+Therefore $F$ has no zero on the non-negative real axis independently of RH.
+
+It follows that the remaining target is sharper than SOH-G001:
+
+\begin{problem}[SOH-G003: quotient real-zero target]
+Prove that every zero of the entire quotient function $F$ is real.
+\end{problem}
+
+If SOH-G003 holds, coefficient positivity forces every zero of $F$ onto the negative real half-axis, which by the exact quotient geometry is equivalent to the critical line. Conversely RH implies that every quotient zero lies on that half-axis. Hence
+\[
+\boxed{
+\mathrm{RH}
+\iff
+\text{all zeros of }F\text{ are real}.
+}
+\]
+
+\gap{The projective geometry, the inversion quotient, and exclusion of the positive real half-axis are closed. The only remaining analytic statement is quotient real-rootedness.}
 
 \section{Proof-target firewall}
 
@@ -180,11 +233,13 @@ The following statements are exact and must not be reopened as separate numerica
 \item compactification converts inversion to $q\mapsto1-q$;
 \item the unique self-dual layer is $q=1/2$;
 \item that layer is exactly $\Re s=1/2$;
-\item the Li coordinate $z_L=-1/\Omega$ preserves the same unit-radius self-duality.
+\item $w=(u-1)^2/[4(u+1)^2]$ holomorphically quotients $u\leftrightarrow1/u$;
+\item the self-dual circle maps exactly to $w\le0$;
+\item positivity of the centered Taylor coefficients excludes $w\ge0$ from the zero set.
 \end{enumerate}
 
-Finite-Hermite, moving-boundary, and prime-tail constructions may remain in the repository as auxiliary diagnostics, but they are not independent prerequisites for the statement of SOH-G001 and must not displace the global geometric proof target.
+Finite-Hermite, moving-boundary, and prime-tail constructions may remain as auxiliary diagnostics, but they are not independent prerequisites for SOH-G003 and must not displace the global quotient target.
 
 \begin{warning}
-This chapter is an exact geometric reduction, not by itself a proof of the Riemann Hypothesis.  The implication SOH-G001 remains open until an analytic argument forces every transformed zero onto the unique self-dual layer.
+This chapter is an exact reduction, not a proof of the Riemann Hypothesis. SOH-G003 remains open until a non-circular analytic argument proves real-rootedness of the quotient entire function $F$.
 \end{warning}
