@@ -15,87 +15,63 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
-
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e .[dev,monograph]
-
       - name: Run regression tests
         run: python -m pytest -q
-
       - name: Audit monograph completeness and claim IDs
         run: python scripts/audit_monograph_integration.py
-
       - name: Generate deterministic core assets
         run: python scripts/generate_monograph_assets.py
-
       - name: Generate identity and holonomy assets
         run: python scripts/generate_identity_holonomy_assets.py
-
       - name: Run native PhaseNav receipt
         run: python scripts/run_phasenav_theta_bridge.py
-
       - name: Run PhaseNav-Weil positivity receipt
         run: python scripts/run_phasenav_weil_probe.py
-
       - name: Run PhaseNav-Weil arithmetic receipt
         run: python scripts/run_phasenav_weil_arithmetic.py
-
       - name: Run PhaseNav-Weil Hermite ladder receipt
         run: python scripts/run_phasenav_weil_hermite_ladder.py
-
       - name: Run zero-undefined reciprocal duality receipt
         run: python scripts/run_zero_undefined_duality.py
-
       - name: Run PhaseNav-Weil prime-tail certificate
         run: python scripts/run_phasenav_weil_prime_tail.py
-
       - name: Run SOH-C005 cross-block prime-tail receipt
         run: python scripts/run_c005_cross_block_prime_tail.py
-
       - name: Run SOH-C005 finite-ladder full coupling receipt
         run: python scripts/run_c005_finite_ladder_coupling.py
-
       - name: Run SOH-C005 infinite-window cutoff schedule
         run: python scripts/run_c005_infinite_window_schedule.py
-
       - name: Run SOH-C005 growing-window tail diagnostic
         run: python scripts/run_c005_growing_window_tail_diagnostic.py
-
       - name: Run SOH-C005 twisted-prime summation receipt
         run: python scripts/run_c005_twisted_prime_summation.py
-
       - name: Run SOH-C005 full-operator cancellation receipt
         run: python scripts/run_c005_full_operator_cancellation.py
-
       - name: Run SOH-C005 growing-M full-operator stability diagnostic
         run: python scripts/run_c005_full_operator_stability.py
-
       - name: Run SOH-G004 global log-concavity proof receipt
         run: python scripts/run_soh_g004_global_log_concavity.py
-
       - name: Run SOH-G005 PF3 finite diagnostic
         run: python scripts/run_soh_g005_pf3_diagnostic.py
-
       - name: Run SOH-G007 Uroboros conjugacy receipt
         run: python scripts/run_soh_g007_uroboros_receipt.py
-
       - name: Run SOH-G008 xi scale-defect receipt
         run: python scripts/run_soh_g008_scale_defect.py
-
       - name: Run SOH-G009 Bloch rapidity receipt
         run: python scripts/run_soh_g009_bloch_rapidity.py
-
+      - name: Run SOH-G010 unique scale-defect crossing receipt
+        run: python scripts/run_soh_g010_unique_scale_defect.py
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
-
       - name: Install LaTeX toolchain
         run: |
           sudo apt-get update
@@ -106,7 +82,6 @@ jobs:
             texlive-fonts-recommended \
             texlive-bibtex-extra \
             lmodern
-
       - name: Compile complete monograph
         working-directory: monograph
         run: |
@@ -120,7 +95,6 @@ jobs:
           test -n "$pages"
           printf 'Validated monograph pages: %s\n' "$pages" | tee main.pdf.pages.txt
           ! grep -E "Overfull|undefined references|Citation.*undefined|multiply defined" main.log
-
       - name: Upload compiled monograph
         uses: actions/upload-artifact@v4
         with:
