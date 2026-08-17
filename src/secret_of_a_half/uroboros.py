@@ -1,4 +1,4 @@
-"""Exact SOH-G007/G008 Uroboros and Collatz–Riemann maps.
+"""Exact SOH-G007/G008/G009 Uroboros and Collatz–Riemann maps.
 
 The module separates proved algebraic identities from the optional Uroboros
 scale-identification convention.  It does not assume the Collatz conjecture,
@@ -63,6 +63,37 @@ def s_to_x(s: Real) -> float:
     return u_to_x(s_to_u(s))
 
 
+def u_to_t(u: Real) -> float:
+    """Centered Bloch/Riemann coordinate ``t=(u-1)/(u+1)``."""
+    u = _positive_real(u, name="u")
+    return (u - 1.0) / (u + 1.0)
+
+
+def t_to_u(t: Real) -> float:
+    t = float(t)
+    if not math.isfinite(t) or not -1.0 < t < 1.0:
+        raise ValueError("t must be finite and satisfy -1 < t < 1")
+    return (1.0 + t) / (1.0 - t)
+
+
+def s_to_t(s: Real) -> float:
+    s = float(s)
+    if not math.isfinite(s):
+        raise ValueError("s must be finite")
+    return 2.0 * s - 1.0
+
+
+def t_to_s(t: Real) -> float:
+    t = float(t)
+    if not math.isfinite(t):
+        raise ValueError("t must be finite")
+    return 0.5 * (1.0 + t)
+
+
+def x_to_t(x: Real) -> float:
+    return u_to_t(x_to_u(x))
+
+
 def inverse_about_half_x(x: Real) -> float:
     x = _positive_real(x, name="x")
     return 1.0 / (4.0 * x)
@@ -101,6 +132,35 @@ def odd_collatz_s(s: Real) -> float:
     return (s + 2.0) / 3.0
 
 
+def halving_t(t: Real) -> float:
+    """Halving branch in the centered coordinate: ``(3t-1)/(3-t)``."""
+    t = float(t)
+    if not math.isfinite(t) or t == 3.0:
+        raise ValueError("t must be finite and different from 3")
+    return (3.0 * t - 1.0) / (3.0 - t)
+
+
+def odd_collatz_t(t: Real) -> float:
+    """Odd Collatz branch in the centered coordinate: ``(t+2)/3``."""
+    t = float(t)
+    if not math.isfinite(t):
+        raise ValueError("t must be finite")
+    return (t + 2.0) / 3.0
+
+
+def scale_t(t: Real, scale: Real) -> float:
+    """Conjugate ``u -> scale*u`` into the centered coordinate ``t``."""
+    a = _positive_real(scale, name="scale")
+    t = float(t)
+    if not math.isfinite(t):
+        raise ValueError("t must be finite")
+    numerator = (a - 1.0) + (a + 1.0) * t
+    denominator = (a + 1.0) + (a - 1.0) * t
+    if denominator == 0.0:
+        raise ValueError("scale transform denominator vanished")
+    return numerator / denominator
+
+
 def collatz_step_x(n: int) -> int:
     if not isinstance(n, int) or isinstance(n, bool) or n <= 0:
         raise ValueError("n must be a positive integer")
@@ -120,6 +180,13 @@ def exact_x_to_s(x: Fraction) -> Fraction:
     return (2 * x) / (1 + 2 * x)
 
 
+def exact_x_to_t(x: Fraction) -> Fraction:
+    if x <= 0:
+        raise ValueError("x must be strictly positive")
+    u = 2 * x
+    return (u - 1) / (u + 1)
+
+
 def exact_halving_s(s: Fraction) -> Fraction:
     if s == 2:
         raise ValueError("s must differ from 2")
@@ -128,6 +195,33 @@ def exact_halving_s(s: Fraction) -> Fraction:
 
 def exact_odd_collatz_s(s: Fraction) -> Fraction:
     return (s + 2) / 3
+
+
+def exact_halving_t(t: Fraction) -> Fraction:
+    if t == 3:
+        raise ValueError("t must differ from 3")
+    return (3 * t - 1) / (3 - t)
+
+
+def exact_odd_collatz_t(t: Fraction) -> Fraction:
+    return (t + 2) / 3
+
+
+def exact_scale_t(t: Fraction, scale: Fraction) -> Fraction:
+    if scale <= 0:
+        raise ValueError("scale must be strictly positive")
+    denominator = (scale + 1) + (scale - 1) * t
+    if denominator == 0:
+        raise ValueError("scale transform denominator vanished")
+    return ((scale - 1) + (scale + 1) * t) / denominator
+
+
+def compose_boost_parameters(p: Fraction, q: Fraction) -> Fraction:
+    """Hyperbolic/Möbius parameter composition ``(p+q)/(1+pq)``."""
+    denominator = 1 + p * q
+    if denominator == 0:
+        raise ValueError("boost composition denominator vanished")
+    return (p + q) / denominator
 
 
 @dataclass(frozen=True)
