@@ -37,9 +37,10 @@ def test_modular_density_and_compactified_weight_are_positive():
 
 def test_modular_inversion_becomes_signed_compact_radius_reflection():
     mp.mp.dps = 30
-    for x in [mp.mpf("0.2"), mp.mpf("0.5"), 1, 2, 5]:
+    for raw_x in ["0.2", "0.5", "1", "2", "5"]:
+        x = mp.mpf(raw_x)
         eta = compactified_radius_from_x(x)
-        eta_inverse = compactified_radius_from_x(1 / x)
+        eta_inverse = compactified_radius_from_x(mp.mpf("1") / x)
         assert abs(eta_inverse + eta) < mp.mpf("1e-28")
         assert abs(x_from_compactified_radius(eta) - x) < mp.mpf("1e-28")
 
