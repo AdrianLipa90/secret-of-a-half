@@ -11,9 +11,12 @@ from secret_of_a_half.phasenav_weil_prime_tail import (
     PrimeTailProgram,
     entry_bound_matrix,
     entry_tail_bound,
+    high_index_block_tail_bound,
     monotonicity_margin,
     operator_norm_tail_bound,
     prime_shell_entry,
+    rectangular_entry_bound_matrix,
+    rectangular_operator_norm_tail_bound,
     reciprocal_tail_integrand,
     run_prime_tail_certificate,
     tail_term_integral_gamma,
@@ -90,6 +93,59 @@ def test_declared_operator_norm_certificate_is_below_target() -> None:
     )
     assert 7.0e-13 < bound < 8.0e-13
     assert bound < tail.operator_norm_target
+
+
+def test_rectangular_tail_matrix_matches_entrywise_majorants() -> None:
+    tail, _ = programs()
+    bounds = rectangular_entry_bound_matrix(
+        0, 3, 3, 6, tail.tail_cutoff, tail.gaussian_width
+    )
+    assert bounds.shape == (3, 3)
+    assert np.all(bounds >= 0.0)
+    for left in range(3):
+        for right in range(3, 6):
+            assert bounds[left, right - 3] == float(
+                entry_tail_bound(left, right, tail.tail_cutoff, tail.gaussian_width)
+            )
+
+
+def test_rectangular_operator_norm_bound_dominates_actual_majorant_norm() -> None:
+    tail, _ = programs()
+    bounds = rectangular_entry_bound_matrix(
+        0, 3, 3, 6, tail.tail_cutoff, tail.gaussian_width
+    )
+    certified = rectangular_operator_norm_tail_bound(
+        0, 3, 3, 6, tail.tail_cutoff, tail.gaussian_width
+    )
+    actual = float(np.linalg.norm(bounds, 2))
+    assert certified >= actual
+    assert certified > 0.0
+
+
+def test_high_index_tail_block_is_certified_by_row_sum_norm() -> None:
+    tail, _ = programs()
+    bounds = rectangular_entry_bound_matrix(
+        3, 6, 3, 6, tail.tail_cutoff, tail.gaussian_width
+    )
+    certified = high_index_block_tail_bound(
+        3, 6, tail.tail_cutoff, tail.gaussian_width
+    )
+    actual = float(np.linalg.norm(bounds, 2))
+    assert certified >= actual
+    assert certified == float(np.max(np.sum(bounds, axis=1)))
+
+
+def test_invalid_rectangular_windows_fail_closed() -> None:
+    tail, _ = programs()
+    for args in ((-1, 2, 2, 4), (0, 0, 2, 4), (0, 2, 4, 4)):
+        try:
+            rectangular_entry_bound_matrix(
+                *args, tail.tail_cutoff, tail.gaussian_width
+            )
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("invalid rectangular window must fail closed")
 
 
 def test_finite_prime_shell_is_below_full_tail_majorant() -> None:

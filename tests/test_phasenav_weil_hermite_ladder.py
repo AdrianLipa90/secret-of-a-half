@@ -9,6 +9,7 @@ import numpy as np
 from secret_of_a_half.phasenav_weil_hermite_ladder import (
     HermiteLadderProgram,
     arithmetic_matrix,
+    arithmetic_rectangular_components,
     hermite_linearization_terms,
     kernel_fourier_closed,
     kernel_value,
@@ -77,6 +78,58 @@ def test_arithmetic_matrix_is_hermitian() -> None:
     profile = program()
     matrix, _ = arithmetic_matrix(profile, basis_size=4, prime_cutoff=profile.prime_cutoff)
     assert np.max(np.abs(matrix - matrix.conjugate().T)) < 1e-12
+
+
+def test_rectangular_components_match_principal_matrix_subblock() -> None:
+    profile = program()
+    matrix, components = arithmetic_matrix(
+        profile,
+        basis_size=profile.max_basis_size,
+        prime_cutoff=profile.prime_cutoff,
+    )
+    block = arithmetic_rectangular_components(
+        profile,
+        left_orders=range(0, 3),
+        right_orders=range(3, profile.max_basis_size),
+        prime_cutoff=profile.prime_cutoff,
+    )
+    assert np.max(np.abs(block.total - matrix[:3, 3:])) < 1e-11
+    assert np.max(np.abs(block.pole - components.pole[:3, 3:])) < 1e-11
+    assert np.max(np.abs(block.conductor - components.conductor[:3, 3:])) < 1e-11
+    assert np.max(np.abs(block.archimedean - components.archimedean[:3, 3:])) < 1e-11
+    assert np.max(np.abs(block.prime - components.prime[:3, 3:])) < 1e-11
+
+
+def test_rectangular_components_have_reciprocal_adjoint_block() -> None:
+    profile = program()
+    forward = arithmetic_rectangular_components(
+        profile,
+        left_orders=range(0, 2),
+        right_orders=range(2, 5),
+        prime_cutoff=profile.prime_cutoff,
+    )
+    backward = arithmetic_rectangular_components(
+        profile,
+        left_orders=range(2, 5),
+        right_orders=range(0, 2),
+        prime_cutoff=profile.prime_cutoff,
+    )
+    assert np.max(np.abs(forward.total - backward.total.conjugate().T)) < 1e-11
+
+
+def test_rectangular_components_reject_orders_outside_declared_ladder() -> None:
+    profile = program()
+    try:
+        arithmetic_rectangular_components(
+            profile,
+            left_orders=(0,),
+            right_orders=(profile.max_basis_size,),
+            prime_cutoff=profile.prime_cutoff,
+        )
+    except ValueError as error:
+        assert "outside the declared ladder" in str(error)
+    else:
+        raise AssertionError("expected out-of-ladder order to fail closed")
 
 
 def test_ladder_receipt_is_internally_consistent() -> None:

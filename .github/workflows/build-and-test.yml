@@ -57,6 +57,12 @@ jobs:
       - name: Run PhaseNav-Weil prime-tail certificate
         run: python scripts/run_phasenav_weil_prime_tail.py
 
+      - name: Run SOH-C005 cross-block prime-tail receipt
+        run: python scripts/run_c005_cross_block_prime_tail.py
+
+      - name: Run SOH-C005 finite-ladder full coupling receipt
+        run: python scripts/run_c005_finite_ladder_coupling.py
+
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
 
