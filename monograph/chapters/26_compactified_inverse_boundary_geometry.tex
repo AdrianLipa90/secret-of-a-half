@@ -1,0 +1,245 @@
+\chapter{Compactified Inverse-Boundary Geometry and the Unique Half-Layer}
+\label{ch:compactified-inverse-boundary}
+
+\status{Exact global geometric and quotient reduction; quotient real-rootedness remains open.}
+
+\section{Purpose}
+
+This chapter replaces an unnecessarily local proof emphasis with the global projective geometry already present in the inverse-boundary coordinate. No Hermite finite-section assumption is used here.
+
+Define
+\[
+\Omega(s)=\frac{s}{1-s}.
+\]
+On the Riemann sphere,
+\[
+\Omega(0)=0,
+\qquad
+\Omega(1)=\infty.
+\]
+Thus the two real strip boundaries become the reciprocal projective pair $0\leftrightarrow\infty$.
+
+For the critical-axis reflection
+\[
+K(s)=1-\overline{s},
+\]
+we have
+\[
+\Omega(K(s))=\frac{1}{\overline{\Omega(s)}}.
+\]
+Therefore, for
+\[
+R(s):=|\Omega(s)|,
+\]
+the induced radial involution is exactly
+\[
+R\longmapsto R^{-1}.
+\]
+
+\section{Compactifying zero and infinity}
+
+Define the compactified radial coordinate
+\[
+\boxed{
+q(s):=\frac{R(s)}{1+R(s)}
+}
+\]
+with the extended values $q=0$ at $R=0$ and $q=1$ at $R=\infty$. Hence
+\[
+[0,\infty]\longrightarrow[0,1],
+\qquad
+0\mapsto0,
+\qquad
+\infty\mapsto1.
+\]
+
+Under reciprocal inversion,
+\[
+q\left(R^{-1}\right)
+=\frac{R^{-1}}{1+R^{-1}}
+=\frac{1}{1+R}
+=1-q(R).
+\]
+Thus the projective inversion becomes the ordinary complement involution
+\[
+\boxed{q\mapsto1-q}.
+\]
+
+\begin{theorem}[Compactified inverse-boundary half-axis theorem]
+The Möbius coordinate $\Omega(s)=s/(1-s)$ followed by radial compactification $q=|\Omega|/(1+|\Omega|)$ sends the reciprocal boundary pair $0\leftrightarrow\infty$ to $0\leftrightarrow1$, conjugates radial inversion to $q\mapsto1-q$, and sends the critical line $\Re s=1/2$ exactly to the unique self-dual layer $q=1/2$.
+\end{theorem}
+
+\begin{proof}
+The complement involution $q\mapsto1-q$ has the unique fixed point $q=1/2$. Moreover,
+\[
+q=\frac12
+\iff
+\frac{R}{1+R}=\frac12
+\iff
+R=1.
+\]
+By \cref{chap:li-negative-inverse},
+\[
+R=|\Omega(s)|=1
+\iff
+\Re s=\frac12.
+\]
+Therefore the unique compactified self-dual radial layer is precisely the critical line.
+\end{proof}
+
+\section{Centred signed radius}
+
+Define
+\[
+\boxed{
+\eta(s):=2q(s)-1=\frac{R(s)-1}{R(s)+1}
+}.
+\]
+Then
+\[
+R=0\mapsto\eta=-1,
+\qquad
+R=1\mapsto\eta=0,
+\qquad
+R=\infty\mapsto\eta=+1.
+\]
+Reciprocal inversion gives
+\[
+\boxed{\eta\mapsto-\eta}.
+\]
+
+If
+\[
+B(s)=\log R(s)=\log|\Omega(s)|,
+\]
+then
+\[
+\eta(s)
+=\frac{e^{B(s)}-1}{e^{B(s)}+1}
+=\boxed{\tanh\!\left(\frac{B(s)}{2}\right)}.
+\]
+Consequently,
+\[
+\boxed{
+B=0
+\iff
+\eta=0
+\iff
+q=\frac12
+\iff
+\Re s=\frac12.
+}
+\]
+
+\section{Completed zeta and the radial bridge}
+
+Set
+\[
+X(u):=\xi\!\left(\frac{u}{1+u}\right),
+\qquad u=\Omega(s).
+\]
+The Riemann Hypothesis is exactly equivalent to
+\[
+X(u)=0\Longrightarrow |u|=1,
+\]
+and therefore to
+\[
+\boxed{X(u)=0\Longrightarrow q(u)=\frac12.}
+\]
+
+\begin{problem}[SOH-G001: global self-dual zero closure]
+Prove
+\[
+X(u)=0\Longrightarrow q(u)=\frac12.
+\]
+\end{problem}
+
+\section{Holomorphic quotient of the inversion}
+
+The radial coordinate $q$ is geometrically canonical but not holomorphic. For the analytic zero problem put
+\[
+z=s-\frac12,
+\qquad
+\Xi_c(z)=\xi\!\left(\frac12+z\right).
+\]
+The functional equation gives $\Xi_c(z)=\Xi_c(-z)$. Hence $\Xi_c$ is even entire and there is a unique entire function $F$ such that
+\[
+\boxed{\Xi_c(z)=F(z^2).}
+\]
+Writing $u=\Omega(s)$ gives
+\[
+z=\frac{u-1}{2(u+1)},
+\qquad
+\boxed{w:=z^2=\frac{(u-1)^2}{4(u+1)^2}.}
+\]
+A direct calculation shows
+\[
+w(1/u)=w(u),
+\]
+so $w$ exactly quotients the functional inversion $u\leftrightarrow1/u$.
+
+For $|u|=1$, write $u=e^{i\theta}$. Then
+\[
+\frac{u-1}{u+1}=i\tan\frac{\theta}{2},
+\]
+therefore
+\[
+\boxed{w=-\frac14\tan^2\frac{\theta}{2}\in(-\infty,0].}
+\]
+Conversely $w=z^2\le0$ implies $z\in i\mathbb R$, hence $\Re s=1/2$. Thus
+\[
+\boxed{
+q=\frac12
+\iff |u|=1
+\iff w\in(-\infty,0].
+}
+\]
+
+\section{Coefficient positivity removes the positive real axis}
+
+Write
+\[
+F(w)=\sum_{n=0}^{\infty}a_n w^n.
+\]
+The positivity of the non-zero Taylor coefficients of $\xi$ about $s=1/2$ is established independently by integral formulas in \citet{defranco2019xi}. In this quotient normalization this gives $a_n>0$ for the non-zero coefficients. Hence
+\[
+\boxed{F(x)>0\qquad(x\ge0).}
+\]
+Therefore $F$ has no zero on the non-negative real axis independently of RH.
+
+It follows that the remaining target is sharper than SOH-G001:
+
+\begin{problem}[SOH-G003: quotient real-zero target]
+Prove that every zero of the entire quotient function $F$ is real.
+\end{problem}
+
+If SOH-G003 holds, coefficient positivity forces every zero of $F$ onto the negative real half-axis, which by the exact quotient geometry is equivalent to the critical line. Conversely RH implies that every quotient zero lies on that half-axis. Hence
+\[
+\boxed{
+\mathrm{RH}
+\iff
+\text{all zeros of }F\text{ are real}.
+}
+\]
+
+\gap{The projective geometry, the inversion quotient, and exclusion of the positive real half-axis are closed. The only remaining analytic statement is quotient real-rootedness.}
+
+\section{Proof-target firewall}
+
+The following statements are exact and must not be reopened as separate numerical subproblems:
+\begin{enumerate}
+\item the projective boundary pair is $0\leftrightarrow\infty$;
+\item radial inversion is $R\mapsto R^{-1}$;
+\item compactification converts inversion to $q\mapsto1-q$;
+\item the unique self-dual layer is $q=1/2$;
+\item that layer is exactly $\Re s=1/2$;
+\item $w=(u-1)^2/[4(u+1)^2]$ holomorphically quotients $u\leftrightarrow1/u$;
+\item the self-dual circle maps exactly to $w\le0$;
+\item positivity of the centered Taylor coefficients excludes $w\ge0$ from the zero set.
+\end{enumerate}
+
+Finite-Hermite, moving-boundary, and prime-tail constructions may remain as auxiliary diagnostics, but they are not independent prerequisites for SOH-G003 and must not displace the global quotient target.
+
+\begin{warning}
+This chapter is an exact reduction, not a proof of the Riemann Hypothesis. SOH-G003 remains open until a non-circular analytic argument proves real-rootedness of the quotient entire function $F$.
+\end{warning}
