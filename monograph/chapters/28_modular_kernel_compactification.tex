@@ -1,0 +1,152 @@
+\chapter{Modular Compactification of the Positive Riemann Kernel}
+\label{chap:modular-kernel-compactification}
+
+\status{Exact change of variables and reciprocal-kernel geometry; SOH-G003 remains open.}
+
+\section{Purpose}
+
+The previous chapter derives the exact positive Riemann kernel
+\[
+\xi\!\left(\frac12+z\right)=\int_0^\infty \Phi(y)\cosh(zy)\,dy,
+\qquad \Phi(y)>0.
+\]
+This chapter places that same integral directly in the reciprocal geometry used by the global inverse-boundary programme.  No new zero-location assumption is introduced.
+
+\section{Mellin reciprocal coordinate}
+
+Set
+\[
+x=e^{2y},\qquad x\ge1.
+\]
+Then
+\[
+dy=\frac{dx}{2x},
+\qquad
+\cosh(zy)=\frac12\left(x^{z/2}+x^{-z/2}\right).
+\]
+Using the explicit kernel from \cref{chap:positive-riemann-kernel}, one obtains
+\begin{equation}
+\boxed{
+\xi\!\left(\frac12+z\right)
+=\int_1^\infty D(x)
+\left(x^{z/2}+x^{-z/2}\right)\,dx
+}
+\label{eq:modular-mellin-pair}
+\end{equation}
+with
+\begin{equation}
+\boxed{
+D(x)=\sum_{n\ge1}\pi n^2x^{1/4}
+\left(2\pi n^2x-3\right)e^{-\pi n^2x}.
+}
+\label{eq:modular-density}
+\end{equation}
+For $x\ge1$, every summand in \cref{eq:modular-density} is positive because
+\[
+2\pi n^2x-3\ge2\pi-3>0.
+\]
+Hence
+\[
+D(x)>0.
+\]
+
+The two Mellin channels in \cref{eq:modular-mellin-pair} are exchanged by
+\[
+x\longmapsto x^{-1}.
+\]
+Thus $x\ge1$ is a quotient representative of the reciprocal positive line rather than a loss of one of the two channels.
+
+\section{Compactified signed radius}
+
+Define
+\begin{equation}
+\boxed{
+\eta=\frac{x-1}{x+1}.
+}
+\label{eq:kernel-eta}
+\end{equation}
+Then
+\[
+x=\frac{1+\eta}{1-\eta},
+\qquad
+\eta=\tanh y,
+\]
+and on the full positive line
+\begin{equation}
+\boxed{
+x\mapsto x^{-1}
+\quad\Longleftrightarrow\quad
+\eta\mapsto-\eta.
+}
+\label{eq:kernel-inversion-eta}
+\end{equation}
+The distinguished locations are
+\[
+x\to0^+\mapsto\eta\to-1,
+\qquad
+x=1\mapsto\eta=0,
+\qquad
+x\to\infty\mapsto\eta\to1.
+\]
+Therefore the Mellin variable carries the same signed reciprocal compactification as the inverse-boundary coordinate of \cref{ch:compactified-inverse-boundary}: zero and infinity occupy opposite compactified boundaries, while the reciprocal fixed point occupies the centre.
+
+\section{Exact compactified kernel representation}
+
+Since
+\[
+\frac{dx}{d\eta}=\frac{2}{(1-\eta)^2},
+\qquad
+\frac12\log x=\operatorname{artanh}\eta,
+\]
+\cref{eq:modular-mellin-pair} becomes
+\begin{equation}
+\boxed{
+\xi\!\left(\frac12+z\right)
+=
+\int_0^1 W(\eta)
+\cosh\!\left(z\operatorname{artanh}\eta\right)\,d\eta,
+}
+\label{eq:compactified-riemann-kernel}
+\end{equation}
+where
+\begin{equation}
+\boxed{
+W(\eta)
+=
+\frac{4D\!\left((1+\eta)/(1-\eta)\right)}{(1-\eta)^2}>0.
+}
+\label{eq:compactified-weight}
+\end{equation}
+This is an exact change of variables.  In particular, the compactification does not replace the analytic real-rootedness problem by a numerical approximation.
+
+\section{Classical route audit}
+
+De Bruijn's study of trigonometric integrals gives sufficient real-zero mechanisms for several classes of kernels, including factors built from $\exp(-\lambda\cosh t)$ and functions of $\cosh t$ satisfying strong zero-location hypotheses.  In his discussion of the Riemann kernel, however, de Bruijn explicitly records the obstruction to simply approximating the exact kernel by the relevant analytic universal-factor class: the required global analytic continuation is absent.  Therefore those sufficient theorems cannot be invoked for the exact Riemann kernel without an additional argument establishing their hypotheses.
+
+This is a proof-firewall statement: the classical theory is relevant, but it does not by itself close SOH-G003.
+
+\section{What the compactification actually adds}
+
+Writing
+\[
+\xi\!\left(\frac12+z\right)=F(z^2),
+\]
+the active target remains
+\[
+F(w)=0\Longrightarrow w\in\mathbb R.
+\]
+The new exact structure is that the positive measure generating $F$ now lives on a compact reciprocal coordinate, with
+\[
+\eta=0
+\]
+as the modular self-dual point and
+\[
+\eta\mapsto-\eta
+\]
+as the exact reciprocal involution.
+
+\gap{A property of the exact positive weight $W(\eta)$ strong enough to imply real-rootedness of $F$ has not yet been proved.}
+
+\begin{warning}
+Neither positivity of $W$ nor reciprocal compactification alone implies SOH-G003.  The Riemann Hypothesis remains open.
+\end{warning}
