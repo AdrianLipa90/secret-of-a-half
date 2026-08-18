@@ -1,0 +1,152 @@
+\chapter{A Central Zero-Free Interval from the Kernel Moment Bound}
+\label{chap:central-zero-free-interval}
+
+\status{Exact central critical-line zero exclusion proved from SOH-G017. The result is one-dimensional along the critical line and does not prove RH or a zero-free strip.}
+
+SOH-G017 established the strict second-moment inequality
+\begin{equation}
+ m_2<\frac{m_0}{10},
+ \qquad
+ m_j=\int_0^\infty y^j\Phi(y)\,dy,
+ \qquad
+ m_0=F(0)>0.
+ \label{eq:g018-moment-input}
+\end{equation}
+This chapter converts that quantitative kernel estimate into an explicit
+central interval on which the completed Riemann function is strictly positive
+along the critical line.
+
+\section{Critical-line representation}
+
+For real $t$, define
+\[
+ \Xi(t):=\xi\!\left(\frac12+it\right).
+\]
+The positive-kernel representation gives
+\begin{equation}
+ \Xi(t)
+ =\int_0^\infty\Phi(y)\cos(ty)\,dy
+ =F(-t^2).
+ \label{eq:g018-Xi-F}
+\end{equation}
+Using the elementary inequality
+\[
+ \cos x\ge1-\frac{x^2}{2}
+\]
+for all real $x$,
+\begin{equation}
+ \Xi(t)
+ \ge m_0-\frac{t^2}{2}m_2.
+ \label{eq:g018-basic-lower}
+\end{equation}
+For $t\ne0$, the strict inequality in \cref{eq:g018-moment-input} yields
+\begin{equation}
+ \Xi(t)
+ >m_0\left(1-\frac{t^2}{20}\right).
+ \label{eq:g018-normalized-lower}
+\end{equation}
+At $t=0$, one has simply $\Xi(0)=m_0>0$.
+
+\section{The closed safe interval}
+
+If $|t|<\sqrt{20}$, the right-hand side of
+\cref{eq:g018-normalized-lower} is positive.  The endpoints require retaining
+the strict moment estimate before replacing it by a weak normalized bound:
+when $t^2=20$,
+\[
+ \Xi(t)
+ \ge m_0-10m_2
+ >0.
+\]
+Therefore:
+
+\begin{theorem}[SOH-G018 central critical-line interval]
+\label{thm:g018-central-interval}
+For every real $t$ with
+\[
+ |t|\le\sqrt{20},
+\]
+one has
+\begin{equation}
+ \boxed{
+ \xi\!\left(\frac12+it\right)>0.
+ }
+ \label{eq:g018-critical-positive}
+\end{equation}
+Consequently the critical line contains no zero of $\xi$ in the closed segment
+\[
+ \left\{\frac12+it:|t|\le\sqrt{20}\right\}.
+\]
+\end{theorem}
+
+This is an analytic consequence of the exact positive kernel and the
+quantitative G004--G017 curvature chain.  Numerical values may be used as
+regression checks but are not part of the proof.
+
+\section{The real quotient axis}
+
+Under the even quotient coordinate
+\[
+ w=-t^2,
+\]
+the interval in \cref{thm:g018-central-interval} maps exactly to
+\[
+ -20\le w\le0.
+\]
+Equation~\eqref{eq:g018-Xi-F} therefore gives
+\begin{equation}
+ \boxed{F(w)>0\qquad(-20\le w\le0).}
+ \label{eq:g018-F-negative-interval}
+\end{equation}
+Earlier coefficient positivity gives $F(w)>0$ for every real $w\ge0$.
+Combining the two statements yields
+\begin{corollary}[Real-axis zero-free half-line]
+\label{cor:g018-real-axis}
+\begin{equation}
+ \boxed{F(w)>0\qquad\text{for every real }w\ge-20.}
+ \label{eq:g018-F-halfline}
+\end{equation}
+Hence every real zero of $F$, if any, satisfies
+\begin{equation}
+ \boxed{w<-20.}
+ \label{eq:g018-real-root-location}
+\end{equation}
+\end{corollary}
+
+Equivalently, any zero of $\xi$ that is already known to lie on the critical
+line must satisfy
+\begin{equation}
+ \boxed{|\operatorname{Im}\rho|>\sqrt{20}.}
+ \label{eq:g018-critical-zero-height}
+\end{equation}
+
+\section{Relation to the real-rootedness frontier}
+
+SOH-G003 asks for the global statement that every zero of $F$ is real.  G018
+does not prove that statement.  It sharpens the location of a zero only after
+reality is given: no real zero can occur at or to the right of $-20$.
+Accordingly, the theorem does not imply that every xi zero lies on the
+critical line and does not create a two-dimensional zero-free strip.
+
+\section{Proof firewall}
+
+SOH-G018 proves:
+\begin{itemize}
+ \item $\xi(1/2+it)>0$ for every real $|t|\le\sqrt{20}$;
+ \item $F(w)>0$ for every real $-20\le w\le0$;
+ \item together with prior coefficient positivity, $F(w)>0$ for every real
+       $w\ge-20$;
+ \item every real zero of $F$ must satisfy $w<-20$;
+ \item every critical-line xi zero must satisfy
+       $|\operatorname{Im}\rho|>\sqrt{20}$.
+\end{itemize}
+
+It does not prove:
+\begin{itemize}
+ \item a zero-free strip in the $s$-plane;
+ \item that every xi zero lies on the critical line;
+ \item real-rootedness of $F$;
+ \item PF$_\infty$;
+ \item SOH-G003;
+ \item the Riemann Hypothesis.
+\end{itemize}
