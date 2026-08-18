@@ -40,6 +40,7 @@ jobs:
           - soh-g015-quotient-zero-set-no-go
           - soh-g016-paired-spectrum-quotient
           - soh-g017-v4-paired-orbits
+          - soh-g018-reciprocal-paired-polynomial
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -115,6 +116,9 @@ jobs:
               ;;
             soh-g017-v4-paired-orbits)
               python scripts/run_soh_g017_v4_paired_orbits.py
+              ;;
+            soh-g018-reciprocal-paired-polynomial)
+              python scripts/run_soh_g018_reciprocal_paired_polynomial.py
               ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
