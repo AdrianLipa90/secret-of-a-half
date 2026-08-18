@@ -35,11 +35,12 @@ def scale_defect(u: float | mp.mpf, a: float | mp.mpf) -> mp.mpf:
     return xi_u(a * u) - xi_u(u)
 
 
-def scale_defect_crossing(a: float) -> float:
-    a = float(a)
-    if not math.isfinite(a) or a <= 1.0:
+def scale_defect_crossing(a: float | mp.mpf) -> mp.mpf:
+    """Return the exact positive crossing a^(-1/2) at current mp precision."""
+    a = mp.mpf(a)
+    if not mp.isfinite(a) or a <= 1:
         raise ValueError("a must be finite and greater than one")
-    return 1.0 / math.sqrt(a)
+    return 1 / mp.sqrt(a)
 
 
 def scale_defect_sign_region(u: float, a: float) -> int:
