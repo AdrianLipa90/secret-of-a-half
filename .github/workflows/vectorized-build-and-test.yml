@@ -41,6 +41,7 @@ jobs:
           - soh-g016-paired-spectrum-quotient
           - soh-g017-fixed-point-exclusion
           - soh-g018-quarter-disk-exclusion
+          - soh-g019-caratheodory-disk
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -119,6 +120,9 @@ jobs:
               ;;
             soh-g018-quarter-disk-exclusion)
               python scripts/run_soh_g018_quarter_disk_exclusion.py
+              ;;
+            soh-g019-caratheodory-disk)
+              python scripts/run_soh_g019_caratheodory_disk.py
               ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
