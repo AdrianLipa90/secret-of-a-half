@@ -1,6 +1,6 @@
 """SOH-G012 Euler--Riemann negative-inversion operator algebra.
 
-All identities here are exact coordinate conjugacies.  They do not assert
+All identities here are exact coordinate conjugacies. They do not assert
 anything about the location of nontrivial zeros of xi or prove RH.
 """
 from __future__ import annotations
@@ -83,6 +83,20 @@ def negative_inversion_t(t: complex | mp.mpf | mp.mpc) -> mp.mpc:
     return -1 / t
 
 
+def riemann_reflection_z(z: complex | mp.mpf | mp.mpc) -> mp.mpc:
+    """For z=s-1/2=t/2, R_z(z)=-z."""
+    z = _finite_complex(z, name="z")
+    return -z
+
+
+def euler_half_turn_z(z: complex | mp.mpf | mp.mpc) -> mp.mpc:
+    """For z=s-1/2=t/2, E_z(z)=1/(4z)."""
+    z = _finite_complex(z, name="z")
+    if z == 0:
+        raise ValueError("Euler z-chart inversion is singular at z=0")
+    return 1 / (4 * z)
+
+
 def negative_inversion_z(z: complex | mp.mpf | mp.mpc) -> mp.mpc:
     """For z=s-1/2=t/2, N_z(z)=-1/(4z)."""
     z = _finite_complex(z, name="z")
@@ -91,8 +105,21 @@ def negative_inversion_z(z: complex | mp.mpf | mp.mpc) -> mp.mpc:
     return -1 / (4 * z)
 
 
+def riemann_reflection_w(w: complex | mp.mpf | mp.mpc) -> mp.mpc:
+    """For w=z^2, R_z is quotiented out: R_w(w)=w."""
+    return _finite_complex(w, name="w")
+
+
+def euler_half_turn_w(w: complex | mp.mpf | mp.mpc) -> mp.mpc:
+    """For w=z^2, E_w(w)=1/(16w)."""
+    w = _finite_complex(w, name="w")
+    if w == 0:
+        raise ValueError("Euler quotient inversion is singular at w=0")
+    return 1 / (16 * w)
+
+
 def negative_inversion_w(w: complex | mp.mpf | mp.mpc) -> mp.mpc:
-    """For w=z^2, the quotient action is N_w(w)=1/(16w)."""
+    """For w=z^2, N_w(w)=1/(16w), equal to E_w after quotienting R."""
     w = _finite_complex(w, name="w")
     if w == 0:
         raise ValueError("negative inversion is singular at w=0")
@@ -106,12 +133,12 @@ def negative_inversion_fixed_u() -> tuple[mp.mpc, mp.mpc]:
 
 def negative_inversion_fixed_s() -> tuple[mp.mpc, mp.mpc]:
     """Return their s-plane images: 1/2 +/- i/2."""
-    return (mp.mpc("0.5", "0.5"), mp.mpc("0.5", "-0.5"))
+    return mp.mpc("0.5", "0.5"), mp.mpc("0.5", "-0.5")
 
 
 def negative_inversion_fixed_z() -> tuple[mp.mpc, mp.mpc]:
     """Return z=s-1/2 fixed points: +/- i/2."""
-    return (mp.mpc(0, "0.5"), mp.mpc(0, "-0.5"))
+    return mp.mpc(0, "0.5"), mp.mpc(0, "-0.5")
 
 
 def quotient_fixed_w() -> tuple[mp.mpf, mp.mpf]:
