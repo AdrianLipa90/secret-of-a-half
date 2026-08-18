@@ -10,6 +10,9 @@ from secret_of_a_half.negative_inversion import (
     centered_t_from_u,
     euler_half_turn_t,
     euler_half_turn_u,
+    functional_reflection_s,
+    li_coordinate,
+    li_coordinate_via_negative_inversion,
     log_negative_inversion,
     negative_inversion_fixed_s,
     negative_inversion_fixed_u,
@@ -20,6 +23,7 @@ from secret_of_a_half.negative_inversion import (
     quotient_fixed_w,
     riemann_reflection_t,
     riemann_reflection_u,
+    u_from_s,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -62,6 +66,28 @@ def main() -> None:
     if max_v4_residual > tol or max_t_residual > tol:
         raise RuntimeError("operator algebra or centered conjugacy residual exceeded tolerance")
 
+    li_samples = [
+        mp.mpc("0.31", "0.27"),
+        mp.mpc("0.62", "-0.41"),
+        mp.mpc("1.3", "0.2"),
+    ]
+    max_li_crosswalk_residual = mp.mpf("0")
+    max_reflection_crosswalk_residual = mp.mpf("0")
+    for s in li_samples:
+        u = u_from_s(s)
+        max_li_crosswalk_residual = max(
+            max_li_crosswalk_residual,
+            abs(li_coordinate(s) - li_coordinate_via_negative_inversion(s)),
+            abs(li_coordinate(s) - negative_inversion_u(u)),
+        )
+        max_reflection_crosswalk_residual = max(
+            max_reflection_crosswalk_residual,
+            abs(u_from_s(functional_reflection_s(s)) - riemann_reflection_u(u)),
+        )
+
+    if max_li_crosswalk_residual > tol or max_reflection_crosswalk_residual > tol:
+        raise RuntimeError("Chapter-25 Li/functional-reflection crosswalk verification failed")
+
     fixed_rows = []
     for u, s in zip(negative_inversion_fixed_u(), negative_inversion_fixed_s()):
         n_residual = abs(negative_inversion_u(u) - u)
@@ -103,9 +129,15 @@ def main() -> None:
             "max_centered_conjugacy_residual": mp.nstr(max_t_residual, 8),
             "log_lift_residual": mp.nstr(log_residual, 8),
         },
+        "canonical_crosswalk": {
+            "max_li_coordinate_residual": mp.nstr(max_li_crosswalk_residual, 8),
+            "max_functional_reflection_residual": mp.nstr(max_reflection_crosswalk_residual, 8),
+            "chapter_25_claim": "SOH-L017",
+        },
         "fixed_pair": fixed_rows,
         "w_quotient": {key: mp.nstr(value, 8) for key, value in quotient_residuals.items()},
         "claims": {
+            "chapter25_li_negative_inverse_factorized": True,
             "negative_inversion_as_riemann_times_euler_proved": True,
             "klein_four_operator_algebra_proved": True,
             "fixed_pair_on_critical_line_proved": True,
