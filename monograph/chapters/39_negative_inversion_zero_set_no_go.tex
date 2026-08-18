@@ -1,0 +1,201 @@
+\chapter{Negative-Inversion Zero-Set No-Go}
+\label{chap:negative-inversion-zero-set-no-go}
+
+\status{Exact no-go theorem proved. The canonical negative inversion cannot be a global symmetry of the xi zero set; only finitely many xi zeros can be paired with another xi zero by that map. RH remains open.}
+
+Chapter~\ref{chap:euler-riemann-negative-inversion} proved the canonical
+negative inversion in the projective coordinate
+\[
+ N_u(u)=-\frac1u,
+\]
+and Chapter~\ref{chap:pauli-spinor-lift} established its concrete Pauli/SU(2)
+lift.  The present chapter supplies the complementary spectral firewall: exact
+operator symmetry does not imply invariance of the zero set of the Riemann xi
+function.
+
+\section{The induced map on the $s$-plane}
+
+With
+\[
+ u=\Omega(s)=\frac{s}{1-s},
+ \qquad
+ s=\frac{u}{1+u},
+\]
+conjugating $N_u(u)=-1/u$ back to the $s$-plane gives
+\begin{equation}
+ \boxed{
+ N_s(s)=\frac{s-1}{2s-1}.
+ }
+ \label{eq:g014-Ns}
+\end{equation}
+It is a Möbius involution on the Riemann sphere.  In the affine chart its pole
+is $s=1/2$, and projectively it exchanges $1/2$ with infinity.
+
+Subtracting the half gives the exact identity
+\begin{equation}
+ \boxed{
+ N_s(s)-\frac12=-\frac1{4s-2}.
+ }
+ \label{eq:g014-half-defect}
+\end{equation}
+Therefore
+\begin{equation}
+ |s|\longrightarrow\infty
+ \quad\Longrightarrow\quad
+ N_s(s)\longrightarrow\frac12.
+ \label{eq:g014-contraction}
+\end{equation}
+
+On the critical line,
+\begin{equation}
+ \boxed{
+ N_s\!\left(\frac12+it\right)
+ =\frac12+\frac{i}{4t},
+ \qquad t\ne0.
+ }
+ \label{eq:g014-critical-height}
+\end{equation}
+Thus the negative inversion preserves the critical line as a geometric locus
+while exchanging large height with reciprocal small height.
+
+\section{The half is not a xi zero}
+
+The positive-kernel theorem of Chapter~\ref{chap:positive-riemann-kernel}
+gives
+\begin{equation}
+ \xi\!\left(\frac12\right)
+ =\int_0^\infty\Phi(y)\,dy>0.
+ \label{eq:g014-xi-half-positive}
+\end{equation}
+Hence
+\[
+ \boxed{\xi(1/2)\ne0.}
+\]
+In particular, the affine pole of $N_s$ is not itself a xi zero.
+
+\section{The paired-zero set}
+
+Let
+\[
+ Z_\xi=\{\rho\in\C:\xi(\rho)=0\}
+\]
+and define
+\begin{equation}
+ P_N
+ =\{\rho\in Z_\xi:\xi(N_s(\rho))=0\}.
+ \label{eq:g014-paired-set}
+\end{equation}
+The completed xi function is a non-zero entire function, so its zeros are
+isolated.  Its zero set is infinite; for example, Hardy's classical theorem
+gives infinitely many zeros on the critical line \citep{hardy1914}, and the
+standard analytic theory is summarized in \citep{titchmarsh1986}.
+
+\begin{theorem}[Negative-inversion paired-zero no-go]
+\label{thm:g014-paired-finite}
+The set $P_N$ in \cref{eq:g014-paired-set} is finite.
+\end{theorem}
+
+\begin{proof}
+Assume that $P_N$ is infinite.  Since the zeros of the non-zero entire
+function $\xi$ are isolated, an infinite subset of $Z_\xi$ cannot remain in a
+compact subset of the plane.  Hence there exist distinct
+\[
+ \rho_n\in P_N,
+ \qquad
+ |\rho_n|\to\infty.
+\]
+By definition of $P_N$,
+\[
+ \xi(N_s(\rho_n))=0
+\]
+for every $n$.  But \cref{eq:g014-half-defect} gives
+\[
+ N_s(\rho_n)
+ =\frac12-\frac1{4\rho_n-2}
+ \longrightarrow\frac12.
+\]
+Continuity of the entire function $\xi$ therefore forces
+\[
+ \xi\!\left(\frac12\right)
+ =\lim_{n\to\infty}\xi(N_s(\rho_n))
+ =0,
+\]
+contradicting \cref{eq:g014-xi-half-positive}.  Thus $P_N$ is finite.
+\end{proof}
+
+\begin{corollary}[No global zero-set invariance]
+\label{cor:g014-no-global-invariance}
+The complete xi zero set is not invariant under $N_s$:
+\[
+ \boxed{N_s(Z_\xi)\ne Z_\xi.}
+\]
+\end{corollary}
+
+\begin{proof}
+If $N_s(Z_\xi)=Z_\xi$, then every xi zero would belong to $P_N$.  Since
+$Z_\xi$ is infinite, this contradicts \cref{thm:g014-paired-finite}.
+\end{proof}
+
+\begin{corollary}[All but finitely many zeros fail to pair]
+\label{cor:g014-cofinite-failure}
+All but finitely many xi zeros are mapped by $N_s$ to points at which xi is
+non-zero.
+\end{corollary}
+
+This conclusion is stronger than merely exhibiting a counterexample to global
+invariance.  It says that negative-inversion pairing, if it occurs at all for
+xi zeros, is necessarily an exceptional finite phenomenon.
+
+\section{What survives from the operator geometry}
+
+The no-go theorem does not weaken G012 or G013.  The identities
+\[
+ N_u(u)=-\frac1u,
+ \qquad
+ \{I,R,E,N\}\cong V_4,
+\]
+and the spinor lift
+\[
+ 1\longrightarrow\{\pm I\}
+ \longrightarrow Q_8
+ \longrightarrow V_4
+ \longrightarrow1
+\]
+remain exact.  What fails is only the stronger spectral assertion
+\[
+ \text{operator symmetry}\Longrightarrow\text{xi-zero-set symmetry}.
+\]
+The distinction is essential: the projective/Bloch algebra is a coordinate
+and spinor structure, whereas the xi zero set is an analytic spectrum with
+additional constraints.
+
+\section{Numerical regression is not the proof}
+
+The accompanying SOH-G014 test and receipt evaluate the first few
+non-trivial zeros and verify numerically that their negative-inversion images
+lie near $1/2$ and are far from xi zeros.  Those checks protect the
+implementation against coordinate-sign mistakes.  The theorem itself is the
+analytic contradiction in \cref{thm:g014-paired-finite}; no finite zero table
+is used to establish it.
+
+\section{Proof firewall}
+
+Proved in SOH-G014:
+\begin{itemize}
+ \item the exact $s$-plane map \cref{eq:g014-Ns};
+ \item the exact half-defect \cref{eq:g014-half-defect};
+ \item the critical-line height transformation \cref{eq:g014-critical-height};
+ \item finiteness of the paired-zero set $P_N$;
+ \item failure of global xi-zero-set invariance;
+ \item cofinite failure of negative-inversion zero pairing.
+\end{itemize}
+
+Not proved or claimed in SOH-G014:
+\begin{itemize}
+ \item that $P_N$ is empty;
+ \item a new functional equation for $\xi$;
+ \item invariance under the Euler half-turn;
+ \item PF$_\infty$;
+ \item SOH-G003 real-rootedness;
+ \item the Riemann Hypothesis.
+\end{itemize}
