@@ -36,6 +36,7 @@ jobs:
           - c005-full-operator-cancellation
           - soh-g004-log-concavity
           - soh-g005-pf3-diagnostic
+          - soh-g014-zero-set-no-go
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -99,6 +100,9 @@ jobs:
               ;;
             soh-g005-pf3-diagnostic)
               python scripts/run_soh_g005_pf3_diagnostic.py
+              ;;
+            soh-g014-zero-set-no-go)
+              python scripts/run_soh_g014_negative_inversion_zero_set.py
               ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
