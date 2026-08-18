@@ -33,6 +33,10 @@ def main() -> None:
     if prefixes != expected:
         fail(f"chapter numbering is not contiguous: {prefixes}")
 
+    # V3 must contain the semantic-audit final synthesis as the terminal numbered chapter.
+    if not includes or includes[-1] != "46_current_canon_and_open_frontier":
+        fail("V3 terminal chapter must be 46_current_canon_and_open_frontier")
+
     title_count = sum(
         p.read_text(encoding="utf-8").count(r"\begin{titlepage}")
         for p in MONO.rglob("*.tex")
@@ -50,8 +54,8 @@ def main() -> None:
         fail("non-English frontmatter marker Streszczenie remains active")
     if "Version 0.6.1-review" in frontmatter_text or "Version 0.7 --" in frontmatter_text:
         fail("stale active version marker remains in title/frontmatter")
-    if "Version 0.9 Integrated Canon V2" not in frontmatter_text:
-        fail("v0.9 Integrated Canon V2 marker missing from active title/frontmatter")
+    if "Version 0.9 Integrated Canon V3" not in frontmatter_text:
+        fail("v0.9 Integrated Canon V3 marker missing from active title/frontmatter")
 
     collision_checks = {
         "18_zero_undefined_reciprocal_duality.tex": ("SOH-L015", "SOH-L016", "SOH-L017", "SOH-L022"),
@@ -75,12 +79,15 @@ def main() -> None:
         fail(f"duplicate canonical claim IDs: {dup}")
     promoted = {f"SOH-L{i:03d}" for i in range(12, 33)}
     if not promoted.issubset(ids):
-        fail(f"V2 promoted claim range incomplete: {sorted(promoted - set(ids))}")
+        fail(f"promoted SOH-L012--SOH-L032 range incomplete: {sorted(promoted - set(ids))}")
     if ledger.get("proof_of_rh") is not False:
         fail("proof_of_rh firewall must remain false")
 
     print("MONOGRAPH_INTEGRATION_PASS")
-    print(f"chapters={len(chapter_files)} canonical_claims={len(ids)} titlepages={title_count}")
+    print(
+        f"version=V3 chapters={len(chapter_files)} canonical_claims={len(ids)} "
+        f"titlepages={title_count} terminal={includes[-1]}"
+    )
 
 
 if __name__ == "__main__":
