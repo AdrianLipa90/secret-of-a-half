@@ -2,9 +2,9 @@
 
 ## Status
 
-**THEOREM-LEVEL REDUCTION / PROVED FOR THE FORCED PAIR.**
+**THEOREM-LEVEL REDUCTION / PROVED FOR THE FORCED PAIR AND THE EULER-INVERSION COROLLARY.**
 
-This note proves the existence and simplicity of the reciprocal fixed-point pair of the xi scale defect. It does **not** prove that these are the only complex zeros of the scale defect and does **not** prove SOH-G003 or RH.
+This note proves the existence and simplicity of the reciprocal fixed-point pair of the xi scale defect, and the exact conversion of the Euler half-turn into reciprocal inversion in the centered coordinate. It does **not** prove that these are the only complex zeros of the scale defect and does **not** prove SOH-G003 or RH.
 
 ## Definitions
 
@@ -101,6 +101,48 @@ Thus the half-period \(\pi i\) exchanges the positive and negative forced crossi
 
 This is an exact use of Euler phase, not an analogy.
 
+## Corollary — Euler half-turn is centered reciprocal inversion
+
+Introduce the centered coordinate already used by the Bloch/half-layer construction,
+
+\[
+t=2s-1=\frac{u-1}{u+1}=\tanh\frac\lambda2.
+\]
+
+Under the Euler half-turn,
+
+\[
+\lambda\mapsto\lambda+\pi i,
+\qquad
+u\mapsto e^{i\pi}u=-u.
+\]
+
+Directly,
+
+\[
+t(-u)
+=\frac{-u-1}{-u+1}
+=\frac{u+1}{u-1}
+=\boxed{\frac1{t(u)}}.
+\]
+
+Equivalently,
+
+\[
+\tanh\!\left(\frac{\lambda+\pi i}{2}\right)
+=\tanh\!\left(\frac\lambda2+\frac{i\pi}{2}\right)
+=\coth\frac\lambda2
+=\boxed{\frac1{\tanh(\lambda/2)}}.
+\]
+
+Therefore the exact Euler phase operation \(e^{i\pi}=-1\) in the \(u\)-chart is conjugate to the reciprocal map
+
+\[
+\boxed{t\mapsto1/t}
+\]
+
+in the centered chart. The identity is defined away from \(t=0\), where reciprocal inversion itself is singular.
+
 ## Theorem 3 — both forced zeros are simple
 
 Use the already established centered entire factorization
@@ -191,7 +233,7 @@ and
 \boxed{u_\pm=\pm\frac1{\sqrt{32}}}.
 \]
 
-The Euler half-turn exchanges these two classes exactly.
+The Euler half-turn exchanges these two classes exactly and becomes \(t\mapsto1/t\) in the centered coordinate.
 
 ## Proof firewall
 
@@ -200,6 +242,7 @@ Proved here:
 - reciprocal scale-defect antisymmetry;
 - logarithmic half-period crossing family;
 - Euler sign exchange between the two forced classes;
+- exact conjugacy of the Euler half-turn to centered inversion \(t\mapsto1/t\);
 - simplicity of the two forced zeros.
 
 Not proved here:
