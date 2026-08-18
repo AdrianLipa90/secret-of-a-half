@@ -38,6 +38,7 @@ jobs:
           - soh-g005-pf3-diagnostic
           - soh-g014-zero-set-no-go
           - soh-g015-quotient-zero-set-no-go
+          - soh-g016-paired-spectrum-quotient
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -107,6 +108,9 @@ jobs:
               ;;
             soh-g015-quotient-zero-set-no-go)
               python scripts/run_soh_g015_quotient_zero_set.py
+              ;;
+            soh-g016-paired-spectrum-quotient)
+              python scripts/run_soh_g016_paired_spectrum_quotient.py
               ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
