@@ -1,0 +1,205 @@
+\chapter{Fixed-Point Exclusion and Exceptional-Orbit Divisibility}
+\label{chap:g017-fixed-point-exclusion}
+
+\status{SOH-G017 proved: neither fixed point of the quotient negative inversion is a root of $F$; exceptional paired sets, if nonempty, have forced orbit divisibility.}
+
+\section{The remaining fixed-point question}
+
+Chapter~\ref{chap:quotient-negative-inversion-zero-set-no-go} introduced the quotient involution
+\[
+ J(w)=\frac{1}{16w}
+\]
+for the even entire function
+\[
+ \xi\!\left(\frac12+z\right)=F(z^2).
+\]
+Its two fixed values are $w=\pm1/4$.  The positive one is excluded by the previously proved positivity
+\[
+ F(x)>0\qquad(x\ge0).
+\]
+The only unresolved fixed candidate was therefore $w=-1/4$.
+
+Because $z^2=-1/4$ gives $z=\pm i/2$,
+\[
+ F\!\left(-\frac14\right)
+ =\xi\!\left(\frac12+\frac{i}{2}\right)
+ =\Xi\!\left(\frac12\right),
+\]
+where $\Xi(t):=\xi(1/2+it)$.
+
+\section{Positive block from the exact Riemann kernel}
+
+From Chapter~\ref{chap:positive-riemann-kernel},
+\[
+ \Xi(t)=\int_0^\infty \Phi(y)\cos(ty)\,dy,
+\]
+with
+\[
+ \Phi(y)=\sum_{n\ge1}\phi_n(y),
+\]
+\[
+ \phi_n(y)=4\pi n^2e^{5y/2}
+ \bigl(2\pi n^2e^{2y}-3\bigr)e^{-\pi n^2e^{2y}}>0
+ \qquad(y\ge0).
+\]
+At $t=1/2$,
+\[
+ F\!\left(-\frac14\right)
+ =\int_0^\infty\Phi(y)\cos(y/2)\,dy.
+\]
+
+On $0\le y\le1/2$, retain only the $n=1$ channel.  Then
+\[
+ e^{5y/2}\ge1,
+ \qquad
+ 2\pi e^{2y}-3\ge2\pi-3,
+ \qquad
+ e^{-\pi e^{2y}}\ge e^{-\pi e},
+\]
+and
+\[
+ \cos(y/2)\ge\cos(1/4).
+\]
+Hence
+\[
+ \int_0^{1/2}\Phi(y)\cos(y/2)\,dy\ge A,
+\]
+where
+\[
+ A:=2\pi(2\pi-3)e^{-\pi e}\cos(1/4).
+\]
+Using only $3<\pi<4$, $2<e<3$, and
+\[
+ \cos x\ge1-\frac{x^2}{2},
+\]
+we obtain
+\[
+ A>18\cdot\frac{31}{32}\cdot3^{-12}.
+\]
+The exact integer inequality
+\[
+ 18\cdot31\cdot2^{15}>32\cdot3^{12}
+\]
+therefore gives
+\begin{equation}
+ \boxed{A>2^{-15}}.
+ \label{eq:g017-positive-block}
+\end{equation}
+
+\section{Super-exponential oscillatory tail}
+
+For $y\ge\pi$, set $r_n=\pi n^2e^{2y}$.  Since $2r_n-3<2r_n$,
+\[
+ \phi_n(y)
+ <8\pi^2n^4e^{9y/2}e^{-\pi n^2e^{2y}}.
+\]
+Put $x=e^{2y}$ and $X=e^{2\pi}$.  Then
+\[
+ \int_\pi^\infty\phi_n(y)\,dy
+ <4\pi^2n^4\int_X^\infty x^{5/4}e^{-\pi n^2x}\,dx.
+\]
+For $x\ge X$,
+\[
+ \frac{d}{dx}\log\!\left(x^{5/4}e^{-\pi n^2x}\right)
+ =\frac{5}{4x}-\pi n^2
+ \le-\frac{\pi n^2}{2},
+\]
+so
+\[
+ \int_X^\infty x^{5/4}e^{-\pi n^2x}\,dx
+ \le\frac{2}{\pi n^2}X^{5/4}e^{-\pi n^2X}.
+\]
+Consequently
+\[
+ \int_\pi^\infty\Phi(y)\,dy\le T,
+\]
+with
+\[
+ T:=8\pi X^{5/4}\sum_{n\ge1}n^2e^{-\pi Xn^2}.
+\]
+If $q=e^{-\pi X}$, then $e^{-\pi Xn^2}\le q^n$ and
+\[
+ \sum_{n\ge1}n^2q^n=\frac{q(1+q)}{(1-q)^3}.
+\]
+Therefore
+\[
+ T\le8\pi X^{5/4}\frac{q(1+q)}{(1-q)^3}.
+\]
+Now
+\[
+ X=e^{2\pi}>e^6>2^6=64,
+\]
+so
+\[
+ q<e^{-192}<2^{-192}.
+\]
+Also $X=e^{2\pi}<e^8<3^8$ and $q<1/2$, whence
+\[
+ \frac{1+q}{(1-q)^3}<12.
+\]
+Thus
+\[
+ T<32\cdot3^{10}\cdot12\cdot2^{-192}.
+\]
+The exact integer inequality
+\[
+ 32\cdot3^{10}\cdot12<2^{25}
+\]
+yields
+\begin{equation}
+ \boxed{T<2^{-167}}.
+ \label{eq:g017-tail}
+\end{equation}
+
+\section{The fixed-point exclusion theorem}
+
+On $[1/2,\pi]$ both $\Phi(y)$ and $\cos(y/2)$ are nonnegative.  Every possibly negative contribution therefore lies beyond $\pi$, and its absolute magnitude is bounded by $T$.  Combining \eqref{eq:g017-positive-block} and \eqref{eq:g017-tail},
+\[
+ F\!\left(-\frac14\right)
+ \ge A-T
+ >2^{-15}-2^{-167}
+ >0.
+\]
+Hence
+\begin{theorem}[SOH-G017 fixed-point exclusion]
+\label{thm:g017-fixed-point-exclusion}
+The quotient negative inversion $J(w)=1/(16w)$ has no fixed point in the root set of $F$.  Explicitly,
+\[
+ F(1/4)>0,
+ \qquad
+ \boxed{F(-1/4)>0}.
+\]
+The second inequality follows from the positive Riemann kernel and elementary analytic bounds, without using any list or ordinate of zeta zeros.
+\end{theorem}
+
+\section{Exceptional-orbit divisibility}
+
+Recall the finite paired quotient set
+\[
+ P_J=\{w:F(w)=0,\;F(J(w))=0\}.
+\]
+Since $J^2=\mathrm{id}$, the involution $J$ acts on $P_J$.  By Theorem~\ref{thm:g017-fixed-point-exclusion}, this action is free.  Therefore $P_J$ is a disjoint union of two-cycles and
+\begin{equation}
+ \boxed{|P_J|\equiv0\pmod2}.
+ \label{eq:g017-pj-even}
+\end{equation}
+
+Chapter~\ref{chap:paired-spectrum-quotient-correspondence} proves that
+\[
+ q(s)=\left(s-\frac12\right)^2
+\]
+maps the paired xi set $P_N$ exactly two-to-one onto $P_J$.  Hence
+\[
+ |P_N|=2|P_J|,
+\]
+and therefore
+\begin{equation}
+ \boxed{|P_N|\equiv0\pmod4}.
+ \label{eq:g017-pn-four}
+\end{equation}
+
+More precisely, each quotient two-cycle $\{w,J(w)\}$ lifts to four distinct points in the $s$-plane.  Reflection $s\mapsto1-s$ exchanges the two points in each quotient fiber, while the canonical negative inversion exchanges the two fibers.  Thus every exceptional quotient two-cycle lifts to one full four-point orbit of the projective Klein-four action established in Chapter~\ref{chap:euler-riemann-negative-inversion}.
+
+\section{Boundary of the result}
+
+SOH-G017 excludes fixed exceptional roots and sharpens the structure of any remaining paired set.  It does not prove that $P_J$ or $P_N$ is empty.  It does not establish real-rootedness of $F$, PF$\infty$, SOH-G003, or the Riemann Hypothesis.
