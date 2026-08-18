@@ -1,0 +1,190 @@
+\chapter{The Zero-Free Quarter Disk and Complete Spectral Disjointness}
+\label{chap:g018-zero-free-quarter-disk}
+
+\status{SOH-G018 proved: $F$ has no zeros in $|w|\le1/4$, hence the canonical negative inversion maps no $F$ root to an $F$ root and no xi zero to an xi zero.}
+
+\section{From finite exceptions to no exceptions}
+
+Chapters~\ref{chap:quotient-negative-inversion-zero-set-no-go}--\ref{chap:g017-fixed-point-exclusion} progressively restricted the possible overlap between the root set of the even quotient $F$ and its image under
+\[
+ J(w)=\frac{1}{16w}.
+\]
+The present chapter closes that frontier.  The key is a zero-free disk whose boundary radius is exactly the self-reciprocal radius of $J$.
+
+Recall
+\[
+ \xi\!\left(\frac12+z\right)=F(z^2),
+ \qquad
+ F(w)=\sum_{n\ge0}a_nw^n,
+\]
+with
+\[
+ a_n>0\qquad(n\ge0)
+\]
+from the positive Riemann-kernel coefficient theorem.
+
+\section{The exact quarter-point value}
+
+At $w=1/4$ choose $z=1/2$.  Then
+\[
+ F\!\left(\frac14\right)=\xi(1).
+\]
+For
+\[
+ \xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\]
+the simple pole of $\zeta(s)$ at $s=1$ has residue one, hence
+\begin{equation}
+ \boxed{F(1/4)=\xi(1)=\frac12}.
+ \label{eq:g018-quarter-value}
+\end{equation}
+
+\section{An elementary lower bound for $F(0)$}
+
+At the centre,
+\[
+ F(0)=\xi\!\left(\frac12\right)
+ =-\frac18\pi^{-1/4}\Gamma\!\left(\frac14\right)\zeta\!\left(\frac12\right).
+\]
+The Dirichlet eta identity gives
+\[
+ \eta(s)=\bigl(1-2^{1-s}\bigr)\zeta(s),
+\]
+so at $s=1/2$,
+\[
+ -\zeta\!\left(\frac12\right)
+ =(1+\sqrt2)\eta\!\left(\frac12\right).
+\]
+The alternating series for $\eta(1/2)$ has decreasing terms.  Its fourth partial sum is therefore a strict lower bound:
+\[
+ \eta\!\left(\frac12\right)
+ >
+ 1-\frac1{\sqrt2}+\frac1{\sqrt3}-\frac12
+ =
+ \frac12-\frac1{\sqrt2}+\frac1{\sqrt3}.
+\]
+
+For the gamma factor, $e^{-t}>1-t$ for $0<t\le1$, and therefore
+\[
+ \Gamma\!\left(\frac14\right)
+ >
+ \int_0^1t^{-3/4}(1-t)\,dt
+ =\frac{16}{5}.
+\]
+Also $\pi<4$ gives
+\[
+ \pi^{-1/4}>\frac1{\sqrt2}.
+\]
+Consequently
+\[
+ F(0)>L,
+\]
+where
+\[
+ L:=\frac{2}{5\sqrt2}(1+\sqrt2)
+ \left(\frac12-\frac1{\sqrt2}+\frac1{\sqrt3}\right).
+\]
+
+The comparison with $1/4$ can be made exact.  Simplification gives
+\[
+ 60\left(L-\frac14\right)
+ =4\sqrt6+8\sqrt3-15-6\sqrt2.
+\]
+Both sides of
+\[
+ 4\sqrt6+8\sqrt3>15+6\sqrt2
+\]
+are positive.  Their squared difference equals
+\[
+ -9+12\sqrt2.
+\]
+Since $\sqrt2>3/4$, equivalently $32>9$, this difference is positive.  Hence
+\begin{equation}
+ \boxed{F(0)>L>\frac14}.
+ \label{eq:g018-centre-bound}
+\end{equation}
+
+\section{Zero-free disk theorem}
+
+Let $a_0=F(0)$.  For $|w|\le1/4$, positivity of all Taylor coefficients and absolute convergence give
+\[
+ \begin{aligned}
+ |F(w)-a_0|
+ &\le\sum_{n\ge1}a_n|w|^n\\
+ &\le\sum_{n\ge1}a_n4^{-n}\\
+ &=F(1/4)-F(0)\\
+ &=\frac12-a_0.
+ \end{aligned}
+\]
+By \eqref{eq:g018-centre-bound}, $a_0>1/4$, so $1/2-a_0<a_0$.  Therefore
+\[
+ |F(w)|
+ \ge a_0-|F(w)-a_0|
+ \ge2a_0-\frac12
+ >2L-\frac12
+ >0.
+\]
+
+\begin{theorem}[SOH-G018 zero-free quarter disk]
+\label{thm:g018-zero-free-quarter-disk}
+The even quotient $F$ has no zeros in the closed disk
+\[
+ \boxed{|w|\le\frac14}.
+\]
+Equivalently, every root of $F$ satisfies $|w|>1/4$.
+\end{theorem}
+
+\section{Complete negative-inversion exclusion}
+
+Suppose that $w$ and $J(w)$ were both roots of $F$.  Theorem~\ref{thm:g018-zero-free-quarter-disk} gives
+\[
+ |w|>\frac14.
+\]
+But then
+\[
+ |J(w)|=\frac{1}{16|w|}<\frac14,
+\]
+so the same theorem gives $F(J(w))\ne0$, a contradiction.
+
+Thus the paired quotient set of Chapter~\ref{chap:quotient-negative-inversion-zero-set-no-go} is not merely finite:
+\begin{equation}
+ \boxed{P_J=\varnothing}.
+ \label{eq:g018-pj-empty}
+\end{equation}
+Equivalently,
+\[
+ \boxed{Z_F\cap J(Z_F)=\varnothing}.
+\]
+
+Chapter~\ref{chap:paired-spectrum-quotient-correspondence} proves the exact relation
+\[
+ q(P_N)=P_J,
+ \qquad
+ q(s)=\left(s-\frac12\right)^2.
+\]
+Equation~\eqref{eq:g018-pj-empty} therefore implies
+\begin{equation}
+ \boxed{P_N=\varnothing}.
+ \label{eq:g018-pn-empty}
+\end{equation}
+In explicit xi language,
+\[
+ \boxed{
+ \xi(\rho)=0
+ \quad\Longrightarrow\quad
+ \xi\!\left(\frac{\rho-1}{2\rho-1}\right)\ne0
+ }
+\]
+for every xi zero $\rho$.
+
+\section{What has been closed}
+
+G014 proved finiteness of the possible paired xi-zero set.  G015 proved finiteness of the quotient paired-root set.  G016 identified those finite sets through an exact two-to-one quotient.  G017 removed all fixed exceptional roots.  G018 proves that no exceptional two-cycle exists either:
+\[
+ \boxed{P_J=P_N=\varnothing}.
+\]
+The canonical negative inversion is therefore spectrally disjoint from the xi zero set.
+
+\section{Boundary of the theorem}
+
+The result is a global statement about one exact projective involution and the xi/$F$ zero sets.  It does not prove real-rootedness of $F$, PF$\infty$, SOH-G003, or the Riemann Hypothesis.  In particular, spectral disjointness under $N_s$ is logically different from the critical-line statement required by RH.
