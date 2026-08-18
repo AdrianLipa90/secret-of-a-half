@@ -1,0 +1,286 @@
+\chapter{Euler--Riemann Factorization of the Canonical Negative Inverse}
+\label{chap:euler-riemann-negative-inversion}
+
+\status{Exact operator factorization and fixed-point geometry proved. The chapter does not assert that non-trivial xi zeros are fixed points of the negative inversion and makes no RH claim.}
+
+Chapter~\ref{chap:li-negative-inverse} established the canonical projective coordinate
+\[
+ \Omega(s)=\frac{s}{1-s}
+\]
+and Li's coordinate
+\[
+ z_L(s)=1-\frac1s,
+\]
+with the exact identity
+\begin{equation}
+ \boxed{z_L(s)=-\frac1{\Omega(s)}}.
+ \label{eq:g012-li-negative-inverse}
+\end{equation}
+The purpose of this chapter is not to redefine that map.  It factorizes the same
+negative inverse into the holomorphic Riemann functional reflection and the
+Euler half-turn, then transports the resulting operator algebra through the
+centered coordinates used in Chapters~32--36.
+
+\section{Primitive involutions in the projective coordinate}
+
+Set
+\[
+ u=\Omega(s)=\frac{s}{1-s}.
+\]
+The holomorphic functional reflection
+\[
+ \mathcal R_s(s)=1-s
+\]
+becomes
+\begin{equation}
+ \boxed{\mathcal R_u(u)=\frac1u}.
+ \label{eq:g012-Ru}
+\end{equation}
+Indeed,
+\[
+ \Omega(1-s)=\frac{1-s}{s}=\frac1{\Omega(s)}.
+\]
+
+The Euler half-turn is multiplication by the phase
+\[
+ e^{i\pi}=-1,
+\]
+so define
+\begin{equation}
+ \boxed{\mathcal E_u(u)=-u=e^{i\pi}u}.
+ \label{eq:g012-Eu}
+\end{equation}
+Both maps are involutions on their natural projective domain.
+
+\section{Factorization of the canonical negative inverse}
+
+The two primitive involutions commute:
+\[
+ \mathcal R_u\mathcal E_u(u)
+ =\frac1{-u}
+ =-\frac1u
+ =\mathcal E_u\mathcal R_u(u).
+\]
+Define
+\[
+ \mathcal N:=\mathcal R\circ\mathcal E
+ =\mathcal E\circ\mathcal R.
+\]
+Then
+\begin{equation}
+ \boxed{\mathcal N_u(u)=-\frac1u=\frac{e^{i\pi}}u}.
+ \label{eq:g012-Nu}
+\end{equation}
+Combining \cref{eq:g012-li-negative-inverse,eq:g012-Nu} gives the exact
+crosswalk to the Chapter~25 canon:
+\begin{equation}
+ \boxed{
+ z_L(s)
+ =\mathcal N_u(\Omega(s))
+ =\mathcal E_u\!\left(\mathcal R_u(\Omega(s))\right)
+ =\mathcal R_u\!\left(\mathcal E_u(\Omega(s))\right).
+ }
+ \label{eq:g012-li-factorization}
+\end{equation}
+Thus SOH-L017 is retained unchanged, while SOH-G012 supplies an operator
+factorization of the same rational map.
+
+\begin{theorem}[Euler--Riemann negative-inversion algebra]
+On the common projective domain,
+\[
+ \mathcal R^2=\mathcal E^2=\mathcal N^2=\mathrm{id},
+ \qquad
+ \mathcal R\mathcal E=\mathcal E\mathcal R=\mathcal N.
+\]
+Consequently
+\[
+ \boxed{\{\mathrm{id},\mathcal R,\mathcal E,\mathcal N\}\cong V_4},
+\]
+the Klein four group.
+\end{theorem}
+
+\begin{proof}
+The involutivity of \(\mathcal R\) and \(\mathcal E\) follows immediately from
+\(1/(1/u)=u\) and \(-(-u)=u\).  Equation~\eqref{eq:g012-Nu} gives
+\(\mathcal N^2(u)=-1/(-1/u)=u\), while the displayed composition identity gives
+commutativity and closure.  The four maps are distinct on a generic projective
+point, so the resulting group is the Klein four group.
+\end{proof}
+
+\section{Centered conjugacies}
+
+Use the centered coordinate
+\[
+ t=2s-1=\frac{u-1}{u+1}.
+\]
+Direct substitution gives
+\begin{equation}
+ \boxed{\mathcal R_t(t)=-t},
+ \qquad
+ \boxed{\mathcal E_t(t)=\frac1t},
+ \qquad
+ \boxed{\mathcal N_t(t)=-\frac1t}.
+ \label{eq:g012-t-actions}
+\end{equation}
+The negative inversion in the centered chart is therefore exactly the product
+of the Riemann sign reflection and the Euler reciprocal action.
+
+With
+\[
+ z=s-\frac12=\frac t2,
+\]
+one obtains
+\begin{equation}
+ \boxed{\mathcal R_z(z)=-z},
+ \qquad
+ \boxed{\mathcal E_z(z)=\frac1{4z}},
+ \qquad
+ \boxed{\mathcal N_z(z)=-\frac1{4z}}.
+ \label{eq:g012-z-actions}
+\end{equation}
+Finally, for the even quotient
+\[
+ w=z^2,
+\]
+we have
+\begin{equation}
+ \boxed{\mathcal R_w(w)=w},
+ \qquad
+ \boxed{\mathcal E_w(w)=\mathcal N_w(w)=\frac1{16w}}.
+ \label{eq:g012-w-actions}
+\end{equation}
+Thus the square quotient removes the distinction between \(\mathcal E\) and
+\(\mathcal N\) because it has already quotiented out the sign reflection
+\(\mathcal R\).
+
+\section{Fixed points and the critical line}
+
+The affine fixed-point equation for the canonical negative inversion is
+\[
+ u=-\frac1u.
+\]
+Equivalently,
+\begin{equation}
+ \boxed{u^2=e^{i\pi}=-1}.
+ \label{eq:g012-fixed-euler}
+\end{equation}
+Hence
+\[
+ \boxed{u_\pm=\pm i}.
+\]
+Mapping back with \(s=u/(1+u)\) gives
+\begin{equation}
+ \boxed{s_\pm=\frac12\pm\frac{i}{2}}.
+ \label{eq:g012-fixed-s}
+\end{equation}
+Therefore
+\[
+ \boxed{\Re(s_\pm)=\frac12}.
+\]
+
+\begin{theorem}[Fixed pair of the canonical negative inversion]
+The two affine fixed points of \(u\mapsto-1/u\) are \(u=\pm i\).  Their
+projective preimages under \(u=\Omega(s)\) are
+\[
+ \boxed{s=\frac12\pm\frac{i}{2}},
+\]
+so both lie on the Riemann critical line.
+\end{theorem}
+
+\begin{warning}
+This fixed-point statement is an operator-geometric theorem.  It does not state
+that a non-trivial zero of \(\xi\) must be fixed by \(\mathcal N\), and it does
+not imply the Riemann Hypothesis.
+\end{warning}
+
+In the centered coordinates the same fixed pair is
+\[
+ \boxed{t_\pm=\pm i},
+ \qquad
+ \boxed{z_\pm=\pm\frac{i}{2}},
+ \qquad
+ \boxed{w=-\frac14}.
+\]
+
+\section{Fixed-point stratification after the square quotient}
+
+The quotient action
+\[
+ \mathcal N_w(w)=\frac1{16w}
+\]
+has the two fixed values
+\begin{equation}
+ \boxed{w=\pm\frac14}.
+ \label{eq:g012-w-fixed}
+\end{equation}
+They have different origins.
+
+For \(w=-1/4\), the preimages \(z=\pm i/2\) are genuine fixed points of
+\(\mathcal N_z\):
+\[
+ \mathcal N_z\!\left(\pm\frac{i}{2}\right)
+ =\pm\frac{i}{2}.
+\]
+For \(w=+1/4\), the preimages \(z=\pm1/2\) form a two-cycle:
+\[
+ \mathcal N_z\!\left(\frac12\right)=-\frac12,
+ \qquad
+ \mathcal N_z\!\left(-\frac12\right)=\frac12.
+\]
+The map \(w=z^2\) identifies that two-cycle, producing a second fixed value only
+after quotienting.  Hence \(w=-1/4\) is the image of genuine negative-inversion
+fixed points, whereas \(w=+1/4\) is a quotient-created fixed value.
+
+\section{Logarithmic half-period form}
+
+Let
+\[
+ u=e^\lambda.
+\]
+Modulo the full logarithmic period \(2\pi i\), the primitive maps lift to
+\[
+ \mathcal R_\lambda(\lambda)=-\lambda,
+ \qquad
+ \mathcal E_\lambda(\lambda)=\lambda+i\pi.
+\]
+Their composition is
+\begin{equation}
+ \boxed{\mathcal N_\lambda(\lambda)=i\pi-\lambda}.
+ \label{eq:g012-log-N}
+\end{equation}
+The fixed lifts satisfy
+\[
+ \lambda=i\pi-\lambda+2\pi i k,
+\]
+so
+\begin{equation}
+ \boxed{\lambda_k=\frac{i\pi}{2}+\pi i k},
+ \qquad k\in\mathbb Z.
+ \label{eq:g012-log-fixed}
+\end{equation}
+Exponentiation collapses this family to the two classes \(u=+i\) and \(u=-i\).
+
+\section{Proof firewall}
+
+Proved in SOH-G012:
+\begin{itemize}
+ \item the Chapter~25 identity \(z_L(s)=-1/\Omega(s)\) is exactly
+       \(\mathcal N_u(\Omega(s))\);
+ \item \(\mathcal N=\mathcal R\mathcal E=\mathcal E\mathcal R\);
+ \item \(\{\mathrm{id},\mathcal R,\mathcal E,\mathcal N\}\cong V_4\);
+ \item the exact conjugacies in the \(t\), \(z\), and \(w\) coordinates;
+ \item the affine fixed pair \(u=\pm i\) and its critical-line images
+       \(s=1/2\pm i/2\);
+ \item the distinct origins of the quotient fixed values \(w=\pm1/4\);
+ \item the logarithmic lift \(\lambda\mapsto i\pi-\lambda\) and its fixed
+       half-period family.
+\end{itemize}
+
+Not proved in SOH-G012:
+\begin{itemize}
+ \item that any non-trivial xi zero is fixed by \(\mathcal N\);
+ \item that all xi zeros lie on the critical line;
+ \item PF\(_\infty\);
+ \item SOH-G003 real-rootedness;
+ \item the Riemann Hypothesis.
+\end{itemize}

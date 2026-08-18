@@ -72,6 +72,8 @@ jobs:
         run: python scripts/run_soh_g010_unique_scale_defect.py
       - name: Run SOH-G011 Euler half-period crossing receipt
         run: python scripts/run_soh_g011_euler_half_period.py
+      - name: Run SOH-G012 Euler-Riemann negative-inversion receipt
+        run: python scripts/run_soh_g012_negative_inversion.py
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
       - name: Install LaTeX toolchain
