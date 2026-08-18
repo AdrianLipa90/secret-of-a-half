@@ -3,7 +3,7 @@
 
 \section{Evaluation criteria}
 
-A candidate bridge should be judged by more than whether it can reproduce the zero set. The following criteria will be used:
+A candidate bridge should be judged by more than whether it can reproduce the zero set. The following criteria are used in this initial state-map branch:
 \begin{description}
   \item[Z] Zero equivalence: detector zero if and only if $\xi(s)=0$ in $\Sstrip$.
   \item[C] Covariance: compatibility with $\J$ and complex conjugation.
@@ -12,7 +12,7 @@ A candidate bridge should be judged by more than whether it can reproduce the ze
   \item[P] Positivity or self-adjointness: a mechanism forbids off-axis zeros.
   \item[R] Arithmetic retention: the Euler product, primes, or explicit formula remain visible.
 \end{description}
-No candidate in this chapter is claimed to satisfy all six criteria.
+No candidate in this chapter is claimed to satisfy all six criteria. Later chapters develop other canonical quotient and kernel objects and must be assessed on their own proved properties rather than retrofitted into this checklist.
 
 \section{Theta-kernel vectorization}
 
@@ -20,7 +20,7 @@ The integral representation \cref{eq:xi-integral} is symmetric in the two functi
 \[
  x^{s/2},\qquad x^{(1-s)/2}.
 \]
-This suggests treating them as complementary channels in a weighted function space on $[1,\infty)$. Let
+A concrete candidate is to treat them as complementary channels in a weighted function space on $[1,\infty)$. Let
 \[
  f_s(x)=x^{s/2},\qquad g_s(x)=x^{(1-s)/2},
 \]
@@ -30,9 +30,9 @@ and use a measure derived from $\psi(x)dx/x$. Under $s\mapsto1-s$, the two funct
 \]
 is therefore naturally covariant.
 
-The immediate difficulty is that $\xi(s)$ is not simply the equal-gain inner product of these two channels; it includes the constant $1/2$ and the factor $s(s-1)$. More importantly, the norms of $f_s$ and $g_s$ in the naive positive measure are not $\sigma$ and $1-\sigma$. Still, this route has genuine advantages: it begins from the classical theta derivation, is defined on an open domain, and builds complement covariance without zero fitting.
+The immediate difficulty is that $\xi(s)$ is not simply the equal-gain inner product of these two channels; it includes the constant $1/2$ and the factor $s(s-1)$. More importantly, the norms of $f_s$ and $g_s$ in the naive positive measure are not $\sigma$ and $1-\sigma$. This route nevertheless begins from the classical theta derivation, is defined on an open domain, and builds complement covariance without zero fitting.
 
-A concrete subproblem is to find a $2\times2$ operator-valued kernel $K_s(x,y)$ such that a Schur complement or determinant equals $\xi(s)$ and the involution acts by channel swap. Positivity of that kernel on the centred real slice could then connect to RH.
+A concrete subproblem is to find a $2\times2$ operator-valued kernel $K_s(x,y)$ such that a Schur complement or determinant equals $\xi(s)$ and the involution acts by channel swap. Positivity of that kernel on the centred real slice would then have to be proved separately before any zero-location consequence could be drawn.
 
 \section{Unnormalized analytic vector with detector projection}
 
@@ -48,9 +48,9 @@ while the component norm ratio, evaluated in a separate Hermitian metric $G(s)$,
 \end{equation}
 The scalar sum remains holomorphic; the normalized probabilities arise from a Hermitian construction and may depend on $\bar s$.
 
-This separation is mathematically natural. Holomorphic vector bundles carry Hermitian metrics whose norms are not holomorphic. The challenge is to derive $G$ canonically and keep the vector non-zero at zeros of the sum. If $F_1=-F_0\neq0$ at a zero, the state is well-defined and exactly cancels.
+Holomorphic vector bundles can carry Hermitian metrics whose norms are not holomorphic, so this separation is mathematically admissible. The challenge is to derive $G$ canonically and keep the vector non-zero at zeros of the sum. If $F_1=-F_0\neq0$ at a zero, the state is well-defined and exactly cancels.
 
-A trivial decomposition $F_0=1$, $F_1=\xi-1$ satisfies the sum but has no symmetry or arithmetic meaning. The real work is to obtain the components from complementary pieces of the theta transform, explicit formula, or a transfer operator.
+A trivial decomposition $F_0=1$, $F_1=\xi-1$ satisfies the sum but has no required symmetry or arithmetic derivation. The construction target is therefore specifically a decomposition from complementary pieces of the theta transform, explicit formula, or a specified transfer operator.
 
 \section{Reproducing-kernel Hilbert spaces}
 
@@ -58,11 +58,9 @@ In a reproducing-kernel Hilbert space of entire functions, evaluation at $s$ is 
 \[
  F(s)=\langle F,K_s\rangle=0.
 \]
-This is already a detector interpretation. De Branges spaces add an involutive structure and strong control over real zeros of entire functions \citep{debranges1968}.
+De Branges spaces add an involutive structure and strong control over real zeros of entire functions \citep{debranges1968}.
 
-The information--spinor programme asks whether the evaluation kernel can be decomposed into two complement-related components whose relative norms encode $(\sigma,1-\sigma)$. If a de Branges-type positivity condition could be established for a function constructed from $\XiR$, real-zero theorems would replace the elementary cancellation lemma at a more powerful level.
-
-The danger is overstatement. The existence of de Branges theory does not imply that $\XiR$ belongs to a suitable de Branges class with all required inequalities. Those inequalities are often equivalent in difficulty to RH.
+The candidate question for the information-spinor branch is whether the evaluation kernel can be decomposed into two complement-related components whose relative norms encode $(\sigma,1-\sigma)$. No such de Branges inequality is assumed here; establishing the required positivity conditions would be an independent theorem and may be RH-hard.
 
 \section{Li coefficients and information deficit}
 
@@ -75,36 +73,26 @@ Li's criterion states that RH is equivalent to non-negativity of the sequence
 \end{equation}
 \citep{li1997}. This is an exact positivity reformulation.
 
-A possible information-theoretic route would represent each $\lambda_n$ as an integral or sum of non-negative entropy deficits,
+One explicit search target is a representation
 \begin{equation}
  \lambda_n\stackrel{?}{=}\int\left(\ln2-\Hbin(\sigma)\right)d\mu_n(\sigma,t),
  \label{eq:li-entropy-candidate}
 \end{equation}
-with a positive measure $\mu_n$ derived canonically from zeta data. If achieved, positivity would be automatic. No such representation is supplied here; \cref{eq:li-entropy-candidate} is a precise search target.
-
-The target is falsifiable. If the natural measures arising from the explicit formula are signed or the integral cannot reproduce known $\lambda_n$, the route fails in that form.
+with a positive measure $\mu_n$ derived canonically from zeta data. No such representation is supplied here. The question is falsifiable: if the natural measures from the explicit formula are signed or the integral cannot reproduce the Li coefficients, this candidate fails in that form.
 
 \section{Weil positivity and two-channel kernels}
 
-Weil's explicit-formula criterion recasts RH as positivity of a quadratic form on suitable test functions \citep{weil1952}. This is conceptually aligned with \cref{eq:positive-factorization}: both seek a positive Hermitian object whose null or sign structure controls zeros.
+Weil's explicit-formula criterion recasts RH as positivity of a quadratic form on suitable test functions \citep{weil1952}. This is mathematically aligned with the positive-factorization target \cref{eq:positive-factorization}: both require a positive Hermitian object whose sign or null structure controls zeros.
 
-A two-channel version could begin with a test function and its involutive complement, assemble a $2\times2$ Gram matrix, and ask whether positivity forces equal diagonal weights at zero modes. The benefit is that equal gain would emerge from a symmetric Gram matrix. The obstacle is that constructing the correct positive form is essentially the hard part of Weil's criterion.
+A two-channel candidate can begin with a test function and its involutive complement, assemble a $2\times2$ Gram matrix, and ask whether positivity forces equal diagonal weights at zero modes. The obstacle is not hidden: constructing the correct globally positive form on the full admissible class is the hard part of Weil's criterion. Chapter~25 later formalizes this as SOH-C005 and keeps it open.
 
 \section{Nyman--Beurling approximation}
 
-The Nyman--Beurling criterion, in strengthened forms, makes RH equivalent to a closure or approximation property in a Hilbert space \citep{baezduarte2003}. Approximation errors are non-negative norms and therefore natural candidates for an information deficit. One could ask whether the optimal approximation admits a binary decomposition into a function and its complement, with balance at the closure threshold.
-
-This route is less directly spinorial but stronger analytically: the Hilbert-space norm and positivity are built in. A successful connection would need to show that the binary state is not an arbitrary visualization but a compression of the approximation geometry.
+The Nyman--Beurling criterion, in strengthened forms, makes RH equivalent to a closure or approximation property in a Hilbert space \citep{baezduarte2003}. Approximation errors are non-negative norms and can therefore be tested as candidate deficit variables. A binary decomposition would still require a separate theorem showing that it is canonical and preserves the criterion.
 
 \section{Transfer operators and parity grading}
 
-Alternating signs can be encoded by a parity operator $\Pi$ with eigenvalues $\pm1$. A transfer operator $L_s$ acting on a graded space $\mathcal H_+\oplus\mathcal H_-$ may yield determinants or traces involving zeta-type functions. If the eta function appears as a graded trace,
-\[
- \operatorname{Tr}(\Pi L_s^n),
-\]
-then the binary channels are the parity sectors. The desired equal-gain cancellation would correspond to a balanced zero mode across the sectors.
-
-This route has clear structural appeal but requires an explicit operator with controlled spectrum and determinant. Without it, ``parity'' is only a relabelling of the alternating sign.
+Alternating signs can be encoded by a parity operator $\Pi$ with eigenvalues $\pm1$. A transfer operator $L_s$ acting on a graded space $\mathcal H_+\oplus\mathcal H_-$ may yield determinants or traces involving zeta-type functions. If eta were obtained as a graded trace, then the parity sectors would provide an exact two-sector decomposition. This remains a construction target until an explicit operator, controlled spectrum, and determinant identity are supplied.
 
 \section{A candidate specification}
 
@@ -126,10 +114,10 @@ Find a Hilbert space $\mathcal H=\mathcal H_0\oplus\mathcal H_1$, an analytic no
 \end{enumerate}
 \end{problem}
 
-At a zero, $v(s)$ remains non-zero but lies in $\ker D$. The norm conditions and equal gain then reduce the zero mode to the cancellation lemma. This specification avoids the normalization singularity and cleanly separates analytic vectors from Hermitian probabilities.
+At a zero, $v(s)$ would remain non-zero but lie in $\ker D$. Under all of the stated hypotheses, the norm conditions and equal gain reduce the zero mode to the cancellation lemma. This specification avoids the normalization singularity and cleanly separates analytic vectors from Hermitian probabilities.
 
-\section{Research priority}
+\section{Status after the later constructions}
 
-Among the candidates, the theta-kernel and analytic-vector routes are the most native to the present ansatz. The spectral route in the next chapter is the strongest route to RH but may absorb the information-spinor picture as interpretation rather than as the primary proof engine. The appropriate strategy is not to choose prematurely: derive invariants that every viable route must share and test them against known zeta structure.
+This chapter records candidate routes of the initial information-spinor programme. Subsequent chapters establish an exact positive Riemann kernel, a quotient entire function, PF$_2$, several zero-exclusion theorems, and a canonical coefficient probability law. Those later results do not satisfy SOH-C001 automatically and do not turn the candidate constructions above into proved objects. The active global frontiers after Chapter~45 are summarized in the final synthesis.
 
-\status{All cited RH criteria are classical. Their proposed information-theoretic decompositions are open research targets, not established equivalences.}
+\status{All cited RH criteria are classical. Their proposed information-theoretic or state-map decompositions remain open research targets unless a later chapter explicitly proves the required object.}
