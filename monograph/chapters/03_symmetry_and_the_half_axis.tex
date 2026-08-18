@@ -1,7 +1,7 @@
 \chapter{Symmetry, Involution, and the Half-Axis}
 \label{chap:symmetry}
 
-\section{The anti-linear involution}
+\section{The conjugate-affine involution}
 
 The functional equation is a holomorphic reflection $s\mapsto1-s$. To express reflection across a vertical line, combine it with complex conjugation.
 
@@ -12,7 +12,7 @@ Define
  \label{eq:J-def}
 \end{equation}
 \end{definition}
-It is anti-linear over complex scalars and satisfies $\J^2=\operatorname{id}$.
+The map $\J$ is an anti-holomorphic, conjugate-affine involution and satisfies $\J^2=\operatorname{id}$. It is not anti-linear as a map of the affine coordinate $s$ because of the constant term $1$. After centering at $1/2$, however, its action becomes anti-linear; this distinction is used explicitly below.
 
 \begin{lemma}[SOH-L003: fixed set]
 \label{lem:J-fixed}
@@ -75,11 +75,11 @@ On $\R$, the equation $C(\sigma)=\sigma$ has the unique solution $\sigma=1/2$.
 
 More generally, an affine involution $C_a(x)=a-x$ has centre $a/2$. The half is not numerology; it is the algebraic centre of the unit complement. The unit is supplied by the zeta functional equation, which pairs $s$ with $1-s$.
 
-This observation suggests a useful hierarchy:
+The resulting exact hierarchy is:
 \begin{enumerate}
   \item the number $1$ enters through the analytic functional equation;
   \item complementarity relative to $1$ selects the centre $1/2$;
-  \item the Riemann Hypothesis asks whether all non-trivial zeros are self-dual under the resulting involution.
+  \item the Riemann Hypothesis asks whether all non-trivial zeros lie on the associated fixed line.
 \end{enumerate}
 
 \section{Centred displacement}
@@ -99,15 +99,15 @@ transforms as
 \[
  u\mapsto-\overline{u}
 \]
-under $\J$. Multiplying by $-i$ gives the spectral coordinate $z=-iu$, under which $\J$ becomes ordinary conjugation:
+under $\J$. In this centered vector coordinate the action is genuinely anti-linear. Multiplying by $-i$ gives the spectral coordinate $z=-iu$, under which $\J$ becomes ordinary conjugation:
 \[
  z\mapsto\overline{z}.
 \]
-Thus a self-adjoint spectral realization would convert the anti-linear zeta symmetry into the standard reality of spectra.
+Thus a self-adjoint spectral realization would convert the centered anti-linear action into the standard reality condition for spectra.
 
 \section{Self-duality versus zerohood}
 
-The fixed-line property is a property of the argument $s$; zerohood is a property of the value $\xi(s)$. A canonical bridge must relate them without assuming either. The following diagram summarizes the required logic:
+The fixed-line property is a property of the argument $s$; zerohood is a property of the value $\xi(s)$. A canonical bridge must relate them without assuming either. The following diagram summarizes the required logic of the initial information-spinor ansatz:
 \[
  \xi(s)=0
  \quad\Longrightarrow\quad
@@ -117,7 +117,7 @@ The fixed-line property is a property of the argument $s$; zerohood is a propert
  \quad\Longrightarrow\quad
  \Re s=\frac12.
 \]
-Only the last implication is elementary. The middle implication is the two-channel lemma developed later. The first is SOH-C001, the open bridge.
+Only the last implication is elementary. The middle implication is the two-channel lemma developed later. The first is SOH-C001, which remains open for that ansatz.
 
 \begin{warning}
 Replacing the first arrow by a definition does not solve the problem. For example, assigning the state $\ket{-}$ whenever $\xi(s)=0$ is tautological. The state must be constructed independently and its readout zero must be proved equivalent to $\xi(s)=0$.
@@ -136,4 +136,4 @@ A state map $s\mapsto\ket{\Psi(s)}$ with channel weights $(\sigma,1-\sigma)$ is 
 \end{equation}
 where $\sim$ denotes equality of rays. At a fixed point $s\in\Crit$, this covariance enforces equal channel norms. It does not by itself enforce the relative phase $\pi$ needed for destructive cancellation. This is the state-space version of the same logical gap: symmetry gives balance, while zerohood requires a further phase or orthogonality condition.
 
-\status{SOH-L003 and the orbit analysis are exact. The state covariance in \cref{eq:state-covariance-preview} is a design requirement for later candidate maps, not an established property of zeta zeros.}
+\status{SOH-L003 and the orbit analysis are exact. The affine map $\J(s)=1-\bar s$ is anti-holomorphic and conjugate-affine; only its centered action $u\mapsto-\bar u$ is anti-linear. The state covariance in \cref{eq:state-covariance-preview} is a design requirement for the initial candidate map, not an established property of zeta zeros.}
