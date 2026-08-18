@@ -1,0 +1,60 @@
+\chapter{Unique Positive Scale-Defect Crossing}
+\label{chap:unique-scale-defect-crossing}
+
+\status{Proved on the positive real \(u\)-axis. No complex zero-location or RH claim is made.}
+
+For \(u>0\), define
+\[
+X(u)=\xi\!\left(\frac{u}{1+u}\right),\qquad
+\Delta_a(u)=X(au)-X(u),\quad a>1.
+\]
+Write \(u=e^\lambda\). Then
+\[
+\frac{u}{1+u}=\frac12+\frac12\tanh\frac\lambda2.
+\]
+Since \(\xi(1/2+z)=F(z^2)\),
+\[
+\boxed{X(e^\lambda)=F\!\left(\frac14\tanh^2\frac\lambda2\right).}
+\]
+From the positive coefficient theorem of Chapter 27,
+\[
+F(w)=\sum_{k\ge0}a_k w^k,\qquad a_k>0,
+\]
+so
+\[
+F'(w)>0\qquad(w\ge0).
+\]
+Consequently \(X(e^\lambda)\) is even in \(\lambda\) and strictly increasing as a function of \(|\lambda|\).
+
+Let \(L=\log a>0\). Then
+\[
+\Delta_a(e^\lambda)=X(e^{\lambda+L})-X(e^\lambda),
+\]
+and therefore its sign is the sign of
+\[
+|\lambda+L|-|\lambda|.
+\]
+This gives the following theorem.
+
+\begin{theorem}[Unique positive scale-defect crossing]
+For every \(a>1\),
+\[
+\Delta_a(u)<0\quad\text{for }0<u<a^{-1/2},
+\]
+\[
+\boxed{\Delta_a(u)=0\iff u=a^{-1/2}},
+\]
+and
+\[
+\Delta_a(u)>0\quad\text{for }u>a^{-1/2}.
+\]
+\end{theorem}
+
+For the Uroboros scale \(a=32\), the unique crossing is
+\[
+\boxed{u=32^{-1/2}}.
+\]
+This strengthens the antisymmetry result of Chapter 33 on the positive axis: the symmetry-forced crossing is not merely present but unique and sign-changing.
+
+\section{Proof firewall}
+The theorem is one-dimensional on the positive real \(u\)-axis. It does not imply PF\(_\infty\), SOH-G003 real-rootedness, complex zero location, or the Riemann Hypothesis.
