@@ -1,10 +1,11 @@
 """SOH-G018 central zero-free interval from the G017 moment bound.
 
-The analytic theorem is
-    xi(1/2+i t) > F(0) * (1 - t^2/20)
-for |t|<sqrt(20), with strict positivity also at the two endpoints because
-G017 gives the strict moment inequality m2 < m0/10.  Equivalently,
-F(w)>0 for every real w in [-20,0].  Earlier positive coefficients extend
+Analytically,
+    xi(1/2+i t) >= F(0) * (1 - t^2/20)
+for real t, with a strict improvement for t != 0 inherited from the strict
+G017 moment inequality m2 < m0/10.  At t=0 the value is exactly F(0)>0,
+and at |t|=sqrt(20) the strict moment inequality still gives positivity.
+Thus F(w)>0 for every real w in [-20,0]. Earlier positive coefficients extend
 this to every real w>=-20.
 """
 from __future__ import annotations
@@ -26,7 +27,7 @@ def central_radius() -> mp.mpf:
 
 
 def normalized_lower_bound(t: complex | mp.mpf | mp.mpc) -> mp.mpf:
-    """Return 1-t^2/20 for a finite real t."""
+    """Return the normalized weak lower bound 1-t^2/20 for finite real t."""
     t = mp.mpc(t)
     if not mp.isfinite(t) or mp.im(t) != 0:
         raise ValueError("t must be finite and real")
