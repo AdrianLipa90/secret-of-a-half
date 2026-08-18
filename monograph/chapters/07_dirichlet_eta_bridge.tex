@@ -53,7 +53,7 @@ The multiplicities agree.
 In $\Sstrip$, the entire factor $1-2^{1-s}$ is non-zero. Multiplication by a non-vanishing analytic function preserves zeros and multiplicities.
 \end{proof}
 
-This proposition supplies the most direct exact bridge in the project. Every non-trivial zeta zero is a zero of a binary alternating Dirichlet series. The bridge is exact, but it remains many-channel: the alternating series contains infinitely many complex terms. The two-channel cancellation lemma cannot be applied without a canonical reduction.
+This proposition supplies the most direct exact binary bridge in the initial programme. Every non-trivial zeta zero is a zero of a binary alternating Dirichlet series. The bridge is exact, but it remains many-channel: the alternating series contains infinitely many complex terms. The two-channel cancellation lemma cannot be applied without a canonical reduction.
 
 \begin{figure}[htbp]
  \centering
@@ -70,7 +70,7 @@ For $\Re s>1$, define the odd and even channels
  E(s)&=\sum_{m=1}^{\infty}(2m)^{-s}=2^{-s}\zeta(s).
  \label{eq:even-channel}
 \end{align}
-Then $\eta=O-E$. It is tempting to interpret a zero of eta as equality of two channels. However, after analytic continuation, at a non-trivial zeta zero both $O$ and $E$ vanish because both contain the factor $\zeta(s)$. The equality is then $0=0$, not a normalized cancellation of two non-zero amplitudes.
+Then $\eta=O-E$. A candidate identification of an eta zero with equality of these two channels fails after analytic continuation: at a non-trivial zeta zero both $O$ and $E$ vanish because both contain the factor $\zeta(s)$. The equality is then $0=0$, not a normalized cancellation of two non-zero amplitudes.
 
 Away from zeros, their ratio is
 \begin{equation}
@@ -88,19 +88,19 @@ Writing $2^s=2^\sigma e^{it\ln2}$, this becomes
 \end{equation}
 where the right side must be positive. This is a family of curves, not the line $\sigma=1/2$. Therefore the naive odd-even split does not yield the critical axis.
 
-\section{Alternation, phase, and $\pi$}
+\section{Alternation and phase $\pi$}
 
-The sign $(-1)^{n-1}$ is $e^{i\pi(n-1)}$. Thus the eta series inserts a fixed phase increment $\pi$ between successive parity classes. This is the same elementary phase responsible for two-channel destructive interference and spinorial sign closure. Again, exact common ingredients do not automatically produce identical mechanisms:
+The sign $(-1)^{n-1}$ is $e^{i\pi(n-1)}$. Thus the eta series contains a fixed phase increment $\pi$ between successive parity classes. The same elementary complex phase appears in the separate two-channel cancellation formula, but equality of the phase factor does not identify the underlying mechanisms:
 \begin{itemize}
   \item in the two-channel model, two vectors of equal norm cancel;
   \item in eta, infinitely many terms with alternating signs sum to an entire function;
-  \item at a zeta zero, global cancellation occurs across the entire analytically continued series.
+  \item at a zeta zero, global cancellation occurs across the analytically continued function.
 \end{itemize}
-A canonical coarse-graining would need to map the infinite alternating structure into a normalized pair while preserving zerohood and involution covariance.
+A canonical coarse-graining would have to be constructed and proved to preserve zerohood and involution covariance.
 
 \section{The eta value $\ln2$ and the half point}
 
-The exact statements now form a chain of shared structures:
+The exact statements form the pair
 \[
  \eta(1)=\ln2=\Hbin(1/2),
 \]
@@ -108,15 +108,13 @@ and
 \[
  \eta(s)=0\iff\zeta(s)=0\quad(s\in\Sstrip).
 \]
-The first equation relates the alternating harmonic series to balanced binary information. The second relates the alternating zeta function to non-trivial zeros. What is not established is an implication
+The first equation relates the alternating harmonic series to the numerical value of balanced binary entropy. The second relates eta to the non-trivial zeta zero set. What is not established is
 \[
  \eta(s)=0\quad\Longrightarrow\quad\Hbin(\Re s)=\ln2.
 \]
-That implication is essentially RH expressed in informational language. The monograph does not hide it.
+That implication is RH-equivalent in this informational formulation and is not assumed.
 
-\section{A useful reformulation of the open bridge}
-
-Instead of asking vaguely whether ``binary information explains RH'', one may ask:
+\section{A precise open state-map problem}
 
 \begin{problem}[Canonical binary reduction of eta]
 Construct, from the eta or theta representation and without using the zero set as input, a normalized two-component vector
@@ -131,6 +129,6 @@ and a non-vanishing scalar factor $g(s)$ on $\Sstrip$ such that:
   \item no phase or parameter is fitted to known zeros.
 \end{enumerate}
 \end{problem}
-If such a construction existed, \cref{lem:exact-cancellation} would force all eta zeros in the strip, hence all non-trivial zeta zeros, onto the half-axis. The difficulty of satisfying all four requirements is the precise content of the open programme.
+If such a construction existed and satisfied all four requirements, \cref{lem:exact-cancellation} would force all eta zeros in the strip, hence all non-trivial zeta zeros, onto the half-axis. The construction itself remains open.
 
-\status{The eta identity, value at one, prefactor zeros, and zero equivalence in the strip are exact. The normalized binary reduction is open.}
+\status{The eta identity, value at one, prefactor zeros, and zero equivalence in the strip are exact. The normalized binary state reduction is open and is not supplied by the later scalar quotient/kernel construction.}
