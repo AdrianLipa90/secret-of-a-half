@@ -1,11 +1,11 @@
-\chapter{Uroboros Torus and Collatz--Riemann Conjugacy}
+\chapter{Uroboros Scale Quotient and Collatz--Riemann Coordinate Conjugacy}
 \label{chap:uroboros-torus}
 
-\status{Exact algebraic conjugacies proved; torus quotient proved conditional on the stated scale-identification convention. No Collatz-convergence, xi-scaling, zero-location, or RH claim is made.}
+\status{Exact algebraic coordinate conjugacies proved; torus quotient proved conditional on the stated scale-identification convention. No Collatz-convergence, xi-scaling, zero-location, or RH claim is made.}
 
 \section{Normalized half-layer coordinate}
 
-Let \(x>0\) and define
+Let $x>0$ and define
 \[
 u=2x,\qquad s=\frac{u}{1+u}=\frac{2x}{1+2x}.
 \]
@@ -13,7 +13,7 @@ Then
 \[
 \boxed{x=\frac12\iff u=1\iff s=\frac12.}
 \]
-Thus the distinguished half-layer in the \(x\)-coordinate is sent exactly to the fixed half-layer of the Riemann reflection coordinate.
+Thus the distinguished half-layer in the $x$-coordinate is sent exactly to the fixed half-layer of the Riemann reflection coordinate.
 
 Define
 \[
@@ -29,7 +29,7 @@ and hence
 \]
 Therefore
 \begin{theorem}[Half-centered inversion conjugacy]
-Under \(s=2x/(1+2x)\),
+Under $s=2x/(1+2x)$,
 \[
 \boxed{I_x:x\mapsto\frac1{4x}}
 \]
@@ -37,16 +37,16 @@ is conjugate to
 \[
 \boxed{J:s\mapsto1-s.}
 \]
-Equivalently, the reciprocal map \(u\mapsto1/u\) is exactly the critical reflection \(s\mapsto1-s\).
+Equivalently, the reciprocal map $u\mapsto1/u$ is exactly the critical reflection $s\mapsto1-s$.
 \end{theorem}
 
 \section{The two Collatz branches in the Riemann coordinate}
 
-For the halving branch \(x\mapsto x/2\), direct substitution gives
+For the halving branch $x\mapsto x/2$, direct substitution gives
 \[
 H(s)=\frac{s}{2-s}.
 \]
-For the odd branch \(x\mapsto3x+1\), direct substitution gives
+For the odd branch $x\mapsto3x+1$, direct substitution gives
 \[
 O(s)=\frac{s+2}{3}.
 \]
@@ -65,7 +65,7 @@ The inverse of the halving map is
 \[
 H^{-1}(s)=\frac{2s}{1+s}.
 \]
-With \(J(s)=1-s\), one verifies
+With $J(s)=1-s$, one verifies
 \[
 \boxed{JHJ=H^{-1}.}
 \]
@@ -81,9 +81,9 @@ contains five exact halving steps and is mapped to
 \[
 \frac{32}{33}\to\frac{16}{17}\to\frac89\to\frac45\to\frac23\to\frac12.
 \]
-The endpoint therefore lands exactly on the Riemann half-layer in the \(s\)-coordinate.
+The endpoint therefore lands exactly on the Riemann half-layer in the $s$-coordinate.
 
-The scale ratio between the first and final \(x\)-values is
+The scale ratio between the first and final $x$-values is
 \[
 \frac{16}{1/2}=32=2^5.
 \]
@@ -96,11 +96,11 @@ Suppose that, as an explicit cycle-identification convention, points related by 
 \]
 This is an added quotient rule, not a consequence of the Collatz conjecture.
 
-For \(u\in\mathbb C^*\), write
+For $u\in\mathbb C^*$, write
 \[
 \lambda=\log u.
 \]
-Then multiplication by \(32\) becomes translation by
+Then multiplication by $32$ becomes translation by
 \[
 \log32=5\log2,
 \]
@@ -114,7 +114,7 @@ Therefore the quotient lattice is
 \]
 Consequently
 \begin{theorem}[Uroboros scale quotient]
-Under the explicit identification \(u\sim32u\),
+Under the explicit identification $u\sim32u$,
 \[
 \boxed{\mathbb C^*/32^{\mathbb Z}\cong\mathbb C/\Lambda}
 \]
@@ -123,7 +123,7 @@ is a complex one-dimensional torus.
 
 \section{INTERPRETACJA: Uroboros cycle semantics}
 
-\textbf{INTERPRETACJA.} The quotient identification \(u\sim32u\) can be read as a mathematical realization of the proposed Uroboros convention: the end of the selected five-halving cycle is glued to the beginning of the next cycle. In this interpretation, the half-layer is not a terminal state but a cycle seam.
+\textbf{INTERPRETACJA.} The quotient identification $u\sim32u$ can be read as a mathematical realization of the proposed Uroboros convention: the end of the selected five-halving cycle is glued to the beginning of the next cycle. In this interpretation, the half-layer is not a terminal state but a cycle seam.
 
 This interpretation is deliberately separated from the proved algebraic conjugacies. In particular, it does not assert that every Collatz orbit enters this chain.
 
@@ -137,7 +137,7 @@ the xi functional equation supplies the already exact inversion symmetry
 \[
 \boxed{X(u)=X(1/u).}
 \]
-The present construction supplies a separate discrete scale quotient \(u\sim32u\) only after the explicit Uroboros identification convention is imposed.
+The present construction supplies a separate discrete scale quotient $u\sim32u$ only after the explicit Uroboros identification convention is imposed.
 
 No identity
 \[
@@ -147,14 +147,14 @@ or quasi-periodic law
 \[
 X(32u)=M(u)X(u)
 \]
-has been proved. Such a scaling or \(q\)-difference law, if independently derived rather than assumed, would constitute a genuinely new bridge between the torus dynamics and the xi function.
+has been proved. Such a scaling or $q$-difference law, if independently derived rather than assumed, would constitute a separate analytic statement connecting the torus dynamics and the xi function.
 
 \section{Proof firewall}
 
 The following remain OPEN:
 \begin{itemize}
 \item convergence of all Collatz trajectories;
-\item a natural xi scaling or quasi-periodicity under \(u\mapsto32u\);
+\item a natural xi scaling or quasi-periodicity under $u\mapsto32u$;
 \item a zero-preserving consequence of the torus quotient;
 \item SOH-G003 real-rootedness;
 \item the Riemann Hypothesis.
