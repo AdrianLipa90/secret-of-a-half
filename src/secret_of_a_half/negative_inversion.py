@@ -15,6 +15,20 @@ def _finite_complex(value: complex | mp.mpf | mp.mpc, *, name: str) -> mp.mpc:
     return value
 
 
+def functional_reflection_s(s: complex | mp.mpf | mp.mpc) -> mp.mpc:
+    """Holomorphic Riemann functional reflection s -> 1-s."""
+    s = _finite_complex(s, name="s")
+    return 1 - s
+
+
+def li_coordinate(s: complex | mp.mpf | mp.mpc) -> mp.mpc:
+    """Canonical Li coordinate z_L(s)=1-1/s, away from s=0."""
+    s = _finite_complex(s, name="s")
+    if s == 0:
+        raise ValueError("Li coordinate is singular at s=0")
+    return 1 - 1 / s
+
+
 def riemann_reflection_u(u: complex | mp.mpf | mp.mpc) -> mp.mpc:
     """R(u)=1/u, conjugate to s -> 1-s."""
     u = _finite_complex(u, name="u")
@@ -51,6 +65,14 @@ def u_from_s(s: complex | mp.mpf | mp.mpc) -> mp.mpc:
     if s == 1:
         raise ValueError("s=1 is the affine Möbius pole")
     return s / (1 - s)
+
+
+def li_coordinate_via_negative_inversion(s: complex | mp.mpf | mp.mpc) -> mp.mpc:
+    """Evaluate the Chapter-25 identity z_L(s)=N_u(Omega(s))=-1/Omega(s)."""
+    s = _finite_complex(s, name="s")
+    if s == 0 or s == 1:
+        raise ValueError("Li/projective crosswalk is singular at s=0 or s=1")
+    return negative_inversion_u(u_from_s(s))
 
 
 def centered_t_from_u(u: complex | mp.mpf | mp.mpc) -> mp.mpc:
