@@ -7,9 +7,11 @@ from pathlib import Path
 import mpmath as mp
 
 from secret_of_a_half.euler_crossings import (
+    centered_t_from_u,
     complex_scale_defect,
     crossing_quotient_argument,
     euler_half_turn,
+    euler_half_turn_centered_inversion,
     forced_u_crossings,
     log_scale_defect,
     logarithmic_crossing,
@@ -32,9 +34,15 @@ def main() -> None:
 
         lam0 = logarithmic_crossing(a, 0)
         lam1 = logarithmic_crossing(a, 1)
-        euler_residual = abs(mp.exp(lam1) - euler_half_turn(mp.exp(lam0)))
+        u0 = mp.exp(lam0)
+        euler_residual = abs(mp.exp(lam1) - euler_half_turn(u0))
         if euler_residual > mp.mpf("1e-50"):
             raise RuntimeError(f"Euler half-turn residual failed for a={a}")
+
+        t0 = centered_t_from_u(u0)
+        centered_inversion_residual = abs(euler_half_turn_centered_inversion(u0) - 1 / t0)
+        if centered_inversion_residual > mp.mpf("1e-50"):
+            raise RuntimeError(f"Euler centered inversion failed for a={a}")
 
         d0 = abs(numerical_log_crossing_derivative(a, 0))
         d1 = abs(numerical_log_crossing_derivative(a, 1))
@@ -55,6 +63,7 @@ def main() -> None:
                 "u_plus": mp.nstr(plus, 30),
                 "u_minus": mp.nstr(minus, 30),
                 "euler_half_turn_residual": mp.nstr(euler_residual, 8),
+                "centered_inversion_residual": mp.nstr(centered_inversion_residual, 8),
                 "derivative_even_abs": mp.nstr(d0, 16),
                 "derivative_odd_abs": mp.nstr(d1, 16),
                 "w_even": mp.nstr(w_even, 16),
@@ -69,6 +78,7 @@ def main() -> None:
         "claims": {
             "forced_pair_proved_analytically": True,
             "euler_half_period_exchange_proved_analytically": True,
+            "euler_half_turn_equals_centered_inversion_proved_analytically": True,
             "forced_pair_simple_proved_analytically": True,
             "no_additional_complex_zeros_proved": False,
             "soh_g003_proved": False,
