@@ -1,12 +1,9 @@
 \chapter{Canonical Claim Ledger}
 \label{app:claims}
 
-This appendix is the canonical monograph-side claim map for Version 0.9
-Integrated Canon V2. Historical pre-v0.9 identifiers that collided with the
-promoted Li/Weil line are preserved only as aliases; the active meanings of
-SOH-L012--SOH-L032 are unique and are those of \cref{chap:li-negative-inverse}.
+This appendix is the canonical monograph-side claim map for Version 0.9 Integrated Canon V3. Historical identifiers that collided during development are preserved only as provenance aliases. An identifier is active only when this ledger or a theorem statement in the integrated monograph assigns it a current meaning.
 
-\section{Stable foundation and open bridges}
+\section{Stable foundation and open state-map bridges}
 \small
 \begin{longtable}{@{}p{0.12\textwidth}p{0.49\textwidth}p{0.16\textwidth}p{0.13\textwidth}@{}}
 \toprule
@@ -19,7 +16,7 @@ ID & Statement & Status & Location\\
 \endhead
 SOH-L001 & Binary Shannon entropy is uniquely maximal at $\sigma=1/2$, with value $\ln2$. & Exact & Ch.~4\\
 SOH-L002 & Equal-gain normalized two-channel cancellation occurs only at $\sigma=1/2$ and relative phase $\pi$. & Exact & Ch.~5\\
-SOH-L003 & The fixed set of $K(s)=1-\bar s$ is $\Re s=1/2$. & Exact & Ch.~3\\
+SOH-L003 & The fixed set of $\J(s)=1-\bar s$ is $\Re s=1/2$. & Exact & Ch.~3\\
 SOH-L004 & Entropy deficit from balance equals a Bernoulli KL divergence and is positive away from $1/2$. & Exact & Ch.~4\\
 SOH-L005 & The declared binary-spinor balance conditions select $\sigma=1/2$. & Exact model theorem & Ch.~6\\
 SOH-L006 & Eta and zeta have identical zero sets with multiplicity in the open critical strip. & Exact classical & Ch.~7\\
@@ -28,11 +25,11 @@ SOH-L008 & The native paired theta state satisfies the declared $K$-covariance. 
 SOH-L009 & The normalized native closure defect is $(\Re s-1/2)^2$. & Exact & Ch.~16\\
 SOH-L010 & The continuous paired theta-Mellin detector equals $\xi(s)$. & Exact classical & Ch.~16\\
 SOH-L011 & An involution-fixed finite PhaseNav--Weil fixture reduces to a PSD Gram matrix. & Exact finite & Weil probe\\
-SOH-C001 & A canonical zeta-state map converts every non-trivial zero into equal-gain complementary cancellation. & OPEN & Chs.~8--9\\
-SOH-C002 & A theta/analytic-vector/positivity construction satisfies the canonical bridge requirements. & OPEN & Ch.~11\\
+SOH-C001 & A canonical normalized information-spinor state map converts every non-trivial zero into equal-gain complementary cancellation. & OPEN & Chs.~8--9\\
+SOH-C002 & A theta/analytic-vector/positivity construction satisfies the state-map bridge requirements. & OPEN & Ch.~11\\
 SOH-C003 & A self-adjoint spectral construction has the required zeta determinant. & OPEN & Ch.~12\\
 SOH-C004 & Every non-trivial $\xi$ zero closes in the canonical self-dual PhaseNav shell. & OPEN & Ch.~16\\
-SOH-C005 & The complete arithmetic Weil form is non-negative on the full admissible test family by an independent, non-circular proof. & OPEN & Ch.~25\\
+SOH-C005 & The complete arithmetic Weil form is non-negative on the full admissible test family by an independent, non-circular proof. & OPEN / RH-equivalent frontier & Ch.~25\\
 \bottomrule
 \end{longtable}
 \normalsize
@@ -68,7 +65,42 @@ SOH-L028 & Prime arithmetic support occurs at additive shifts $\pm\log n$ under 
 SOH-L029 & A single positive-weight hinge kernel is indefinite; the displayed two-point minor has determinant $-a^2/4$. & Exact no-go\\
 SOH-L030 & Positivity of von Mangoldt weights alone cannot establish SOH-C005 term by term. & Exact no-go\\
 SOH-L031 & Localized SOH-C005 is equivalent to non-negativity of the localized spectral floor. & Exact reduction\\
-SOH-L032 & The localized spectral floor is non-increasing with $a$ because the Rayleigh test domains $C_c^\infty(-a,a)$ are nested. & Exact domain monotonicity\\
+SOH-L032 & The localized spectral floor is non-increasing with $a$ because the Rayleigh test domains are nested. & Exact domain monotonicity\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section{Integrated SOH-G quotient, kernel, and operator line through G020}
+\small
+\begin{longtable}{@{}p{0.12\textwidth}p{0.53\textwidth}p{0.18\textwidth}p{0.10\textwidth}@{}}
+\toprule
+ID & Canonical statement & Status & Location\\
+\midrule
+\endfirsthead
+\toprule
+ID & Canonical statement & Status & Location\\
+\midrule
+\endhead
+SOH-G001 & The inverse-boundary geometry reduces zero closure to the self-dual unit circle/half-layer and admits the holomorphic square quotient. & Exact reduction; zero closure OPEN & Ch.~26\\
+SOH-G002 & Historical intermediate identifier appearing in an early quotient research note; no standalone theorem is promoted under this ID in the integrated monograph. & Inactive / not promoted & provenance\\
+SOH-G003 & Every zero of the entire quotient $F$ is real; by coefficient positivity this is equivalent to RH. & OPEN / RH-equivalent & Chs.~26--27\\
+SOH-G004 & The compactified exact Riemann-kernel weight $W$ is strictly log-concave. The prior strict log-concavity theorem for the classical Xi kernel $\Phi$ is attributed to Gershon. & PROVED & Ch.~29\\
+SOH-G005 & The Taylor coefficients of $F$ form a PF$_2$ sequence. & PROVED & Ch.~30\\
+SOH-G006 & The solid PF$_3$ Toeplitz minor has the exact ratio-curvature reduction of Chapter~31; global non-negativity of the margin is not proved. & Reduction PROVED; PF$_3$ OPEN & Ch.~31\\
+SOH-G007 & The half-centered Collatz branch conjugacies are exact; the Uroboros torus exists only after the explicit scale identification $u\sim32u$. & Exact / conditional quotient & Ch.~32\\
+SOH-G008 & The xi scale defect obeys the exact reciprocal antisymmetry and cannot be globally scale-periodic for nontrivial dilation. & PROVED & Ch.~33\\
+SOH-G009 & The selected five-halving chain is an exact hyperbolic/M\"obius translation to the centered half-layer. & PROVED finite orbit identity & Ch.~34\\
+SOH-G010 & On the positive real $u$-axis the scale defect has the unique sign-changing crossing $u=a^{-1/2}$. & PROVED & Ch.~35\\
+SOH-G011 & The scale defect has the symmetry-forced simple pair $u=\pm a^{-1/2}$, exchanged by the Euler half-period; additional complex defect zeros are not excluded. & PROVED with open extension & Ch.~36\\
+SOH-G012 & Riemann reflection and the Euler half-turn factor the canonical negative inverse; the projective operator group is $V_4$. & PROVED & Ch.~37\\
+SOH-G013 & The G012 projective operators admit the Pauli/SU(2) lift $Q_8\to V_4$ with kernel $\{\pm I\}$. & PROVED & Ch.~38\\
+SOH-G014 & Only finitely many xi zeros can be paired by canonical negative inversion. & PROVED; later strengthened & Ch.~39\\
+SOH-G015 & Only finitely many $F$ roots can be paired by $J(w)=1/(16w)$, with the stated involution-orbit classification. & PROVED; later strengthened & Ch.~40\\
+SOH-G016 & The paired xi and quotient spectra obey $q(P_N)=P_J$ and $|P_N|=2|P_J|$. & PROVED & Ch.~41\\
+SOH-G017 & Neither fixed value $w=\pm1/4$ is a root of $F$; any remaining paired sets have forced orbit divisibility. & PROVED; later strengthened & Ch.~42\\
+SOH-G018 & The closed disk $|w|\le1/4$ is zero-free; consequently $P_J=P_N=\varnothing$ and negative inversion has no zero-to-zero spectral action. & PROVED & Ch.~43\\
+SOH-G019 & There is a unique $R_\star>0$ with $F(R_\star)=2F(0)$, and $\Re F(w)>0$ on $|w|\le R_\star$; the rescaled positive coefficients are exactly normalized. & PROVED & Ch.~44\\
+SOH-G020 & The canonical rescaling gives a probability law with half its mass at index zero and half on positive indices; PF$_2$ is preserved, masses decrease strictly, and the sharpened coefficient envelope holds. & PROVED & Ch.~45\\
 \bottomrule
 \end{longtable}
 \normalsize
@@ -92,30 +124,10 @@ SOH-L032 & The localized spectral floor is non-increasing with $a$ because the R
 
 \section{Historical alias map}
 
-The following aliases preserve provenance of pre-v0.9 material without creating
-multiple active meanings for one identifier:
-\[
-\begin{array}{rcl@{\qquad}rcl}
-\text{old L012}&\to&\text{SOH-WA001}, &
-\text{old L013}&\to&\text{SOH-HM001},\\
-\text{old L014}&\to&\text{SOH-HM002}, &
-\text{old L015}&\to&\text{SOH-ZU001},\\
-\text{old L016}&\to&\text{SOH-ZU002}, &
-\text{old L017}&\to&\text{SOH-ZU003},\\
-\text{old L018}&\to&\text{SOH-PT001}, &
-\text{old L019}&\to&\text{SOH-PT002},\\
-\text{old L020}&\to&\text{SOH-PT003}, &
-\text{old L021}&\to&\text{SOH-AC001},\\
-\text{old L022}&\to&\text{SOH-DHSE-M001}.&&
-\end{array}
-\]
-The prefix ``old'' means a pre-v0.9 snapshot only. In Version 0.9 and later,
-unqualified SOH-L012--SOH-L032 always denote the promoted Li/Weil line above.
+The pre-v0.9 aliases old L012--old L022 remain mapped to SOH-WA001, SOH-HM001, SOH-HM002, SOH-ZU001--003, SOH-PT001--003, SOH-AC001, and SOH-DHSE-M001 respectively. The prefix ``old'' denotes a historical snapshot only. Unqualified SOH-L012--SOH-L032 always denote the promoted Li/Weil line above.
 
-\section{Promotion and proof firewall}
+\section{Current promotion and proof firewall}
 
-An OPEN claim may be promoted only when its complete proof or reproducible
-construction is present, every dependency is explicit, and no dependency is
-merely an RH-equivalent statement left unproved. Numerical agreement cannot
-promote a claim to exact status. The current terminal obstruction remains
-SOH-C005; therefore the Riemann Hypothesis remains OPEN in this monograph.
+An OPEN claim may be promoted only when its complete proof or reproducible construction is present, every dependency is explicit, and no dependency is merely an RH-equivalent statement left unproved. Numerical agreement cannot promote a claim to exact status. Interpretive prose cannot promote a claim either and is marked \textbf{INTERPRETACJA} when present.
+
+The current integrated frontier is not one single missing lemma. SOH-C001 remains open for the normalized state-map branch; SOH-C005 remains the RH-equivalent global Weil/Li positivity frontier; SOH-G003 remains the RH-equivalent quotient real-rootedness frontier; PF$_3$ and PF$_\infty$ remain open. By contrast, negative-inversion root invariance is not open: SOH-G018 proves that the paired sets are empty. The Riemann Hypothesis remains OPEN in this monograph.
