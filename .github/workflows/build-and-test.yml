@@ -28,6 +28,8 @@ jobs:
         run: python -m pytest -q
       - name: Audit monograph completeness and claim IDs
         run: python scripts/audit_monograph_integration.py
+      - name: Audit monograph semantics
+        run: python scripts/audit_monograph_semantics.py
       - name: Generate deterministic core assets
         run: python scripts/generate_monograph_assets.py
       - name: Generate identity and holonomy assets
@@ -118,7 +120,7 @@ jobs:
       - name: Upload compiled monograph
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.9-integrated-canon-v2
+          name: secret-of-a-half-monograph-v0.9-integrated-canon-v3-semantic-audit
           path: |
             monograph/main.pdf
             monograph/main.pdf.pages.txt
