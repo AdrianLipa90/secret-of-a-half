@@ -1,11 +1,12 @@
 """SOH-G018 zero-free quarter-disk and complete paired-spectrum exclusion.
 
 The analytic theorem uses only:
-- positivity of every Taylor coefficient of F from SOH-G003,
+- the previously proved positive-kernel Taylor-coefficient theorem for F,
 - F(1/4)=xi(1)=1/2,
 - an elementary lower bound F(0)=xi(1/2)>1/4 derived through Dirichlet eta.
 
-Numerical helpers are regression checks only.
+The coefficient input is distinct from the still-open real-rootedness/PF-infinity
+frontier. Numerical helpers are regression checks only.
 """
 from __future__ import annotations
 
