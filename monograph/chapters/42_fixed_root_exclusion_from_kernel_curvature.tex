@@ -1,0 +1,225 @@
+\chapter{Fixed-Root Exclusion from Quantitative Kernel Curvature}
+\label{chap:fixed-root-exclusion-kernel-curvature}
+
+\status{Exact analytic exclusion proved: $F(-1/4)>0$. Hence the negative-inversion paired quotient spectrum has no fixed roots, $|P_J|$ is even, and $|P_N|$ is divisible by four. SOH-G003 and RH remain open.}
+
+Chapters~\ref{chap:quotient-negative-inversion-zero-set-no-go} and
+\ref{chap:paired-spectrum-quotient-correspondence} reduced the only possible
+fixed exceptional quotient root to
+\[
+ w=-\frac14.
+\]
+The positive fixed value $+1/4$ had already been excluded by positivity of the
+coefficients of $F$.  This chapter removes the remaining negative fixed value
+analytically, without using a zero table.
+
+\section{Attribution boundary}
+
+Gershon proved strict log-concavity of the classical Riemann Xi kernel
+$\Phi$ independently in 2026~\cite{gershon2026logconcavity}.  The present
+argument does not claim priority for that fact.  What is used here is the
+explicit quantitative SOH-G004 channel/mixture estimate from
+Chapter~\ref{ch:global-log-concavity}: each theta channel satisfies
+\[
+ g_n''<-12,
+\]
+while the mixture slope variance obeys the conservative bound
+\[
+ \operatorname{Var}_p(g_n')<2.
+\]
+Those retained constants yield a numerical curvature margin stronger than
+mere strict log-concavity and are the input to the fixed-root exclusion below.
+
+\section{Modular evenness of the kernel}
+
+Let
+\[
+ \Theta(x)=\sum_{n\in\mathbb Z}e^{-\pi n^2x},
+ \qquad x>0.
+\]
+Jacobi modularity gives
+\begin{equation}
+ \Theta(x)=x^{-1/2}\Theta(1/x).
+ \label{eq:g017-theta-modular}
+\end{equation}
+Writing $x=e^{2y}$, the positive Xi kernel from
+Chapter~\ref{chap:positive-riemann-kernel} is equivalently
+\begin{equation}
+ \Phi(y)=4x^{9/4}\Theta''(x)+6x^{5/4}\Theta'(x).
+ \label{eq:g017-kernel-theta}
+\end{equation}
+
+Put $t=1/x$.  Differentiating \cref{eq:g017-theta-modular} once and twice
+gives
+\begin{align}
+ \Theta'(t)
+ &=-x^{5/2}\Theta'(x)-\frac12x^{3/2}\Theta(x),
+ \label{eq:g017-theta-first}\
+ \Theta''(t)
+ &=x^{9/2}\Theta''(x)
+   +3x^{7/2}\Theta'(x)
+   +\frac34x^{5/2}\Theta(x).
+ \label{eq:g017-theta-second}
+\end{align}
+Substituting these identities into the right-hand side of
+\cref{eq:g017-kernel-theta} at $t=1/x$ yields
+\begin{align*}
+4t^{9/4}\Theta''(t)+6t^{5/4}\Theta'(t)
+&=4x^{9/4}\Theta''(x)+6x^{5/4}\Theta'(x).
+\end{align*}
+The terms proportional to $\Theta(x)$ cancel exactly. Therefore
+\begin{equation}
+ \boxed{\Phi(-y)=\Phi(y).}
+ \label{eq:g017-kernel-even}
+\end{equation}
+In particular,
+\begin{equation}
+ \boxed{\Phi'(0)=0.}
+ \label{eq:g017-kernel-centre-derivative}
+\end{equation}
+
+\section{Quantitative strong log-concavity}
+
+The exact mixture identity from Chapter~\ref{ch:global-log-concavity} is
+\[
+ (\log\Phi)''
+ =\sum_n p_ng_n''+\operatorname{Var}_p(g_n').
+\]
+Combining
+\[
+ g_n''<-12
+\]
+with
+\[
+ \operatorname{Var}_p(g_n')<2
+\]
+gives the strict global estimate
+\begin{equation}
+ \boxed{(\log\Phi)''<-10.}
+ \label{eq:g017-strong-log-concavity}
+\end{equation}
+
+Set
+\[
+ V(y)=-\log\Phi(y).
+\]
+Then $V''(y)>10$.  Equation~\eqref{eq:g017-kernel-centre-derivative}
+gives $V'(0)=0$, hence for every $y>0$,
+\begin{equation}
+ \boxed{V'(y)>10y.}
+ \label{eq:g017-potential-slope}
+\end{equation}
+
+\section{A direct second-moment bound}
+
+Define
+\[
+ m_0=\int_0^\infty\Phi(y)\,dy,
+ \qquad
+ m_2=\int_0^\infty y^2\Phi(y)\,dy.
+\]
+The explicit theta-kernel formula decays super-exponentially, so
+$y\Phi(y)\to0$ as $y\to\infty$. Since $V'\Phi=-\Phi'$, the slope bound
+\cref{eq:g017-potential-slope} gives
+\begin{align}
+10m_2
+&<\int_0^\infty yV'(y)\Phi(y)\,dy\\
+&=-\int_0^\infty y\Phi'(y)\,dy\\
+&=m_0.
+\end{align}
+Thus
+\begin{equation}
+ \boxed{m_2<\frac{m_0}{10}.}
+ \label{eq:g017-moment-bound}
+\end{equation}
+No general concentration theorem is required; the estimate follows directly
+from the quantitative logarithmic curvature and one integration by parts.
+
+\section{Exclusion of the negative fixed quotient value}
+
+For $w=-1/4$ choose $z=i/2$.  The positive-kernel representation gives
+\begin{equation}
+ F(-1/4)
+ =\xi\!\left(\frac12+\frac{i}{2}\right)
+ =\int_0^\infty\Phi(y)\cos(y/2)\,dy.
+ \label{eq:g017-fixed-value-integral}
+\end{equation}
+The elementary global inequality
+\[
+ \cos x\ge1-\frac{x^2}{2}
+\]
+implies
+\[
+ \cos(y/2)\ge1-\frac{y^2}{8}.
+\]
+Therefore, using \cref{eq:g017-moment-bound},
+\begin{align}
+ F(-1/4)
+ &\ge m_0-\frac{m_2}{8}\\
+ &>m_0\left(1-\frac1{80}\right).
+\end{align}
+Since $m_0=F(0)=\xi(1/2)>0$ by the positive-kernel theorem,
+\begin{theorem}[SOH-G017 fixed-root exclusion]
+\label{thm:g017-fixed-root-exclusion}
+\begin{equation}
+ \boxed{
+ F(-1/4)>\frac{79}{80}F(0)>0.
+ }
+ \label{eq:g017-main-lower-bound}
+\end{equation}
+In particular,
+\[
+ \boxed{F(-1/4)\ne0.}
+\]
+\end{theorem}
+
+\section{Exceptional-orbit consequences}
+
+The G015 involution
+\[
+ J(w)=\frac1{16w}
+\]
+has exactly two fixed values, $w=\pm1/4$.  Coefficient positivity already
+gives $F(1/4)>0$, and \cref{thm:g017-fixed-root-exclusion} now gives
+$F(-1/4)>0$.  Hence the finite paired-root set $P_J$ has no fixed points.
+It is therefore a disjoint union of non-fixed two-cycles, so
+\begin{equation}
+ \boxed{|P_J|\equiv0\pmod2.}
+ \label{eq:g017-PJ-even}
+\end{equation}
+G016 proved $|P_N|=2|P_J|$, and therefore
+\begin{equation}
+ \boxed{|P_N|\equiv0\pmod4.}
+ \label{eq:g017-PN-mod4}
+\end{equation}
+
+The G012 geometric fixed pair
+\[
+ \left\{\frac12+\frac i2,\frac12-\frac i2\right\}
+\]
+is the fiber over $w=-1/4$.  It follows immediately that neither point is a
+zero of $\xi$.
+
+\section{Proof firewall}
+
+SOH-G017 proves:
+\begin{itemize}
+ \item the modular evenness $\Phi(-y)=\Phi(y)$ and $\Phi'(0)=0$;
+ \item the quantitative consequence $(\log\Phi)''<-10$ from the existing
+       G004 constants;
+ \item $m_2<m_0/10$;
+ \item $F(-1/4)>(79/80)F(0)>0$;
+ \item the paired quotient spectrum has no fixed roots;
+ \item $|P_J|$ is even and $|P_N|$ is divisible by four;
+ \item the G012 fixed pair $1/2\pm i/2$ is not in the xi zero set.
+\end{itemize}
+
+It does not prove:
+\begin{itemize}
+ \item that $P_J$ or $P_N$ is empty;
+ \item that non-fixed paired two-cycles do not exist;
+ \item real-rootedness of $F$;
+ \item PF$_\infty$;
+ \item SOH-G003;
+ \item the Riemann Hypothesis.
+\end{itemize}
