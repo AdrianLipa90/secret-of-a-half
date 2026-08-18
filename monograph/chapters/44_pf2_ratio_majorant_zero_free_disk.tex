@@ -1,0 +1,155 @@
+\chapter{PF2 Ratio Majorants and a Larger Zero-Free Disk}
+\label{chap:pf2-ratio-zero-free-disk}
+
+\status{SOH-G019 proved from SOH-G005 PF2 and the entirety of the even quotient $F$: the closed disk $|w|\le a_0/(2a_1)$ is zero-free.}
+
+\section{Purpose}
+
+Chapter~\ref{chap:quarter-disk-zero-exclusion} established an explicit rational zero-free disk $|w|\le1/4$ and used it to close the negative-inversion paired-zero frontier. The present chapter uses the stronger structural information already available from PF2 to obtain a much larger zero-free disk.
+
+Write
+\[
+ F(w)=\sum_{k\ge0}a_k w^k,
+ \qquad a_k>0,
+\]
+with
+\[
+ \xi\!\left(\frac12+z\right)=F(z^2).
+\]
+SOH-G005 proves
+\[
+ a_k^2\ge a_{k-1}a_{k+1}
+ \qquad(k\ge1).
+\]
+
+\section{Monotone coefficient ratios}
+
+Define
+\[
+ q_k:=\frac{a_{k+1}}{a_k}.
+\]
+Since the coefficients are positive, PF2 is equivalent to
+\[
+ q_k\le q_{k-1}.
+\]
+Thus with
+\[
+ q_0=\frac{a_1}{a_0}
+\]
+we have
+\[
+ q_k\le q_0
+ \qquad(k\ge0).
+\]
+Inductively,
+\[
+ a_k
+ =a_0\prod_{j=0}^{k-1}q_j
+ \le a_0q_0^k.
+\]
+
+\section{Geometric tail majorant}
+
+For $r\ge0$ with $q_0r<1$,
+\[
+ \sum_{k\ge1}a_kr^k
+ \le a_0\sum_{k\ge1}(q_0r)^k
+ =a_0\frac{q_0r}{1-q_0r}.
+\]
+Define
+\[
+ \boxed{
+ R_0:=\frac1{2q_0}=\frac{a_0}{2a_1}.}
+\]
+If $r<R_0$, then $q_0r<1/2$, and therefore
+\[
+ \sum_{k\ge1}a_kr^k<a_0.
+\]
+Hence
+\[
+ |F(w)|
+ \ge a_0-\sum_{k\ge1}a_k|w|^k
+ >0
+ \qquad(|w|<R_0).
+\]
+
+\section{Strictness on the boundary}
+
+At $r=R_0$ the geometric estimate gives
+\[
+ \sum_{k\ge1}a_kR_0^k\le a_0.
+\]
+Equality would require
+\[
+ a_k=a_0q_0^k
+ \qquad\text{for every }k\ge1,
+\]
+because every term of the positive sum is bounded termwise by the corresponding geometric majorant.
+
+But then
+\[
+ \limsup_{k\to\infty}a_k^{1/k}=q_0>0,
+\]
+so the power series of $F$ would have finite radius of convergence $1/q_0$. This contradicts the fact that $F$ is entire. Therefore at least one coefficient inequality is strict and
+\[
+ \sum_{k\ge1}a_kR_0^k<a_0.
+\]
+Consequently,
+\[
+ \boxed{
+ F(w)\ne0\quad\text{for every }|w|\le R_0.}
+\]
+
+\section{Canonical numerical scale}
+
+The first two coefficients are
+\[
+ a_0=F(0)=\xi(1/2)
+\]
+and
+\[
+ a_1=\frac12\frac{d^2}{dz^2}\xi(1/2+z)\bigg|_{z=0}.
+\]
+High-precision regression gives
+\[
+ a_0\approx0.4971207781883141,
+ \qquad
+ a_1\approx0.01148597215757272,
+\]
+so
+\[
+ \boxed{R_0\approx21.64034403742489.}
+\]
+The numerical value is diagnostic only; the theorem is symbolic.
+
+\section{Consequence in the critical-axis coordinate}
+
+Because
+\[
+ w=z^2,
+ \qquad z=s-\frac12,
+\]
+every zero $\rho$ of $\xi$ satisfies
+\[
+ \left|\rho-\frac12\right|^2>R_0.
+\]
+Thus
+\[
+ \boxed{
+ \left|\rho-\frac12\right|>\sqrt{R_0}.}
+\]
+Numerically,
+\[
+ \sqrt{R_0}\approx4.6519.
+\]
+This gives a zero-free Euclidean disk around the half-axis origin in the centered $s$-plane.
+
+\section{Relation to the preceding no-go chain}
+
+G018 supplies a completely explicit rational disk and directly proves that negative inversion cannot map any xi zero to another xi zero. G019 is a stronger downstream consequence of PF2: it replaces the radius $1/4$ by the symbolic coefficient scale $a_0/(2a_1)$.
+
+The two results therefore serve different evidential roles. G018 is elementary and explicit; G019 is structural and stronger.
+
+\section{Proof firewall}
+
+G019 proves coefficient-ratio monotonicity from PF2, the geometric coefficient majorant, the closed zero-free disk $|w|\le a_0/(2a_1)$, and the corresponding centered $s$-plane zero-free disk. It does not prove real-rootedness of $F$, PF$\infty$, SOH-G003 real-rootedness, or the Riemann Hypothesis.
