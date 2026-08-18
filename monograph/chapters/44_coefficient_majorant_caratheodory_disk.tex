@@ -1,7 +1,7 @@
 \chapter{The Coefficient-Majorant Carath\'eodory Disk}
 \label{chap:coefficient-majorant-caratheodory-disk}
 
-\status{SOH-G019 proved: a canonical positive-real-part disk and normalized coefficient law.}
+\status{SOH-G019 proved: a canonical positive-real-part disk, a classical Carath\'eodory-class normalization, and an exact normalized coefficient law.}
 
 \section{Purpose}
 
@@ -15,7 +15,7 @@ for the even quotient
  \qquad
  F(w)=\sum_{n\ge0}a_nw^n,
 \]
-and used it to close the negative-inversion paired-spectrum frontier.  The present chapter returns to the open real-rootedness problem and extracts a stronger consequence of the already proved strict coefficient positivity
+and used it to close the negative-inversion paired-spectrum frontier. The present chapter returns to the open real-rootedness problem and extracts a stronger consequence of the already proved strict coefficient positivity
 \[
  a_n>0\qquad(n\ge0).
 \]
@@ -27,11 +27,11 @@ Put
 \[
  a_0=F(0)=\xi\!\left(\frac12\right)>0.
 \]
-For real \(r\ge0\),
+For real $r\ge0$,
 \[
  F'(r)=\sum_{n\ge1}na_nr^{n-1}>0,
 \]
-so \(F\) is strictly increasing on the nonnegative axis.  Moreover, since \(a_1>0\),
+so $F$ is strictly increasing on the nonnegative axis. Moreover, since $a_1>0$,
 \[
  F(r)\ge a_0+a_1r\longrightarrow\infty.
 \]
@@ -42,24 +42,24 @@ Therefore the equation
 has exactly one positive solution.
 
 \begin{definition}[Coefficient-majorant threshold]
-The unique number \(R_\star>0\) satisfying
+The unique number $R_\star>0$ satisfying
 \[
  \boxed{F(R_\star)=2F(0)}
 \]
 is called the SOH-G019 coefficient-majorant threshold.
 \end{definition}
 
-The definition is exact.  The numerical value of \(R_\star\) is not an input to the proof.
+The definition is exact. The numerical value of $R_\star$ is not an input to the proof.
 
 \section{Positive real part on the whole disk}
 
-For any \(w\in\C\), coefficient positivity gives
+For any $w\in\C$, coefficient positivity gives
 \[
  \left|F(w)-a_0\right|
  \le \sum_{n\ge1}a_n|w|^n
  =F(|w|)-a_0.
 \]
-Consequently, whenever \(|w|<R_\star\),
+Consequently, whenever $|w|<R_\star$,
 \begin{align*}
  \Re F(w)
  &\ge a_0-\left|F(w)-a_0\right|\\
@@ -67,18 +67,18 @@ Consequently, whenever \(|w|<R_\star\),
  &>0.
 \end{align*}
 
-The boundary requires one additional equality check.  If \(|w|=R_\star\), then
+The boundary requires one additional equality check. If $|w|=R_\star$, then
 \[
  \sum_{n\ge1}a_n|w|^n=a_0.
 \]
-Equality in the triangle inequality for the nonconstant series would require all terms \(a_nw^n\) to have one common argument.  Since \(a_1>0\) and \(a_2>0\), the first two terms can have the same argument only when \(w=R_\star>0\).  At that point
+Equality in the triangle inequality for the nonconstant series would require all terms $a_nw^n$ to have one common argument. Since $a_1>0$ and $a_2>0$, the first two terms can have the same argument only when $w=R_\star>0$. At that point
 \[
  F(R_\star)=2a_0>0.
 \]
 At every other boundary point the triangle inequality is strict.
 
 \begin{theorem}[SOH-G019 positive-real-part disk]
-For the even xi quotient \(F\),
+For the even xi quotient $F$,
 \[
  \boxed{\Re F(w)>0\qquad(|w|\le R_\star).}
 \]
@@ -89,7 +89,7 @@ Hence
 \end{theorem}
 
 \begin{corollary}[Centered xi disk]
-Since \(w=(s-\tfrac12)^2\),
+Since $w=(s-\tfrac12)^2$,
 \[
  \boxed{
  \left|s-\frac12\right|\le\sqrt{R_\star}
@@ -99,7 +99,19 @@ Since \(w=(s-\tfrac12)^2\),
 \]
 \end{corollary}
 
-This is a zero-free neighborhood derived from the coefficient theorem itself rather than from a table of zero ordinates.
+\section{Carath\'eodory normalization}
+
+Define the unit-disk normalization
+\[
+ \boxed{
+ H(\zeta):=\frac{F(R_\star\zeta)}{F(0)}.
+ }
+\]
+Then $H$ is analytic on the unit disk, $H(0)=1$, and the preceding theorem gives
+\[
+ \boxed{\Re H(\zeta)>0\qquad(|\zeta|<1).}
+\]
+Therefore $H$ belongs to the classical Carath\'eodory class of analytic functions on the unit disk with positive real part and normalization $H(0)=1$. This is the precise reason for the terminology in the chapter title; no additional Carath\'eodory theorem is required for the zero-free conclusion proved above.
 
 \section{Canonical coefficient normalization}
 
@@ -112,7 +124,7 @@ Define
  p_n:=\frac{a_nR_\star^n}{a_0},
  \qquad n\ge1.
 \]
-Then every \(p_n\) is strictly positive and
+Then every $p_n$ is strictly positive and
 \[
  \boxed{\sum_{n\ge1}p_n=1.}
 \]
@@ -123,7 +135,7 @@ Thus
  =1+\sum_{n\ge1}p_n\zeta^n.
  }
 \]
-The scaled coefficient sequence is therefore exactly normalized on the positive integers.
+The scaled positive-index coefficient sequence is therefore exactly normalized.
 
 Since all terms are positive and the sum is one,
 \[
@@ -136,7 +148,7 @@ which gives the global envelope
  \qquad n\ge1.
  }
 \]
-This bound is uniform in \(n\) and requires no asymptotic estimate.
+This bound is uniform in $n$ and requires no asymptotic estimate.
 
 \section{Numerical regression}
 
@@ -147,14 +159,14 @@ High-precision bisection of the defining equation gives the diagnostic values
 \[
  \sqrt{R_\star}\approx5.54109492648746.
 \]
-Therefore the G018 radius \(1/4\) is strictly inside the G019 coefficient-majorant disk.  The approximate numbers are regression outputs only; all theorem statements above are analytic consequences of coefficient positivity and the definition of \(R_\star\).
+Therefore the G018 radius $1/4$ is strictly inside the G019 coefficient-majorant disk. The approximate numbers are regression outputs only; all theorem statements above are analytic consequences of coefficient positivity and the definition of $R_\star$.
 
 \section{Relation to the remaining frontier}
 
-G019 does not prove that \(R_\star\) is the largest actual zero-free radius of \(F\).  It is the canonical threshold at which the simple radial coefficient budget
+G019 does not prove that $R_\star$ is the largest actual zero-free radius of $F$. It is the canonical threshold at which the simple radial coefficient budget
 \[
  F(r)-F(0)\le F(0)
 \]
-becomes saturated.  The resulting normalized sequence \((p_n)_{n\ge1}\) provides a new exact coefficient-level object for subsequent PF and Jensen analysis.
+becomes saturated. The resulting normalized sequence $(p_n)_{n\ge1}$ and Carath\'eodory normalization provide exact coefficient-level objects for subsequent PF and Jensen analysis.
 
-\gap{Real-rootedness of \(F\), PF$_3$, PF$_\infty$, and the general SOH-G003 real-rootedness criterion remain open.  No Riemann-Hypothesis conclusion is made in this chapter.}
+\gap{Real-rootedness of $F$, PF$_3$, PF$_\infty$, and the SOH-G003 real-rootedness criterion remain open. No Riemann-Hypothesis conclusion is made in this chapter.}
