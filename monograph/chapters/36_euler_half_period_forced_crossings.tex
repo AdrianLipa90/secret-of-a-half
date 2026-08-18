@@ -1,7 +1,7 @@
 \chapter{Euler Half-Period and the Forced Complex Crossing Pair}
 \label{chap:euler-half-period-crossings}
 
-\status{Forced complex crossing pair and its simplicity proved. Additional complex zeros of the scale defect remain open. No SOH-G003 or RH claim is made.}
+\status{Forced complex crossing pair, its simplicity, and the Euler-to-centered-inversion corollary proved. Additional complex zeros of the scale defect remain open. No SOH-G003 or RH claim is made.}
 
 Chapter 35 established the unique positive crossing of
 \[
@@ -77,6 +77,38 @@ therefore
 \]
 Thus the logarithmic half-period \(\pi i\) exchanges the two forced crossing classes, while the full period \(2\pi i\) returns to the same \(u\)-point. This is an exact phase relation, not an analogy.
 
+\subsection{Euler half-turn as reciprocal inversion in the centered chart}
+
+Use the centered coordinate from the half-layer/Bloch construction,
+\[
+t=2s-1=\frac{u-1}{u+1}=\tanh\frac\lambda2.
+\]
+Under the Euler half-turn,
+\[
+\lambda\mapsto\lambda+\pi i,
+\qquad
+u\mapsto e^{i\pi}u=-u.
+\]
+Then directly
+\[
+t(-u)
+=\frac{-u-1}{-u+1}
+=\frac{u+1}{u-1}
+=\boxed{\frac1{t(u)}}.
+\]
+Equivalently,
+\[
+\tanh\!\left(\frac{\lambda+\pi i}{2}\right)
+=\tanh\!\left(\frac\lambda2+\frac{i\pi}{2}\right)
+=\coth\frac\lambda2
+=\boxed{\frac1{\tanh(\lambda/2)}}.
+\]
+Therefore the Euler half-period is conjugate to the reciprocal map
+\[
+\boxed{t\mapsto1/t}
+\]
+in the centered coordinate. The reciprocal image is undefined at \(t=0\), exactly where reciprocal inversion itself is singular.
+
 For the Uroboros scale \(a=32=2^5\),
 \[
 L=5\log2,
@@ -145,7 +177,7 @@ Their logarithmic lifts are
 \[
 \boxed{\lambda_k=-\frac12\log a+\pi i k},
 \]
-and adjacent lifts are exchanged by the exact Euler half-turn \(e^{i\pi}=-1\).
+adjacent lifts are exchanged by the exact Euler half-turn \(e^{i\pi}=-1\), and this half-turn is reciprocal inversion \(t\mapsto1/t\) in the centered chart.
 \end{theorem}
 
 \section{Open complex frontier}
@@ -158,4 +190,4 @@ Additional complex zeros would correspond to nontrivial value collisions between
 
 \section{Proof firewall}
 
-Proved: the logarithmic crossing family, the two \(u\)-classes, Euler half-period exchange, and simplicity of both forced zeros. Open: additional complex scale-defect zeros, global injectivity of \(F\), PF\(_\infty\), SOH-G003 real-rootedness, and the Riemann Hypothesis.
+Proved: the logarithmic crossing family, the two \(u\)-classes, Euler half-period exchange, exact Euler-to-centered-inversion conjugacy, and simplicity of both forced zeros. Open: additional complex scale-defect zeros, global injectivity of \(F\), PF\(_\infty\), SOH-G003 real-rootedness, and the Riemann Hypothesis.
