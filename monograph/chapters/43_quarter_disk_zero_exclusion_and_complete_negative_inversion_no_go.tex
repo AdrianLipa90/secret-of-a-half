@@ -1,0 +1,167 @@
+\chapter{Quarter-Disk Zero Exclusion and the Complete Negative-Inversion Spectral No-Go}
+\label{chap:quarter-disk-zero-exclusion}
+
+\status{SOH-G018 proved: the closed quotient disk $|w|\le1/4$ is zero-free; consequently the canonical negative inversion maps no zero of $F$ or $\xi$ to another zero.}
+
+\section{Purpose}
+
+The preceding sequence G014--G017 progressively constrained the possible spectral action of the canonical negative inversion. G014 and G015 proved that paired zero sets are finite, G016 identified their exact two-to-one quotient correspondence, and G017 excluded all fixed exceptional roots. This chapter closes the remaining finite two-cycle possibility.
+
+The argument uses only the positive Taylor coefficients already proved for the even quotient
+\[
+ \xi\!\left(\frac12+z\right)=F(z^2),
+ \qquad F(w)=\sum_{k\ge0}a_k w^k,
+ \qquad a_k>0,
+\]
+together with an elementary rational lower bound for $F(0)=\xi(1/2)$.
+
+\section{An elementary lower bound for $\xi(1/2)$}
+
+With the standard completed-xi normalization,
+\[
+ \xi\!\left(\frac12\right)
+ =\frac18\pi^{-1/4}\Gamma\!\left(\frac14\right)
+ \bigl(-\zeta(1/2)\bigr).
+\]
+
+The alternating Dirichlet eta series yields
+\[
+ \eta\!\left(\frac12\right)
+ >1-\frac1{\sqrt2}+\frac1{\sqrt3}-\frac12.
+\]
+The exact integer inequalities
+\[
+ 2\cdot71^2>100^2,
+ \qquad
+ 3\cdot57^2<100^2
+\]
+give
+\[
+ \frac1{\sqrt2}<\frac{71}{100},
+ \qquad
+ \frac1{\sqrt3}>\frac{57}{100},
+\]
+and therefore
+\[
+ \eta\!\left(\frac12\right)>\frac9{25}.
+\]
+Since
+\[
+ \eta(1/2)=(1-\sqrt2)\zeta(1/2),
+\]
+we have
+\[
+ -\zeta(1/2)=(\sqrt2+1)\eta(1/2).
+\]
+Using $\sqrt2>7/5$ gives
+\[
+ -\zeta(1/2)>\frac{108}{125}.
+\]
+
+For the Gamma factor, on $0\le t\le1$ the alternating Taylor remainder gives
+\[
+ e^{-t}\ge1-t+\frac{t^2}{2}-\frac{t^3}{6}.
+\]
+Hence
+\[
+ \Gamma\!\left(\frac14\right)
+ >\int_0^1 t^{-3/4}
+ \left(1-t+\frac{t^2}{2}-\frac{t^3}{6}\right)dt
+ =\frac{1972}{585}.
+\]
+
+Finally, the classical bound $\pi<22/7$ and the exact comparison
+\[
+ \frac{22}{7}<\left(\frac{50}{37}\right)^4
+\]
+imply
+\[
+ \pi^{-1/4}>\frac{37}{50}.
+\]
+Combining the three bounds gives
+\[
+ \boxed{
+ \xi\!\left(\frac12\right)
+ >\frac18\frac{37}{50}\frac{1972}{585}\frac{108}{125}
+ =\frac{54723}{203125}
+ >\frac14.}
+\]
+
+\section{The quarter-disk theorem}
+
+At the positive boundary point,
+\[
+ F\!\left(\frac14\right)=\xi(1)=\frac12.
+\]
+Because all Taylor coefficients are positive, for every $|w|\le1/4$,
+\[
+ \begin{aligned}
+ |F(w)|
+ &\ge a_0-\sum_{k\ge1}a_k|w|^k\\
+ &\ge a_0-\sum_{k\ge1}a_k4^{-k}\\
+ &=2a_0-F(1/4).
+ \end{aligned}
+\]
+Using the lower bound for $a_0=F(0)=\xi(1/2)$ gives the uniform estimate
+\[
+ \boxed{
+ |F(w)|>
+ 2\frac{54723}{203125}-\frac12
+ =\frac{15767}{406250}>0
+ \qquad(|w|\le1/4).}
+\]
+Therefore the complete closed disk is zero-free:
+\[
+ \boxed{F(w)\ne0\quad\text{whenever }|w|\le1/4.}
+\]
+Every zero of $F$ consequently satisfies $|w|>1/4$.
+
+\section{Complete spectral no-go for negative inversion}
+
+The quotient negative inversion is
+\[
+ J(w)=\frac1{16w}.
+\]
+If $F(w)=0$, then $|w|>1/4$, so
+\[
+ |J(w)|=\frac1{16|w|}<\frac14.
+\]
+The quarter-disk theorem then gives
+\[
+ F(J(w))\ne0.
+\]
+Thus the paired quotient set is empty:
+\[
+ \boxed{P_J=\varnothing},
+ \qquad
+ \boxed{Z_F\cap J(Z_F)=\varnothing}.
+\]
+
+G016 proved that the quotient map
+\[
+ q(s)=\left(s-\frac12\right)^2
+\]
+identifies the paired xi-zero set with $P_J$. Hence
+\[
+ \boxed{P_N=\varnothing},
+ \qquad
+ \boxed{Z_\xi\cap N_s(Z_\xi)=\varnothing}.
+\]
+The canonical negative inversion therefore remains an exact projective and spinorial operator of the coordinate geometry while having no zero-to-zero spectral action on the Riemann xi function.
+
+\section{What this closes}
+
+The chain is now exact:
+\begin{itemize}
+ \item G014: the paired xi-zero set is finite;
+ \item G015: the paired quotient-root set is finite;
+ \item G016: the two sets are related exactly two-to-one;
+ \item G017: neither fixed point of the quotient involution is a root;
+ \item G018: both paired sets are empty.
+\end{itemize}
+
+No table of Riemann zeros enters the proof. Numerical boundary sampling retained in the software is only a regression test against the analytic margin.
+
+\section{Proof firewall}
+
+G018 proves the rational lower bound for $\xi(1/2)$, the uniform quarter-disk lower bound for $|F|$, the zero-free disk $|w|\le1/4$, and the complete absence of negative-inversion paired zeros. It does not prove real-rootedness of $F$, PF$\infty$, SOH-G003 real-rootedness, or the Riemann Hypothesis.
