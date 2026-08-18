@@ -1,6 +1,6 @@
 # SOH-G018 — Zero-Free Quarter Disk and Complete Negative-Inversion Spectral Exclusion
 
-**Claim status:** PROVED from the positive Taylor coefficients of the even quotient, the exact value `F(1/4)=xi(1)=1/2`, and an elementary lower bound `F(0)=xi(1/2)>1/4` obtained from the Dirichlet eta representation.
+**Claim status:** PROVED from the previously proved positive-kernel Taylor-coefficient theorem, the exact value `F(1/4)=xi(1)=1/2`, and an elementary lower bound `F(0)=xi(1/2)>1/4` obtained from the Dirichlet eta representation.
 
 No table of zeta zeros is used.
 
@@ -14,11 +14,13 @@ The even quotient is defined by
 F(w)=\sum_{n\ge0}a_nw^n.
 \]
 
-SOH-G003 proved
+The positive Riemann-kernel coefficient theorem proved
 
 \[
 a_n>0\qquad(n\ge0).
 \]
+
+This coefficient positivity is an established input; it is distinct from the still-open real-rootedness/PF-infinity frontier.
 
 The canonical quotient negative inversion is
 
@@ -337,5 +339,5 @@ SOH-G018 does **not** prove:
 - that all roots of `F` are real;
 - that all xi zeros lie on the critical line;
 - PF-infinity;
-- SOH-G003 real-rootedness;
+- the still-open real-rootedness frontier;
 - the Riemann Hypothesis.
