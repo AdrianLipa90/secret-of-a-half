@@ -39,6 +39,7 @@ jobs:
           - soh-g014-zero-set-no-go
           - soh-g015-quotient-zero-set-no-go
           - soh-g016-paired-spectrum-quotient
+          - soh-g017-v4-paired-orbits
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -111,6 +112,9 @@ jobs:
               ;;
             soh-g016-paired-spectrum-quotient)
               python scripts/run_soh_g016_paired_spectrum_quotient.py
+              ;;
+            soh-g017-v4-paired-orbits)
+              python scripts/run_soh_g017_v4_paired_orbits.py
               ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
