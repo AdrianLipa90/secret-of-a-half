@@ -11,17 +11,13 @@ from __future__ import annotations
 
 import mpmath as mp
 
-from .quotient_zero_set import quotient_F, quotient_negative_inversion_w
+from .quotient_zero_set import quotient_F
 
 
 def eta_half_four_term_lower() -> mp.mpf:
     """Even fourth partial sum, a strict lower bound for eta(1/2)."""
 
-    return (
-        mp.mpf("0.5")
-        - 1 / mp.sqrt(2)
-        + 1 / mp.sqrt(3)
-    )
+    return mp.mpf("0.5") - 1 / mp.sqrt(2) + 1 / mp.sqrt(3)
 
 
 def gamma_quarter_lower() -> mp.mpf:
@@ -68,19 +64,30 @@ def quarter_disk_lower_margin() -> mp.mpf:
 
 
 def exact_radical_checks() -> dict[str, bool]:
-    r"""Exact integer checks certifying the final radical inequality L>1/4.
+    r"""Exact integer audit of the radical reduction proving L>1/4.
 
-    After simplification L>1/4 is equivalent to
+    After simplification, L>1/4 is equivalent to
 
       4*sqrt(6)+8*sqrt(3) > 15+6*sqrt(2).
 
-    Squaring both positive sides reduces this to 12*sqrt(2)>9.  The latter
-    follows from sqrt(2)>3/4, itself certified by 32>9.
+    Squaring the positive sides gives
+
+      lhs^2 = 288 + 192*sqrt(2),
+      rhs^2 = 297 + 180*sqrt(2),
+
+    so the squared difference is -9+12*sqrt(2).  Finally
+    sqrt(2)>3/4 follows by squaring from 32>9, hence -9+12*sqrt(2)>0.
     """
 
     return {
-        "sqrt2_gt_three_quarters": 32 > 9,
-        "squared_side_reduction_positive": True,
+        "lhs_square_constant_288": 16 * 6 + 64 * 3 == 288,
+        "lhs_square_sqrt2_coefficient_192": 2 * 4 * 8 * 3 == 192,
+        "rhs_square_constant_297": 15**2 + 6**2 * 2 == 297,
+        "rhs_square_sqrt2_coefficient_180": 2 * 15 * 6 == 180,
+        "squared_difference_constant_minus9": 288 - 297 == -9,
+        "squared_difference_sqrt2_coefficient_12": 192 - 180 == 12,
+        "sqrt2_gt_three_quarters_square_check": 2 * 16 > 9,
+        "threshold_identity_12_times_three_quarters_is_9": 12 * 3 == 9 * 4,
     }
 
 
@@ -97,11 +104,10 @@ def direct_f_quarter() -> mp.mpc:
 
 
 def paired_modulus_contradiction(radius: float | mp.mpf) -> bool:
-    r"""Return the exact scalar contradiction for a hypothetical paired root.
+    r"""Return the scalar contradiction for a hypothetical paired root.
 
     Any F-root must have |w|>1/4.  If J(w) is also a root, then
     |J(w)|=1/(16|w|)>1/4, which forces |w|<1/4.
-    This helper checks the two inequalities cannot hold simultaneously.
     """
 
     r = mp.mpf(radius)
