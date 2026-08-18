@@ -1,0 +1,250 @@
+\chapter{The Reciprocal Paired-Spectrum Polynomial}
+\label{chap:reciprocal-paired-spectrum-polynomial}
+
+\status{Exact finite-set algebraic reduction; no claim that the paired spectrum is nonempty and no resolution of $F(-1/4)$.}
+
+\section{Purpose}
+
+Chapters~\ref{chap:quotient-negative-inversion-zero-set-no-go}--\ref{chap:v4-paired-spectrum-orbits} show that the quotient paired-root set
+\[
+ P_J:=\left\{w:F(w)=0,\ F\!\left(\frac1{16w}\right)=0\right\}
+\]
+is finite and invariant under
+\[
+ J(w)=\frac1{16w}.
+\]
+The present chapter packages this finite set into a canonical monic polynomial and derives its exact reciprocal symmetry.
+
+\section{Normalized reciprocal coordinate}
+
+Define
+\[
+ \lambda=4w.
+\]
+Then
+\[
+ 4J(w)=\frac4{16w}=\frac1{4w}=\lambda^{-1}.
+\]
+Thus the quotient negative inversion is conjugated to the standard reciprocal map
+\[
+ \boxed{\lambda\mapsto\lambda^{-1}}.
+\]
+
+Let
+\[
+ \Lambda:=4P_J.
+\]
+Since $F(0)=\xi(1/2)>0$, the paired set contains no $w=0$, so
+\[
+ \Lambda\subset\mathbb C^\times.
+\]
+
+\section{Reciprocal and conjugation closure}
+
+\begin{proposition}
+The finite set $\Lambda$ is invariant under reciprocal inversion:
+\[
+ \lambda\in\Lambda\Longrightarrow\lambda^{-1}\in\Lambda.
+\]
+\end{proposition}
+
+\begin{proof}
+If $\lambda=4w$ with $w\in P_J$, then $J(w)\in P_J$.  Therefore
+\[
+ 4J(w)=\lambda^{-1}\in\Lambda.
+\]
+\end{proof}
+
+The quotient entire function $F$ has real Taylor coefficients because
+\[
+ \xi\!\left(\frac12+z\right)=F(z^2)
+\]
+and the centered xi function is real on the real axis. Hence
+\[
+ F(\bar w)=\overline{F(w)}.
+\]
+Since $J$ has real coefficients,
+\[
+ J(\bar w)=\overline{J(w)}.
+\]
+Thus $P_J$, and therefore $\Lambda$, is also invariant under complex conjugation.
+
+\section{Canonical monic polynomial}
+
+Let
+\[
+ n:=|P_J|=|\Lambda|
+\]
+and define
+\[
+ Q(x):=\prod_{\lambda\in\Lambda}(x-\lambda).
+\]
+If the paired set is empty, the empty-product convention gives $Q(x)=1$.
+
+By Chapter~\ref{chap:v4-paired-spectrum-orbits},
+\[
+ n=2a+\varepsilon,
+ \qquad
+ \varepsilon\in\{0,1\},
+\]
+where $\varepsilon=1$ exactly when the exceptional reciprocal fixed point
+\[
+ \lambda=-1
+\]
+is present.
+
+The other reciprocal fixed point
+\[
+ \lambda=+1
+\]
+corresponds to $w=+1/4$ and is excluded by the positive-coefficient theorem,
+\[
+ F(1/4)>0.
+\]
+
+\section{Unit constant term}
+
+Every nonfixed reciprocal orbit has the form
+\[
+ \{\lambda,\lambda^{-1}\}
+\]
+and therefore has product $1$. The only possible fixed contribution is $-1$, so
+\[
+ \prod_{\lambda\in\Lambda}\lambda=(-1)^\varepsilon.
+\]
+Because $n\equiv\varepsilon\pmod2$,
+\[
+ Q(0)
+ =(-1)^n\prod_{\lambda\in\Lambda}\lambda
+ =1.
+\]
+Hence
+\[
+ \boxed{Q(0)=1}.
+\]
+
+\section{Self-reciprocal functional identity}
+
+\begin{theorem}[SOH-G018 reciprocal paired-spectrum polynomial]
+The monic polynomial $Q$ satisfies
+\[
+ \boxed{Q(x)=x^nQ(1/x)}.
+\]
+\end{theorem}
+
+\begin{proof}
+We have
+\[
+ x^nQ(1/x)
+ =x^n\prod_{\lambda\in\Lambda}\left(\frac1x-\lambda\right)
+ =\prod_{\lambda\in\Lambda}(1-\lambda x).
+\]
+Its roots are precisely the reciprocal points $\lambda^{-1}$. Reciprocal closure of $\Lambda$ gives the same root set as $Q$. Its leading coefficient is
+\[
+ (-1)^n\prod_{\lambda\in\Lambda}\lambda
+ =Q(0)
+ =1.
+\]
+Therefore both sides are monic degree-$n$ polynomials with the same roots, hence they are identical.
+\end{proof}
+
+\section{Palindromic real coefficients}
+
+Write
+\[
+ Q(x)=x^n+c_1x^{n-1}+\cdots+c_{n-1}x+1.
+\]
+The self-reciprocal identity implies
+\[
+ \boxed{c_k=c_{n-k}}.
+\]
+Thus the coefficient vector is palindromic.
+
+Conjugation closure of $\Lambda$ implies that the multiset of roots of $Q$ is unchanged by conjugation. Since $Q$ is monic,
+\[
+ \overline{Q(\bar x)}=Q(x),
+\]
+so
+\[
+ \boxed{Q\in\mathbb R[x]}.
+\]
+
+\section{Orbit factorization}
+
+Choose one representative $\lambda_j$ from each nonfixed reciprocal two-cycle and define
+\[
+ \tau_j:=\lambda_j+\lambda_j^{-1}.
+\]
+Then
+\[
+ (x-\lambda_j)(x-\lambda_j^{-1})
+ =x^2-\tau_jx+1.
+\]
+Therefore
+\[
+ \boxed{
+ Q(x)
+ =(x+1)^\varepsilon
+ \prod_{j=1}^{a}\left(x^2-\tau_jx+1\right).
+ }
+\]
+Individual $\tau_j$ need not be real, but the collection is closed under conjugation and the complete product has real coefficients.
+
+\section{Fixed-point criterion}
+
+Since $\lambda=+1$ is excluded,
+\[
+ \boxed{Q(1)\neq0}.
+\]
+The only possible reciprocal fixed root is $\lambda=-1$, corresponding to $w=-1/4$. Hence
+\[
+ \boxed{
+ Q(-1)=0
+ \iff
+ \varepsilon=1
+ \iff
+ F(-1/4)=0.
+ }
+\]
+This is an exact equivalence, not a resolution of the final condition.
+
+\section{Equivalent identity in the original quotient coordinate}
+
+Define
+\[
+ H(w):=\prod_{r\in P_J}(w-r).
+\]
+Because
+\[
+ Q(x)=4^nH(x/4),
+\]
+the self-reciprocal identity is equivalent to
+\[
+ \boxed{
+ H(w)=4^n w^nH\!\left(\frac1{16w}\right).
+ }
+\]
+Thus the finite paired-root polynomial carries an exact functional relation inherited from the negative inversion.
+
+\section{Claim boundary}
+
+The following statements are proved:
+\begin{itemize}
+ \item $\lambda=4w$ converts $J(w)=1/(16w)$ to reciprocal inversion;
+ \item the normalized paired set is reciprocal and conjugation invariant;
+ \item its canonical monic polynomial has constant term $1$;
+ \item $Q(x)=x^nQ(1/x)$;
+ \item the coefficients of $Q$ are real and palindromic;
+ \item the polynomial factors into reciprocal quadratic orbit factors and at most one exceptional $(x+1)$ factor;
+ \item $Q(1)\neq0$ and $Q(-1)=0\iff F(-1/4)=0$.
+\end{itemize}
+
+The following are not proved:
+\begin{itemize}
+ \item nonemptiness of $P_J$;
+ \item the zero or nonzero status of $F(-1/4)$ by a new analytic theorem;
+ \item real-rootedness of $F$;
+ \item PF-infinity;
+ \item SOH-G003;
+ \item the Riemann Hypothesis.
+\end{itemize}
