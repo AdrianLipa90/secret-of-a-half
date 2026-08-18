@@ -42,6 +42,7 @@ jobs:
           - soh-g017-fixed-point-exclusion
           - soh-g018-quarter-disk-exclusion
           - soh-g019-caratheodory-disk
+          - soh-g020-half-mass-pf2
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -123,6 +124,9 @@ jobs:
               ;;
             soh-g019-caratheodory-disk)
               python scripts/run_soh_g019_caratheodory_disk.py
+              ;;
+            soh-g020-half-mass-pf2)
+              python scripts/run_soh_g020_half_mass_pf2.py
               ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
