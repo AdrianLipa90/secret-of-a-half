@@ -1,0 +1,241 @@
+\chapter{Quotient Negative-Inversion Zero-Set No-Go}
+\label{chap:quotient-negative-inversion-zero-set-no-go}
+
+\status{Exact quotient-level no-go theorem proved. Only finitely many roots of $F$ can be paired with another root by $w\mapsto1/(16w)$. SOH-G003 and RH remain open.}
+
+Chapter~\ref{chap:negative-inversion-zero-set-no-go} proves that the canonical
+negative inversion cannot globally preserve the xi zero set.  The present
+chapter transfers that firewall to the even quotient entire function
+\[
+ \xi\!\left(\frac12+z\right)=F(z^2),
+\]
+where the G012 operator takes its simplest reciprocal form.
+
+\section{The even quotient and its positive center}
+
+By the evenness of the centered xi function there is a unique entire function
+$F$ satisfying
+\begin{equation}
+ \xi\!\left(\frac12+z\right)=F(z^2).
+ \label{eq:g015-F-def}
+\end{equation}
+Chapter~\ref{chap:positive-riemann-kernel} proves the coefficient expansion
+\begin{equation}
+ F(w)=\sum_{k\ge0}a_k w^k,
+ \qquad a_k>0.
+ \label{eq:g015-positive-coefficients}
+\end{equation}
+Consequently
+\begin{equation}
+ \boxed{F(0)=\xi(1/2)>0}
+ \label{eq:g015-F0-positive}
+\end{equation}
+and, more generally,
+\begin{equation}
+ \boxed{F(x)>0\quad(x\ge0).}
+ \label{eq:g015-positive-axis}
+\end{equation}
+
+\section{The quotient negative inversion}
+
+In the centered coordinate $z=s-1/2$, G012 gives
+\[
+ N_z(z)=-\frac1{4z}.
+\]
+With
+\[
+ w=z^2
+\]
+this descends to
+\begin{equation}
+ \boxed{
+ J(w)=\frac1{16w}.
+ }
+ \label{eq:g015-J}
+\end{equation}
+The quotient map is an involution,
+\[
+ J(J(w))=w,
+\]
+and its fixed points are
+\begin{equation}
+ \boxed{w=\pm\frac14.}
+ \label{eq:g015-fixed-values}
+\end{equation}
+Equation~\eqref{eq:g015-positive-axis} immediately excludes one of them from
+the root set:
+\begin{equation}
+ \boxed{F(1/4)>0.}
+ \label{eq:g015-plus-quarter-nonroot}
+\end{equation}
+No claim about $F(-1/4)$ is made at this stage.
+
+\section{The paired quotient-root set}
+
+Let
+\[
+ Z_F=\{w\in\C:F(w)=0\}
+\]
+and define
+\begin{equation}
+ P_J
+ =\{w\in Z_F:F(J(w))=0\}.
+ \label{eq:g015-paired-set}
+\end{equation}
+The set $Z_F$ is infinite.  Indeed, Hardy's theorem provides infinitely many
+critical-line zeros \citep{hardy1914}; if
+\[
+ \rho_n=\frac12+i\gamma_n,
+ \qquad |\gamma_n|\to\infty,
+\]
+then \cref{eq:g015-F-def} gives the distinct quotient roots
+\[
+ w_n=(\rho_n-1/2)^2=-\gamma_n^2.
+\]
+
+\begin{theorem}[Quotient paired-root no-go]
+\label{thm:g015-paired-finite}
+The paired quotient-root set $P_J$ is finite.
+\end{theorem}
+
+\begin{proof}
+Assume that $P_J$ is infinite.  Since $F$ is a non-zero entire function, its
+zeros are isolated, so an infinite subset of its zero set must be unbounded.
+Choose
+\[
+ w_n\in P_J,
+ \qquad |w_n|\to\infty.
+\]
+By definition,
+\[
+ F(J(w_n))=0
+\]
+for every $n$.  But \cref{eq:g015-J} gives
+\[
+ J(w_n)=\frac1{16w_n}\longrightarrow0.
+\]
+Continuity of $F$ therefore forces
+\[
+ F(0)
+ =\lim_{n\to\infty}F(J(w_n))
+ =0,
+\]
+contradicting \cref{eq:g015-F0-positive}.  Hence $P_J$ is finite.
+\end{proof}
+
+\begin{corollary}[No global quotient-root invariance]
+\label{cor:g015-no-global-invariance}
+The complete root set of $F$ is not invariant under $J$:
+\[
+ \boxed{J(Z_F)\ne Z_F.}
+\]
+Moreover, all but finitely many roots of $F$ are sent by $J$ to non-roots.
+\end{corollary}
+
+\section{Exact orbit classification of the exceptional set}
+
+The paired set is itself $J$-invariant.  Indeed, if $w\in P_J$, then both
+$w$ and $J(w)$ are roots and
+\[
+ J(J(w))=w.
+\]
+Since $P_J$ is finite and $J$ is an involution, it decomposes into orbits of
+size one or two.
+
+The size-one orbits are fixed values of $J$, so by
+\cref{eq:g015-fixed-values} they lie in
+\[
+ \left\{\frac14,-\frac14\right\}.
+\]
+The positive fixed value is excluded by
+\cref{eq:g015-plus-quarter-nonroot}.  Therefore:
+
+\begin{theorem}[Exceptional-orbit classification]
+\label{thm:g015-orbit-classification}
+The finite set $P_J$ is a disjoint union of two-cycles, possibly together with
+the single fixed point $-1/4$ if $F(-1/4)=0$.
+\end{theorem}
+
+Equivalently,
+\[
+ \boxed{
+ P_J
+ =\Bigl(\bigsqcup_{m=1}^{M}\{w_m,J(w_m)\}\Bigr)
+ \sqcup E,
+ }
+\]
+where
+\[
+ E\in\{\varnothing,\{-1/4\}\}.
+\]
+Thus the parity of $|P_J|$ is controlled entirely by the unresolved value
+$F(-1/4)$: it is even unless $-1/4$ is itself a root.
+
+\section{Consequences for the real-rootedness frontier}
+
+The real-rootedness target of G003 asks whether every zero of $F$ lies on the
+non-positive real axis.  G015 neither proves nor disproves that statement.
+It removes a different possible shortcut.
+
+Even if RH is true and all roots of $F$ are negative real, the map
+\[
+ J(w)=\frac1{16w}
+\]
+would preserve the negative real axis merely as a geometric locus.  By
+\cref{thm:g015-paired-finite}, it still cannot globally permute the roots of
+$F$.
+
+Hence reciprocal quotient-root invariance is not a missing condition for
+G003 and must not be inserted into the proof programme as though it followed
+from RH or from the inverse-boundary geometry.
+
+\section{Relation to the previous operator layers}
+
+G012 establishes the exact projective operator and its quotient action.
+G013 supplies the Pauli/SU(2) spinor lift.  G014 proves the corresponding
+$s$-plane spectral no-go.  G015 closes the same loophole directly in the
+entire-function quotient used by the real-rootedness reduction:
+\[
+ \boxed{
+ \text{quotient operator symmetry}
+ \not\Rightarrow
+ \text{quotient-root symmetry}.
+ }
+\]
+The operator geometry remains exact.  The rejected statement is only global
+spectral invariance.
+
+\section{Numerical regression is not the proof}
+
+The accompanying test and receipt map the first few non-trivial xi zeros to
+quotient roots
+\[
+ w_n=-\gamma_n^2
+\]
+and verify that their images $J(w_n)$ lie close to zero while
+$F(J(w_n))$ remains far from zero.  The same machinery checks branch
+independence of the numerical $F$ evaluator and the two quotient fixed values.
+These calculations are implementation diagnostics only.  The theorem is the
+analytic compactness/continuity contradiction above.
+
+\section{Proof firewall}
+
+Proved in SOH-G015:
+\begin{itemize}
+ \item the exact quotient involution $J(w)=1/(16w)$;
+ \item the fixed values $w=\pm1/4$;
+ \item $F(0)>0$ and $F(1/4)>0$ from the previously proved coefficient positivity;
+ \item finiteness of the paired quotient-root set $P_J$;
+ \item failure of global $F$-root invariance under $J$;
+ \item cofinite failure of quotient-root pairing;
+ \item decomposition of $P_J$ into two-cycles and possibly the fixed root $-1/4$.
+\end{itemize}
+
+Not proved or claimed in SOH-G015:
+\begin{itemize}
+ \item whether $F(-1/4)$ vanishes;
+ \item real-rootedness of $F$;
+ \item PF$_\infty$;
+ \item SOH-G003;
+ \item the Riemann Hypothesis.
+\end{itemize}
