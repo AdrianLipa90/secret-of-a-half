@@ -1,9 +1,9 @@
 """SOH-G011 forced complex crossings and Euler half-period utilities.
 
 The theorem-level statements implemented here follow from the reciprocal
-symmetry X(u)=X(1/u), logarithmic periodicity, and the previously proved
-positive Taylor coefficients of the centered xi quotient. Additional complex
-zeros of the scale defect are not excluded here.
+symmetry X(u)=X(1/u), logarithmic periodicity, Euler's half-turn, and the
+previously proved positive Taylor coefficients of the centered xi quotient.
+Additional complex zeros of the scale defect are not excluded here.
 """
 from __future__ import annotations
 
@@ -88,6 +88,38 @@ def euler_half_turn(u: complex | mp.mpf | mp.mpc) -> mp.mpc:
     if not mp.isfinite(u):
         raise ValueError("u must be finite")
     return mp.exp(mp.j * mp.pi) * u
+
+
+def centered_t_from_u(u: complex | mp.mpf | mp.mpc) -> mp.mpc:
+    r"""Return t=(u-1)/(u+1), the centered coordinate 2s-1.
+
+    With u=exp(lambda), this equals tanh(lambda/2). The point u=-1 is the
+    Möbius pole of the chart.
+    """
+    u = mp.mpc(u)
+    if not mp.isfinite(u):
+        raise ValueError("u must be finite")
+    if u == -1:
+        raise ValueError("u=-1 is the centered Möbius pole")
+    return (u - 1) / (u + 1)
+
+
+def euler_half_turn_centered_inversion(
+    u: complex | mp.mpf | mp.mpc,
+) -> mp.mpc:
+    r"""Return the centered image after an Euler half-turn.
+
+    For t=(u-1)/(u+1) and t != 0,
+
+        t(-u) = 1/t(u).
+
+    Thus lambda -> lambda+pi*i, equivalently u -> exp(i*pi)u=-u, is exactly
+    reciprocal inversion in the centered t-chart.
+    """
+    t = centered_t_from_u(u)
+    if t == 0:
+        raise ValueError("centered inversion is undefined at t=0 (u=1)")
+    return centered_t_from_u(euler_half_turn(u))
 
 
 def crossing_quotient_argument(a: float | mp.mpf, k: int) -> mp.mpf:
