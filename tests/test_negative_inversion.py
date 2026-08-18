@@ -7,6 +7,9 @@ from secret_of_a_half.negative_inversion import (
     euler_half_turn_u,
     euler_half_turn_w,
     euler_half_turn_z,
+    functional_reflection_s,
+    li_coordinate,
+    li_coordinate_via_negative_inversion,
     log_negative_inversion,
     log_negative_inversion_fixed,
     negative_inversion_fixed_s,
@@ -22,6 +25,7 @@ from secret_of_a_half.negative_inversion import (
     riemann_reflection_w,
     riemann_reflection_z,
     s_from_u,
+    u_from_s,
 )
 
 
@@ -42,6 +46,18 @@ def test_v4_operator_algebra_in_u() -> None:
         assert _close(r(e(u)), n(u))
         assert _close(e(r(u)), n(u))
         assert _close(r(e(u)), e(r(u)))
+
+
+def test_functional_reflection_and_li_negative_inverse_crosswalk() -> None:
+    mp.mp.dps = 70
+    samples = [mp.mpc("0.31", "0.27"), mp.mpc("0.62", "-0.41"), mp.mpc("1.3", "0.2")]
+    for s in samples:
+        u = u_from_s(s)
+        reflected_u = u_from_s(functional_reflection_s(s))
+        assert _close(reflected_u, riemann_reflection_u(u))
+        assert _close(li_coordinate(s), -1 / u)
+        assert _close(li_coordinate(s), negative_inversion_u(u))
+        assert _close(li_coordinate(s), li_coordinate_via_negative_inversion(s))
 
 
 def test_coordinate_conjugacy_u_to_t() -> None:
@@ -120,6 +136,12 @@ def test_w_quotient_has_two_fixed_values_with_distinct_origins() -> None:
 
 
 def test_fail_closed_singularities() -> None:
+    with pytest.raises(ValueError):
+        li_coordinate(0)
+    with pytest.raises(ValueError):
+        li_coordinate_via_negative_inversion(0)
+    with pytest.raises(ValueError):
+        li_coordinate_via_negative_inversion(1)
     with pytest.raises(ValueError):
         riemann_reflection_u(0)
     with pytest.raises(ValueError):
