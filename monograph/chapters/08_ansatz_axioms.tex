@@ -3,7 +3,7 @@
 
 \section{Purpose of the axiomatization}
 
-The preceding chapters established a network of exact correspondences. To convert that network into a research programme, the assumptions must be stated in a form that can be tested, weakened, or rejected. The axioms below are not asserted as properties already possessed by the zeta function. They define the class of models under consideration.
+The preceding chapters established a network of exact correspondences. To convert that network into a research programme, the assumptions must be stated in a form that can be tested, weakened, or rejected. The axioms below are not asserted as properties already possessed by the zeta function. They define the class of information-spinor models under consideration.
 
 \section{The binary state bundle}
 
@@ -24,7 +24,7 @@ The overall phase $\chi$ is gauge; the relative phase $\Phi$ affects the detecto
 The squared channel norms of the state associated with $s=\sigma+it$ are $\sigma$ and $1-\sigma$.
 \end{axiom}
 
-This axiom is the most direct identification of the analytic real part with binary balance. It is natural under $\sigma\leftrightarrow1-\sigma$, but it is not forced by classical zeta theory. A more advanced model may derive these weights from a kernel or operator rather than assume them.
+This axiom is the most direct identification of the analytic real part with binary balance. It is compatible with $\sigma\leftrightarrow1-\sigma$, but it is not forced by classical zeta theory. A stronger realization would derive these weights from a kernel or operator rather than assume them.
 
 \begin{axiom}[Equal-gain detector]
 \label{ax:detector}
@@ -52,7 +52,7 @@ or, in a weaker version sufficient for the location theorem,
 Multiplicity preservation is required for a full analytic equivalence.
 \end{postulate}
 
-This postulate is SOH-C001 in explicit form. It is the unresolved bridge.
+This postulate is SOH-C001 in explicit form. It remains unresolved for the information-spinor state-map branch.
 
 \begin{axiom}[Involution covariance]
 \label{ax:covariance}
@@ -84,15 +84,15 @@ Let $P_+=\ket{+}\bra{+}$ be the detector projector. The zero readout condition i
  \bra{\Psi(s)}P_+\ket{\Psi(s)}=0.
  \label{eq:projector-zero}
 \end{equation}
-Because $P_+$ is positive semidefinite, this occurs exactly when $P_+\ket{\Psi(s)}=0$. The expression is gauge invariant and non-negative. This suggests a possible positivity route: construct a zeta-dependent state for which a positive expectation value is proportional to $|\xi(s)|^2$ up to a non-vanishing factor.
+Because $P_+$ is positive semidefinite, this occurs exactly when $P_+\ket{\Psi(s)}=0$. The expression is gauge invariant and non-negative.
 
-Specifically, a strong realization could seek
+A candidate positive realization can therefore seek
 \begin{equation}
  |\xi(s)|^2=w(s)\bra{\Psi(s)}P_+\ket{\Psi(s)},
  \qquad w(s)>0\quad(s\in\Sstrip).
  \label{eq:positive-factorization}
 \end{equation}
-This avoids phase gauge issues and preserves the zero set. It is non-holomorphic, as any modulus-square identity must be, but it may arise naturally from a reproducing kernel or transfer operator.
+This is a construction target, not a proved identity. It avoids phase-gauge ambiguity and preserves the zero set if the stated assumptions are met.
 
 \section{Covariance constraints on the phase}
 
@@ -120,22 +120,12 @@ A candidate bridge can be evaluated against the following hierarchy:
   \item \textbf{Operator map:} arises from a self-adjoint or positive object.
   \item \textbf{Arithmetic map:} retains Euler-product or explicit-formula information.
 \end{enumerate}
-A map achieving only the first level has little explanatory value. A map reaching the fifth level would be close to a genuine RH mechanism.
+A map achieving only the first level has little explanatory value. Reaching the later levels would close progressively stronger construction requirements, but none is assumed here.
 
 \section{The role of the imaginary coordinate}
 
-The axioms determine only the horizontal balance coordinate. The imaginary part $t$ must enter through phase, dynamics, or spectral quantization. In a state model one expects
-\[
- \Phi(s)=\Phi(\sigma,t),
-\]
-with zeros occurring when the phase reaches opposition simultaneously with equal weights. On the critical line, equal weights are automatic, so the zero ordinates are the values of $t$ for which the phase or detector condition quantizes.
+The axioms determine only the horizontal balance coordinate. The imaginary part $t$ must enter through phase, dynamics, or spectral quantization in any realization of this model.
 
-This suggests the interpretation
-\[
- \sigma\quad\text{as balance},
- \qquad
- t\quad\text{as spectral phase or frequency}.
-\]
-It is a useful decomposition, not an established physical ontology.
+\textbf{INTERPRETACJA.} Within the information-spinor model one may read $\sigma$ as a balance coordinate and $t$ as a spectral-phase or frequency coordinate. This is a modelling interpretation only; it is not an established physical ontology and it is not used as a premise in any theorem.
 
-\status{The axioms define the ansatz. Only the elementary consequences are proved. The zero-equivalence and canonical-construction requirements remain unfulfilled.}
+\status{The axioms define the information-spinor ansatz. Only the elementary consequences are proved. The zero-equivalence and canonical state-map construction requirements remain unfulfilled in this branch, even though later chapters construct other canonical quotient and kernel objects.}
