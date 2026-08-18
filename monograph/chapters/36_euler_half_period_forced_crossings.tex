@@ -1,0 +1,161 @@
+\chapter{Euler Half-Period and the Forced Complex Crossing Pair}
+\label{chap:euler-half-period-crossings}
+
+\status{Forced complex crossing pair and its simplicity proved. Additional complex zeros of the scale defect remain open. No SOH-G003 or RH claim is made.}
+
+Chapter 35 established the unique positive crossing of
+\[
+\Delta_a(u)=X(au)-X(u),\qquad
+X(u)=\xi\!\left(\frac{u}{1+u}\right),\qquad a>1.
+\]
+The reciprocal functional symmetry
+\[
+X(u)=X(1/u)
+\]
+contains a second, genuinely complex-geometric statement once the punctured \(u\)-plane is uniformized logarithmically.
+
+Set
+\[
+u=e^\lambda,\qquad L=\log a,
+\]
+and define
+\[
+D_a(\lambda)=\Delta_a(e^\lambda).
+\]
+Then
+\[
+\boxed{D_a(-L-\lambda)=-D_a(\lambda)}
+\]
+and, because \(e^{\lambda+2\pi i}=e^\lambda\),
+\[
+\boxed{D_a(\lambda+2\pi i)=D_a(\lambda)}.
+\]
+
+\section{The logarithmic fixed-point family}
+
+The fixed points of the antisymmetry involution modulo the logarithmic period satisfy
+\[
+\lambda=-L-\lambda+2\pi i k,
+\]
+so
+\[
+\boxed{\lambda_k=-\frac{L}{2}+\pi i k},\qquad k\in\mathbb Z.
+\]
+At every such point,
+\[
+D_a(\lambda_k)=-D_a(\lambda_k),
+\]
+hence
+\[
+\boxed{D_a(\lambda_k)=0}.
+\]
+Exponentiating collapses this infinite logarithmic family to two points:
+\[
+\boxed{u_+=a^{-1/2}},\qquad
+\boxed{u_-=-a^{-1/2}}.
+\]
+Equivalently, these are the two fixed points of the reciprocal scale involution
+\[
+I_a(u)=\frac{1}{au}.
+\]
+
+\section{Euler's identity as the exact half-period bridge}
+
+Successive logarithmic representatives differ by
+\[
+\lambda_{k+1}-\lambda_k=\pi i.
+\]
+Euler's identity gives
+\[
+\boxed{e^{i\pi}=-1},
+\]
+therefore
+\[
+\boxed{e^{\lambda_{k+1}}
+=e^{\lambda_k}e^{i\pi}
+=-e^{\lambda_k}}.
+\]
+Thus the logarithmic half-period \(\pi i\) exchanges the two forced crossing classes, while the full period \(2\pi i\) returns to the same \(u\)-point. This is an exact phase relation, not an analogy.
+
+For the Uroboros scale \(a=32=2^5\),
+\[
+L=5\log2,
+\qquad
+\boxed{\lambda_k=-\frac52\log2+\pi i k},
+\]
+and
+\[
+\boxed{u_\pm=\pm\frac1{\sqrt{32}}}.
+\]
+
+\section{Simplicity of the forced pair}
+
+Recall the centered entire factorization
+\[
+\xi\!\left(\frac12+z\right)=F(z^2)
+\]
+and the positive coefficient theorem
+\[
+F(w)=\sum_{n\ge0}a_nw^n,\qquad a_n>0.
+\]
+Therefore
+\[
+F'(w)>0\qquad(w>0).
+\]
+In logarithmic coordinates,
+\[
+X(e^\lambda)
+=F\!\left(w(\lambda)\right),
+\qquad
+w(\lambda)=\frac14\tanh^2\frac\lambda2.
+\]
+Differentiating \(D_a\), using evenness of \(X(e^\lambda)\) and its \(2\pi i\)-periodicity, yields at every forced crossing
+\[
+D_a'(\lambda_k)
+=2\,\frac{d}{d\lambda}X(e^\lambda)
+\Big|_{\lambda=L/2+\pi i k}.
+\]
+For even \(k\),
+\[
+w=\frac14\tanh^2\frac{L}{4}>0.
+\]
+For odd \(k\), the Euler half-period produces
+\[
+\tanh\!\left(z+\frac{i\pi}{2}\right)=\coth z,
+\]
+so
+\[
+w=\frac14\coth^2\frac{L}{4}>0.
+\]
+Since \(L>0\), the corresponding \(w'(\lambda)\) is nonzero in both parity classes. Hence
+\[
+F'(w)w'(\lambda)\neq0
+\]
+and therefore
+\[
+\boxed{D_a'(\lambda_k)\neq0}.
+\]
+
+\begin{theorem}[Forced Euler crossing pair]
+For every \(a>1\), the scale defect \(\Delta_a\) has the two symmetry-forced simple zeros
+\[
+\boxed{u=\pm a^{-1/2}}.
+\]
+Their logarithmic lifts are
+\[
+\boxed{\lambda_k=-\frac12\log a+\pi i k},
+\]
+and adjacent lifts are exchanged by the exact Euler half-turn \(e^{i\pi}=-1\).
+\end{theorem}
+
+\section{Open complex frontier}
+
+The theorem proves that the pair \(\pm a^{-1/2}\) is present and simple. It does not prove that
+\[
+Z(\Delta_a)=\{\pm a^{-1/2}\}.
+\]
+Additional complex zeros would correspond to nontrivial value collisions between the two arguments of the centered entire function \(F\). Excluding them requires a new global value-separation or injectivity mechanism and cannot be obtained from reciprocal symmetry alone.
+
+\section{Proof firewall}
+
+Proved: the logarithmic crossing family, the two \(u\)-classes, Euler half-period exchange, and simplicity of both forced zeros. Open: additional complex scale-defect zeros, global injectivity of \(F\), PF\(_\infty\), SOH-G003 real-rootedness, and the Riemann Hypothesis.
