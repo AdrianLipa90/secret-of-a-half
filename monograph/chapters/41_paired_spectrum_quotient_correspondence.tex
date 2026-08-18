@@ -1,0 +1,211 @@
+\chapter{Paired-Spectrum Quotient Correspondence}
+\label{chap:paired-spectrum-quotient-correspondence}
+
+\status{Exact correspondence theorem proved. The finite paired xi-zero set and finite paired $F$-root set are related by an exact two-to-one quotient. SOH-G003 and RH remain open.}
+
+Chapters~\ref{chap:negative-inversion-zero-set-no-go} and
+\ref{chap:quotient-negative-inversion-zero-set-no-go} establish two finite
+exceptional paired spectra: one in the $s$-plane and one in the even quotient
+$w$-plane.  This chapter proves that they are not merely analogous finite
+sets.  They are the same exceptional structure before and after the exact
+two-sheeted functional-reflection quotient.
+
+\section{The even quotient map}
+
+Define
+\begin{equation}
+ q(s)=\left(s-\frac12\right)^2.
+ \label{eq:g016-q}
+\end{equation}
+Then
+\begin{equation}
+ q(1-s)=q(s),
+ \label{eq:g016-reflection-quotient}
+\end{equation}
+so $q$ identifies precisely the pair exchanged by the holomorphic functional
+reflection $s\mapsto1-s$.
+
+For $w\ne0$, the fiber consists of the two distinct points
+\begin{equation}
+ q^{-1}(w)
+ =\left\{\frac12+\sqrt w,\frac12-\sqrt w\right\}.
+ \label{eq:g016-fiber}
+\end{equation}
+The two square-root choices are exchanged by $s\mapsto1-s$.
+
+From Chapter~\ref{chap:positive-riemann-kernel},
+\begin{equation}
+ F(0)=\xi(1/2)>0,
+ \label{eq:g016-zero-not-root}
+\end{equation}
+so $0\notin Z_F$.  Consequently every quotient root relevant below has
+exactly two distinct preimages.
+
+\section{The commuting negative-inversion diagram}
+
+G014 gives
+\[
+ N_s(s)=\frac{s-1}{2s-1},
+\]
+while G015 gives
+\[
+ J(w)=\frac1{16w}.
+\]
+Writing $z=s-1/2$, G012 gives
+\[
+ N_z(z)=-\frac1{4z}.
+\]
+Squaring immediately yields
+\begin{equation}
+ \boxed{
+ q(N_s(s))=J(q(s)).
+ }
+ \label{eq:g016-commuting-diagram}
+\end{equation}
+Thus
+\[
+ \boxed{q\circ N_s=J\circ q.}
+\]
+The quotient and negative inversion commute exactly; there is no fitted or
+asymptotic step in this diagram.
+
+\section{The two paired spectra}
+
+Recall the G014 paired xi-zero set
+\begin{equation}
+ P_N
+ =\{\rho:\xi(\rho)=0,\ \xi(N_s(\rho))=0\}
+ \label{eq:g016-PN}
+\end{equation}
+and the G015 paired quotient-root set
+\begin{equation}
+ P_J
+ =\{w:F(w)=0,\ F(J(w))=0\}.
+ \label{eq:g016-PJ}
+\end{equation}
+Both sets are finite by the preceding no-go theorems.
+
+\begin{theorem}[Exact paired-spectrum quotient]
+\label{thm:g016-paired-quotient}
+The quotient map satisfies
+\begin{equation}
+ \boxed{q(P_N)=P_J.}
+ \label{eq:g016-image-equality}
+\end{equation}
+Moreover,
+\[
+ q:P_N\longrightarrow P_J
+\]
+is exactly two-to-one.  Hence
+\begin{equation}
+ \boxed{|P_N|=2|P_J|.}
+ \label{eq:g016-cardinality}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Take $\rho\in P_N$.  Since $\xi(\rho)=0$, the even quotient identity
+\[
+ \xi\!\left(\frac12+z\right)=F(z^2)
+\]
+gives
+\[
+ F(q(\rho))=0.
+\]
+Also $\xi(N_s(\rho))=0$, so by
+\cref{eq:g016-commuting-diagram},
+\[
+ F(J(q(\rho)))
+ =F(q(N_s(\rho)))
+ =0.
+\]
+Therefore $q(\rho)\in P_J$, proving $q(P_N)\subseteq P_J$.
+
+Conversely, let $w\in P_J$.  Equation~\eqref{eq:g016-zero-not-root} ensures
+$w\ne0$.  The two points in \cref{eq:g016-fiber} both satisfy
+\[
+ \xi(\rho_\pm)=F(w)=0.
+\]
+By the commuting diagram,
+\[
+ q(N_s(\rho_\pm))=J(w).
+\]
+Since $F(J(w))=0$, every point in the two-element fiber over $J(w)$ is an xi
+zero.  In particular,
+\[
+ \xi(N_s(\rho_\pm))=0.
+\]
+Thus both $\rho_+$ and $\rho_-$ lie in $P_N$, and $w\in q(P_N)$.  Hence
+$P_J\subseteq q(P_N)$ and equality follows.
+
+Finally, every $w\in P_J$ is non-zero, so its fiber consists of exactly two
+distinct points, and the preceding argument places both in $P_N$.  Therefore
+the restriction of $q$ is exactly two-to-one, proving
+\cref{eq:g016-cardinality}.
+\end{proof}
+
+\section{Lift of the exceptional orbit structure}
+
+Both $N_s$ and $J$ are involutions.  Equation~\eqref{eq:g016-commuting-diagram}
+therefore lifts every $J$-orbit in $P_J$ to $N_s$-orbits in $P_N$.
+
+If $\{w,J(w)\}$ is a non-fixed two-cycle, its two quotient fibers contain four
+xi zeros.  Negative inversion arranges these four points into two
+$N_s$ two-cycles.  The functional reflection exchanges the two lifted cycles.
+
+The only possible fixed quotient root left by G015 is $w=-1/4$.  Its fiber is
+\begin{equation}
+ q^{-1}(-1/4)
+ =\left\{\frac12+\frac{i}{2},\frac12-\frac{i}{2}\right\},
+ \label{eq:g016-minus-quarter-fiber}
+\end{equation}
+and G012 proves that both points are individually fixed by $N_s$.
+The positive fixed quotient value $+1/4$ contributes no paired fiber because
+$F(1/4)>0$.
+
+\section{Cardinality structure}
+
+Let $M$ denote the number of non-fixed two-cycles in $P_J$, and let
+\[
+ \varepsilon\in\{0,1\}
+\]
+record whether $F(-1/4)=0$.  Then the G015 orbit classification and
+\cref{thm:g016-paired-quotient} give
+\begin{equation}
+ |P_J|=2M+\varepsilon,
+ \qquad
+ |P_N|=4M+2\varepsilon.
+ \label{eq:g016-cardinality-structure}
+\end{equation}
+In particular,
+\begin{equation}
+ \boxed{|P_N|\text{ is even}.}
+ \label{eq:g016-PN-even}
+\end{equation}
+The unresolved status of $F(-1/4)$ changes only the final $+2$ term in the
+xi-layer paired cardinality.  It does not affect the exact two-to-one
+correspondence.
+
+\section{Proof firewall}
+
+Proved in SOH-G016:
+\begin{itemize}
+ \item $q(s)=(s-1/2)^2$ identifies the functional-reflection pair;
+ \item $q\circ N_s=J\circ q$ exactly;
+ \item $q(P_N)=P_J$;
+ \item $q:P_N\to P_J$ is exactly two-to-one;
+ \item $|P_N|=2|P_J|$ and therefore $|P_N|$ is even;
+ \item every non-fixed paired quotient two-cycle lifts to two paired xi-zero
+       two-cycles;
+ \item the possible $w=-1/4$ fixed root lifts to the G012 fixed xi pair.
+\end{itemize}
+
+Not proved or claimed in SOH-G016:
+\begin{itemize}
+ \item whether $F(-1/4)$ vanishes;
+ \item that either paired set is empty;
+ \item real-rootedness of $F$;
+ \item PF$_\infty$;
+ \item SOH-G003;
+ \item the Riemann Hypothesis.
+\end{itemize}
