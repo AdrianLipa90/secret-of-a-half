@@ -1,0 +1,154 @@
+\chapter{The Canonical Half-Mass PF2 Law}
+\label{chap:canonical-half-mass-pf2-law}
+
+\status{SOH-G020 proved: exact half-mass normalization, PF2 preservation, strict monotone decay, and a sharpened coefficient envelope.}
+
+\section{Purpose}
+
+Chapter~\ref{chap:coefficient-majorant-caratheodory-disk} introduced the exact threshold \(R_\star>0\) determined by
+\[
+ F(R_\star)=2F(0),
+\]
+and proved
+\[
+ \sum_{n\ge1}a_nR_\star^n=a_0,
+ \qquad a_0=F(0).
+\]
+The present chapter combines that normalization with the already proved PF2 coefficient theorem of Chapter~\ref{chap:pf2-coefficient-structure}.
+
+\section{The canonical probability law}
+
+Define
+\[
+ \pi_n:=\frac{a_nR_\star^n}{2a_0},
+ \qquad n\ge0.
+\]
+At the zeroth index,
+\[
+ \boxed{\pi_0=\frac12.}
+\]
+For the strictly positive indices,
+\[
+ \sum_{n\ge1}\pi_n
+ =\frac1{2a_0}\sum_{n\ge1}a_nR_\star^n
+ =\frac12.
+\]
+Therefore
+\[
+ \boxed{
+ \pi_n>0,
+ \qquad
+ \sum_{n\ge0}\pi_n=1,
+ \qquad
+ \pi_0=\sum_{n\ge1}\pi_n=\frac12.
+ }
+\]
+Equivalently,
+\[
+ \boxed{
+ \frac{F(R_\star\zeta)}{2F(0)}
+ =\sum_{n\ge0}\pi_n\zeta^n.
+ }
+\]
+Thus the canonically scaled quotient is exactly a probability-generating series.
+
+\section{PF2 survives the normalization}
+
+Chapter~\ref{chap:pf2-coefficient-structure} proved
+\[
+ a_n^2\ge a_{n-1}a_{n+1},
+ \qquad n\ge1.
+\]
+For the normalized sequence,
+\begin{align*}
+ \pi_n^2-\pi_{n-1}\pi_{n+1}
+ &=\frac{a_n^2R_\star^{2n}}{4a_0^2}
+ -\frac{a_{n-1}a_{n+1}R_\star^{2n}}{4a_0^2}\\
+ &=\frac{R_\star^{2n}}{4a_0^2}
+ \left(a_n^2-a_{n-1}a_{n+1}\right)\\
+ &\ge0.
+\end{align*}
+Hence
+\[
+ \boxed{\pi_n^2\ge\pi_{n-1}\pi_{n+1}\qquad(n\ge1).}
+\]
+The canonical half-mass law is therefore PF2/log-concave.
+
+\section{Strict monotone decay}
+
+For every positive log-concave sequence, the successive ratios
+\[
+ q_n:=\frac{\pi_n}{\pi_{n-1}}
+\]
+are nonincreasing.  Because the entire positive-index mass equals \(1/2\) and every positive-index term is strictly positive,
+\[
+ 0<\pi_1<\frac12=\pi_0.
+\]
+Thus
+\[
+ q_1<1,
+ \qquad
+ q_n\le q_1<1.
+\]
+It follows that
+\[
+ \boxed{
+ \pi_0>\pi_1>\pi_2>\cdots>0.
+ }
+\]
+This conclusion uses the half-mass normalization and PF2 together; neither ingredient alone gives the same canonical statement.
+
+\section{A sharpened coefficient envelope}
+
+Set
+\[
+ b_n:=2\pi_n=\frac{a_nR_\star^n}{a_0}.
+\]
+Then
+\[
+ b_1>b_2>\cdots>0,
+ \qquad
+ \sum_{n\ge1}b_n=1.
+\]
+For any \(n\ge1\),
+\[
+ nb_n\le\sum_{k=1}^{n}b_k<1,
+\]
+because the tail \(\sum_{k>n}b_k\) remains strictly positive.  Therefore
+\[
+ b_n<\frac1n,
+\]
+and hence
+\[
+ \boxed{
+ a_n<\frac{F(0)}{nR_\star^n},
+ \qquad n\ge1.
+ }
+\]
+This strictly improves the G019 envelope
+\[
+ a_n<F(0)R_\star^{-n}.
+\]
+
+\section{Numerical regression}
+
+Using the numerical G019 threshold only as a regression aid gives
+\[
+ \pi_0=0.5,
+\]
+\[
+ \pi_1\approx0.35470477,
+ \qquad
+ \pi_2\approx0.11705464,
+ \qquad
+ \pi_3\approx0.02423207,
+\]
+with subsequent masses rapidly decreasing.  The exact theorem does not depend on these decimal values.
+
+\section{Connection to the PF3 frontier}
+
+The G020 normalization removes a global scale and fixes the total coefficient mass.  The PF3 ratio-curvature quantities of Chapter~\ref{chap:pf3-ratio-curvature} are invariant under this positive geometric rescaling, so future PF3 work may be carried out on the probability law \((\pi_n)\) without changing the sign of any PF3 Toeplitz minor.
+
+\gap{PF$_3$ and PF$_\infty$ remain open.}
+
+\noindent\textbf{Open status.} Ultra-log-concavity and real-rootedness of \(F\) remain open.  SOH-G003 and the Riemann Hypothesis remain open.
