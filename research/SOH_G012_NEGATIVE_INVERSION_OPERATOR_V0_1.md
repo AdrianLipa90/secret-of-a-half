@@ -1,12 +1,46 @@
-# SOH-G012 — Euler–Riemann Negative-Inversion Operator Algebra
+# SOH-G012 — Euler–Riemann Factorization of the Canonical Negative Inverse
 
 ## Status
 
 **THEOREM-LEVEL OPERATOR GEOMETRY / PROVED.**
 
-This note derives negative inversion as the exact composition of the Riemann reciprocal reflection and the Euler half-turn. It establishes the operator algebra and its fixed-point geometry across the `u`, centered `t`, centered `z`, and quotient `w` coordinates. It makes no claim about the location of nontrivial zeros of the Riemann xi function and does not prove RH.
+This note derives the already-canonical negative inverse of Chapter 25 as the exact composition of the holomorphic Riemann functional reflection and the Euler half-turn. It establishes the operator algebra and its fixed-point geometry across the `u`, centered `t`, centered `z`, and quotient `w` coordinates. It makes no claim about the location of nontrivial zeros of the Riemann xi function and does not prove RH.
 
-## 1. Coordinates
+## 1. Canonical crosswalk to Chapter 25
+
+Chapter 25 defines
+
+\[
+\Omega(s)=\frac{s}{1-s}
+\]
+
+and Li's coordinate
+
+\[
+z_L(s)=1-\frac1s.
+\]
+
+The canonical identity SOH-L017 is
+
+\[
+\boxed{z_L(s)=-\frac1{\Omega(s)}}.
+\]
+
+Set
+
+\[
+u=\Omega(s).
+\]
+
+Then the existing Li negative inverse is exactly
+
+\[
+\boxed{z_L(s)=-\frac1u}.
+\]
+
+SOH-G012 does not redefine this map. It factorizes the same rational transformation into two primitive involutions.
+
+## 2. Coordinates
 
 Use
 
@@ -26,15 +60,15 @@ z=s-\frac12=\frac{t}{2},
 w=z^2.
 \]
 
-## 2. Two primitive involutions
+## 3. Two primitive involutions
 
-The Riemann reflection is
+The holomorphic Riemann functional reflection is
 
 \[
 \mathcal R_s(s)=1-s.
 \]
 
-In the `u` coordinate this becomes
+Under `u=Omega(s)` this becomes
 
 \[
 \boxed{\mathcal R_u(u)=\frac1u}.
@@ -54,7 +88,7 @@ hence
 
 Both are involutions.
 
-## 3. Negative inversion is their composition
+## 4. Canonical negative inversion is their composition
 
 The two primitive maps commute on their natural projective domain:
 
@@ -78,6 +112,17 @@ Then
 \boxed{\mathcal N_u(u)=-\frac1u=\frac{e^{i\pi}}u}.
 \]
 
+Therefore the Chapter-25 Li coordinate satisfies the exact factorization
+
+\[
+\boxed{
+ z_L(s)
+ =\mathcal N_u(\Omega(s))
+ =\mathcal E_u\!\left(\mathcal R_u(\Omega(s))\right)
+ =\mathcal R_u\!\left(\mathcal E_u(\Omega(s))\right).
+}
+\]
+
 Furthermore,
 
 \[
@@ -94,7 +139,7 @@ Therefore
 
 the Klein four group.
 
-## 4. Centered-chart conjugacies
+## 5. Centered-chart conjugacies
 
 From
 
@@ -112,7 +157,7 @@ one obtains exactly
 \boxed{\mathcal N_t(t)=-\frac1t}.
 \]
 
-Thus the negative-inversion map in the centered chart is not an independent ansatz: it is the product of the Riemann sign reflection and the Euler reciprocal action.
+Thus the canonical negative inverse in the centered chart is the product of the Riemann sign reflection and the Euler reciprocal action.
 
 Since `z=t/2`,
 
@@ -138,7 +183,7 @@ while
 
 Therefore the square quotient kills the distinction between `E` and `N` because it has already quotiented out the sign reflection `R`.
 
-## 5. Fixed points of negative inversion
+## 6. Fixed points of negative inversion
 
 The fixed-point equation in the `u` coordinate is
 
@@ -170,7 +215,7 @@ Both satisfy
 \Re(s_\pm)=\frac12.
 \]
 
-Thus the affine fixed pair of the Euler–Riemann negative inversion lies exactly on the Riemann critical line. This is a geometric operator theorem only; it does not imply that xi zeros must be fixed points of this operator.
+Thus the affine fixed pair of the Euler–Riemann factorization lies exactly on the Riemann critical line. This is a geometric operator theorem only; it does not imply that xi zeros must be fixed points of this operator.
 
 In the centered coordinates,
 
@@ -182,7 +227,7 @@ In the centered coordinates,
 \boxed{w=-\frac14}.
 \]
 
-## 6. Quotient fixed-point stratification
+## 7. Quotient fixed-point stratification
 
 The quotient map
 
@@ -234,7 +279,21 @@ form a two-cycle:
 
 The square quotient identifies that two-cycle and therefore creates a second fixed value in `w`.
 
-## 7. Logarithmic cylinder
+The two quotient fixed values therefore encode different projective structures:
+
+\[
+ w=-\frac14
+ \quad\text{is the image of genuine negative-inversion fixed points},
+\]
+
+whereas
+
+\[
+ w=+\frac14
+ \quad\text{is the image of a sign-exchanged two-cycle}.
+\]
+
+## 8. Logarithmic cylinder
 
 Let
 
@@ -242,13 +301,19 @@ Let
 u=e^\lambda.
 \]
 
-Then negative inversion has the logarithmic lift
+The primitive operators lift to
 
 \[
-\boxed{\mathcal N_\lambda(\lambda)=i\pi-\lambda}
+\mathcal R_\lambda(\lambda)=-\lambda,
+\qquad
+\mathcal E_\lambda(\lambda)=\lambda+i\pi
 \]
 
-modulo the full logarithmic period `2πi`.
+modulo the full logarithmic period `2πi`. Their composition is
+
+\[
+\boxed{\mathcal N_\lambda(\lambda)=i\pi-\lambda}.
+\]
 
 Its fixed lifts satisfy
 
@@ -264,10 +329,11 @@ hence
 
 Exponentiation gives the two classes `u=+i` and `u=-i`.
 
-## 8. Proof firewall
+## 9. Proof firewall
 
 Proved here:
 
+- the Chapter-25 identity `z_L(s)=-1/Omega(s)` is exactly `N_u(Omega(s))`;
 - `R(u)=1/u` and `E(u)=-u` are involutions;
 - `R` and `E` commute;
 - `N=RE=ER=-1/u`;
