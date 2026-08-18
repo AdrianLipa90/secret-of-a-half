@@ -2,9 +2,11 @@ import mpmath as mp
 import pytest
 
 from secret_of_a_half.euler_crossings import (
+    centered_t_from_u,
     complex_scale_defect,
     crossing_quotient_argument,
     euler_half_turn,
+    euler_half_turn_centered_inversion,
     forced_u_crossings,
     log_scale_defect,
     logarithmic_crossing,
@@ -58,6 +60,27 @@ def test_euler_half_turn_exchanges_forced_classes() -> None:
         assert abs(u1 + u0) < mp.mpf("1e-50")
 
 
+def test_euler_half_turn_is_centered_reciprocal_inversion() -> None:
+    mp.mp.dps = 60
+    samples = [
+        mp.mpc("0.3", "0.7"),
+        mp.mpc("2.0", "0.4"),
+        mp.mpc("-0.4", "0.6"),
+    ]
+    for u in samples:
+        t = centered_t_from_u(u)
+        image = euler_half_turn_centered_inversion(u)
+        assert abs(image - 1 / t) < mp.mpf("1e-50")
+
+
+def test_log_half_period_is_t_inversion() -> None:
+    mp.mp.dps = 60
+    lam = mp.mpc("0.47", "0.31")
+    t0 = mp.tanh(lam / 2)
+    t1 = mp.tanh((lam + mp.pi * mp.j) / 2)
+    assert abs(t1 - 1 / t0) < mp.mpf("1e-50")
+
+
 def test_crossing_quotient_arguments_are_positive() -> None:
     mp.mp.dps = 60
     for a in [2, 3, 32]:
@@ -83,6 +106,8 @@ def test_complex_domain_fails_closed_at_mobius_poles() -> None:
         complex_scale_defect(-1, 32)
     with pytest.raises(ValueError):
         complex_scale_defect(mp.mpf(-1) / 32, 32)
+    with pytest.raises(ValueError):
+        euler_half_turn_centered_inversion(1)
 
 
 def test_invalid_scale_rejected() -> None:
