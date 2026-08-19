@@ -2,10 +2,10 @@
 """Deterministic semantic guard for the integrated monograph.
 
 This script does not decide mathematical truth. It protects the repository-level
-proof-state boundaries through canonical SOH-G023 and the non-canonical G024
-candidate: first and second complete-monotonicity inequalities global, the
-second-order compact closure carrying an explicit computer-assisted interval
-certificate, and the exact third-order reduction retaining an open sign.
+proof-state boundaries through canonical SOH-G023 and the integrated, separately
+non-canonical G024 research line: complete-monotonicity orders 1 and 2 are
+global, order 2 carries an explicit computer-assisted interval dependency, and
+the exact third-order reduction retains an open sign.
 """
 from __future__ import annotations
 
@@ -17,6 +17,8 @@ MONOGRAPH = ROOT / "monograph"
 MAIN = MONOGRAPH / "main.tex"
 LEDGER = MONOGRAPH / "appendices" / "D_claim_ledger.tex"
 FINAL = MONOGRAPH / "chapters" / "46_current_canon_and_open_frontier.tex"
+BACK_FINAL = MONOGRAPH / "backmatter" / "final_synthesis.tex"
+ROADMAP = MONOGRAPH / "frontmatter" / "roadmap.tex"
 TITLE = MONOGRAPH / "frontmatter" / "title.tex"
 G024 = MONOGRAPH / "chapters" / "50_jensen_wiener_kernel_frontier.tex"
 G024_SECOND = MONOGRAPH / "chapters" / "51_g024_second_order_bridge_reduction.tex"
@@ -42,7 +44,7 @@ def main() -> int:
         "anti-linear involution": "K(s)=1-conj(s) is conjugate-affine, not anti-linear in the affine s coordinate",
         "anti-linear reflection": "use conjugate-affine/anti-holomorphic reflection; anti-linearity applies only after centering",
         "anti-linear pair": "a pair involving complex conjugation is not itself an anti-linear map",
-        "current terminal obstruction remains": "the integrated monograph now has multiple explicitly separated open frontiers",
+        "current terminal obstruction remains": "the integrated monograph has multiple explicitly separated open frontiers",
         "The next progress will not come from": "Chapter 15 is an interim historical conclusion, not the current endpoint",
     }
     for path in files:
@@ -77,21 +79,31 @@ def main() -> int:
         r"\include{chapters/53_g024_sharpened_curvature_second_order}",
         r"\include{chapters/54_g024_global_second_order_closure}",
         r"\include{chapters/55_g024_third_order_cumulant_frontier}",
-        "Version 0.9 Integrated Canon V3",
+        r"\input{frontmatter/roadmap}",
+        r"\input{backmatter/final_synthesis}",
+        "Version 0.10 Mainline Integration",
     ]:
         if token not in main_text:
             fail(f"monograph/main.tex: missing required token {token!r}", errors)
 
     title_text = TITLE.read_text(encoding="utf-8")
     for token, message in [
-        ("Version 0.9 Integrated Canon V3", "title page does not identify Integrated Canon V3"),
+        ("Version 0.10 Mainline Integration", "title page does not identify Version 0.10 Mainline Integration"),
         ("SOH-G023", "title page does not identify canonical SOH-G023"),
-        ("G024", "title page does not identify G024"),
-        ("Candidate", "title page does not mark G024 candidate"),
+        ("Integrated G024 Research Line", "title page does not identify integrated G024 research line"),
+        ("Repository integration is not treated as mathematical canonization", "title page is missing mainline/canonization firewall"),
         ("does not claim a proof of the Riemann Hypothesis", "title page is missing no-RH-proof firewall"),
     ]:
         if token not in title_text:
             fail(message, errors)
+
+    roadmap_text = ROADMAP.read_text(encoding="utf-8")
+    for token in [
+        "Evidence classes", "Integrated proof frontier", "projective_conformal_map.png",
+        "square_quotient_map.png", "proof_dependency_graph.png", "Repository integration",
+    ]:
+        if token not in roadmap_text:
+            fail(f"reader roadmap is missing publication token {token!r}", errors)
 
     ledger_text = LEDGER.read_text(encoding="utf-8")
     for number in range(1, 24):
@@ -108,9 +120,18 @@ def main() -> int:
         "H_y'<0", "H_y''>0", "m\\ge3", "computer-assisted",
     ]:
         if token not in final_text:
-            fail(f"final synthesis is missing status token {token!r}", errors)
+            fail(f"Chapter 46 synthesis is missing status token {token!r}", errors)
     if "0\\le q<1/9" in final_text and "OPEN" in final_text:
-        fail("final synthesis must not retain the former q<1/9 second-order core as open", errors)
+        fail("Chapter 46 must not retain the former q<1/9 second-order core as open", errors)
+
+    back_text = BACK_FINAL.read_text(encoding="utf-8")
+    for token in [
+        "Integrated Synthesis and Open Problems", "H_y'(q)<0", "H_y''(q)>0",
+        "m\\ge3", "moore2009interval", "dimitrovxu2016", "wiener1932tauberian",
+        "Riemann Hypothesis", "OPEN", "g024_proof_regions.png",
+    ]:
+        if token not in back_text:
+            fail(f"backmatter final synthesis is missing token {token!r}", errors)
 
     g024_text = G024.read_text(encoding="utf-8")
     for token in [
@@ -136,7 +157,7 @@ def main() -> int:
     for token in [
         "Bridge Moment Hierarchy", "\\mathbb E[rD_u(r)]=3", "\\mathbb E[r^2]<\\frac3{20}",
         "(1-\\lambda/10)^{-3/2}", "10<L''(s)<21e^{2|s|}",
-        "H_y''(q)>0", "q\\ge\\frac14", "0\\le q<\\frac14", "remains OPEN",
+        "H_y''(q)>0", "q\\ge\\frac14", "0\\le q<\\frac14",
     ]:
         if token not in tail_text:
             fail(f"Chapter 52 is missing historical tail token {token!r}", errors)
@@ -145,10 +166,10 @@ def main() -> int:
     for token in [
         "L''(t)>17", "\\frac{33}{2}", "34^n", "(1-\\lambda/17)^{-3/2}",
         "\\mathbb E[B_u]<79e^{2u}", "H_y''(q)>0", "q\\ge1/9",
-        "0\\le q<\\frac19", "OPEN", "does not claim RH",
+        "0\\le q<\\frac19", "does not claim RH",
     ]:
         if token not in sharp_text:
-            fail(f"Chapter 53 is missing sharpened theorem/historical firewall token {token!r}", errors)
+            fail(f"Chapter 53 is missing sharpened theorem/historical token {token!r}", errors)
 
     global_text = G024_GLOBAL.read_text(encoding="utf-8")
     for token in [
@@ -181,7 +202,7 @@ def main() -> int:
 
     print("SEMANTIC AUDIT: PASS")
     print(f"Checked {len(files)} LaTeX source files.")
-    print("Protected invariants: G001-G023 canon; G024 CM orders 1-2 global; second-order computer-assisted trust boundary explicit; G024-S third-order reduction exact with open sign; RH open.")
+    print("Protected invariants: G001-G023 canon; integrated G024 CM orders 1-2 global; order-2 computer-assisted trust boundary explicit; G024-S order-3 reduction exact with open sign; RH open.")
     return 0
 
 
