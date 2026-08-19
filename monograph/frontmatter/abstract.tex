@@ -21,6 +21,20 @@ SOH-G022 returns to the exact G006 margin and factors it into three local pieces
 \[
  M=(1-v)^3+v(1-w)\bigl[1-v(2-u)\bigr]+v(1-v)(w-v).
 \]
-Therefore $0<v<1$, $v\le w\le1$, and $1-v(2-u)\ge0$ imply the strict lower bound $M\ge(1-v)^3>0$ for that solid order-three minor. The accompanying Riemann-kernel computation is a finite diagnostic only; the two required ratio-curvature inequalities are not proved for every coefficient index, and a separate argument would still be required to upgrade solid-minor control to full PF$_3$.
+Therefore $0<v<1$, $v\le w\le1$, and $1-v(2-u)\ge0$ imply the strict lower bound $M\ge(1-v)^3>0$ for that solid order-three minor. The required ratio-curvature inequalities are not proved for every coefficient index, and a separate argument would still be required to upgrade solid-minor control to full PF$_3$.
 
-The resulting proof boundary is explicit. The monograph proves the stated geometric, kernel, PF$_2$, zero-exclusion, coefficient-normalization, G021 insufficiency, and G022 local sufficient-condition results, and it closes several invalid shortcuts. It does not prove or disprove PF$_3$ for the actual coefficients of $F$, and it does not prove PF$_\infty$, real-rootedness of $F$, SOH-G003, SOH-C005, or the Riemann Hypothesis.
+SOH-G023 introduces the reciprocal curvature deficit $E_k=(1-q_k)^{-1}$ and proves the exact normal form
+\[
+ M_k=\frac{E_{k-1}E_{k+1}-(E_k-1)^2}{E_{k-1}E_k^2E_{k+1}}.
+\]
+The G022 local conditions become a monotone one-Lipschitz increment package. In particular, the global law $0\le E_{k+1}-E_k\le1$ would force positivity of every G006 solid margin, but that global law remains open for the actual Riemann coefficient sequence.
+
+SOH-G024 is included on the present branch as a non-canonical candidate direct route. With the even full-line kernel $K(t)=\Phi(|t|)/2$, the Dimitrov--Xu order-two correlation is reparametrized exactly by
+\[
+ C(u)=\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr,
+ \qquad
+ D_y(u)=\cosh(2yu)C(u).
+\]
+The Dimitrov--Xu/Wiener criterion makes strict Fourier positivity of $D_y$ for every real frequency and every $0<|y|<1/2$ RH-equivalent. A sufficient open route is complete monotonicity of $H_y(q)=D_y(\sqrt q)$, because Bernstein's theorem would represent $D_y$ as a positive Gaussian mixture with strictly positive Fourier transform. The branch also records a distinct internal tilt $J_y$ for the complex Jensen/Laguerre functional and explicitly forbids identifying $D_y$ with $J_y$ away from $y=0$. Finite derivative signs are numerical diagnostics only.
+
+The resulting proof boundary is explicit. The monograph proves the stated geometric, kernel, PF$_2$, zero-exclusion, coefficient-normalization, G021 insufficiency, G022 local sufficient-condition, and G023 reciprocal-deficit results. G024 supplies an exact reduction and an exact implication from an unproved complete-monotonicity premise, not a proof of that premise. PF$_3$ for the actual coefficients, PF$_\infty$, SOH-G003 real-rootedness, SOH-C005, and the Riemann Hypothesis remain OPEN.
