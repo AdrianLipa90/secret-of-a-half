@@ -14,12 +14,15 @@ from .riemann_kernel import riemann_kernel
 
 EvenKernel = Callable[[mp.mpf], mp.mpf]
 
-# SOH-G004 proves, with explicit rational estimates, that every theta-channel
-# logarithmic curvature is below -12 while the mixture slope variance is below
-# 2. Therefore (log Phi)'' < -10 on the half-line. The even full-line kernel
-# K(t)=Phi(|t|)/2 inherits the strong log-concavity margin m=10.
+# Conservative SOH-G004 consequence used by the first G024 implementation.
 G004_STRONG_LOG_CONCAVITY_MARGIN = mp.mpf("10")
 G024_FIRST_ORDER_CM_UNIFORM_FLOOR = mp.mpf("9.5")
+
+# Sharpened SOH-G024 consequence extracted from the same canonical G004
+# channel decomposition: every channel has -g_n''>19 and G004 proves the
+# mixture slope variance is <2, hence L=-log K satisfies L''>17 globally.
+G024_SHARPENED_STRONG_CONVEXITY_MARGIN = mp.mpf("17")
+G024_SHARPENED_FIRST_ORDER_CM_UNIFORM_FLOOR = mp.mpf("16.5")
 
 
 def full_xi_kernel(t: float | mp.mpf, *, n_terms: int = 8) -> mp.mpf:
@@ -126,7 +129,7 @@ def first_order_cm_log_slope_lower_bound(
     *,
     strong_log_concavity_margin: float | mp.mpf = G004_STRONG_LOG_CONCAVITY_MARGIN,
 ) -> mp.mpf:
-    r"""Return the exact lower bound for ``-H_y'(q)/H_y(q)``."""
+    r"""Return the strong-convexity lower bound for ``-H_y'/H_y``."""
 
     q = mp.mpf(q)
     y_abs = abs(mp.mpf(y))
@@ -150,21 +153,12 @@ def bridge_even_moment_upper_bound(
 ) -> mp.mpf:
     r"""Return the analytic upper bound for ``E_mu[r^(2*order)]``.
 
-    Under ``L'' >= m`` the bridge score identity gives
+    Under ``L'' >= m`` the bridge score identity and strong monotonicity give
 
-        E[r^(2j+1) D_u(r)] = (2j+3) E[r^(2j)],
+        E[r^(2j+2)] <= (2j+3)/(2m) E[r^(2j)],
 
-    while strong monotonicity gives ``r D_u(r) >= 2m r^2``. Therefore
-
-        E[r^(2j+2)] <= (2j+3)/(2m) E[r^(2j)]
-
-    and hence
-
-        E[r^(2n)] <= (2n+1)!! / (2m)^n.
-
-    For the strict G004 margin the corresponding inequalities are strict for
-    positive orders. The returned value is the conservative closed upper
-    envelope, not a numerical estimate of an actual bridge moment.
+    hence ``E[r^(2n)] <= (2n+1)!!/(2m)^n``. Strict G024 curvature margins
+    make the positive-order inequalities strict for the actual Riemann bridge.
     """
 
     if not isinstance(order, int) or order < 0:
@@ -183,12 +177,7 @@ def bridge_square_exponential_mgf_upper_bound(
     *,
     strong_log_concavity_margin: float | mp.mpf = G004_STRONG_LOG_CONCAVITY_MARGIN,
 ) -> mp.mpf:
-    r"""Return the analytic bridge bound ``E[exp(lam*r^2)]``.
-
-    The even-moment hierarchy sums to the radial-Gaussian envelope
-
-        E exp(lam r^2) <= (1-lam/m)^(-3/2),  0<=lam<m.
-    """
+    r"""Return ``E[exp(lam*r^2)] <= (1-lam/m)^(-3/2)`` for ``0<=lam<m``."""
 
     lam = mp.mpf(lam)
     margin = mp.mpf(strong_log_concavity_margin)
@@ -209,9 +198,8 @@ def second_order_cm_normalized_margin_from_bridge(
 ) -> mp.mpf:
     r"""Return the exact normalized second-order CM bridge margin.
 
-    With the normalized bridge measure, ``A=L'(u+r)+L'(u-r)``,
-    ``B=L''(u+r)+L''(u-r)``, ``R=E[A]``, ``R'=E[B]-Var(A)``,
-    ``a=|y|``, ``T=2a*tanh(2au)``, and ``N=R-T``, the result is
+    With ``R=E[A]``, ``R'=E[B]-Var(A)``, ``a=|y|``,
+    ``T=2a*tanh(2au)``, and ``N=R-T``, this returns
 
         4u^3 H_y''(u^2)/H_y(u^2)
         = N + u[N^2 + Var(A) - E[B] + 4a^2 sech^2(2au)].
