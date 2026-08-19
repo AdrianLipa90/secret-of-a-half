@@ -1,0 +1,277 @@
+\chapter{Reciprocal-Deficit Normal Form for the Solid PF3 Margin}
+\label{chap:g023-reciprocal-deficit}
+
+\status{Exact reparametrization and local sufficient condition; the global reciprocal-deficit law for the actual Riemann coefficient sequence remains open.}
+
+\section{Purpose}
+
+Chapter~\ref{chap:g022-pf3-curvature-barrier} isolates two local conditions
+that are sufficient for positivity of the G006 solid order-three minor. This
+chapter reparametrizes those conditions by the reciprocal PF$_2$ curvature
+deficit. The resulting variables turn the nonlinear G022 barrier into a
+one-step Lipschitz bound and put the G006 margin itself into a shifted
+multiplicative normal form.
+
+No global PF$_3$ conclusion is drawn here.
+
+\section{Reciprocal curvature deficit}
+
+For the coefficient ratios
+\[
+ r_k=\frac{a_k}{a_{k-1}},
+ \qquad
+ q_k=\frac{r_{k+1}}{r_k},
+\]
+define, whenever $0<q_k<1$,
+\[
+ \boxed{
+ E_k:=\frac{1}{1-q_k}>1.
+ }
+\]
+Thus
+\[
+ q_k=1-\frac1{E_k}.
+\]
+At the G006 solid minor indexed by $k$, write
+\[
+ u=q_{k-1},\qquad v=q_k,\qquad w=q_{k+1}.
+\]
+
+\section{Exact normal form}
+
+\begin{theorem}[SOH-G023 reciprocal-deficit normal form]
+The G006 ratio-curvature margin
+\[
+ M_k=(1-v)^2-v^2(1-u)(1-w)
+\]
+satisfies
+\[
+ \boxed{
+ M_k=
+ \frac{E_{k-1}E_{k+1}-(E_k-1)^2}
+      {E_{k-1}E_k^2E_{k+1}}.
+ }
+\]
+Consequently the sign of the solid order-three minor is the sign of
+\[
+ \boxed{
+ \widehat M_k:=E_{k-1}E_{k+1}-(E_k-1)^2.
+ }
+\]
+\end{theorem}
+
+\begin{proof}
+Use
+\[
+ 1-u=E_{k-1}^{-1},
+ \qquad
+ 1-v=E_k^{-1},
+ \qquad
+ 1-w=E_{k+1}^{-1},
+\]
+and
+\[
+ v=\frac{E_k-1}{E_k}.
+\]
+Substitution into the G006 formula gives the displayed quotient directly. Its
+denominator is positive.
+\end{proof}
+
+Thus the solid-minor condition becomes
+\[
+ \boxed{
+ E_{k-1}E_{k+1}\ge(E_k-1)^2.
+ }
+\]
+
+\section{Increment decomposition}
+
+Define
+\[
+ \alpha_k:=E_k-E_{k-1},
+ \qquad
+ \beta_k:=E_{k+1}-E_k.
+\]
+Then
+\[
+ E_{k-1}=E_k-\alpha_k,
+ \qquad
+ E_{k+1}=E_k+\beta_k.
+\]
+
+\begin{theorem}[SOH-G023 increment decomposition]
+The transformed margin satisfies
+\[
+ \boxed{
+ \widehat M_k
+ =(E_k-1)+E_k(1-\alpha_k)+E_{k-1}\beta_k.
+ }
+\]
+\end{theorem}
+
+\begin{proof}
+Expand
+\[
+ (E_k-\alpha_k)(E_k+\beta_k)-(E_k-1)^2
+\]
+and collect terms.
+\end{proof}
+
+\begin{corollary}[Local monotone one-Lipschitz certificate]
+If
+\[
+ E_k>1,
+ \qquad
+ \alpha_k\le1,
+ \qquad
+ \beta_k\ge0,
+\]
+then
+\[
+ \boxed{\widehat M_k>0},
+ \qquad
+ \boxed{M_k>0}.
+\]
+\end{corollary}
+
+\begin{proof}
+The first term $E_k-1$ is strictly positive. The second is non-negative when
+$\alpha_k\le1$, and the third is non-negative when $\beta_k\ge0$ because
+$E_{k-1}>0$.
+\end{proof}
+
+\section{Equivalence with the G022 local conditions}
+
+The G022 forward-order condition
+\[
+ q_{k+1}\ge q_k
+\]
+is equivalent to
+\[
+ E_{k+1}\ge E_k,
+\]
+hence to
+\[
+ \boxed{\beta_k\ge0.}
+\]
+
+The G022 barrier
+\[
+ q_k(2-q_{k-1})\le1
+\]
+is equivalent to
+\[
+ \frac1{1-q_k}-\frac1{1-q_{k-1}}\le1,
+\]
+hence to
+\[
+ \boxed{\alpha_k\le1.}
+\]
+
+Therefore the global law
+\[
+ \boxed{
+ 0\le E_{k+1}-E_k\le1
+ }
+\]
+for every relevant index would imply strict positivity of every G006 solid
+order-three minor. SOH-G023 does not prove this global law.
+
+\section{Continuous normalized-moment target}
+
+Let
+\[
+ L(p)=\log R(p),
+ \qquad
+ R(p)=\Gamma(p+1)^{-1}\int_0^\infty y^p\Phi(y)\,dy,
+\]
+and define
+\[
+ \delta(p)=L(p+2)-2L(p)+L(p-2).
+\]
+At even arguments,
+\[
+ q_k=e^{\delta(2k)}.
+\]
+Introduce
+\[
+ \boxed{
+ \mathcal E(p)=\frac{1}{1-e^{\delta(p)}}.
+ }
+\]
+Then $E_k=\mathcal E(2k)$. A sufficient continuous route to the global G023
+increment law is
+\[
+ \boxed{
+ 0\le\mathcal E'(p)\le\frac12.
+ }
+\]
+Indeed, integrating over an interval of length two gives
+\[
+ 0\le E_{k+1}-E_k\le1.
+\]
+
+Differentiation yields
+\[
+ \mathcal E'(p)
+ =\frac{e^{\delta(p)}\delta'(p)}{(1-e^{\delta(p)})^2}.
+\]
+Hence the continuous derivative package is
+\[
+ \boxed{\delta'(p)\ge0}
+\]
+together with
+\[
+ \boxed{
+ \delta'(p)\le\cosh(\delta(p))-1.
+ }
+\]
+These inequalities are a new explicit analytic target, not a proved theorem in
+this chapter.
+
+\section{Finite diagnostic}
+
+The accompanying receipt computes $E_k$ and consecutive increments directly
+from finite high-precision positive-kernel moments. On the sampled range the
+increments lie strictly between zero and one and decrease numerically. This is
+recorded only as \texttt{FINITE\_DIAGNOSTIC\_NOT\_PROOF}.
+
+\section{Compatibility with G021}
+
+For the G021 counterexample
+\[
+ u=\frac15,
+ \qquad
+ v=\frac9{10},
+ \qquad
+ w=\frac15,
+\]
+one obtains
+\[
+ E_{k-1}=\frac54,
+ \qquad
+ E_k=10,
+ \qquad
+ E_{k+1}=\frac54.
+\]
+Therefore
+\[
+ \alpha_k=\frac{35}{4}>1,
+ \qquad
+ \beta_k=-\frac{35}{4}<0.
+\]
+The counterexample lies outside the G023 sufficient package in both directions.
+
+\section{Open obligations}
+
+The active reciprocal-deficit proof targets are now:
+\begin{enumerate}
+ \item prove $E_{k+1}\ge E_k$ for every actual Riemann coefficient index;
+ \item prove $E_{k+1}-E_k\le1$ for every such index;
+ \item equivalently, prove a sufficient continuous bound such as
+       $0\le\mathcal E'(p)\le1/2$;
+ \item after all solid minors are controlled, provide the separate upgrade to
+       all order-three Toeplitz minors required for PF$_3$.
+\end{enumerate}
+
+\gap{The global monotone one-Lipschitz reciprocal-deficit law is not proved. Therefore all solid minors globally, full PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, and RH remain open.}
