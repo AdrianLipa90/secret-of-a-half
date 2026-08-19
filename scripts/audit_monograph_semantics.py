@@ -3,9 +3,9 @@
 
 This script does not decide mathematical truth. It protects the repository-level
 proof-state boundaries through canonical SOH-G023 and the non-canonical G024
-candidate: first and second complete-monotonicity inequalities global, with the
-second-order compact closure explicitly dependent on a computer-assisted interval
-certificate; derivative orders m>=3 and RH remain open.
+candidate: first and second complete-monotonicity inequalities global, the
+second-order compact closure carrying an explicit computer-assisted interval
+certificate, and the exact third-order reduction retaining an open sign.
 """
 from __future__ import annotations
 
@@ -23,6 +23,7 @@ G024_SECOND = MONOGRAPH / "chapters" / "51_g024_second_order_bridge_reduction.te
 G024_TAIL = MONOGRAPH / "chapters" / "52_g024_bridge_moment_tail_second_order.tex"
 G024_SHARP = MONOGRAPH / "chapters" / "53_g024_sharpened_curvature_second_order.tex"
 G024_GLOBAL = MONOGRAPH / "chapters" / "54_g024_global_second_order_closure.tex"
+G024_THIRD = MONOGRAPH / "chapters" / "55_g024_third_order_cumulant_frontier.tex"
 
 
 def tex_files() -> list[Path]:
@@ -75,6 +76,7 @@ def main() -> int:
         r"\include{chapters/52_g024_bridge_moment_tail_second_order}",
         r"\include{chapters/53_g024_sharpened_curvature_second_order}",
         r"\include{chapters/54_g024_global_second_order_closure}",
+        r"\include{chapters/55_g024_third_order_cumulant_frontier}",
         "Version 0.9 Integrated Canon V3",
     ]:
         if token not in main_text:
@@ -157,6 +159,16 @@ def main() -> int:
         if token not in global_text:
             fail(f"Chapter 54 is missing global-second-order/trust-boundary token {token!r}", errors)
 
+    third_text = G024_THIRD.read_text(encoding="utf-8")
+    for token in [
+        "Third-Order Bridge Cumulant Frontier", "F_{m+1}=S_yF_m-F_m'",
+        "F_3=S_y^3-3S_yS_y'+S_y''", "C_u^{(3)}", "\\mu_3(A_u)",
+        "R''", "8u^5", "(uN_y+3)M_2-uM_2'", "third-order sign remains OPEN",
+        "does not claim RH",
+    ]:
+        if token not in third_text:
+            fail(f"Chapter 55 is missing third-order/frontier token {token!r}", errors)
+
     ch3 = (MONOGRAPH / "chapters" / "03_symmetry_and_the_half_axis.tex").read_text(encoding="utf-8")
     if "conjugate-affine involution" not in ch3 or "not anti-linear" not in ch3:
         fail("Chapter 3 must distinguish affine conjugation from centered anti-linearity", errors)
@@ -169,7 +181,7 @@ def main() -> int:
 
     print("SEMANTIC AUDIT: PASS")
     print(f"Checked {len(files)} LaTeX source files.")
-    print("Protected invariants: G001-G023 canon; G024 first and second CM orders global; second-order computer-assisted trust boundary explicit; m>=3/RH open.")
+    print("Protected invariants: G001-G023 canon; G024 CM orders 1-2 global; second-order computer-assisted trust boundary explicit; G024-S third-order reduction exact with open sign; RH open.")
     return 0
 
 
