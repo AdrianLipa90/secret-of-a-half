@@ -3,8 +3,9 @@
 
 This script does not decide mathematical truth. It protects the repository-level
 proof-state boundaries through canonical SOH-G023 and the non-canonical G024
-candidate: first order global, second order proved for q>=1/9, compact core open,
-higher orders and RH open.
+candidate: first and second complete-monotonicity inequalities global, with the
+second-order compact closure explicitly dependent on a computer-assisted interval
+certificate; derivative orders m>=3 and RH remain open.
 """
 from __future__ import annotations
 
@@ -21,6 +22,7 @@ G024 = MONOGRAPH / "chapters" / "50_jensen_wiener_kernel_frontier.tex"
 G024_SECOND = MONOGRAPH / "chapters" / "51_g024_second_order_bridge_reduction.tex"
 G024_TAIL = MONOGRAPH / "chapters" / "52_g024_bridge_moment_tail_second_order.tex"
 G024_SHARP = MONOGRAPH / "chapters" / "53_g024_sharpened_curvature_second_order.tex"
+G024_GLOBAL = MONOGRAPH / "chapters" / "54_g024_global_second_order_closure.tex"
 
 
 def tex_files() -> list[Path]:
@@ -72,6 +74,7 @@ def main() -> int:
         r"\include{chapters/51_g024_second_order_bridge_reduction}",
         r"\include{chapters/52_g024_bridge_moment_tail_second_order}",
         r"\include{chapters/53_g024_sharpened_curvature_second_order}",
+        r"\include{chapters/54_g024_global_second_order_closure}",
         "Version 0.9 Integrated Canon V3",
     ]:
         if token not in main_text:
@@ -100,10 +103,12 @@ def main() -> int:
     for token in [
         "P_J=\\varnothing", "P_N=\\varnothing", "SOH-G003 OPEN", "SOH-C005 OPEN",
         "SOH-G023", "G024", "RH OPEN", "PF$_2$", "PF$_3$", "PF$_\\infty$",
-        "H_y'<0", "H_y''>0", "q\\ge1/9", "0\\le q<1/9",
+        "H_y'<0", "H_y''>0", "m\\ge3", "computer-assisted",
     ]:
         if token not in final_text:
             fail(f"final synthesis is missing status token {token!r}", errors)
+    if "0\\le q<1/9" in final_text and "OPEN" in final_text:
+        fail("final synthesis must not retain the former q<1/9 second-order core as open", errors)
 
     g024_text = G024.read_text(encoding="utf-8")
     for token in [
@@ -141,7 +146,16 @@ def main() -> int:
         "0\\le q<\\frac19", "remains OPEN", "does not claim RH",
     ]:
         if token not in sharp_text:
-            fail(f"Chapter 53 is missing sharpened theorem/firewall token {token!r}", errors)
+            fail(f"Chapter 53 is missing sharpened theorem/historical firewall token {token!r}", errors)
+
+    global_text = G024_GLOBAL.read_text(encoding="utf-8")
+    for token in [
+        "L''''(t)<20L''(t)", "mpmath.iv", "20L''-L''''>10", "Peano bridge identity",
+        "\\frac{12275}{48}", "\\frac{1089}{4}", "\\frac{793}{48}",
+        "H_y''(q)>0", "q\\ge0", "m\\ge3", "does not claim RH",
+    ]:
+        if token not in global_text:
+            fail(f"Chapter 54 is missing global-second-order/trust-boundary token {token!r}", errors)
 
     ch3 = (MONOGRAPH / "chapters" / "03_symmetry_and_the_half_axis.tex").read_text(encoding="utf-8")
     if "conjugate-affine involution" not in ch3 or "not anti-linear" not in ch3:
@@ -155,7 +169,7 @@ def main() -> int:
 
     print("SEMANTIC AUDIT: PASS")
     print(f"Checked {len(files)} LaTeX source files.")
-    print("Protected invariants: G001-G023 canon; G024 L''>17; first order global; second order q>=1/9; q<1/9 open; higher orders/RH open.")
+    print("Protected invariants: G001-G023 canon; G024 first and second CM orders global; second-order computer-assisted trust boundary explicit; m>=3/RH open.")
     return 0
 
 
