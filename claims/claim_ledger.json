@@ -1,10 +1,10 @@
 {
-  "version": "0.9-integrated-canon-v3-g021",
+  "version": "0.9-integrated-canon-v3-g022",
   "date": "2026-08-19",
   "status": "CANONICAL_PROJECT_CLAIM_LEDGER",
-  "canonical_through": "SOH-G021",
+  "canonical_through": "SOH-G022",
   "proof_of_rh": false,
-  "open_frontier": "SOH-G003 real-rootedness, actual quotient PF3/PF-infinity, SOH-C005 full admissible Weil positivity, and RH remain open. SOH-G021 proves only that the abstract G020 structural package does not imply PF3.",
+  "open_frontier": "SOH-G003 real-rootedness, actual quotient PF3/PF-infinity, SOH-C005 full admissible Weil positivity, and RH remain open. SOH-G021 proves that the abstract G020 structural package does not imply PF3. SOH-G022 proves an exact local sufficient condition for the G006 solid margin, while its required ratio-curvature inequalities and the upgrade to full PF3 remain open for the actual coefficients.",
   "claims": [
     {"id":"SOH-L001","status":"exact","statement":"Binary Shannon entropy is uniquely maximal at sigma=1/2, with value ln 2."},
     {"id":"SOH-L002","status":"exact","statement":"Equal-gain normalized two-channel cancellation occurs only at sigma=1/2 and relative phase pi."},
@@ -79,6 +79,7 @@
     {"id":"SOH-G019","status":"proved","statement":"There is a unique R_star>0 with F(R_star)=2F(0), Re F(w)>0 on |w|<=R_star, and the rescaled positive coefficients are exactly normalized."},
     {"id":"SOH-G020","status":"proved","statement":"The canonical rescaling gives a probability law with half its mass at index zero and half on positive indices; PF2 is preserved, masses decrease strictly, and the sharpened coefficient envelope holds."},
     {"id":"SOH-G021","status":"proved_structural_no_go_actual_pf3_open","statement":"The abstract G020 package of positivity, half-mass normalization, strict mass decay, PF2 and the normalized envelope does not imply PF3; an exact counterexample has G006 margin -1271/2500. This does not decide PF3 for the actual coefficients of F."},
+    {"id":"SOH-G022","status":"proved_local_sufficient_condition_actual_pf3_open","statement":"The G006 solid PF3 margin has the exact decomposition M=(1-v)^3+v(1-w)[1-v(2-u)]+v(1-v)(w-v); if 0<v<1, v<=w<=1 and 1-v(2-u)>=0, then M>=(1-v)^3>0. The required ratio-curvature inequalities are not proved globally for the actual coefficients, and the upgrade from solid minors to full PF3 remains open."},
 
     {"id":"SOH-T001","status":"conditional","statement":"Under SOH-C001 and the channel assumptions, all non-trivial zeros lie on Re(s)=1/2."},
     {"id":"SOH-T002","status":"conditional","statement":"Under SOH-C004, all non-trivial zeros lie on Re(s)=1/2."},

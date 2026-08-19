@@ -3,7 +3,7 @@
 
 This script does not attempt to decide mathematical truth.  It protects a small
 set of repository-level semantic invariants established by the V3 audit and
-extended through SOH-G021: terminology of the affine involution, explicit
+extended through SOH-G022: terminology of the affine involution, explicit
 interpretation labeling, current claim-ledger coverage, final-synthesis
 integration, and open-RH/PF3 firewalls.
 """
@@ -70,6 +70,7 @@ def main() -> int:
     required_main_tokens = [
         r"\include{chapters/46_current_canon_and_open_frontier}",
         r"\include{chapters/47_half_mass_pf2_does_not_imply_pf3}",
+        r"\include{chapters/48_pf3_one_step_curvature_barrier}",
         "Version 0.9 Integrated Canon V3",
     ]
     for token in required_main_tokens:
@@ -79,13 +80,13 @@ def main() -> int:
     title_text = TITLE.read_text(encoding="utf-8")
     if "Version 0.9 Integrated Canon V3" not in title_text:
         fail("title page does not identify Integrated Canon V3", errors)
-    if "SOH-G021" not in title_text:
-        fail("title page does not identify the G021 canon extension", errors)
+    if "SOH-G022" not in title_text:
+        fail("title page does not identify the G022 canon extension", errors)
     if "does not claim a proof of the Riemann Hypothesis" not in title_text:
         fail("title page is missing the explicit no-RH-proof firewall", errors)
 
     ledger_text = LEDGER.read_text(encoding="utf-8")
-    for number in range(1, 22):
+    for number in range(1, 23):
         claim = f"SOH-G{number:03d}"
         if claim not in ledger_text:
             fail(f"claim ledger is missing {claim}", errors)
@@ -94,6 +95,7 @@ def main() -> int:
     for token in [
         "SOH-G003",
         "SOH-G021",
+        "SOH-G022",
         "actual PF$_3$ OPEN",
         "PF$_3$",
         "PF$_\\infty$",
@@ -109,10 +111,13 @@ def main() -> int:
         "SOH-G003 OPEN",
         "SOH-C005 OPEN",
         "SOH-G021",
+        "SOH-G022",
         "RH OPEN",
         "PF$_2$",
         "PF$_3$",
         "PF$_\\infty$",
+        "q_{k+1}\\ge q_k",
+        "q_k(2-q_{k-1})\\le1",
     ]
     for token in required_final:
         if token not in final_text:
@@ -130,7 +135,7 @@ def main() -> int:
 
     print("SEMANTIC AUDIT: PASS")
     print(f"Checked {len(files)} LaTeX source files.")
-    print("Protected invariants: affine involution terminology, interpretation labels, G001-G021 ledger, V3 synthesis, and RH/PF3/PF-infinity firewalls.")
+    print("Protected invariants: affine involution terminology, interpretation labels, G001-G022 ledger, V3 synthesis, and RH/PF3/PF-infinity firewalls.")
     return 0
 
 
