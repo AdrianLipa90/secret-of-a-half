@@ -1,0 +1,155 @@
+\chapter{Current Canon, Closed Loopholes, and the Open Frontier}
+\label{chap:current-canon-final}
+
+\status{Semantic synthesis of the integrated canon through SOH-G020. This chapter introduces no new theorem and does not claim RH.}
+
+\section{Purpose}
+
+The preceding chapters were developed in several successive branches: the initial information-spinor ansatz, the native PhaseNav--Weil construction, the Li/inverse-boundary integration, the quotient and positive-kernel programme, the Uroboros/projective/spinorial operator line, the negative-inversion spectral no-go, and the coefficient-normalization line. This final chapter records their present logical relation after all later results are taken into account.
+
+\section{Exact half-axis geometry}
+
+The affine symmetry data select the half without proving the zero-location theorem. The conjugate-affine involution
+\[
+ K(s)=1-\overline{s}
+\]
+has fixed set $\Re s=1/2$. The projective coordinate
+\[
+ \Omega(s)=\frac{s}{1-s}
+\]
+sends the critical line exactly to $|\Omega|=1$, while radial compactification sends that circle to the self-dual layer $q=1/2$. In the centered coordinate $z=s-1/2$, the functional reflection is $z\mapsto-z$, so the completed xi function factors uniquely as
+\[
+ \boxed{\xi\!\left(\frac12+z\right)=F(z^2)}.
+\]
+The quotient coordinate $w=z^2$ sends the critical line to the non-positive real axis. Because every Taylor coefficient of $F$ is positive, $F(x)>0$ for $x\ge0$. Consequently
+\[
+ \boxed{\mathrm{RH}\iff\text{every zero of }F\text{ is real}.}
+\]
+This is the SOH-G003 frontier and remains an exact reformulation, not a solution.
+
+\section{Proved analytic structure of the quotient}
+
+The monograph derives the exact positive half-line Riemann kernel
+\[
+ \xi\!\left(\frac12+z\right)=\int_0^\infty\Phi(y)\cosh(zy)\,dy,
+ \qquad \Phi(y)>0,
+\]
+and its compactified positive weight $W$. Strict log-concavity of $W$ is proved in SOH-G004. Strict log-concavity of the classical Xi kernel $\Phi$ is independently established in the prior 2026 work of Avi Gershon and is explicitly attributed where used.
+
+The normalized moments of $\Phi$ give the coefficients
+\[
+ F(w)=\sum_{n\ge0}a_nw^n,
+ \qquad a_n>0.
+\]
+SOH-G005 proves that $(a_n)$ is PF$_2$. SOH-G006 reduces the first solid PF$_3$ Toeplitz minor to an exact ratio-curvature margin. What is not proved is global non-negativity of that margin. Therefore
+\[
+ \boxed{\mathrm{PF}_2\ \text{PROVED}},
+ \qquad
+ \boxed{\mathrm{PF}_3\ \text{OPEN}},
+ \qquad
+ \boxed{\mathrm{PF}_\infty\ \text{OPEN}}.
+\]
+No implication from PF$_2$ to real-rootedness is assumed.
+
+\section{Negative inversion: exact geometry, closed spectral route}
+
+The canonical negative inverse is an exact coordinate operator. Riemann reflection and the Euler half-turn generate the projective Klein four group, and the corresponding Pauli lifts generate $Q_8$ with projective quotient $Q_8/\{\pm I\}\cong V_4$. These algebraic statements remain valid.
+
+Their spectral interpretation is resolved separately. SOH-G014--G017 progressively restrict possible zero pairing, and SOH-G018 proves the stronger final result
+\[
+ \boxed{P_J=\varnothing},
+ \qquad
+ \boxed{P_N=\varnothing}.
+\]
+Equivalently, the canonical negative inversion maps no zero of $F$ to another zero of $F$ and no zero of $\xi$ to another zero of $\xi$.
+
+Thus the negative-inversion line has two distinct current statuses:
+\begin{itemize}
+ \item its projective and spinorial operator geometry is exact and retained;
+ \item root-set invariance under that operator is not an open conjecture but a proved no-go.
+\end{itemize}
+This distinction prevents a valid coordinate symmetry from being promoted into a false spectral symmetry.
+
+\section{Coefficient-majorant and half-mass structure}
+
+SOH-G019 defines the unique positive threshold $R_\star$ by
+\[
+ F(R_\star)=2F(0)
+\]
+and proves
+\[
+ \Re F(w)>0\qquad(|w|\le R_\star).
+\]
+Hence the disk is zero-free. The normalized function
+\[
+ H(\zeta)=\frac{F(R_\star\zeta)}{F(0)}
+\]
+has $H(0)=1$ and positive real part on the unit disk, placing it in the classical Carath\'eodory class.
+
+SOH-G020 then defines
+\[
+ \pi_n=\frac{a_nR_\star^n}{2F(0)}
+\]
+and proves
+\[
+ \pi_n>0,
+ \qquad
+ \sum_{n\ge0}\pi_n=1,
+ \qquad
+ \pi_0=\sum_{n\ge1}\pi_n=\frac12.
+\]
+The sequence remains PF$_2$, is strictly decreasing, and satisfies the sharpened coefficient bound
+\[
+ a_n<\frac{F(0)}{nR_\star^n}
+ \qquad(n\ge1).
+\]
+These results provide exact coefficient-level structure but do not imply PF$_3$, PF$_\infty$, or real-rootedness.
+
+\section{Independent open branches}
+
+The monograph now contains several precisely separated open frontiers.
+
+\begin{description}
+ \item[SOH-C001.] The normalized information-spinor state-map construction remains open. Later scalar kernels and quotient functions do not retroactively instantiate its channel-metric hypotheses.
+ \item[SOH-C005.] Full admissible Weil positivity remains open and is RH-equivalent under the standard criterion. It cannot be assumed as an auxiliary lemma.
+ \item[SOH-G003.] Real-rootedness of the quotient entire function $F$ remains open and is RH-equivalent after the proved coefficient positivity.
+ \item[PF$_3$/PF$_\infty$.] The coefficient hierarchy is proved only through PF$_2$; the PF$_3$ ratio-curvature reduction is exact, but its global sign is open.
+\end{description}
+
+These branches may constrain one another, but no equivalence between their unproved intermediate mechanisms is asserted unless explicitly proved.
+
+\section{Closed shortcuts}
+
+Several tempting routes are no longer admissible proof strategies because the monograph has either proved their insufficiency or directly falsified them:
+\begin{itemize}
+ \item functional symmetry alone does not force pointwise zero fixation;
+ \item entropy maximization alone does not select zero ordinates;
+ \item eta alternation alone is not normalized two-channel cancellation;
+ \item positive kernel values alone do not imply real-rootedness;
+ \item PF$_2$ alone does not imply PF$_3$ or PF$_\infty$;
+ \item positive von Mangoldt weights do not make the Weil form positive term by term;
+ \item exact scale periodicity of the transformed xi function is impossible for a non-trivial dilation;
+ \item canonical negative inversion does not permute the xi or $F$ zero sets; SOH-G018 proves complete absence of such pairing.
+\end{itemize}
+
+\section{Current proof boundary}
+
+The strongest concise statement supported by the integrated monograph is therefore:
+\begin{quote}
+The half-axis is selected exactly by the zeta functional geometry and by several declared binary/spinorial representations. The centered xi function admits an exact positive-kernel even quotient with positive PF$_2$ coefficients, explicit zero-free disks, and a canonical half-mass probability normalization. Several symmetry-based spectral shortcuts are rigorously excluded. The missing step is still a non-circular analytic mechanism strong enough to force all quotient zeros to be real, or an independently proved equivalent global positivity mechanism.
+\end{quote}
+
+Nothing in the preceding sentence promotes an RH-equivalent criterion to a proof. In particular,
+\[
+ \boxed{\text{SOH-G003 OPEN}},
+ \qquad
+ \boxed{\text{SOH-C005 OPEN}},
+ \qquad
+ \boxed{\text{RH OPEN}}.
+\]
+
+\section{Research direction fixed by the audit}
+
+After the semantic audit, the active quotient target is no longer ``find another symmetry''. The exact next mathematical obstruction is higher-order zero-preserving structure beyond PF$_2$. The already derived PF$_3$ ratio-curvature condition and the canonical half-mass law provide concrete objects on which such an argument can be attempted or falsified. Any future promotion must preserve the same proof firewall: exact coordinate identities, finite computations, interpretations, and RH-equivalent open criteria remain distinct categories.
+
+\status{Final integrated status through SOH-G020: exact reductions and theorems retained; negative-inversion spectral invariance closed by no-go; PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, and RH remain OPEN.}

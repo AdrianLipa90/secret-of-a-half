@@ -3,7 +3,7 @@
 
 \status{PROVED at order two. PF$_\infty$, real-rootedness of $F$, and RH remain open.}
 
-Chapter~\ref{ch:global-log-concavity} establishes strict log-concavity of the compactified kernel weight and records Gershon's independent prior proof of strict log-concavity (TP$_2$) for the classical Riemann Xi kernel $\Phi$~\cite{gershon2026logconcavity}. Chapter~\ref{chap:modular-kernel-compactification} places the same kernel in the self-dual compact coordinate. The present chapter extracts the first nontrivial total-positivity consequence for the Taylor coefficients of the quotient entire function. The PF$_2$ deduction below uses the log-concavity of $\Phi$; that input is therefore explicitly attributed to Gershon as prior literature as well as being independently rederived in the SOH programme.
+Chapter~\ref{ch:global-log-concavity} establishes strict log-concavity of the compactified kernel weight and records Gershon's independent prior proof of strict log-concavity (TP$_2$) for the classical Riemann Xi kernel $\Phi$~\cite{gershon2026logconcavity}. Chapter~\ref{chap:modular-kernel-compactification} places the same kernel in the self-dual compact coordinate. The present chapter extracts an order-two total-positivity consequence for the Taylor coefficients of the quotient entire function. The PF$_2$ deduction below uses the log-concavity of $\Phi$; that input is therefore explicitly attributed to Gershon as prior literature as well as being independently rederived in the SOH programme.
 
 \section{Normalized moments}
 
@@ -15,22 +15,22 @@ F(w)=\sum_{k\ge0}a_kw^k,
 \qquad
  m_k=\int_0^\infty y^{2k}\Phi(y)\,dy.
 \]
-A classical moment inequality for a nonnegative log-concave function \(f\) on \([0,\infty)\) states that
+A classical moment inequality for a nonnegative log-concave function $f$ on $[0,\infty)$ states that
 \[
 R(p)=\frac{1}{\Gamma(p+1)}\int_0^\infty x^p f(x)\,dx
 \]
-is log-concave in \(p>-1\); see \citet{karlinproschanbarlow1961}. Applying this to the log-concave Riemann kernel \(f=\Phi\), whose strict log-concavity has the independent 2026 proof of Gershon~\cite{gershon2026logconcavity}, gives
+is log-concave in $p>-1$; see \citet{karlinproschanbarlow1961}. Applying this to the log-concave Riemann kernel $f=\Phi$, whose strict log-concavity has the independent 2026 proof of Gershon~\cite{gershon2026logconcavity}, gives
 \[
 a_k=R(2k).
 \]
-Restriction of a log-concave function to the arithmetic progression \(0,2,4,\ldots\) yields
+Restriction of a log-concave function to the arithmetic progression $0,2,4,\ldots$ yields
 \[
 \boxed{a_k^2\ge a_{k-1}a_{k+1}\qquad(k\ge1).}
 \]
 
 \section{PF2 theorem}
 
-All \(a_k\) are positive. Therefore the preceding inequalities are precisely the adjacent order-two Toeplitz minors:
+All $a_k$ are positive. Therefore the preceding inequalities are precisely the adjacent order-two Toeplitz minors:
 \[
 \det\begin{pmatrix}
 a_k&a_{k+1}\\
@@ -41,14 +41,14 @@ a_{k-1}&a_k
 Hence:
 
 \begin{theorem}[SOH-G005]
-The Taylor coefficient sequence \((a_k)_{k\ge0}\) of
+The Taylor coefficient sequence $(a_k)_{k\ge0}$ of
 \[
 F(w)=\xi\!\left(\frac12+\sqrt w\right)
 \]
 is a P\'olya-frequency sequence of order two (PF$_2$).
 \end{theorem}
 
-This is a coefficient-level total-positivity constraint stronger than coefficient positivity. The novelty claim, if any, is confined to this downstream coefficient deduction and not to the prior TP$_2$ log-concavity theorem for $\Phi$.
+This is a coefficient-level total-positivity constraint stronger than coefficient positivity. No priority claim is made here for the underlying Xi-kernel log-concavity theorem; that input is attributed to Gershon. The statement promoted by this chapter is exactly the displayed PF$_2$ deduction for the coefficient sequence used in the present quotient normalization.
 
 \section{Why Hankel positivity is not enough}
 

@@ -1,20 +1,11 @@
 \chapter{Li Negative Inversion and the Global Weil Frontier}
 \label{chap:li-negative-inverse}
 
-\section{Canonical scope of the integrated V2 line}
+\section{Canonical scope of the promoted Li/Weil line}
 
-This chapter is the canonical integration point for the Version 0.9 claim line
-SOH-L012--SOH-L032.  Earlier development snapshots used some identifiers in
-that numerical interval for Hermite, reciprocal-tail, and DHSE results.  Those
-historical meanings are preserved as provenance but are migrated to domain
-identifiers in \cref{app:claims}; they do not redefine the V2 identifiers used
-here.
+This chapter is the integration point for the Version 0.9 promoted claim line SOH-L012--SOH-L032. Earlier development snapshots used some identifiers in that numerical interval for Hermite, reciprocal-tail, and DHSE results. Those historical meanings are preserved as provenance but are migrated to domain identifiers in \cref{app:claims}; they do not redefine the promoted identifiers used here.
 
-The purpose of the integration is twofold.  First, it places the critical-axis
-geometry, the negative inverse, Li's criterion, and Weil positivity in one
-coordinate chain.  Second, it makes the remaining proof obligation explicit.
-No result in this chapter promotes SOH-C005 or the Riemann Hypothesis to proved
-status.
+The purpose of the integration is twofold. First, it places the critical-axis geometry, the negative inverse, Li's criterion, and Weil positivity in one coordinate chain. Second, it makes the remaining proof obligation in the Li/Weil branch explicit. No result in this chapter promotes SOH-C005 or the Riemann Hypothesis to proved status. Later chapters develop a separate quotient/PF branch with its own RH-equivalent frontier SOH-G003.
 
 \section{The critical-axis projective coordinate}
 
@@ -41,8 +32,7 @@ Hence
  \boxed{\Re s=\frac12\iff |\Omega(s)|=1.}
  \label{eq:v2-critical-unit-circle}
 \end{equation}
-Thus the anti-linear involution $K$ becomes reciprocal-conjugate inversion in
-$\Omega$-space, and its fixed locus becomes the unit circle.
+Thus the conjugate-affine, anti-holomorphic involution $K$ becomes reciprocal-conjugate inversion in $\Omega$-space, and its fixed locus becomes the unit circle. In the centered variable $s-1/2$ the same action is genuinely anti-linear.
 
 Define the signed log-radial field and its non-negative potential
 \begin{equation}
@@ -60,8 +50,7 @@ Then
  V(s)=0\iff\Re s=\frac12.
  \label{eq:v2-BV-symmetry}
 \end{equation}
-These identities are exact coordinate statements.  In particular, $V$ is not
-being introduced as an independent physical potential.
+These identities are exact coordinate statements. In particular, $V$ is not being introduced as an independent physical potential.
 
 \section{The negative inverse is the Li coordinate}
 
@@ -75,8 +64,7 @@ Combining this with \cref{eq:v2-omega-K} gives the exact identity
  \boxed{z_L(s)=-\frac1{\Omega(s)}.}
  \label{eq:v2-negative-inverse}
 \end{equation}
-Thus the negative inverse is not an additional fitted map: it is exactly Li's
-coordinate after the projective critical-axis transform.  Moreover,
+Thus the negative inverse is not an additional fitted map: it is exactly Li's coordinate after the projective critical-axis transform. Moreover,
 \begin{equation}
  z_L(K(s))=\frac1{\overline{z_L(s)}},
  \qquad
@@ -93,8 +81,7 @@ and
 
 \section{Reciprocal-conjugate quartets and local Li growth}
 
-With the standard symmetric zero-sum convention, Li's coefficients may be
-written \citep{li1997}
+With the standard symmetric zero-sum convention, Li's coefficients may be written \citep{li1997}
 \begin{equation}
  \lambda_n
  =\sum_{\rho}\left[1-\left(1-\frac1\rho\right)^n\right]
@@ -128,17 +115,13 @@ The elementary root-growth calculation gives
  \boxed{V(\rho)=\bigl(\log\mathscr R(\rho)\bigr)^2}.
  \label{eq:v2-growth-radius}
 \end{equation}
-If $R\ne1$, there are infinitely many $n$ for which $\cos(n\phi)$ is bounded
-away from zero on the positive side; the exponentially growing factor then
-forces
+If $R\ne1$, there are infinitely many $n$ for which $\cos(n\phi)$ is bounded away from zero on the positive side; the exponentially growing factor then forces
 \begin{equation}
  \boxed{|z_L(\rho)|\ne1\Longrightarrow
  \liminf_{n\to\infty}L_n(Q)=-\infty.}
  \label{eq:v2-local-negative-subsequence}
 \end{equation}
-This is a local quartet theorem.  It is not by itself a theorem about the sign
-of the global coefficient $\lambda_n$, because the global sum involves all
-zeros and its symmetric limiting convention.
+This is a local quartet theorem. It is not by itself a theorem about the sign of the global coefficient $\lambda_n$, because the global sum involves all zeros and its symmetric limiting convention.
 
 \section{The global Li bridge}
 
@@ -153,60 +136,39 @@ A zero $\rho$ maps to the singular point
  z_\rho=1-\frac1\rho=z_L(\rho).
  \label{eq:v2-li-singularity}
 \end{equation}
-An off-axis zero with $\Re\rho>1/2$ therefore produces a singularity strictly
-inside the unit disk.  Li's theorem gives the exact global criterion
+An off-axis zero with $\Re\rho>1/2$ therefore produces a singularity strictly inside the unit disk. Li's theorem gives the exact global criterion
 \begin{equation}
  \boxed{
  \text{RH}\iff\lambda_n\ge0\quad\text{for every }n\ge1.
  }
  \label{eq:v2-li-criterion}
 \end{equation}
-The implication from global coefficient non-negativity to RH may also be read
-through the radius of convergence: a power series with non-negative real
-coefficients cannot acquire its first finite-radius obstruction away from the
-positive real axis, whereas $\xi(1/(1-z))$ is analytic and non-zero for
-$0\le z<1$.  Functional symmetry then excludes the opposite half of the
-critical strip.
+No separate radius-of-convergence argument is needed here; the monograph relies on the cited Li criterion for the global equivalence rather than introducing an uncited auxiliary shortcut.
 
 \section{Weil positivity is the same global obstruction}
 
-Weil's explicit-formula criterion recasts the same global problem as
-non-negativity of an arithmetic quadratic form on an admissible test class
-\citep{weil1952}.  In the normalized notation of the PhaseNav--Weil programme,
-SOH-C005 asks for an unconditional proof that
+Weil's explicit-formula criterion recasts the same global problem as non-negativity of an arithmetic quadratic form on an admissible test class \citep{weil1952}. In the normalized notation of the PhaseNav--Weil programme, SOH-C005 asks for an unconditional proof that
 \begin{equation}
  \boxed{\mathcal W[|f|^2]\ge0
  \quad\text{for every admissible }f.}
  \label{eq:v2-weil-global-positive}
 \end{equation}
-Under the standard admissibility and dense-core completion, this positivity
-criterion is equivalent to RH.  Consequently SOH-C005 is not an auxiliary
-lemma that can be assumed and then used to prove RH; it is the RH-hard global
-positivity statement expressed in the arithmetic operator language.
+Under the standard admissibility and dense-core completion, this positivity criterion is equivalent to RH. Consequently SOH-C005 is not an auxiliary lemma that can be assumed and then used to prove RH; it is the RH-hard global positivity statement expressed in the arithmetic operator language.
 
-The Hermite ladder, fixed-section prime-tail certificate, and basis-adaptive
-cutoff theorem in \cref{ch:hermite-ladder,ch:prime-tail-certificate,ch:adaptive-cutoff}
-make the finite arithmetic side reproducible.  They do not establish
-\cref{eq:v2-weil-global-positive} for the complete admissible family.
+The Hermite ladder, fixed-section prime-tail certificate, and basis-adaptive cutoff theorem in \cref{ch:hermite-ladder,ch:prime-tail-certificate,ch:adaptive-cutoff} make the finite arithmetic side reproducible. They do not establish \cref{eq:v2-weil-global-positive} for the complete admissible family.
 
 \section{Log-radial prime shifts and a termwise no-go lemma}
 
-The coordinate $B=\log|\Omega|$ is additive under radial multiplication.  In
-the prime-side screw/Weil representation the arithmetic support occurs at
-additive displacements $\pm\log n$.  This places the prime transfer structure
-in the same log-radial coordinate class without identifying prime shifts with
-zeta zeros.
+The coordinate $B=\log|\Omega|$ is additive under radial multiplication. In the prime-side screw/Weil representation the arithmetic support occurs at additive displacements $\pm\log n$. This places the prime transfer structure in the same log-radial coordinate class without identifying prime shifts with zeta zeros.
 
-A tempting shortcut would be to argue that the positive weights
-$\Lambda(n)$ make every prime contribution positive semidefinite.  This is
-false.  Let
+A tempting shortcut would be to argue that the positive weights $\Lambda(n)$ make every prime contribution positive semidefinite. This is false. Let
 \begin{equation}
  h_a(t)=(|t|-a)_+,
  \qquad
  K_a(x,y)=h_a(x-y)-h_a(x)-h_a(y)+h_a(0).
  \label{eq:v2-hinge-kernel}
 \end{equation}
-Choose $x=a/2$ and $y=3a/2$.  The corresponding two-point matrix is
+Choose $x=a/2$ and $y=3a/2$. The corresponding two-point matrix is
 \begin{equation}
  \begin{pmatrix}
  0&-a/2\\
@@ -216,25 +178,18 @@ Choose $x=a/2$ and $y=3a/2$.  The corresponding two-point matrix is
  \det=-\frac{a^2}{4}<0.
  \label{eq:v2-hinge-indefinite}
 \end{equation}
-Therefore a single positive-weight hinge is indefinite.  Positivity of the
-von Mangoldt coefficients alone cannot establish SOH-C005 term by term; any
-successful proof must use the complete prime, archimedean, conductor, boundary,
-and regularization structure.
+Therefore a single positive-weight hinge is indefinite. Positivity of the von Mangoldt coefficients alone cannot establish SOH-C005 term by term; any successful proof must use the complete prime, archimedean, conductor, boundary, and regularization structure.
 
 \section{Localized arithmetic operators and the spectral floor}
 
-For a localization scale $a>0$, write the localized arithmetic Weil form as
-$Q_W^a$ and define its spectral floor
+For a localization scale $a>0$, write the localized arithmetic Weil form as $Q_W^a$ and define its spectral floor
 \begin{equation}
  \lambda(a)=
  \inf_{0\ne f\in C_c^\infty(-a,a)}
  \frac{Q_W^a(f)}{\|f\|_2^2}.
  \label{eq:v2-spectral-floor}
 \end{equation}
-The localized self-adjoint realization and the Rayleigh characterization are
-available without assuming RH in the screw-function construction of
-Suzuki \citep{suzuki2026weil}.  Hence the localized positivity problem is
-exactly
+The localized self-adjoint realization and the Rayleigh characterization are available without assuming RH in the screw-function construction of Suzuki \citep{suzuki2026weil}. Hence the localized positivity problem is exactly
 \begin{equation}
  A_a\ge0\quad\Longleftrightarrow\quad\lambda(a)\ge0.
  \label{eq:v2-local-operator-positive}
@@ -248,51 +203,23 @@ so the Rayleigh infimum obeys
  \boxed{\lambda(a_2)\le\lambda(a_1).}
  \label{eq:v2-spectral-floor-monotone}
 \end{equation}
-This monotonicity is a consequence of domain inclusion for the same localized
-Weil form; it does not supply the missing lower bound.
+This monotonicity is a consequence of domain inclusion for the same localized Weil form; it does not supply the missing lower bound.
 
-\section{Canonical V2 claim ledger}
+\section{Canonical promoted claim ledger for this branch}
 
-The promoted statements in this chapter are:
-\begin{description}
-\item[SOH-L012.] $\Omega(s)=s/(1-s)$ maps the critical line to the unit circle.
-\item[SOH-L013.] $\Omega(K(s))=1/\overline{\Omega(s)}$.
-\item[SOH-L014.] $\Re s=1/2$ if and only if $|\Omega(s)|=1$.
-\item[SOH-L015.] RH is exactly equivalent to all transformed non-trivial zeros lying on $|\Omega|=1$.
-\item[SOH-L016.] $B=\log|\Omega|$ is $K$-odd and $V=B^2$ vanishes exactly on the critical line.
-\item[SOH-L017.] $z_L=1-1/s=-1/\Omega$.
-\item[SOH-L018.] $z_L(K(s))=1/\overline{z_L(s)}$.
-\item[SOH-L019.] Li coefficients are the standard symmetric zero power sums in $z_L$.
-\item[SOH-L020.] A reciprocal-conjugate quartet contributes \cref{eq:v2-local-li}.
-\item[SOH-L021.] Its local growth radius is $\max(R,R^{-1})=e^{|B|}$.
-\item[SOH-L022.] $V=(\log\mathscr R)^2$ on the quartet.
-\item[SOH-L023.] Every off-circle quartet has an unbounded negative local Li subsequence.
-\item[SOH-L024.] An off-axis zero maps to a Li generating-function singularity inside the disk on the appropriate side of the symmetry.
-\item[SOH-L025.] Global Li non-negativity for all orders is equivalent to RH.
-\item[SOH-L026.] Full admissible Weil positivity is equivalent to RH under the standard criterion.
-\item[SOH-L027.] $B=\log|\Omega|=-\log|z_L|$ is the additive log-radial coordinate used by the prime-shift representation.
-\item[SOH-L028.] Prime arithmetic support occurs at additive shifts $\pm\log n$ under the stated normalization.
-\item[SOH-L029.] A single positive-weight hinge kernel is not positive semidefinite.
-\item[SOH-L030.] Positive von Mangoldt weights therefore cannot prove SOH-C005 termwise.
-\item[SOH-L031.] Localized SOH-C005 is equivalent to non-negativity of the localized spectral floor.
-\item[SOH-L032.] The localized spectral floor is non-increasing with the localization radius by nested Rayleigh domains.
-\end{description}
+The promoted statements in this chapter are SOH-L012--SOH-L032 as listed in Appendix~\ref{app:claims}. Their mathematical meanings are unchanged by the later semantic audit. The labels ``V2'' in historical receipts refer to the promotion stage at which these claims were first integrated; Version V3 retains them without reusing their identifiers.
 
-\section{The remaining proof obligation}
+\section{The remaining proof obligation in the Weil/Li branch}
 
-After the reductions above, the open frontier is not another coordinate
-identity.  It is the independent global inequality
+After the reductions above, the open frontier in this branch is not another coordinate identity. It is the independent global inequality
 \begin{equation}
  \boxed{
  \mathcal W[|f|^2]\ge0\quad\text{for every admissible }f,
  }
  \label{eq:v2-final-frontier}
 \end{equation}
-or equivalently global Li positivity for every order.  A factorization such as
-$\mathcal W[|f|^2]=\|Af\|^2$ would close the problem only if $A$ were
-constructed independently from arithmetic/theta data; defining $A$ as a square
-root of an operator already assumed positive would be circular.
+or equivalently global Li positivity for every order. A factorization such as $\mathcal W[|f|^2]=\|Af\|^2$ would close the problem only if $A$ were constructed independently from arithmetic/theta data; defining $A$ as a square root of an operator already assumed positive would be circular.
 
-\status{SOH-L012--SOH-L032 are retained as the Version 0.9 Integrated Canon V2
-exact reductions and no-go statements under their stated assumptions.
-SOH-C005 remains OPEN.  The Riemann Hypothesis remains OPEN.}
+This is a branch-local statement. Chapters~26--46 develop a separate quotient/kernel/PF line whose RH-equivalent target is SOH-G003. Neither open frontier is promoted by the existence of the other.
+
+\status{SOH-L012--SOH-L032 are retained as exact promoted reductions and no-go statements under their stated assumptions. SOH-C005 remains OPEN in the Weil/Li branch. SOH-G003 remains OPEN in the quotient branch. The Riemann Hypothesis remains OPEN.}

@@ -159,6 +159,9 @@ jobs:
       - name: Audit monograph completeness and claim IDs
         run: python scripts/audit_monograph_integration.py
 
+      - name: Audit monograph semantics
+        run: python scripts/audit_monograph_semantics.py
+
       - name: Generate deterministic core assets
         run: python scripts/generate_monograph_assets.py
 
@@ -197,7 +200,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-vectorized-benchmark
+          name: secret-of-a-half-monograph-v0.9-integrated-canon-v3-semantic-audit-vector
           path: monograph/main.pdf
           if-no-files-found: error
 

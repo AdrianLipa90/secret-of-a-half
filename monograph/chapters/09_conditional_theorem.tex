@@ -41,7 +41,7 @@ where the component norms of $\Psi(s)$ are $\sqrt\sigma$ and $\sqrt{1-\sigma}$. 
 At a zero of $\xi$, positivity of $w$ and $P_+$ implies $P_+\Psi=0$. The cancellation lemma gives $\sigma=1/2$.
 \end{proof}
 
-This formulation may be better suited to a kernel construction because $|\xi|^2$ and Hilbert-space norms are naturally non-holomorphic but positive.
+This formulation is a candidate target for a state-map kernel construction because $|\xi|^2$ and Hilbert-space norms are non-holomorphic but positive. No identity of the displayed form is assumed elsewhere unless explicitly stated.
 
 \section{Eta version}
 
@@ -51,13 +51,13 @@ By \cref{prop:eta-zeta-equivalence}, the completed zeta factor can be replaced b
 If a canonical normalized binary state has equal-gain readout zero exactly when $\eta(s)=0$ for $s\in\Sstrip$, then RH holds.
 \end{corollary}
 
-The eta formulation emphasizes the alternating binary structure. The xi formulation emphasizes functional symmetry and entire completion. A successful construction may use eta for the channel decomposition and xi for covariance.
+The eta formulation uses the exact alternating-series zero equivalence; the xi formulation uses the functional symmetry and entire completion. A successful state-map construction would have to specify which analytic object supplies each required property.
 
 \section{Why the theorem is not tautological}
 
-The conclusion follows immediately once zerohood is represented by normalized two-channel cancellation. This may appear to make the theorem trivial. The same criticism would apply to every spectral reformulation: ``if the zeros are eigenvalues of a self-adjoint operator, then they are real'' is also immediate. The value lies in identifying a construction target with enough structure to be attacked.
+The conclusion follows immediately once zerohood is represented by normalized two-channel cancellation. This may appear to make the theorem trivial. The same logical form occurs in spectral reformulations: if the relevant zeros are eigenvalues of a self-adjoint operator, their spectral parameters are real. In both cases the non-trivial content lies in constructing the object with all required equivalences.
 
-Nevertheless, the theorem can become tautological if the state is defined from the zero condition. The following construction is invalid as an explanation:
+The theorem becomes tautological if the state is defined from the zero condition. The following construction is invalid as an explanation:
 \[
  \ket{\Psi(s)}=
  \begin{cases}
@@ -67,7 +67,7 @@ Nevertheless, the theorem can become tautological if the state is defined from t
 \]
 It satisfies zero equivalence but is discontinuous, non-canonical, and uses the answer as input. Even a smooth interpolation built from $|\xi(s)|$ may merely repackage the zero set.
 
-The meaningful problem is therefore not existence in the set-theoretic sense. It is existence with arithmetic, analytic, symmetry, and positivity structure.
+The meaningful problem is therefore not existence in the set-theoretic sense. It is existence with the stated arithmetic, analytic, symmetry, metric, and positivity structure.
 
 \section{Multiplicity and local form}
 
@@ -81,11 +81,11 @@ with $g$ non-zero and sufficiently regular. Then the order of a zero of $\xi$ eq
 \]
 But the normalized amplitude $R(s)$ depends on both $s$ and $\bar s$ through $\sigma=\Re s$. It is therefore not holomorphic in the naive parameterization. A rigorous local multiplicity statement must specify whether $R$ is a complex-analytic scalar, a real-analytic section, or a norm of an analytic vector. This technical issue is not cosmetic: holomorphic zero multiplicity is central to zeta theory.
 
-One promising resolution is to let an analytic vector $v(s)$ carry the holomorphic structure, then derive the normalized state
+One construction target is to let an analytic vector $v(s)$ carry the holomorphic structure and then derive the normalized state
 \[
  \Psi(s)=\frac{v(s)}{\|v(s)\|}
 \]
-only away from its singular set. The detector amplitude of $v(s)$ can be holomorphic even though the normalized probabilities are not. A non-zero normalization factor then preserves zeros. Such a construction is considered in \cref{chap:candidates}.
+only away from its singular set. The detector amplitude of $v(s)$ can be holomorphic even though the normalized probabilities are not. A non-zero normalization factor would then preserve zeros. Such candidates are considered in \cref{chap:candidates}.
 
 \section{Necessity of equal channel metric}
 
@@ -97,32 +97,32 @@ then a zero forces
 \[
  \sigma=\frac{b^2}{a^2+b^2},
 \]
-not necessarily $1/2$. Therefore a proof must establish $a=b$ from symmetry or geometry. Involution covariance suggests equal treatment of complementary channels, but a complete argument must show that the Hilbert-space inner product and detector are themselves invariant under the swap.
+not necessarily $1/2$. Therefore a proof must establish $a=b$ from a specified symmetry or geometry. For the state-map programme, equal treatment of complementary channels must be encoded in the Hilbert-space metric and detector rather than inferred from the zeta functional symmetry alone.
 
-A natural requirement is
+A corresponding structural requirement is
 \begin{equation}
  X^\dagger P_+X=P_+,
  \label{eq:detector-swap-invariance}
 \end{equation}
-and that the channel basis is orthonormal in a swap-invariant metric. This condition makes equal gain structural rather than chosen.
+and that the channel basis is orthonormal in a swap-invariant metric. This condition makes equal gain an explicit hypothesis to be derived rather than chosen silently.
 
 \section{Minimal bridge versus explanatory bridge}
 
-The minimal bridge needed for the theorem is zero equivalence. An explanatory bridge should do more:
+The minimal bridge needed for the theorem is zero equivalence. A stronger explanatory construction would additionally:
 \begin{itemize}
   \item derive the state from the theta or eta kernel;
-  \item explain the phase quantization of the ordinates;
-  \item respect the Euler product or explicit formula;
-  \item connect off-axis displacement to a positive instability or non-self-adjoint component;
-  \item reproduce known zero statistics without fitting.
+  \item determine the zero ordinates without fitting them;
+  \item retain the Euler product or explicit-formula arithmetic;
+  \item identify an independently proved positive or self-adjoint mechanism excluding horizontal displacement;
+  \item reproduce known zero statistics as output rather than input.
 \end{itemize}
-These stronger goals are not required for the logical implication but are required for a persuasive theory.
+These stronger goals are not required for the logical implication but are required for a non-circular construction.
 
 \section{The open theorem-construction pair}
 
-The state of the project can be expressed in two lines:
+For this initial state-map branch the status can be expressed in two lines:
 \begin{align*}
  \textbf{Theorem:}&\quad \text{canonical normalized cancellation}\Longrightarrow\text{RH},\\
  \textbf{Open construction:}&\quad \xi\text{ or }\eta\Longrightarrow\text{canonical normalized cancellation}.
 \end{align*}
-The rest of the monograph studies constraints on the second line.
+Later quotient and kernel chapters pursue different exact objects and do not automatically instantiate the open second line.
