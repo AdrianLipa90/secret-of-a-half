@@ -100,6 +100,10 @@ jobs:
         run: python scripts/run_soh_g023_reciprocal_deficit.py
       - name: Run SOH-G024 Jensen-Wiener candidate receipt
         run: python scripts/run_soh_g024_jensen_wiener_kernel.py
+      - name: Run SOH-G024 fourth-log-curvature interval certificate
+        run: python scripts/run_soh_g024_fourth_log_curvature_interval.py
+      - name: Run SOH-G024 global second-order certificate
+        run: python scripts/run_soh_g024_global_second_order.py
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
       - name: Install LaTeX toolchain
