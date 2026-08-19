@@ -191,6 +191,58 @@ def first_order_cm_log_slope_lower_bound(
     return margin - y_abs * mp.tanh(2 * y_abs * u) / u
 
 
+def second_order_cm_normalized_margin_from_bridge(
+    u: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    mean_a: float | mp.mpf,
+    mean_b: float | mp.mpf,
+    var_a: float | mp.mpf,
+) -> mp.mpf:
+    r"""Return the exact normalized second-order CM margin.
+
+    For ``L=-log K`` and the normalized bridge measure
+
+        dmu_u(r) = r^2 K(u+r)K(u-r) dr / C(u),
+
+    define
+
+        A = L'(u+r)+L'(u-r),
+        B = L''(u+r)+L''(u-r),
+        R = E[A] = -C'/C,
+        R' = E[B]-Var(A).
+
+    Let ``a=|y|``, ``T=2 a tanh(2 a u)``, and ``N=R-T``. Then
+
+        4 u^3 H_y''(u^2)/H_y(u^2)
+        = N + u [N^2 + Var(A) - E[B]
+                 + 4 a^2 sech^2(2 a u)].
+
+    This helper evaluates the right-hand side from bridge moments. Positivity
+    is exactly equivalent to the second complete-monotonicity inequality for
+    ``u>0``. SOH-G024 does not currently prove that positivity globally.
+    """
+
+    u = mp.mpf(u)
+    a = abs(mp.mpf(y))
+    mean_a = mp.mpf(mean_a)
+    mean_b = mp.mpf(mean_b)
+    var_a = mp.mpf(var_a)
+    if u <= 0:
+        raise ValueError("require u>0")
+    if not (0 <= a < mp.mpf("0.5")):
+        raise ValueError("require |y| < 1/2")
+    if var_a < 0:
+        raise ValueError("var_a must be non-negative")
+    tanh_term = mp.tanh(2 * a * u)
+    sech_sq = 1 / mp.cosh(2 * a * u) ** 2
+    tilt = 2 * a * tanh_term
+    n_value = mean_a - tilt
+    return n_value + u * (
+        n_value * n_value + var_a - mean_b + 4 * a * a * sech_sq
+    )
+
+
 def internal_tilt_jensen_kernel_from_kernel(
     u: float | mp.mpf,
     y: float | mp.mpf,
