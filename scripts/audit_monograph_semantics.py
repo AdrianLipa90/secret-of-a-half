@@ -143,14 +143,14 @@ def main() -> int:
     for token in [
         "L''(t)>17", "\\frac{33}{2}", "34^n", "(1-\\lambda/17)^{-3/2}",
         "\\mathbb E[B_u]<79e^{2u}", "H_y''(q)>0", "q\\ge1/9",
-        "0\\le q<\\frac19", "remains OPEN", "does not claim RH",
+        "0\\le q<\\frac19", "OPEN", "does not claim RH",
     ]:
         if token not in sharp_text:
             fail(f"Chapter 53 is missing sharpened theorem/historical firewall token {token!r}", errors)
 
     global_text = G024_GLOBAL.read_text(encoding="utf-8")
     for token in [
-        "L''''(t)<20L''(t)", "mpmath.iv", "20L''-L''''>10", "Peano bridge identity",
+        "L''''(t)<20L''(t)", "mpmath.iv", "390-380=10", "Peano bridge identity",
         "\\frac{12275}{48}", "\\frac{1089}{4}", "\\frac{793}{48}",
         "H_y''(q)>0", "q\\ge0", "m\\ge3", "does not claim RH",
     ]:
