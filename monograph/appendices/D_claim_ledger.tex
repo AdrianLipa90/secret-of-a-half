@@ -1,7 +1,7 @@
 \chapter{Canonical Claim Ledger}
 \label{app:claims}
 
-This appendix is the canonical monograph-side claim map for Version 0.9 Integrated Canon V3. Historical identifiers that collided during development are preserved only as provenance aliases. An identifier is active only when this ledger or a theorem statement in the integrated monograph assigns it a current meaning.
+This appendix is the canonical monograph-side claim map for Version 0.9 Integrated Canon V3 through SOH-G023. Historical identifiers that collided during development are preserved only as provenance aliases. SOH-G024 is recorded in a separate branch-candidate section and is not promoted into the canonical sequence.
 
 \section{Stable foundation and open state-map bridges}
 \small
@@ -70,7 +70,7 @@ SOH-L032 & The localized spectral floor is non-increasing with $a$ because the R
 \end{longtable}
 \normalsize
 
-\section{Integrated SOH-G quotient, kernel, and operator line through G022}
+\section{Integrated SOH-G quotient, kernel, and operator line through G023}
 \begingroup
 \small
 \setlength{\tabcolsep}{5pt}
@@ -105,10 +105,21 @@ SOH-G019 & There is a unique $R_\star>0$ with $F(R_\star)=2F(0)$, and $\Re F(w)>
 SOH-G020 & The canonical rescaling gives a probability law with half its mass at index zero and half on positive indices; PF$_2$ is preserved, masses decrease strictly, and the sharpened coefficient envelope holds. & PROVED & Ch.~45\\
 SOH-G021 & The abstract G020 package of positivity, half-mass normalization, strict mass decay, PF$_2$, and the normalized envelope does not imply PF$_3$; an exact counterexample has G006 margin $-1271/2500$. This does not decide PF$_3$ for the actual coefficients of $F$. & PROVED structural no-go; actual PF$_3$ OPEN & Ch.~47\\
 SOH-G022 & The G006 solid PF$_3$ margin has the exact decomposition $M=(1-v)^3+v(1-w)[1-v(2-u)]+v(1-v)(w-v)$; if $0<v<1$, $v\le w\le1$, and $1-v(2-u)\ge0$, then $M\ge(1-v)^3>0$. The required inequalities are not proved globally for the actual quotient coefficients. & PROVED local sufficient condition; actual PF$_3$ OPEN & Ch.~48\\
+SOH-G023 & With $E_k=(1-q_k)^{-1}$, the solid G006 margin equals $[E_{k-1}E_{k+1}-(E_k-1)^2]/[E_{k-1}E_k^2E_{k+1}]$. The G022 local package becomes a monotone one-Lipschitz reciprocal-deficit increment target; its global validity for the actual sequence is not proved. & PROVED normal form; global law OPEN & Ch.~49\\
 \bottomrule
 \end{longtable}
 \normalsize
 \endgroup
+
+\section{SOH-G024 branch candidate -- not canonical}
+
+The branch candidate defines
+\[
+ C(u)=\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr,
+ \qquad
+ D_y(u)=\cosh(2yu)C(u),
+\]
+and records the exact centered Dimitrov--Xu relation $\nu_2(2u)=4C(u)$. Under the cited Dimitrov--Xu and Wiener criteria, strict Fourier positivity of $D_y$ for every real frequency and every $0<|y|<1/2$ is RH-equivalent. The branch records complete monotonicity of $H_y(q)=D_y(\sqrt q)$ only as a sufficient OPEN premise. It also defines the distinct internal Jensen tilt $J_y$ and protects the identity $D_0=J_0=C$ without identifying the two families for $y\ne0$. Finite derivative signs are numerical only. The Riemann Hypothesis remains OPEN.
 
 \section{Domain-specific exact results retained after migration}
 
@@ -129,10 +140,10 @@ SOH-G022 & The G006 solid PF$_3$ margin has the exact decomposition $M=(1-v)^3+v
 
 \section{Historical alias map}
 
-The pre-v0.9 aliases old L012--old L022 remain mapped to SOH-WA001, SOH-HM001, SOH-HM002, SOH-ZU001--003, SOH-PT001--003, SOH-AC001, and SOH-DHSE-M001 respectively. The prefix ``old'' denotes a historical snapshot only. Unqualified SOH-L012--SOH-L032 always denote the promoted Li/Weil line above.
+The pre-v0.9 aliases old L012--old L022 remain mapped to SOH-WA001, SOH-HM001, SOH-HM002, SOH-ZU001--003, SOH-PT001--003, SOH-AC001, and SOH-DHSE-M001 respectively. Unqualified SOH-L012--SOH-L032 always denote the promoted Li/Weil line above.
 
 \section{Current promotion and proof firewall}
 
 An OPEN claim may be promoted only when its complete proof or reproducible construction is present, every dependency is explicit, and no dependency is merely an RH-equivalent statement left unproved. Numerical agreement cannot promote a claim to exact status. Interpretive prose cannot promote a claim either and is marked \textbf{INTERPRETACJA} when present.
 
-The current integrated frontier is not one single missing lemma. SOH-C001 remains open for the normalized state-map branch; SOH-C005 remains the RH-equivalent global Weil/Li positivity frontier; SOH-G003 remains the RH-equivalent quotient real-rootedness frontier; PF$_3$ and PF$_\infty$ for the actual quotient coefficients remain open. SOH-G021 closes only the shortcut from the abstract G020 structural package to PF$_3$. SOH-G022 proves a local sufficient condition for the solid G006 PF$_3$ margin, but the required ratio-curvature inequalities are not proved globally for the actual coefficients and a separate theorem is still required to upgrade solid-minor control to full PF$_3$. By contrast, negative-inversion root invariance is not open: SOH-G018 proves that the paired sets are empty. The Riemann Hypothesis remains OPEN in this monograph.
+The current canonical frontier includes SOH-C001, SOH-C005, SOH-G003, actual PF$_3$, and PF$_\infty$. SOH-G023 gives an exact normal form but does not prove the required global increment law. SOH-G024 remains a branch candidate whose complete-monotonicity premise and strict Fourier positivity are unproved. Negative-inversion root invariance is closed negatively by SOH-G018. The Riemann Hypothesis remains OPEN in this monograph.
