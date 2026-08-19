@@ -34,12 +34,12 @@
     {
       "id": "SOH-G024-F",
       "status": "proved_first_order_complete_monotonicity",
-      "statement": "The existing SOH-G004 channel curvature and variance bounds imply (log Phi)''<-10. Consequently for C(u)=integral r^2 K(u+r)K(u-r)dr one has -C'(u)/C(u)>20u for u>0. Hence for H_y(q)=cosh(2y sqrt(q))C(sqrt(q)), every 0<|y|<1/2 satisfies -H_y'(q)/H_y(q)>10-|y|tanh(2|y|sqrt(q))/sqrt(q)>19/2, with the q=0 value obtained by continuity. Therefore H_y'(q)<0 globally."
+      "statement": "The SOH-G004 channel curvature and variance bounds imply strong convexity of L=-log K. The later SOH-G024-M sharpening raises the global margin to L''>17, hence -C'/C>34u and -H_y'/H_y>33/2 for every q>=0 and 0<|y|<1/2. Therefore H_y'(q)<0 globally."
     },
     {
       "id": "SOH-G024-G",
       "status": "proved_gaussian_domination",
-      "statement": "Integrating the SOH-G024-F logarithmic-slope bound gives H_y(q)<H_y(0)exp(-19q/2) for q>0, equivalently D_y(u)<D_y(0)exp(-19u^2/2) for u!=0, uniformly for every 0<|y|<1/2."
+      "statement": "Integrating the original conservative SOH-G024-F logarithmic-slope bound gives H_y(q)<H_y(0)exp(-19q/2); the sharpened L''>17 result supplies the stronger derivative floor 33/2 without weakening this already-proved Gaussian envelope."
     },
     {
       "id": "SOH-G024-H",
@@ -48,32 +48,42 @@
     },
     {
       "id": "SOH-G024-I",
-      "status": "exact_second_order_reduction_open_inequality",
-      "statement": "With S_y(q)=-d/dq log H_y(q), one has H_y''/H_y=S_y^2-S_y'. Therefore the second complete-monotonicity inequality is exactly equivalent to S_y'<=S_y^2. SOH-G024 proves S_y>19/2 but does not prove the Riccati inequality globally."
+      "status": "exact_second_order_reduction_open_core",
+      "statement": "With S_y(q)=-d/dq log H_y(q), one has H_y''/H_y=S_y^2-S_y'. Therefore the second complete-monotonicity inequality is exactly equivalent to S_y'<=S_y^2. It is now proved for q>=1/9 but remains open on 0<=q<1/9."
     },
     {
       "id": "SOH-G024-J",
       "status": "exact_second_order_bridge_curvature_variance_reduction",
-      "statement": "Under the normalized bridge measure dmu_u proportional to r^2 K(u+r)K(u-r)dr/C(u), with A=L'(u+r)+L'(u-r), B=L''(u+r)+L''(u-r), R=-C'/C=E[A], and R'=E[B]-Var(A), define a=|y|, T=2a tanh(2au), N=R-T. Then 4u^3 H_y''(u^2)/H_y(u^2)=N+u[N^2+Var(A)-E[B]+4a^2 sech^2(2au)]. Its global non-negativity is the second-order complete-monotonicity obligation."
+      "statement": "Under the normalized bridge measure dmu_u proportional to r^2 K(u+r)K(u-r)dr/C(u), with A=L'(u+r)+L'(u-r), B=L''(u+r)+L''(u-r), R=-C'/C=E[A], and R'=E[B]-Var(A), define a=|y|, T=2a tanh(2au), N=R-T. Then 4u^3 H_y''(u^2)/H_y(u^2)=N+u[N^2+Var(A)-E[B]+4a^2 sech^2(2au)]."
     },
     {
       "id": "SOH-G024-K",
       "status": "proved_bridge_moment_hierarchy",
-      "statement": "For D_u(r)=L'(u+r)-L'(u-r), the normalized bridge measure satisfies E[r^(2n+1) D_u(r)]=(2n+3)E[r^(2n)] for every n>=0. The G004 bound L''>10 implies E[r^(2n+2)]<(2n+3)E[r^(2n)]/20 and therefore E[r^(2n)]<(2n+1)!!/20^n. Consequently E[exp(lambda r^2)]<=(1-lambda/10)^(-3/2) for 0<=lambda<10."
+      "statement": "For D_u(r)=L'(u+r)-L'(u-r), the normalized bridge measure satisfies E[r^(2n+1) D_u(r)]=(2n+3)E[r^(2n)] for every n>=0. With the sharpened G024-M margin L''>17 this gives E[r^(2n+2)]<(2n+3)E[r^(2n)]/34, E[r^(2n)]<(2n+1)!!/34^n, and E[exp(lambda r^2)]<=(1-lambda/17)^(-3/2) for 0<=lambda<17."
     },
     {
       "id": "SOH-G024-L",
       "status": "proved_second_order_tail_region",
-      "statement": "The G004 theta-channel estimates also imply the companion curvature envelope 10<L''(s)<21 exp(2|s|). Combining this with the bridge exponential-moment hierarchy gives E[B_u]<36 e exp(2u). A sharpened lower bound gives N_y(u)>6 exp(2u) for u>=1/2. Hence N_y(u)^2>E[B_u], and the exact bridge normal form proves H_y''(q)>0 for every q>=1/4 and every 0<|y|<1/2. The compact core 0<=q<1/4 remains open."
+      "statement": "The earlier conservative bridge estimates prove H_y''(q)>0 for every q>=1/4 and every 0<|y|<1/2. This remains a valid subtheorem and is strengthened by SOH-G024-P."
+    },
+    {
+      "id": "SOH-G024-M",
+      "status": "proved_sharpened_strong_convexity",
+      "statement": "For each theta channel, -g_n''=4r+24r/(2r-3)^2>19 for r>3. Combined with the canonical G004 mixture slope variance bound Var_p(g_n')<2, this proves L''=-(log K)''>17 globally. Consequently -C'/C>34u, N_y(u)>33u, -H_y'/H_y>33/2, and the bridge moment/MGF hierarchy sharpens from denominators 20/10 to 34/17."
+    },
+    {
+      "id": "SOH-G024-P",
+      "status": "proved_second_order_region_q_ge_one_ninth",
+      "statement": "Using L''>17, the existing upper envelope L''(s)<21 exp(2|s|), the sharpened bridge MGF, and exact rational bounds C_17<79 and F(u)=33+1089u^2-79exp(2u)>0 on 1/3<=u<=1/2, the exact bridge normal form proves H_y''(q)>0 for every q>=1/9 and every 0<|y|<1/2. The remaining second-order core is 0<=q<1/9."
     },
     {
       "id": "SOH-G024-N1",
       "status": "finite_numerical_diagnostic",
-      "statement": "Finite five-point diagnostics through derivative order four on the declared Riemann-kernel grid are recorded only as FINITE_DIAGNOSTIC_NOT_PROOF for derivative orders two through four; first-order monotonicity is independently proved analytically and second-order monotonicity is analytically proved only for q>=1/4."
+      "statement": "Finite five-point diagnostics through derivative order four are FINITE_DIAGNOSTIC_NOT_PROOF wherever no analytic theorem applies. First order is globally proved; second order is analytically proved for q>=1/9 and remains open on 0<=q<1/9."
     }
   ],
   "open_obligations": [
-    "prove H_y''(q)>=0 on the remaining compact core 0<=q<1/4 for every 0<|y|<1/2",
+    "prove H_y''(q)>=0 on the remaining compact core 0<=q<1/9 for every 0<|y|<1/2",
     "equivalently close the second-order bridge/Riccati inequality on that compact core",
     "prove complete monotonicity of H_y for derivative orders m>=3",
     "cover every q>=0 and every 0<|y|<1/2 for all higher orders",
