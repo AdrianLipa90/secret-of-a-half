@@ -1,6 +1,6 @@
 """SOH-G024 Jensen--Wiener correlation-kernel utilities.
 
-Exact identities are separated from numerical regression helpers.  Nothing in
+Exact identities are separated from numerical regression helpers. Nothing in
 this module promotes RH, SOH-G003, PF3, or PF-infinity.
 """
 
@@ -13,6 +13,13 @@ import mpmath as mp
 from .riemann_kernel import riemann_kernel
 
 EvenKernel = Callable[[mp.mpf], mp.mpf]
+
+# SOH-G004 proves, with explicit rational estimates, that every theta-channel
+# logarithmic curvature is below -12 while the mixture slope variance is below
+# 2. Therefore (log Phi)'' < -10 on the half-line. The even full-line kernel
+# K(t)=Phi(|t|)/2 inherits the strong log-concavity margin m=10.
+G004_STRONG_LOG_CONCAVITY_MARGIN = mp.mpf("10")
+G024_FIRST_ORDER_CM_UNIFORM_FLOOR = mp.mpf("9.5")
 
 
 def full_xi_kernel(t: float | mp.mpf, *, n_terms: int = 8) -> mp.mpf:
@@ -42,7 +49,7 @@ def csordas_correlation_from_kernel(
 
         C(u) = int_R r^2 K(u+r) K(u-r) dr.
 
-    For an even kernel the integrand is even in ``r``.  The finite cutoff is a
+    For an even kernel the integrand is even in ``r``. The finite cutoff is a
     regression control, not part of the analytic definition.
     """
 
@@ -129,8 +136,9 @@ def radial_square_profile(
 ) -> mp.mpf:
     r"""Return H_y(q)=D_y(sqrt(q)) for q>=0.
 
-    Complete monotonicity of this profile for every ``0<|y|<1/2`` is recorded
-    by SOH-G024 only as a sufficient open target, not as a proved property.
+    SOH-G024 proves the first complete-monotonicity inequality ``H_y' < 0``
+    globally for the actual Riemann kernel and every ``0<|y|<1/2``. Higher
+    derivative orders remain open.
     """
 
     q = mp.mpf(q)
@@ -142,6 +150,45 @@ def radial_square_profile(
         n_terms=n_terms,
         center_cutoff=center_cutoff,
     )
+
+
+def first_order_cm_log_slope_lower_bound(
+    q: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    strong_log_concavity_margin: float | mp.mpf = G004_STRONG_LOG_CONCAVITY_MARGIN,
+) -> mp.mpf:
+    r"""Return the exact lower bound for ``-H_y'(q)/H_y(q)``.
+
+    If ``L=-log K`` satisfies ``L'' >= m`` on the even full-line kernel, then
+    strong monotonicity of ``L'`` gives
+
+        -C'(u)/C(u) >= 2 m u,  u>0.
+
+    Since ``H_y(q)=cosh(2 y sqrt(q)) C(sqrt(q))``, this yields
+
+        -H_y'(q)/H_y(q)
+        >= m - |y| tanh(2 |y| sqrt(q))/sqrt(q).
+
+    The value at ``q=0`` is the continuous limit ``m-2 y^2``. For the G004
+    margin ``m=10`` and ``0<|y|<1/2`` this is strictly above 19/2, proving the
+    first complete-monotonicity inequality globally. This does not prove any
+    higher derivative inequality.
+    """
+
+    q = mp.mpf(q)
+    y_abs = abs(mp.mpf(y))
+    margin = mp.mpf(strong_log_concavity_margin)
+    if q < 0:
+        raise ValueError("q must be non-negative")
+    if not (0 <= y_abs < mp.mpf("0.5")):
+        raise ValueError("require |y| < 1/2")
+    if margin <= 0:
+        raise ValueError("strong_log_concavity_margin must be positive")
+    if q == 0:
+        return margin - 2 * y_abs * y_abs
+    u = mp.sqrt(q)
+    return margin - y_abs * mp.tanh(2 * y_abs * u) / u
 
 
 def internal_tilt_jensen_kernel_from_kernel(
@@ -156,7 +203,7 @@ def internal_tilt_jensen_kernel_from_kernel(
         J_y(u)=int_R r^2 cosh(2 y r) K(u+r)K(u-r) dr.
 
     This must not be conflated with the Dimitrov--Xu external tilt
-    ``D_y(u)=cosh(2yu) C(u)``.  They coincide only at ``y=0``.
+    ``D_y(u)=cosh(2yu) C(u)``. They coincide only at ``y=0``.
     """
 
     u = mp.mpf(u)
@@ -178,8 +225,8 @@ def signed_five_point_derivatives(
 ) -> dict[int, mp.mpf]:
     r"""Return finite-difference diagnostics for ``(-1)^m f^(m)(q)``, m=1..4.
 
-    These values are numerical diagnostics only.  They are not certificates of
-    complete monotonicity.
+    These values are numerical diagnostics only. They are not certificates of
+    complete monotonicity beyond the separately proved first-order G024 bound.
     """
 
     q = mp.mpf(q)
