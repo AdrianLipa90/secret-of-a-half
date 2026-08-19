@@ -25,10 +25,17 @@ def gaussian(t: mp.mpf) -> mp.mpf:
 def main() -> None:
     mp.mp.dps = 40
 
-    # Closed-form regression for the exact centered correlation identity.
+    # Closed-form regression for the exact centered correlation identities.
+    # The numerical integral is deliberately evaluated farther into the Gaussian
+    # tail than the Riemann-kernel finite diagnostic below.
     u = mp.mpf("0.31")
     y = mp.mpf("0.23")
-    c_obs = csordas_correlation_from_kernel(u, kernel=gaussian, center_cutoff=7)
+    gaussian_cutoff = mp.mpf("8")
+    c_obs = csordas_correlation_from_kernel(
+        u,
+        kernel=gaussian,
+        center_cutoff=gaussian_cutoff,
+    )
     c_exp = mp.sqrt(mp.pi) * mp.exp(-u * u) / 2
     if abs(c_obs - c_exp) > mp.mpf("1e-20"):
         raise RuntimeError("Gaussian centered-correlation regression failed")
@@ -37,7 +44,7 @@ def main() -> None:
         u,
         y,
         kernel=gaussian,
-        center_cutoff=7,
+        center_cutoff=gaussian_cutoff,
     )
     d_exp = mp.cosh(2 * y * u) * c_exp
     if abs(d_obs - d_exp) > mp.mpf("1e-20"):
@@ -47,7 +54,7 @@ def main() -> None:
         u,
         y,
         kernel=gaussian,
-        center_cutoff=7,
+        center_cutoff=gaussian_cutoff,
     )
     j_exp = (
         mp.sqrt(mp.pi)
@@ -59,7 +66,7 @@ def main() -> None:
     if abs(d_obs - j_obs) <= mp.mpf("1e-6"):
         raise RuntimeError("external and internal y-tilts were incorrectly identified")
 
-    # Finite numerical diagnostic for the actual Riemann kernel.  Passing signs
+    # Finite numerical diagnostic for the actual Riemann kernel. Passing signs
     # here is deliberately not promoted to complete monotonicity.
     y_grid = [mp.mpf("0"), mp.mpf("0.25"), mp.mpf("0.49")]
     q_grid = [mp.mpf("0.1"), mp.mpf("0.2")]
@@ -100,6 +107,7 @@ def main() -> None:
             "gaussian_centered_correlation_closed_form": True,
             "gaussian_external_tilt_closed_form": True,
             "gaussian_internal_tilt_closed_form": True,
+            "gaussian_regression_cutoff": mp.nstr(gaussian_cutoff, 8),
             "external_internal_tilts_distinct_for_nonzero_y": True,
             "dimitrov_xu_change_of_variables": "nu_2(2u)=4*C(u)",
             "dimitrov_xu_rescaled_kernel": "Psi_y(2u)=4*cosh(2yu)*C(u)",
