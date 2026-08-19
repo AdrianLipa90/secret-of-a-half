@@ -1,0 +1,51 @@
+{
+  "schema": "SOH_G024_BRANCH_CLAIM_LEDGER_V1",
+  "date": "2026-08-19",
+  "branch": "proof/soh-g024-jensen-kernel-positive-definite-v1",
+  "base_generation": "SOH-G023",
+  "promotion_status": "BRANCH_CANDIDATE_NOT_CANONICAL",
+  "proof_of_rh": false,
+  "claims": [
+    {
+      "id": "SOH-G024-A",
+      "status": "exact_reparametrization",
+      "statement": "For the repository full-line kernel K(t)=Phi(|t|)/2, the Dimitrov-Xu order-two correlation satisfies nu_2(2u)=4 C(u), where C(u)=integral r^2 K(u+r)K(u-r) dr, and the tilted kernel satisfies Psi_y(2u)=4 cosh(2yu) C(u)."
+    },
+    {
+      "id": "SOH-G024-B",
+      "status": "exact_external_criterion",
+      "statement": "Using the Dimitrov-Xu theorem and Wiener's L1 Tauberian theorem, RH is equivalent to strict positivity of the Fourier transform of D_y(u)=cosh(2yu)C(u) for every real frequency and every 0<|y|<1/2."
+    },
+    {
+      "id": "SOH-G024-C",
+      "status": "exact_sufficient_route_open_premise",
+      "statement": "If H_y(q)=D_y(sqrt(q)) is completely monotone on q>=0 for every 0<|y|<1/2, then D_y is a positive Gaussian mixture with strictly positive Fourier transform, hence RH follows. Complete monotonicity is not proved."
+    },
+    {
+      "id": "SOH-G024-D",
+      "status": "exact_identity",
+      "statement": "The internal-tilt kernel J_y(u)=integral r^2 cosh(2yr)K(u+r)K(u-r)dr satisfies 4 Fourier[J_y](2x)=|f'(x+iy)|^2-Re(f''(x+iy) conjugate(f(x+iy))) for f(z)=integral K(t)exp(-izt)dt."
+    },
+    {
+      "id": "SOH-G024-E",
+      "status": "exact_firewall",
+      "statement": "The external Dimitrov-Xu tilt D_y and the internal Jensen tilt J_y are distinct for general y!=0 and coincide only at y=0."
+    },
+    {
+      "id": "SOH-G024-N1",
+      "status": "finite_numerical_diagnostic",
+      "statement": "Finite five-point diagnostics through derivative order four on the declared Riemann-kernel grid are recorded only as FINITE_DIAGNOSTIC_NOT_PROOF."
+    }
+  ],
+  "open_obligations": [
+    "prove complete monotonicity of H_y for all derivative orders",
+    "cover all q>=0",
+    "cover every 0<|y|<1/2",
+    "or independently prove strict Fourier positivity of D_y",
+    "SOH-G003 real-rootedness remains open",
+    "SOH-C005 full admissible Weil positivity remains open",
+    "PF3 remains open",
+    "PF-infinity remains open",
+    "RH remains open"
+  ]
+}
