@@ -3,8 +3,11 @@ from __future__ import annotations
 import mpmath as mp
 
 from secret_of_a_half.jensen_wiener_kernel import (
+    G004_STRONG_LOG_CONCAVITY_MARGIN,
+    G024_FIRST_ORDER_CM_UNIFORM_FLOOR,
     csordas_correlation_from_kernel,
     dimitrov_xu_tilted_from_kernel,
+    first_order_cm_log_slope_lower_bound,
     full_xi_kernel,
     internal_tilt_jensen_kernel_from_kernel,
     signed_five_point_derivatives,
@@ -78,6 +81,33 @@ def test_gaussian_internal_tilt_closed_form_and_not_external_tilt() -> None:
     )
     assert abs(internal - expected_internal) < mp.mpf("1e-20")
     assert abs(internal - external) > mp.mpf("1e-6")
+
+
+def test_g004_strong_log_concavity_margin_exceeds_first_order_threshold() -> None:
+    assert G004_STRONG_LOG_CONCAVITY_MARGIN == mp.mpf("10")
+    assert G004_STRONG_LOG_CONCAVITY_MARGIN > mp.mpf("0.5")
+    assert G024_FIRST_ORDER_CM_UNIFORM_FLOOR == mp.mpf("9.5")
+
+
+def test_first_order_cm_log_slope_bound_is_uniformly_above_nineteen_halves() -> None:
+    mp.mp.dps = 50
+    for y in (mp.mpf("0"), mp.mpf("0.25"), mp.mpf("0.49"), mp.mpf("0.499999")):
+        for q in (mp.mpf("0"), mp.mpf("1e-8"), mp.mpf("0.1"), mp.mpf("1"), mp.mpf("100")):
+            bound = first_order_cm_log_slope_lower_bound(q, y)
+            assert bound > G024_FIRST_ORDER_CM_UNIFORM_FLOOR
+
+
+def test_first_order_cm_threshold_margin_one_half_is_sufficient() -> None:
+    mp.mp.dps = 50
+    threshold = mp.mpf("0.5")
+    for y in (mp.mpf("0"), mp.mpf("0.25"), mp.mpf("0.49")):
+        for q in (mp.mpf("0"), mp.mpf("0.1"), mp.mpf("2")):
+            bound = first_order_cm_log_slope_lower_bound(
+                q,
+                y,
+                strong_log_concavity_margin=threshold,
+            )
+            assert bound > 0
 
 
 def test_signed_five_point_derivatives_on_completely_monotone_exponential() -> None:
