@@ -29,7 +29,11 @@ The exact positive Riemann kernel satisfies
 \[
  \xi\!\left(\frac12+z\right)=\int_0^\infty\Phi(y)\cosh(zy)\,dy.
 \]
-SOH-G004 proves strict log-concavity of the compactified kernel weight, while the prior strict log-concavity theorem for the classical Xi kernel is attributed to Gershon. SOH-G005 proves PF$_2$ for the Taylor coefficients of $F$. SOH-G006 reduces a solid PF$_3$ Toeplitz minor to an exact ratio-curvature margin. Thus
+SOH-G004 proves strict log-concavity of the compactified kernel weight, while the prior strict log-concavity theorem for the classical Xi kernel is attributed to Gershon. Its own channel estimates also imply the stronger quantitative consequence
+\[
+ \boxed{(\log\Phi)''<-10}
+\]
+used later by the G024 branch. SOH-G005 proves PF$_2$ for the Taylor coefficients of $F$. SOH-G006 reduces a solid PF$_3$ Toeplitz minor to an exact ratio-curvature margin. Thus
 \[
  \boxed{\mathrm{PF}_2\ \text{PROVED}},\qquad
  \boxed{\mathrm{PF}_3\ \text{OPEN}},\qquad
@@ -116,23 +120,76 @@ With
 \]
 their RH-equivalent translation-density criterion becomes, by Wiener's theorem, strict positivity of $\widehat D_y$ for every real frequency and every $0<|y|<1/2$.
 
-The branch records the sufficient open target
+Writing
 \[
- H_y(q)=D_y(\sqrt q),\qquad
- (-1)^mH_y^{(m)}(q)\ge0
+ f(z)=\int_{\mathbb R}K(t)e^{-izt}\,dt,
 \]
-for every $m\ge0$, $q\ge0$, and $0<|y|<1/2$. If proved, Bernstein's theorem would represent $D_y$ as a positive Gaussian mixture and force $\widehat D_y>0$, hence RH. Complete monotonicity is not proved.
-
-The branch also defines the distinct internal tilt
+the branch proves the exact external Wronskian form
+\[
+ \boxed{
+ 4\widehat D_y(2x)
+ =\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right).
+ }
+\]
+It also retains the distinct internal Jensen tilt
 \[
  J_y(u)=\int_{\mathbb R}r^2\cosh(2yr)K(u+r)K(u-r)\,dr,
 \]
-which carries the complex Jensen/Laguerre functional. The proof firewall is
+with
+\[
+ \boxed{
+ 4\widehat J_y(2x)
+ =|f'(x+iy)|^2-\Re\!\left(f''(x+iy)\overline{f(x+iy)}\right).
+ }
+\]
+The proof firewall is
 \[
  \boxed{D_y\ne J_y\text{ in general for }y\ne0},\qquad
  \boxed{D_0=J_0=C}.
 \]
-Finite derivative diagnostics do not promote this candidate.
+
+The sufficient complete-monotonicity route uses
+\[
+ H_y(q)=D_y(\sqrt q).
+\]
+Unlike the earlier branch state, its first non-trivial derivative inequality is now proved. The canonical G004 estimates imply
+\[
+ -(\log K)''>10.
+\]
+If $L=-\log K$, strong monotonicity of $L'$ yields
+\[
+ \boxed{-\frac{C'(u)}{C(u)}>20u.}
+\]
+Consequently, for every $0<|y|<1/2$,
+\[
+ \boxed{
+ -\frac{H_y'(q)}{H_y(q)}
+ >10-\frac{|y|}{\sqrt q}\tanh(2|y|\sqrt q)
+ >\frac{19}{2}
+ }
+\]
+for $q>0$, with the endpoint obtained by continuity. Thus
+\[
+ \boxed{H_y'(q)<0}
+\]
+globally throughout the full external strip. Integration gives the exact Gaussian domination
+\[
+ \boxed{H_y(q)<H_y(0)e^{-19q/2}}.
+\]
+
+Define
+\[
+ S_y(q)=-\frac{d}{dq}\log H_y(q).
+\]
+Then $S_y>19/2$ and
+\[
+ \boxed{\frac{H_y''}{H_y}=S_y^2-S_y'.}
+\]
+Hence the next complete-monotonicity condition is exactly
+\[
+ \boxed{H_y''\ge0\iff S_y'\le S_y^2.}
+\]
+This second-order Riccati inequality is open. Finite derivative diagnostics at orders two through four do not promote it.
 
 \section{Independent open branches}
 
@@ -141,7 +198,7 @@ Finite derivative diagnostics do not promote this candidate.
  \item[SOH-C005.] Full admissible Weil positivity remains open and RH-equivalent under the standard criterion: \textbf{SOH-C005 OPEN}.
  \item[SOH-G003.] Real-rootedness of $F$ remains open and RH-equivalent: \textbf{SOH-G003 OPEN}.
  \item[PF$_3$/PF$_\infty$.] PF$_2$ is proved. G022 and G023 sharpen the solid-minor target but do not prove the global Riemann inequalities or the upgrade to full PF$_3$.
- \item[G024.] Strict Fourier positivity of $D_y$, or the sufficient complete-monotonicity package for $H_y$, remains open for the actual Riemann kernel.
+ \item[G024.] First-order complete monotonicity is proved. The second-order Riccati inequality, all higher derivative inequalities, and direct strict positivity of the external Wronskian/Fourier form remain open.
 \end{description}
 
 \section{Closed shortcuts}
@@ -150,15 +207,19 @@ The integrated results exclude the following shortcuts: functional symmetry alon
 
 \section{Current proof boundary}
 
-The current canonical chain reaches SOH-G023. The G024 branch provides a direct exact reparametrization of an RH-equivalent correlation-kernel criterion and an exact implication
+The current canonical chain reaches SOH-G023. The G024 branch now supplies exact correlation and Wronskian normal forms, proves
 \[
- \boxed{\text{complete monotonicity of all }H_y\Longrightarrow RH},
+ \boxed{H_y'<0\text{ globally on the full Dimitrov--Xu strip}},
 \]
-but the complete-monotonicity premise itself is open. Therefore
+and reduces the next derivative condition to
+\[
+ \boxed{S_y'\le S_y^2}.
+\]
+Full complete monotonicity remains sufficient for RH but is not established. Therefore
 \[
  \boxed{\text{SOH-G003 OPEN}},\qquad
  \boxed{\text{SOH-C005 OPEN}},\qquad
  \boxed{\text{RH OPEN}}.
 \]
 
-\status{Integrated canonical status through SOH-G023 with SOH-G024 retained as a non-canonical branch candidate. PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, complete monotonicity of the G024 Riemann-kernel family, and RH remain OPEN.}
+\status{Integrated canonical status through SOH-G023 with SOH-G024 retained as a non-canonical branch candidate. G024 proves the global first-order complete-monotonicity inequality and a Gaussian envelope, while the second and higher complete-monotonicity orders remain open. PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, strict external Fourier positivity, and RH remain OPEN.}
