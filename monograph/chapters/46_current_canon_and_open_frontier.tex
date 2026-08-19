@@ -29,11 +29,11 @@ The exact positive Riemann kernel satisfies
 \[
  \xi\!\left(\frac12+z\right)=\int_0^\infty\Phi(y)\cosh(zy)\,dy.
 \]
-SOH-G004 proves strict log-concavity of the compactified kernel weight, while the prior strict log-concavity theorem for the classical Xi kernel is attributed to Gershon. Its own channel estimates also imply the stronger quantitative consequence
+SOH-G004 proves strict log-concavity of the compactified kernel weight, while the prior strict log-concavity theorem for the classical Xi kernel is attributed to Gershon. The later G024 sharpening returns to the explicit G004 channel curvature formula and its variance bound and obtains the stronger quantitative consequence
 \[
- \boxed{(\log\Phi)''<-10}
+ \boxed{-(\log K)''>17}
 \]
-used later by the G024 branch. SOH-G005 proves PF$_2$ for the Taylor coefficients of $F$. SOH-G006 reduces a solid PF$_3$ Toeplitz minor to an exact ratio-curvature margin. Thus
+for the even full-line kernel $K(t)=\Phi(|t|)/2$. SOH-G005 proves PF$_2$ for the Taylor coefficients of $F$. SOH-G006 reduces a solid PF$_3$ Toeplitz minor to an exact ratio-curvature margin. Thus
 \[
  \boxed{\mathrm{PF}_2\ \text{PROVED}},\qquad
  \boxed{\mathrm{PF}_3\ \text{OPEN}},\qquad
@@ -152,36 +152,31 @@ The sufficient complete-monotonicity route uses
 \[
  H_y(q)=D_y(\sqrt q).
 \]
-Its first non-trivial derivative inequality is proved globally. The canonical G004 estimates imply
+The sharpened G004 consequence
 \[
- -(\log K)''>10.
+ \boxed{-(\log K)''>17}
 \]
-If $L=-\log K$, strong monotonicity of $L'$ yields
+gives
 \[
- \boxed{-\frac{C'(u)}{C(u)}>20u.}
+ \boxed{-\frac{C'(u)}{C(u)}>34u}
 \]
-Consequently, for every $0<|y|<1/2$,
+and hence, for every $0<|y|<1/2$,
 \[
  \boxed{
- -\frac{H_y'(q)}{H_y(q)}
- >10-\frac{|y|}{\sqrt q}\tanh(2|y|\sqrt q)
- >\frac{19}{2}
+ -\frac{H_y'(q)}{H_y(q)}>\frac{33}{2}
  }
 \]
 for $q>0$, with the endpoint obtained by continuity. Thus
 \[
  \boxed{H_y'(q)<0}
 \]
-globally throughout the full external strip. Integration gives the exact Gaussian domination
-\[
- \boxed{H_y(q)<H_y(0)e^{-19q/2}}.
-\]
+globally throughout the full external strip.
 
 For the normalized bridge measure
 \[
  d\mu_u(r)=\frac{r^2K(u+r)K(u-r)}{C(u)}\,dr,
 \]
-SOH-G024 further proves the score hierarchy
+SOH-G024 proves the score hierarchy
 \[
  \boxed{
  \mathbb E[r^{2n+1}D_u(r)]
@@ -190,18 +185,18 @@ SOH-G024 further proves the score hierarchy
  D_u(r)=L'(u+r)-L'(u-r).
  }
 \]
-The same strong-convexity margin gives
+The strengthened convexity margin gives
 \[
  \boxed{
- \mathbb E[r^{2n}]<\frac{(2n+1)!!}{20^n}
+ \mathbb E[r^{2n}]<\frac{(2n+1)!!}{34^n}
  }
 \]
 and
 \[
  \boxed{
  \mathbb E[e^{\lambda r^2}]
- \le(1-\lambda/10)^{-3/2},
- \qquad0\le\lambda<10.
+ \le(1-\lambda/17)^{-3/2},
+ \qquad0\le\lambda<17.
  }
 \]
 
@@ -213,21 +208,17 @@ The exact second-order bridge reduction is
  +4|y|^2\operatorname{sech}^2(2|y|u)
  \right].
 \]
-A companion upper curvature estimate
-\[
- \boxed{L''(s)<21e^{2|s|}}
-\]
-combined with the bridge concentration gives a global tail comparison. The result is
+A companion upper curvature estimate, together with the sharpened bridge concentration, first proves the tail sign and then closes the additional band $1/9\le q\le1/4$. The resulting theorem is
 \[
  \boxed{
  H_y''(q)>0
  \qquad
- \left(q\ge\frac14,\quad0<|y|<\frac12\right).
+ \left(q\ge\frac19,\quad0<|y|<\frac12\right).
  }
 \]
 Therefore the second-order Riccati/bridge obstruction remains open only on the compact core
 \[
- \boxed{0\le q<\frac14.}
+ \boxed{0\le q<\frac19.}
 \]
 Finite derivative diagnostics inside this core do not promote it.
 
@@ -238,7 +229,7 @@ Finite derivative diagnostics inside this core do not promote it.
  \item[SOH-C005.] Full admissible Weil positivity remains open and RH-equivalent under the standard criterion: \textbf{SOH-C005 OPEN}.
  \item[SOH-G003.] Real-rootedness of $F$ remains open and RH-equivalent: \textbf{SOH-G003 OPEN}.
  \item[PF$_3$/PF$_\infty$.] PF$_2$ is proved. G022 and G023 sharpen the solid-minor target but do not prove the global Riemann inequalities or the upgrade to full PF$_3$.
- \item[G024.] First-order complete monotonicity is proved globally and the second-order inequality is proved for $q\ge1/4$. The compact second-order core $0\le q<1/4$, all derivative orders $m\ge3$, and direct strict positivity of the external Wronskian/Fourier form remain open.
+ \item[G024.] First-order complete monotonicity is proved globally and the second-order inequality is proved for $q\ge1/9$. The compact second-order core $0\le q<1/9$, all derivative orders $m\ge3$, and direct strict positivity of the external Wronskian/Fourier form remain open.
 \end{description}
 
 \section{Closed shortcuts}
@@ -253,13 +244,13 @@ The current canonical chain reaches SOH-G023. The G024 branch now supplies exact
 \]
 and proves
 \[
- \boxed{H_y''>0\text{ for }q\ge1/4.}
+ \boxed{H_y''>0\text{ for }q\ge1/9.}
 \]
-The remaining second-order obligation is the compact core $0\le q<1/4$; derivative orders $m\ge3$ remain open globally. Full complete monotonicity remains sufficient for RH but is not established. Therefore
+The remaining second-order obligation is the compact core $0\le q<1/9$; derivative orders $m\ge3$ remain open globally. Full complete monotonicity remains sufficient for RH but is not established. Therefore
 \[
  \boxed{\text{SOH-G003 OPEN}},\qquad
  \boxed{\text{SOH-C005 OPEN}},\qquad
  \boxed{\text{RH OPEN}}.
 \]
 
-\status{Integrated canonical status through SOH-G023 with SOH-G024 retained as a non-canonical branch candidate. G024 proves global first-order complete monotonicity, a bridge-moment concentration hierarchy, and the second-order inequality on $q\ge1/4$. The second-order compact core $0\le q<1/4$, all derivative orders $m\ge3$, PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, strict external Fourier positivity, and RH remain OPEN.}
+\status{Integrated canonical status through SOH-G023 with SOH-G024 retained as a non-canonical branch candidate. G024 proves global first-order complete monotonicity, the sharpened bridge-moment concentration hierarchy, and the second-order inequality on $q\ge1/9$. The second-order compact core $0\le q<1/9$, all derivative orders $m\ge3$, PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, strict external Fourier positivity, and RH remain OPEN.}
