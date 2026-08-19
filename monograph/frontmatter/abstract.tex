@@ -35,6 +35,15 @@ SOH-G024 is included on the present branch as a non-canonical candidate direct r
  \qquad
  D_y(u)=\cosh(2yu)C(u).
 \]
-The Dimitrov--Xu/Wiener criterion makes strict Fourier positivity of $D_y$ for every real frequency and every $0<|y|<1/2$ RH-equivalent. A sufficient open route is complete monotonicity of $H_y(q)=D_y(\sqrt q)$, because Bernstein's theorem would represent $D_y$ as a positive Gaussian mixture with strictly positive Fourier transform. The branch also records a distinct internal tilt $J_y$ for the complex Jensen/Laguerre functional and explicitly forbids identifying $D_y$ with $J_y$ away from $y=0$. Finite derivative signs are numerical diagnostics only.
+The Dimitrov--Xu/Wiener criterion makes strict Fourier positivity of $D_y$ for every real frequency and every $0<|y|<1/2$ RH-equivalent. The branch derives the exact external Wronskian identity
+\[
+ 4\widehat D_y(2x)=\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right).
+\]
+A sufficient route is complete monotonicity of $H_y(q)=D_y(\sqrt q)$. Using only the existing SOH-G004 channel-curvature and mixture-variance bounds, the branch now proves the first non-trivial inequality globally:
+\[
+ -\frac{H_y'(q)}{H_y(q)}>\frac{19}{2}
+ \qquad(q>0,\ 0<|y|<1/2).
+\]
+It follows that $H_y$ is strictly decreasing and obeys the uniform Gaussian domination $H_y(q)<H_y(0)e^{-19q/2}$. Higher complete-monotonicity orders remain open. The branch also records a distinct internal tilt $J_y$ for the complex Jensen/Laguerre functional and explicitly forbids identifying $D_y$ with $J_y$ away from $y=0$. Finite derivative signs at orders two through four are numerical diagnostics only.
 
-The resulting proof boundary is explicit. The monograph proves the stated geometric, kernel, PF$_2$, zero-exclusion, coefficient-normalization, G021 insufficiency, G022 local sufficient-condition, and G023 reciprocal-deficit results. G024 supplies an exact reduction and an exact implication from an unproved complete-monotonicity premise, not a proof of that premise. PF$_3$ for the actual coefficients, PF$_\infty$, SOH-G003 real-rootedness, SOH-C005, and the Riemann Hypothesis remain OPEN.
+The resulting proof boundary is explicit. The monograph proves the stated geometric, kernel, PF$_2$, zero-exclusion, coefficient-normalization, G021 insufficiency, G022 local sufficient-condition, and G023 reciprocal-deficit results. G024 supplies exact correlation/Wronskian reductions, proves global first-order complete monotonicity with a quantitative margin, and reduces the second order to a Riccati inequality; it does not prove the higher-order complete-monotonicity hierarchy or strict Fourier positivity. PF$_3$ for the actual coefficients, PF$_\infty$, SOH-G003 real-rootedness, SOH-C005, and the Riemann Hypothesis remain OPEN.
