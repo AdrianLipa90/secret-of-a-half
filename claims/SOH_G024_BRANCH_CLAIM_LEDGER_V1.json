@@ -1,9 +1,11 @@
 {
   "schema": "SOH_G024_BRANCH_CLAIM_LEDGER_V1",
   "date": "2026-08-19",
-  "branch": "proof/soh-g024-jensen-kernel-positive-definite-v1",
+  "source_branch": "proof/soh-g024-jensen-kernel-positive-definite-v1",
+  "merged_to_main": true,
+  "merge_commit": "9cfa93c0e33a8e5655210cc105a13ff457c8bce7",
   "base_generation": "SOH-G023",
-  "promotion_status": "BRANCH_CANDIDATE_NOT_CANONICAL",
+  "promotion_status": "INTEGRATED_MAINLINE_NOT_CANONICAL",
   "proof_of_rh": false,
   "claims": [
     {
