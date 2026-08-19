@@ -1,0 +1,191 @@
+\chapter{A One-Step Curvature Barrier for the Solid PF3 Margin}
+\label{chap:g022-pf3-curvature-barrier}
+
+\status{Exact sufficient-condition theorem for the G006 solid PF3 margin; global PF3 remains open.}
+
+\section{Purpose}
+
+SOH-G006 reduced the sign of the solid order-three Toeplitz minor to an exact
+three-ratio expression. SOH-G021 then proved that the abstract structural
+package supplied by the canonical half-mass PF2 law is insufficient, by
+itself, to imply PF3. The present chapter isolates a stronger local condition
+that directly controls the G006 obstruction.
+
+No claim is made here that the Riemann coefficient sequence satisfies the new
+condition at every index. The result is a sufficient-condition theorem plus a
+finite regression diagnostic.
+
+\section{The G006 margin}
+
+Let
+\[
+ F(w)=\sum_{k\ge0}a_k w^k,
+ \qquad a_k>0,
+\]
+and define
+\[
+ r_k=\frac{a_k}{a_{k-1}},
+ \qquad
+ q_k=\frac{r_{k+1}}{r_k}.
+\]
+For a solid G006 minor, write
+\[
+ u=q_{k-1},\qquad v=q_k,\qquad w=q_{k+1}.
+\]
+The exact ratio-curvature margin is
+\[
+ M=(1-v)^2-v^2(1-u)(1-w).
+\]
+The corresponding solid Toeplitz determinant has the same sign as \(M\).
+
+\section{Exact decomposition}
+
+\begin{theorem}[SOH-G022 curvature-barrier decomposition]
+The G006 solid-minor margin satisfies the polynomial identity
+\[
+ \boxed{
+ M=(1-v)^3
+ +v(1-w)\bigl[1-v(2-u)\bigr]
+ +v(1-v)(w-v).
+ }
+\]
+\end{theorem}
+
+\begin{proof}
+Expand the right-hand side and collect the coefficients of the monomials in
+\(u,v,w\). The result is exactly
+\[
+ (1-v)^2-v^2(1-u)(1-w).
+\]
+\end{proof}
+
+Define
+\[
+ B_k:=1-v(2-u),
+ \qquad
+ G_k:=w-v.
+\]
+Then the same identity is
+\[
+ M=(1-v)^3+v(1-w)B_k+v(1-v)G_k.
+\]
+
+\section{A local sufficient condition}
+
+\begin{corollary}[One-step barrier certificate]
+If
+\[
+ 0<v<1,
+ \qquad
+ v\le w\le1,
+ \qquad
+ 1-v(2-u)\ge0,
+\]
+then
+\[
+ \boxed{M\ge(1-v)^3>0.}
+\]
+Hence the corresponding solid G006 order-three Toeplitz minor is strictly
+positive.
+\end{corollary}
+
+\begin{proof}
+Under the stated hypotheses, each of the three terms in the G022
+decomposition is non-negative, while \((1-v)^3\) is strictly positive.
+\end{proof}
+
+For \(v>0\), the barrier has the equivalent forms
+\[
+ 1-u\le\frac{1-v}{v},
+ \qquad
+ v\le\frac{1}{2-u}.
+\]
+Writing the PF2 curvature deficits as
+\[
+ d_j:=1-q_j,
+\]
+the barrier becomes
+\[
+ \boxed{
+ d_k\ge\frac{d_{k-1}}{1+d_{k-1}}.
+ }
+\]
+Thus the local decrease of the deficit is quantitatively constrained rather
+than merely monotone.
+
+\section{Normalized-moment formulation}
+
+For the Riemann-kernel coefficient sequence, write
+\[
+ R(p)=\Gamma(p+1)^{-1}\int_0^\infty y^p\Phi(y)\,dy,
+ \qquad
+ L(p)=\log R(p),
+\]
+so that \(a_k=R(2k)\). Define
+\[
+ \delta_k=L(2k+2)-2L(2k)+L(2k-2).
+\]
+Then
+\[
+ q_k=e^{\delta_k}.
+\]
+The two G022 local obligations become
+\[
+ \boxed{\delta_{k+1}\ge\delta_k}
+\]
+and
+\[
+ \boxed{
+ e^{\delta_k}\bigl(2-e^{\delta_{k-1}}\bigr)\le1.
+ }
+\]
+Equivalently,
+\[
+ \boxed{
+ \delta_k\le-\log\!\bigl(2-e^{\delta_{k-1}}\bigr).
+ }
+\]
+SOH-G005 supplies only \(\delta_k\le0\). Therefore G022 isolates strictly
+stronger, kernel-specific targets rather than repackaging PF2.
+
+\section{Compatibility with the G021 no-go}
+
+The exact G021 counterexample uses
+\[
+ u=\frac15,
+ \qquad
+ v=\frac9{10},
+ \qquad
+ w=\frac15.
+\]
+For this triple,
+\[
+ 1-v(2-u)=-\frac{31}{50}<0,
+ \qquad
+ w-v=-\frac7{10}<0.
+\]
+Thus the G021 construction violates both nontrivial G022 hypotheses. The two
+results are therefore logically compatible: G021 blocks the weaker structural
+package, whereas G022 identifies additional local structure that would be
+sufficient for the solid minor.
+
+\section{Finite Riemann diagnostic}
+
+The accompanying deterministic receipt recomputes a finite set of
+positive-kernel moments and records \(u,v,w\), the barrier, the forward order
+gap, the cubic floor, and the exact decomposition residual. Finite success is
+recorded only as a regression fact and is not promoted to a theorem about all
+indices.
+
+\section{Open obligations}
+
+The exact next obligations are:
+\begin{enumerate}
+  \item prove \(q_{k+1}\ge q_k\) for every relevant Riemann coefficient index;
+  \item prove \(q_k(2-q_{k-1})\le1\) for every such index;
+  \item only then conclude positivity of all solid G006 order-three minors;
+  \item supply a separate argument upgrading solid-minor control to all
+        order-three Toeplitz minors before claiming PF3.
+\end{enumerate}
+
+\gap{No global proof of the two G022 ratio-curvature inequalities is currently established. PF3, PF-infinity, SOH-G003 real-rootedness, SOH-C005 and RH remain open.}
