@@ -35,14 +35,15 @@ def main() -> None:
     if prefixes != expected:
         fail(f"chapter numbering is not contiguous: {prefixes}")
 
-    if not includes or includes[-1] != "53_g024_sharpened_curvature_second_order":
-        fail("G024 candidate terminal chapter must be 53_g024_sharpened_curvature_second_order")
+    if not includes or includes[-1] != "54_g024_global_second_order_closure":
+        fail("G024 candidate terminal chapter must be 54_g024_global_second_order_closure")
     for required in [
         "49_reciprocal_deficit_pf3_normal_form",
         "50_jensen_wiener_kernel_frontier",
         "51_g024_second_order_bridge_reduction",
         "52_g024_bridge_moment_tail_second_order",
         "53_g024_sharpened_curvature_second_order",
+        "54_g024_global_second_order_closure",
     ]:
         if required not in includes:
             fail(f"required integrated chapter missing: {required}")
@@ -98,7 +99,8 @@ def main() -> None:
     required_candidate = {
         "SOH-G024-A", "SOH-G024-B", "SOH-G024-C", "SOH-G024-D", "SOH-G024-E",
         "SOH-G024-F", "SOH-G024-G", "SOH-G024-H", "SOH-G024-I", "SOH-G024-J",
-        "SOH-G024-K", "SOH-G024-L", "SOH-G024-M", "SOH-G024-P", "SOH-G024-N1",
+        "SOH-G024-K", "SOH-G024-L", "SOH-G024-M", "SOH-G024-P", "SOH-G024-Q",
+        "SOH-G024-R", "SOH-G024-N1",
     }
     if not required_candidate.issubset(candidate_ids):
         fail(f"G024 branch ledger incomplete: {sorted(required_candidate - candidate_ids)}")
@@ -108,10 +110,16 @@ def main() -> None:
         fail("G024-M must record sharpened strong convexity")
     if "L''>17" not in by_id["SOH-G024-M"].get("statement", ""):
         fail("G024-M is missing L''>17")
-    if by_id["SOH-G024-P"].get("status") != "proved_second_order_region_q_ge_one_ninth":
-        fail("G024-P must record the q>=1/9 second-order theorem")
-    if "0<=q<1/9" not in by_id["SOH-G024-P"].get("statement", ""):
-        fail("G024-P must retain the q<1/9 compact-core firewall")
+    if by_id["SOH-G024-Q"].get("status") != "computer_assisted_fourth_log_curvature_certificate":
+        fail("G024-Q must record the computer-assisted fourth-log-curvature certificate")
+    if "mpmath.iv" not in by_id["SOH-G024-Q"].get("statement", ""):
+        fail("G024-Q must expose the interval-engine trust boundary")
+    if by_id["SOH-G024-R"].get("status") != "proved_global_second_order_complete_monotonicity_computer_assisted_dependency":
+        fail("G024-R must record global second-order closure")
+    if "793/48" not in by_id["SOH-G024-R"].get("statement", ""):
+        fail("G024-R is missing the strict Riccati gap")
+    if "m>=3" not in by_id["SOH-G024-R"].get("statement", ""):
+        fail("G024-R must keep higher complete-monotonicity orders open")
 
     print("MONOGRAPH_INTEGRATION_PASS")
     print(
