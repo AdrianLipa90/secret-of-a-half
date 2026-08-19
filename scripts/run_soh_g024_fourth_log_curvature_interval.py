@@ -12,12 +12,6 @@ import mpmath as mp
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "reports" / "SOH_G024_FOURTH_LOG_CURVATURE_INTERVAL_V1.json"
 
-# Direct theta-channel derivative polynomials.  If
-#
-#   phi_n(t) = 4 a_n exp(5t/2) (2r_n-3) exp(-r_n),
-#   r_n = a_n exp(2t), a_n=pi n^2,
-#
-# then phi_n^(k)=4 a_n exp(5t/2-r_n) Q_k(r_n), k=0,...,4.
 Q = [
     [Fraction(-3), Fraction(2)],
     [Fraction(-15, 2), Fraction(15), Fraction(-4)],
@@ -33,9 +27,6 @@ Q = [
     ],
 ]
 
-# Conservative analytic bounds for the omitted n>=5 theta tail in derivatives
-# k=0,...,4.  Their derivation uses pi<22/7, e^3>20 and a geometric-ratio
-# bound below 1/1001.
 THETA_TAIL_BOUNDS = [
     Fraction(4, 10**28),
     Fraction(2, 10**25),
@@ -50,9 +41,6 @@ def _fraction_iv(value: Fraction):
 
 
 def _fraction_decimal(value: Fraction) -> str:
-    # All adaptive endpoints are dyadic subdivisions of 2/5, hence terminating
-    # decimals.  A large context keeps the textual endpoint exact before iv
-    # widens it outward to its binary enclosure.
     getcontext().prec = 100
     return format(Decimal(value.numerator) / Decimal(value.denominator), "f")
 
@@ -93,8 +81,6 @@ def _log_curvature_margin_interval(lo: Fraction, hi: Fraction):
     a2 = phi2 / phi0
     a3 = phi3 / phi0
     a4 = phi4 / phi0
-
-    # L=-log Phi.  The factor 1/2 converting Phi to the full-line K drops out.
     l2 = a1 * a1 - a2
     l4 = -a4 + 4 * a3 * a1 + 3 * a2 * a2 - 12 * a2 * a1 * a1 + 6 * a1**4
     return 20 * l2 - l4
@@ -108,9 +94,14 @@ def _shift_polynomial(coefficients: list[Fraction], shift: int) -> list[Fraction
     return out
 
 
+def _positive_after_shift(coefficients: list[Fraction], shift: int) -> list[Fraction]:
+    shifted = _shift_polynomial(coefficients, shift)
+    if not all(value > 0 for value in shifted):
+        raise RuntimeError(f"polynomial positivity after r=x+{shift} failed: {shifted}")
+    return shifted
+
+
 def _analytic_bound_checks() -> dict[str, object]:
-    # n>=5 direct-theta derivative tail: for k<=4 the worst successive ratio is
-    # (6/5)^12 e^-33 < (6/5)^12 / 20^11 < 1/1001.
     theta_ratio = Fraction(6, 5) ** 12 / Fraction(20) ** 11
     if not theta_ratio < Fraction(1, 1001):
         raise RuntimeError("theta-tail ratio certificate failed")
@@ -128,16 +119,10 @@ def _analytic_bound_checks() -> dict[str, object]:
         if not total < THETA_TAIL_BOUNDS[order]:
             raise RuntimeError(f"theta derivative tail bound failed for order {order}")
 
-    # For t>=2/5, exp(2t)>=exp(4/5)>2 by the first three positive series
-    # terms, and pi>3, so r_1=pi exp(2t)>6.
     exp_four_fifths_lower = Fraction(1) + Fraction(4, 5) + Fraction(4, 5) ** 2 / 2
     if not exp_four_fifths_lower > 2:
         raise RuntimeError("exp(4/5)>2 certificate failed")
 
-    # For a single n=1 channel,
-    # P1=20(-g1'')-(-g1'''') and
-    # P1-390 = numerator/(2r-3)^4.  After r=x+6 the numerator has only
-    # positive coefficients, proving P1>390 for r>=6.
     p1_minus_390_num = [
         Fraction(-31590),
         Fraction(92880),
@@ -146,7 +131,7 @@ def _analytic_bound_checks() -> dict[str, object]:
         Fraction(-12384),
         Fraction(1024),
     ]
-    shifted = _shift_polynomial(p1_minus_390_num, 6)
+    shifted = _positive_after_shift(p1_minus_390_num, 6)
     expected_shifted = [
         Fraction(22842),
         Fraction(457488),
@@ -155,23 +140,47 @@ def _analytic_bound_checks() -> dict[str, object]:
         Fraction(18336),
         Fraction(1024),
     ]
-    if shifted != expected_shifted or not all(value > 0 for value in shifted):
-        raise RuntimeError("single-channel P1>390 polynomial certificate failed")
+    if shifted != expected_shifted:
+        raise RuntimeError("single-channel P1>390 polynomial identity mismatch")
 
-    # For r>=6 the channel derivative bounds
-    # |g'|<2r, |g''|<5r, |g'''|<8r, |g''''|<21r
-    # imply, for d_j=g_n^(j)-g_1^(j), the conservative Bell constants below.
-    # The last two channel inequalities reduce to explicit positive-polynomial
-    # comparisons; the g'''' comparison is checked here after r=x+6.
-    g4_comparison = [Fraction(-459), Fraction(-3384), Fraction(696), Fraction(-480), Fraction(80)]
-    shifted_g4 = _shift_polynomial(g4_comparison, 6)
-    if not all(value > 0 for value in shifted_g4):
-        raise RuntimeError("|g''''|<21r channel comparison failed")
+    # Explicit channel logarithmic-derivative checks for r>=6.  Since each g^(j)
+    # is negative there, |g^(j)| < c_j r is equivalent to c_j r + g^(j)>0.
+    # Clearing positive denominators yields the following numerators.
+    channel_bound_numerators = {
+        1: [Fraction(-15), Fraction(18)],
+        2: [Fraction(-15), Fraction(-12), Fraction(4)],
+        3: [Fraction(0), Fraction(144), Fraction(96)],
+        4: [Fraction(-459), Fraction(-3384), Fraction(696), Fraction(-480), Fraction(80)],
+    }
+    channel_bound_shifts = {
+        order: _positive_after_shift(coefficients, 6)
+        for order, coefficients in channel_bound_numerators.items()
+    }
 
+    # Bell-polynomial safety constants for rho_n=exp(g_n-g_1).  For n>=2,
+    # r_1<=r_n/4 and r_n>24.  The channel bounds imply
+    # |d1|<5R/2, |d2|<25R/4, |d3|<10R, |d4|<105R/4, R=r_n.
+    # Normalize the exact Bell formulas by R^k and use R>=24.
+    R0 = Fraction(24)
+    d1 = Fraction(5, 2)
+    d2 = Fraction(25, 4)
+    d3 = Fraction(10)
+    d4 = Fraction(105, 4)
+    bell_required = [
+        Fraction(1),
+        d1,
+        d2 / R0 + d1**2,
+        d3 / R0**2 + 3 * d1 * d2 / R0 + d1**3,
+        d4 / R0**3
+        + 4 * d1 * d3 / R0**2
+        + 3 * d2**2 / R0**2
+        + 6 * d1**2 * d2 / R0
+        + d1**4,
+    ]
     bell = [Fraction(1), Fraction(4), Fraction(26), Fraction(204), Fraction(1886)]
+    if not all(required < declared for required, declared in zip(bell_required[1:], bell[1:])):
+        raise RuntimeError(f"Bell safety constants failed: required={bell_required}, declared={bell}")
 
-    # For rho=sum_{n>=2} phi_n/phi_1 and t>=2/5, the worst ratio of the
-    # derivative envelopes is (3/2)^12 e^-30 < (3/2)^12/20^10 <1/1001.
     rho_ratio = Fraction(3, 2) ** 12 / Fraction(20) ** 10
     if not rho_ratio < Fraction(1, 1001):
         raise RuntimeError("rho derivative ratio certificate failed")
@@ -208,12 +217,18 @@ def _analytic_bound_checks() -> dict[str, object]:
     if not perturbation < 380:
         raise RuntimeError("analytic tail perturbation bound failed")
 
-    # P=P1 + h'''' -20h'' with h=log(1+rho), hence P>390-380=10.
     return {
         "theta_tail_ratio_upper": str(theta_ratio),
         "theta_tail_bounds": [str(value) for value in THETA_TAIL_BOUNDS],
         "exp_four_fifths_series_lower": str(exp_four_fifths_lower),
         "single_channel_margin_lower": "390",
+        "channel_log_derivative_bounds": ["|g'|<2r", "|g''|<5r", "|g'''|<8r", "|g''''|<21r"],
+        "channel_bound_shifted_numerators": {
+            str(order): [str(value) for value in values]
+            for order, values in channel_bound_shifts.items()
+        },
+        "bell_required_normalized": [str(value) for value in bell_required],
+        "bell_declared": [str(value) for value in bell],
         "rho_ratio_upper": str(rho_ratio),
         "rho_derivative_envelopes": [str(value) for value in rho_envelopes],
         "log_rho_second_abs_upper": str(log_second),
@@ -271,6 +286,7 @@ def main() -> None:
             "interval_engine": "mpmath.iv outward interval arithmetic",
             "infinite_theta_tail_bounded_analytically": True,
             "analytic_tail_from_t_ge_2_over_5": True,
+            "channel_and_bell_bounds_checked_as_exact_rational_inequalities": True,
             "rh_proved": False,
         },
     }
