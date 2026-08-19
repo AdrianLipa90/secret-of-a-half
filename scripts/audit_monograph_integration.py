@@ -35,12 +35,16 @@ def main() -> None:
     if prefixes != expected:
         fail(f"chapter numbering is not contiguous: {prefixes}")
 
-    if not includes or includes[-1] != "51_g024_second_order_bridge_reduction":
-        fail("G024 candidate terminal chapter must be 51_g024_second_order_bridge_reduction")
-    if "49_reciprocal_deficit_pf3_normal_form" not in includes:
-        fail("merged SOH-G023 Chapter 49 is not integrated")
-    if "50_jensen_wiener_kernel_frontier" not in includes:
-        fail("G024 Jensen-Wiener Chapter 50 is not integrated")
+    if not includes or includes[-1] != "52_g024_bridge_moment_tail_second_order":
+        fail("G024 candidate terminal chapter must be 52_g024_bridge_moment_tail_second_order")
+    for required in [
+        "49_reciprocal_deficit_pf3_normal_form",
+        "50_jensen_wiener_kernel_frontier",
+        "51_g024_second_order_bridge_reduction",
+        "52_g024_bridge_moment_tail_second_order",
+    ]:
+        if required not in includes:
+            fail(f"required integrated chapter missing: {required}")
 
     title_count = sum(
         p.read_text(encoding="utf-8").count(r"\begin{titlepage}")
@@ -108,10 +112,16 @@ def main() -> None:
     required_candidate = {
         "SOH-G024-A", "SOH-G024-B", "SOH-G024-C", "SOH-G024-D", "SOH-G024-E",
         "SOH-G024-F", "SOH-G024-G", "SOH-G024-H", "SOH-G024-I", "SOH-G024-J",
-        "SOH-G024-N1",
+        "SOH-G024-K", "SOH-G024-L", "SOH-G024-N1",
     }
     if not required_candidate.issubset(candidate_ids):
         fail(f"G024 branch ledger incomplete: {sorted(required_candidate - candidate_ids)}")
+
+    by_id = {item["id"]: item for item in candidate.get("claims", [])}
+    if by_id["SOH-G024-L"].get("status") != "proved_second_order_tail_region":
+        fail("G024-L must record proved second-order tail region")
+    if "compact core" not in by_id["SOH-G024-L"].get("statement", ""):
+        fail("G024-L must keep the compact-core-open firewall")
 
     print("MONOGRAPH_INTEGRATION_PASS")
     print(
