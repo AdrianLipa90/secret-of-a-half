@@ -23,18 +23,7 @@ G024_FIRST_ORDER_CM_UNIFORM_FLOOR = mp.mpf("9.5")
 
 
 def full_xi_kernel(t: float | mp.mpf, *, n_terms: int = 8) -> mp.mpf:
-    r"""Return the even full-line kernel whose Fourier transform is Xi.
-
-    The repository normalization is
-
-        xi(1/2+z) = int_0^infty Phi(t) cosh(z t) dt.
-
-    Hence K(t)=Phi(|t|)/2 satisfies
-
-        Xi(x)=xi(1/2+i x)=int_R K(t) exp(-i x t) dt.
-
-    ``n_terms`` affects numerical evaluation only.
-    """
+    r"""Return the even full-line kernel whose Fourier transform is Xi."""
 
     return mp.mpf("0.5") * riemann_kernel(abs(mp.mpf(t)), n_terms=n_terms)
 
@@ -45,12 +34,10 @@ def csordas_correlation_from_kernel(
     kernel: EvenKernel,
     center_cutoff: float | mp.mpf = 4,
 ) -> mp.mpf:
-    r"""Numerically evaluate
+    r"""Numerically evaluate ``C(u)=int r^2 K(u+r)K(u-r)dr``.
 
-        C(u) = int_R r^2 K(u+r) K(u-r) dr.
-
-    For an even kernel the integrand is even in ``r``. The finite cutoff is a
-    regression control, not part of the analytic definition.
+    The finite cutoff is a regression control, not part of the analytic
+    definition.
     """
 
     u = mp.mpf(u)
@@ -85,21 +72,7 @@ def dimitrov_xu_tilted_from_kernel(
     kernel: EvenKernel,
     center_cutoff: float | mp.mpf = 4,
 ) -> mp.mpf:
-    r"""Return the reparametrized Dimitrov--Xu order-two kernel.
-
-    If
-
-        nu_2(t)=int_R (t-2s)^2 K(t-s)K(s) ds,
-
-    then the exact substitution ``t=2u, s=u-r`` gives
-
-        nu_2(2u)=4 C(u).
-
-    Therefore their tilted kernel ``cosh(t y) nu_2(t)`` is, up to the positive
-    factor four and the harmless dilation ``t=2u``,
-
-        D_y(u)=cosh(2 y u) C(u).
-    """
+    r"""Return ``D_y(u)=cosh(2yu)C(u)`` for a supplied even kernel."""
 
     u = mp.mpf(u)
     y = mp.mpf(y)
@@ -134,12 +107,7 @@ def radial_square_profile(
     n_terms: int = 8,
     center_cutoff: float | mp.mpf = 4,
 ) -> mp.mpf:
-    r"""Return H_y(q)=D_y(sqrt(q)) for q>=0.
-
-    SOH-G024 proves the first complete-monotonicity inequality ``H_y' < 0``
-    globally for the actual Riemann kernel and every ``0<|y|<1/2``. Higher
-    derivative orders remain open.
-    """
+    r"""Return ``H_y(q)=D_y(sqrt(q))`` for ``q>=0``."""
 
     q = mp.mpf(q)
     if q < 0:
@@ -158,23 +126,7 @@ def first_order_cm_log_slope_lower_bound(
     *,
     strong_log_concavity_margin: float | mp.mpf = G004_STRONG_LOG_CONCAVITY_MARGIN,
 ) -> mp.mpf:
-    r"""Return the exact lower bound for ``-H_y'(q)/H_y(q)``.
-
-    If ``L=-log K`` satisfies ``L'' >= m`` on the even full-line kernel, then
-    strong monotonicity of ``L'`` gives
-
-        -C'(u)/C(u) >= 2 m u,  u>0.
-
-    Since ``H_y(q)=cosh(2 y sqrt(q)) C(sqrt(q))``, this yields
-
-        -H_y'(q)/H_y(q)
-        >= m - |y| tanh(2 |y| sqrt(q))/sqrt(q).
-
-    The value at ``q=0`` is the continuous limit ``m-2 y^2``. For the G004
-    margin ``m=10`` and ``0<|y|<1/2`` this is strictly above 19/2, proving the
-    first complete-monotonicity inequality globally. This does not prove any
-    higher derivative inequality.
-    """
+    r"""Return the exact lower bound for ``-H_y'(q)/H_y(q)``."""
 
     q = mp.mpf(q)
     y_abs = abs(mp.mpf(y))
@@ -191,6 +143,62 @@ def first_order_cm_log_slope_lower_bound(
     return margin - y_abs * mp.tanh(2 * y_abs * u) / u
 
 
+def bridge_even_moment_upper_bound(
+    order: int,
+    *,
+    strong_log_concavity_margin: float | mp.mpf = G004_STRONG_LOG_CONCAVITY_MARGIN,
+) -> mp.mpf:
+    r"""Return the analytic upper bound for ``E_mu[r^(2*order)]``.
+
+    Under ``L'' >= m`` the bridge score identity gives
+
+        E[r^(2j+1) D_u(r)] = (2j+3) E[r^(2j)],
+
+    while strong monotonicity gives ``r D_u(r) >= 2m r^2``. Therefore
+
+        E[r^(2j+2)] <= (2j+3)/(2m) E[r^(2j)]
+
+    and hence
+
+        E[r^(2n)] <= (2n+1)!! / (2m)^n.
+
+    For the strict G004 margin the corresponding inequalities are strict for
+    positive orders. The returned value is the conservative closed upper
+    envelope, not a numerical estimate of an actual bridge moment.
+    """
+
+    if not isinstance(order, int) or order < 0:
+        raise ValueError("order must be a non-negative integer")
+    margin = mp.mpf(strong_log_concavity_margin)
+    if margin <= 0:
+        raise ValueError("strong_log_concavity_margin must be positive")
+    bound = mp.mpf("1")
+    for j in range(order):
+        bound *= mp.mpf(2 * j + 3) / (2 * margin)
+    return bound
+
+
+def bridge_square_exponential_mgf_upper_bound(
+    lam: float | mp.mpf,
+    *,
+    strong_log_concavity_margin: float | mp.mpf = G004_STRONG_LOG_CONCAVITY_MARGIN,
+) -> mp.mpf:
+    r"""Return the analytic bridge bound ``E[exp(lam*r^2)]``.
+
+    The even-moment hierarchy sums to the radial-Gaussian envelope
+
+        E exp(lam r^2) <= (1-lam/m)^(-3/2),  0<=lam<m.
+    """
+
+    lam = mp.mpf(lam)
+    margin = mp.mpf(strong_log_concavity_margin)
+    if margin <= 0:
+        raise ValueError("strong_log_concavity_margin must be positive")
+    if not (0 <= lam < margin):
+        raise ValueError("require 0 <= lam < strong_log_concavity_margin")
+    return mp.power(1 - lam / margin, mp.mpf("-1.5"))
+
+
 def second_order_cm_normalized_margin_from_bridge(
     u: float | mp.mpf,
     y: float | mp.mpf,
@@ -199,28 +207,14 @@ def second_order_cm_normalized_margin_from_bridge(
     mean_b: float | mp.mpf,
     var_a: float | mp.mpf,
 ) -> mp.mpf:
-    r"""Return the exact normalized second-order CM margin.
+    r"""Return the exact normalized second-order CM bridge margin.
 
-    For ``L=-log K`` and the normalized bridge measure
+    With the normalized bridge measure, ``A=L'(u+r)+L'(u-r)``,
+    ``B=L''(u+r)+L''(u-r)``, ``R=E[A]``, ``R'=E[B]-Var(A)``,
+    ``a=|y|``, ``T=2a*tanh(2au)``, and ``N=R-T``, the result is
 
-        dmu_u(r) = r^2 K(u+r)K(u-r) dr / C(u),
-
-    define
-
-        A = L'(u+r)+L'(u-r),
-        B = L''(u+r)+L''(u-r),
-        R = E[A] = -C'/C,
-        R' = E[B]-Var(A).
-
-    Let ``a=|y|``, ``T=2 a tanh(2 a u)``, and ``N=R-T``. Then
-
-        4 u^3 H_y''(u^2)/H_y(u^2)
-        = N + u [N^2 + Var(A) - E[B]
-                 + 4 a^2 sech^2(2 a u)].
-
-    This helper evaluates the right-hand side from bridge moments. Positivity
-    is exactly equivalent to the second complete-monotonicity inequality for
-    ``u>0``. SOH-G024 does not currently prove that positivity globally.
+        4u^3 H_y''(u^2)/H_y(u^2)
+        = N + u[N^2 + Var(A) - E[B] + 4a^2 sech^2(2au)].
     """
 
     u = mp.mpf(u)
@@ -250,13 +244,7 @@ def internal_tilt_jensen_kernel_from_kernel(
     kernel: EvenKernel,
     center_cutoff: float | mp.mpf = 4,
 ) -> mp.mpf:
-    r"""Numerically evaluate the distinct internal-tilt Jensen kernel
-
-        J_y(u)=int_R r^2 cosh(2 y r) K(u+r)K(u-r) dr.
-
-    This must not be conflated with the Dimitrov--Xu external tilt
-    ``D_y(u)=cosh(2yu) C(u)``. They coincide only at ``y=0``.
-    """
+    r"""Numerically evaluate the distinct internal-tilt Jensen kernel."""
 
     u = mp.mpf(u)
     y = mp.mpf(y)
@@ -275,11 +263,7 @@ def signed_five_point_derivatives(
     *,
     h: float | mp.mpf = mp.mpf("0.002"),
 ) -> dict[int, mp.mpf]:
-    r"""Return finite-difference diagnostics for ``(-1)^m f^(m)(q)``, m=1..4.
-
-    These values are numerical diagnostics only. They are not certificates of
-    complete monotonicity beyond the separately proved first-order G024 bound.
-    """
+    r"""Return finite-difference diagnostics for ``(-1)^m f^(m)(q)``, m=1..4."""
 
     q = mp.mpf(q)
     h = mp.mpf(h)
