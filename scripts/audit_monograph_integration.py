@@ -35,10 +35,12 @@ def main() -> None:
     if prefixes != expected:
         fail(f"chapter numbering is not contiguous: {prefixes}")
 
-    if not includes or includes[-1] != "50_jensen_wiener_kernel_frontier":
-        fail("G024 candidate terminal chapter must be 50_jensen_wiener_kernel_frontier")
+    if not includes or includes[-1] != "51_g024_second_order_bridge_reduction":
+        fail("G024 candidate terminal chapter must be 51_g024_second_order_bridge_reduction")
     if "49_reciprocal_deficit_pf3_normal_form" not in includes:
         fail("merged SOH-G023 Chapter 49 is not integrated")
+    if "50_jensen_wiener_kernel_frontier" not in includes:
+        fail("G024 Jensen-Wiener Chapter 50 is not integrated")
 
     title_count = sum(
         p.read_text(encoding="utf-8").count(r"\begin{titlepage}")
@@ -103,7 +105,11 @@ def main() -> None:
     if candidate.get("proof_of_rh") is not False:
         fail("G024 proof_of_rh firewall must remain false")
     candidate_ids = {item["id"] for item in candidate.get("claims", [])}
-    required_candidate = {"SOH-G024-A", "SOH-G024-B", "SOH-G024-C", "SOH-G024-D", "SOH-G024-E", "SOH-G024-N1"}
+    required_candidate = {
+        "SOH-G024-A", "SOH-G024-B", "SOH-G024-C", "SOH-G024-D", "SOH-G024-E",
+        "SOH-G024-F", "SOH-G024-G", "SOH-G024-H", "SOH-G024-I", "SOH-G024-J",
+        "SOH-G024-N1",
+    }
     if not required_candidate.issubset(candidate_ids):
         fail(f"G024 branch ledger incomplete: {sorted(required_candidate - candidate_ids)}")
 
