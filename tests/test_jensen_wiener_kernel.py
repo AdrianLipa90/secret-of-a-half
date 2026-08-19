@@ -5,6 +5,8 @@ import mpmath as mp
 from secret_of_a_half.jensen_wiener_kernel import (
     G004_STRONG_LOG_CONCAVITY_MARGIN,
     G024_FIRST_ORDER_CM_UNIFORM_FLOOR,
+    G024_SHARPENED_FIRST_ORDER_CM_UNIFORM_FLOOR,
+    G024_SHARPENED_STRONG_CONVEXITY_MARGIN,
     bridge_even_moment_upper_bound,
     bridge_square_exponential_mgf_upper_bound,
     csordas_correlation_from_kernel,
@@ -86,18 +88,33 @@ def test_gaussian_internal_tilt_closed_form_and_not_external_tilt() -> None:
     assert abs(internal - external) > mp.mpf("1e-6")
 
 
-def test_g004_strong_log_concavity_margin_exceeds_first_order_threshold() -> None:
+def test_conservative_and_sharpened_strong_convexity_constants() -> None:
     assert G004_STRONG_LOG_CONCAVITY_MARGIN == mp.mpf("10")
-    assert G004_STRONG_LOG_CONCAVITY_MARGIN > mp.mpf("0.5")
     assert G024_FIRST_ORDER_CM_UNIFORM_FLOOR == mp.mpf("9.5")
+    assert G024_SHARPENED_STRONG_CONVEXITY_MARGIN == mp.mpf("17")
+    assert G024_SHARPENED_FIRST_ORDER_CM_UNIFORM_FLOOR == mp.mpf("16.5")
 
 
-def test_first_order_cm_log_slope_bound_is_uniformly_above_nineteen_halves() -> None:
+def test_channel_curvature_polynomial_floor_is_positive() -> None:
+    # h(r)-19 has numerator 16x^3+20x^2-24x+9 for x=r-3>=0.
+    # Its quadratic part has negative discriminant; this numerical fixture only
+    # protects the exact polynomial recorded in the proof note.
+    discriminant = (-24) ** 2 - 4 * 20 * 9
+    assert discriminant == -144
+    for x in (mp.mpf("0"), mp.mpf("0.1"), mp.mpf("1"), mp.mpf("10")):
+        assert 16 * x**3 + 20 * x**2 - 24 * x + 9 > 0
+
+
+def test_first_order_sharpened_log_slope_bound_above_thirty_three_halves() -> None:
     mp.mp.dps = 50
     for y in (mp.mpf("0"), mp.mpf("0.25"), mp.mpf("0.49"), mp.mpf("0.499999")):
         for q in (mp.mpf("0"), mp.mpf("1e-8"), mp.mpf("0.1"), mp.mpf("1"), mp.mpf("100")):
-            bound = first_order_cm_log_slope_lower_bound(q, y)
-            assert bound > G024_FIRST_ORDER_CM_UNIFORM_FLOOR
+            bound = first_order_cm_log_slope_lower_bound(
+                q,
+                y,
+                strong_log_concavity_margin=G024_SHARPENED_STRONG_CONVEXITY_MARGIN,
+            )
+            assert bound > G024_SHARPENED_FIRST_ORDER_CM_UNIFORM_FLOOR
 
 
 def test_first_order_cm_threshold_margin_one_half_is_sufficient() -> None:
@@ -113,45 +130,68 @@ def test_first_order_cm_threshold_margin_one_half_is_sufficient() -> None:
             assert bound > 0
 
 
-def test_bridge_even_moment_hierarchy_closed_bounds() -> None:
+def test_bridge_even_moment_hierarchy_sharpened_bounds() -> None:
     mp.mp.dps = 50
+    m = G024_SHARPENED_STRONG_CONVEXITY_MARGIN
     expected = {
         0: mp.mpf("1"),
-        1: mp.mpf("3") / 20,
-        2: mp.mpf("15") / 400,
-        3: mp.mpf("105") / 8000,
-        4: mp.mpf("945") / 160000,
+        1: mp.mpf("3") / 34,
+        2: mp.mpf("15") / (34**2),
+        3: mp.mpf("105") / (34**3),
+        4: mp.mpf("945") / (34**4),
     }
     for order, value in expected.items():
-        assert mp.almosteq(bridge_even_moment_upper_bound(order), value)
+        observed = bridge_even_moment_upper_bound(
+            order,
+            strong_log_concavity_margin=m,
+        )
+        assert mp.almosteq(observed, value)
     for order in range(4):
-        left = bridge_even_moment_upper_bound(order + 1)
+        left = bridge_even_moment_upper_bound(
+            order + 1,
+            strong_log_concavity_margin=m,
+        )
         right = (
             mp.mpf(2 * order + 3)
-            / 20
-            * bridge_even_moment_upper_bound(order)
+            / 34
+            * bridge_even_moment_upper_bound(
+                order,
+                strong_log_concavity_margin=m,
+            )
         )
         assert mp.almosteq(left, right)
 
 
-def test_bridge_square_exponential_mgf_bound_matches_binomial_envelope() -> None:
+def test_bridge_square_exponential_mgf_sharpened_envelope() -> None:
     mp.mp.dps = 50
-    lam = mp.mpf("2.5")
-    observed = bridge_square_exponential_mgf_upper_bound(lam)
-    expected = mp.power(mp.mpf("4") / 3, mp.mpf("1.5"))
+    lam = mp.mpf("3")
+    observed = bridge_square_exponential_mgf_upper_bound(
+        lam,
+        strong_log_concavity_margin=G024_SHARPENED_STRONG_CONVEXITY_MARGIN,
+    )
+    expected = mp.power(mp.mpf("17") / 14, mp.mpf("1.5"))
     assert mp.almosteq(observed, expected)
     assert observed > 1
 
 
-def test_second_order_tail_constant_comparison() -> None:
-    mp.mp.dps = 60
-    cb = 42 * mp.exp(mp.mpf("0.4")) * mp.power(mp.mpf("4") / 3, mp.mpf("1.5"))
-    assert cb < 36 * mp.e
-    u = mp.mpf("0.5")
-    n_lower = 12 * (mp.exp(2 * u) - 1) - 5 * u
-    assert n_lower > 6 * mp.exp(2 * u)
-    b_upper = cb * mp.exp(2 * u)
-    assert (6 * mp.exp(2 * u)) ** 2 > b_upper
+def test_sharpened_second_order_one_ninth_constants() -> None:
+    mp.mp.dps = 80
+    e_upper = mp.mpf(87) / 32
+    assert mp.e < e_upper
+    assert mp.power(mp.mpf("17") / 14, mp.mpf("1.5")) < mp.mpf(47) / 35
+    c17 = 42 * mp.exp(mp.mpf("1") / 3) * mp.power(mp.mpf("17") / 14, mp.mpf("1.5"))
+    assert c17 < 79
+
+    # Exact integer comparison used for F(1/3)>0 after e<87/32.
+    assert 79**3 * 87**2 < 154**3 * 32**2
+
+    u = mp.mpf("1") / 3
+    f_boundary = 33 + 1089 * u**2 - 79 * mp.exp(2 * u)
+    assert f_boundary > 0
+
+    derivative_floor = 726 - 158 * e_upper
+    assert derivative_floor == mp.mpf(4743) / 16
+    assert derivative_floor > 0
 
 
 def test_second_order_bridge_reduction_matches_gaussian_closed_form() -> None:
@@ -160,7 +200,6 @@ def test_second_order_bridge_reduction_matches_gaussian_closed_form() -> None:
     y = mp.mpf("0.23")
     q = u * u
 
-    # For K(t)=exp(-t^2/2), L=t^2/2, hence A=2u, B=2, Var(A)=0.
     bridge_margin = second_order_cm_normalized_margin_from_bridge(
         u,
         y,
