@@ -94,6 +94,8 @@ jobs:
         run: python scripts/run_soh_g020_half_mass_pf2.py
       - name: Run SOH-G021 half-mass PF2-to-PF3 no-go receipt
         run: python scripts/run_soh_g021_half_mass_pf3_no_go.py
+      - name: Run SOH-G022 PF3 one-step curvature-barrier receipt
+        run: python scripts/run_soh_g022_pf3_curvature_barrier.py
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
       - name: Install LaTeX toolchain
@@ -122,7 +124,7 @@ jobs:
       - name: Upload compiled monograph
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.9-integrated-canon-v3-g021
+          name: secret-of-a-half-monograph-v0.9-integrated-canon-v3-g022
           path: |
             monograph/main.pdf
             monograph/main.pdf.pages.txt
