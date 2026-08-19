@@ -7,7 +7,6 @@ analytic envelopes. They do not promote numerical evidence to theorem status.
 from __future__ import annotations
 
 from pathlib import Path
-import math
 
 import matplotlib
 matplotlib.use("Agg")
@@ -81,13 +80,13 @@ def dependency_graph() -> None:
     ax.axis("off")
     nodes = {
         "xi": (0.08, 0.82, r"$\xi(1/2+z)$"),
-        "quot": (0.33, 0.82, r"$F(z^2)$\nG001--G003"),
-        "kernel": (0.08, 0.55, r"Riemann kernel $K$\nG004"),
-        "pf": (0.58, 0.82, r"PF$_2$ / PF$_3$\nG005--G023"),
-        "corr": (0.33, 0.55, r"$C,D_y,H_y$\nG024"),
-        "m12": (0.58, 0.55, r"$m=1,2$ CM\nPROVED"),
-        "m3": (0.82, 0.55, r"$m\geq3$ CM\nOPEN"),
-        "fourier": (0.58, 0.28, r"$\widehat D_y>0$\nOPEN"),
+        "quot": (0.33, 0.82, "$F(z^2)$\nG001--G003"),
+        "kernel": (0.08, 0.55, "Riemann kernel $K$\nG004"),
+        "pf": (0.58, 0.82, "PF$_2$ / PF$_3$\nG005--G023"),
+        "corr": (0.33, 0.55, "$C,D_y,H_y$\nG024"),
+        "m12": (0.58, 0.55, "$m=1,2$ CM\nPROVED"),
+        "m3": (0.82, 0.55, "$m\\geq3$ CM\nOPEN"),
+        "fourier": (0.58, 0.28, "$\\widehat D_y>0$\nOPEN"),
         "rh": (0.82, 0.28, "RH\nOPEN"),
         "weil": (0.08, 0.28, "Weil positivity\nC005 OPEN"),
     }
@@ -100,7 +99,8 @@ def dependency_graph() -> None:
         ("fourier", "rh"), ("weil", "rh"), ("quot", "rh")
     ]
     for a, b in edges:
-        xa, ya, _ = nodes[a]; xb, yb, _ = nodes[b]
+        xa, ya, _ = nodes[a]
+        xb, yb, _ = nodes[b]
         ax.annotate("", xy=(xb, yb), xytext=(xa, ya), xycoords=ax.transAxes,
                     arrowprops=dict(arrowstyle="->", lw=1.2, shrinkA=35, shrinkB=35))
     ax.set_title("Proof dependency and open-frontier map", pad=16)
@@ -119,7 +119,7 @@ def bridge_moment_envelope() -> None:
     fig, ax = plt.subplots(figsize=(7.2, 4.4))
     ax.semilogy(ns, bounds, marker="o")
     ax.set_xlabel(r"moment index $n$")
-    ax.set_ylabel(r"bound on $\mathbb E[r^{2n}]$")
+    ax.set_ylabel(r"bound on $\mathrm{E}[r^{2n}]$")
     ax.set_title(r"G024 bridge-moment envelope: $(2n+1)!!/34^n$")
     ax.grid(True, which="both", alpha=0.25)
     save(fig, "bridge_moment_envelope.png")
@@ -130,9 +130,9 @@ def g024_regions() -> None:
     ax.set_ylim(0, 1)
     ax.set_xlim(0, 1.05)
     ax.set_yticks([])
-    ax.axvspan(0, 1/9, alpha=0.24)
-    ax.axvspan(1/9, 1.0, alpha=0.12)
-    ax.axvline(1/9, linewidth=1.5)
+    ax.axvspan(0, 1 / 9, alpha=0.24)
+    ax.axvspan(1 / 9, 1.0, alpha=0.12)
+    ax.axvline(1 / 9, linewidth=1.5)
     ax.text(0.055, 0.68, "former compact core\nclosed by Q/R", ha="center", va="center")
     ax.text(0.56, 0.68, r"analytic second-order region $q\geq1/9$", ha="center", va="center")
     ax.text(0.50, 0.28, r"$H_y'<0$ and $H_y''>0$ globally", ha="center", va="center", fontsize=11)
@@ -150,8 +150,8 @@ def curvature_certificate_regions() -> None:
     ax.axvspan(0, 0.4, alpha=0.25)
     ax.axvspan(0.4, 1.5, alpha=0.12)
     ax.axvline(0.4, linewidth=1.5)
-    ax.text(0.2, 0.58, "outward interval certificate\n$0\leq t\leq2/5$", ha="center", va="center")
-    ax.text(0.92, 0.58, "analytic theta-tail proof\n$t\geq2/5$", ha="center", va="center")
+    ax.text(0.2, 0.58, "outward interval certificate\n" + r"$0\leq t\leq2/5$", ha="center", va="center")
+    ax.text(0.92, 0.58, "analytic theta-tail proof\n" + r"$t\geq2/5$", ha="center", va="center")
     ax.text(0.75, 0.18, r"global target: $20L''-L''''>0$", ha="center", va="center")
     ax.set_xlabel(r"kernel coordinate $t$")
     ax.set_title("Trust boundary of SOH-G024-Q")
