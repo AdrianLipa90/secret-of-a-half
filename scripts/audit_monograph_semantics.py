@@ -137,7 +137,7 @@ def main() -> int:
         "SOH-G024 first-order complete-monotonicity theorem",
         "\\frac{19}{2}",
         "H_y''",
-        "S_y'\\le S_y(q)^2",
+        "S_y'(q)\\le S_y(q)^2",
         "f'(x+iy)^2-f(x+iy)f''(x+iy)",
     ]:
         if token not in g024_text:
