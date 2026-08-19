@@ -10,6 +10,7 @@ from secret_of_a_half.jensen_wiener_kernel import (
     first_order_cm_log_slope_lower_bound,
     full_xi_kernel,
     internal_tilt_jensen_kernel_from_kernel,
+    second_order_cm_normalized_margin_from_bridge,
     signed_five_point_derivatives,
 )
 
@@ -108,6 +109,27 @@ def test_first_order_cm_threshold_margin_one_half_is_sufficient() -> None:
                 strong_log_concavity_margin=threshold,
             )
             assert bound > 0
+
+
+def test_second_order_bridge_reduction_matches_gaussian_closed_form() -> None:
+    mp.mp.dps = 60
+    u = mp.mpf("0.37")
+    y = mp.mpf("0.23")
+    q = u * u
+
+    # For K(t)=exp(-t^2/2), L=t^2/2, hence A=2u, B=2, Var(A)=0.
+    bridge_margin = second_order_cm_normalized_margin_from_bridge(
+        u,
+        y,
+        mean_a=2 * u,
+        mean_b=2,
+        var_a=0,
+    )
+
+    constant = mp.sqrt(mp.pi) / 2
+    h = lambda x: constant * mp.exp(-x) * mp.cosh(2 * y * mp.sqrt(x))
+    direct_margin = 4 * u**3 * mp.diff(h, q, 2) / h(q)
+    assert abs(bridge_margin - direct_margin) < mp.mpf("1e-45")
 
 
 def test_signed_five_point_derivatives_on_completely_monotone_exponential() -> None:
