@@ -45,6 +45,8 @@ jobs:
           - soh-g020-half-mass-pf2
           - soh-g021-half-mass-pf3-no-go
           - soh-g022-pf3-curvature-barrier
+          - soh-g023-reciprocal-deficit
+          - soh-g024-jensen-wiener-kernel
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -136,6 +138,12 @@ jobs:
             soh-g022-pf3-curvature-barrier)
               python scripts/run_soh_g022_pf3_curvature_barrier.py
               ;;
+            soh-g023-reciprocal-deficit)
+              python scripts/run_soh_g023_reciprocal_deficit.py
+              ;;
+            soh-g024-jensen-wiener-kernel)
+              python scripts/run_soh_g024_jensen_wiener_kernel.py
+              ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
               ;;
@@ -208,7 +216,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.9-integrated-canon-v3-g022-vector
+          name: secret-of-a-half-monograph-v0.9-g023-g024-candidate-vector
           path: monograph/main.pdf
           if-no-files-found: error
 
