@@ -225,6 +225,79 @@ def second_order_cm_normalized_margin_from_bridge(
     )
 
 
+def third_order_cm_normalized_margin_from_bridge(
+    u: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    mean_a: float | mp.mpf,
+    mean_b: float | mp.mpf,
+    var_a: float | mp.mpf,
+    mean_c: float | mp.mpf,
+    cov_ab: float | mp.mpf,
+    third_central_a: float | mp.mpf,
+) -> mp.mpf:
+    r"""Return the exact normalized third-order CM bridge margin.
+
+    Under the normalized bridge measure let
+
+    ``A=L'(u+r)+L'(u-r)``, ``B=L''(u+r)+L''(u-r)``, and
+    ``C3=L'''(u+r)+L'''(u-r)``. Then
+
+        R  = E[A],
+        R' = E[B]-Var(A),
+        R''= E[C3]-3 Cov(A,B)+mu_3(A).
+
+    With ``a=|y|``, ``T=2a*tanh(2au)``, ``N=R-T`` and the corresponding
+    derivatives ``N'`` and ``N''``, this returns
+
+        8u^5 (-H_y'''(u^2)/H_y(u^2))
+        = u^2 N^3 - 3u^2 N N' + u^2 N''
+          + 3u N^2 - 3u N' + 3N.
+
+    Equivalently, if ``M2=N+u(N^2-N')`` is the normalized second-order
+    margin, the same quantity is ``(uN+3)M2-uM2'``.  Positivity of this
+    helper is the third complete-monotonicity condition; no global sign is
+    asserted by the helper itself.
+    """
+
+    u = mp.mpf(u)
+    a = abs(mp.mpf(y))
+    mean_a = mp.mpf(mean_a)
+    mean_b = mp.mpf(mean_b)
+    var_a = mp.mpf(var_a)
+    mean_c = mp.mpf(mean_c)
+    cov_ab = mp.mpf(cov_ab)
+    third_central_a = mp.mpf(third_central_a)
+    if u <= 0:
+        raise ValueError("require u>0")
+    if not (0 <= a < mp.mpf("0.5")):
+        raise ValueError("require |y| < 1/2")
+    if var_a < 0:
+        raise ValueError("var_a must be non-negative")
+
+    x = 2 * a * u
+    tanh_x = mp.tanh(x)
+    sech_sq = 1 / mp.cosh(x) ** 2
+    tilt = 2 * a * tanh_x
+    tilt_prime = 4 * a * a * sech_sq
+    tilt_second = -16 * a**3 * sech_sq * tanh_x
+
+    r_prime = mean_b - var_a
+    r_second = mean_c - 3 * cov_ab + third_central_a
+    n_value = mean_a - tilt
+    n_prime = r_prime - tilt_prime
+    n_second = r_second - tilt_second
+
+    return (
+        u**2 * n_value**3
+        - 3 * u**2 * n_value * n_prime
+        + u**2 * n_second
+        + 3 * u * n_value**2
+        - 3 * u * n_prime
+        + 3 * n_value
+    )
+
+
 def internal_tilt_jensen_kernel_from_kernel(
     u: float | mp.mpf,
     y: float | mp.mpf,
