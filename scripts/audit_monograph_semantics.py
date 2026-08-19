@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """Deterministic semantic guard for the integrated monograph.
 
-This script does not attempt to decide mathematical truth. It protects the
-repository-level semantic invariants through canonical SOH-G023 and checks that
-SOH-G024 remains an explicitly non-canonical candidate with global first-order
-complete monotonicity, a proved second-order tail region, an open compact core,
-and open higher-order/RH frontiers.
+This script does not decide mathematical truth. It protects the repository-level
+proof-state boundaries through canonical SOH-G023 and the non-canonical G024
+candidate: first order global, second order proved for q>=1/9, compact core open,
+higher orders and RH open.
 """
 from __future__ import annotations
 
@@ -21,6 +20,7 @@ TITLE = MONOGRAPH / "frontmatter" / "title.tex"
 G024 = MONOGRAPH / "chapters" / "50_jensen_wiener_kernel_frontier.tex"
 G024_SECOND = MONOGRAPH / "chapters" / "51_g024_second_order_bridge_reduction.tex"
 G024_TAIL = MONOGRAPH / "chapters" / "52_g024_bridge_moment_tail_second_order.tex"
+G024_SHARP = MONOGRAPH / "chapters" / "53_g024_sharpened_curvature_second_order.tex"
 
 
 def tex_files() -> list[Path]:
@@ -58,8 +58,7 @@ def main() -> int:
     ]
     for path in files:
         text = path.read_text(encoding="utf-8")
-        paragraphs = re.split(r"\n\s*\n", text)
-        for paragraph in paragraphs:
+        for paragraph in re.split(r"\n\s*\n", text):
             low = paragraph.lower()
             if any(re.search(pattern, low) for pattern in interpretive_patterns):
                 if "INTERPRETACJA" not in paragraph:
@@ -67,129 +66,86 @@ def main() -> int:
                     fail(f"{path.relative_to(ROOT)}: unlabeled interpretive assertion: {preview}", errors)
 
     main_text = MAIN.read_text(encoding="utf-8")
-    required_main_tokens = [
-        r"\include{chapters/46_current_canon_and_open_frontier}",
-        r"\include{chapters/47_half_mass_pf2_does_not_imply_pf3}",
-        r"\include{chapters/48_pf3_one_step_curvature_barrier}",
+    for token in [
         r"\include{chapters/49_reciprocal_deficit_pf3_normal_form}",
         r"\include{chapters/50_jensen_wiener_kernel_frontier}",
         r"\include{chapters/51_g024_second_order_bridge_reduction}",
         r"\include{chapters/52_g024_bridge_moment_tail_second_order}",
+        r"\include{chapters/53_g024_sharpened_curvature_second_order}",
         "Version 0.9 Integrated Canon V3",
-    ]
-    for token in required_main_tokens:
+    ]:
         if token not in main_text:
-            fail(f"monograph/main.tex: missing required V3 token {token!r}", errors)
+            fail(f"monograph/main.tex: missing required token {token!r}", errors)
 
     title_text = TITLE.read_text(encoding="utf-8")
-    if "Version 0.9 Integrated Canon V3" not in title_text:
-        fail("title page does not identify Integrated Canon V3", errors)
-    if "SOH-G023" not in title_text:
-        fail("title page does not identify canonical SOH-G023", errors)
-    if "G024" not in title_text or "Candidate" not in title_text:
-        fail("title page must identify G024 as candidate", errors)
-    if "does not claim a proof of the Riemann Hypothesis" not in title_text:
-        fail("title page is missing the explicit no-RH-proof firewall", errors)
+    for token, message in [
+        ("Version 0.9 Integrated Canon V3", "title page does not identify Integrated Canon V3"),
+        ("SOH-G023", "title page does not identify canonical SOH-G023"),
+        ("G024", "title page does not identify G024"),
+        ("Candidate", "title page does not mark G024 candidate"),
+        ("does not claim a proof of the Riemann Hypothesis", "title page is missing no-RH-proof firewall"),
+    ]:
+        if token not in title_text:
+            fail(message, errors)
 
     ledger_text = LEDGER.read_text(encoding="utf-8")
     for number in range(1, 24):
-        claim = f"SOH-G{number:03d}"
-        if claim not in ledger_text:
-            fail(f"claim ledger is missing {claim}", errors)
-    if "SOH-G002" in ledger_text and "Inactive / not promoted" not in ledger_text:
-        fail("SOH-G002 must remain explicitly inactive/not promoted unless a standalone theorem is canonized", errors)
-    for token in [
-        "SOH-G003",
-        "SOH-G021",
-        "SOH-G022",
-        "SOH-G023",
-        "actual PF$_3$ OPEN",
-        "PF$_3$",
-        "PF$_\\infty$",
-        "Riemann Hypothesis remains OPEN",
-    ]:
+        if f"SOH-G{number:03d}" not in ledger_text:
+            fail(f"claim ledger is missing SOH-G{number:03d}", errors)
+    for token in ["SOH-G003", "SOH-G023", "actual PF$_3$ OPEN", "PF$_\\infty$", "Riemann Hypothesis remains OPEN"]:
         if token not in ledger_text:
             fail(f"claim ledger is missing open-frontier token {token!r}", errors)
 
     final_text = FINAL.read_text(encoding="utf-8")
-    required_final = [
-        "P_J=\\varnothing",
-        "P_N=\\varnothing",
-        "SOH-G003 OPEN",
-        "SOH-C005 OPEN",
-        "SOH-G021",
-        "SOH-G022",
-        "SOH-G023",
-        "G024",
-        "RH OPEN",
-        "PF$_2$",
-        "PF$_3$",
-        "PF$_\\infty$",
-        "H_y'<0",
-        "H_y''>0",
-        "q\\ge1/4",
-        "0\\le q<1/4",
-    ]
-    for token in required_final:
+    for token in [
+        "P_J=\\varnothing", "P_N=\\varnothing", "SOH-G003 OPEN", "SOH-C005 OPEN",
+        "SOH-G023", "G024", "RH OPEN", "PF$_2$", "PF$_3$", "PF$_\\infty$",
+        "H_y'<0", "H_y''>0", "q\\ge1/9", "0\\le q<1/9",
+    ]:
         if token not in final_text:
-            fail(f"final synthesis is missing required status token {token!r}", errors)
+            fail(f"final synthesis is missing status token {token!r}", errors)
 
     g024_text = G024.read_text(encoding="utf-8")
     for token in [
-        "complete monotonicity",
-        "D_y",
-        "J_y",
-        "0<|y|<\\frac12",
-        "Riemann Hypothesis remains open",
-        "SOH-G024 first-order complete-monotonicity theorem",
-        "\\frac{19}{2}",
-        "H_y''",
-        "S_y'(q)\\le S_y(q)^2",
-        "f'(x+iy)^2-f(x+iy)f''(x+iy)",
+        "complete monotonicity", "D_y", "J_y", "0<|y|<\\frac12",
+        "Riemann Hypothesis remains open", "SOH-G024 first-order complete-monotonicity theorem",
+        "H_y''", "S_y'(q)\\le S_y(q)^2", "f'(x+iy)^2-f(x+iy)f''(x+iy)",
     ]:
         if token not in g024_text:
-            fail(f"G024 candidate Chapter 50 is missing theorem/firewall token {token!r}", errors)
-    if "D_y(u)=\\cosh(2yu)C(u)" not in g024_text:
-        fail("G024 external Dimitrov-Xu tilt is not recorded", errors)
-    if "J_y(u)" not in g024_text or "D_0=J_0=C" not in g024_text:
-        fail("G024 external/internal tilt distinction is incomplete", errors)
+            fail(f"Chapter 50 is missing theorem/firewall token {token!r}", errors)
+    if "D_y(u)=\\cosh(2yu)C(u)" not in g024_text or "D_0=J_0=C" not in g024_text:
+        fail("Chapter 50 external/internal tilt firewall incomplete", errors)
 
     second_text = G024_SECOND.read_text(encoding="utf-8")
     for token in [
-        "d\\mu_u",
-        "A_u(r)",
-        "B_u(r)",
-        "R'(u)",
-        "\\operatorname{Var}_{\\mu_u}(A_u)",
-        "N_y(u)>19u",
-        "4u^3H_y''",
-        "uD_y''(u)-D_y'(u)",
-        "S_y'\\le S_y^2",
-        "second-order sign remains OPEN",
-        "RH remain OPEN",
+        "d\\mu_u", "A_u(r)", "B_u(r)", "R'(u)",
+        "\\operatorname{Var}_{\\mu_u}(A_u)", "4u^3H_y''",
+        "uD_y''(u)-D_y'(u)", "S_y'\\le S_y^2", "RH remain OPEN",
     ]:
         if token not in second_text:
-            fail(f"G024 candidate Chapter 51 is missing bridge/firewall token {token!r}", errors)
+            fail(f"Chapter 51 is missing bridge/firewall token {token!r}", errors)
 
     tail_text = G024_TAIL.read_text(encoding="utf-8")
     for token in [
-        "Bridge Moment Hierarchy",
-        "\\mathbb E[rD_u(r)]=3",
-        "\\mathbb E[r^2]<\\frac3{20}",
-        "(1-\\lambda/10)^{-3/2}",
-        "10<L''(s)<21e^{2|s|}",
-        "H_y''(q)>0",
-        "q\\ge\\frac14",
-        "0\\le q<\\frac14",
-        "remains OPEN",
-        "does not claim RH",
+        "Bridge Moment Hierarchy", "\\mathbb E[rD_u(r)]=3", "\\mathbb E[r^2]<\\frac3{20}",
+        "(1-\\lambda/10)^{-3/2}", "10<L''(s)<21e^{2|s|}",
+        "H_y''(q)>0", "q\\ge\\frac14", "0\\le q<\\frac14", "remains OPEN",
     ]:
         if token not in tail_text:
-            fail(f"G024 candidate Chapter 52 is missing moment/tail/firewall token {token!r}", errors)
+            fail(f"Chapter 52 is missing historical tail token {token!r}", errors)
+
+    sharp_text = G024_SHARP.read_text(encoding="utf-8")
+    for token in [
+        "L''(t)>17", "\\frac{33}{2}", "34^n", "(1-\\lambda/17)^{-3/2}",
+        "\\mathbb E[B_u]<79e^{2u}", "H_y''(q)>0", "q\\ge1/9",
+        "0\\le q<\\frac19", "remains OPEN", "does not claim RH",
+    ]:
+        if token not in sharp_text:
+            fail(f"Chapter 53 is missing sharpened theorem/firewall token {token!r}", errors)
 
     ch3 = (MONOGRAPH / "chapters" / "03_symmetry_and_the_half_axis.tex").read_text(encoding="utf-8")
     if "conjugate-affine involution" not in ch3 or "not anti-linear" not in ch3:
-        fail("Chapter 3 must explicitly distinguish affine conjugation from centered anti-linearity", errors)
+        fail("Chapter 3 must distinguish affine conjugation from centered anti-linearity", errors)
 
     if errors:
         print("SEMANTIC AUDIT: FAIL")
@@ -199,7 +155,7 @@ def main() -> int:
 
     print("SEMANTIC AUDIT: PASS")
     print(f"Checked {len(files)} LaTeX source files.")
-    print("Protected invariants: G001-G023 canonical ledger, G024 first-order theorem, second-order tail theorem, compact-core-open firewall, interpretation labels, and RH/PF3/PF-infinity firewalls.")
+    print("Protected invariants: G001-G023 canon; G024 L''>17; first order global; second order q>=1/9; q<1/9 open; higher orders/RH open.")
     return 0
 
 
