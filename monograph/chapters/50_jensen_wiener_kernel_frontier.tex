@@ -1,0 +1,276 @@
+\chapter{Jensen--Wiener Correlation Kernel and the Direct RH Frontier}
+\label{chap:g024-jensen-wiener}
+
+\status{Exact reparametrization, exact external/internal Wronskian identities, and globally proved first-order complete monotonicity. Higher complete-monotonicity orders remain open. The Riemann Hypothesis remains open.}
+
+\section{Purpose}
+
+The preceding PF$_3$ generations isolate coefficient-level obstructions and local sufficient conditions. This chapter returns to an RH-equivalent correlation-kernel criterion and records a direct sufficient route based on complete monotonicity. It also separates two different $y$-tilts which agree at $y=0$ but are not the same family away from the real axis.
+
+The external criterion used here is Dimitrov--Xu, \texttt{arXiv:1606.05011}. The $y=0$ positive-definite-kernel frontier is consistent with the framework studied by Csordas, \texttt{arXiv:1309.0055}.
+
+\section{Full-line Fourier normalization}
+
+The repository kernel satisfies
+\[
+ \xi\!\left(\frac12+z\right)=\int_0^\infty \Phi(t)\cosh(zt)\,dt.
+\]
+Define
+\[
+ \boxed{K(t)=\frac12\Phi(|t|).}
+\]
+Then
+\[
+ \boxed{\Xi(x):=\xi\!\left(\frac12+ix\right)=\int_{\mathbb R}K(t)e^{-ixt}\,dt.}
+\]
+
+\section{Dimitrov--Xu order-two correlation}
+
+For a suitable even positive kernel define
+\[
+ \nu_2(t)=\int_{\mathbb R}(t-2s)^2K(t-s)K(s)\,ds
+\]
+and
+\[
+ \Psi_y(t)=\cosh(ty)\nu_2(t).
+\]
+Dimitrov and Xu prove, for the Riemann kernel,
+\[
+ \boxed{RH\iff\mathcal T(\Psi_y)\text{ is dense in }L^1(\mathbb R)\quad\text{for every }0<|y|<\frac12.}
+\]
+By Wiener's $L^1$ Tauberian theorem this is equivalent to absence of real zeros of $\widehat\Psi_y$ for every such $y$.
+
+\section{Centered normal form}
+
+Set
+\[
+ t=2u,\qquad s=u-r.
+\]
+Then
+\[
+ t-s=u+r,\qquad s=u-r,\qquad t-2s=2r,
+\]
+so
+\[
+ \boxed{\nu_2(2u)=4\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr.}
+\]
+Define
+\[
+ \boxed{C(u):=\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr}
+\]
+and
+\[
+ \boxed{D_y(u):=\cosh(2yu)C(u).}
+\]
+Hence
+\[
+ \boxed{\Psi_y(2u)=4D_y(u).}
+\]
+Scaling and fixed dilation preserve the density question. Therefore
+\[
+ \boxed{RH\iff\mathcal T(D_y)\text{ is dense in }L^1(\mathbb R)\quad\forall\,0<|y|<\frac12.}
+\]
+Since $D_y$ is real, even and integrable and $\widehat D_y(0)>0$, the Wiener condition can be written
+\[
+ \boxed{\widehat D_y(x)>0\quad\forall x\in\mathbb R,\quad 0<|y|<\frac12.}
+\]
+This is an exact reformulation, not a proof of the inequality.
+
+\section{External Wronskian normal form}
+
+Let
+\[
+ f(z)=\int_{\mathbb R}K(t)e^{-izt}\,dt.
+\]
+Writing $t=a+b$ and $s=b$ gives
+\[
+ \widehat\nu_2(z)
+ =\iint_{\mathbb R^2}(a-b)^2K(a)K(b)e^{-iz(a+b)}\,da\,db.
+\]
+Using
+\[
+ \int tK(t)e^{-izt}\,dt=i f'(z),
+ \qquad
+ \int t^2K(t)e^{-izt}\,dt=-f''(z),
+\]
+one obtains
+\[
+ \boxed{\widehat\nu_2(z)=2\bigl(f'(z)^2-f(z)f''(z)\bigr).}
+\]
+Multiplication by $\cosh(ty)$ averages the transforms at $x+iy$ and $x-iy$. Since $\Psi_y(2u)=4D_y(u)$,
+\[
+ \boxed{
+ 4\widehat D_y(2x)
+ =\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right).
+ }
+\]
+Thus the direct external Fourier target is equivalently
+\[
+ \boxed{
+ \Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right)>0
+ }
+\]
+for every real $x$ and every $0<|y|<1/2$.
+
+\section{Complete-monotonicity sufficient route}
+
+Define
+\[
+ \boxed{H_y(q):=D_y(\sqrt q)=\cosh(2y\sqrt q)C(\sqrt q),\qquad q\ge0.}
+\]
+Suppose
+\[
+ \boxed{(-1)^mH_y^{(m)}(q)\ge0\quad\forall m\ge0,\ q\ge0,\quad 0<|y|<\frac12.}
+ \tag{CM}
+\]
+Then Bernstein's theorem provides a positive measure $\mu_y$ with
+\[
+ H_y(q)=\int_0^\infty e^{-\lambda q}\,d\mu_y(\lambda).
+\]
+Thus
+\[
+ D_y(u)=\int_0^\infty e^{-\lambda u^2}\,d\mu_y(\lambda).
+\]
+The Riemann correlation kernel is integrable and tends to zero at infinity, so a non-zero constant component is excluded. Fourier transformation therefore gives the positive Gaussian mixture
+\[
+ \widehat D_y(x)=\int_{(0,\infty)}\sqrt{\frac{\pi}{\lambda}}\exp\!\left(-\frac{x^2}{4\lambda}\right)d\mu_y(\lambda)>0.
+\]
+Consequently
+\[
+ \boxed{(CM)\text{ for all }0<|y|<\frac12\Longrightarrow RH.}
+\]
+The implication is exact. Full complete monotonicity remains open, but its first derivative inequality is proved below.
+
+\section{The distinct internal Jensen tilt}
+
+Define instead
+\[
+ \boxed{J_y(u)=\int_{\mathbb R}r^2\cosh(2yr)K(u+r)K(u-r)\,dr.}
+\]
+A direct two-variable change of variables gives
+\[
+ \boxed{4\widehat J_y(2x)=|f'(x+iy)|^2-\Re\!\left(f''(x+iy)\overline{f(x+iy)}\right).}
+\]
+This is the internal complex Jensen/Laguerre functional.
+
+The two tilted families and their Fourier forms are not identified:
+\[
+ \boxed{D_y(u)=\cosh(2yu)C(u)\neq J_y(u)}
+\]
+for general $y\ne0$. They coincide only at
+\[
+ \boxed{D_0=J_0=C.}
+\]
+This distinction is part of the proof firewall.
+
+\section{Quantitative curvature already contained in SOH-G004}
+
+SOH-G004 proves uniformly for every theta channel
+\[
+ g_n''<-12
+\]
+and separately proves
+\[
+ \operatorname{Var}_p(g_n')<2.
+\]
+Its exact log-sum identity therefore yields
+\[
+ (\log\Phi)''
+ =\sum_np_ng_n''+\operatorname{Var}_p(g_n')
+ <-12+2=-10.
+\]
+Hence the full even kernel satisfies
+\[
+ \boxed{-(\log K)''>10.}
+\]
+Put $L=-\log K$. Then $L$ is even and
+\[
+ \boxed{L''>10.}
+\]
+This quantitative margin is an internal consequence of the existing canonical G004 estimates; no external numerical curvature estimate is used here.
+
+\section{SOH-G024 first-order complete-monotonicity theorem}
+
+Differentiate the centered correlation:
+\[
+ C'(u)
+ =-\int_{\mathbb R}r^2K(u+r)K(u-r)
+ \bigl[L'(u+r)+L'(u-r)\bigr]dr.
+\]
+For $u>0$, evenness gives $L'(u-r)=-L'(r-u)$. Since $L''>10$, the derivative $L'$ is strongly increasing and therefore
+\[
+ L'(u+r)-L'(r-u)>10\bigl[(u+r)-(r-u)\bigr]=20u.
+\]
+Consequently
+\[
+ \boxed{C'(u)<-20uC(u),\qquad u>0,}
+\]
+or equivalently
+\[
+ \boxed{-\frac{C'(u)}{C(u)}>20u.}
+\]
+
+Now set $u=\sqrt q$. From $D_y(u)=\cosh(2yu)C(u)$,
+\[
+ -\frac{H_y'(q)}{H_y(q)}
+ =-\frac1{2u}\frac{D_y'(u)}{D_y(u)}
+ >10-\frac{|y|}{u}\tanh(2|y|u).
+\]
+Since $\tanh v<v$ for $v>0$,
+\[
+ \boxed{
+ -\frac{H_y'(q)}{H_y(q)}
+ >10-2y^2
+ >\frac{19}{2}
+ }
+\]
+for every $q>0$ and $0<|y|<1/2$. The continuous limit at $q=0$ obeys the corresponding endpoint inequality. Therefore
+\[
+ \boxed{H_y'(q)<0}
+\]
+globally throughout the full Dimitrov--Xu strip.
+
+\begin{theorem}[SOH-G024 first-order complete-monotonicity theorem]
+For the actual Riemann kernel and every $0<|y|<1/2$, the radial-square external profile $H_y$ satisfies the first non-trivial complete-monotonicity inequality globally. More precisely,
+\[
+ -\frac{H_y'(q)}{H_y(q)}>\frac{19}{2}
+ \qquad(q>0).
+\]
+Higher complete-monotonicity orders are not asserted.
+\end{theorem}
+
+\section{Gaussian domination}
+
+Integrating the logarithmic-slope estimate gives
+\[
+ \boxed{H_y(q)<H_y(0)e^{-19q/2}\qquad(q>0).}
+\]
+Equivalently,
+\[
+ \boxed{D_y(u)<D_y(0)e^{-19u^2/2}\qquad(u\ne0).}
+\]
+Thus every external Dimitrov--Xu tilt in the open strip has a uniform Gaussian envelope.
+
+\section{Second-order frontier}
+
+Define
+\[
+ S_y(q):=-\frac{d}{dq}\log H_y(q).
+\]
+The preceding theorem proves $S_y(q)>19/2$. Direct differentiation yields
+\[
+ \boxed{
+ \frac{H_y''(q)}{H_y(q)}=S_y(q)^2-S_y'(q).
+ }
+\]
+Therefore
+\[
+ \boxed{H_y''(q)\ge0\iff S_y'(q)\le S_y(q)^2.}
+\]
+This Riccati-type inequality is the next exact analytic target. The first-order lower bound alone does not prove it.
+
+\section{Finite diagnostic}
+
+The accompanying receipt evaluates the repository Riemann kernel on a declared finite grid in $q$ and $y$ and applies symmetric five-point finite differences through order four to $H_y(q)$. The first-order sign is independently proved analytically; sampled signs at orders two through four remain classified only as \texttt{FINITE\_DIAGNOSTIC\_NOT\_PROOF}.
+
+\gap{The inequalities $(-1)^mH_y^{(m)}(q)\ge0$ for orders $m\ge2$, all $q\ge0$, and all $0<|y|<1/2$ are not proved. Therefore strict Fourier positivity, Wiener density for the full Riemann family, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, and RH remain open.}

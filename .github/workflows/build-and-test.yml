@@ -96,6 +96,16 @@ jobs:
         run: python scripts/run_soh_g021_half_mass_pf3_no_go.py
       - name: Run SOH-G022 PF3 one-step curvature-barrier receipt
         run: python scripts/run_soh_g022_pf3_curvature_barrier.py
+      - name: Run SOH-G023 reciprocal-deficit receipt
+        run: python scripts/run_soh_g023_reciprocal_deficit.py
+      - name: Run SOH-G024 Jensen-Wiener candidate receipt
+        run: python scripts/run_soh_g024_jensen_wiener_kernel.py
+      - name: Run SOH-G024 fourth-log-curvature interval certificate
+        run: python scripts/run_soh_g024_fourth_log_curvature_interval.py
+      - name: Run SOH-G024 global second-order certificate
+        run: python scripts/run_soh_g024_global_second_order.py
+      - name: Run SOH-G024 third-order frontier receipt
+        run: python scripts/run_soh_g024_third_order_frontier.py
       - name: Run PhaseNav-Weil adaptive cutoff schedule
         run: python scripts/run_phasenav_weil_adaptive_cutoff.py
       - name: Install LaTeX toolchain
@@ -124,7 +134,7 @@ jobs:
       - name: Upload compiled monograph
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.9-integrated-canon-v3-g022
+          name: secret-of-a-half-monograph-v0.9-g023-g024-candidate
           path: |
             monograph/main.pdf
             monograph/main.pdf.pages.txt

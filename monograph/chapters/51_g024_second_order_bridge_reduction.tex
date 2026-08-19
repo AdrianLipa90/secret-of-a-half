@@ -1,0 +1,215 @@
+\chapter{Second-Order Bridge Measure and the Curvature--Variance Obstruction}
+\label{chap:g024-second-order-bridge}
+
+\status{Exact SOH-G024 second-order reduction. The first complete-monotonicity inequality is proved in Chapter~50; the second-order sign remains OPEN. This chapter does not claim RH.}
+
+\section{Purpose}
+
+Chapter~\ref{chap:g024-jensen-wiener} proves, for the actual Riemann kernel and every $0<|y|<1/2$,
+\[
+ \boxed{H_y'(q)<0},
+ \qquad
+ \boxed{-\frac{H_y'(q)}{H_y(q)}>\frac{19}{2}}.
+\]
+The next condition required by the complete-monotonicity route is
+\[
+ H_y''(q)\ge0.
+\]
+This chapter reduces that condition exactly to a curvature--variance inequality under a normalized correlation measure. The reduction is exact; the resulting global inequality is not proved.
+
+\section{Normalized bridge measure}
+
+Recall
+\[
+ C(u)=\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr,
+ \qquad
+ L=-\log K.
+\]
+For $u>0$ define
+\[
+ \boxed{
+ d\mu_u(r)=\frac{r^2K(u+r)K(u-r)}{C(u)}\,dr.
+ }
+\]
+This is a probability measure. Define
+\[
+ \boxed{A_u(r)=L'(u+r)+L'(u-r)}
+\]
+and
+\[
+ \boxed{B_u(r)=L''(u+r)+L''(u-r)}.
+\]
+
+\section{Logarithmic correlation derivatives}
+
+Differentiation under the integral sign gives
+\[
+ C'(u)
+ =-\int_{\mathbb R}A_u(r)r^2K(u+r)K(u-r)\,dr.
+\]
+Hence, with
+\[
+ R(u):=-\frac{C'(u)}{C(u)},
+\]
+one has the exact expectation identity
+\[
+ \boxed{R(u)=\mathbb E_{\mu_u}[A_u].}
+\]
+
+For a differentiable observable $F_u$, normalization of $\mu_u$ gives
+\[
+ \frac{d}{du}\mathbb E_{\mu_u}[F_u]
+ =\mathbb E_{\mu_u}[\partial_uF_u]
+ -\operatorname{Cov}_{\mu_u}(F_u,A_u).
+\]
+Taking $F_u=A_u$ and using $\partial_uA_u=B_u$ yields
+\[
+ \boxed{
+ R'(u)
+ =\mathbb E_{\mu_u}[B_u]
+ -\operatorname{Var}_{\mu_u}(A_u).
+ }
+\]
+Thus the logarithmic curvature of the correlation is exactly a mean-curvature term minus a slope-variance term.
+
+\section{External tilt surplus}
+
+Put
+\[
+ a=|y|,
+ \qquad
+ T_y(u)=2a\tanh(2au),
+\]
+and define
+\[
+ \boxed{N_y(u)=R(u)-T_y(u).}
+\]
+Since
+\[
+ D_y(u)=\cosh(2yu)C(u),
+\]
+we have
+\[
+ \boxed{-\frac{D_y'(u)}{D_y(u)}=N_y(u).}
+\]
+The first-order theorem of Chapter~50 gives the strict uniform surplus
+\[
+ \boxed{N_y(u)>19u.}
+\]
+Moreover,
+\[
+ \boxed{T_y'(u)=4a^2\operatorname{sech}^2(2au).}
+\]
+
+\section{Exact second-order normal form}
+
+Because $q=u^2$ and $H_y(q)=D_y(u)$,
+\[
+ H_y'(q)=\frac{D_y'(u)}{2u}
+\]
+and
+\[
+ \boxed{
+ H_y''(q)=\frac{uD_y''(u)-D_y'(u)}{4u^3}.
+ }
+\]
+Consequently
+\[
+ \boxed{
+ H_y''(q)\ge0
+ \iff
+ uD_y''(u)-D_y'(u)\ge0.
+ }
+\]
+
+From $D_y'/D_y=-N_y$,
+\[
+ \frac{D_y''}{D_y}=N_y^2-N_y'
+ =N_y^2-R'+T_y'.
+\]
+Substituting the bridge identity for $R'$ gives the central exact reduction:
+\[
+ \boxed{
+ \frac{4u^3H_y''(u^2)}{H_y(u^2)}
+ =N_y(u)
+ +u\left[
+ N_y(u)^2
+ +\operatorname{Var}_{\mu_u}(A_u)
+ -\mathbb E_{\mu_u}[B_u]
+ +4a^2\operatorname{sech}^2(2au)
+ \right].
+ }
+\]
+Therefore the second complete-monotonicity inequality is exactly equivalent to non-negativity of the right-hand side.
+
+\section{Riccati equivalence}
+
+Define
+\[
+ S_y(q)=-\frac{d}{dq}\log H_y(q).
+\]
+Since
+\[
+ S_y(u^2)=\frac{N_y(u)}{2u},
+\]
+we recover
+\[
+ \boxed{
+ \frac{H_y''}{H_y}=S_y^2-S_y'.
+ }
+\]
+Thus
+\[
+ \boxed{H_y''\ge0\iff S_y'\le S_y^2.}
+\]
+The bridge formula above is the expanded curvature--variance normal form of this Riccati condition.
+
+\section{Sign anatomy}
+
+The exact second-order margin contains four structurally distinct pieces:
+\begin{enumerate}
+ \item $N_y>0$, with the proved stronger bound $N_y>19u$;
+ \item $N_y^2>0$;
+ \item $\operatorname{Var}_{\mu_u}(A_u)\ge0$;
+ \item the competing mean-curvature term $-\mathbb E_{\mu_u}[B_u]$, partly offset by the positive tilt-curvature contribution $4a^2\operatorname{sech}^2(2au)$.
+\end{enumerate}
+The canonical G004 estimate $L''>10$ implies $B_u(r)>20$, but this is a lower bound on the mean curvature. The second-order inequality requires sufficient control of its size relative to the positive surplus and variance terms. Strong log-concavity by itself therefore does not close the second-order step.
+
+\section{Gaussian identity regression}
+
+For the exact fixture
+\[
+ K(t)=e^{-t^2/2},
+ \qquad
+ L(t)=\frac{t^2}{2},
+\]
+one has
+\[
+ A_u(r)=2u,
+ \qquad
+ B_u(r)=2,
+ \qquad
+ \operatorname{Var}(A_u)=0.
+\]
+The implementation evaluates the boxed bridge formula and compares it with direct differentiation of
+\[
+ H_y(q)=\frac{\sqrt\pi}{2}e^{-q}\cosh(2y\sqrt q).
+\]
+The two expressions agree at high precision in the regression test. This validates the implemented identity only; it is not evidence for the sign of the Riemann-kernel second-order margin.
+
+\section{Open second-order obligation}
+
+The exact target is now
+\[
+ \boxed{
+ N_y
+ +u\left[
+ N_y^2+\operatorname{Var}(A_u)-\mathbb E[B_u]
+ +4a^2\operatorname{sech}^2(2au)
+ \right]\ge0
+ }
+\]
+for every $u>0$ and $0<a<1/2$.
+Equivalent proof routes are to bound $R'=\mathbb E[B]-\operatorname{Var}(A)$ sharply enough, to prove the Riccati inequality directly, or to prove $uD_y''-D_y'\ge0$ from the theta-channel expansion.
+
+\gap{The curvature--variance identity is exact, and first-order complete monotonicity is proved. The global second-order sign, all higher complete-monotonicity inequalities, strict external Fourier positivity, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, and RH remain OPEN.}

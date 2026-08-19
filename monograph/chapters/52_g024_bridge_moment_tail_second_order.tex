@@ -1,0 +1,212 @@
+\chapter{Bridge Moment Hierarchy and the Second-Order Tail Theorem}
+\label{chap:g024-bridge-moment-tail}
+
+\status{Exact SOH-G024 bridge-moment hierarchy and analytic proof of $H_y''(q)>0$ for $q\ge1/4$ and $0<|y|<1/2$. The compact core $0\le q<1/4$ remains OPEN. This chapter does not claim RH.}
+
+\section{Bridge score hierarchy}
+
+With the normalized bridge measure
+\[
+ d\mu_u(r)=\frac{r^2K(u+r)K(u-r)}{C(u)}\,dr,
+ \qquad L=-\log K,
+\]
+define
+\[
+ D_u(r)=L'(u+r)-L'(u-r).
+\]
+Its logarithmic density derivative is
+\[
+ \partial_r\log\mu_u(r)=\frac2r-D_u(r).
+\]
+Integration by parts against $r^{2n+1}$ gives, for every integer $n\ge0$,
+\[
+ \boxed{
+ \mathbb E_{\mu_u}[r^{2n+1}D_u(r)]
+ =(2n+3)\mathbb E_{\mu_u}[r^{2n}].
+ }
+\]
+In particular,
+\[
+ \boxed{\mathbb E[rD_u(r)]=3.}
+\]
+
+\section{Moment concentration from SOH-G004}
+
+The canonical G004 estimates imply
+\[
+ \boxed{L''(t)>10\qquad(t\in\mathbb R).}
+\]
+Therefore, for $r>0$,
+\[
+ D_u(r)=\int_{u-r}^{u+r}L''(s)\,ds>20r.
+\]
+Combining with the score hierarchy yields
+\[
+ \boxed{
+ \mathbb E[r^{2n+2}]
+ <\frac{2n+3}{20}\mathbb E[r^{2n}].
+ }
+\]
+Iteration gives
+\[
+ \boxed{
+ \mathbb E[r^{2n}]<\frac{(2n+1)!!}{20^n},
+ \qquad n\ge1.
+ }
+\]
+Thus, in particular,
+\[
+ \boxed{\mathbb E[r^2]<\frac3{20}.}
+\]
+
+For $0\le\lambda<10$, the moment generating series therefore satisfies
+\[
+ \boxed{
+ \mathbb E[e^{\lambda r^2}]
+ \le(1-\lambda/10)^{-3/2}.
+ }
+\]
+This is an analytic concentration theorem for the complete bridge family, not a finite-grid diagnostic.
+
+\section{Companion upper bound on kernel curvature}
+
+Write the theta channels as in SOH-G004,
+\[
+ r_n=\pi n^2t,\qquad t=e^{2s}\ge1.
+\]
+The channel curvature is
+\[
+ -g_n''=4r_n+\frac{24r_n}{(2r_n-3)^2}.
+\]
+Since $r_n>3$, the second term is below $8$, and
+\[
+ L''(s)<4\mathbb E_p[r_n]+8.
+\]
+Using the same channel-ratio estimate as G004,
+\[
+ \frac{\phi_n}{\phi_1}<2n^4e^{-\pi(n^2-1)t},
+\]
+one obtains
+\[
+ \mathbb E_p[r_n]-r_1<\frac1{25}.
+\]
+The $n=2$ term is below $33/875$ using $3<\pi<22/7$ and $e^3>20$; the $n\ge3$ tail is much smaller than the remaining $2/875$ by the same geometric tail suppression used in G004.
+
+Consequently
+\[
+ L''(s)<4\pi t+\frac4{25}+8<21t.
+\]
+By evenness,
+\[
+ \boxed{10<L''(s)<21e^{2|s|}.}
+\]
+
+\section{Mean bridge-curvature upper bound}
+
+Recall
+\[
+ B_u(r)=L''(u+r)+L''(u-r).
+\]
+The preceding envelope yields
+\[
+ B_u(r)<42e^{2u+2|r|}.
+\]
+Since
+\[
+ 2|r|\le\frac52r^2+\frac25,
+\]
+the bridge exponential-square bound at $\lambda=5/2$ gives
+\[
+ \mathbb E[B_u]
+ <42e^{2u+2/5}\left(\frac43\right)^{3/2}.
+\]
+The elementary exponential estimates $e<49/18$ and $e^3>20$ imply
+\[
+ 42e^{2/5}\left(\frac43\right)^{3/2}<36e.
+\]
+Therefore
+\[
+ \boxed{\mathbb E[B_u]<36e\,e^{2u}.}
+\]
+
+\section{Exponential lower bound on the first-order surplus}
+
+The G004 lower curvature control also gives
+\[
+ L''(s)>4\pi e^{2|s|}-2.
+\]
+For $r\ge0$,
+\[
+ A_u(r)=L'(u+r)+L'(u-r)
+ =\int_{r-u}^{r+u}L''(s)\,ds.
+\]
+The even increasing lower envelope is minimized when the integration interval is centered at the origin, so
+\[
+ A_u(r)>4\pi(e^{2u}-1)-4u.
+\]
+Hence
+\[
+ R(u)>4\pi(e^{2u}-1)-4u.
+\]
+With $a=|y|<1/2$ and
+\[
+ T_y(u)=2a\tanh(2au)<4a^2u<u,
+\]
+we obtain
+\[
+ \boxed{N_y(u)>12(e^{2u}-1)-5u.}
+\]
+For $u\ge1/2$, the function $6e^{2u}-12-5u$ is increasing and is positive already at $u=1/2$; thus
+\[
+ \boxed{N_y(u)>6e^{2u}\qquad(u\ge1/2).}
+\]
+
+\section{SOH-G024 second-order tail theorem}
+
+For $u\ge1/2$, $e^{2u}\ge e$, and therefore
+\[
+ \mathbb E[B_u]<36e\,e^{2u}\le36e^{4u}.
+\]
+Meanwhile
+\[
+ N_y(u)^2>36e^{4u}.
+\]
+Thus
+\[
+ \boxed{N_y(u)^2>\mathbb E[B_u]\qquad(u\ge1/2).}
+\]
+
+Insert this into the exact bridge reduction from Chapter~\ref{chap:g024-second-order-bridge}:
+\[
+ \frac{4u^3H_y''(u^2)}{H_y(u^2)}
+ =N_y+u\left[
+ N_y^2+\operatorname{Var}(A_u)-\mathbb E[B_u]
+ +4a^2\operatorname{sech}^2(2au)
+ \right].
+\]
+The variance and tilt-curvature terms are non-negative and $N_y>0$. Hence
+\[
+ \boxed{
+ H_y''(q)>0
+ \qquad
+ \left(q\ge\frac14,\quad0<|y|<\frac12\right).
+ }
+\]
+
+\begin{theorem}[SOH-G024 second-order tail theorem]
+For the Riemann-kernel external Dimitrov--Xu family, the second complete-monotonicity inequality holds strictly throughout the entire tail region
+\[
+ q\ge\frac14,
+ \qquad0<|y|<\frac12.
+\]
+\end{theorem}
+
+\section{Remaining compact core}
+
+The second-order proof obligation is reduced to
+\[
+ \boxed{0\le q<\frac14,\qquad0<|y|<\frac12.}
+\]
+A crude separate upper bound on $\mathbb E[B_u]$ is not used in this core because it destroys the exact cancellation visible as $u\to0$. The next step is a cancellation-preserving local expansion or an independent compact-core inequality.
+
+\gap{First-order complete monotonicity is globally proved. Second-order complete monotonicity is proved for $q\ge1/4$ and remains OPEN only on $0\le q<1/4$. Derivative orders $m\ge3$, strict external Fourier positivity on the full strip, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, and RH remain OPEN.}

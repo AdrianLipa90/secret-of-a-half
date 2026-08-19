@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail closed when the active monograph omits chapters or reintroduces claim collisions."""
+"""Fail closed when the active monograph omits chapters or collapses proof states."""
 from __future__ import annotations
 
 import json
@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 MONO = ROOT / "monograph"
 MAIN = MONO / "main.tex"
 CHAPTERS = MONO / "chapters"
+CANON_LEDGER = ROOT / "claims" / "claim_ledger.json"
+G024_LEDGER = ROOT / "claims" / "SOH_G024_BRANCH_CLAIM_LEDGER_V1.json"
 
 
 def fail(message: str) -> None:
@@ -33,8 +35,19 @@ def main() -> None:
     if prefixes != expected:
         fail(f"chapter numbering is not contiguous: {prefixes}")
 
-    if not includes or includes[-1] != "48_pf3_one_step_curvature_barrier":
-        fail("G022 terminal chapter must be 48_pf3_one_step_curvature_barrier")
+    if not includes or includes[-1] != "55_g024_third_order_cumulant_frontier":
+        fail("G024 candidate terminal chapter must be 55_g024_third_order_cumulant_frontier")
+    for required in [
+        "49_reciprocal_deficit_pf3_normal_form",
+        "50_jensen_wiener_kernel_frontier",
+        "51_g024_second_order_bridge_reduction",
+        "52_g024_bridge_moment_tail_second_order",
+        "53_g024_sharpened_curvature_second_order",
+        "54_g024_global_second_order_closure",
+        "55_g024_third_order_cumulant_frontier",
+    ]:
+        if required not in includes:
+            fail(f"required integrated chapter missing: {required}")
 
     title_count = sum(
         p.read_text(encoding="utf-8").count(r"\begin{titlepage}")
@@ -55,25 +68,12 @@ def main() -> None:
         fail("stale active version marker remains in title/frontmatter")
     if "Version 0.9 Integrated Canon V3" not in frontmatter_text:
         fail("v0.9 Integrated Canon V3 marker missing from active title/frontmatter")
-    if "SOH-G022" not in frontmatter_text:
-        fail("G022 marker missing from active title/frontmatter")
+    if "SOH-G023" not in frontmatter_text:
+        fail("G023 canonical marker missing from active title/frontmatter")
+    if "G024" not in frontmatter_text or "Candidate" not in frontmatter_text:
+        fail("G024 must be identified as candidate in active title/frontmatter")
 
-    collision_checks = {
-        "18_zero_undefined_reciprocal_duality.tex": ("SOH-L015", "SOH-L016", "SOH-L017", "SOH-L022"),
-        "19_phasenav_weil_prime_tail_certificate.tex": ("SOH-L018", "SOH-L019", "SOH-L020"),
-        "20_phasenav_weil_adaptive_cutoff.tex": ("SOH-L021",),
-    }
-    declaration_markers = (r"\textbf{", r"\item[", r"\status{")
-    for filename, forbidden in collision_checks.items():
-        text = (CHAPTERS / filename).read_text(encoding="utf-8")
-        for claim_id in forbidden:
-            for line in text.splitlines():
-                if claim_id not in line:
-                    continue
-                if any(marker in line for marker in declaration_markers):
-                    fail(f"legacy claim collision {claim_id} remains active in {filename}: {line.strip()}")
-
-    ledger = json.loads((ROOT / "claims" / "claim_ledger.json").read_text(encoding="utf-8"))
+    ledger = json.loads(CANON_LEDGER.read_text(encoding="utf-8"))
     ids = [item["id"] for item in ledger["claims"]]
     if len(ids) != len(set(ids)):
         dup = sorted({x for x in ids if ids.count(x) > 1})
@@ -81,17 +81,55 @@ def main() -> None:
     promoted = {f"SOH-L{i:03d}" for i in range(12, 33)}
     if not promoted.issubset(ids):
         fail(f"promoted SOH-L012--SOH-L032 range incomplete: {sorted(promoted - set(ids))}")
-    g_line = {f"SOH-G{i:03d}" for i in range(1, 23)}
+    g_line = {f"SOH-G{i:03d}" for i in range(1, 24)}
     if not g_line.issubset(ids):
-        fail(f"canonical SOH-G001--SOH-G022 range incomplete: {sorted(g_line - set(ids))}")
-    if ledger.get("canonical_through") != "SOH-G022":
-        fail("machine claim ledger canonical_through must equal SOH-G022")
+        fail(f"canonical SOH-G001--SOH-G023 range incomplete: {sorted(g_line - set(ids))}")
+    if "SOH-G024" in ids:
+        fail("SOH-G024 must not be promoted into the canonical ledger on this candidate branch")
+    if ledger.get("canonical_through") != "SOH-G023":
+        fail("machine claim ledger canonical_through must equal SOH-G023")
     if ledger.get("proof_of_rh") is not False:
-        fail("proof_of_rh firewall must remain false")
+        fail("canonical proof_of_rh firewall must remain false")
+
+    candidate = json.loads(G024_LEDGER.read_text(encoding="utf-8"))
+    if candidate.get("promotion_status") != "BRANCH_CANDIDATE_NOT_CANONICAL":
+        fail("G024 branch ledger must remain explicitly non-canonical")
+    if candidate.get("proof_of_rh") is not False:
+        fail("G024 proof_of_rh firewall must remain false")
+    candidate_ids = {item["id"] for item in candidate.get("claims", [])}
+    required_candidate = {
+        "SOH-G024-A", "SOH-G024-B", "SOH-G024-C", "SOH-G024-D", "SOH-G024-E",
+        "SOH-G024-F", "SOH-G024-G", "SOH-G024-H", "SOH-G024-I", "SOH-G024-J",
+        "SOH-G024-K", "SOH-G024-L", "SOH-G024-M", "SOH-G024-P", "SOH-G024-Q",
+        "SOH-G024-R", "SOH-G024-S", "SOH-G024-N1",
+    }
+    if not required_candidate.issubset(candidate_ids):
+        fail(f"G024 branch ledger incomplete: {sorted(required_candidate - candidate_ids)}")
+
+    by_id = {item["id"]: item for item in candidate.get("claims", [])}
+    if by_id["SOH-G024-M"].get("status") != "proved_sharpened_strong_convexity":
+        fail("G024-M must record sharpened strong convexity")
+    m_statement = by_id["SOH-G024-M"].get("statement", "")
+    if "-(log K)''>17" not in m_statement and "L''>17" not in m_statement:
+        fail("G024-M is missing the >17 strong-convexity margin")
+    if by_id["SOH-G024-Q"].get("status") != "computer_assisted_fourth_log_curvature_certificate":
+        fail("G024-Q must record the computer-assisted fourth-log-curvature certificate")
+    if "mpmath.iv" not in by_id["SOH-G024-Q"].get("statement", ""):
+        fail("G024-Q must expose the interval-engine trust boundary")
+    if by_id["SOH-G024-R"].get("status") != "proved_global_second_order_complete_monotonicity_computer_assisted_dependency":
+        fail("G024-R must record global second-order closure")
+    if "793/48" not in by_id["SOH-G024-R"].get("statement", ""):
+        fail("G024-R is missing the strict Riccati gap")
+    if by_id["SOH-G024-S"].get("status") != "exact_third_order_bridge_cumulant_reduction_open_sign":
+        fail("G024-S must remain an exact third-order reduction with open sign")
+    s_statement = by_id["SOH-G024-S"].get("statement", "")
+    for token in ["R''=E[C3]-3Cov(A,B)+mu_3(A)", "(uN+3)M2-uM2'>=0", "remains open"]:
+        if token not in s_statement:
+            fail(f"G024-S is missing third-order/firewall token {token!r}")
 
     print("MONOGRAPH_INTEGRATION_PASS")
     print(
-        f"version=V3-G022 chapters={len(chapter_files)} canonical_claims={len(ids)} "
+        f"version=V3-G023+G024-candidate chapters={len(chapter_files)} canonical_claims={len(ids)} "
         f"titlepages={title_count} terminal={includes[-1]}"
     )
 

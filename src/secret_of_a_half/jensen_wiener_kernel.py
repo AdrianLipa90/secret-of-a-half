@@ -1,0 +1,345 @@
+"""SOH-G024 Jensen--Wiener correlation-kernel utilities.
+
+Exact identities are separated from numerical regression helpers. Nothing in
+this module promotes RH, SOH-G003, PF3, or PF-infinity.
+"""
+
+from __future__ import annotations
+
+from collections.abc import Callable
+
+import mpmath as mp
+
+from .riemann_kernel import riemann_kernel
+
+EvenKernel = Callable[[mp.mpf], mp.mpf]
+
+# Conservative SOH-G004 consequence used by the first G024 implementation.
+G004_STRONG_LOG_CONCAVITY_MARGIN = mp.mpf("10")
+G024_FIRST_ORDER_CM_UNIFORM_FLOOR = mp.mpf("9.5")
+
+# Sharpened SOH-G024 consequence extracted from the same canonical G004
+# channel decomposition: every channel has -g_n''>19 and G004 proves the
+# mixture slope variance is <2, hence L=-log K satisfies L''>17 globally.
+G024_SHARPENED_STRONG_CONVEXITY_MARGIN = mp.mpf("17")
+G024_SHARPENED_FIRST_ORDER_CM_UNIFORM_FLOOR = mp.mpf("16.5")
+
+
+def full_xi_kernel(t: float | mp.mpf, *, n_terms: int = 8) -> mp.mpf:
+    r"""Return the even full-line kernel whose Fourier transform is Xi."""
+
+    return mp.mpf("0.5") * riemann_kernel(abs(mp.mpf(t)), n_terms=n_terms)
+
+
+def csordas_correlation_from_kernel(
+    u: float | mp.mpf,
+    *,
+    kernel: EvenKernel,
+    center_cutoff: float | mp.mpf = 4,
+) -> mp.mpf:
+    r"""Numerically evaluate ``C(u)=int r^2 K(u+r)K(u-r)dr``.
+
+    The finite cutoff is a regression control, not part of the analytic
+    definition.
+    """
+
+    u = mp.mpf(u)
+    cutoff = mp.mpf(center_cutoff)
+    if cutoff <= 0:
+        raise ValueError("center_cutoff must be positive")
+    return 2 * mp.quad(
+        lambda r: r * r * kernel(u + r) * kernel(u - r),
+        [0, cutoff],
+    )
+
+
+def csordas_correlation(
+    u: float | mp.mpf,
+    *,
+    n_terms: int = 8,
+    center_cutoff: float | mp.mpf = 4,
+) -> mp.mpf:
+    """Riemann-kernel specialization of :func:`csordas_correlation_from_kernel`."""
+
+    return csordas_correlation_from_kernel(
+        u,
+        kernel=lambda t: full_xi_kernel(t, n_terms=n_terms),
+        center_cutoff=center_cutoff,
+    )
+
+
+def dimitrov_xu_tilted_from_kernel(
+    u: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    kernel: EvenKernel,
+    center_cutoff: float | mp.mpf = 4,
+) -> mp.mpf:
+    r"""Return ``D_y(u)=cosh(2yu)C(u)`` for a supplied even kernel."""
+
+    u = mp.mpf(u)
+    y = mp.mpf(y)
+    return mp.cosh(2 * y * u) * csordas_correlation_from_kernel(
+        u,
+        kernel=kernel,
+        center_cutoff=center_cutoff,
+    )
+
+
+def dimitrov_xu_tilted(
+    u: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    n_terms: int = 8,
+    center_cutoff: float | mp.mpf = 4,
+) -> mp.mpf:
+    """Riemann-kernel specialization of :func:`dimitrov_xu_tilted_from_kernel`."""
+
+    return dimitrov_xu_tilted_from_kernel(
+        u,
+        y,
+        kernel=lambda t: full_xi_kernel(t, n_terms=n_terms),
+        center_cutoff=center_cutoff,
+    )
+
+
+def radial_square_profile(
+    q: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    n_terms: int = 8,
+    center_cutoff: float | mp.mpf = 4,
+) -> mp.mpf:
+    r"""Return ``H_y(q)=D_y(sqrt(q))`` for ``q>=0``."""
+
+    q = mp.mpf(q)
+    if q < 0:
+        raise ValueError("q must be non-negative")
+    return dimitrov_xu_tilted(
+        mp.sqrt(q),
+        y,
+        n_terms=n_terms,
+        center_cutoff=center_cutoff,
+    )
+
+
+def first_order_cm_log_slope_lower_bound(
+    q: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    strong_log_concavity_margin: float | mp.mpf = G004_STRONG_LOG_CONCAVITY_MARGIN,
+) -> mp.mpf:
+    r"""Return the strong-convexity lower bound for ``-H_y'/H_y``."""
+
+    q = mp.mpf(q)
+    y_abs = abs(mp.mpf(y))
+    margin = mp.mpf(strong_log_concavity_margin)
+    if q < 0:
+        raise ValueError("q must be non-negative")
+    if not (0 <= y_abs < mp.mpf("0.5")):
+        raise ValueError("require |y| < 1/2")
+    if margin <= 0:
+        raise ValueError("strong_log_concavity_margin must be positive")
+    if q == 0:
+        return margin - 2 * y_abs * y_abs
+    u = mp.sqrt(q)
+    return margin - y_abs * mp.tanh(2 * y_abs * u) / u
+
+
+def bridge_even_moment_upper_bound(
+    order: int,
+    *,
+    strong_log_concavity_margin: float | mp.mpf = G004_STRONG_LOG_CONCAVITY_MARGIN,
+) -> mp.mpf:
+    r"""Return the analytic upper bound for ``E_mu[r^(2*order)]``.
+
+    Under ``L'' >= m`` the bridge score identity and strong monotonicity give
+
+        E[r^(2j+2)] <= (2j+3)/(2m) E[r^(2j)],
+
+    hence ``E[r^(2n)] <= (2n+1)!!/(2m)^n``. Strict G024 curvature margins
+    make the positive-order inequalities strict for the actual Riemann bridge.
+    """
+
+    if not isinstance(order, int) or order < 0:
+        raise ValueError("order must be a non-negative integer")
+    margin = mp.mpf(strong_log_concavity_margin)
+    if margin <= 0:
+        raise ValueError("strong_log_concavity_margin must be positive")
+    bound = mp.mpf("1")
+    for j in range(order):
+        bound *= mp.mpf(2 * j + 3) / (2 * margin)
+    return bound
+
+
+def bridge_square_exponential_mgf_upper_bound(
+    lam: float | mp.mpf,
+    *,
+    strong_log_concavity_margin: float | mp.mpf = G004_STRONG_LOG_CONCAVITY_MARGIN,
+) -> mp.mpf:
+    r"""Return ``E[exp(lam*r^2)] <= (1-lam/m)^(-3/2)`` for ``0<=lam<m``."""
+
+    lam = mp.mpf(lam)
+    margin = mp.mpf(strong_log_concavity_margin)
+    if margin <= 0:
+        raise ValueError("strong_log_concavity_margin must be positive")
+    if not (0 <= lam < margin):
+        raise ValueError("require 0 <= lam < strong_log_concavity_margin")
+    return mp.power(1 - lam / margin, mp.mpf("-1.5"))
+
+
+def second_order_cm_normalized_margin_from_bridge(
+    u: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    mean_a: float | mp.mpf,
+    mean_b: float | mp.mpf,
+    var_a: float | mp.mpf,
+) -> mp.mpf:
+    r"""Return the exact normalized second-order CM bridge margin.
+
+    With ``R=E[A]``, ``R'=E[B]-Var(A)``, ``a=|y|``,
+    ``T=2a*tanh(2au)``, and ``N=R-T``, this returns
+
+        4u^3 H_y''(u^2)/H_y(u^2)
+        = N + u[N^2 + Var(A) - E[B] + 4a^2 sech^2(2au)].
+    """
+
+    u = mp.mpf(u)
+    a = abs(mp.mpf(y))
+    mean_a = mp.mpf(mean_a)
+    mean_b = mp.mpf(mean_b)
+    var_a = mp.mpf(var_a)
+    if u <= 0:
+        raise ValueError("require u>0")
+    if not (0 <= a < mp.mpf("0.5")):
+        raise ValueError("require |y| < 1/2")
+    if var_a < 0:
+        raise ValueError("var_a must be non-negative")
+    tanh_term = mp.tanh(2 * a * u)
+    sech_sq = 1 / mp.cosh(2 * a * u) ** 2
+    tilt = 2 * a * tanh_term
+    n_value = mean_a - tilt
+    return n_value + u * (
+        n_value * n_value + var_a - mean_b + 4 * a * a * sech_sq
+    )
+
+
+def third_order_cm_normalized_margin_from_bridge(
+    u: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    mean_a: float | mp.mpf,
+    mean_b: float | mp.mpf,
+    var_a: float | mp.mpf,
+    mean_c: float | mp.mpf,
+    cov_ab: float | mp.mpf,
+    third_central_a: float | mp.mpf,
+) -> mp.mpf:
+    r"""Return the exact normalized third-order CM bridge margin.
+
+    Under the normalized bridge measure let
+
+    ``A=L'(u+r)+L'(u-r)``, ``B=L''(u+r)+L''(u-r)``, and
+    ``C3=L'''(u+r)+L'''(u-r)``. Then
+
+        R  = E[A],
+        R' = E[B]-Var(A),
+        R''= E[C3]-3 Cov(A,B)+mu_3(A).
+
+    With ``a=|y|``, ``T=2a*tanh(2au)``, ``N=R-T`` and the corresponding
+    derivatives ``N'`` and ``N''``, this returns
+
+        8u^5 (-H_y'''(u^2)/H_y(u^2))
+        = u^2 N^3 - 3u^2 N N' + u^2 N''
+          + 3u N^2 - 3u N' + 3N.
+
+    Equivalently, if ``M2=N+u(N^2-N')`` is the normalized second-order
+    margin, the same quantity is ``(uN+3)M2-uM2'``.  Positivity of this
+    helper is the third complete-monotonicity condition; no global sign is
+    asserted by the helper itself.
+    """
+
+    u = mp.mpf(u)
+    a = abs(mp.mpf(y))
+    mean_a = mp.mpf(mean_a)
+    mean_b = mp.mpf(mean_b)
+    var_a = mp.mpf(var_a)
+    mean_c = mp.mpf(mean_c)
+    cov_ab = mp.mpf(cov_ab)
+    third_central_a = mp.mpf(third_central_a)
+    if u <= 0:
+        raise ValueError("require u>0")
+    if not (0 <= a < mp.mpf("0.5")):
+        raise ValueError("require |y| < 1/2")
+    if var_a < 0:
+        raise ValueError("var_a must be non-negative")
+
+    x = 2 * a * u
+    tanh_x = mp.tanh(x)
+    sech_sq = 1 / mp.cosh(x) ** 2
+    tilt = 2 * a * tanh_x
+    tilt_prime = 4 * a * a * sech_sq
+    tilt_second = -16 * a**3 * sech_sq * tanh_x
+
+    r_prime = mean_b - var_a
+    r_second = mean_c - 3 * cov_ab + third_central_a
+    n_value = mean_a - tilt
+    n_prime = r_prime - tilt_prime
+    n_second = r_second - tilt_second
+
+    return (
+        u**2 * n_value**3
+        - 3 * u**2 * n_value * n_prime
+        + u**2 * n_second
+        + 3 * u * n_value**2
+        - 3 * u * n_prime
+        + 3 * n_value
+    )
+
+
+def internal_tilt_jensen_kernel_from_kernel(
+    u: float | mp.mpf,
+    y: float | mp.mpf,
+    *,
+    kernel: EvenKernel,
+    center_cutoff: float | mp.mpf = 4,
+) -> mp.mpf:
+    r"""Numerically evaluate the distinct internal-tilt Jensen kernel."""
+
+    u = mp.mpf(u)
+    y = mp.mpf(y)
+    cutoff = mp.mpf(center_cutoff)
+    if cutoff <= 0:
+        raise ValueError("center_cutoff must be positive")
+    return 2 * mp.quad(
+        lambda r: r * r * mp.cosh(2 * y * r) * kernel(u + r) * kernel(u - r),
+        [0, cutoff],
+    )
+
+
+def signed_five_point_derivatives(
+    func: Callable[[mp.mpf], mp.mpf],
+    q: float | mp.mpf,
+    *,
+    h: float | mp.mpf = mp.mpf("0.002"),
+) -> dict[int, mp.mpf]:
+    r"""Return finite-difference diagnostics for ``(-1)^m f^(m)(q)``, m=1..4."""
+
+    q = mp.mpf(q)
+    h = mp.mpf(h)
+    if h <= 0 or q <= 2 * h:
+        raise ValueError("require h>0 and q>2h")
+
+    fm2 = func(q - 2 * h)
+    fm1 = func(q - h)
+    f0 = func(q)
+    fp1 = func(q + h)
+    fp2 = func(q + 2 * h)
+
+    d1 = (fm2 - 8 * fm1 + 8 * fp1 - fp2) / (12 * h)
+    d2 = (-fp2 + 16 * fp1 - 30 * f0 + 16 * fm1 - fm2) / (12 * h**2)
+    d3 = (-fm2 + 2 * fm1 - 2 * fp1 + fp2) / (2 * h**3)
+    d4 = (fm2 - 4 * fm1 + 6 * f0 - 4 * fp1 + fp2) / h**4
+
+    return {1: -d1, 2: d2, 3: -d3, 4: d4}
