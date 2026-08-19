@@ -4,7 +4,8 @@
 This script does not attempt to decide mathematical truth. It protects the
 repository-level semantic invariants through canonical SOH-G023 and checks that
 SOH-G024 remains an explicitly non-canonical candidate with a proved first-order
-complete-monotonicity result but open higher-order/RH frontiers.
+complete-monotonicity result, an exact second-order reduction, and open
+second-order/higher-order/RH frontiers.
 """
 from __future__ import annotations
 
@@ -18,6 +19,7 @@ LEDGER = MONOGRAPH / "appendices" / "D_claim_ledger.tex"
 FINAL = MONOGRAPH / "chapters" / "46_current_canon_and_open_frontier.tex"
 TITLE = MONOGRAPH / "frontmatter" / "title.tex"
 G024 = MONOGRAPH / "chapters" / "50_jensen_wiener_kernel_frontier.tex"
+G024_SECOND = MONOGRAPH / "chapters" / "51_g024_second_order_bridge_reduction.tex"
 
 
 def tex_files() -> list[Path]:
@@ -70,6 +72,7 @@ def main() -> int:
         r"\include{chapters/48_pf3_one_step_curvature_barrier}",
         r"\include{chapters/49_reciprocal_deficit_pf3_normal_form}",
         r"\include{chapters/50_jensen_wiener_kernel_frontier}",
+        r"\include{chapters/51_g024_second_order_bridge_reduction}",
         "Version 0.9 Integrated Canon V3",
     ]
     for token in required_main_tokens:
@@ -141,11 +144,27 @@ def main() -> int:
         "f'(x+iy)^2-f(x+iy)f''(x+iy)",
     ]:
         if token not in g024_text:
-            fail(f"G024 candidate chapter is missing theorem/firewall token {token!r}", errors)
+            fail(f"G024 candidate Chapter 50 is missing theorem/firewall token {token!r}", errors)
     if "D_y(u)=\\cosh(2yu)C(u)" not in g024_text:
         fail("G024 external Dimitrov-Xu tilt is not recorded", errors)
     if "J_y(u)" not in g024_text or "D_0=J_0=C" not in g024_text:
         fail("G024 external/internal tilt distinction is incomplete", errors)
+
+    second_text = G024_SECOND.read_text(encoding="utf-8")
+    for token in [
+        "d\\mu_u",
+        "A_u(r)",
+        "B_u(r)",
+        "R'(u)",
+        "\\operatorname{Var}_{\\mu_u}(A_u)",
+        "N_y(u)>19u",
+        "4u^3H_y''",
+        "uD_y''(u)-D_y'(u)",
+        "second-order sign remains OPEN",
+        "RH remain OPEN",
+    ]:
+        if token not in second_text:
+            fail(f"G024 candidate Chapter 51 is missing bridge/firewall token {token!r}", errors)
 
     ch3 = (MONOGRAPH / "chapters" / "03_symmetry_and_the_half_axis.tex").read_text(encoding="utf-8")
     if "conjugate-affine involution" not in ch3 or "not anti-linear" not in ch3:
@@ -159,7 +178,7 @@ def main() -> int:
 
     print("SEMANTIC AUDIT: PASS")
     print(f"Checked {len(files)} LaTeX source files.")
-    print("Protected invariants: affine involution terminology, interpretation labels, G001-G023 canonical ledger, G024 first-order theorem with open higher orders, and RH/PF3/PF-infinity firewalls.")
+    print("Protected invariants: affine involution terminology, interpretation labels, G001-G023 canonical ledger, G024 proved first order, exact second-order bridge reduction with open sign, and RH/PF3/PF-infinity firewalls.")
     return 0
 
 
