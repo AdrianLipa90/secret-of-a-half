@@ -42,17 +42,27 @@
       "statement": "Integrating the SOH-G024-F logarithmic-slope bound gives H_y(q)<H_y(0)exp(-19q/2) for q>0, equivalently D_y(u)<D_y(0)exp(-19u^2/2) for u!=0, uniformly for every 0<|y|<1/2."
     },
     {
+      "id": "SOH-G024-H",
+      "status": "exact_external_wronskian_identity",
+      "statement": "For f(z)=Fourier[K](z), Fourier[nu_2](z)=2(f'(z)^2-f(z)f''(z)), and the external tilted family satisfies 4 Fourier[D_y](2x)=Re(f'(x+iy)^2-f(x+iy)f''(x+iy)). This is distinct from the internal J_y conjugate-modulus identity."
+    },
+    {
+      "id": "SOH-G024-I",
+      "status": "exact_second_order_reduction_open_inequality",
+      "statement": "With S_y(q)=-d/dq log H_y(q), one has H_y''/H_y=S_y^2-S_y'. Therefore the second complete-monotonicity inequality is exactly equivalent to S_y'<=S_y^2. SOH-G024 proves S_y>19/2 but does not yet prove the Riccati inequality."
+    },
+    {
       "id": "SOH-G024-N1",
       "status": "finite_numerical_diagnostic",
       "statement": "Finite five-point diagnostics through derivative order four on the declared Riemann-kernel grid are recorded only as FINITE_DIAGNOSTIC_NOT_PROOF for derivative orders two through four; first-order monotonicity is independently proved analytically."
     }
   ],
   "open_obligations": [
+    "prove the second-order Riccati inequality S_y'<=S_y^2 globally",
     "prove complete monotonicity of H_y for derivative orders m>=2",
-    "in particular prove H_y''>=0 globally",
     "cover all q>=0 for all higher orders",
     "cover every 0<|y|<1/2 for all higher orders",
-    "or independently prove strict Fourier positivity of D_y",
+    "or independently prove strict positivity of Re(f'^2-f f'') on the full external strip",
     "SOH-G003 real-rootedness remains open",
     "SOH-C005 full admissible Weil positivity remains open",
     "PF3 remains open",
