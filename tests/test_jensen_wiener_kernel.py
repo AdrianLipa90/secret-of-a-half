@@ -30,7 +30,7 @@ def test_gaussian_csordas_correlation_closed_form() -> None:
     observed = csordas_correlation_from_kernel(
         u,
         kernel=_gaussian,
-        center_cutoff=7,
+        center_cutoff=8,
     )
     expected = mp.sqrt(mp.pi) * mp.exp(-u * u) / 2
     assert abs(observed - expected) < mp.mpf("1e-20")
@@ -44,7 +44,7 @@ def test_gaussian_dimitrov_xu_external_tilt_closed_form() -> None:
         u,
         y,
         kernel=_gaussian,
-        center_cutoff=7,
+        center_cutoff=8,
     )
     expected = (
         mp.cosh(2 * y * u)
@@ -63,7 +63,7 @@ def test_gaussian_internal_tilt_closed_form_and_not_external_tilt() -> None:
         u,
         y,
         kernel=_gaussian,
-        center_cutoff=7,
+        center_cutoff=8,
     )
     expected_internal = (
         mp.sqrt(mp.pi)
@@ -74,7 +74,7 @@ def test_gaussian_internal_tilt_closed_form_and_not_external_tilt() -> None:
         u,
         y,
         kernel=_gaussian,
-        center_cutoff=7,
+        center_cutoff=8,
     )
     assert abs(internal - expected_internal) < mp.mpf("1e-20")
     assert abs(internal - external) > mp.mpf("1e-6")
