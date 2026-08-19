@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail closed when the active monograph omits chapters or reintroduces claim collisions."""
+"""Fail closed when the active monograph omits chapters or collapses proof states."""
 from __future__ import annotations
 
 import json
@@ -10,6 +10,8 @@ ROOT = Path(__file__).resolve().parents[1]
 MONO = ROOT / "monograph"
 MAIN = MONO / "main.tex"
 CHAPTERS = MONO / "chapters"
+CANON_LEDGER = ROOT / "claims" / "claim_ledger.json"
+G024_LEDGER = ROOT / "claims" / "SOH_G024_BRANCH_CLAIM_LEDGER_V1.json"
 
 
 def fail(message: str) -> None:
@@ -33,8 +35,10 @@ def main() -> None:
     if prefixes != expected:
         fail(f"chapter numbering is not contiguous: {prefixes}")
 
-    if not includes or includes[-1] != "48_pf3_one_step_curvature_barrier":
-        fail("G022 terminal chapter must be 48_pf3_one_step_curvature_barrier")
+    if not includes or includes[-1] != "50_jensen_wiener_kernel_frontier":
+        fail("G024 candidate terminal chapter must be 50_jensen_wiener_kernel_frontier")
+    if "49_reciprocal_deficit_pf3_normal_form" not in includes:
+        fail("merged SOH-G023 Chapter 49 is not integrated")
 
     title_count = sum(
         p.read_text(encoding="utf-8").count(r"\begin{titlepage}")
@@ -55,8 +59,10 @@ def main() -> None:
         fail("stale active version marker remains in title/frontmatter")
     if "Version 0.9 Integrated Canon V3" not in frontmatter_text:
         fail("v0.9 Integrated Canon V3 marker missing from active title/frontmatter")
-    if "SOH-G022" not in frontmatter_text:
-        fail("G022 marker missing from active title/frontmatter")
+    if "SOH-G023" not in frontmatter_text:
+        fail("G023 canonical marker missing from active title/frontmatter")
+    if "G024" not in frontmatter_text or "Candidate" not in frontmatter_text:
+        fail("G024 must be identified as candidate in active title/frontmatter")
 
     collision_checks = {
         "18_zero_undefined_reciprocal_duality.tex": ("SOH-L015", "SOH-L016", "SOH-L017", "SOH-L022"),
@@ -73,7 +79,7 @@ def main() -> None:
                 if any(marker in line for marker in declaration_markers):
                     fail(f"legacy claim collision {claim_id} remains active in {filename}: {line.strip()}")
 
-    ledger = json.loads((ROOT / "claims" / "claim_ledger.json").read_text(encoding="utf-8"))
+    ledger = json.loads(CANON_LEDGER.read_text(encoding="utf-8"))
     ids = [item["id"] for item in ledger["claims"]]
     if len(ids) != len(set(ids)):
         dup = sorted({x for x in ids if ids.count(x) > 1})
@@ -81,17 +87,29 @@ def main() -> None:
     promoted = {f"SOH-L{i:03d}" for i in range(12, 33)}
     if not promoted.issubset(ids):
         fail(f"promoted SOH-L012--SOH-L032 range incomplete: {sorted(promoted - set(ids))}")
-    g_line = {f"SOH-G{i:03d}" for i in range(1, 23)}
+    g_line = {f"SOH-G{i:03d}" for i in range(1, 24)}
     if not g_line.issubset(ids):
-        fail(f"canonical SOH-G001--SOH-G022 range incomplete: {sorted(g_line - set(ids))}")
-    if ledger.get("canonical_through") != "SOH-G022":
-        fail("machine claim ledger canonical_through must equal SOH-G022")
+        fail(f"canonical SOH-G001--SOH-G023 range incomplete: {sorted(g_line - set(ids))}")
+    if "SOH-G024" in ids:
+        fail("SOH-G024 must not be promoted into the canonical ledger on this candidate branch")
+    if ledger.get("canonical_through") != "SOH-G023":
+        fail("machine claim ledger canonical_through must equal SOH-G023")
     if ledger.get("proof_of_rh") is not False:
-        fail("proof_of_rh firewall must remain false")
+        fail("canonical proof_of_rh firewall must remain false")
+
+    candidate = json.loads(G024_LEDGER.read_text(encoding="utf-8"))
+    if candidate.get("promotion_status") != "BRANCH_CANDIDATE_NOT_CANONICAL":
+        fail("G024 branch ledger must remain explicitly non-canonical")
+    if candidate.get("proof_of_rh") is not False:
+        fail("G024 proof_of_rh firewall must remain false")
+    candidate_ids = {item["id"] for item in candidate.get("claims", [])}
+    required_candidate = {"SOH-G024-A", "SOH-G024-B", "SOH-G024-C", "SOH-G024-D", "SOH-G024-E", "SOH-G024-N1"}
+    if not required_candidate.issubset(candidate_ids):
+        fail(f"G024 branch ledger incomplete: {sorted(required_candidate - candidate_ids)}")
 
     print("MONOGRAPH_INTEGRATION_PASS")
     print(
-        f"version=V3-G022 chapters={len(chapter_files)} canonical_claims={len(ids)} "
+        f"version=V3-G023+G024-candidate chapters={len(chapter_files)} canonical_claims={len(ids)} "
         f"titlepages={title_count} terminal={includes[-1]}"
     )
 
