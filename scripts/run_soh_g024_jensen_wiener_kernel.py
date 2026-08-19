@@ -1,0 +1,132 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+import mpmath as mp
+
+from secret_of_a_half.jensen_wiener_kernel import (
+    csordas_correlation_from_kernel,
+    dimitrov_xu_tilted_from_kernel,
+    internal_tilt_jensen_kernel_from_kernel,
+    radial_square_profile,
+    signed_five_point_derivatives,
+)
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "reports" / "SOH_G024_JENSEN_WIENER_KERNEL_RECEIPT_V1.json"
+
+
+def gaussian(t: mp.mpf) -> mp.mpf:
+    return mp.exp(-t * t / 2)
+
+
+def main() -> None:
+    mp.mp.dps = 40
+
+    # Closed-form regression for the exact centered correlation identity.
+    u = mp.mpf("0.31")
+    y = mp.mpf("0.23")
+    c_obs = csordas_correlation_from_kernel(u, kernel=gaussian, center_cutoff=7)
+    c_exp = mp.sqrt(mp.pi) * mp.exp(-u * u) / 2
+    if abs(c_obs - c_exp) > mp.mpf("1e-20"):
+        raise RuntimeError("Gaussian centered-correlation regression failed")
+
+    d_obs = dimitrov_xu_tilted_from_kernel(
+        u,
+        y,
+        kernel=gaussian,
+        center_cutoff=7,
+    )
+    d_exp = mp.cosh(2 * y * u) * c_exp
+    if abs(d_obs - d_exp) > mp.mpf("1e-20"):
+        raise RuntimeError("Gaussian Dimitrov-Xu external-tilt regression failed")
+
+    j_obs = internal_tilt_jensen_kernel_from_kernel(
+        u,
+        y,
+        kernel=gaussian,
+        center_cutoff=7,
+    )
+    j_exp = (
+        mp.sqrt(mp.pi)
+        * mp.exp(y * y - u * u)
+        * (mp.mpf("0.5") + y * y)
+    )
+    if abs(j_obs - j_exp) > mp.mpf("1e-20"):
+        raise RuntimeError("Gaussian internal-tilt regression failed")
+    if abs(d_obs - j_obs) <= mp.mpf("1e-6"):
+        raise RuntimeError("external and internal y-tilts were incorrectly identified")
+
+    # Finite numerical diagnostic for the actual Riemann kernel.  Passing signs
+    # here is deliberately not promoted to complete monotonicity.
+    y_grid = [mp.mpf("0"), mp.mpf("0.25"), mp.mpf("0.49")]
+    q_grid = [mp.mpf("0.1"), mp.mpf("0.2")]
+    h = mp.mpf("0.002")
+    rows: list[dict[str, object]] = []
+
+    for yy in y_grid:
+        for qq in q_grid:
+            values = signed_five_point_derivatives(
+                lambda q_value: radial_square_profile(
+                    q_value,
+                    yy,
+                    n_terms=6,
+                    center_cutoff=4,
+                ),
+                qq,
+                h=h,
+            )
+            if not all(value > 0 for value in values.values()):
+                raise RuntimeError(
+                    f"finite G024 sign diagnostic failed at y={yy}, q={qq}"
+                )
+            rows.append(
+                {
+                    "y": mp.nstr(yy, 8),
+                    "q": mp.nstr(qq, 8),
+                    "signed_derivatives": {
+                        str(order): mp.nstr(value, 30)
+                        for order, value in values.items()
+                    },
+                }
+            )
+
+    payload = {
+        "certificate": "SOH_G024_JENSEN_WIENER_KERNEL_RECEIPT_V1",
+        "status": "EXACT_REPARAMETRIZATION_PLUS_FINITE_DIAGNOSTIC_PASS",
+        "exact_checks": {
+            "gaussian_centered_correlation_closed_form": True,
+            "gaussian_external_tilt_closed_form": True,
+            "gaussian_internal_tilt_closed_form": True,
+            "external_internal_tilts_distinct_for_nonzero_y": True,
+            "dimitrov_xu_change_of_variables": "nu_2(2u)=4*C(u)",
+            "dimitrov_xu_rescaled_kernel": "Psi_y(2u)=4*cosh(2yu)*C(u)",
+        },
+        "finite_diagnostic": {
+            "classification": "FINITE_DIAGNOSTIC_NOT_PROOF",
+            "n_terms": 6,
+            "center_cutoff": "4",
+            "finite_difference_h": mp.nstr(h, 8),
+            "orders": [1, 2, 3, 4],
+            "rows": rows,
+        },
+        "proof_firewall": {
+            "complete_monotonicity_proved": False,
+            "strict_fourier_positivity_proved": False,
+            "wiener_density_proved_for_riemann_family": False,
+            "soh_g003_real_rootedness_proved": False,
+            "pf3_proved": False,
+            "pf_infinity_proved": False,
+            "rh_proved": False,
+        },
+    }
+
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    print(json.dumps(payload, indent=2, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()
