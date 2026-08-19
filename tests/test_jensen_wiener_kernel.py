@@ -5,6 +5,8 @@ import mpmath as mp
 from secret_of_a_half.jensen_wiener_kernel import (
     G004_STRONG_LOG_CONCAVITY_MARGIN,
     G024_FIRST_ORDER_CM_UNIFORM_FLOOR,
+    bridge_even_moment_upper_bound,
+    bridge_square_exponential_mgf_upper_bound,
     csordas_correlation_from_kernel,
     dimitrov_xu_tilted_from_kernel,
     first_order_cm_log_slope_lower_bound,
@@ -109,6 +111,47 @@ def test_first_order_cm_threshold_margin_one_half_is_sufficient() -> None:
                 strong_log_concavity_margin=threshold,
             )
             assert bound > 0
+
+
+def test_bridge_even_moment_hierarchy_closed_bounds() -> None:
+    mp.mp.dps = 50
+    expected = {
+        0: mp.mpf("1"),
+        1: mp.mpf("3") / 20,
+        2: mp.mpf("15") / 400,
+        3: mp.mpf("105") / 8000,
+        4: mp.mpf("945") / 160000,
+    }
+    for order, value in expected.items():
+        assert mp.almosteq(bridge_even_moment_upper_bound(order), value)
+    for order in range(4):
+        left = bridge_even_moment_upper_bound(order + 1)
+        right = (
+            mp.mpf(2 * order + 3)
+            / 20
+            * bridge_even_moment_upper_bound(order)
+        )
+        assert mp.almosteq(left, right)
+
+
+def test_bridge_square_exponential_mgf_bound_matches_binomial_envelope() -> None:
+    mp.mp.dps = 50
+    lam = mp.mpf("2.5")
+    observed = bridge_square_exponential_mgf_upper_bound(lam)
+    expected = mp.power(mp.mpf("4") / 3, mp.mpf("1.5"))
+    assert mp.almosteq(observed, expected)
+    assert observed > 1
+
+
+def test_second_order_tail_constant_comparison() -> None:
+    mp.mp.dps = 60
+    cb = 42 * mp.exp(mp.mpf("0.4")) * mp.power(mp.mpf("4") / 3, mp.mpf("1.5"))
+    assert cb < 36 * mp.e
+    u = mp.mpf("0.5")
+    n_lower = 12 * (mp.exp(2 * u) - 1) - 5 * u
+    assert n_lower > 6 * mp.exp(2 * u)
+    b_upper = cb * mp.exp(2 * u)
+    assert (6 * mp.exp(2 * u)) ** 2 > b_upper
 
 
 def test_second_order_bridge_reduction_matches_gaussian_closed_form() -> None:
