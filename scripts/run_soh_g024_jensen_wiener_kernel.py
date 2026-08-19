@@ -14,6 +14,7 @@ from secret_of_a_half.jensen_wiener_kernel import (
     first_order_cm_log_slope_lower_bound,
     internal_tilt_jensen_kernel_from_kernel,
     radial_square_profile,
+    second_order_cm_normalized_margin_from_bridge,
     signed_five_point_derivatives,
 )
 
@@ -26,7 +27,7 @@ def gaussian(t: mp.mpf) -> mp.mpf:
 
 
 def main() -> None:
-    mp.mp.dps = 40
+    mp.mp.dps = 50
 
     # Closed-form regression for the exact centered correlation identities.
     # The numerical integral is deliberately evaluated farther into the Gaussian
@@ -87,6 +88,26 @@ def main() -> None:
                 }
             )
 
+    # Exact second-order reduction regression on the Gaussian fixture. For
+    # K=exp(-t^2/2), L=t^2/2, hence A=2u, B=2 and Var(A)=0 exactly.
+    q_gauss = u * u
+    bridge_second_margin = second_order_cm_normalized_margin_from_bridge(
+        u,
+        y,
+        mean_a=2 * u,
+        mean_b=2,
+        var_a=0,
+    )
+    h_gauss = lambda q: (
+        mp.sqrt(mp.pi)
+        / 2
+        * mp.exp(-q)
+        * mp.cosh(2 * y * mp.sqrt(q))
+    )
+    direct_second_margin = 4 * u**3 * mp.diff(h_gauss, q_gauss, 2) / h_gauss(q_gauss)
+    if abs(bridge_second_margin - direct_second_margin) > mp.mpf("1e-35"):
+        raise RuntimeError("Gaussian second-order bridge reduction regression failed")
+
     # Finite numerical diagnostic for the actual Riemann kernel. Passing signs
     # here is deliberately not promoted to complete monotonicity beyond the
     # independently proved first-order inequality above.
@@ -124,7 +145,7 @@ def main() -> None:
 
     payload = {
         "certificate": "SOH_G024_JENSEN_WIENER_KERNEL_RECEIPT_V1",
-        "status": "EXACT_FIRST_ORDER_CM_PLUS_FINITE_HIGHER_ORDER_DIAGNOSTIC_PASS",
+        "status": "EXACT_FIRST_ORDER_CM_AND_SECOND_ORDER_REDUCTION_PLUS_FINITE_HIGHER_ORDER_DIAGNOSTIC_PASS",
         "exact_checks": {
             "gaussian_centered_correlation_closed_form": True,
             "gaussian_external_tilt_closed_form": True,
@@ -142,6 +163,8 @@ def main() -> None:
             "first_order_complete_monotonicity_proved": True,
             "uniform_first_order_log_slope_lower_floor": "19/2",
             "analytic_margin_regression_rows": exact_margin_rows,
+            "second_order_bridge_identity": "4u^3 H_y''/H_y = N + u[N^2 + Var(A) - E(B) + 4y^2 sech^2(2|y|u)]",
+            "gaussian_second_order_bridge_regression": True,
         },
         "finite_diagnostic": {
             "classification": "FINITE_DIAGNOSTIC_NOT_PROOF_FOR_ORDERS_2_TO_4",
@@ -153,6 +176,8 @@ def main() -> None:
         },
         "proof_firewall": {
             "first_order_complete_monotonicity_proved": True,
+            "second_order_reduced_exactly": True,
+            "second_order_complete_monotonicity_proved": False,
             "higher_order_complete_monotonicity_proved": False,
             "complete_monotonicity_all_orders_proved": False,
             "strict_fourier_positivity_proved": False,
