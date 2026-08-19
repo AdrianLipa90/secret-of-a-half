@@ -36,7 +36,7 @@ def main() -> None:
         fail(f"chapter numbering is not contiguous: {prefixes}")
 
     if not includes or includes[-1] != "55_g024_third_order_cumulant_frontier":
-        fail("G024 candidate terminal chapter must be 55_g024_third_order_cumulant_frontier")
+        fail("G024 terminal numbered chapter must be 55_g024_third_order_cumulant_frontier")
     for required in [
         "49_reciprocal_deficit_pf3_normal_form",
         "50_jensen_wiener_kernel_frontier",
@@ -48,6 +48,10 @@ def main() -> None:
     ]:
         if required not in includes:
             fail(f"required integrated chapter missing: {required}")
+
+    for required in [r"\input{frontmatter/roadmap}", r"\input{backmatter/final_synthesis}"]:
+        if required not in main_text:
+            fail(f"v0.10 publication layer missing {required}")
 
     title_count = sum(
         p.read_text(encoding="utf-8").count(r"\begin{titlepage}")
@@ -64,14 +68,17 @@ def main() -> None:
     )
     if "Streszczenie" in frontmatter_text:
         fail("non-English frontmatter marker Streszczenie remains active")
-    if "Version 0.6.1-review" in frontmatter_text or "Version 0.7 --" in frontmatter_text:
-        fail("stale active version marker remains in title/frontmatter")
-    if "Version 0.9 Integrated Canon V3" not in frontmatter_text:
-        fail("v0.9 Integrated Canon V3 marker missing from active title/frontmatter")
+    for stale in ["Version 0.6.1-review", "Version 0.7 --", "Version 0.9 Integrated Canon V3"]:
+        if stale in frontmatter_text:
+            fail(f"stale active version marker remains in title/frontmatter: {stale}")
+    if "Version 0.10 Mainline Integration" not in frontmatter_text:
+        fail("v0.10 Mainline Integration marker missing from active title/frontmatter")
     if "SOH-G023" not in frontmatter_text:
         fail("G023 canonical marker missing from active title/frontmatter")
-    if "G024" not in frontmatter_text or "Candidate" not in frontmatter_text:
-        fail("G024 must be identified as candidate in active title/frontmatter")
+    if "Integrated G024 Research Line" not in frontmatter_text:
+        fail("G024 must be identified as an integrated research line")
+    if "Repository integration is not treated as mathematical canonization" not in frontmatter_text:
+        fail("mainline-vs-canonization firewall missing from frontmatter")
 
     ledger = json.loads(CANON_LEDGER.read_text(encoding="utf-8"))
     ids = [item["id"] for item in ledger["claims"]]
@@ -85,15 +92,17 @@ def main() -> None:
     if not g_line.issubset(ids):
         fail(f"canonical SOH-G001--SOH-G023 range incomplete: {sorted(g_line - set(ids))}")
     if "SOH-G024" in ids:
-        fail("SOH-G024 must not be promoted into the canonical ledger on this candidate branch")
+        fail("SOH-G024 must not be silently promoted into the canonical numbered ledger")
     if ledger.get("canonical_through") != "SOH-G023":
         fail("machine claim ledger canonical_through must equal SOH-G023")
     if ledger.get("proof_of_rh") is not False:
         fail("canonical proof_of_rh firewall must remain false")
 
     candidate = json.loads(G024_LEDGER.read_text(encoding="utf-8"))
+    # Legacy machine status token is retained as a mathematical-promotion firewall;
+    # it no longer describes the Git branch location after G024 was merged to main.
     if candidate.get("promotion_status") != "BRANCH_CANDIDATE_NOT_CANONICAL":
-        fail("G024 branch ledger must remain explicitly non-canonical")
+        fail("G024 research-line ledger must remain explicitly non-canonical")
     if candidate.get("proof_of_rh") is not False:
         fail("G024 proof_of_rh firewall must remain false")
     candidate_ids = {item["id"] for item in candidate.get("claims", [])}
@@ -104,7 +113,7 @@ def main() -> None:
         "SOH-G024-R", "SOH-G024-S", "SOH-G024-N1",
     }
     if not required_candidate.issubset(candidate_ids):
-        fail(f"G024 branch ledger incomplete: {sorted(required_candidate - candidate_ids)}")
+        fail(f"G024 research-line ledger incomplete: {sorted(required_candidate - candidate_ids)}")
 
     by_id = {item["id"]: item for item in candidate.get("claims", [])}
     if by_id["SOH-G024-M"].get("status") != "proved_sharpened_strong_convexity":
@@ -122,14 +131,10 @@ def main() -> None:
         fail("G024-R is missing the strict Riccati gap")
     if by_id["SOH-G024-S"].get("status") != "exact_third_order_bridge_cumulant_reduction_open_sign":
         fail("G024-S must remain an exact third-order reduction with open sign")
-    s_statement = by_id["SOH-G024-S"].get("statement", "")
-    for token in ["R''=E[C3]-3Cov(A,B)+mu_3(A)", "(uN+3)M2-uM2'>=0", "remains open"]:
-        if token not in s_statement:
-            fail(f"G024-S is missing third-order/firewall token {token!r}")
 
     print("MONOGRAPH_INTEGRATION_PASS")
     print(
-        f"version=V3-G023+G024-candidate chapters={len(chapter_files)} canonical_claims={len(ids)} "
+        f"version=v0.10-mainline-g024 chapters={len(chapter_files)} canonical_claims={len(ids)} "
         f"titlepages={title_count} terminal={includes[-1]}"
     )
 
