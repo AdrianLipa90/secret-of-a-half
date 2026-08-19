@@ -87,14 +87,21 @@
       "statement": "Using SOH-G024-Q in the exact bridge trapezoid identity, the compact core satisfies S_y'(q)<12275/48 while SOH-G024-M gives S_y(q)^2>1089/4, leaving the strict Riccati gap 793/48. Together with SOH-G024-P this proves H_y''(q)>0 for every q>=0 and every 0<|y|<1/2. The compact-core part depends on the computer-assisted interval certificate Q; derivative orders m>=3 remain open."
     },
     {
+      "id": "SOH-G024-S",
+      "status": "exact_third_order_bridge_cumulant_reduction_open_sign",
+      "statement": "Let F_m=(-1)^m H_y^(m)/H_y. Then F_(m+1)=S_y F_m-F_m'. For m=3, F_3=S_y^3-3S_y S_y'+S_y''. Under the bridge measure define C3=L'''(u+r)+L'''(u-r). Exact differentiation gives R''=E[C3]-3Cov(A,B)+mu_3(A). With N=R-T, 8u^5(-H_y'''/H_y)=u^2N^3-3u^2NN'+u^2N''+3uN^2-3uN'+3N. Equivalently, for M2=N+u(N^2-N')>0, the third-order target is (uN+3)M2-uM2'>=0, or u M2'/M2<=uN+3. The global third-order sign remains open."
+    },
+    {
       "id": "SOH-G024-N1",
       "status": "finite_numerical_diagnostic",
       "statement": "Finite five-point diagnostics through derivative order four are FINITE_DIAGNOSTIC_NOT_PROOF wherever no theorem applies. First and second complete-monotonicity inequalities are globally proved on G024, with the second-order compact-core closure carrying the explicit computer-assisted dependency SOH-G024-Q. Orders m>=3 remain open."
     }
   ],
   "open_obligations": [
-    "prove complete monotonicity of H_y for derivative orders m>=3",
-    "cover every q>=0 and every 0<|y|<1/2 for all derivative orders m>=3",
+    "prove the G024-S third-order growth inequality (uN+3)M2-uM2'>=0 globally",
+    "equivalently prove -H_y'''(q)>=0 for every q>=0 and every 0<|y|<1/2",
+    "control the exact third-order bridge combination E[C3]-3Cov(A,B)+mu_3(A)",
+    "prove complete monotonicity of H_y for all derivative orders m>=3",
     "or independently prove strict positivity of Re(f'^2-f f'') on the full external strip",
     "independently formalize or reproduce the SOH-G024-Q interval certificate in a stronger proof-assistant or independently implemented interval environment if desired",
     "SOH-G003 real-rootedness remains open",
