@@ -1,7 +1,7 @@
 \chapter{Jensen--Wiener Correlation Kernel and the Direct RH Frontier}
 \label{chap:g024-jensen-wiener}
 
-\status{Exact reparametrization and exact sufficient route; global complete monotonicity for the Riemann kernel remains open. The Riemann Hypothesis remains open.}
+\status{Exact reparametrization, exact external/internal Wronskian identities, and globally proved first-order complete monotonicity. Higher complete-monotonicity orders remain open. The Riemann Hypothesis remains open.}
 
 \section{Purpose}
 
@@ -76,6 +76,42 @@ Since $D_y$ is real, even and integrable and $\widehat D_y(0)>0$, the Wiener con
 \]
 This is an exact reformulation, not a proof of the inequality.
 
+\section{External Wronskian normal form}
+
+Let
+\[
+ f(z)=\int_{\mathbb R}K(t)e^{-izt}\,dt.
+\]
+Writing $t=a+b$ and $s=b$ gives
+\[
+ \widehat\nu_2(z)
+ =\iint_{\mathbb R^2}(a-b)^2K(a)K(b)e^{-iz(a+b)}\,da\,db.
+\]
+Using
+\[
+ \int tK(t)e^{-izt}\,dt=i f'(z),
+ \qquad
+ \int t^2K(t)e^{-izt}\,dt=-f''(z),
+\]
+one obtains
+\[
+ \boxed{\widehat\nu_2(z)=2\bigl(f'(z)^2-f(z)f''(z)\bigr).}
+\]
+Multiplication by $\cosh(ty)$ averages the transforms at $x+iy$ and $x-iy$. Since $\Psi_y(2u)=4D_y(u)$,
+\[
+ \boxed{
+ 4\widehat D_y(2x)
+ =\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right).
+ }
+\]
+Thus the direct external Fourier target is equivalently
+\[
+ \boxed{
+ \Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right)>0
+ }
+\]
+for every real $x$ and every $0<|y|<1/2$.
+
 \section{Complete-monotonicity sufficient route}
 
 Define
@@ -103,7 +139,7 @@ Consequently
 \[
  \boxed{(CM)\text{ for all }0<|y|<\frac12\Longrightarrow RH.}
 \]
-The implication is exact. The premise is open.
+The implication is exact. Full complete monotonicity remains open, but its first derivative inequality is proved below.
 
 \section{The distinct internal Jensen tilt}
 
@@ -111,17 +147,13 @@ Define instead
 \[
  \boxed{J_y(u)=\int_{\mathbb R}r^2\cosh(2yr)K(u+r)K(u-r)\,dr.}
 \]
-If
-\[
- f(z)=\int_{\mathbb R}K(t)e^{-izt}\,dt,
-\]
-a direct two-variable change of variables gives
+A direct two-variable change of variables gives
 \[
  \boxed{4\widehat J_y(2x)=|f'(x+iy)|^2-\Re\!\left(f''(x+iy)\overline{f(x+iy)}\right).}
 \]
-This is the complex Jensen/Laguerre functional in correlation form.
+This is the internal complex Jensen/Laguerre functional.
 
-The two tilted families are not identified:
+The two tilted families and their Fourier forms are not identified:
 \[
  \boxed{D_y(u)=\cosh(2yu)C(u)\neq J_y(u)}
 \]
@@ -131,35 +163,114 @@ for general $y\ne0$. They coincide only at
 \]
 This distinction is part of the proof firewall.
 
-\section{Structure inherited from strict log-concavity}
+\section{Quantitative curvature already contained in SOH-G004}
 
-Assume the full even kernel $K$ is positive and strictly log-concave and put $\ell=\log K$. Differentiating correctly with respect to $u$ gives
+SOH-G004 proves uniformly for every theta channel
+\[
+ g_n''<-12
+\]
+and separately proves
+\[
+ \operatorname{Var}_p(g_n')<2.
+\]
+Its exact log-sum identity therefore yields
+\[
+ (\log\Phi)''
+ =\sum_np_ng_n''+\operatorname{Var}_p(g_n')
+ <-12+2=-10.
+\]
+Hence the full even kernel satisfies
+\[
+ \boxed{-(\log K)''>10.}
+\]
+Put $L=-\log K$. Then $L$ is even and
+\[
+ \boxed{L''>10.}
+\]
+This quantitative margin is an internal consequence of the existing canonical G004 estimates; no external numerical curvature estimate is used here.
+
+\section{SOH-G024 first-order complete-monotonicity theorem}
+
+Differentiate the centered correlation:
+\[
+ C'(u)
+ =-\int_{\mathbb R}r^2K(u+r)K(u-r)
+ \bigl[L'(u+r)+L'(u-r)\bigr]dr.
+\]
+For $u>0$, evenness gives $L'(u-r)=-L'(r-u)$. Since $L''>10$, the derivative $L'$ is strongly increasing and therefore
+\[
+ L'(u+r)-L'(r-u)>10\bigl[(u+r)-(r-u)\bigr]=20u.
+\]
+Consequently
+\[
+ \boxed{C'(u)<-20uC(u),\qquad u>0,}
+\]
+or equivalently
+\[
+ \boxed{-\frac{C'(u)}{C(u)}>20u.}
+\]
+
+Now set $u=\sqrt q$. From $D_y(u)=\cosh(2yu)C(u)$,
+\[
+ -\frac{H_y'(q)}{H_y(q)}
+ =-\frac1{2u}\frac{D_y'(u)}{D_y(u)}
+ >10-\frac{|y|}{u}\tanh(2|y|u).
+\]
+Since $\tanh v<v$ for $v>0$,
 \[
  \boxed{
- \frac{\partial}{\partial u}[K(u+r)K(u-r)]
- =K(u+r)K(u-r)[\ell'(u+r)+\ell'(u-r)].
+ -\frac{H_y'(q)}{H_y(q)}
+ >10-2y^2
+ >\frac{19}{2}
  }
 \]
-For $u>0$, evenness in $r$ allows restriction to $r\ge0$.
+for every $q>0$ and $0<|y|<1/2$. The continuous limit at $q=0$ obeys the corresponding endpoint inequality. Therefore
+\[
+ \boxed{H_y'(q)<0}
+\]
+globally throughout the full Dimitrov--Xu strip.
 
-If $0\le r\le u$, both arguments are non-negative and the sum of logarithmic derivatives is strictly negative away from a null boundary case. If $r>u$, evenness gives $\ell'(u-r)=-\ell'(r-u)$, while strict concavity implies
+\begin{theorem}[SOH-G024 first-order complete-monotonicity theorem]
+For the actual Riemann kernel and every $0<|y|<1/2$, the radial-square external profile $H_y$ satisfies the first non-trivial complete-monotonicity inequality globally. More precisely,
 \[
- \ell'(u+r)<\ell'(r-u)
+ -\frac{H_y'(q)}{H_y(q)}>\frac{19}{2}
+ \qquad(q>0).
 \]
-because $u+r>r-u\ge0$. Hence the derivative of the product is negative for $u>0$ almost everywhere in $r$, and therefore
-\[
- \boxed{C'(u)<0\qquad(u>0).}
-\]
-This proves positivity, evenness and strict decrease of $C$ on the positive half-line. It does not prove positive definiteness or complete monotonicity of $H_y$.
+Higher complete-monotonicity orders are not asserted.
+\end{theorem}
 
-For the external tilt,
+\section{Gaussian domination}
+
+Integrating the logarithmic-slope estimate gives
 \[
- D_y'(u)=\cosh(2yu)C'(u)+2y\sinh(2yu)C(u),
+ \boxed{H_y(q)<H_y(0)e^{-19q/2}\qquad(q>0).}
 \]
-so a quantitative decay bound on $C$ is already needed at first order when $y\ne0$.
+Equivalently,
+\[
+ \boxed{D_y(u)<D_y(0)e^{-19u^2/2}\qquad(u\ne0).}
+\]
+Thus every external Dimitrov--Xu tilt in the open strip has a uniform Gaussian envelope.
+
+\section{Second-order frontier}
+
+Define
+\[
+ S_y(q):=-\frac{d}{dq}\log H_y(q).
+\]
+The preceding theorem proves $S_y(q)>19/2$. Direct differentiation yields
+\[
+ \boxed{
+ \frac{H_y''(q)}{H_y(q)}=S_y(q)^2-S_y'(q).
+ }
+\]
+Therefore
+\[
+ \boxed{H_y''(q)\ge0\iff S_y'(q)\le S_y(q)^2.}
+\]
+This Riccati-type inequality is the next exact analytic target. The first-order lower bound alone does not prove it.
 
 \section{Finite diagnostic}
 
-The accompanying receipt evaluates the repository Riemann kernel on a declared finite grid in $q$ and $y$ and applies symmetric five-point finite differences through order four to $H_y(q)$. The receipt classification is explicitly \texttt{FINITE\_DIAGNOSTIC\_NOT\_PROOF}.
+The accompanying receipt evaluates the repository Riemann kernel on a declared finite grid in $q$ and $y$ and applies symmetric five-point finite differences through order four to $H_y(q)$. The first-order sign is independently proved analytically; sampled signs at orders two through four remain classified only as \texttt{FINITE\_DIAGNOSTIC\_NOT\_PROOF}.
 
-\gap{The global inequalities $(-1)^mH_y^{(m)}(q)\ge0$ for all orders, all $q\ge0$, and all $0<|y|<1/2$ are not proved. Therefore strict Fourier positivity, Wiener density for the full Riemann family, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, and RH remain open.}
+\gap{The inequalities $(-1)^mH_y^{(m)}(q)\ge0$ for orders $m\ge2$, all $q\ge0$, and all $0<|y|<1/2$ are not proved. Therefore strict Fourier positivity, Wiener density for the full Riemann family, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, and RH remain open.}
