@@ -126,7 +126,9 @@ def main() -> int:
         "PF$_3$",
         "PF$_\\infty$",
         "H_y'<0",
-        "S_y'\\le S_y^2",
+        "H_y''>0",
+        "q\\ge1/4",
+        "0\\le q<1/4",
     ]
     for token in required_final:
         if token not in final_text:
@@ -162,6 +164,7 @@ def main() -> int:
         "N_y(u)>19u",
         "4u^3H_y''",
         "uD_y''(u)-D_y'(u)",
+        "S_y'\\le S_y^2",
         "second-order sign remains OPEN",
         "RH remain OPEN",
     ]:
