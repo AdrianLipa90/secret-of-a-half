@@ -18,8 +18,8 @@
     },
     {
       "id": "SOH-G024-C",
-      "status": "exact_sufficient_route_open_premise",
-      "statement": "If H_y(q)=D_y(sqrt(q)) is completely monotone on q>=0 for every 0<|y|<1/2, then D_y is a positive Gaussian mixture with strictly positive Fourier transform, hence RH follows. Complete monotonicity is not proved."
+      "status": "exact_sufficient_route_open_higher_order_premise",
+      "statement": "If H_y(q)=D_y(sqrt(q)) is completely monotone on q>=0 for every 0<|y|<1/2, then D_y is a positive Gaussian mixture with strictly positive Fourier transform, hence RH follows. Complete monotonicity in all orders is not proved."
     },
     {
       "id": "SOH-G024-D",
@@ -32,15 +32,26 @@
       "statement": "The external Dimitrov-Xu tilt D_y and the internal Jensen tilt J_y are distinct for general y!=0 and coincide only at y=0."
     },
     {
+      "id": "SOH-G024-F",
+      "status": "proved_first_order_complete_monotonicity",
+      "statement": "The existing SOH-G004 channel curvature and variance bounds imply (log Phi)''<-10. Consequently for C(u)=integral r^2 K(u+r)K(u-r)dr one has -C'(u)/C(u)>20u for u>0. Hence for H_y(q)=cosh(2y sqrt(q))C(sqrt(q)), every 0<|y|<1/2 satisfies -H_y'(q)/H_y(q)>10-|y|tanh(2|y|sqrt(q))/sqrt(q)>19/2, with the q=0 value obtained by continuity. Therefore H_y'(q)<0 globally."
+    },
+    {
+      "id": "SOH-G024-G",
+      "status": "proved_gaussian_domination",
+      "statement": "Integrating the SOH-G024-F logarithmic-slope bound gives H_y(q)<H_y(0)exp(-19q/2) for q>0, equivalently D_y(u)<D_y(0)exp(-19u^2/2) for u!=0, uniformly for every 0<|y|<1/2."
+    },
+    {
       "id": "SOH-G024-N1",
       "status": "finite_numerical_diagnostic",
-      "statement": "Finite five-point diagnostics through derivative order four on the declared Riemann-kernel grid are recorded only as FINITE_DIAGNOSTIC_NOT_PROOF."
+      "statement": "Finite five-point diagnostics through derivative order four on the declared Riemann-kernel grid are recorded only as FINITE_DIAGNOSTIC_NOT_PROOF for derivative orders two through four; first-order monotonicity is independently proved analytically."
     }
   ],
   "open_obligations": [
-    "prove complete monotonicity of H_y for all derivative orders",
-    "cover all q>=0",
-    "cover every 0<|y|<1/2",
+    "prove complete monotonicity of H_y for derivative orders m>=2",
+    "in particular prove H_y''>=0 globally",
+    "cover all q>=0 for all higher orders",
+    "cover every 0<|y|<1/2 for all higher orders",
     "or independently prove strict Fourier positivity of D_y",
     "SOH-G003 real-rootedness remains open",
     "SOH-C005 full admissible Weil positivity remains open",
