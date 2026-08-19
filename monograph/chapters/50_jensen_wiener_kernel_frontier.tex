@@ -1,0 +1,231 @@
+\chapter{Jensen--Wiener Correlation Kernel and the Direct RH Frontier}
+\label{chap:g024-jensen-wiener}
+
+\status{Exact reparametrization and exact sufficient route; global complete monotonicity for the Riemann kernel remains open. The Riemann Hypothesis remains open.}
+
+\section{Purpose}
+
+The preceding PF$_3$ generations isolate coefficient-level obstructions and local
+sufficient conditions.  This chapter returns to an RH-equivalent
+correlation-kernel criterion and records a direct sufficient route based on
+complete monotonicity.  It also separates two different $y$-tilts which agree
+at $y=0$ but are not the same family away from the real axis.
+
+The external criterion used here is Dimitrov--Xu,
+\texttt{arXiv:1606.05011}.  The $y=0$ positive-definite-kernel frontier is
+consistent with the framework studied by Csordas,
+\texttt{arXiv:1309.0055}.
+
+\section{Full-line Fourier normalization}
+
+The repository kernel satisfies
+\[
+ \xi\!\left(\frac12+z\right)
+ =\int_0^\infty \Phi(t)\cosh(zt)\,dt.
+\]
+Define
+\[
+ \boxed{K(t)=\frac12\Phi(|t|).}
+\]
+Then
+\[
+ \boxed{
+ \Xi(x):=\xi\!\left(\frac12+ix\right)
+ =\int_{\mathbb R}K(t)e^{-ixt}\,dt.
+ }
+\]
+
+\section{Dimitrov--Xu order-two correlation}
+
+For a suitable even positive kernel define
+\[
+ \nu_2(t)
+ =\int_{\mathbb R}(t-2s)^2K(t-s)K(s)\,ds
+\]
+and
+\[
+ \Psi_y(t)=\cosh(ty)\nu_2(t).
+\]
+Dimitrov and Xu prove, for the Riemann kernel,
+\[
+ \boxed{
+ RH
+ \iff
+ \mathcal T(\Psi_y)\text{ is dense in }L^1(\mathbb R)
+ \quad\text{for every }0<|y|<\frac12.
+ }
+\]
+By Wiener's $L^1$ Tauberian theorem this is equivalent to absence of real zeros
+of $\widehat\Psi_y$ for every such $y$.
+
+\section{Centered normal form}
+
+Set
+\[
+ t=2u,\qquad s=u-r.
+\]
+Then
+\[
+ t-s=u+r,\qquad s=u-r,\qquad t-2s=2r,
+\]
+so
+\[
+ \boxed{
+ \nu_2(2u)
+ =4\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr.
+ }
+\]
+Define
+\[
+ \boxed{
+ C(u):=\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr
+ }
+\]
+and
+\[
+ \boxed{
+ D_y(u):=\cosh(2yu)C(u).
+ }
+\]
+Hence
+\[
+ \boxed{\Psi_y(2u)=4D_y(u).}
+\]
+Scaling and fixed dilation preserve the density question.  Therefore
+\[
+ \boxed{
+ RH
+ \iff
+ \mathcal T(D_y)\text{ is dense in }L^1(\mathbb R)
+ \quad\forall\,0<|y|<\frac12.
+ }
+\]
+Since $D_y$ is real, even and integrable and
+$\widehat D_y(0)>0$, the Wiener condition can be written
+\[
+ \boxed{
+ \widehat D_y(x)>0
+ \quad\forall x\in\mathbb R,
+ \quad 0<|y|<\frac12.
+ }
+\]
+This is an exact reformulation, not a proof of the inequality.
+
+\section{Complete-monotonicity sufficient route}
+
+Define
+\[
+ \boxed{
+ H_y(q):=D_y(\sqrt q)
+ =\cosh(2y\sqrt q)C(\sqrt q),
+ \qquad q\ge0.
+ }
+\]
+Suppose
+\[
+ \boxed{
+ (-1)^mH_y^{(m)}(q)\ge0
+ \quad\forall m\ge0,\ q\ge0,
+ \quad 0<|y|<\frac12.
+ }
+ \tag{CM}
+\]
+Then Bernstein's theorem provides a positive measure $\mu_y$ with
+\[
+ H_y(q)=\int_0^\infty e^{-\lambda q}\,d\mu_y(\lambda).
+\]
+Thus
+\[
+ D_y(u)=\int_0^\infty e^{-\lambda u^2}\,d\mu_y(\lambda).
+\]
+The Riemann correlation kernel is integrable and tends to zero at infinity, so
+a non-zero constant component is excluded.  Fourier transformation therefore
+gives the positive Gaussian mixture
+\[
+ \widehat D_y(x)
+ =\int_{(0,\infty)}
+ \sqrt{\frac{\pi}{\lambda}}
+ \exp\!\left(-\frac{x^2}{4\lambda}\right)
+ d\mu_y(\lambda)>0.
+\]
+Consequently
+\[
+ \boxed{
+ (CM)\text{ for all }0<|y|<\frac12
+ \Longrightarrow RH.
+ }
+\]
+The implication is exact.  The premise is open.
+
+\section{The distinct internal Jensen tilt}
+
+Define instead
+\[
+ \boxed{
+ J_y(u)
+ =\int_{\mathbb R}
+ r^2\cosh(2yr)K(u+r)K(u-r)\,dr.
+ }
+\]
+If
+\[
+ f(z)=\int_{\mathbb R}K(t)e^{-izt}\,dt,
+\]
+a direct two-variable change of variables gives
+\[
+ \boxed{
+ 4\widehat J_y(2x)
+ =|f'(x+iy)|^2
+ -\Re\!\left(f''(x+iy)\overline{f(x+iy)}\right).
+ }
+\]
+This is the complex Jensen/Laguerre functional in correlation form.
+
+The two tilted families are not identified:
+\[
+ \boxed{
+ D_y(u)=\cosh(2yu)C(u)
+ \neq
+ J_y(u)
+ }
+\]
+for general $y\ne0$.  They coincide only at
+\[
+ \boxed{D_0=J_0=C.}
+\]
+This distinction is part of the proof firewall.
+
+\section{Structure inherited from strict log-concavity}
+
+Assume the full even kernel $K$ is positive and strictly log-concave and put
+$\ell=\log K$.  For $u>0$,
+\[
+ \frac{\partial}{\partial u}
+ [K(u+r)K(u-r)]
+ =K(u+r)K(u-r)
+ [\ell'(u+r)-\ell'(u-r)].
+\]
+Strict concavity makes $\ell'$ strictly decreasing; therefore
+\[
+ \boxed{C'(u)<0\qquad(u>0).}
+\]
+This proves positivity, evenness and strict decrease of $C$ on the positive
+half-line.  It does not prove positive definiteness or complete monotonicity of
+$H_y$.
+
+For the external tilt,
+\[
+ D_y'(u)
+ =\cosh(2yu)C'(u)+2y\sinh(2yu)C(u),
+\]
+so a quantitative decay bound on $C$ is already needed at first order when
+$y\ne0$.
+
+\section{Finite diagnostic}
+
+The accompanying receipt evaluates the repository Riemann kernel on a declared
+finite grid in $q$ and $y$ and applies symmetric five-point finite differences
+through order four to $H_y(q)$.  The receipt classification is explicitly
+\texttt{FINITE\_DIAGNOSTIC\_NOT\_PROOF}.
+
+\gap{The global inequalities $(-1)^mH_y^{(m)}(q)\ge0$ for all orders, all $q\ge0$, and all $0<|y|<1/2$ are not proved. Therefore strict Fourier positivity, Wiener density for the full Riemann family, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, and RH remain open.}
