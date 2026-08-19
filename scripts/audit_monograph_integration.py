@@ -35,8 +35,8 @@ def main() -> None:
     if prefixes != expected:
         fail(f"chapter numbering is not contiguous: {prefixes}")
 
-    if not includes or includes[-1] != "54_g024_global_second_order_closure":
-        fail("G024 candidate terminal chapter must be 54_g024_global_second_order_closure")
+    if not includes or includes[-1] != "55_g024_third_order_cumulant_frontier":
+        fail("G024 candidate terminal chapter must be 55_g024_third_order_cumulant_frontier")
     for required in [
         "49_reciprocal_deficit_pf3_normal_form",
         "50_jensen_wiener_kernel_frontier",
@@ -44,6 +44,7 @@ def main() -> None:
         "52_g024_bridge_moment_tail_second_order",
         "53_g024_sharpened_curvature_second_order",
         "54_g024_global_second_order_closure",
+        "55_g024_third_order_cumulant_frontier",
     ]:
         if required not in includes:
             fail(f"required integrated chapter missing: {required}")
@@ -100,7 +101,7 @@ def main() -> None:
         "SOH-G024-A", "SOH-G024-B", "SOH-G024-C", "SOH-G024-D", "SOH-G024-E",
         "SOH-G024-F", "SOH-G024-G", "SOH-G024-H", "SOH-G024-I", "SOH-G024-J",
         "SOH-G024-K", "SOH-G024-L", "SOH-G024-M", "SOH-G024-P", "SOH-G024-Q",
-        "SOH-G024-R", "SOH-G024-N1",
+        "SOH-G024-R", "SOH-G024-S", "SOH-G024-N1",
     }
     if not required_candidate.issubset(candidate_ids):
         fail(f"G024 branch ledger incomplete: {sorted(required_candidate - candidate_ids)}")
@@ -119,8 +120,12 @@ def main() -> None:
         fail("G024-R must record global second-order closure")
     if "793/48" not in by_id["SOH-G024-R"].get("statement", ""):
         fail("G024-R is missing the strict Riccati gap")
-    if "m>=3" not in by_id["SOH-G024-R"].get("statement", ""):
-        fail("G024-R must keep higher complete-monotonicity orders open")
+    if by_id["SOH-G024-S"].get("status") != "exact_third_order_bridge_cumulant_reduction_open_sign":
+        fail("G024-S must remain an exact third-order reduction with open sign")
+    s_statement = by_id["SOH-G024-S"].get("statement", "")
+    for token in ["R''=E[C3]-3Cov(A,B)+mu_3(A)", "(uN+3)M2-uM2'>=0", "remains open"]:
+        if token not in s_statement:
+            fail(f"G024-S is missing third-order/firewall token {token!r}")
 
     print("MONOGRAPH_INTEGRATION_PASS")
     print(
