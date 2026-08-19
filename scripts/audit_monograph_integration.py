@@ -108,8 +108,9 @@ def main() -> None:
     by_id = {item["id"]: item for item in candidate.get("claims", [])}
     if by_id["SOH-G024-M"].get("status") != "proved_sharpened_strong_convexity":
         fail("G024-M must record sharpened strong convexity")
-    if "L''>17" not in by_id["SOH-G024-M"].get("statement", ""):
-        fail("G024-M is missing L''>17")
+    m_statement = by_id["SOH-G024-M"].get("statement", "")
+    if "-(log K)''>17" not in m_statement and "L''>17" not in m_statement:
+        fail("G024-M is missing the >17 strong-convexity margin")
     if by_id["SOH-G024-Q"].get("status") != "computer_assisted_fourth_log_curvature_certificate":
         fail("G024-Q must record the computer-assisted fourth-log-curvature certificate")
     if "mpmath.iv" not in by_id["SOH-G024-Q"].get("statement", ""):
