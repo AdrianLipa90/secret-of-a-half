@@ -3,7 +3,8 @@
 
 This script does not attempt to decide mathematical truth. It protects the
 repository-level semantic invariants through canonical SOH-G023 and checks that
-SOH-G024 remains an explicitly non-canonical candidate with an open-RH firewall.
+SOH-G024 remains an explicitly non-canonical candidate with a proved first-order
+complete-monotonicity result but open higher-order/RH frontiers.
 """
 from __future__ import annotations
 
@@ -119,6 +120,8 @@ def main() -> int:
         "PF$_2$",
         "PF$_3$",
         "PF$_\\infty$",
+        "H_y'<0",
+        "S_y'\\le S_y^2",
     ]
     for token in required_final:
         if token not in final_text:
@@ -131,9 +134,14 @@ def main() -> int:
         "J_y",
         "0<|y|<\\frac12",
         "Riemann Hypothesis remains open",
+        "SOH-G024 first-order complete-monotonicity theorem",
+        "\\frac{19}{2}",
+        "H_y''",
+        "S_y'\\le S_y(q)^2",
+        "f'(x+iy)^2-f(x+iy)f''(x+iy)",
     ]:
         if token not in g024_text:
-            fail(f"G024 candidate chapter is missing firewall token {token!r}", errors)
+            fail(f"G024 candidate chapter is missing theorem/firewall token {token!r}", errors)
     if "D_y(u)=\\cosh(2yu)C(u)" not in g024_text:
         fail("G024 external Dimitrov-Xu tilt is not recorded", errors)
     if "J_y(u)" not in g024_text or "D_0=J_0=C" not in g024_text:
@@ -151,7 +159,7 @@ def main() -> int:
 
     print("SEMANTIC AUDIT: PASS")
     print(f"Checked {len(files)} LaTeX source files.")
-    print("Protected invariants: affine involution terminology, interpretation labels, G001-G023 canonical ledger, G024 candidate firewall, and RH/PF3/PF-infinity firewalls.")
+    print("Protected invariants: affine involution terminology, interpretation labels, G001-G023 canonical ledger, G024 first-order theorem with open higher orders, and RH/PF3/PF-infinity firewalls.")
     return 0
 
 
