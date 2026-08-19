@@ -1,0 +1,158 @@
+\chapter{Half-Mass PF2 Does Not Imply PF3}
+\label{chap:half-mass-pf2-not-pf3}
+
+\status{SOH-G021 structural no-go proved; PF$_3$ for the actual quotient coefficients remains OPEN.}
+
+\section{Purpose}
+
+Chapter~45 proves a canonical probability normalization of the actual quotient coefficients with exactly half the mass at index zero, half on positive indices, strict monotone decay, PF$_2$ log-concavity, and the sharpened envelope $2\pi_n<1/n$. Chapter~31 shows that PF$_3$ requires positivity of a stricter ratio-curvature margin. The natural next question is whether the package established in Chapter~45 is already strong enough, as an abstract sequence theorem, to force that margin to be non-negative.
+
+SOH-G021 answers this question exactly in the negative. The result is a sufficiency no-go. It does not assert that the actual Riemann--xi quotient coefficients fail PF$_3$.
+
+\section{An exact normalized counterexample}
+
+Let $x$ be the unique root in $(0,1)$ of
+\[
+ \boxed{36x^3+205x^2+1295x-1250=0.}
+\]
+Existence and uniqueness are immediate from
+\[
+ P(0)=-1250<0<P(1)=286
+\]
+and
+\[
+ P'(x)=108x^2+410x+1295>0
+ \qquad(x\ge0).
+\]
+
+Define a positive sequence $(\pi_n)_{n\ge0}$ by $\pi_0=1/2$ and adjacent ratios
+\[
+ q_n:=\frac{\pi_n}{\pi_{n-1}}
+\]
+with
+\[
+ q_1=x,
+ \qquad
+ q_2=\frac{x}{5},
+ \qquad
+ q_3=\frac{9x}{50},
+ \qquad
+ q_n=\frac{9x}{250}\quad(n\ge4).
+\]
+Because $0<x<1$,
+\[
+ 1>q_1>q_2>q_3>q_4=q_5=\cdots>0.
+\]
+Consequently every $\pi_n$ is positive and
+\[
+ \pi_0>\pi_1>\pi_2>\cdots>0.
+\]
+Moreover, non-increase of the adjacent ratios is equivalent to log-concavity, so
+\[
+ \boxed{\pi_n^2\ge\pi_{n-1}\pi_{n+1}}
+ \qquad(n\ge1).
+\]
+Thus the sequence is PF$_2$.
+
+\section{Exact half-mass identity}
+
+Relative to $\pi_0$, the first products are
+\[
+ \frac{\pi_1}{\pi_0}=x,
+ \qquad
+ \frac{\pi_2}{\pi_0}=\frac{x^2}{5},
+ \qquad
+ \frac{\pi_3}{\pi_0}=\frac{9x^3}{250},
+ \qquad
+ \frac{\pi_4}{\pi_0}=\frac{81x^4}{62500}.
+\]
+From index four onward the product tail is geometric with ratio $9x/250$. Therefore
+\[
+ S(x):=\frac1{\pi_0}\sum_{n\ge1}\pi_n
+ =x+\frac{x^2}{5}+\frac{9x^3}{250}
+ +\frac{81x^4/62500}{1-9x/250}.
+\]
+Direct simplification yields
+\[
+ S(x)-1
+ =\frac{36x^3+205x^2+1295x-1250}{5(250-9x)}.
+\]
+At the defining root $x$ this vanishes exactly. Hence
+\[
+ \boxed{\pi_0=\frac12,
+ \qquad
+ \sum_{n\ge1}\pi_n=\frac12,
+ \qquad
+ \sum_{n\ge0}\pi_n=1.}
+\]
+The construction therefore has the same half-mass normalization as SOH-G020.
+
+\section{The G020 monotone envelope is also satisfied}
+
+Set $b_n=2\pi_n$. Then $b_n>0$, $(b_n)_{n\ge1}$ is strictly decreasing, and
+\[
+ \sum_{n\ge1}b_n=1.
+\]
+For every $n\ge1$,
+\[
+ nb_n\le\sum_{j=1}^{n}b_j<1,
+\]
+because the positive tail beyond $n$ is non-empty. Thus
+\[
+ \boxed{b_n<\frac1n\qquad(n\ge1).}
+\]
+This reproduces the abstract normalized envelope appearing in SOH-G020.
+
+\section{Exact failure of the G006 PF3 margin}
+
+For the solid order-three minor at $k=2$, Chapter~31 uses
+\[
+ u=\frac{q_2}{q_1},
+ \qquad
+ v=\frac{q_3}{q_2},
+ \qquad
+ w=\frac{q_4}{q_3}.
+\]
+The present sequence gives exactly
+\[
+ \boxed{u=\frac15,
+ \qquad
+ v=\frac9{10},
+ \qquad
+ w=\frac15.}
+\]
+The factorized G006 margin is
+\[
+ M=(1-v)^2-v^2(1-u)(1-w).
+\]
+Substitution gives
+\[
+ \begin{aligned}
+ M
+ &=\frac1{100}
+ -\frac{81}{100}\frac45\frac45\\
+ &=\boxed{-\frac{1271}{2500}}<0.
+ \end{aligned}
+\]
+Since Chapter~31 proves that the sign of the solid Toeplitz determinant equals the sign of this margin after division by a strictly positive factor, the corresponding $3\times3$ Toeplitz minor is negative. Therefore the constructed sequence is not PF$_3$.
+
+\begin{theorem}[SOH-G021: G020 structural data do not imply PF$_3$]
+There exists a positive, strictly decreasing probability sequence with $\pi_0=1/2$, positive-index mass $1/2$, PF$_2$ log-concavity, and $2\pi_n<1/n$ for every $n\ge1$, whose solid order-three Toeplitz minor at $k=2$ is negative. Consequently the abstract structural package proved in SOH-G020 is insufficient, by itself, to imply PF$_3$.
+\end{theorem}
+
+\section{What this removes from the proof search}
+
+A proof of PF$_3$ for the actual coefficient sequence of $F$ cannot consist only of reusing the following already proved data:
+\begin{itemize}
+ \item positivity of the normalized masses;
+ \item probability normalization;
+ \item the exact half-mass split;
+ \item strict monotone decay;
+ \item PF$_2$/log-concavity;
+ \item the envelope $2\pi_n<1/n$.
+\end{itemize}
+Some additional property tied to the actual Riemann kernel, normalized moments, or their ratio-curvature must enter.
+
+\begin{warning}
+SOH-G021 does not exhibit a negative PF$_3$ minor for the actual coefficients $a_n$ of $F$. It proves only that the structural conclusions of SOH-G020 are not sufficient as abstract hypotheses to force PF$_3$. The sign of every actual G006 margin, PF$_3$ for $F$, PF$_\infty$, SOH-G003 real-rootedness, and the Riemann Hypothesis remain open.
+\end{warning}
