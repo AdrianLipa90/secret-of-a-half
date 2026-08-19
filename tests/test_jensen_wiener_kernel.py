@@ -16,6 +16,7 @@ from secret_of_a_half.jensen_wiener_kernel import (
     internal_tilt_jensen_kernel_from_kernel,
     second_order_cm_normalized_margin_from_bridge,
     signed_five_point_derivatives,
+    third_order_cm_normalized_margin_from_bridge,
 )
 
 
@@ -96,9 +97,6 @@ def test_conservative_and_sharpened_strong_convexity_constants() -> None:
 
 
 def test_channel_curvature_polynomial_floor_is_positive() -> None:
-    # h(r)-19 has numerator 16x^3+20x^2-24x+9 for x=r-3>=0.
-    # Its quadratic part has negative discriminant; this numerical fixture only
-    # protects the exact polynomial recorded in the proof note.
     discriminant = (-24) ** 2 - 4 * 20 * 9
     assert discriminant == -144
     for x in (mp.mpf("0"), mp.mpf("0.1"), mp.mpf("1"), mp.mpf("10")):
@@ -181,14 +179,10 @@ def test_sharpened_second_order_one_ninth_constants() -> None:
     assert mp.power(mp.mpf("17") / 14, mp.mpf("1.5")) < mp.mpf(47) / 35
     c17 = 42 * mp.exp(mp.mpf("1") / 3) * mp.power(mp.mpf("17") / 14, mp.mpf("1.5"))
     assert c17 < 79
-
-    # Exact integer comparison used for F(1/3)>0 after e<87/32.
     assert 79**3 * 87**2 < 154**3 * 32**2
-
     u = mp.mpf("1") / 3
     f_boundary = 33 + 1089 * u**2 - 79 * mp.exp(2 * u)
     assert f_boundary > 0
-
     derivative_floor = 726 - 158 * e_upper
     assert derivative_floor == mp.mpf(4743) / 16
     assert derivative_floor > 0
@@ -212,6 +206,44 @@ def test_second_order_bridge_reduction_matches_gaussian_closed_form() -> None:
     h = lambda x: constant * mp.exp(-x) * mp.cosh(2 * y * mp.sqrt(x))
     direct_margin = 4 * u**3 * mp.diff(h, q, 2) / h(q)
     assert abs(bridge_margin - direct_margin) < mp.mpf("1e-45")
+
+
+def test_third_order_bridge_reduction_matches_gaussian_closed_form() -> None:
+    mp.mp.dps = 70
+    u = mp.mpf("0.37")
+    y = mp.mpf("0.23")
+    q = u * u
+
+    # For K=exp(-t^2/2): A=2u, B=2, C3=0 and all bridge
+    # fluctuations/covariances vanish exactly.
+    bridge_margin = third_order_cm_normalized_margin_from_bridge(
+        u,
+        y,
+        mean_a=2 * u,
+        mean_b=2,
+        var_a=0,
+        mean_c=0,
+        cov_ab=0,
+        third_central_a=0,
+    )
+
+    constant = mp.sqrt(mp.pi) / 2
+    h = lambda x: constant * mp.exp(-x) * mp.cosh(2 * y * mp.sqrt(x))
+    direct_margin = 8 * u**5 * (-mp.diff(h, q, 3) / h(q))
+    assert abs(bridge_margin - direct_margin) < mp.mpf("1e-50")
+
+    a = abs(y)
+    x = 2 * a * u
+    t = 2 * a * mp.tanh(x)
+    tp = 4 * a**2 / mp.cosh(x) ** 2
+    tpp = -16 * a**3 / mp.cosh(x) ** 2 * mp.tanh(x)
+    n = 2 * u - t
+    np = 2 - tp
+    npp = -tpp
+    m2 = n + u * (n**2 - np)
+    m2p = n**2 + u * (2 * n * np - npp)
+    recurrence_margin = (u * n + 3) * m2 - u * m2p
+    assert abs(bridge_margin - recurrence_margin) < mp.mpf("1e-60")
 
 
 def test_signed_five_point_derivatives_on_completely_monotone_exponential() -> None:
