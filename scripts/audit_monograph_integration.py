@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail closed when the active monograph omits chapters or reintroduces legacy claim collisions."""
+"""Fail closed when the active monograph omits chapters or reintroduces claim collisions."""
 from __future__ import annotations
 
 import json
@@ -33,9 +33,8 @@ def main() -> None:
     if prefixes != expected:
         fail(f"chapter numbering is not contiguous: {prefixes}")
 
-    # V3 must contain the semantic-audit final synthesis as the terminal numbered chapter.
-    if not includes or includes[-1] != "46_current_canon_and_open_frontier":
-        fail("V3 terminal chapter must be 46_current_canon_and_open_frontier")
+    if not includes or includes[-1] != "47_half_mass_pf2_does_not_imply_pf3":
+        fail("G021 terminal chapter must be 47_half_mass_pf2_does_not_imply_pf3")
 
     title_count = sum(
         p.read_text(encoding="utf-8").count(r"\begin{titlepage}")
@@ -56,6 +55,8 @@ def main() -> None:
         fail("stale active version marker remains in title/frontmatter")
     if "Version 0.9 Integrated Canon V3" not in frontmatter_text:
         fail("v0.9 Integrated Canon V3 marker missing from active title/frontmatter")
+    if "SOH-G021" not in frontmatter_text:
+        fail("G021 marker missing from active title/frontmatter")
 
     collision_checks = {
         "18_zero_undefined_reciprocal_duality.tex": ("SOH-L015", "SOH-L016", "SOH-L017", "SOH-L022"),
@@ -80,12 +81,17 @@ def main() -> None:
     promoted = {f"SOH-L{i:03d}" for i in range(12, 33)}
     if not promoted.issubset(ids):
         fail(f"promoted SOH-L012--SOH-L032 range incomplete: {sorted(promoted - set(ids))}")
+    g_line = {f"SOH-G{i:03d}" for i in range(1, 22)}
+    if not g_line.issubset(ids):
+        fail(f"canonical SOH-G001--SOH-G021 range incomplete: {sorted(g_line - set(ids))}")
+    if ledger.get("canonical_through") != "SOH-G021":
+        fail("machine claim ledger canonical_through must equal SOH-G021")
     if ledger.get("proof_of_rh") is not False:
         fail("proof_of_rh firewall must remain false")
 
     print("MONOGRAPH_INTEGRATION_PASS")
     print(
-        f"version=V3 chapters={len(chapter_files)} canonical_claims={len(ids)} "
+        f"version=V3-G021 chapters={len(chapter_files)} canonical_claims={len(ids)} "
         f"titlepages={title_count} terminal={includes[-1]}"
     )
 
