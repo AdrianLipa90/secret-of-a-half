@@ -7,8 +7,11 @@ from pathlib import Path
 import mpmath as mp
 
 from secret_of_a_half.jensen_wiener_kernel import (
+    G004_STRONG_LOG_CONCAVITY_MARGIN,
+    G024_FIRST_ORDER_CM_UNIFORM_FLOOR,
     csordas_correlation_from_kernel,
     dimitrov_xu_tilted_from_kernel,
+    first_order_cm_log_slope_lower_bound,
     internal_tilt_jensen_kernel_from_kernel,
     radial_square_profile,
     signed_five_point_derivatives,
@@ -66,8 +69,27 @@ def main() -> None:
     if abs(d_obs - j_obs) <= mp.mpf("1e-6"):
         raise RuntimeError("external and internal y-tilts were incorrectly identified")
 
+    # Exact first-order complete-monotonicity theorem. SOH-G004 supplies
+    # (log Phi)'' < -10. Therefore L=-log K has L'' > 10 and the centered
+    # correlation satisfies -C'/C > 20u. This implies the declared global
+    # lower bound for -H_y'/H_y on the full Dimitrov-Xu strip.
+    exact_margin_rows: list[dict[str, str]] = []
+    for yy in (mp.mpf("0"), mp.mpf("0.25"), mp.mpf("0.49"), mp.mpf("0.499999")):
+        for qq in (mp.mpf("0"), mp.mpf("0.1"), mp.mpf("1"), mp.mpf("100")):
+            bound = first_order_cm_log_slope_lower_bound(qq, yy)
+            if not bound > G024_FIRST_ORDER_CM_UNIFORM_FLOOR:
+                raise RuntimeError("exact G024 first-order CM margin regression failed")
+            exact_margin_rows.append(
+                {
+                    "y": mp.nstr(yy, 8),
+                    "q": mp.nstr(qq, 8),
+                    "analytic_lower_bound": mp.nstr(bound, 30),
+                }
+            )
+
     # Finite numerical diagnostic for the actual Riemann kernel. Passing signs
-    # here is deliberately not promoted to complete monotonicity.
+    # here is deliberately not promoted to complete monotonicity beyond the
+    # independently proved first-order inequality above.
     y_grid = [mp.mpf("0"), mp.mpf("0.25"), mp.mpf("0.49")]
     q_grid = [mp.mpf("0.1"), mp.mpf("0.2")]
     h = mp.mpf("0.002")
@@ -102,7 +124,7 @@ def main() -> None:
 
     payload = {
         "certificate": "SOH_G024_JENSEN_WIENER_KERNEL_RECEIPT_V1",
-        "status": "EXACT_REPARAMETRIZATION_PLUS_FINITE_DIAGNOSTIC_PASS",
+        "status": "EXACT_FIRST_ORDER_CM_PLUS_FINITE_HIGHER_ORDER_DIAGNOSTIC_PASS",
         "exact_checks": {
             "gaussian_centered_correlation_closed_form": True,
             "gaussian_external_tilt_closed_form": True,
@@ -111,9 +133,18 @@ def main() -> None:
             "external_internal_tilts_distinct_for_nonzero_y": True,
             "dimitrov_xu_change_of_variables": "nu_2(2u)=4*C(u)",
             "dimitrov_xu_rescaled_kernel": "Psi_y(2u)=4*cosh(2yu)*C(u)",
+            "g004_per_channel_log_curvature_upper": "-12",
+            "g004_mixture_slope_variance_upper": "2",
+            "full_kernel_strong_log_concavity_margin": mp.nstr(
+                G004_STRONG_LOG_CONCAVITY_MARGIN, 8
+            ),
+            "correlation_log_decay": "-C'(u)/C(u) > 20u for u>0",
+            "first_order_complete_monotonicity_proved": True,
+            "uniform_first_order_log_slope_lower_floor": "19/2",
+            "analytic_margin_regression_rows": exact_margin_rows,
         },
         "finite_diagnostic": {
-            "classification": "FINITE_DIAGNOSTIC_NOT_PROOF",
+            "classification": "FINITE_DIAGNOSTIC_NOT_PROOF_FOR_ORDERS_2_TO_4",
             "n_terms": 6,
             "center_cutoff": "4",
             "finite_difference_h": mp.nstr(h, 8),
@@ -121,7 +152,9 @@ def main() -> None:
             "rows": rows,
         },
         "proof_firewall": {
-            "complete_monotonicity_proved": False,
+            "first_order_complete_monotonicity_proved": True,
+            "higher_order_complete_monotonicity_proved": False,
+            "complete_monotonicity_all_orders_proved": False,
             "strict_fourier_positivity_proved": False,
             "wiener_density_proved_for_riemann_family": False,
             "soh_g003_real_rootedness_proved": False,
