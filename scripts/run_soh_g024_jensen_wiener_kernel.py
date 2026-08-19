@@ -9,6 +9,8 @@ import mpmath as mp
 from secret_of_a_half.jensen_wiener_kernel import (
     G004_STRONG_LOG_CONCAVITY_MARGIN,
     G024_FIRST_ORDER_CM_UNIFORM_FLOOR,
+    bridge_even_moment_upper_bound,
+    bridge_square_exponential_mgf_upper_bound,
     csordas_correlation_from_kernel,
     dimitrov_xu_tilted_from_kernel,
     first_order_cm_log_slope_lower_bound,
@@ -30,8 +32,6 @@ def main() -> None:
     mp.mp.dps = 50
 
     # Closed-form regression for the exact centered correlation identities.
-    # The numerical integral is deliberately evaluated farther into the Gaussian
-    # tail than the Riemann-kernel finite diagnostic below.
     u = mp.mpf("0.31")
     y = mp.mpf("0.23")
     gaussian_cutoff = mp.mpf("8")
@@ -70,10 +70,7 @@ def main() -> None:
     if abs(d_obs - j_obs) <= mp.mpf("1e-6"):
         raise RuntimeError("external and internal y-tilts were incorrectly identified")
 
-    # Exact first-order complete-monotonicity theorem. SOH-G004 supplies
-    # (log Phi)'' < -10. Therefore L=-log K has L'' > 10 and the centered
-    # correlation satisfies -C'/C > 20u. This implies the declared global
-    # lower bound for -H_y'/H_y on the full Dimitrov-Xu strip.
+    # Exact first-order complete-monotonicity theorem.
     exact_margin_rows: list[dict[str, str]] = []
     for yy in (mp.mpf("0"), mp.mpf("0.25"), mp.mpf("0.49"), mp.mpf("0.499999")):
         for qq in (mp.mpf("0"), mp.mpf("0.1"), mp.mpf("1"), mp.mpf("100")):
@@ -88,8 +85,7 @@ def main() -> None:
                 }
             )
 
-    # Exact second-order reduction regression on the Gaussian fixture. For
-    # K=exp(-t^2/2), L=t^2/2, hence A=2u, B=2 and Var(A)=0 exactly.
+    # Exact second-order reduction regression on the Gaussian fixture.
     q_gauss = u * u
     bridge_second_margin = second_order_cm_normalized_margin_from_bridge(
         u,
@@ -108,9 +104,33 @@ def main() -> None:
     if abs(bridge_second_margin - direct_second_margin) > mp.mpf("1e-35"):
         raise RuntimeError("Gaussian second-order bridge reduction regression failed")
 
+    # Exact bridge-moment hierarchy implied by L''>10.
+    moment_bounds = {
+        str(order): mp.nstr(bridge_even_moment_upper_bound(order), 30)
+        for order in range(5)
+    }
+    if bridge_even_moment_upper_bound(1) != mp.mpf("3") / 20:
+        raise RuntimeError("bridge second-moment envelope mismatch")
+    lam = mp.mpf("2.5")
+    mgf_bound = bridge_square_exponential_mgf_upper_bound(lam)
+    expected_mgf = mp.power(mp.mpf("4") / 3, mp.mpf("1.5"))
+    if not mp.almosteq(mgf_bound, expected_mgf):
+        raise RuntimeError("bridge exponential-square MGF envelope mismatch")
+
+    # Analytic constants used in the q>=1/4 second-order tail theorem.
+    cb = 42 * mp.exp(mp.mpf("0.4")) * mp.power(mp.mpf("4") / 3, mp.mpf("1.5"))
+    if not cb < 36 * mp.e:
+        raise RuntimeError("second-order tail curvature constant comparison failed")
+    u_tail = mp.mpf("0.5")
+    n_lower_boundary = 12 * (mp.exp(2 * u_tail) - 1) - 5 * u_tail
+    if not n_lower_boundary > 6 * mp.exp(2 * u_tail):
+        raise RuntimeError("second-order tail surplus boundary comparison failed")
+    b_upper_boundary = cb * mp.exp(2 * u_tail)
+    if not (6 * mp.exp(2 * u_tail)) ** 2 > b_upper_boundary:
+        raise RuntimeError("second-order tail N^2 versus mean-curvature comparison failed")
+
     # Finite numerical diagnostic for the actual Riemann kernel. Passing signs
-    # here is deliberately not promoted to complete monotonicity beyond the
-    # independently proved first-order inequality above.
+    # here is deliberately not promoted beyond analytically proved regions.
     y_grid = [mp.mpf("0"), mp.mpf("0.25"), mp.mpf("0.49")]
     q_grid = [mp.mpf("0.1"), mp.mpf("0.2")]
     h = mp.mpf("0.002")
@@ -145,7 +165,7 @@ def main() -> None:
 
     payload = {
         "certificate": "SOH_G024_JENSEN_WIENER_KERNEL_RECEIPT_V1",
-        "status": "EXACT_FIRST_ORDER_CM_AND_SECOND_ORDER_REDUCTION_PLUS_FINITE_HIGHER_ORDER_DIAGNOSTIC_PASS",
+        "status": "EXACT_FIRST_ORDER_CM_SECOND_ORDER_TAIL_AND_BRIDGE_MOMENTS_PLUS_FINITE_CORE_DIAGNOSTIC_PASS",
         "exact_checks": {
             "gaussian_centered_correlation_closed_form": True,
             "gaussian_external_tilt_closed_form": True,
@@ -165,9 +185,19 @@ def main() -> None:
             "analytic_margin_regression_rows": exact_margin_rows,
             "second_order_bridge_identity": "4u^3 H_y''/H_y = N + u[N^2 + Var(A) - E(B) + 4y^2 sech^2(2|y|u)]",
             "gaussian_second_order_bridge_regression": True,
+            "bridge_score_hierarchy": "E[r^(2n+1)D_u]=(2n+3)E[r^(2n)]",
+            "bridge_even_moment_bounds": moment_bounds,
+            "bridge_square_exponential_mgf_lambda": mp.nstr(lam, 8),
+            "bridge_square_exponential_mgf_upper_bound": mp.nstr(mgf_bound, 30),
+            "full_kernel_curvature_upper_envelope": "L''(s) < 21 exp(2|s|)",
+            "second_order_tail_region": "q>=1/4",
+            "second_order_tail_complete_monotonicity_proved": True,
+            "second_order_compact_core": "0<=q<1/4 OPEN",
+            "tail_curvature_constant": mp.nstr(cb, 30),
+            "tail_surplus_boundary_lower": mp.nstr(n_lower_boundary, 30),
         },
         "finite_diagnostic": {
-            "classification": "FINITE_DIAGNOSTIC_NOT_PROOF_FOR_ORDERS_2_TO_4",
+            "classification": "FINITE_DIAGNOSTIC_NOT_PROOF_INSIDE_OPEN_COMPACT_CORE_OR_FOR_ORDERS_3_TO_4",
             "n_terms": 6,
             "center_cutoff": "4",
             "finite_difference_h": mp.nstr(h, 8),
@@ -177,7 +207,9 @@ def main() -> None:
         "proof_firewall": {
             "first_order_complete_monotonicity_proved": True,
             "second_order_reduced_exactly": True,
-            "second_order_complete_monotonicity_proved": False,
+            "second_order_tail_region_proved": True,
+            "second_order_compact_core_proved": False,
+            "second_order_complete_monotonicity_global_proved": False,
             "higher_order_complete_monotonicity_proved": False,
             "complete_monotonicity_all_orders_proved": False,
             "strict_fourier_positivity_proved": False,
