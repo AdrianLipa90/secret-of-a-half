@@ -48,8 +48,8 @@
     },
     {
       "id": "SOH-G024-I",
-      "status": "exact_second_order_reduction_open_core",
-      "statement": "With S_y(q)=-d/dq log H_y(q), one has H_y''/H_y=S_y^2-S_y'. Therefore the second complete-monotonicity inequality is exactly equivalent to S_y'<=S_y^2. It is now proved for q>=1/9 but remains open on 0<=q<1/9."
+      "status": "exact_second_order_reduction_closed_by_qr",
+      "statement": "With S_y(q)=-d/dq log H_y(q), one has H_y''/H_y=S_y^2-S_y'. Therefore the second complete-monotonicity inequality is exactly equivalent to S_y'<=S_y^2. SOH-G024-Q and SOH-G024-R close this inequality globally by a computer-assisted fourth-log-curvature certificate plus exact Riccati bounds."
     },
     {
       "id": "SOH-G024-J",
@@ -64,7 +64,7 @@
     {
       "id": "SOH-G024-L",
       "status": "proved_second_order_tail_region",
-      "statement": "The earlier conservative bridge estimates prove H_y''(q)>0 for every q>=1/4 and every 0<|y|<1/2. This remains a valid subtheorem and is strengthened by SOH-G024-P."
+      "statement": "The earlier conservative bridge estimates prove H_y''(q)>0 for every q>=1/4 and every 0<|y|<1/2. This remains a valid subtheorem and is strengthened by SOH-G024-P and then globally completed by SOH-G024-R."
     },
     {
       "id": "SOH-G024-M",
@@ -74,20 +74,29 @@
     {
       "id": "SOH-G024-P",
       "status": "proved_second_order_region_q_ge_one_ninth",
-      "statement": "Using L''>17, the existing upper envelope L''(s)<21 exp(2|s|), the sharpened bridge MGF, and exact rational bounds C_17<79 and F(u)=33+1089u^2-79exp(2u)>0 on 1/3<=u<=1/2, the exact bridge normal form proves H_y''(q)>0 for every q>=1/9 and every 0<|y|<1/2. The remaining second-order core is 0<=q<1/9."
+      "statement": "Using L''>17, the existing upper envelope L''(s)<21 exp(2|s|), the sharpened bridge MGF, and exact rational bounds C_17<79 and F(u)=33+1089u^2-79exp(2u)>0 on 1/3<=u<=1/2, the exact bridge normal form proves H_y''(q)>0 for every q>=1/9 and every 0<|y|<1/2. This is a strict analytic subtheorem of the global SOH-G024-R result."
+    },
+    {
+      "id": "SOH-G024-Q",
+      "status": "computer_assisted_fourth_log_curvature_certificate",
+      "statement": "For L=-log K of the even full-line Riemann kernel, L''''(t)<20 L''(t) for every real t. On 0<=t<=2/5 this is certified by outward interval arithmetic with explicit theta terms n=1..4 and analytically bounded n>=5 tails; for t>=2/5 it is proved analytically by dominant-channel plus perturbation bounds. Evenness extends the claim to all real t. The interval engine is mpmath.iv and is part of the explicit trust boundary."
+    },
+    {
+      "id": "SOH-G024-R",
+      "status": "proved_global_second_order_complete_monotonicity_computer_assisted_dependency",
+      "statement": "Using SOH-G024-Q in the exact bridge trapezoid identity, the compact core satisfies S_y'(q)<12275/48 while SOH-G024-M gives S_y(q)^2>1089/4, leaving the strict Riccati gap 793/48. Together with SOH-G024-P this proves H_y''(q)>0 for every q>=0 and every 0<|y|<1/2. The compact-core part depends on the computer-assisted interval certificate Q; derivative orders m>=3 remain open."
     },
     {
       "id": "SOH-G024-N1",
       "status": "finite_numerical_diagnostic",
-      "statement": "Finite five-point diagnostics through derivative order four are FINITE_DIAGNOSTIC_NOT_PROOF wherever no analytic theorem applies. First order is globally proved; second order is analytically proved for q>=1/9 and remains open on 0<=q<1/9."
+      "statement": "Finite five-point diagnostics through derivative order four are FINITE_DIAGNOSTIC_NOT_PROOF wherever no theorem applies. First and second complete-monotonicity inequalities are globally proved on G024, with the second-order compact-core closure carrying the explicit computer-assisted dependency SOH-G024-Q. Orders m>=3 remain open."
     }
   ],
   "open_obligations": [
-    "prove H_y''(q)>=0 on the remaining compact core 0<=q<1/9 for every 0<|y|<1/2",
-    "equivalently close the second-order bridge/Riccati inequality on that compact core",
     "prove complete monotonicity of H_y for derivative orders m>=3",
-    "cover every q>=0 and every 0<|y|<1/2 for all higher orders",
+    "cover every q>=0 and every 0<|y|<1/2 for all derivative orders m>=3",
     "or independently prove strict positivity of Re(f'^2-f f'') on the full external strip",
+    "independently formalize or reproduce the SOH-G024-Q interval certificate in a stronger proof-assistant or independently implemented interval environment if desired",
     "SOH-G003 real-rootedness remains open",
     "SOH-C005 full admissible Weil positivity remains open",
     "PF3 remains open",
