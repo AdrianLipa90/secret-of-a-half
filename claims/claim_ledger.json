@@ -1,9 +1,10 @@
 {
-  "version": "0.9-integrated-canon-v2",
-  "date": "2026-08-16",
+  "version": "0.9-integrated-canon-v3-g021",
+  "date": "2026-08-19",
   "status": "CANONICAL_PROJECT_CLAIM_LEDGER",
+  "canonical_through": "SOH-G021",
   "proof_of_rh": false,
-  "open_frontier": "SOH-C005: prove full admissible arithmetic Weil positivity, equivalently global Li positivity, without an RH-equivalent premise.",
+  "open_frontier": "SOH-G003 real-rootedness, actual quotient PF3/PF-infinity, SOH-C005 full admissible Weil positivity, and RH remain open. SOH-G021 proves only that the abstract G020 structural package does not imply PF3.",
   "claims": [
     {"id":"SOH-L001","status":"exact","statement":"Binary Shannon entropy is uniquely maximal at sigma=1/2, with value ln 2."},
     {"id":"SOH-L002","status":"exact","statement":"Equal-gain normalized two-channel cancellation occurs only at sigma=1/2 and relative phase pi."},
@@ -57,6 +58,28 @@
     {"id":"SOH-C004","status":"open_bridge","statement":"Every non-trivial xi zero closes in the canonical self-dual PhaseNav shell."},
     {"id":"SOH-C005","status":"open_global_positivity_bridge","statement":"The complete arithmetic PhaseNav-Weil form is non-negative on the full admissible test family by an independent proof not assuming an RH-equivalent premise."},
 
+    {"id":"SOH-G001","status":"exact_reduction_zero_closure_open","statement":"Inverse-boundary geometry reduces zero closure to the self-dual unit circle/half-layer and admits the holomorphic square quotient."},
+    {"id":"SOH-G002","status":"inactive_not_promoted","statement":"Historical intermediate quotient identifier; no standalone theorem is promoted under this ID in the integrated canon."},
+    {"id":"SOH-G003","status":"open_rh_equivalent","statement":"Every zero of the entire quotient F is real; with proved coefficient positivity this is equivalent to RH."},
+    {"id":"SOH-G004","status":"proved","statement":"The compactified exact Riemann-kernel weight W is strictly log-concave; prior strict log-concavity of the classical Xi kernel Phi is attributed to Gershon."},
+    {"id":"SOH-G005","status":"proved_pf2","statement":"The Taylor coefficients of F form a PF2 sequence."},
+    {"id":"SOH-G006","status":"exact_reduction_actual_pf3_open","statement":"The solid PF3 Toeplitz minor has the exact ratio-curvature reduction M_k; global non-negativity for the actual quotient coefficients remains open."},
+    {"id":"SOH-G007","status":"exact_conditional_quotient","statement":"The half-centered Collatz branch conjugacies are exact; the Uroboros torus exists only after the explicit scale identification u~32u."},
+    {"id":"SOH-G008","status":"proved","statement":"The xi scale defect obeys reciprocal antisymmetry and cannot be globally scale-periodic for nontrivial dilation."},
+    {"id":"SOH-G009","status":"proved_finite_orbit_identity","statement":"The selected five-halving chain is an exact hyperbolic/Mobius translation to the centered half-layer."},
+    {"id":"SOH-G010","status":"proved","statement":"On the positive real u-axis the scale defect has the unique sign-changing crossing u=a^-1/2."},
+    {"id":"SOH-G011","status":"proved_open_extension","statement":"The scale defect has the symmetry-forced simple pair u=+/-a^-1/2 exchanged by the Euler half-period; additional complex defect zeros are not excluded."},
+    {"id":"SOH-G012","status":"proved","statement":"Riemann reflection and the Euler half-turn factor the canonical negative inverse; the projective operator group is V4."},
+    {"id":"SOH-G013","status":"proved","statement":"The G012 projective operators admit the Pauli/SU(2) lift Q8->V4 with kernel {+/-I}."},
+    {"id":"SOH-G014","status":"proved_later_strengthened","statement":"Only finitely many xi zeros can be paired by canonical negative inversion."},
+    {"id":"SOH-G015","status":"proved_later_strengthened","statement":"Only finitely many F roots can be paired by J(w)=1/(16w), with the stated involution-orbit classification."},
+    {"id":"SOH-G016","status":"proved","statement":"The paired xi and quotient spectra obey q(P_N)=P_J and |P_N|=2|P_J|."},
+    {"id":"SOH-G017","status":"proved_later_strengthened","statement":"Neither fixed value w=+/-1/4 is a root of F; any remaining paired sets have forced orbit divisibility."},
+    {"id":"SOH-G018","status":"proved_complete_no_go","statement":"The closed disk |w|<=1/4 is zero-free; consequently P_J=P_N=empty and negative inversion has no zero-to-zero spectral action."},
+    {"id":"SOH-G019","status":"proved","statement":"There is a unique R_star>0 with F(R_star)=2F(0), Re F(w)>0 on |w|<=R_star, and the rescaled positive coefficients are exactly normalized."},
+    {"id":"SOH-G020","status":"proved","statement":"The canonical rescaling gives a probability law with half its mass at index zero and half on positive indices; PF2 is preserved, masses decrease strictly, and the sharpened coefficient envelope holds."},
+    {"id":"SOH-G021","status":"proved_structural_no_go_actual_pf3_open","statement":"The abstract G020 package of positivity, half-mass normalization, strict mass decay, PF2 and the normalized envelope does not imply PF3; an exact counterexample has G006 margin -1271/2500. This does not decide PF3 for the actual coefficients of F."},
+
     {"id":"SOH-T001","status":"conditional","statement":"Under SOH-C001 and the channel assumptions, all non-trivial zeros lie on Re(s)=1/2."},
     {"id":"SOH-T002","status":"conditional","statement":"Under SOH-C004, all non-trivial zeros lie on Re(s)=1/2."},
     {"id":"SOH-T003","status":"conditional","statement":"Under SOH-C005 and the standard Weil correspondence, all non-trivial zeros lie on Re(s)=1/2."},
@@ -84,6 +107,6 @@
     "pre_v0.9:SOH-L021":"SOH-AC001",
     "pre_v0.9:SOH-L022":"SOH-DHSE-M001"
   },
-  "alias_rule": "Legacy aliases are historical provenance only. Canonical unprefixed SOH-L012 through SOH-L032 always mean the V2 claims in this ledger.",
+  "alias_rule": "Legacy aliases are historical provenance only. Canonical unprefixed SOH-L012 through SOH-L032 always mean the promoted Li/Weil claims in this ledger.",
   "nan_boundary": "IEEE NaN is an implementation marker, not a numeric endpoint."
 }
