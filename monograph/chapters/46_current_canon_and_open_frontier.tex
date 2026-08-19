@@ -1,11 +1,11 @@
 \chapter{Current Canon, Closed Loopholes, and the Open Frontier}
 \label{chap:current-canon-final}
 
-\status{Semantic synthesis of the integrated canon through SOH-G021. This chapter does not claim RH.}
+\status{Semantic synthesis of the integrated canon through SOH-G022. This chapter does not claim RH.}
 
 \section{Purpose}
 
-The preceding chapters were developed in several successive branches: the initial information-spinor ansatz, the native PhaseNav--Weil construction, the Li/inverse-boundary integration, the quotient and positive-kernel programme, the Uroboros/projective/spinorial operator line, the negative-inversion spectral no-go, and the coefficient-normalization line. This chapter records their present logical relation after all later results, including the G021 PF$_3$ sufficiency no-go, are taken into account.
+The preceding chapters were developed in several successive branches: the initial information-spinor ansatz, the native PhaseNav--Weil construction, the Li/inverse-boundary integration, the quotient and positive-kernel programme, the Uroboros/projective/spinorial operator line, the negative-inversion spectral no-go, and the coefficient-normalization line. This chapter records their present logical relation after all later results, including the G021 PF$_3$ sufficiency no-go and the G022 one-step curvature barrier, are taken into account.
 
 \section{Exact half-axis geometry}
 
@@ -56,6 +56,22 @@ SOH-G021 sharpens the boundary without deciding the actual PF$_3$ question. Chap
  \boxed{M=-\frac{1271}{2500}<0.}
 \]
 Thus the abstract G020 structural package does not imply PF$_3$. This is a no-go for a proof shortcut, not a negative PF$_3$ result for the actual coefficients of $F$.
+
+SOH-G022 then returns to the exact G006 obstruction. For consecutive ratio-curvatures $u,v,w$, it proves the identity
+\[
+ \boxed{
+ M=(1-v)^3+v(1-w)\bigl[1-v(2-u)\bigr]+v(1-v)(w-v).
+ }
+\]
+Consequently, the local conditions
+\[
+ 0<v<1,\qquad v\le w\le1,\qquad 1-v(2-u)\ge0
+\]
+imply
+\[
+ \boxed{M\ge(1-v)^3>0.}
+\]
+This is an exact sufficient condition for the corresponding \emph{solid} order-three minor. The two local ratio-curvature inequalities are not proved globally for the actual Riemann coefficient sequence, and solid-minor positivity is not identified with full PF$_3$ without an additional theorem.
 
 \section{Negative inversion: exact geometry, closed spectral route}
 
@@ -109,7 +125,7 @@ The sequence remains PF$_2$, is strictly decreasing, and satisfies the sharpened
  a_n<\frac{F(0)}{nR_\star^n}
  \qquad(n\ge1).
 \]
-These results provide exact coefficient-level structure but do not imply PF$_3$, PF$_\infty$, or real-rootedness. SOH-G021 proves the first of those non-implications constructively at the level of the complete abstract G020 package.
+These results provide exact coefficient-level structure but do not imply PF$_3$, PF$_\infty$, or real-rootedness. SOH-G021 proves the first of those non-implications constructively at the level of the complete abstract G020 package, while SOH-G022 identifies additional local structure that would be sufficient for the G006 solid margin.
 
 \section{Independent open branches}
 
@@ -119,7 +135,7 @@ The monograph now contains several precisely separated open frontiers.
  \item[SOH-C001.] The normalized information-spinor state-map construction remains open. Later scalar kernels and quotient functions do not retroactively instantiate its channel-metric hypotheses.
  \item[SOH-C005.] Full admissible Weil positivity remains open and is RH-equivalent under the standard criterion. It cannot be assumed as an auxiliary lemma.
  \item[SOH-G003.] Real-rootedness of the quotient entire function $F$ remains open and is RH-equivalent after the proved coefficient positivity.
- \item[PF$_3$/PF$_\infty$.] The coefficient hierarchy is proved only through PF$_2$. The G006 PF$_3$ ratio-curvature reduction is exact, while G021 proves that the G020 half-mass/PF$_2$/envelope package cannot determine its sign. A stronger kernel- or moment-specific inequality is still required.
+ \item[PF$_3$/PF$_\infty$.] The coefficient hierarchy is proved only through PF$_2$. G021 proves that the G020 half-mass/PF$_2$/envelope package cannot determine the G006 margin. G022 gives a local sufficient condition for a solid minor, but the required inequalities $q_{k+1}\ge q_k$ and $q_k(2-q_{k-1})\le1$ are not proved globally for the actual coefficients, and a separate upgrade from solid minors to all order-three Toeplitz minors is still required.
 \end{description}
 
 These branches may constrain one another, but no equivalence between their unproved intermediate mechanisms is asserted unless explicitly proved.
@@ -143,7 +159,7 @@ Several tempting routes are no longer admissible proof strategies because the mo
 
 The strongest concise statement supported by the integrated monograph is therefore:
 \begin{quote}
-The half-axis is selected exactly by the zeta functional geometry and by several declared binary/spinorial representations. The centered xi function admits an exact positive-kernel even quotient with positive PF$_2$ coefficients, explicit zero-free disks, and a canonical half-mass probability normalization. Several symmetry-based spectral shortcuts are rigorously excluded, and SOH-G021 additionally proves that the complete abstract G020 coefficient package cannot by itself force PF$_3$. The missing step is still a non-circular analytic mechanism strong enough to control the actual quotient ratio-curvature or otherwise force all quotient zeros to be real, or an independently proved equivalent global positivity mechanism.
+The half-axis is selected exactly by the zeta functional geometry and by several declared binary/spinorial representations. The centered xi function admits an exact positive-kernel even quotient with positive PF$_2$ coefficients, explicit zero-free disks, and a canonical half-mass probability normalization. Several symmetry-based spectral shortcuts are rigorously excluded. SOH-G021 proves that the complete abstract G020 coefficient package cannot by itself force PF$_3$, while SOH-G022 decomposes the exact G006 solid-minor margin and identifies a local ratio-curvature barrier sufficient for strict positivity of that solid minor. What remains missing is a non-circular analytic mechanism proving the G022 inequalities globally for the actual normalized Riemann moments and then upgrading solid-minor control to full PF$_3$, or another mechanism that forces all quotient zeros to be real, or an independently proved equivalent global positivity mechanism.
 \end{quote}
 
 Nothing in the preceding sentence promotes an RH-equivalent criterion to a proof. In particular,
@@ -157,6 +173,12 @@ Nothing in the preceding sentence promotes an RH-equivalent criterion to a proof
 
 \section{Research direction fixed by the audit}
 
-The active quotient target is no longer ``find another symmetry'' and, after SOH-G021, it is also not ``combine half-mass with PF$_2$ abstractly''. The exact next mathematical obstruction is a stronger property specific to the Riemann kernel or its normalized moments that controls the G006 ratio-curvature margin. Any future promotion must preserve the same proof firewall: exact coordinate identities, finite computations, interpretations, RH-equivalent open criteria, and structural counterexamples remain distinct categories.
+The active quotient target is no longer ``find another symmetry'' and, after SOH-G021, it is also not ``combine half-mass with PF$_2$ abstractly''. SOH-G022 makes the next mathematical obstruction explicit: prove the kernel-specific discrete ratio-curvature inequalities
+\[
+ q_{k+1}\ge q_k,
+ \qquad
+ q_k(2-q_{k-1})\le1
+\]
+for the actual normalized moment sequence, or derive a stronger theorem that implies them. Any future promotion must preserve the same proof firewall: exact coordinate identities, finite computations, interpretations, RH-equivalent open criteria, and structural counterexamples remain distinct categories.
 
-\status{Integrated status through SOH-G021: exact reductions and theorems retained; negative-inversion spectral invariance closed by no-go; the G020 structural package proved insufficient by itself for PF$_3$; PF$_3$ for the actual quotient coefficients, PF$_\infty$, SOH-G003, SOH-C005, and RH remain OPEN.}
+\status{Integrated status through SOH-G022: exact reductions and theorems retained; negative-inversion spectral invariance closed by no-go; the G020 structural package proved insufficient by itself for PF$_3$; G022 gives an exact local sufficient condition for the G006 solid margin, but its global Riemann hypotheses and full PF$_3$ remain unproved; PF$_\infty$, SOH-G003, SOH-C005, and RH remain OPEN.}
