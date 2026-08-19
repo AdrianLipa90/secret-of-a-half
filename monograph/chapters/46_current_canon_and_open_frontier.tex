@@ -152,7 +152,7 @@ The sufficient complete-monotonicity route uses
 \[
  H_y(q)=D_y(\sqrt q).
 \]
-Unlike the earlier branch state, its first non-trivial derivative inequality is now proved. The canonical G004 estimates imply
+Its first non-trivial derivative inequality is proved globally. The canonical G004 estimates imply
 \[
  -(\log K)''>10.
 \]
@@ -177,19 +177,59 @@ globally throughout the full external strip. Integration gives the exact Gaussia
  \boxed{H_y(q)<H_y(0)e^{-19q/2}}.
 \]
 
-Define
+For the normalized bridge measure
 \[
- S_y(q)=-\frac{d}{dq}\log H_y(q).
+ d\mu_u(r)=\frac{r^2K(u+r)K(u-r)}{C(u)}\,dr,
 \]
-Then $S_y>19/2$ and
+SOH-G024 further proves the score hierarchy
 \[
- \boxed{\frac{H_y''}{H_y}=S_y^2-S_y'.}
+ \boxed{
+ \mathbb E[r^{2n+1}D_u(r)]
+ =(2n+3)\mathbb E[r^{2n}],
+ \qquad
+ D_u(r)=L'(u+r)-L'(u-r).
+ }
 \]
-Hence the next complete-monotonicity condition is exactly
+The same strong-convexity margin gives
 \[
- \boxed{H_y''\ge0\iff S_y'\le S_y^2.}
+ \boxed{
+ \mathbb E[r^{2n}]<\frac{(2n+1)!!}{20^n}
+ }
 \]
-This second-order Riccati inequality is open. Finite derivative diagnostics at orders two through four do not promote it.
+and
+\[
+ \boxed{
+ \mathbb E[e^{\lambda r^2}]
+ \le(1-\lambda/10)^{-3/2},
+ \qquad0\le\lambda<10.
+ }
+\]
+
+The exact second-order bridge reduction is
+\[
+ \frac{4u^3H_y''(u^2)}{H_y(u^2)}
+ =N_y+u\left[
+ N_y^2+\operatorname{Var}(A_u)-\mathbb E[B_u]
+ +4|y|^2\operatorname{sech}^2(2|y|u)
+ \right].
+\]
+A companion upper curvature estimate
+\[
+ \boxed{L''(s)<21e^{2|s|}}
+\]
+combined with the bridge concentration gives a global tail comparison. The result is
+\[
+ \boxed{
+ H_y''(q)>0
+ \qquad
+ \left(q\ge\frac14,\quad0<|y|<\frac12\right).
+ }
+\]
+Therefore the second-order Riccati/bridge obstruction remains open only on the compact core
+\[
+ \boxed{0\le q<\frac14.}
+\]
+Finite derivative diagnostics inside this core do not promote it.
 
 \section{Independent open branches}
 
@@ -198,7 +238,7 @@ This second-order Riccati inequality is open. Finite derivative diagnostics at o
  \item[SOH-C005.] Full admissible Weil positivity remains open and RH-equivalent under the standard criterion: \textbf{SOH-C005 OPEN}.
  \item[SOH-G003.] Real-rootedness of $F$ remains open and RH-equivalent: \textbf{SOH-G003 OPEN}.
  \item[PF$_3$/PF$_\infty$.] PF$_2$ is proved. G022 and G023 sharpen the solid-minor target but do not prove the global Riemann inequalities or the upgrade to full PF$_3$.
- \item[G024.] First-order complete monotonicity is proved. The second-order Riccati inequality, all higher derivative inequalities, and direct strict positivity of the external Wronskian/Fourier form remain open.
+ \item[G024.] First-order complete monotonicity is proved globally and the second-order inequality is proved for $q\ge1/4$. The compact second-order core $0\le q<1/4$, all derivative orders $m\ge3$, and direct strict positivity of the external Wronskian/Fourier form remain open.
 \end{description}
 
 \section{Closed shortcuts}
@@ -211,15 +251,15 @@ The current canonical chain reaches SOH-G023. The G024 branch now supplies exact
 \[
  \boxed{H_y'<0\text{ globally on the full Dimitrov--Xu strip}},
 \]
-and reduces the next derivative condition to
+and proves
 \[
- \boxed{S_y'\le S_y^2}.
+ \boxed{H_y''>0\text{ for }q\ge1/4.}
 \]
-Full complete monotonicity remains sufficient for RH but is not established. Therefore
+The remaining second-order obligation is the compact core $0\le q<1/4$; derivative orders $m\ge3$ remain open globally. Full complete monotonicity remains sufficient for RH but is not established. Therefore
 \[
  \boxed{\text{SOH-G003 OPEN}},\qquad
  \boxed{\text{SOH-C005 OPEN}},\qquad
  \boxed{\text{RH OPEN}}.
 \]
 
-\status{Integrated canonical status through SOH-G023 with SOH-G024 retained as a non-canonical branch candidate. G024 proves the global first-order complete-monotonicity inequality and a Gaussian envelope, while the second and higher complete-monotonicity orders remain open. PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, strict external Fourier positivity, and RH remain OPEN.}
+\status{Integrated canonical status through SOH-G023 with SOH-G024 retained as a non-canonical branch candidate. G024 proves global first-order complete monotonicity, a bridge-moment concentration hierarchy, and the second-order inequality on $q\ge1/4$. The second-order compact core $0\le q<1/4$, all derivative orders $m\ge3$, PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, strict external Fourier positivity, and RH remain OPEN.}
