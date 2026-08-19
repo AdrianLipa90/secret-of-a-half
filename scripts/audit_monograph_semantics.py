@@ -135,7 +135,7 @@ def main() -> int:
         if token not in g024_text:
             fail(f"G024 candidate chapter is missing firewall token {token!r}", errors)
     if "D_y(u)=\\cosh(2yu)C(u)" not in g024_text:
-        fail("G024 external Dimitrov-Xu tilt is not recorded")
+        fail("G024 external Dimitrov-Xu tilt is not recorded", errors)
     if "J_y(u)" not in g024_text or "D_0=J_0=C" not in g024_text:
         fail("G024 external/internal tilt distinction is incomplete", errors)
 
