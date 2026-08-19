@@ -43,6 +43,7 @@ jobs:
           - soh-g018-quarter-disk-exclusion
           - soh-g019-caratheodory-disk
           - soh-g020-half-mass-pf2
+          - soh-g021-half-mass-pf3-no-go
           - adaptive-cutoff
     steps:
       - name: Check out repository
@@ -128,6 +129,9 @@ jobs:
             soh-g020-half-mass-pf2)
               python scripts/run_soh_g020_half_mass_pf2.py
               ;;
+            soh-g021-half-mass-pf3-no-go)
+              python scripts/run_soh_g021_half_mass_pf3_no_go.py
+              ;;
             adaptive-cutoff)
               python scripts/run_phasenav_weil_adaptive_cutoff.py
               ;;
@@ -140,7 +144,7 @@ jobs:
   monograph:
     name: vector / monograph
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -200,7 +204,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.9-integrated-canon-v3-semantic-audit-vector
+          name: secret-of-a-half-monograph-v0.9-integrated-canon-v3-g021-vector
           path: monograph/main.pdf
           if-no-files-found: error
 
