@@ -1,6 +1,8 @@
 name: Vectorized build and test experiment
 
 on:
+  push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
@@ -191,6 +193,9 @@ jobs:
       - name: Generate deterministic core assets
         run: python scripts/generate_monograph_assets.py
 
+      - name: Generate monograph overhaul figures
+        run: python scripts/generate_monograph_overhaul_assets.py
+
       - name: Generate identity and holonomy assets
         run: python scripts/generate_identity_holonomy_assets.py
 
@@ -226,7 +231,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.9-g023-g024-candidate-vector
+          name: secret-of-a-half-monograph-v0.10-mainline-g024-vector
           path: monograph/main.pdf
           if-no-files-found: error
 
@@ -238,12 +243,14 @@ jobs:
       - python-vector
       - monograph
     steps:
-      - name: Reduce lane status
-        env:
-          PYTHON_VECTOR_RESULT: ${{ needs.python-vector.result }}
-          MONOGRAPH_RESULT: ${{ needs.monograph.result }}
+      - name: Reduce vector outcomes
         run: |
-          echo "python-vector=$PYTHON_VECTOR_RESULT"
-          echo "monograph=$MONOGRAPH_RESULT"
-          test "$PYTHON_VECTOR_RESULT" = "success"
-          test "$MONOGRAPH_RESULT" = "success"
+          if [[ "${{ needs.python-vector.result }}" != "success" ]]; then
+            echo "python-vector failed: ${{ needs.python-vector.result }}" >&2
+            exit 1
+          fi
+          if [[ "${{ needs.monograph.result }}" != "success" ]]; then
+            echo "monograph failed: ${{ needs.monograph.result }}" >&2
+            exit 1
+          fi
+          echo "VECTOR_REDUCER_PASS"

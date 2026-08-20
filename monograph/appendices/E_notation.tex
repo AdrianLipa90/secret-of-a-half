@@ -23,19 +23,46 @@ $\Hbin(\sigma)$ & Binary Shannon entropy in nats.\\
 $\Acomp(\sigma,\phi)$ & Equal-gain complementary amplitude $\sqrt\sigma+e^{i\phi}\sqrt{1-\sigma}$.\\
 $\ket{+},\ket{-}$ & Symmetric and antisymmetric detector rays.\\
 $P_+$ & Projector $\ket{+}\bra{+}$.\\
-$x$ & Horizontal displacement $\sigma-1/2$.\\
+$x$ & Horizontal displacement $\sigma-1/2$ in the early half-axis chapters.\\
 $z$ & A centred complex coordinate; the local convention is stated in each chapter because both $z=s-1/2$ and $z=-i(s-1/2)$ occur in distinct reductions.\\
-$u=\Omega(s)$ & Projective coordinate $s/(1-s)$.\\
-$q$ & Compactified radial coordinate $|u|/(1+|u|)$ when used in the inverse-boundary geometry; in Chapter~41 the letter $q(s)$ is locally redeclared for the square quotient $(s-1/2)^2$.\\
+$u=\Omega(s)$ & Projective coordinate $s/(1-s)$ in the Li/inverse-boundary line. In G024, $u$ is redeclared locally as the non-negative centred correlation coordinate with $q=u^2$.\\
+$q$ & Chapter-local compact or radial-square coordinate. In G024, $q=u^2\ge0$ and $H_y(q)=D_y(\sqrt q)$.\\
 $w$ & Even quotient coordinate $(s-1/2)^2$ in Chapters~26 onward.\\
 $F(w)$ & Unique entire quotient satisfying $\xi(1/2+z)=F(z^2)$.\\
 $R_\star$ & Unique positive coefficient-majorant threshold satisfying $F(R_\star)=2F(0)$.\\
 $\pi_n$ & Canonical half-mass coefficient law $a_nR_\star^n/(2F(0))$.\\
 $R(s)$ & Candidate state readout $\braket{+}{\Psi(s)}$ in the information-spinor ansatz.\\
-$g(s),h(s),w(s)$ & Non-vanishing scalar factors in candidate factorizations; chapter-local notation takes precedence where $w$ denotes the quotient coordinate.\\
+$g(s),h(s)$ & Non-vanishing scalar factors in local candidate factorizations; chapter-local declarations take precedence.\\
+$\Phi(t)$ & Classical positive half-line Riemann Xi kernel in the normalization used by Chapters~27--55.\\
+$K(t)$ & Even full-line Riemann kernel $K(t)=\Phi(|t|)/2$.\\
+$L(t)$ & G024 log-potential $L(t)=-\log K(t)$.\\
+$C(u)$ & G024 centred order-two correlation $\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr$.\\
+$D_y(u)$ & External Dimitrov--Xu tilt $\cosh(2yu)C(u)$.\\
+$J_y(u)$ & Distinct internal Jensen tilt $\int r^2\cosh(2yr)K(u+r)K(u-r)\,dr$.\\
+$H_y(q)$ & Radial-square external profile $D_y(\sqrt q)$ used for the complete-monotonicity route.\\
+$\mu_u$ & Normalized G024 bridge probability measure with density proportional to $r^2K(u+r)K(u-r)$.\\
+$A_u(r)$ & Bridge score observable $L'(u+r)+L'(u-r)$.\\
+$B_u(r)$ & Bridge curvature observable $L''(u+r)+L''(u-r)$.\\
+$C_u^{(3)}(r)$ & Third bridge observable $L'''(u+r)+L'''(u-r)$.\\
+$R(u)$ & In G024, logarithmic correlation slope $-C'(u)/C(u)=\mathbb E_{\mu_u}[A_u]$.\\
+$T_y(u)$ & External-tilt logarithmic slope $2|y|\tanh(2|y|u)$.\\
+$N_y(u)$ & G024 surplus $R(u)-T_y(u)=-D_y'(u)/D_y(u)$.\\
+$S_y(q)$ & Logarithmic complete-monotonicity slope $-\frac{d}{dq}\log H_y(q)=N_y(\sqrt q)/(2\sqrt q)$ for $q>0$.\\
+$M_2(u)$ & Positive second-order radial margin $N_y+u(N_y^2-N_y')=4u^3H_y''(u^2)/H_y(u^2)$.\\
+$F_m(q)$ & Normalized complete-monotonicity hierarchy $(-1)^mH_y^{(m)}(q)/H_y(q)$.\\
+$\mu_3(A_u)$ & Third central moment of $A_u$ under the bridge measure.\\
+$\widehat D_y$ & Fourier transform of the external correlation family; strict positivity for the full strip is the direct G024 open target.\\
 \bottomrule
 \end{longtable}
 
 \section{Conventions}
+All logarithms are natural. Entropies are measured in nats. Equality of state rays is denoted informally by $\sim$ or by square brackets $[\Psi]$. Numerical tolerances are not used in theorem statements. ``Zero'' without qualification means a non-trivial zeta zero when the context is the critical strip. Chapter-local symbol declarations override earlier local conventions. In particular, $u$, $q$, $R$, and $z$ are intentionally reused in distinct reductions; each chapter states its local definition before use.
 
-All logarithms are natural. Entropies are measured in nats. Equality of state rays is denoted informally by $\sim$ or by square brackets $[\Psi]$. Numerical tolerances are not used in theorem statements. ``Zero'' without qualification means a non-trivial zeta zero when the context is the critical strip. Chapter-local symbol declarations override earlier local conventions; in particular the monograph deliberately distinguishes the spectral coordinate $-i(s-1/2)$ from the even-quotient coordinate built from $s-1/2$.
+\section{Proof-status vocabulary}
+\begin{description}
+\item[Canonical.] Promoted into the audited numbered theorem ledger through SOH-G023.
+\item[Integrated research line.] Present on the repository mainline and included in the monograph, but not thereby promoted into the canonical numbered sequence; G024 currently has this status.
+\item[Computer-assisted dependency.] A theorem step whose universal sign relies on a reproducible outward interval enclosure with an explicit analytic tail or equivalent trust boundary.
+\item[Finite diagnostic.] Numerical evidence only; never a universal proof.
+\item[OPEN.] A proof obligation not closed by the current repository state.
+\end{description}

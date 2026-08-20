@@ -1,0 +1,113 @@
+\chapter*{Integrated Synthesis and Open Problems}
+\addcontentsline{toc}{chapter}{Integrated Synthesis and Open Problems}
+\label{back:final-synthesis}
+
+This final synthesis records the state of the programme after integration of SOH-G024 into the repository mainline. Repository integration and mathematical canonization are deliberately distinguished: the canonical numbered theorem sequence remains audited through SOH-G023, while G024 is an integrated research line with exact results, an explicit computer-assisted dependency, and an open higher-order frontier.
+
+\section*{Results that are closed}
+The monograph establishes the half-axis fixed geometry, the binary complementarity lemmas, the exact centred quotient $\xi(1/2+z)=F(z^2)$, the positive Riemann-kernel representation, strict log-concavity statements at their declared levels, PF$_2$ for the quotient coefficients, the complete negative-inversion zero-pairing no-go, the coefficient-majorant disk and canonical half-mass law, the G021 PF$_2$-to-PF$_3$ insufficiency counterexample, and the G022--G023 exact PF$_3$ normal forms.
+
+The G024 research line additionally proves the first two non-trivial complete-monotonicity inequalities for
+\[
+H_y(q)=D_y(\sqrt q),\qquad 0<|y|<\frac12.
+\]
+Specifically,
+\[
+H_y'(q)<0,\qquad H_y''(q)>0\qquad(q\ge0).
+\]
+The first inequality is analytic. The second combines analytic estimates with SOH-G024-Q, the reproducible outward-interval certificate for
+\[
+L''''(t)<20L''(t),\qquad L=-\log K,
+\]
+on the declared compact interval, plus a separate analytic tail proof and an exact downstream Riccati argument.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\textwidth]{g024_proof_regions.png}
+\caption{Current G024 complete-monotonicity status. The figure visualizes proved and open regions; it does not replace the proofs in Chapters~50--55.}
+\label{fig:g024-proof-regions}
+\end{figure}
+
+\section*{The present direct frontier}
+The third-order recurrence is exact:
+\[
+F_{m+1}=S_yF_m-F_m',
+\qquad
+F_m=(-1)^m\frac{H_y^{(m)}}{H_y}.
+\]
+For $m=3$ the unresolved sign is encoded by the bridge cumulant--covariance combination
+\[
+R''=\mathbb E[C_u^{(3)}]-3\operatorname{Cov}(A_u,B_u)+\mu_3(A_u),
+\]
+or, equivalently, by the logarithmic-growth condition for the already positive second-order margin
+\[
+\frac{uM_2'}{M_2}\le uN_y+3.
+\]
+No universal proof of this inequality is claimed.
+
+The bridge moment hierarchy remains a useful exact concentration input:
+\[
+\mathbb E[r^{2n}]<\frac{(2n+1)!!}{34^n},
+\qquad
+\mathbb E[e^{\lambda r^2}]\le(1-\lambda/17)^{-3/2},
+\quad0\le\lambda<17.
+\]
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.78\textwidth]{bridge_moment_envelope.png}
+\caption{Analytic bridge-moment envelope implied by the G024 strong-curvature bound. This plot displays the proved upper bound, not sampled bridge moments.}
+\label{fig:bridge-moment-envelope}
+\end{figure}
+
+\section*{Computer-assisted trust boundary}
+The only computer-assisted ingredient needed for the current global second-order theorem is isolated in SOH-G024-Q. The compact part uses outward interval arithmetic; the large-$t$ region is analytic.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.82\textwidth]{g024_curvature_certificate_regions.png}
+\caption{Trust boundary of the fourth-log-curvature certificate. The compact interval is certified by outward interval arithmetic; the tail is closed analytically.}
+\label{fig:g024-curvature-trust-boundary}
+\end{figure}
+
+This distinction follows standard validated-numerics practice: interval enclosures are used to certify a universal sign on a compact continuum, not to infer a theorem from a finite floating-point grid \citep{moore2009interval}.
+
+\section*{Open problems}
+\begin{enumerate}
+\item \textbf{Third complete-monotonicity inequality.} Prove
+\[
+-H_y'''(q)\ge0
+\]
+for every $q\ge0$ and every $0<|y|<1/2$.
+
+\item \textbf{Higher-order complete monotonicity.} Establish or falsify
+\[
+(-1)^mH_y^{(m)}(q)\ge0\qquad(m\ge3).
+\]
+A proof for every order would invoke the Hausdorff--Bernstein--Widder representation and yield a positive Gaussian-mixture representation for $D_y$ \citep{schilling2010bernstein}.
+
+\item \textbf{External Fourier positivity.} Prove directly, or via complete monotonicity,
+\[
+\widehat D_y(x)>0
+\]
+for every real $x$ and $0<|y|<1/2$. By the Dimitrov--Xu correlation criterion and Wiener's Tauberian theorem, this is the direct RH-equivalent frontier used in G024 \citep{dimitrovxu2016,wiener1932tauberian}.
+
+\item \textbf{Quotient real-rootedness.} Prove SOH-G003: every zero of $F$ is real. This remains an exact RH-equivalent formulation.
+
+\item \textbf{PF$_3$ and PF$_\infty$.} Close the actual quotient-coefficient inequalities rather than abstract structural surrogates. G021 proves that the current PF$_2$ plus half-mass package is insufficient; G022 and G023 isolate sharper local targets.
+
+\item \textbf{Full admissible Weil positivity.} Close SOH-C005 without circular use of an RH-equivalent premise.
+\end{enumerate}
+
+\section*{Final proof boundary}
+The monograph does not prove the Riemann Hypothesis. Its present contribution is a set of exact reductions, theorems, no-go results, coefficient structures, and a direct Jensen--Wiener route whose first two complete-monotonicity inequalities are closed globally. The unresolved mathematical boundary is explicit:
+\[
+\boxed{m\ge3\text{ complete monotonicity: OPEN}},
+\qquad
+\boxed{\widehat D_y>0\text{ on the full strip: OPEN}},
+\]
+\[
+\boxed{\mathrm{PF}_3,\mathrm{PF}_\infty,\mathrm{SOH\!\!-G003},\mathrm{SOH\!\!-C005}:\ OPEN},
+\qquad
+\boxed{\mathrm{RH}:\ OPEN}.
+\]

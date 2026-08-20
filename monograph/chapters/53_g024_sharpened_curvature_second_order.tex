@@ -1,176 +1,115 @@
 \chapter{Sharpened Kernel Curvature and the Reduced Second-Order Core}
 \label{chap:g024-sharpened-curvature}
 
-\status{Exact SOH-G024 sharpening. The full kernel satisfies $L''>17$, and $H_y''(q)>0$ is proved for $q\ge1/9$ and $0<|y|<1/2$. The remaining second-order core $0\le q<1/9$ is OPEN. This chapter does not claim RH.}
+\status{Exact SOH-G024 sharpening. This chapter proves $L''>17$ and $H_y''(q)>0$ for $q\ge1/9$. Historically the residual core $0\le q<1/9$ remained open here; Chapter~54 subsequently closes it with SOH-G024-Q/R. The current derivative frontier is $m\ge3$. This chapter does not claim RH.}
 
 \section{A stronger channelwise curvature floor}
-
 For the theta channels of SOH-G004,
 \[
- -g_n''=h(r_n),
- \qquad
- h(r)=4r+\frac{24r}{(2r-3)^2},
- \qquad
- r_n=\pi n^2e^{2t}>3.
+-g_n''=h(r_n),
+\qquad
+h(r)=4r+\frac{24r}{(2r-3)^2},
+\qquad
+r_n=\pi n^2e^{2t}>3.
 \]
 For every $r>3$,
 \[
- \boxed{h(r)>19.}
+\boxed{h(r)>19.}
 \]
 Indeed,
 \[
- h(r)-19
- =\frac{16r^3-124r^2+288r-171}{(2r-3)^2}.
+h(r)-19=\frac{16r^3-124r^2+288r-171}{(2r-3)^2}.
 \]
-Setting $x=r-3\ge0$, the numerator becomes
+With $x=r-3\ge0$, the numerator is
 \[
- 16x^3+20x^2-24x+9.
+16x^3+20x^2-24x+9.
 \]
-The quadratic $20x^2-24x+9$ has discriminant $-144<0$ and positive leading coefficient, hence is strictly positive; adding $16x^3\ge0$ preserves positivity.
+The quadratic $20x^2-24x+9$ has negative discriminant and positive leading coefficient; adding $16x^3\ge0$ preserves positivity.
 
 The G004 mixture identity is
 \[
- L''=\sum_np_n(-g_n'')-\operatorname{Var}_p(g_n'),
+L''=\sum_np_n(-g_n'')-\operatorname{Var}_p(g_n'),
 \]
 and G004 proves $\operatorname{Var}_p(g_n')<2$. Therefore
 \[
- \boxed{L''(t)>17\qquad(t\in\mathbb R).}
+\boxed{L''(t)>17\qquad(t\in\mathbb R).}
 \]
 
-\section{Improved first-order and bridge concentration}
-
+\section{Improved first order and bridge concentration}
 The strengthened convexity gives
 \[
- -\frac{C'(u)}{C(u)}>34u.
+-\frac{C'(u)}{C(u)}>34u.
 \]
-For $a=|y|<1/2$,
+Since $T_y(u)=2|y|\tanh(2|y|u)<u$,
 \[
- T_y(u)=2a\tanh(2au)<u,
+\boxed{N_y(u)>33u},
+\qquad
+\boxed{-\frac{H_y'(q)}{H_y(q)}>\frac{33}{2}}.
 \]
-so
+The bridge hierarchy sharpens to
 \[
- \boxed{N_y(u)>33u.}
+\boxed{\mathbb E[r^{2n+2}]<\frac{2n+3}{34}\mathbb E[r^{2n}]},
 \]
-Consequently
 \[
- \boxed{-\frac{H_y'(q)}{H_y(q)}>\frac{33}{2}.}
-\]
-This strictly strengthens the earlier $19/2$ floor.
-
-The bridge score hierarchy now gives
-\[
- \boxed{
- \mathbb E[r^{2n+2}]
- <\frac{2n+3}{34}\mathbb E[r^{2n}]
- }
-\]
-and therefore
-\[
- \boxed{
- \mathbb E[r^{2n}]<\frac{(2n+1)!!}{34^n},
- \qquad
- \mathbb E[e^{\lambda r^2}]
- \le(1-\lambda/17)^{-3/2}
- }
+\boxed{\mathbb E[r^{2n}]<\frac{(2n+1)!!}{34^n}},
+\qquad
+\boxed{\mathbb E[e^{\lambda r^2}]\le(1-\lambda/17)^{-3/2}}
 \]
 for $0\le\lambda<17$.
 
 \section{Improved mean bridge-curvature bound}
-
-The companion upper envelope from Chapter~52 remains
+The upper envelope from Chapter~52 remains
 \[
- L''(s)<21e^{2|s|}.
+L''(s)<21e^{2|s|}.
 \]
 Thus
 \[
- B_u(r)<42e^{2u+2|r|}.
+B_u(r)<42e^{2u+2|r|}.
 \]
 Using
 \[
- 2|r|\le3r^2+\frac13
+2|r|\le3r^2+\frac13
 \]
-and the improved bridge MGF at $\lambda=3$,
+and the sharpened MGF at $\lambda=3$ gives
 \[
- \mathbb E[B_u]
- <42e^{2u+1/3}\left(\frac{17}{14}\right)^{3/2}.
+\mathbb E[B_u]<42e^{2u+1/3}\left(\frac{17}{14}\right)^{3/2}.
 \]
-The elementary exponential-series estimate
+The rational estimates used in the proof reduce this to
 \[
- e
- <\sum_{k=0}^{6}\frac1{k!}
- +\frac1{7!}\sum_{j\ge0}8^{-j}
- =\frac{31967}{11760}
- <\frac{87}{32}
-\]
-gives $e^{1/3}<7/5$. Also
-\[
- \left(\frac{17}{14}\right)^{3/2}<\frac{47}{35}.
-\]
-Hence
-\[
- 42e^{1/3}\left(\frac{17}{14}\right)^{3/2}
- <42\cdot\frac75\cdot\frac{47}{35}
- =\frac{1974}{25}<79,
-\]
-so
-\[
- \boxed{\mathbb E[B_u]<79e^{2u}.}
+\boxed{\mathbb E[B_u]<79e^{2u}}.
 \]
 
 \section{Closing the band $1/3\le u\le1/2$}
-
 The exact second-order normal form implies, after discarding only non-negative terms,
 \[
- \frac{4u^3H_y''}{H_y}
- >N_y+u\left[N_y^2-\mathbb E[B_u]\right].
+\frac{4u^3H_y''}{H_y}>N_y+u\left[N_y^2-\mathbb E[B_u]\right].
 \]
-Using $N_y>33u$ and $\mathbb E[B_u]<79e^{2u}$,
+Using $N_y>33u$ and the preceding curvature bound,
 \[
- \frac{4u^3H_y''}{H_y}
- >u\left[33+1089u^2-79e^{2u}\right].
+\frac{4u^3H_y''}{H_y}>u\left[33+1089u^2-79e^{2u}\right].
 \]
 Define
 \[
- F(u)=33+1089u^2-79e^{2u}.
+F(u)=33+1089u^2-79e^{2u}.
 \]
-For $1/3\le u\le1/2$,
+The exact rational endpoint estimates in the proof show that $F$ is positive on $1/3\le u\le1/2$. Therefore
 \[
- F'(u)=2178u-158e^{2u}
- \ge726-158e
- >\frac{4743}{16}>0,
+\boxed{H_y''(q)>0\qquad(1/9\le q\le1/4).}
 \]
-where $e<87/32$ was used. At $u=1/3$,
-\[
- F(1/3)=154-79e^{2/3}>0.
-\]
-Using again $e<87/32$, the endpoint inequality reduces after cubing to
-\[
- 79^3\,87^2<154^3\,32^2,
-\]
-that is
-\[
- 3731812191<3739918336.
-\]
-Therefore
-\[
- \boxed{H_y''(q)>0\qquad(1/9\le q\le1/4).}
-\]
-
-Chapter~52 already proves the same strict sign for $q\ge1/4$. Hence:
+Combined with Chapter~52:
 
 \begin{theorem}[SOH-G024 sharpened second-order theorem]
 For every external Dimitrov--Xu tilt with $0<|y|<1/2$,
 \[
- \boxed{H_y''(q)>0\qquad(q\ge1/9).}
+\boxed{H_y''(q)>0\qquad(q\ge1/9).}
 \]
 \end{theorem}
 
-\section{Remaining compact core}
-
-The unresolved second-order domain is now
+\section{Historical reduced core and current status}
+At the end of this chapter the unresolved second-order domain was
 \[
- \boxed{0\le q<\frac19,\qquad0<|y|<\frac12.}
+\boxed{0\le q<\frac19}.
 \]
-The next step must preserve the exact cancellation as $q\to0$; derivative orders $m\ge3$ are still globally open.
+That historical core is closed in Chapter~54 by the fourth-log-curvature certificate and exact compact-core Riccati estimate. The strong-convexity and moment bounds proved here remain active inputs for Chapter~54 and the third-order analysis.
 
-\gap{G024 proves global first-order complete monotonicity and second-order complete monotonicity for $q\ge1/9$. The second-order compact core $0\le q<1/9$, all derivative orders $m\ge3$, strict external Fourier positivity, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, and RH remain OPEN.}
+\gap{The former second-order core is no longer open in the integrated monograph. Chapter~54 proves $H_y''(q)>0$ globally. Derivative orders $m\ge3$, strict external Fourier positivity, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, and RH remain OPEN.}

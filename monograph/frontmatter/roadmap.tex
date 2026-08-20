@@ -1,0 +1,82 @@
+\chapter*{Reader Roadmap and Evidence Map}
+\addcontentsline{toc}{chapter}{Reader Roadmap and Evidence Map}
+\label{front:roadmap}
+
+This roadmap separates the mathematical objects, theorem classes, computational certificates, and still-open implications used throughout the monograph. It is a reading guide, not an additional proof claim. \textbf{Repository integration} means that a research line is present on the active mainline and publication build; it does not by itself constitute mathematical canonization or proof promotion.
+
+\section*{How to read the programme}
+The monograph contains several independent routes that meet at the same proof boundary. The quotient route rewrites the centred xi function as $F(z^2)$ and studies real-rootedness and P\'olya-frequency structure. The Weil route studies positivity of the full admissible Weil form. The negative-inversion route develops an exact conformal/projective geometry but ultimately proves a spectral no-go for zero-to-zero action. The direct G024 route uses the Riemann correlation kernel and a complete-monotonicity sufficient condition for the Dimitrov--Xu/Wiener criterion.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\textwidth]{proof_dependency_graph.png}
+\caption{Dependency map of the principal proof routes. Arrows denote logical use or reduction, not equivalence unless stated explicitly in the corresponding theorem. Boxes marked OPEN remain proof obligations.}
+\label{fig:proof-dependency-map}
+\end{figure}
+
+\section*{Evidence classes}
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{p{0.20\textwidth}p{0.30\textwidth}p{0.40\textwidth}}
+\toprule
+Class & Meaning in this monograph & Promotion rule\\
+\midrule
+Exact theorem / identity & Symbolic derivation with declared hypotheses and no numerical tolerance in the statement. & May enter the canonical claim ledger after dependency and semantic audit.\\
+Computer-assisted theorem component & Rigorous interval enclosure or finite symbolic certificate with an explicit trust boundary. & May support a theorem only when the certificate, analytic tail, implementation, and reproducibility gate are all explicit.\\
+Finite diagnostic & Numerical sampling, regression, or finite-grid sign check. & Never promotes a universal claim.\\
+Exact reduction / reformulation & A target is transformed into an equivalent or sufficient condition. & Does not prove the target unless the transformed condition is independently closed.\\
+Model / software construction & Executable representation, geometry, or routing convention. & Does not alter mathematical proof status by itself.\\
+OPEN & A missing universal inequality, construction, equivalence, or positivity statement. & Remains open until a complete proof or certified construction is present.\\
+\bottomrule
+\end{tabular}
+\caption{Epistemic classes used throughout the monograph.}
+\label{tab:evidence-classes}
+\end{table}
+
+\section*{Current integrated frontier}
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{p{0.18\textwidth}p{0.36\textwidth}p{0.34\textwidth}}
+\toprule
+Route & Strongest current result & Remaining frontier\\
+\midrule
+Centred quotient & $\xi(1/2+z)=F(z^2)$ exactly; RH $\iff$ all zeros of $F$ are real; PF$_2$ proved. & Real-rootedness, PF$_3$, PF$_\infty$.\\
+Weil / PhaseNav & Exact finite and dense-core constructions plus certified tail machinery. & Full admissible Weil positivity (SOH-C005).\\
+Negative inversion & Exact projective/spinorial algebra; zero-to-zero spectral action excluded by G018. & No remaining zero-pairing proof route; geometry retained as exact structure.\\
+Coefficient route & Canonical half-mass PF$_2$ law; G021 no-go; G022/G023 exact PF$_3$ normal forms. & Global actual-sequence PF$_3$ inequalities.\\
+G024 Jensen--Wiener & Global $H_y'<0$ and $H_y''>0$ for $0<|y|<1/2$; second order uses explicit interval dependency Q. & $-H_y'''\ge0$, all $m\ge3$, full complete monotonicity, strict external Fourier positivity.\\
+\bottomrule
+\end{tabular}
+\caption{Integrated proof frontier after G024 was merged into the repository mainline. Inclusion on main does not by itself promote G024 into the canonical theorem sequence through G023.}
+\label{tab:integrated-frontier}
+\end{table}
+
+\section*{Conformal coordinate maps}
+The two coordinate maps most frequently used later are exact holomorphic maps away from their poles/branch identifications. The projective coordinate
+\[
+\Omega(s)=\frac{s}{1-s}
+\]
+sends the critical line to the unit circle, while the centred square quotient
+\[
+z=s-\frac12,\qquad w=z^2
+\]
+sends the critical line to the non-positive real axis.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\textwidth]{projective_conformal_map.png}
+\caption{Exact projective map $\Omega(s)=s/(1-s)$. The critical line is mapped to $|\Omega|=1$. The plotted grid is explanatory and is not a numerical proof artifact.}
+\label{fig:projective-conformal-map}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.94\textwidth]{square_quotient_map.png}
+\caption{Centred square quotient $w=(s-1/2)^2$. Points on the critical line have $w\le0$ real. This is the geometric basis of the G001--G003 real-rootedness reformulation.}
+\label{fig:square-quotient-map}
+\end{figure}
+
+\section*{Recommended reading order}
+For a classical analytic reading, use Chapters~1--3, 25--31, 43--55, Appendix~D, and the final synthesis. For the information--spinor development, read Chapters~4--15 before the later no-go and quotient results. For the computational proof boundary, read Chapters~29, 50--55 together with the generated receipts and the reproducibility appendix material. All readers should use Appendix~E for the symbol table because several coordinates are intentionally local to their respective reductions.

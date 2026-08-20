@@ -32,6 +32,8 @@ jobs:
         run: python scripts/audit_monograph_semantics.py
       - name: Generate deterministic core assets
         run: python scripts/generate_monograph_assets.py
+      - name: Generate monograph overhaul figures
+        run: python scripts/generate_monograph_overhaul_assets.py
       - name: Generate identity and holonomy assets
         run: python scripts/generate_identity_holonomy_assets.py
       - name: Run native PhaseNav receipt
@@ -134,7 +136,7 @@ jobs:
       - name: Upload compiled monograph
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.9-g023-g024-candidate
+          name: secret-of-a-half-monograph-v0.10-mainline-g024
           path: |
             monograph/main.pdf
             monograph/main.pdf.pages.txt
