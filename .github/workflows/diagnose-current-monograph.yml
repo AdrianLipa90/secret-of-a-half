@@ -1,0 +1,108 @@
+name: Diagnose current monograph PDF
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose-monograph:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev,monograph]
+
+      - name: Generate all monograph assets
+        run: |
+          python scripts/generate_monograph_assets.py
+          python scripts/generate_monograph_overhaul_assets.py
+          python scripts/generate_identity_holonomy_assets.py
+
+      - name: Install LaTeX toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            poppler-utils \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-bibtex-extra \
+            lmodern
+
+      - name: Compile monograph with persistent diagnostics
+        id: compile
+        working-directory: monograph
+        shell: bash
+        run: |
+          set +e
+          : > compile-output.txt
+          pdflatex -interaction=nonstopmode -halt-on-error main.tex >> compile-output.txt 2>&1
+          rc=$?
+          if [ "$rc" -eq 0 ]; then
+            bibtex main >> compile-output.txt 2>&1
+            rc=$?
+          fi
+          if [ "$rc" -eq 0 ]; then
+            pdflatex -interaction=nonstopmode -halt-on-error main.tex >> compile-output.txt 2>&1
+            rc=$?
+          fi
+          if [ "$rc" -eq 0 ]; then
+            pdflatex -interaction=nonstopmode -halt-on-error main.tex >> compile-output.txt 2>&1
+            rc=$?
+          fi
+          printf '%s\n' "$rc" > compile-exit-code.txt
+          if [ -f main.log ]; then
+            grep -n -B 8 -A 20 '^!' main.log > latex-errors.txt || true
+            tail -n 250 main.log > main-log-tail.txt || true
+          fi
+          cat compile-output.txt
+          exit "$rc"
+
+      - name: Upload LaTeX diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: current-monograph-latex-diagnostics
+          path: |
+            monograph/compile-output.txt
+            monograph/compile-exit-code.txt
+            monograph/latex-errors.txt
+            monograph/main-log-tail.txt
+            monograph/main.log
+            monograph/main.aux
+            monograph/main.blg
+            monograph/main.pdf
+          if-no-files-found: warn
+
+      - name: Validate successful PDF
+        if: success()
+        working-directory: monograph
+        run: |
+          test -s main.pdf
+          pages="$(pdfinfo main.pdf | awk '/^Pages:/ {print $2}')"
+          test -n "$pages"
+          printf 'Validated monograph pages: %s\n' "$pages" | tee main.pdf.pages.txt
+          ! grep -E "Overfull|undefined references|Citation.*undefined|multiply defined" main.log
+
+      - name: Upload validated current PDF
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: secret-of-a-half-current-main-repair-pdf
+          path: |
+            monograph/main.pdf
+            monograph/main.pdf.pages.txt
+          if-no-files-found: error
