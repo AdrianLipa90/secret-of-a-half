@@ -1,0 +1,42 @@
+{
+  "schema": "SOH_HYB007_ANGLE_MIDRANGE_RECEIPT_V1",
+  "status": "PASS_INTERVAL_ENDPOINT_CERTIFICATE",
+  "claim": "For corrected internal Jensen kernel J_eta and |eta|<1/2, the derived bounds q'(u)>34u and q''(u)<C exp(2u), C=42 exp(1/3)(11/9)^(3/2), imply theta_eta''(u)<0 throughout u in [2/5,2].",
+  "logic": [
+    "theta''<=0 is implied by q'^2 >= q''.",
+    "q'^2 > 1156 u^2.",
+    "q'' < C exp(2u).",
+    "Thus it suffices that u^2 exp(-2u) > C/1156.",
+    "u^2 exp(-2u) increases on (0,1] and decreases on [1,infinity).",
+    "Therefore the minimum on [2/5,2] is attained at an endpoint."
+  ],
+  "C_interval": {
+    "lo": "79.20258956470617782848004596161247232962920872058571391",
+    "hi": "79.20258956470617782848004596161247232962920872058656919"
+  },
+  "threshold_C_over_1156": {
+    "lo": "0.06851435083452091507653983214672359198064810442957233595",
+    "hi": "0.06851435083452091507653983214672359198064810442957317119"
+  },
+  "left_endpoint_value": {
+    "lo": "0.07189263425875545462881638160249004734947439060354901606",
+    "hi": "0.0718926342587554546288163816024900473494743906035498513"
+  },
+  "left_endpoint_margin": {
+    "lo": "0.003378283424234539552276549455766455368826286173975844866",
+    "hi": "0.003378283424234539552276549455766455368826286173977515344"
+  },
+  "right_endpoint_value": {
+    "lo": "0.07326255555493672117487208509296496884764827021390221771",
+    "hi": "0.07326255555493672117487208509296496884764827021390238476"
+  },
+  "right_endpoint_margin": {
+    "lo": "0.004748204720415806098332252946241376867000165784329046515",
+    "hi": "0.004748204720415806098332252946241376867000165784330048802"
+  },
+  "open_domains_after_this_certificate": [
+    "small core: 0 < u < 2/5, except an analytically guaranteed neighborhood of u=0",
+    "tail: u > 2"
+  ],
+  "evidential_boundary": "This certifies only the derived midrange angle-concavity inequality. It does not prove global 3-point Gram positivity, PF3, PF-infinity, or RH."
+}
