@@ -1,0 +1,23 @@
+{
+  "schema": "SOH_HYB010_Q4_FINITE_DIAGNOSTIC_V1",
+  "status": "FINITE_DIAGNOSTIC_NOT_PROOF",
+  "domain": {
+    "u": [0, 0.20412414523193154],
+    "eta": [0, 0.499]
+  },
+  "grid": {
+    "u_points": 81,
+    "eta_points": 9,
+    "total": 729
+  },
+  "target_uniform_upper": "q'''' < 2244",
+  "max_observed_q4": 237.189520577834,
+  "max_observed_at": {
+    "u": 0.20412414523193154,
+    "eta": 0.0,
+    "q2": 49.60451831385515
+  },
+  "min_observed_q2": 46.98411983627666,
+  "margin_to_2244": 2006.810479422166,
+  "proof_boundary": "Finite quadrature/grid only; not a compact-continuum certificate."
+}
