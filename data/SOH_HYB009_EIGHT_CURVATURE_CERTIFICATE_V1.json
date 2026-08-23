@@ -1,0 +1,47 @@
+{
+  "analytic_tail": {
+    "8L2_minus_L4_tail_lower_margin": ">80",
+    "L4_tail_lower_margin": ">81",
+    "eight_perturbation_abs_upper": "493667196370840218223387468420816247989/26168823242187500000000000000000000000",
+    "exp_9_over_10_series_lower": "196307/80000",
+    "interval": ["9/20", "infinity"],
+    "log_fourth_abs_upper": "493581086908576632524949968420816247989/26168823242187500000000000000000000000",
+    "log_second_abs_upper": "1124695017320303/2734375000000000000",
+    "r1_lower": "7",
+    "rho_derivative_envelopes": [
+      "1001/40000000000",
+      "1573/625000000",
+      "224939/546875000",
+      "38827932/478515625",
+      "63178374688/3349609375"
+    ],
+    "single_8margin_shifted_coefficients": ["87660", "354832", "208672", "51072", "5824", "256"],
+    "single_L4_shifted_coefficients": ["426348", "451600", "215584", "51072", "5824", "256"],
+    "single_channel_8L2_minus_L4_lower": "100",
+    "single_channel_L4_lower": "100"
+  },
+  "certificate": "SOH_HYB009_EIGHT_CURVATURE_CERTIFICATE_V1",
+  "claim": "For L=-log K of the even full-line Riemann kernel: 0 < L''''(t) < 8 L''(t) for every real t.",
+  "compact": {
+    "certified_boxes": 16700,
+    "claims": [
+      "L fourth derivative is positive",
+      "8 L second derivative minus L fourth derivative is positive"
+    ],
+    "interval": ["0", "9/20"],
+    "max_bisection_depth": 16,
+    "minimum_8L2_minus_L4_lower_margin": "0.0011082137091647552",
+    "minimum_L4_lower_margin": "22.814896649132173",
+    "theta_tail_enclosed": true,
+    "theta_terms_explicit": 4
+  },
+  "proof_boundary": {
+    "PF3_proved": false,
+    "RH_proved": false,
+    "compact_engine": "mpmath.iv outward interval arithmetic",
+    "infinite_theta_tail_bounded_analytically": true,
+    "kernel_inequality_only": true
+  },
+  "status": "COMPUTER_ASSISTED_INTERVAL_PLUS_ANALYTIC_TAIL_PASS",
+  "symmetry": "L is even; t>=0 certification covers the full line."
+}

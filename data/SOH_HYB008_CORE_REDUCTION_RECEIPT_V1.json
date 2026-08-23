@@ -1,0 +1,41 @@
+{
+  "schema": "SOH_HYB008_CORE_REDUCTION_RECEIPT_V1",
+  "status": "PASS_EXACT_REDUCTION_WITH_OPEN_COMPACT_CORE",
+  "claims": {
+    "internal_measure": "nu_{u,eta}(r) proportional to r^2 cosh(2 eta r) K(u+r)K(u-r), |eta|<1/2",
+    "pointwise_phase_slope": "q_eta'(u) > 34 u for u>0",
+    "peano_bound": "u q_eta''(u) - q_eta'(u) < 10 u^2 q_eta'(u)",
+    "derived_curvature_bound": "q_eta''(u) < q_eta'(u) (1/u + 10u)",
+    "angular_margin": "F_eta=q'^2-(1-exp(-2q))q''",
+    "global_closed_domain": "F_eta(u)>0 for every u >= 1/sqrt(24), |eta|<1/2",
+    "remaining_domain": "0 < u < 1/sqrt(24)"
+  },
+  "u_star": "0.204124145231931508183107006225490949330495623388055864292515",
+  "logic": [
+    "G024-Q gives L'''' < 20 L'' globally.",
+    "Peano identity gives uB-A = 1/2 integral_{-u}^u (u^2-v^2)L''''(r+v) dv.",
+    "Therefore uB-A < 10 u^2 A pointwise.",
+    "For q=-log(J_eta/J_eta(0)), q'=E[A], q''=E[B]-Var(A).",
+    "Hence u q''-q' < 10u^2 q'.",
+    "Since L''>17 globally, A=int_{r-u}^{r+u} L'' >34u, hence q'>34u.",
+    "If u^2>=1/24, then q'>=34u >= 1/u+10u.",
+    "Thus q'^2 > q''; because 0<1-exp(-2q)<1, F_eta>0."
+  ],
+  "local_origin_margin": {
+    "status": "PROVED_ASYMPTOTIC_POSITIVE",
+    "formula": "F_eta(u) = [q2/4]*(2 q2^2-q4) u^4 + O(u^6)",
+    "uniform_inputs": ["q2>34", "q4<20 q2"],
+    "leading_coefficient_lower_bound": "13872"
+  },
+  "independent_tail_regression": {
+    "C": "79.2025895647061778284800459616124723296292087205858849659483",
+    "u_2_margin_A_squared_minus_Cexp4": "438611.479875823397657738295320757760370230194700861875870949",
+    "status": "PASS"
+  },
+  "proof_boundary": {
+    "PF3_global": false,
+    "RH_proved": false,
+    "remaining_obligation": "Certify F_eta(u)>=0 uniformly on 0<u<1/sqrt(24), |eta|<1/2.",
+    "finite_grid_is_not_proof": true
+  }
+}
