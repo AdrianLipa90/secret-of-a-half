@@ -227,11 +227,12 @@ jobs:
           test "$PAGES" -ge 108
           ! grep -E "Overfull|undefined references|Citation.*undefined|multiply defined" main.log
 
-      - name: Upload compiled monograph
-        if: success()
+      - name: Upload compiled monograph for manual vectorized build
+        if: ${{ github.event_name == 'workflow_dispatch' }}
         uses: actions/upload-artifact@v4
         with:
           name: secret-of-a-half-monograph-v0.10-mainline-g024-vector
+          retention-days: 3
           path: monograph/main.pdf
           if-no-files-found: error
 
