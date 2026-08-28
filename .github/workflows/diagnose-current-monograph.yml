@@ -7,6 +7,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: diagnose-current-monograph-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   diagnose-monograph:
     runs-on: ubuntu-latest
@@ -72,7 +76,7 @@ jobs:
           exit "$rc"
 
       - name: Upload LaTeX diagnostics
-        if: always()
+        if: github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
           name: current-monograph-latex-diagnostics
@@ -86,6 +90,7 @@ jobs:
             monograph/main.blg
             monograph/main.pdf
           if-no-files-found: warn
+          retention-days: 3
 
       - name: Validate successful PDF
         if: success()
@@ -98,7 +103,7 @@ jobs:
           ! grep -E "Overfull|undefined references|Citation.*undefined|multiply defined" main.log
 
       - name: Upload validated current PDF
-        if: success()
+        if: success() && github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
           name: secret-of-a-half-current-main-repair-pdf
@@ -106,3 +111,4 @@ jobs:
             monograph/main.pdf
             monograph/main.pdf.pages.txt
           if-no-files-found: error
+          retention-days: 3
