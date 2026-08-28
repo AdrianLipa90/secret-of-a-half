@@ -133,10 +133,12 @@ jobs:
           test -n "$pages"
           printf 'Validated monograph pages: %s\n' "$pages" | tee main.pdf.pages.txt
           ! grep -E "Overfull|undefined references|Citation.*undefined|multiply defined" main.log
-      - name: Upload compiled monograph
+      - name: Upload canonical compiled monograph
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: actions/upload-artifact@v4
         with:
           name: secret-of-a-half-monograph-v0.10-mainline-g024
+          retention-days: 1
           path: |
             monograph/main.pdf
             monograph/main.pdf.pages.txt
