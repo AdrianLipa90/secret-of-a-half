@@ -71,11 +71,12 @@ jobs:
           cat compile-output.txt
           exit "$rc"
 
-      - name: Upload LaTeX diagnostics
-        if: always()
+      - name: Upload LaTeX diagnostics on failure
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v4
         with:
           name: current-monograph-latex-diagnostics
+          retention-days: 1
           path: |
             monograph/compile-output.txt
             monograph/compile-exit-code.txt
@@ -97,11 +98,12 @@ jobs:
           printf 'Validated monograph pages: %s\n' "$pages" | tee main.pdf.pages.txt
           ! grep -E "Overfull|undefined references|Citation.*undefined|multiply defined" main.log
 
-      - name: Upload validated current PDF
-        if: success()
+      - name: Upload validated current PDF on explicit request
+        if: ${{ success() && github.event_name == 'workflow_dispatch' }}
         uses: actions/upload-artifact@v4
         with:
           name: secret-of-a-half-current-main-repair-pdf
+          retention-days: 1
           path: |
             monograph/main.pdf
             monograph/main.pdf.pages.txt
