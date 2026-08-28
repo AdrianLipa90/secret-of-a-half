@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Audit GitHub artifact retention policy
+        run: python scripts/audit_github_artifact_policy.py
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
