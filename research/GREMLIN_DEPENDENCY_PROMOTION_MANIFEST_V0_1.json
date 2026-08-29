@@ -1,0 +1,37 @@
+{
+  "schema": "SOH_GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1",
+  "status": "CANDIDATE_ONLY",
+  "epistemic": "CHYBA",
+  "runtime_execution_authority": false,
+  "canon_write_authority": false,
+  "overlay": "research/SOH_GREMLIN_CROSS_REPO_DEPENDENCY_OVERLAY_V0_1.md",
+  "gremlin_sources": [
+    "PNCS_GREMLIN_CROSS_FORMALISM_ISOMORPHISM_BANK_V0_2",
+    "PNCS_GREMLIN_ROUND28_EXACT_CROSS_FORMALISM"
+  ],
+  "candidate_edges": [
+    {
+      "id": "XFI.03",
+      "class": "EXACT_STRUCTURAL",
+      "from": "SOH_SU2_DOUBLE_COVER",
+      "to": "IDT_HALF_SEAM_DOUBLE_COVER_SIGNATURE",
+      "promotion": "THEOREM_VALIDATOR_RECEIPT_REQUIRED"
+    },
+    {
+      "id": "XFI.28.02",
+      "class": "EXACT",
+      "from": "SOH_HALF_INTERFACE_RELATIONAL_ZERO_ORDER_DOUBLING",
+      "to": "TIR_IDT_HALF_SEAM_RELATIONAL_ZERO",
+      "promotion": "THEOREM_VALIDATOR_RECEIPT_REQUIRED"
+    },
+    {
+      "id": "XFI.28.03",
+      "class": "EXACT_COORDINATE_ISOMORPHISM",
+      "from": "SOH_CENTERED_BLOCH_RAPIDITY",
+      "to": "IDT_NOW_HYPERBOLIC_CHART",
+      "promotion": "DOMAIN_INVERSE_SINGULAR_BOUNDARY_AUDIT_REQUIRED"
+    }
+  ],
+  "analytic_frontier": "NATIVE_CLOSURE_TO_COMPLETE_LI_WEIL_POSITIVITY",
+  "compiled_candidate_path": "RelationalIsomorphism -> KAKU -> RADICAL -> OPERATORS -> READ_ONLY_PNV"
+}
