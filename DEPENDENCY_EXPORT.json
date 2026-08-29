@@ -1,0 +1,14 @@
+{
+  "schema": "FPDG_DEPENDENCY_EXPORT_V0_1",
+  "repository_id": "SOH",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "source_commit": "19b9820165cb46f441d006e0ff6e94f8c08f37b8",
+  "generated_at": "2026-08-29T18:34:00+01:00",
+  "claims": [
+    {"claim_id":"SOH.SU2.DOUBLE_COVER","status":"CANDIDATE_SOURCE","source_path":"research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json","evidence_class":"gremlin_candidate","canon_authority":false},
+    {"claim_id":"SOH.HALF.ZERO_ORDER_DOUBLING","status":"CANDIDATE_SOURCE","source_path":"research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json","evidence_class":"gremlin_candidate","canon_authority":false},
+    {"claim_id":"SOH.BLOCH.CENTERED_RAPIDITY","status":"CANDIDATE_SOURCE","source_path":"research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json","evidence_class":"gremlin_candidate","canon_authority":false},
+    {"claim_id":"SOH.LI_WEIL.NATIVE_CLOSURE","status":"OPEN_FRONTIER","source_path":"research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json","evidence_class":"integration_frontier"}
+  ],
+  "local_edges": []
+}
