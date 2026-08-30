@@ -1,6 +1,6 @@
 {
   "schema": "SOH_GREMLIN_G024_ROUTE_AUDIT_V0_1",
-  "status": "CANDIDATE_THEOREM_PENDING_REPOSITORY_REVIEW",
+  "status": "REPOSITORY_REVIEWED_BRANCH_PROMOTED",
   "soh_source_commit": "a759a64c498d5ab6b31fb8566969dcf0716feb59",
   "gremlin_source_commit": "1ebaf99af1420a23be99369cebbea06c76a35fa8",
   "router_schema": "GREMLIN_MCP_OCTOPUS_ROUTER_V0_5",
@@ -22,7 +22,8 @@
   "route_commitment": "e3c87b815d509699850802b500d7acdd87ce717a91216969141c4b3d13326f11",
   "finding": {
     "id": "SOH.G024.CM.SUPEREXPONENTIAL_NOGO",
-    "classification": "THEOREM_LEVEL_ROUTE_NOGO_CANDIDATE",
+    "classification": "THEOREM_LEVEL_ROUTE_NOGO",
+    "promoted_claim_id": "SOH-G024-T",
     "statement": "For every fixed 0<|y|<1/2, H_y(q)=D_y(sqrt(q)) cannot be completely monotone on [0,infinity), because the canonical Riemann-kernel tail plus L''>17 imply faster-than-every-exponential decay in q, whereas every nonzero completely monotone function with finite h(0) has a positive exponential lower envelope by Hausdorff-Bernstein-Widder.",
     "preserves": [
       "G024 first-order global sign H_y'<0",
@@ -40,10 +41,14 @@
     "research/SOH_G024_THIRD_ORDER_CUMULANT_FRONTIER_V0_1.md",
     "src/secret_of_a_half/riemann_kernel.py"
   ],
+  "promotion_binding": "claims/SOH_G024_T_COMPLETE_MONOTONICITY_ROUTE_NOGO_V0_1.json",
   "authority": {
     "production_runtime_write": false,
     "execution_admitted": false,
     "canon_allowed": false,
-    "scientific_promotion_performed": false
+    "gremlin_self_promotion": false,
+    "scientific_promotion_performed": true,
+    "promotion_authority": "repository-owner instruction",
+    "main_merge_performed": false
   }
 }
