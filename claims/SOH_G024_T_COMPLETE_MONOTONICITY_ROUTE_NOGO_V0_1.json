@@ -1,0 +1,43 @@
+{
+  "schema": "SOH_G024_PROMOTED_CLAIM_V0_1",
+  "claim_id": "SOH-G024-T",
+  "title": "Full complete-monotonicity route no-go from the Riemann-kernel super-exponential tail",
+  "date": "2026-08-30",
+  "status": "REPOSITORY_REVIEWED_BRANCH_PROMOTED_THEOREM",
+  "promotion_level": "REVIEWED_THEOREM_CLAIM",
+  "source_branch": "audit/gremlin-g024-complete-monotonicity-nogo-v0.1",
+  "source_pr": 72,
+  "canonical_on_main": false,
+  "proof_of_rh": false,
+  "statement": "For every fixed 0<|y|<1/2, the canonical G024 profile H_y(q)=D_y(sqrt(q)) is not completely monotone on [0,infinity). The Riemann theta-kernel tail together with the proved G024 strong convexity L''>17 gives faster-than-every-exponential decay of H_y(q), while every nonzero completely monotone function with finite H_y(0) has a positive exponential lower envelope by the Hausdorff-Bernstein-Widder representation.",
+  "route_effect": {
+    "closed_route": "FULL_COMPLETE_MONOTONICITY_TO_GAUSSIAN_MIXTURE",
+    "preserved_results": [
+      "SOH-G024-F: global H_y'(q)<0",
+      "SOH-G024-R: global H_y''(q)>0 at the declared repository certificate level",
+      "SOH-G024-B: RH-equivalent Fourier/Wiener target",
+      "SOH-G024-H: external Wronskian/Laguerre identity"
+    ],
+    "derived_consequence": "For each fixed admissible y, at least one signed derivative inequality (-1)^m H_y^(m)(q)>=0 fails for some m>=3 and some q>=0.",
+    "next_frontier": "DIRECT_ONE_DIMENSIONAL_POSITIVE_DEFINITENESS_OR_FOURIER_POSITIVITY"
+  },
+  "dependencies": [
+    "research/SOH_G024_JENSEN_WIENER_KERNEL_V0_1.md",
+    "research/SOH_G024_SHARPENED_CURVATURE_SECOND_ORDER_V0_1.md",
+    "research/SOH_G024_GLOBAL_SECOND_ORDER_V0_1.md",
+    "research/SOH_G024_COMPLETE_MONOTONICITY_SUPEREXPONENTIAL_NOGO_V0_1.md",
+    "src/secret_of_a_half/riemann_kernel.py"
+  ],
+  "promotion": {
+    "performed_by": "repository-owner instruction",
+    "gremlin_self_promotion": false,
+    "gremlin_canon_authority": false,
+    "main_merge_performed": false
+  },
+  "review_firewall": {
+    "claim_scope": "route theorem only",
+    "rh_status": "OPEN",
+    "direct_fourier_positivity_status": "OPEN",
+    "first_failing_derivative_order": "UNKNOWN_M_GE_3"
+  }
+}
