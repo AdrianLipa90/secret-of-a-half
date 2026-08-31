@@ -1,0 +1,89 @@
+{
+  "schema": "SOH_GREMLIN_OPEN_FRONTIER_SCC_V0_2",
+  "status": "CANDIDATE_AUDIT_ONLY",
+  "soh_source_commit": "a759a64c498d5ab6b31fb8566969dcf0716feb59",
+  "gremlin_source_commit": "1ebaf99af1420a23be99369cebbea06c76a35fa8",
+  "router_schema": "GREMLIN_MCP_OCTOPUS_ROUTER_V0_5",
+  "route_mask": ["OWL", "SPIDER", "MOLE"],
+  "route_scores": {
+    "OWL": 18.0,
+    "SPIDER": 17.0,
+    "MOLE": 9.0,
+    "HOUND": 4.0,
+    "MANTIS": 4.0,
+    "ANT": 2.0,
+    "RAVEN": 0.0
+  },
+  "route_threshold": 8.1,
+  "route_commitment": "4e750adf6d4a9751ed67f8af48ad825f44b97a8808b97bca895814f4ce455d17",
+  "open_scc": {
+    "classification": "RH_EQUIVALENT_STRONGLY_CONNECTED_COMPONENT",
+    "members": [
+      "SOH-G001_ZERO_CONFINEMENT_Q_HALF",
+      "SOH-G003_QUOTIENT_REAL_ROOTEDNESS",
+      "RIEMANN_HYPOTHESIS",
+      "SOH-C005_FULL_WEIL_POSITIVITY",
+      "SOH-G024_EXTERNAL_FOURIER_POSITIVITY"
+    ],
+    "logic": "Directed implication cycles among these objects establish equivalence or reformulation. They do not provide a proved incoming edge and therefore do not by themselves establish the component.",
+    "minimal_pointwise_target": "XI_ZERO_IMPLIES_SELF_DUAL_ORBIT",
+    "equivalent_metric_target": "XI_ZERO_IMPLIES_DELTA_THETA_ZERO",
+    "equivalent_radial_target": "XI_ZERO_IMPLIES_Q_EQUALS_ONE_HALF"
+  },
+  "proved_incoming_structure": [
+    {
+      "id": "INVERSE_BOUNDARY_HALF_AXIS",
+      "statement": "q=1/2 iff |Omega|=1 iff Re(s)=1/2",
+      "scope": "GEOMETRIC_LOCUS_ONLY"
+    },
+    {
+      "id": "THETA_HILBERT_HALF_METRIC",
+      "statement": "Delta_Theta=0 iff Re(s)=1/2",
+      "scope": "ORBIT_SEPARATING_METRIC_ONLY"
+    },
+    {
+      "id": "QUOTIENT_COEFFICIENT_POSITIVITY",
+      "statement": "F(x)>0 for x>=0 and RH iff every zero of F is real",
+      "scope": "EXACT_REDUCTION"
+    },
+    {
+      "id": "G024_FIRST_SECOND_ORDER",
+      "statement": "H_y'<0 and H_y''>0 globally at the repository's declared certificate level",
+      "scope": "PARTIAL_SUFFICIENT_ROUTE_STRUCTURE"
+    }
+  ],
+  "closed_or_pruned_routes": [
+    {
+      "id": "NEGATIVE_INVERSION_ZERO_PAIRING",
+      "reason": "SOH-G018 excludes paired roots under canonical negative inversion"
+    },
+    {
+      "id": "ORBIT_BARYCENTER_HALF",
+      "reason": "A reciprocal two-cycle q<->1-q has barycenter 1/2 even when neither point is self-dual"
+    },
+    {
+      "id": "G020_PACKAGE_TO_PF3",
+      "reason": "SOH-G021 gives an exact counterexample to sufficiency of the abstract half-mass/PF2 package"
+    },
+    {
+      "id": "G024_FULL_COMPLETE_MONOTONICITY",
+      "reason": "PR #72 candidate theorem: super-exponential q-tail contradicts the Bernstein lower envelope required by nonzero complete monotonicity",
+      "review_state": "SEPARATE_PR_PENDING_REVIEW"
+    }
+  ],
+  "minimum_cut": {
+    "missing_edge": "PROVED_CANON_TO_ZERO_CONFINEMENT",
+    "preferred_exact_forms": [
+      "xi(rho)=0 => Delta_Theta(rho)=0",
+      "xi(rho)=0 => q(rho)=1/2",
+      "hat(D_y)(x)>0 for all real x and 0<|y|<1/2"
+    ],
+    "warning": "Any derivation whose only premises are other members of the RH-equivalent SCC is circular as a proof of the component. A valid closure needs at least one independently proved incoming edge from outside the SCC."
+  },
+  "authority": {
+    "production_runtime_write": false,
+    "execution_admitted": false,
+    "canon_allowed": false,
+    "scientific_promotion_performed": false
+  }
+}
