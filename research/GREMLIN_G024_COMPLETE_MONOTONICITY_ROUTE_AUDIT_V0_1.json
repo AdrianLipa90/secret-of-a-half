@@ -1,0 +1,54 @@
+{
+  "schema": "SOH_GREMLIN_G024_ROUTE_AUDIT_V0_1",
+  "status": "REPOSITORY_REVIEWED_BRANCH_PROMOTED",
+  "soh_source_commit": "a759a64c498d5ab6b31fb8566969dcf0716feb59",
+  "gremlin_source_commit": "1ebaf99af1420a23be99369cebbea06c76a35fa8",
+  "router_schema": "GREMLIN_MCP_OCTOPUS_ROUTER_V0_5",
+  "route_mask": [
+    "OWL",
+    "MOLE",
+    "HOUND"
+  ],
+  "route_scores": {
+    "OWL": 15.0,
+    "MOLE": 10.0,
+    "HOUND": 9.0,
+    "SPIDER": 5.0,
+    "MANTIS": 4.0,
+    "RAVEN": 0.0,
+    "ANT": 0.0
+  },
+  "route_threshold": 6.75,
+  "route_commitment": "e3c87b815d509699850802b500d7acdd87ce717a91216969141c4b3d13326f11",
+  "finding": {
+    "id": "SOH.G024.CM.SUPEREXPONENTIAL_NOGO",
+    "classification": "THEOREM_LEVEL_ROUTE_NOGO",
+    "promoted_claim_id": "SOH-G024-T",
+    "statement": "For every fixed 0<|y|<1/2, H_y(q)=D_y(sqrt(q)) cannot be completely monotone on [0,infinity), because the canonical Riemann-kernel tail plus L''>17 imply faster-than-every-exponential decay in q, whereas every nonzero completely monotone function with finite h(0) has a positive exponential lower envelope by Hausdorff-Bernstein-Widder.",
+    "preserves": [
+      "G024 first-order global sign H_y'<0",
+      "G024 second-order global sign H_y''>0 at declared repository certificate level",
+      "direct RH-equivalent Fourier/Wiener target hat(D_y)>0",
+      "external Wronskian/Laguerre identity"
+    ],
+    "closes_candidate_route": "FULL_COMPLETE_MONOTONICITY_TO_GAUSSIAN_MIXTURE",
+    "next_candidate_surface": "DIRECT_ONE_DIMENSIONAL_POSITIVE_DEFINITENESS_OR_FOURIER_POSITIVITY"
+  },
+  "source_bindings": [
+    "research/SOH_G024_JENSEN_WIENER_KERNEL_V0_1.md",
+    "research/SOH_G024_SHARPENED_CURVATURE_SECOND_ORDER_V0_1.md",
+    "research/SOH_G024_GLOBAL_SECOND_ORDER_V0_1.md",
+    "research/SOH_G024_THIRD_ORDER_CUMULANT_FRONTIER_V0_1.md",
+    "src/secret_of_a_half/riemann_kernel.py"
+  ],
+  "promotion_binding": "claims/SOH_G024_T_COMPLETE_MONOTONICITY_ROUTE_NOGO_V0_1.json",
+  "authority": {
+    "production_runtime_write": false,
+    "execution_admitted": false,
+    "canon_allowed": false,
+    "gremlin_self_promotion": false,
+    "scientific_promotion_performed": true,
+    "promotion_authority": "repository-owner instruction",
+    "main_merge_performed": false
+  }
+}
