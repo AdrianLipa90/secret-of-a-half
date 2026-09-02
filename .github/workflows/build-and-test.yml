@@ -8,6 +8,11 @@ on:
 
 permissions:
   contents: read
+  actions: read
+
+concurrency:
+  group: build-and-test-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validation:
@@ -15,6 +20,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+      - name: Audit GitHub artifact retention policy
+        run: python scripts/audit_github_artifact_policy.py
+      - name: Report current Actions artifact storage
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/report_actions_artifact_storage.py
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -134,9 +145,11 @@ jobs:
           printf 'Validated monograph pages: %s\n' "$pages" | tee main.pdf.pages.txt
           ! grep -E "Overfull|undefined references|Citation.*undefined|multiply defined" main.log
       - name: Upload compiled monograph
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: actions/upload-artifact@v4
         with:
           name: secret-of-a-half-monograph-v0.10-mainline-g024
+          retention-days: 7
           path: |
             monograph/main.pdf
             monograph/main.pdf.pages.txt

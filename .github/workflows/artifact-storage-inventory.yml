@@ -1,0 +1,26 @@
+name: Actions artifact storage inventory
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/artifact-storage-inventory.yml'
+      - 'scripts/report_actions_artifact_storage.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: artifact-storage-inventory-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Report current Actions artifact storage
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python scripts/report_actions_artifact_storage.py
