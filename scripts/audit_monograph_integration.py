@@ -35,10 +35,7 @@ def main() -> None:
         fail(f"chapter numbering is not contiguous: {prefixes}")
     if len(includes) != 57:
         fail(f"v0.11 requires exactly 57 numbered chapters, found {len(includes)}")
-    if includes[-2:] != [
-        "56_g024_complete_monotonicity_route_no_go",
-        "57_reciprocal_conjugation_orbit_collapse",
-    ]:
+    if includes[-2:] != ["56_g024_complete_monotonicity_route_no_go", "57_reciprocal_conjugation_orbit_collapse"]:
         fail(f"unexpected publication terminal chapters: {includes[-2:]}")
 
     for token in [
@@ -83,8 +80,7 @@ def main() -> None:
         fail("G024-T closed-route identity changed")
 
     required_text = "\n".join(
-        p.read_text(encoding="utf-8")
-        for p in [
+        p.read_text(encoding="utf-8") for p in [
             MONO / "frontmatter" / "title.tex",
             MONO / "frontmatter" / "abstract.tex",
             MONO / "chapters" / "46_current_canon_and_open_frontier.tex",
@@ -94,16 +90,11 @@ def main() -> None:
             MONO / "backmatter" / "final_synthesis.tex",
         ]
     )
-    for token in [
-        "SOH-G024-T",
-        "not completely monotone",
-        "CLOSED ROUTE / NO-GO",
-        "u^{-1}=\\bar u",
-        "Delta_{\\mathrm{RC}}",
-        "Riemann Hypothesis remains OPEN",
-    ]:
+    for token in ["SOH-G024-T", "not completely monotone", "CLOSED ROUTE / NO-GO", "u^{-1}=\\bar u", "Delta_{\\mathrm{RC}}", "Riemann Hypothesis"]:
         if token not in required_text:
             fail(f"publication synthesis missing token {token!r}")
+    if "OPEN" not in required_text:
+        fail("publication synthesis lost OPEN proof-state firewall")
 
     print("MONOGRAPH_INTEGRATION_PASS")
     print(f"version=v0.11-publication-audit chapters={len(includes)} canonical_through=SOH-G023 g024_t=reviewed_route_nogo")
