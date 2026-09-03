@@ -1,74 +1,65 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-This monograph studies why the value $1/2$ is structurally distinguished in the analytic geometry surrounding the Riemann zeta function while maintaining a strict separation between exact mathematics, finite numerical diagnostics, software/model constructions, conditional implications, computer-assisted certificates, and open proof obligations.
+This monograph studies the structural role of $1/2$ in the analytic geometry surrounding the Riemann zeta function while separating exact theorems, equivalent reformulations, computer-assisted certificates, finite diagnostics, model constructions, no-go results, and open proof obligations.
 
-The foundational layer proves several exact selections of the half. Binary Shannon entropy is uniquely maximal at $\sigma=1/2$ with value $\ln2$; normalized equal-gain two-channel cancellation occurs exactly at equal weights and relative phase $\pi$; and the conjugate-affine involution $s\mapsto1-\bar s$ has fixed line $\Re s=1/2$. These statements explain structural coincidence inside their declared representations but do not by themselves locate every non-trivial zeta zero.
+The foundational layer proves several exact selections of the half. Binary Shannon entropy is uniquely maximal at $\sigma=1/2$ with value $\ln2$; normalized equal-gain two-channel cancellation occurs exactly at equal weights and relative phase $\pi$; and the conjugate-affine involution $s\mapsto1-\bar s$ has fixed line $\Re s=1/2$. These statements establish structural coincidences in their declared representations but do not by themselves locate every non-trivial zeta zero.
 
-The analytic programme then develops three principal lines. First, the Li/Weil and PhaseNav line places the projective coordinate $\Omega(s)=s/(1-s)$, Li's coordinate $1-1/s=-1/\Omega(s)$, localized Weil operators, a Hermite dense core, and certified prime-tail controls in one audited framework. Full admissible Weil positivity SOH-C005 remains an RH-equivalent open frontier.
+The projective coordinate
+\[
+\Omega(s)=\frac{s}{1-s}
+\]
+maps the critical line exactly to the unit circle. Functional reflection $s\mapsto1-s$ becomes the holomorphic reciprocal action $u\mapsto1/u$, while complex conjugation becomes $u\mapsto\bar u$. Their coincidence is exact:
+\[
+\frac1u=\bar u
+\iff |u|=1
+\iff \Re s=\frac12.
+\]
+Consequently RH is equivalent to reciprocal--conjugation orbit collapse on every transformed xi zero. The orbit-separating defect
+\[
+\Delta_{\mathrm{RC}}(u)=\left|\frac1u-\bar u\right|^2
+=\left(|u|-|u|^{-1}\right)^2
+\]
+vanishes exactly on the critical line. This is an exact RH-equivalent reformulation; the implication from zerohood to vanishing of the defect remains OPEN.
 
-Second, the centred quotient
+The centred quotient
 \[
 \xi\!\left(\frac12+z\right)=F(z^2)
 \]
-converts the Riemann Hypothesis into real-rootedness of the entire function $F$. The monograph derives the exact positive Riemann kernel, proves the declared log-concavity and PF$_2$ coefficient results, and develops PF$_3$ obstructions. SOH-G021 proves that positivity, half-mass normalization, strict coefficient decay, PF$_2$, and the normalized envelope do not jointly imply PF$_3$. SOH-G022 gives an exact local decomposition of the solid PF$_3$ margin, while SOH-G023 rewrites that margin using the reciprocal curvature deficit $E_k=(1-q_k)^{-1}$. Actual PF$_3$, PF$_\infty$, and SOH-G003 real-rootedness remain open.
+converts RH into real-rootedness of the entire function $F$. The monograph derives the positive Riemann kernel, proves the declared log-concavity and PF$_2$ coefficient results, develops exact PF$_3$ reductions, and records the proved no-go that the current half-mass/PF$_2$ package does not imply PF$_3$. SOH-G003 real-rootedness, actual PF$_3$, and PF$_\infty$ remain OPEN.
 
-Third, the negative-inversion line establishes exact projective and spinorial algebra but closes the proposed zero-pairing shortcut negatively: SOH-G018 proves that the relevant quotient disk is zero-free and that canonical negative inversion maps no zero of $F$ or $\xi$ to another zero. The geometry is retained; the spectral shortcut is not.
+The Li/Weil line places Li's coordinate $1-1/s=-1/\Omega(s)$, localized Weil operators, a Hermite dense core, and certified prime-tail controls in one audited framework. The negative inversion $-1/u$ is rigorously separated from the functional reciprocal symmetry $1/u$: the former has exact projective/spinorial geometry but is excluded as a zero-to-zero spectral shortcut. Full admissible Weil positivity SOH-C005 remains an RH-equivalent OPEN frontier.
 
-SOH-G024, now integrated into the repository mainline while remaining separately non-canonical in the mathematical promotion ledger, returns directly to the Jensen--Wiener correlation-kernel frontier. For the even full-line Riemann kernel
+The integrated SOH-G024 Jensen--Wiener line studies
 \[
-K(t)=\frac12\Phi(|t|),
-\]
-define
-\[
+K(t)=\frac12\Phi(|t|),\qquad
 C(u)=\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr,
 \qquad
-D_y(u)=\cosh(2yu)C(u).
+D_y(u)=\cosh(2yu)C(u),
 \]
-The Dimitrov--Xu correlation criterion together with Wiener's $L^1$ Tauberian theorem reduces RH to strict Fourier positivity of $D_y$ for every real frequency and every $0<|y|<1/2$ \citep{dimitrovxu2016,wiener1932tauberian}. The external Wronskian identity is
+and $H_y(q)=D_y(\sqrt q)$. The Dimitrov--Xu/Wiener criterion reduces RH to strict positivity of $\widehat D_y$ for every real frequency and $0<|y|<1/2$. The monograph records the global results
 \[
-4\widehat D_y(2x)=\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right).
+H_y'(q)<0,\qquad H_y''(q)>0,
 \]
-A sufficient route is complete monotonicity of
-\[
-H_y(q)=D_y(\sqrt q).
-\]
-The G024 sharpening of the channel-curvature argument proves
-\[
-\boxed{-(\log K)''>17},
-\qquad
-\boxed{-\frac{H_y'}{H_y}>\frac{33}{2}},
-\]
-so $H_y'(q)<0$ globally throughout the full Dimitrov--Xu strip. The normalized bridge measure further yields
-\[
-\mathbb E[r^{2n}]<\frac{(2n+1)!!}{34^n},
-\qquad
-\mathbb E[e^{\lambda r^2}]\le(1-\lambda/17)^{-3/2}.
-\]
+where the second-order compact closure has an explicit outward interval-arithmetic dependency.
 
-The second complete-monotonicity inequality is also closed globally. Analytic estimates first prove $H_y''(q)>0$ outside a compact core. SOH-G024-Q then certifies
+A publication-critical update is SOH-G024-T. The Riemann kernel obeys a double-exponential tail, and the proved strong convexity $-(\log K)''>17$ yields, for every fixed admissible $y$,
 \[
-\boxed{L''''(t)<20L''(t)},\qquad L=-\log K,
+\forall T>0:\qquad e^{Tq}H_y(q)\longrightarrow0.
 \]
-using outward \texttt{mpmath.iv} interval arithmetic on $0\le t\le2/5$, explicit low theta channels, an analytic enclosure of the infinite tail, and a separate analytic proof for $t\ge2/5$. The downstream bridge/Riccati argument is exact and yields the strict compact gap
+A nonzero completely monotone function with finite value at the origin has a positive exponential lower envelope by the Hausdorff--Bernstein--Widder representation. Therefore
 \[
-S_y^2-S_y'>\frac{793}{48}>0.
+\boxed{H_y\text{ is not completely monotone on }[0,\infty).}
 \]
-Hence
-\[
-\boxed{H_y''(q)>0\qquad(q\ge0,\ 0<|y|<1/2).}
-\]
-The computer-assisted trust boundary is explicit and follows validated-numerics methodology rather than finite-grid inference \citep{moore2009interval}.
+Thus the full complete-monotonicity/Gaussian-mixture route is CLOSED by a theorem-level no-go, while the proved first- and second-order inequalities remain valid. For each fixed admissible $y$, at least one signed derivative inequality fails at some order $m\ge3$.
 
-The next direct frontier is third order. SOH-G024-S proves the exact recurrence
+The direct surviving G024 frontier is therefore one-dimensional Fourier/Wronskian positivity:
 \[
-F_{m+1}=S_yF_m-F_m',
-\qquad F_m=(-1)^m\frac{H_y^{(m)}}{H_y},
+\widehat D_y(x)>0
+\quad\text{for all }x\in\mathbb R,\ 0<|y|<\frac12,
 \]
-and reduces the third-order derivative to the bridge cumulant--covariance identity
+equivalently
 \[
-R''=\mathbb E[C_u^{(3)}]-3\operatorname{Cov}(A_u,B_u)+\mu_3(A_u),
+\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right)>0.
 \]
-or equivalently to a logarithmic-growth barrier for the already positive second-order margin. The global third-order sign remains open.
-
-The present proof boundary is therefore explicit. The monograph proves the stated geometric, quotient, kernel, PF$_2$, zero-exclusion, coefficient-normalization, G021 no-go, G022--G023 normal-form, and G024 first/second complete-monotonicity results at their declared evidential levels. It does not prove complete monotonicity in orders $m\ge3$, strict external Fourier positivity on the full strip, actual PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, or the Riemann Hypothesis. RH remains OPEN.
+This criterion, quotient real-rootedness, full admissible Weil positivity, PF$_3$/PF$_\infty$, the reciprocal--conjugation zero-orbit collapse implication, and RH remain OPEN. The monograph does not claim a proof of the Riemann Hypothesis.
