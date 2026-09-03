@@ -1,171 +1,120 @@
-\chapter{Current Canon, Integrated Research Lines, and the Open Frontier}
+\chapter{Current Canon, Closed Routes, and the Open Frontier}
 \label{chap:current-canon-final}
 
-\status{Semantic synthesis of the canonical numbered sequence through SOH-G023 and the integrated SOH-G024 research line. G024 is present on the repository mainline but is not thereby promoted into the canonical numbered sequence. This chapter does not claim RH.}
+\status{Publication synthesis of the canonical sequence through SOH-G023, the integrated G024 line including reviewed SOH-G024-T, and the exact reciprocal--conjugation orbit reformulation. This chapter does not claim RH.}
 
-\section{Exact half-axis and quotient geometry}
-The conjugate-affine involution
+\section{Exact half-axis, projective, and quotient geometry}
+The conjugate-affine involution $K(s)=1-\bar s$ has fixed set $\Re s=1/2$. With
 \[
-K(s)=1-\overline{s}
+u=\Omega(s)=\frac{s}{1-s},
 \]
-has fixed set $\Re s=1/2$. The projective coordinate
+the critical line is exactly $|u|=1$. The functional reflection $s\mapsto1-s$ becomes $u\mapsto1/u$, while complex conjugation becomes $u\mapsto\bar u$. Hence
 \[
-\Omega(s)=\frac{s}{1-s}
+\boxed{\frac1u=\bar u\iff |u|=1\iff\Re s=\frac12.}
 \]
-sends the critical line exactly to $|\Omega|=1$. In the centred coordinate $z=s-1/2$,
+For the transformed function $X(u)=\xi(u/(1+u))$,
+\[
+\boxed{\mathrm{RH}\iff \forall u\in Z_X:\ u^{-1}=\bar u.}
+\]
+The orbit-separating defect
+\[
+\Delta_{\mathrm{RC}}(u)=\left|u^{-1}-\bar u\right|^2
+=\left(|u|-|u|^{-1}\right)^2
+\]
+vanishes exactly on the same locus. The implication $X(u)=0\Rightarrow\Delta_{\mathrm{RC}}(u)=0$ remains RH-equivalent and OPEN.
+
+In the centred coordinate $z=s-1/2$,
 \[
 \boxed{\xi\!\left(\frac12+z\right)=F(z^2)}.
 \]
-The square quotient sends the critical line to the non-positive real axis, and positivity of the Taylor coefficients gives $F(x)>0$ for $x\ge0$. Consequently
+The square quotient sends the critical line to the negative real axis, and positivity of the Taylor coefficients excludes non-negative real roots. Therefore
 \[
 \boxed{\mathrm{RH}\iff\text{every zero of }F\text{ is real}.}
 \]
-This is SOH-G003 OPEN: an exact RH-equivalent reformulation, not a proof.
+This is SOH-G003 OPEN.
 
 \section{Kernel and coefficient structure}
-The positive Riemann kernel satisfies
+The positive Riemann kernel representation and the declared strict log-concavity results remain intact. SOH-G005 proves PF$_2$ for the Taylor coefficients of $F$. The coefficient frontier is
 \[
-\xi\!\left(\frac12+z\right)=\int_0^\infty\Phi(y)\cosh(zy)\,dy.
+\boxed{\mathrm{PF}_2\text{ PROVED}},\qquad
+\boxed{\mathrm{PF}_3\text{ OPEN}},\qquad
+\boxed{\mathrm{PF}_\infty\text{ OPEN}}.
 \]
-SOH-G004 proves strict log-concavity at its declared compactified-kernel level. The later G024 sharpening of the explicit channel curvature formula yields for the even full-line kernel $K(t)=\Phi(|t|)/2$
-\[
-\boxed{-(\log K)''>17}.
-\]
-SOH-G005 proves PF$_2$ for the Taylor coefficients of $F$. The coefficient frontier remains
-\[
-\boxed{\mathrm{PF}_2\ \text{PROVED}},\qquad
-\boxed{\mathrm{PF}_3\ \text{OPEN}},\qquad
-\boxed{\mathrm{PF}_\infty\ \text{OPEN}}.
-\]
-SOH-G021 proves that the complete abstract G020 half-mass/PF$_2$/envelope package does not imply PF$_3$. SOH-G022 gives an exact one-step sufficient condition for the G006 solid minor, and SOH-G023 rewrites that margin through the reciprocal deficit
-\[
-M_k=\frac{E_{k-1}E_{k+1}-(E_k-1)^2}{E_{k-1}E_k^2E_{k+1}}.
-\]
-The required global actual-sequence increment law is still open, and full PF$_3$ would additionally require control of all order-three Toeplitz minors.
+G021 proves the current half-mass/PF$_2$ package insufficient for PF$_3$, while G022--G023 provide exact local normal forms rather than a global PF$_3$ proof.
 
-\section{Negative inversion: exact geometry and closed spectral shortcut}
-The projective and spinorial negative-inversion algebra is exact, but its proposed zero-pairing shortcut is closed. SOH-G018 proves
+\section{Negative inversion firewall}
+The Li/Euler negative inversion
 \[
-\boxed{P_J=\varnothing},\qquad
-\boxed{P_N=\varnothing}.
+\mathcal N_u(u)=-\frac1u
 \]
-Thus canonical negative inversion maps no zero of $F$ to another zero of $F$ and no xi zero to another xi zero. The geometry remains exact; zero-set invariance does not.
+has exact projective and spinorial algebra, but SOH-G018 excludes its zero-to-zero spectral shortcut. It must not be conflated with the functional-equation action $u\mapsto1/u$. The former is a closed spectral route; the latter is an exact classical symmetry used by the orbit-collapse formulation.
 
-\section{Coefficient-majorant and half-mass structure}
-SOH-G019 defines the unique $R_\star>0$ by $F(R_\star)=2F(0)$ and proves $\Re F(w)>0$ on $|w|\le R_\star$. SOH-G020 defines
-\[
-\pi_n=\frac{a_nR_\star^n}{2F(0)}
-\]
-and proves
-\[
-\sum_{n\ge0}\pi_n=1,\qquad
-\pi_0=\sum_{n\ge1}\pi_n=\frac12,
-\]
-with PF$_2$, strict mass decrease, and the sharpened coefficient envelope. G021 shows that these structural facts alone still do not determine PF$_3$.
-
-\section{Integrated SOH-G024 Jensen--Wiener research line}
-SOH-G024 was merged into the repository mainline in merge commit \texttt{9cfa93c0e33a}. The full merge identifier remains recorded in the machine-readable claim ledger. Its mathematical promotion state remains separately tracked as \texttt{INTEGRATED\_MAINLINE\_NOT\_CANONICAL}.
-
-Define
+\section{G024 first- and second-order theorems}
+For
 \[
 K(t)=\frac12\Phi(|t|),\qquad
 C(u)=\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr,
 \]
 \[
 D_y(u)=\cosh(2yu)C(u),\qquad
-H_y(q)=D_y(\sqrt q).
+H_y(q)=D_y(\sqrt q),
 \]
-The Dimitrov--Xu/Wiener translation-density criterion is equivalent to strict positivity of $\widehat D_y$ for every real frequency and every $0<|y|<1/2$ \citep{dimitrovxu2016,wiener1932tauberian}. The external Wronskian identity is
+G024 proves, throughout $q\ge0$ and $0<|y|<1/2$,
 \[
-\boxed{4\widehat D_y(2x)=\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right).}
+\boxed{H_y'(q)<0},\qquad\boxed{H_y''(q)>0}.
 \]
-The internal Jensen tilt $J_y$ is distinct from $D_y$ for $y\ne0$; $D_0=J_0=C$.
+The second result carries the explicit SOH-G024-Q interval-arithmetic dependency and strict Riccati gap $793/48$.
 
-For the complete-monotonicity sufficient route, G024 proves globally
+The external Dimitrov--Xu/Wiener target is
 \[
-\boxed{H_y'<0},\qquad
-\boxed{-\frac{H_y'}{H_y}>\frac{33}{2}}.
+\boxed{\widehat D_y(x)>0\quad\forall x\in\mathbb R,\ 0<|y|<\frac12,}
 \]
-The normalized bridge measure gives
+equivalently
 \[
-\mathbb E[r^{2n}]<\frac{(2n+1)!!}{34^n},\qquad
-\mathbb E[e^{\lambda r^2}]\le(1-\lambda/17)^{-3/2}.
+\boxed{\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right)>0.}
 \]
-The exact second-order condition is
-\[
-\frac{H_y''}{H_y}=S_y^2-S_y'.
-\]
-SOH-G024-Q certifies
-\[
-\boxed{L''''(t)<20L''(t)}
-\]
-using outward \texttt{mpmath.iv} interval arithmetic on $0\le t\le2/5$ and a separate analytic tail proof. The exact downstream Riccati estimate yields
-\[
-\boxed{S_y'(q)<\frac{12275}{48}},\qquad
-\boxed{S_y(q)^2>\frac{1089}{4}},
-\]
-with strict compact gap
-\[
-\boxed{\frac{793}{48}>0}.
-\]
-Combining compact and analytic regions gives
-\[
-\boxed{H_y''(q)>0\qquad(q\ge0,\ 0<|y|<1/2).}
-\]
-Thus G024 closes the first two non-trivial complete-monotonicity inequalities globally. The second-order theorem has an explicit computer-assisted trust boundary consistent with standard validated-numerics methodology \citep{moore2009interval}.
+This is RH-equivalent and remains OPEN.
 
-\section{Third-order frontier}
-The current direct frontier is the exact recurrence
+\section{SOH-G024-T: complete-monotonicity route closed}
+The publication audit incorporates the reviewed theorem SOH-G024-T. The Riemann kernel has a double-exponential tail, and the proved bound $-(\log K)''>17$ implies
 \[
-F_{m+1}=S_yF_m-F_m',
-\qquad
-F_m=(-1)^m\frac{H_y^{(m)}}{H_y}.
+\forall T>0:\qquad e^{Tq}H_y(q)\to0.
 \]
-For $m=3$,
+By Hausdorff--Bernstein--Widder, every nonzero completely monotone function with finite value at zero has a positive exponential lower envelope. Therefore
 \[
-F_3=S_y^3-3S_yS_y'+S_y''.
+\boxed{H_y\text{ is not completely monotone on }[0,\infty).}
 \]
-The bridge derivative reduces exactly to
-\[
-R''=\mathbb E[C_u^{(3)}]-3\operatorname{Cov}(A_u,B_u)+\mu_3(A_u),
-\]
-and equivalently the third-order sign is controlled by
-\[
-(uN_y+3)M_2-uM_2'.
-\]
-No global sign proof is asserted. Therefore all orders $m\ge3$ remain open.
+Hence some signed derivative inequality fails at an order $m\ge3$ for each fixed admissible $y$. Chapters~55 and 56 retain the exact third-order algebra while closing the all-order complete-monotonicity strategy as a proof route.
 
 \section{Current status table}
 \begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{p{0.25\textwidth}p{0.27\textwidth}p{0.36\textwidth}}
+\centering\small
+\begin{tabular}{p{0.27\textwidth}p{0.27\textwidth}p{0.34\textwidth}}
 \toprule
-Object & Current status & Blocking obligation\\
+Object & Status & Blocking obligation\\
 \midrule
+Reciprocal--conjugation orbit collapse & OPEN / RH-equivalent & Prove $X(u)=0\Rightarrow u^{-1}=\bar u$.\\
 SOH-G003 real-rootedness & OPEN / RH-equivalent & Prove every zero of $F$ is real.\\
 PF$_2$ & PROVED & None.\\
-PF$_3$ / PF$_\infty$ & OPEN & Close actual coefficient inequalities and full Toeplitz-minor hierarchy.\\
-SOH-C005 Weil positivity & SOH-C005 OPEN & Full admissible positivity without circularity.\\
-G024 $m=1$ & PROVED globally & None.\\
-G024 $m=2$ & PROVED globally, computer-assisted Q dependency & Independent formal reproduction optional; theorem dependency is explicit.\\
-G024 $m\ge3$ & OPEN & Third-order cumulant/growth barrier, then higher recurrence.\\
-External $\widehat D_y>0$ & OPEN / RH-equivalent & Prove strict positivity on the full strip.\\
-RH & RH OPEN & Any complete valid RH-equivalent frontier.\\
+PF$_3$/PF$_\infty$ & OPEN & Close actual coefficient/Toeplitz hierarchy.\\
+SOH-C005 Weil positivity & OPEN / RH-equivalent & Independent full admissible positivity.\\
+G024 $m=1,2$ & PROVED & None; $m=2$ has explicit Q dependency.\\
+G024 full complete monotonicity & CLOSED ROUTE / NO-GO & Not a valid route to pursue.\\
+External $\widehat D_y>0$ & OPEN / RH-equivalent & Direct full-frequency positivity.\\
+RH & OPEN & A non-circular incoming theorem to any equivalent frontier.\\
 \bottomrule
 \end{tabular}
-\caption{Current integrated proof status.}
+\caption{Publication-audited proof status.}
 \label{tab:current-proof-status}
 \end{table}
 
 \section{Current proof boundary}
-The canonical numbered sequence remains audited through SOH-G023. G024 is integrated on main and contains proved first- and second-order complete-monotonicity results, while the third and higher orders remain open. Full complete monotonicity would imply a positive Laplace/Gaussian-mixture representation through the Hausdorff--Bernstein--Widder theorem \citep{schilling2010bernstein}, but that premise is not established.
-
-Therefore
+The surviving frontiers are different representations of the same terminal burden, not mutually self-proving cycles. In particular,
 \[
-\boxed{\text{SOH-G003 OPEN}},\qquad
-\boxed{\text{SOH-C005 OPEN}},\qquad
+\boxed{\text{orbit collapse OPEN}},\quad
+\boxed{\text{SOH-G003 OPEN}},\quad
+\boxed{\text{SOH-C005 OPEN}},\quad
+\boxed{\widehat D_y>0\text{ OPEN}},\quad
 \boxed{\text{RH OPEN}}.
 \]
-
-\status{Canonical numbered status through SOH-G023; SOH-G024 integrated on the repository mainline but separately non-canonical. G024 proves $H_y'<0$ and $H_y''>0$ globally, with the second-order compact closure depending explicitly on a reproducible computer-assisted interval certificate. All derivative orders $m\ge3$, actual PF$_3$, PF$_\infty$, SOH-G003, SOH-C005, strict external Fourier positivity, and RH remain OPEN.}
+A valid closure requires a new non-circular incoming theorem from already proved structure. The obsolete full-complete-monotonicity route is excluded by SOH-G024-T.
