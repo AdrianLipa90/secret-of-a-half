@@ -1,206 +1,110 @@
-\chapter{Third-Order Bridge Cumulant Frontier}
+\chapter{Third-Order Bridge Cumulant Reduction}
 \label{chap:g024-third-order-cumulant}
 
-\status{Exact SOH-G024 third-order reduction. The first and second complete-monotonicity inequalities are global; the third-order sign remains OPEN. This chapter does not claim RH.}
+\status{Exact SOH-G024-S third-order reduction. The first and second signed derivative inequalities are global. SOH-G024-T, proved later and presented in Chapter~56, establishes that the all-order complete-monotonicity hierarchy must fail at some order $m\ge3$. The identities here remain exact, but closing the third-order sign is no longer a sufficient route to RH.}
 
-\section{Complete-monotonicity recurrence}
-
+\section{Signed derivative recurrence}
 For
 \[
- S_y(q)=-\frac{d}{dq}\log H_y(q)
+S_y(q)=-\frac{d}{dq}\log H_y(q),
+\qquad
+F_m(q)=(-1)^m\frac{H_y^{(m)}(q)}{H_y(q)},
 \]
-define
+direct differentiation gives
 \[
- F_m(q)=(-1)^m\frac{H_y^{(m)}(q)}{H_y(q)}.
-\]
-Direct differentiation gives
-\[
- \boxed{F_{m+1}=S_yF_m-F_m'.}
+\boxed{F_{m+1}=S_yF_m-F_m'.}
 \]
 Hence
 \[
- F_1=S_y,
- \qquad
- F_2=S_y^2-S_y',
+F_1=S_y,
+\qquad F_2=S_y^2-S_y',
+\qquad
+\boxed{F_3=S_y^3-3S_yS_y'+S_y''.}
 \]
-and
-\[
- \boxed{F_3=S_y^3-3S_yS_y'+S_y''.}
-\]
-Chapters~50--54 establish $F_1>0$ and $F_2>0$ globally throughout $0<|y|<1/2$.  The next obligation is $F_3\ge0$.
+Chapters~50--54 establish $F_1>0$ and $F_2>0$ globally. Chapter~56 proves that the full hierarchy cannot remain non-negative for all orders.
 
 \section{Radial third derivative}
-
-Put $q=u^2$ and $H_y(q)=D_y(u)$.  Since
+Put $q=u^2$ and $H_y(q)=D_y(u)$. Since $d/dq=(2u)^{-1}d/du$,
 \[
- \frac{d}{dq}=\frac1{2u}\frac{d}{du},
-\]
-one obtains
-\[
- H_y'''(u^2)
- =\frac{u^2D_y'''(u)-3uD_y''(u)+3D_y'(u)}{8u^5}.
+H_y'''(u^2)
+=\frac{u^2D_y'''(u)-3uD_y''(u)+3D_y'(u)}{8u^5}.
 \]
 Thus
 \[
- \boxed{
- -H_y'''(u^2)\ge0
- \iff
- -u^2D_y'''+3uD_y''-3D_y'\ge0.
- }
+\boxed{-H_y'''(u^2)\ge0
+\iff -u^2D_y'''+3uD_y''-3D_y'\ge0.}
 \]
 
-Recall
+Let
 \[
- N_y(u)=-\frac{D_y'(u)}{D_y(u)}.
+N_y(u)=-\frac{D_y'(u)}{D_y(u)}.
 \]
 Then
 \[
- \frac{D_y''}{D_y}=N_y^2-N_y'
-\]
-and
-\[
- \frac{D_y'''}{D_y}=-N_y^3+3N_yN_y'-N_y''.
-\]
-Therefore
-\[
- \boxed{
- 8u^5\frac{-H_y'''(u^2)}{H_y(u^2)}
- =u^2N_y^3-3u^2N_yN_y'+u^2N_y''
- +3uN_y^2-3uN_y'+3N_y.
- }
-\]
-
-\section{Third bridge observable and cumulant identity}
-
-Under the normalized bridge measure
-\[
- d\mu_u(r)=\frac{r^2K(u+r)K(u-r)}{C(u)}\,dr,
-\]
-retain
-\[
- A_u=L'(u+r)+L'(u-r),
+\frac{D_y''}{D_y}=N_y^2-N_y',
 \qquad
- B_u=L''(u+r)+L''(u-r),
+\frac{D_y'''}{D_y}=-N_y^3+3N_yN_y'-N_y'',
 \]
-and define
+so
 \[
- \boxed{C_u^{(3)}(r)=L'''(u+r)+L'''(u-r).}
+\boxed{
+8u^5\frac{-H_y'''(u^2)}{H_y(u^2)}
+=u^2N_y^3-3u^2N_yN_y'+u^2N_y''
++3uN_y^2-3uN_y'+3N_y.}
 \]
 
-For any differentiable bridge observable $G_u$,
+\section{Bridge cumulant identity}
+Under
 \[
- \frac{d}{du}\mathbb E[G_u]
- =\mathbb E[\partial_uG_u]-\operatorname{Cov}(G_u,A_u).
+d\mu_u(r)=\frac{r^2K(u+r)K(u-r)}{C(u)}\,dr,
 \]
-The earlier identities are
+define
 \[
- R=\mathbb E[A_u],
-\qquad
- R'=\mathbb E[B_u]-\operatorname{Var}(A_u).
+A_u=L'(u+r)+L'(u-r),\quad
+B_u=L''(u+r)+L''(u-r),
 \]
-Furthermore,
 \[
- \frac{d}{du}\mathbb E[B_u]
- =\mathbb E[C_u^{(3)}]-\operatorname{Cov}(A_u,B_u),
+C_u^{(3)}=L'''(u+r)+L'''(u-r).
 \]
-while
+For differentiable $G_u$,
 \[
- \frac{d}{du}\operatorname{Var}(A_u)
- =2\operatorname{Cov}(A_u,B_u)-\mu_3(A_u),
+\frac{d}{du}\mathbb E[G_u]
+=\mathbb E[\partial_uG_u]-\operatorname{Cov}(G_u,A_u).
 \]
-where
+With $R=\mathbb E[A_u]$ and $R'=\mathbb E[B_u]-\operatorname{Var}(A_u)$, exact differentiation yields
 \[
- \mu_3(A_u)=\mathbb E[(A_u-\mathbb E[A_u])^3].
-\]
-Consequently
-\[
- \boxed{
- R''
- =\mathbb E[C_u^{(3)}]
- -3\operatorname{Cov}(A_u,B_u)
- +\mu_3(A_u).
- }
+\boxed{
+R''=\mathbb E[C_u^{(3)}]
+-3\operatorname{Cov}(A_u,B_u)
++\mu_3(A_u).}
 \]
 
-\section{Tilt derivatives}
-
-With $a=|y|$,
-\[
- T_y(u)=2a\tanh(2au),
-\qquad
- N_y=R-T_y.
-\]
-The exact derivatives are
-\[
- \boxed{T_y'=4a^2\operatorname{sech}^2(2au)}
-\]
-and
-\[
- \boxed{
- T_y''=-16a^3\operatorname{sech}^2(2au)\tanh(2au).
- }
-\]
-Thus
-\[
- N_y'=R'-T_y',
-\qquad
- N_y''=R''-T_y''.
-\]
-The term $-T_y''$ is non-negative for $u\ge0$.
-
-\section{Growth barrier for the proved second-order margin}
-
+\section{Equivalent growth form}
 Define
 \[
- \boxed{M_2(u)=N_y+u(N_y^2-N_y').}
+M_2(u)=N_y+u(N_y^2-N_y')
+=4u^3\frac{H_y''(u^2)}{H_y(u^2)}>0.
 \]
-The exact second-order relation is
+Then
 \[
- M_2(u)=4u^3\frac{H_y''(u^2)}{H_y(u^2)}>0.
+M_2'=N_y^2+u(2N_yN_y'-N_y'')
 \]
-Differentiation simplifies to
+and the third-order margin becomes
 \[
- \boxed{M_2'=N_y^2+u(2N_yN_y'-N_y'').}
+\boxed{
+8u^5\frac{-H_y'''(u^2)}{H_y(u^2)}
+=(uN_y+3)M_2-uM_2'.}
 \]
-The third-order margin can then be written as
+Therefore the local third-order sign is equivalent to
 \[
- \boxed{
- 8u^5\frac{-H_y'''(u^2)}{H_y(u^2)}
- =(uN_y+3)M_2-uM_2'.
- }
+\boxed{\frac{uM_2'}{M_2}\le uN_y+3.}
 \]
-Since $M_2>0$ is already global, the third-order problem is equivalently
-\[
- \boxed{
- \frac{uM_2'}{M_2}\le uN_y+3.
- }
-\]
-No global proof of this logarithmic-growth inequality is asserted here.
 
-\section{Exact obstruction}
-
-The new bridge quantity is the coupled cumulant--covariance combination
+\section{Status after SOH-G024-T}
+The formulas above remain exact and may be useful for locating the first failure of the signed hierarchy. However, Chapter~56 proves that for each fixed $0<|y|<1/2$ there exists some $m\ge3$ and some $q\ge0$ with
 \[
- \boxed{
- \mathbb E[C_u^{(3)}]
- -3\operatorname{Cov}(A_u,B_u)
- +\mu_3(A_u).
- }
+(-1)^mH_y^{(m)}(q)<0.
 \]
-The SOH-G024-Q fourth-log-curvature certificate closes the second-order problem but does not, by itself, determine the sign or required growth bound for this third-order combination.
+Accordingly, establishing $F_3\ge0$ globally, if true, would merely move the first possible failure to a higher order; it would not restore the complete-monotonicity route.
 
-\section{Gaussian regression}
-
-For $K(t)=e^{-t^2/2}$,
-\[
- A_u=2u,
- \qquad B_u=2,
- \qquad C_u^{(3)}=0,
-\]
-and all bridge variances, covariances, and third central moments appearing above vanish.  The implementation checks both the boxed bridge normal form and the equivalent $(uN_y+3)M_2-uM_2'$ recurrence against direct third differentiation of
-\[
- H_y(q)=\frac{\sqrt\pi}{2}e^{-q}\cosh(2y\sqrt q).
-\]
-This is an identity regression, not a proof of the Riemann-kernel third-order sign.
-
-\gap{The third-order bridge/cumulant reduction is exact. The global inequality $-H_y'''\ge0$, all complete-monotonicity orders $m\ge3$, full complete monotonicity, strict external Fourier positivity, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, and RH remain OPEN.}
+\gap{The direct surviving RH-equivalent G024 target is strict external Fourier positivity, equivalently the Wronskian inequality. All-order complete monotonicity is closed by SOH-G024-T. The first failing derivative order is not determined here. RH remains OPEN.}

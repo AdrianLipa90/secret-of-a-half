@@ -1,0 +1,137 @@
+\chapter{Super-Exponential Closure of the Complete-Monotonicity Route}
+\label{chap:g024-complete-monotonicity-nogo}
+
+\status{Reviewed theorem-level route no-go (SOH-G024-T), integrated here for publication consistency. This result closes the full complete-monotonicity/Gaussian-mixture route; it preserves the already proved first- and second-order signs and does not claim RH.}
+
+\section{Route under audit}
+For fixed
+\[
+0<|y|<\frac12,
+\]
+recall
+\[
+D_y(u)=\cosh(2yu)C(u),\qquad
+C(u)=\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr,
+\]
+and
+\[
+H_y(q)=D_y(\sqrt q),\qquad q\ge0.
+\]
+Earlier chapters established
+\[
+H_y'(q)<0,\qquad H_y''(q)>0.
+\]
+The formerly proposed sufficient route was
+\[
+H_y\text{ completely monotone}
+\Longrightarrow
+D_y\text{ is a positive Gaussian mixture}
+\Longrightarrow
+\widehat D_y>0.
+\]
+The present theorem proves that the first premise cannot hold for the canonical Riemann kernel.
+
+\section{Riemann-kernel tail}
+For $t\ge0$, the positive half-line kernel has the theta-channel expansion
+\[
+\Phi(t)=4\sum_{n\ge1}\pi n^2e^{5t/2}
+\left(2\pi n^2e^{2t}-3\right)e^{-\pi n^2e^{2t}},
+\qquad K(t)=\frac12\Phi(|t|).
+\]
+Put $x=e^{2t}\ge1$ and define
+\[
+A=\sum_{n\ge1}n^4e^{-\pi(n^2-1)}<\infty.
+\]
+Since $2\pi n^2x-3<2\pi n^2x$,
+\[
+\boxed{K(t)<4\pi^2A\,e^{9t/2}e^{-\pi e^{2t}}.}
+\]
+Thus $K$ has a double-exponential tail in the physical coordinate.
+
+\section{Correlation domination from strong convexity}
+The proved G024 strong-convexity theorem gives
+\[
+L(t)=-\log K(t),\qquad L''(t)>17.
+\]
+For all real $u,r$,
+\[
+L(u+r)+L(u-r)-2L(u)>17r^2,
+\]
+hence
+\[
+\boxed{K(u+r)K(u-r)<K(u)^2e^{-17r^2}.}
+\]
+Therefore
+\[
+C(u)<K(u)^2\int_{\mathbb R}r^2e^{-17r^2}\,dr
+=\frac{\sqrt\pi}{2\,17^{3/2}}K(u)^2.
+\]
+For $u\ge0$ and $0<|y|<1/2$, $\cosh(2|y|u)\le e^u$. Combining this with the kernel tail yields a constant $B>0$ such that
+\[
+\boxed{H_y(u^2)<B e^{10u}e^{-2\pi e^{2u}}.}
+\]
+Equivalently,
+\[
+\boxed{\forall T>0:\quad \lim_{q\to\infty}e^{Tq}H_y(q)=0.}
+\]
+
+\section{Bernstein lower-envelope lemma}
+If $h:[0,\infty)\to(0,\infty)$ is nonzero, completely monotone, and $h(0)<\infty$, the Hausdorff--Bernstein--Widder theorem gives
+\[
+h(q)=\int_{[0,\infty)}e^{-\lambda q}\,d\mu(\lambda)
+\]
+for a finite nonzero positive measure $\mu$. For some finite $N$ one has $\mu([0,N])>0$, hence
+\[
+\boxed{h(q)\ge \mu([0,N])e^{-Nq}.}
+\]
+Thus such a function cannot decay faster than every exponential.
+
+\section{SOH-G024-T}
+\begin{theorem}[Full complete-monotonicity route no-go]
+For every fixed $0<|y|<1/2$, the canonical profile
+\[
+H_y(q)=D_y(\sqrt q)
+\]
+is not completely monotone on $[0,\infty)$.
+\end{theorem}
+
+\begin{proof}
+If $H_y$ were completely monotone, the Bernstein lower-envelope lemma would provide finite $N$ and $c>0$ such that
+\[
+e^{Nq}H_y(q)\ge c
+\]
+for all $q\ge0$. The super-exponential estimate above gives instead
+\[
+e^{Nq}H_y(q)\longrightarrow0,
+\]
+a contradiction.
+\end{proof}
+
+Consequently, for each fixed admissible $y$, there exist $m\ge3$ and $q\ge0$ for which
+\[
+\boxed{(-1)^mH_y^{(m)}(q)<0.}
+\]
+The already proved inequalities $H_y'<0$ and $H_y''>0$ are unaffected.
+
+\section{Updated proof graph}
+The publication graph is therefore
+\[
+\boxed{
+\text{full complete monotonicity}
+\longrightarrow
+\text{CLOSED ROUTE / NO-GO}
+}
+\]
+while the direct one-dimensional target remains
+\[
+\boxed{\widehat D_y(x)>0
+\quad\forall x\in\mathbb R,
+\quad0<|y|<\frac12.}
+\]
+Equivalently, with $f$ the Fourier transform of $K$,
+\[
+\boxed{\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right)>0.}
+\]
+This direct Fourier/Wronskian condition is RH-equivalent at the hypotheses stated in Chapter~50. It remains OPEN.
+
+\gap{SOH-G024-T closes only the stronger complete-monotonicity/Gaussian-mixture route. It does not establish strict external Fourier positivity, SOH-G003, SOH-C005, PF$_3$, PF$_\infty$, or RH.}
