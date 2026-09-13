@@ -1,0 +1,200 @@
+\chapter{Reciprocal--Conjugation Orbit Collapse in the Projective Coordinate}
+\label{chap:reciprocal-conjugation-orbit-collapse}
+
+\status{Exact RH-equivalent reformulation and orbit-separating geometry. No implication from zerohood to orbit collapse is assumed or proved here; RH remains OPEN.}
+
+\section{Projective coordinate and transformed xi function}
+Set
+\[
+u=\Omega(s)=\frac{s}{1-s},\qquad s=\frac{u}{1+u},
+\]
+and define
+\[
+X(u)=\xi\!\left(\frac{u}{1+u}\right).
+\]
+For a non-trivial xi zero $\rho$, write $u_\rho=\Omega(\rho)$. Since non-trivial zeros lie in the open critical strip, $u_\rho\ne0,\infty$.
+
+\section{Two exact zero-set actions}
+The holomorphic functional reflection
+\[
+\mathcal I_s(s)=1-s
+\]
+becomes
+\[
+\boxed{\mathcal I_u(u)=\frac1u.}
+\]
+Because $\xi(s)=\xi(1-s)$,
+\[
+X(u)=0\Longrightarrow X(1/u)=0.
+\]
+
+Complex conjugation gives
+\[
+\boxed{\mathcal C_u(u)=\overline u,}
+\]
+and, because $\xi(\bar s)=\overline{\xi(s)}$,
+\[
+X(u)=0\Longrightarrow X(\bar u)=0.
+\]
+These two involutions commute:
+\[
+\mathcal I\mathcal C(u)=\frac1{\bar u}
+=\mathcal C\mathcal I(u).
+\]
+Thus every transformed zero belongs to an orbit contained in
+\[
+\boxed{\left\{u,\bar u,\frac1u,\frac1{\bar u}\right\}.}
+\]
+
+\section{Critical line as equality of the two actions}
+\begin{theorem}[Reciprocal--conjugation coincidence]
+For every $u\in\mathbb C^\times$,
+\[
+\boxed{
+\mathcal I_u(u)=\mathcal C_u(u)
+\iff
+|u|=1.
+}
+\]
+Under $u=\Omega(s)$ this is equivalent to $\Re s=1/2$.
+\end{theorem}
+
+\begin{proof}
+The equality is
+\[
+\frac1u=\bar u.
+\]
+Multiplication by $u$ gives $u\bar u=1$, hence $|u|=1$, and the converse is immediate. The projective identity
+\[
+|\Omega(s)|=1\iff |s|=|1-s|\iff\Re s=\frac12
+\]
+completes the crosswalk.
+\end{proof}
+
+Consequently,
+\[
+\boxed{
+\mathrm{RH}
+\iff
+\forall u\in Z_X:\ \mathcal I_u(u)=\mathcal C_u(u).
+}
+\]
+This is an exact equivalence, not an independent proof of the implication.
+
+\section{Orbit cardinality}
+For a non-trivial zero, the generic off-axis orbit has four distinct points
+\[
+\left\{u,\bar u,\frac1u,\frac1{\bar u}\right\}.
+\]
+On the unit circle,
+\[
+\frac1u=\bar u,
+\]
+so the reciprocal and conjugation pairings coincide and the orbit reduces to the conjugate pair
+\[
+\{u,\bar u\}.
+\]
+The exceptional fixed values of either involution are not used as a zero-location premise. In particular, pointwise fixedness under $u\mapsto1/u$ would force $u=\pm1$ and is not the RH condition.
+
+\section{Orbit-separating defect}
+Define
+\[
+\boxed{
+\Delta_{\mathrm{RC}}(u)
+:=\left|\frac1u-\bar u\right|^2.
+}
+\]
+Writing $R=|u|$ gives the exact identities
+\[
+\Delta_{\mathrm{RC}}(u)
+=\frac{(1-R^2)^2}{R^2}
+=\left(R-\frac1R\right)^2.
+\]
+Hence
+\[
+\boxed{\Delta_{\mathrm{RC}}(u)=0\iff R=1.}
+\]
+
+For the compactified projective radius
+\[
+q=\frac{R}{1+R},
+\]
+one has
+\[
+R=\frac{q}{1-q}
+\]
+and therefore
+\[
+\boxed{
+\Delta_{\mathrm{RC}}(q)
+=\frac{(2q-1)^2}{q^2(1-q)^2}.
+}
+\]
+Thus
+\[
+\Delta_{\mathrm{RC}}=0
+\iff q=\frac12
+\iff\Re s=\frac12.
+\]
+
+For the logarithmic radius
+\[
+B=\log R,
+\]
+\[
+\boxed{\Delta_{\mathrm{RC}}=4\sinh^2B.}
+\]
+For the centred compact coordinate
+\[
+\eta=\frac{R-1}{R+1}=2q-1,
+\]
+\[
+\boxed{
+\Delta_{\mathrm{RC}}
+=\frac{16\eta^2}{(1-\eta^2)^2}.
+}
+\]
+All four forms vanish on exactly the same self-dual layer.
+
+\section{Why orbit averaging cannot close the problem}
+Reciprocal inversion sends
+\[
+q\mapsto1-q,
+\qquad B\mapsto-B.
+\]
+Every off-axis two-cycle therefore satisfies
+\[
+\frac{q+(1-q)}2=\frac12,
+\qquad B+(-B)=0.
+\]
+Consequently, an orbit barycentre or an odd orbit sum cannot distinguish a genuine fixed/self-dual layer from a nontrivial two-cycle. The squared defect $B^2$ and $\Delta_{\mathrm{RC}}$ retain the pointwise separation.
+
+\section{Minimal remaining implication}
+In these coordinates the remaining RH obligation can be written without auxiliary machinery as
+\[
+\boxed{
+X(u)=0\Longrightarrow\Delta_{\mathrm{RC}}(u)=0.
+}
+\]
+Equivalently,
+\[
+X(u)=0\Longrightarrow |u|=1,
+\]
+or
+\[
+X(u)=0\Longrightarrow q(u)=\frac12.
+\]
+This implication is RH-equivalent. The exact orbit algebra above compresses the target but does not supply the required non-circular incoming theorem.
+
+\section{Separation from negative inversion}
+The map used in this chapter is the functional-equation action
+\[
+\mathcal I_u(u)=1/u.
+\]
+It must not be conflated with the Li/Euler negative inversion
+\[
+\mathcal N_u(u)=-1/u.
+\]
+Chapters~37--43 prove exact geometry for $\mathcal N$ and then exclude it as a zero-to-zero spectral mechanism. Those no-go results do not invalidate the functional symmetry $u\mapsto1/u$ used here.
+
+\gap{The orbit-collapse equivalence and defect formulas are exact. The unproved statement is precisely $X(u)=0\Rightarrow\Delta_{\mathrm{RC}}(u)=0$. No QED for RH is claimed.}

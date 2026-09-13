@@ -1,111 +1,93 @@
 \chapter{Canonical and Integrated Claim Ledger}
 \label{app:claims}
 
-This appendix separates two repository states that must not be conflated. The \emph{canonical numbered theorem ledger} is promoted through SOH-G023. SOH-G024 has been merged into the repository mainline and is fully integrated into the monograph, but it remains a separately tracked research line rather than an automatic canonical promotion. The machine ledger records this state as \texttt{INTEGRATED\_MAINLINE\_NOT\_CANONICAL}. Repository integration is not mathematical canonization.
+This appendix separates canonical theorem promotion from repository integration. The canonical numbered theorem ledger remains through SOH-G023. G024 is an integrated research line; SOH-G024-T is a separately reviewed theorem-level route no-go and is not silently promoted into the canonical G001--G023 sequence. Repository integration is not mathematical canonization.
 
-\section{Foundational claims and open bridges}
-\small
-\begin{longtable}{@{}p{0.12\textwidth}p{0.53\textwidth}p{0.20\textwidth}@{}}
-\toprule
-ID & Statement & Status\\
-\midrule
-\endfirsthead
-\toprule ID & Statement & Status\\ \midrule\endhead
-SOH-L001 & Binary Shannon entropy is uniquely maximal at $\sigma=1/2$. & Exact\\
-SOH-L002 & Equal-gain normalized two-channel cancellation occurs only at $\sigma=1/2$ and phase $\pi$. & Exact\\
-SOH-L003 & The fixed set of $\J(s)=1-\bar s$ is $\Re s=1/2$. & Exact\\
-SOH-L004 & Entropy deficit from balance is a Bernoulli KL divergence. & Exact\\
-SOH-L005 & The declared binary-spinor balance conditions select $\sigma=1/2$. & Exact model theorem\\
-SOH-L006 & Eta and zeta have identical zero sets with multiplicity in the open critical strip. & Exact classical\\
-SOH-L007 & Unequal gains move the cancellation weight to the declared gain ratio. & Exact\\
-SOH-L008--L011 & Native theta covariance, closure defect, theta-Mellin detector, and finite PSD Gram fixture. & Exact at declared levels\\
-SOH-C001 & Canonical information-spinor state map carrying every non-trivial zero to exact complementary cancellation. & OPEN\\
-SOH-C002 & Canonical theta/analytic-vector/positivity state-map construction. & OPEN\\
-SOH-C003 & Self-adjoint spectral construction with the required zeta determinant. & OPEN\\
-SOH-C004 & Every non-trivial xi zero closes in the canonical self-dual PhaseNav shell. & OPEN\\
-SOH-C005 & Full admissible arithmetic Weil positivity by an independent non-circular proof. & OPEN / RH-equivalent frontier\\
-\bottomrule
-\end{longtable}
-\normalsize
-
-\section{Promoted Li/Weil line}
-\small
-\begin{longtable}{@{}p{0.12\textwidth}p{0.58\textwidth}p{0.18\textwidth}@{}}
-\toprule ID & Canonical statement & Status\\
-\midrule\endfirsthead\toprule ID & Canonical statement & Status\\\midrule\endhead
+\section{Foundational and Li/Weil status}
+\begin{longtable}{@{}p{0.15\textwidth}p{0.57\textwidth}p{0.18\textwidth}@{}}
+\toprule ID & Statement & Status\\
+\midrule\endfirsthead\toprule ID & Statement & Status\\\midrule\endhead
+SOH-L001--L011 & Binary half-selection, conjugate-affine fixed line, eta bridge, and early exact/model constructions at their declared levels. & Exact / declared\\
+SOH-C001--C004 & State-map, analytic-vector, spectral, and self-dual-shell closure programmes. & OPEN\\
+SOH-C005 & Full admissible arithmetic Weil positivity by an independent non-circular proof. & OPEN / RH-equivalent\\
 SOH-L012 & $\Omega(s)=s/(1-s)$ maps the critical line to the unit circle. & Exact\\
 SOH-L013 & $\Omega(1-\bar s)=1/\overline{\Omega(s)}$. & Exact\\
 SOH-L014 & $\Re s=1/2\iff|\Omega(s)|=1$. & Exact\\
-SOH-L015 & RH is equivalent to all transformed non-trivial zeros lying on $|\Omega|=1$. & Exact reformulation\\
-SOH-L016 & $B=\log|\Omega|$ is involution-odd and $B^2$ vanishes exactly on the critical line. & Exact\\
-SOH-L017--L024 & Li coordinate, quartet symmetry, growth radius, local liminf, and generating-function singularity statements. & Exact\\
-SOH-L025 & Global Li non-negativity for all orders is equivalent to RH. & Exact classical criterion\\
-SOH-L026 & Full admissible Weil positivity is equivalent to RH under the standard criterion. & Exact classical criterion\\
-SOH-L027--L032 & Log-radial coordinate, prime shifts, hinge-kernel no-go, localized Weil reduction, and domain monotonicity. & Exact / exact reduction\\
+SOH-L015--L032 & Li criterion, log-radial geometry, localized Weil reductions, prime-tail and domain statements. & Exact / exact reductions\\
 \bottomrule
 \end{longtable}
-\normalsize
 
-\section{Canonical SOH-G quotient, kernel, and operator line through G023}
-\small
-\begin{longtable}{@{}p{0.12\textwidth}p{0.58\textwidth}p{0.18\textwidth}@{}}
-\toprule ID & Canonical statement & Status\\
-\midrule\endfirsthead\toprule ID & Canonical statement & Status\\\midrule\endhead
-SOH-G001 & Inverse-boundary geometry and holomorphic square quotient reduce the half-axis problem to self-dual/unit-circle geometry. & Exact reduction\\
-SOH-G002 & Historical intermediate identifier; no standalone theorem promoted. & Inactive\\
+\section{Canonical SOH-G line through G023}
+\begin{longtable}{@{}p{0.15\textwidth}p{0.57\textwidth}p{0.18\textwidth}@{}}
+\toprule ID & Statement & Status\\
+\midrule\endfirsthead\toprule ID & Statement & Status\\\midrule\endhead
+SOH-G001 & Inverse-boundary/projective geometry and holomorphic quotient reduction. & Exact reduction\\
+SOH-G002 & Historical intermediate identifier. & Inactive\\
 SOH-G003 & Every zero of the quotient entire function $F$ is real. & OPEN / RH-equivalent\\
-SOH-G004 & The compactified exact Riemann-kernel weight is strictly log-concave. & PROVED\\
+SOH-G004 & Declared compactified Riemann-kernel weight is strictly log-concave. & PROVED\\
 SOH-G005 & Taylor coefficients of $F$ form a PF$_2$ sequence. & PROVED\\
-SOH-G006 & Solid PF$_3$ Toeplitz minor has the exact ratio-curvature reduction. & Reduction PROVED; actual PF$_3$ OPEN\\
-SOH-G007 & Declared Collatz/Uroboros conjugacies with explicit scale identification. & Exact / conditional quotient\\
-SOH-G008 & Xi scale defect has reciprocal antisymmetry and no non-trivial global scale periodicity. & PROVED\\
-SOH-G009 & Selected five-halving chain is an exact hyperbolic/M\"obius translation. & PROVED finite orbit identity\\
-SOH-G010 & Positive real scale defect has a unique sign-changing crossing. & PROVED\\
-SOH-G011 & Symmetry-forced simple crossing pair; additional complex crossings not excluded. & PROVED with open extension\\
-SOH-G012 & Riemann reflection and Euler half-turn factor canonical negative inversion; projective group is $V_4$. & PROVED\\
-SOH-G013 & Pauli/SU(2) lift $Q_8\to V_4$ with kernel $\{\pm I\}$. & PROVED\\
-SOH-G014 & Only finitely many xi zeros can be paired by negative inversion. & PROVED; strengthened later\\
-SOH-G015 & Only finitely many $F$ roots can be paired by $J(w)=1/(16w)$. & PROVED; strengthened later\\
-SOH-G016 & Paired xi and quotient spectra obey the exact quotient correspondence. & PROVED\\
-SOH-G017 & The fixed values $w=\pm1/4$ are not roots of $F$. & PROVED; strengthened later\\
-SOH-G018 & $|w|\le1/4$ is zero-free; $P_J=P_N=\varnothing$. & PROVED\\
-SOH-G019 & Unique $R_\star>0$ satisfies $F(R_\star)=2F(0)$ and $\Re F(w)>0$ on $|w|\le R_\star$. & PROVED\\
-SOH-G020 & Canonical rescaling yields a half-mass probability law preserving PF$_2$ and strict decay. & PROVED\\
-SOH-G021 & The abstract G020 package does not imply PF$_3$; exact counterexample margin $-1271/2500$. & PROVED structural no-go; actual PF$_3$ OPEN\\
-SOH-G022 & Exact decomposition of the G006 solid PF$_3$ margin and local sufficient inequalities. & PROVED local sufficient condition; actual PF$_3$ OPEN\\
-SOH-G023 & Reciprocal-deficit normal form for the solid G006 margin; global one-Lipschitz increment law remains open. & PROVED normal form; global law OPEN\\
+SOH-G006 & Solid PF$_3$ minor has exact ratio-curvature reduction. & Reduction proved; PF$_3$ OPEN\\
+SOH-G007--G013 & Uroboros/scale-defect/Euler/projective/spinor operator results at declared levels. & PROVED / exact\\
+SOH-G014--G018 & Negative-inversion pairing is progressively excluded; G018 gives $P_J=P_N=\varnothing$. & PROVED\\
+SOH-G019 & Coefficient-majorant Carath\'eodory disk. & PROVED\\
+SOH-G020 & Canonical half-mass PF$_2$ law. & PROVED\\
+SOH-G021 & Current half-mass/PF$_2$ package does not imply PF$_3$. & PROVED no-go\\
+SOH-G022 & One-step PF$_3$ curvature-barrier decomposition. & Exact reduction\\
+SOH-G023 & Reciprocal-deficit PF$_3$ normal form. & Exact reduction; global law OPEN\\
 \bottomrule
 \end{longtable}
-\normalsize
 
-\section{Integrated SOH-G024 research line -- mainline, not canonically promoted}
-\small
-\begin{longtable}{@{}p{0.14\textwidth}p{0.56\textwidth}p{0.18\textwidth}@{}}
-\toprule ID & Integrated statement & Status\\
-\midrule\endfirsthead\toprule ID & Integrated statement & Status\\\midrule\endhead
-SOH-G024-A & $\nu_2(2u)=4C(u)$ and $\Psi_y(2u)=4D_y(u)$ for the centred correlation family. & Exact\\
-SOH-G024-B & Dimitrov--Xu plus Wiener reduce RH to strict Fourier positivity of $D_y$ on the full strip. & Exact RH-equivalent criterion\\
-SOH-G024-C & Full complete monotonicity of $H_y$ is sufficient for RH through a positive Gaussian-mixture representation. & Exact implication; higher orders OPEN\\
-SOH-G024-D & Internal tilt $J_y$ satisfies the conjugate-modulus Jensen/Laguerre Wronskian identity. & Exact identity\\
-SOH-G024-E & External $D_y$ and internal $J_y$ are distinct for $y\ne0$ and coincide at $y=0$. & Exact firewall\\
-SOH-G024-F & $H_y'(q)<0$ globally; sharpened slope floor $-H_y'/H_y>33/2$. & PROVED\\
-SOH-G024-G & Uniform Gaussian domination from the conservative first-order slope bound. & PROVED\\
-SOH-G024-H & $4\widehat D_y(2x)=\Re(f'(x+iy)^2-f(x+iy)f''(x+iy))$. & Exact identity\\
-SOH-G024-I & $H_y''/H_y=S_y^2-S_y'$; Q/R close this globally. & Exact reduction; globally closed by Q/R\\
-SOH-G024-J & Bridge curvature--variance identity $R'=\mathbb E[B]-\operatorname{Var}(A)$ and exact second-order normal form. & Exact reduction\\
-SOH-G024-K & Bridge score/moment hierarchy and sharpened MGF bound $(1-\lambda/17)^{-3/2}$. & PROVED\\
-SOH-G024-L & $H_y''>0$ for $q\ge1/4$. & PROVED historical subtheorem\\
-SOH-G024-M & $L''=-(\log K)''>17$ globally. & PROVED\\
-SOH-G024-P & $H_y''>0$ analytically for $q\ge1/9$. & PROVED historical subtheorem\\
-SOH-G024-Q & $L''''<20L''$ globally; outward \texttt{mpmath.iv} certificate on $0\le t\le2/5$ plus analytic tail. & COMPUTER-ASSISTED + analytic\\
-SOH-G024-R & $H_y''(q)>0$ globally with strict compact Riccati gap $793/48$. & PROVED with Q dependency\\
-SOH-G024-S & Exact third-order recurrence, bridge cumulant identity, and growth-barrier normal form. & Exact reduction; third-order sign OPEN\\
-SOH-G024-N1 & Finite derivative diagnostics beyond proved orders. & FINITE\_DIAGNOSTIC\_NOT\_PROOF\\
+\section{Integrated G024 line}
+\begin{longtable}{@{}p{0.16\textwidth}p{0.56\textwidth}p{0.18\textwidth}@{}}
+\toprule ID & Statement & Status\\
+\midrule\endfirsthead\toprule ID & Statement & Status\\\midrule\endhead
+SOH-G024-A/B & Exact correlation reparametrization and external Dimitrov--Xu/Wiener RH-equivalent Fourier criterion. & Exact\\
+SOH-G024-C & Complete monotonicity of $H_y$ would be sufficient for the Gaussian-mixture route. & Exact implication; premise later disproved\\
+SOH-G024-D/E/H & Internal/external tilt firewall and Fourier/Wronskian identities. & Exact\\
+SOH-G024-F/M & $H_y'<0$ globally and $-(\log K)''>17$. & PROVED\\
+SOH-G024-I--R & Exact bridge reductions, moment bounds, interval certificate Q, and $H_y''>0$ globally with Q dependency. & PROVED / computer-assisted dependency\\
+SOH-G024-S & Third-order recurrence, cumulant identity, and growth normal form. & Exact reduction\\
+SOH-G024-T & For every fixed $0<|y|<1/2$, $H_y$ is not completely monotone: its super-exponential tail contradicts the Bernstein exponential lower envelope. & REVIEWED THEOREM-LEVEL ROUTE NO-GO\\
+SOH-G024-N1 & Finite higher-derivative diagnostics. & FINITE DIAGNOSTIC\\
 \bottomrule
 \end{longtable}
-\normalsize
 
-\section{Current promotion and proof firewall}
-The machine canonical ledger remains \texttt{canonical\_through = SOH-G023}. The separate G024 ledger records \texttt{INTEGRATED\_MAINLINE\_NOT\_CANONICAL}; this is a mathematical-promotion state, not a Git-branch location. G024 has been merged to main and its first two non-trivial complete-monotonicity inequalities are global. The second-order compact closure explicitly depends on SOH-G024-Q. The third-order sign and all orders $m\ge3$ remain open.
+\section{Publication v0.11 reciprocal--conjugation equivalence}
+Let
+\[
+u=\Omega(s),\qquad X(u)=\xi\!\left(\frac{u}{1+u}\right),
+\]
+and define the exact zero-set involutions
+\[
+\mathcal I(u)=1/u,\qquad \mathcal C(u)=\bar u.
+\]
+Then
+\[
+\mathcal I(u)=\mathcal C(u)
+\iff |u|=1
+\iff\Re s=\frac12.
+\]
+Hence
+\[
+\boxed{\mathrm{RH}\iff \forall u\in Z_X:\;\mathcal I(u)=\mathcal C(u).}
+\]
+The orbit-separating defect
+\[
+\Delta_{\mathrm{RC}}(u)=|1/u-\bar u|^2
+\]
+vanishes exactly on the critical line. Status: \textbf{EXACT RH-EQUIVALENT REFORMULATION; NOT A PROOF}. The implication $X(u)=0\Rightarrow\Delta_{\mathrm{RC}}(u)=0$ remains OPEN.
 
-The current open frontier therefore includes SOH-C001, SOH-C005, SOH-G003, actual PF$_3$ OPEN, PF$_\infty$, G024 third and higher complete monotonicity, strict external Fourier positivity, and the full complete-monotonicity implication chain. The Riemann Hypothesis remains OPEN.
+\section{Current proof firewall}
+The following statements are simultaneously enforced:
+\[
+\boxed{H_y'<0\text{ and }H_y''>0\text{ are PROVED}},
+\]
+\[
+\boxed{H_y\text{ completely monotone is FALSE by SOH-G024-T}},
+\]
+\[
+\boxed{\widehat D_y>0\text{ on the full strip is OPEN / RH-equivalent}},
+\]
+\[
+\boxed{\text{orbit collapse, SOH-G003, SOH-C005, PF}_3,\text{ PF}_\infty,\text{ RH are OPEN}.}
+\]
