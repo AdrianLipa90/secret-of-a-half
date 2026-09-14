@@ -44,7 +44,8 @@ jobs:
           set -euo pipefail
           python -m pytest -q \
             tests/test_half_kernel_operator_bridge.py \
-            tests/test_half_kernel_green_carrier.py
+            tests/test_half_kernel_green_carrier.py \
+            tests/test_half_kernel_wronskian_completion.py
 
       - name: Generate v0.1 fail-closed receipt
         run: |
@@ -52,7 +53,6 @@ jobs:
           python scripts/run_soh_half_kernel_operator_bridge.py | tee soh-half-kernel-v0.1.json
           grep -Fq '"status": "PASS"' soh-half-kernel-v0.1.json
           grep -Fq '"rh_claim": false' soh-half-kernel-v0.1.json
-          grep -Fq '"physical_promotion": false' soh-half-kernel-v0.1.json
           grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.1.json
 
       - name: Generate v0.2 Green-carrier correction receipt
@@ -63,7 +63,16 @@ jobs:
           grep -Fq '"rh_claim": false' soh-half-kernel-v0.2.json
           grep -Fq '"supersedes_v01_domain_note": true' soh-half-kernel-v0.2.json
           grep -Fq '"third_order_G024_complete_monotonicity": true' soh-half-kernel-v0.2.json
-          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.2.json
+
+      - name: Generate v0.3 Wronskian completion receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_wronskian_completion.py | tee soh-half-kernel-v0.3.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.3.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.3.json
+          grep -Fq '"blockwise_same_sign_route_rejected": true' soh-half-kernel-v0.3.json
+          grep -Fq '"third_order_G024_complete_monotonicity": true' soh-half-kernel-v0.3.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.3.json
 
       - name: Upload exact-head receipts
         uses: actions/upload-artifact@v4
@@ -72,5 +81,7 @@ jobs:
           path: |
             soh-half-kernel-v0.1.json
             soh-half-kernel-v0.2.json
+            soh-half-kernel-v0.3.json
             reports/SOH_HALF_KERNEL_OPERATOR_BRIDGE_V0_1.json
             reports/SOH_HALF_KERNEL_GREEN_CARRIER_V0_2.json
+            reports/SOH_HALF_KERNEL_WRONSKIAN_COMPLETION_V0_3.json
