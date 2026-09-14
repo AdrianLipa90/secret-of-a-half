@@ -47,7 +47,8 @@ jobs:
             tests/test_half_kernel_green_carrier.py \
             tests/test_half_kernel_wronskian_completion.py \
             tests/test_parabolic_disk_compactification.py \
-            tests/test_halfplane_weyl_bridge.py
+            tests/test_halfplane_weyl_bridge.py \
+            tests/test_half_kernel_sqrt_ulc.py
 
       - name: Generate v0.1 fail-closed receipt
         run: |
@@ -94,6 +95,16 @@ jobs:
           grep -Fq '"construct_weyl_M_from_Xi_theta_without_zero_input": true' soh-half-kernel-v0.5.json
           grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.5.json
 
+      - name: Generate v0.6 sqrt-kernel ULC receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_sqrt_ulc.py | tee soh-half-kernel-v0.6.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.6.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.6.json
+          grep -Fq '"sub_poisson_first_stieltjes_closed": true' soh-half-kernel-v0.6.json
+          grep -Fq '"higher_stieltjes_derivative_signs": true' soh-half-kernel-v0.6.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.6.json
+
       - name: Upload exact-head receipts
         uses: actions/upload-artifact@v4
         with:
@@ -104,8 +115,10 @@ jobs:
             soh-half-kernel-v0.3.json
             soh-half-kernel-v0.4.json
             soh-half-kernel-v0.5.json
+            soh-half-kernel-v0.6.json
             reports/SOH_HALF_KERNEL_OPERATOR_BRIDGE_V0_1.json
             reports/SOH_HALF_KERNEL_GREEN_CARRIER_V0_2.json
             reports/SOH_HALF_KERNEL_WRONSKIAN_COMPLETION_V0_3.json
             reports/SOH_HALF_KERNEL_PARABOLIC_DISK_COMPACTIFICATION_V0_4.json
             reports/SOH_HALFPLANE_SIN_QUOTIENT_WEYL_M_V0_5.json
+            reports/SOH_HALF_KERNEL_SQRT_ULC_V0_6.json
