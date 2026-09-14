@@ -46,7 +46,8 @@ jobs:
             tests/test_half_kernel_operator_bridge.py \
             tests/test_half_kernel_green_carrier.py \
             tests/test_half_kernel_wronskian_completion.py \
-            tests/test_parabolic_disk_compactification.py
+            tests/test_parabolic_disk_compactification.py \
+            tests/test_halfplane_weyl_bridge.py
 
       - name: Generate v0.1 fail-closed receipt
         run: |
@@ -84,6 +85,15 @@ jobs:
           grep -Fq '"disk_real_zero_or_inner_factor_closure": true' soh-half-kernel-v0.4.json
           grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.4.json
 
+      - name: Generate v0.5 sin-quotient Weyl receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_halfplane_weyl_bridge.py | tee soh-half-kernel-v0.5.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.5.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.5.json
+          grep -Fq '"construct_weyl_M_from_Xi_theta_without_zero_input": true' soh-half-kernel-v0.5.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.5.json
+
       - name: Upload exact-head receipts
         uses: actions/upload-artifact@v4
         with:
@@ -93,7 +103,9 @@ jobs:
             soh-half-kernel-v0.2.json
             soh-half-kernel-v0.3.json
             soh-half-kernel-v0.4.json
+            soh-half-kernel-v0.5.json
             reports/SOH_HALF_KERNEL_OPERATOR_BRIDGE_V0_1.json
             reports/SOH_HALF_KERNEL_GREEN_CARRIER_V0_2.json
             reports/SOH_HALF_KERNEL_WRONSKIAN_COMPLETION_V0_3.json
             reports/SOH_HALF_KERNEL_PARABOLIC_DISK_COMPACTIFICATION_V0_4.json
+            reports/SOH_HALFPLANE_SIN_QUOTIENT_WEYL_M_V0_5.json
