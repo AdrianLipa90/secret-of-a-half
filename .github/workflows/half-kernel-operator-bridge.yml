@@ -1,0 +1,61 @@
+name: SoHalf half-kernel operator bridge
+
+on:
+  push:
+    branches:
+      - feat/half-kernel-operator-bridge-v0.1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-half-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Record provenance
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          git diff --check
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install package and test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+
+      - name: Run exact half-kernel tests
+        run: python -m pytest -q tests/test_half_kernel_operator_bridge.py
+
+      - name: Generate fail-closed receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_operator_bridge.py | tee soh-half-kernel-v0.1.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.1.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.1.json
+          grep -Fq '"physical_promotion": false' soh-half-kernel-v0.1.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.1.json
+          grep -Fq '"construct_explicit_V_y_T_from_theta_translations": true' soh-half-kernel-v0.1.json
+
+      - name: Upload exact-head receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: soh-half-kernel-v01-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            soh-half-kernel-v0.1.json
+            reports/SOH_HALF_KERNEL_OPERATOR_BRIDGE_V0_1.json
