@@ -39,10 +39,14 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -e .[dev]
 
-      - name: Run exact half-kernel tests
-        run: python -m pytest -q tests/test_half_kernel_operator_bridge.py
+      - name: Run half-kernel regression tests
+        run: |
+          set -euo pipefail
+          python -m pytest -q \
+            tests/test_half_kernel_operator_bridge.py \
+            tests/test_half_kernel_green_carrier.py
 
-      - name: Generate fail-closed receipt
+      - name: Generate v0.1 fail-closed receipt
         run: |
           set -euo pipefail
           python scripts/run_soh_half_kernel_operator_bridge.py | tee soh-half-kernel-v0.1.json
@@ -50,12 +54,23 @@ jobs:
           grep -Fq '"rh_claim": false' soh-half-kernel-v0.1.json
           grep -Fq '"physical_promotion": false' soh-half-kernel-v0.1.json
           grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.1.json
-          grep -Fq '"construct_explicit_V_y_T_from_theta_translations": true' soh-half-kernel-v0.1.json
 
-      - name: Upload exact-head receipt
+      - name: Generate v0.2 Green-carrier correction receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_green_carrier.py | tee soh-half-kernel-v0.2.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.2.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.2.json
+          grep -Fq '"supersedes_v01_domain_note": true' soh-half-kernel-v0.2.json
+          grep -Fq '"third_order_G024_complete_monotonicity": true' soh-half-kernel-v0.2.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.2.json
+
+      - name: Upload exact-head receipts
         uses: actions/upload-artifact@v4
         with:
-          name: soh-half-kernel-v01-${{ github.event.pull_request.head.sha || github.sha }}
+          name: soh-half-kernel-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             soh-half-kernel-v0.1.json
+            soh-half-kernel-v0.2.json
             reports/SOH_HALF_KERNEL_OPERATOR_BRIDGE_V0_1.json
+            reports/SOH_HALF_KERNEL_GREEN_CARRIER_V0_2.json
