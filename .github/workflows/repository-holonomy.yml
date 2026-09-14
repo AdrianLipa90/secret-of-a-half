@@ -1,0 +1,34 @@
+name: Repository holonomy
+
+on:
+  pull_request:
+    paths:
+      - '.gitmodules'
+      - '½'
+      - 'REPOSITORY_HOLONOMY_V1.json'
+      - 'scripts/check_repository_holonomy.py'
+      - '.github/workflows/repository-holonomy.yml'
+  push:
+    branches: [main]
+    paths:
+      - '.gitmodules'
+      - '½'
+      - 'REPOSITORY_HOLONOMY_V1.json'
+      - 'scripts/check_repository_holonomy.py'
+      - '.github/workflows/repository-holonomy.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository and pinned TIR peer
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 1
+          persist-credentials: false
+      - name: Verify fail-closed repository holonomy
+        run: python3 scripts/check_repository_holonomy.py

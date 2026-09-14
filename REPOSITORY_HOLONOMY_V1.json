@@ -1,0 +1,15 @@
+{
+  "schema": "sohalf.repository-holonomy/v1",
+  "role": "dedicated-riemann-repository",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "peer_repository": "AdrianLipa90/The-Fundamental-Theory-of-Informational-Relations",
+  "peer_branch": "main",
+  "peer_commit": "054b400eb449148f18f782673ec68efa823dffa9",
+  "gitlink_path": "½",
+  "module_path": "½/TIR/zeta_information_axis",
+  "topology": "direct-pinned-gitlink-with-declarative-backlink",
+  "recursive_submodules": false,
+  "rh_status": "OPEN",
+  "scientific_claim_impact": "NONE",
+  "fail_closed": true
+}
