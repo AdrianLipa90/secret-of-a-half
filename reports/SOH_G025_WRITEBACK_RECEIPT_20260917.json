@@ -1,0 +1,32 @@
+{
+  "schema": "SOH_G025_WRITEBACK_RECEIPT_V1",
+  "date_utc": "2026-09-17",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "research/soh-g025-stieltjes-square-quotient-v1",
+  "base_main_sha": "23eae95d8cbc33782c4a819ae40b2b166b566235",
+  "pre_receipt_head_sha": "3957ac0988cf4177821db557e80e6f5fd8a36419",
+  "files_written": [
+    "research/SOH_G025_STIELTJES_SQUARE_QUOTIENT_V1.md",
+    "src/secret_of_a_half/stieltjes_square_quotient.py",
+    "tests/test_stieltjes_square_quotient.py"
+  ],
+  "validation": {
+    "python_source_compile_before_write": "PASS",
+    "exact_fraction_regression_before_write": "PASS",
+    "mu0_mu1_mu2_closed_form_crosscheck": "PASS",
+    "hankel_ratio_gate_identity_crosscheck": "PASS",
+    "s_fraction_alpha2_ratio_identity_crosscheck": "PASS",
+    "negative_real_root_stieltjes_fixture": "PASS",
+    "repository_ci": "NOT_RUN_NO_PR_CREATED",
+    "branch_compare_to_main_before_receipt": "AHEAD_3_BEHIND_0_ONLY_ADDITIONS"
+  },
+  "epistemic_firewall": {
+    "rh_proved": false,
+    "pf3_proved_by_g025": false,
+    "pf_infinity_proved": false,
+    "full_stieltjes_positivity_proved": false,
+    "alpha2_global_sign_proved": false,
+    "main_mutated": false
+  },
+  "open_target": "r1 - 2*r2 + r3 >= 0, followed by the full dual-Hankel/S-fraction Stieltjes hierarchy"
+}
