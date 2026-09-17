@@ -1,0 +1,60 @@
+{
+  "controls": {
+    "dyadic_product_terms": 80,
+    "mp_dps": 80,
+    "tent_direct_quadrature_dps": 35
+  },
+  "corrected_kernel_status": "EXACT_FOURIER_IDENTITY_PASS",
+  "historical_external_g024_rh_frontier": "SUPERSEDED_BY_SOURCE_CONVENTION_AUDIT",
+  "nbody_bridge_status": "EXACT_IDENTITY_PASS",
+  "odd_channel_gaussian": {
+    "fourier_imag": "-0.4025183476888938577690772256904231100866188352436325319",
+    "fourier_real": "0.0",
+    "i_im_f_imag": "-0.4025183476888938577690772256904231100866188352436325319",
+    "i_im_f_real": "0.0",
+    "residual_abs": "0.0",
+    "x": "1.7",
+    "y": "0.4"
+  },
+  "rh_status": "OPEN",
+  "riemann_nbody_bridge": {
+    "hermitian_H": "0.000001919682062287571287187216737202547840840646415526117964",
+    "relative_susceptibility": "(0.000001919682062287571287187216737202547840840646415526117964 - 2.8867909722173714458842218662894453719934897438727511e-103j)",
+    "residual_abs": "4.02152936677189759229605638552476736791050401172290016e-87",
+    "x": "14.13472514173469379",
+    "y": "0.1"
+  },
+  "schema": "sohalf.g024-hermitian-correction-receipt/v0.2",
+  "smooth_lp_dyadic_witness": {
+    "external_E_truncated_N80": "-0.000006988221235903380730310447695882709709485505798165877577",
+    "external_sign": "NEGATIVE",
+    "hermitian_H_truncated_N80": "0.00002267175348138763188964973240684358632859063321300052719",
+    "hermitian_sign": "POSITIVE",
+    "proof_note": "numeric witness only; rigorous counterexample uses exact double-zero asymptotics of the infinite product",
+    "x": "12.38",
+    "y": "0.5"
+  },
+  "source_audit": {
+    "doi": "10.1090/tran/7809",
+    "fourier_convention": "F[g](x)=int g(t) exp(-i*x*t) dt",
+    "lemma_3_3_issue": "real odd sinh-tilt transforms to i*Im(f), not Im(f)",
+    "paper": "Dimitrov-Xu, Wronskians of Fourier and Laplace Transforms",
+    "publication_erratum_status": "NOT_LOCATED_IN_CURRENT_AUDIT"
+  },
+  "status": "PASS",
+  "tent_internal_jensen": {
+    "direct_4_Jhat_2x": "0.0006231319973944360687104922282360894136473142063340239083",
+    "hermitian_H": "0.0006231319973944360687104922282360894151166821448618832933",
+    "residual_abs": "1.469367938527859384960920671527807097273331945965109402e-39",
+    "x": "3.141592653589793238462643383279502884197169399375105821",
+    "y": "0.1"
+  },
+  "test_suite": {
+    "classification": "FINITE_REGRESSION_PASS",
+    "expected_branch_local_result": "14 passed"
+  },
+  "theta_partition_bridge": {
+    "Vtheta_minus_log_Z_ratio": "0.0",
+    "y": "0.25"
+  }
+}
