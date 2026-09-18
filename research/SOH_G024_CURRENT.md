@@ -1,7 +1,7 @@
 # SOH-G024 — CURRENT STATUS
 
-**Current active note:** `SOH_G024_ACHILLES_RADIAL_GATE_V0_5.md`  
-**Status:** FIRST-q RADIAL GATE / PD-TANGENT RH-EQUIVALENT REDUCTION — RH OPEN
+**Current active note:** `SOH_G024_UNIFIED_CLOSURE_V0_6.md`  
+**Status:** UNIFIED RADIAL / LAGUERRE / DUAL-GRAM CLOSURE — RH OPEN
 
 Historical progression:
 
@@ -9,13 +9,10 @@ Historical progression:
 2. `SOH_G024_HERMITIAN_CORRECTION_V0_2.md` — corrects the odd Fourier channel and identifies the Hermitian Jensen quantity as the Wick-rotated relative susceptibility.
 3. `SOH_G024_NBODY_LAGUERRE_HIERARCHY_V0_3.md` — identifies the q-expansion of the partition with the classical extended Laguerre hierarchy.
 4. `SOH_G024_RELATIVE_MOMENT_STRUCTURE_V0_4.md` — proves inherited strong log-concavity, fixed-u Stieltjes/Hankel positivity, the positive-definite generating mixture, and a generic no-go boundary.
-5. `SOH_G024_ACHILLES_RADIAL_GATE_V0_5.md` — resums the hierarchy into the first-q radial response and proves the critical-strip criterion
-   \[
-   RH\iff \partial_q\mathcal Q_x(q)\ge0
-   \quad\forall x\in\mathbb R,\ 0<q<1/4.
-   \]
+5. `SOH_G024_ACHILLES_RADIAL_GATE_V0_5.md` — resums the hierarchy into the first-q radial response and proves the critical-strip RH-equivalent q-gate / positive-definite tangent criterion.
+6. `SOH_G024_UNIFIED_CLOSURE_V0_6.md` — identifies that same q-gate with the SOH-G025 pole-free dual-Gram diagonal combination in the square-quotient plane.
 
-Current generating object:
+Canonical generating object:
 
 \[
 \mathcal Q_x(q)
@@ -25,24 +22,54 @@ Current generating object:
 \mathcal Z(-ix,\sqrt q).
 \]
 
-Every off-axis Xi zero is an even-order touchdown of this non-negative surface and necessarily produces a negative \(\partial_q\mathcal Q\) witness earlier on the same vertical line.
-
-Equivalent positive-definite tangent form:
+Canonical scalar gate:
 
 \[
-G_q(u)=\partial_q B_{\sqrt q}(u),
+\mathcal A_F(w)
+:=
+\widehat K_0(w,w)+|w|\widehat K_1(w,w),
 \qquad
-\widehat G_q(2x)=\partial_q\mathcal Q_x(q),
+w=-(x+i\sqrt q)^2.
 \]
 
-so
+Exact crosswalk:
 
 \[
+\mathcal A_F(w)
+=
+\partial_q\mathcal Q_x(q)
+=
+\widehat G_q(2x)
+=
+\frac12\sum_{n\ge1}nL_n[\Xi](x)q^{n-1}.
+\]
+
+Critical quotient domain:
+
+\[
+\Omega_{1/2}
+=
+\left\{
+w:
+0<
+\frac{|w|+\Re w}{2}
+<
+\frac14
+\right\}.
+\]
+
+Current RH-equivalent frontier:
+
+\[
+\boxed{
 RH
 \iff
-G_q\text{ is positive definite for every }0<q<1/4.
+\mathcal A_F(w)\ge0
+\quad\forall w\in\Omega_{1/2}.
+}
 \]
 
-This is the active proof frontier. It is an exact reduction, not an RH proof.
+The SOH-G024 coordinate assembly is closed. The remaining theorem is the
+Riemann-specific sign of this single scalar gate.
 
 **RH status: OPEN.**
