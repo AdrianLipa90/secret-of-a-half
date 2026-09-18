@@ -1,0 +1,95 @@
+{
+  "complex_laguerre_I_identity": {
+    "2_Q_q": "0.6703200460356393007444329251478260719369809252108121999",
+    "laguerre_I": "0.6703200460356393007444329251478260719369809252108121999",
+    "residual_abs": "0.0",
+    "x": "0.7",
+    "y": "0.3"
+  },
+  "controls": {
+    "branch_local_new_tests": "7 passed",
+    "first_run_note": "initial 6/7 was a strict mpf equality assertion at q=0.9; replaced by numerical tolerance and rerun 7/7",
+    "mp_dps": 80
+  },
+  "criterion_status": "EXACT_RH_EQUIVALENT_REDUCTION",
+  "critical_q_interval": "0<q<1/4",
+  "hermitian_q_identity": {
+    "2Qq_plus_4qQqq": "0.48",
+    "H_direct": "0.48",
+    "q": "0.36",
+    "residual_abs": "2.10843958864610464486971481025400380154199227647370151e-81",
+    "x": "0.4"
+  },
+  "off_axis_touchdown_control": {
+    "H": "-0.5",
+    "Q": "(0.28125 + 0.0j)",
+    "Q_at_q0": "(0.0 + 0.0j)",
+    "Q_q": "-0.75",
+    "expected_Q_formula": "Q_0(q)=1/2*(1-q)^2",
+    "function": "f(z)=z^2+1",
+    "q0": "1.0",
+    "sample_q": "0.25",
+    "touchdown_leading_coefficient": "0.5",
+    "zero": "z=i"
+  },
+  "proof_firewall": {
+    "exact": [
+      "Q_x(q)=1/2|f(x+i sqrt(q))|^2 for real entire f",
+      "2 Q_q = Im(-f'(z) conjugate(f(z)))/y for q=y^2>0",
+      "H=2 Q_q+4 q Q_qq",
+      "off-axis zero implies an interior negative Q_q witness on the same vertical line",
+      "for Xi, RH iff Q_q>=0 for all real x and 0<q<1/4"
+    ],
+    "finite_only": "listed Xi samples",
+    "open": "global proof of the radial gate for Xi; RH"
+  },
+  "q_laplacian_identity": {
+    "residual_abs": "0.0"
+  },
+  "rh_status": "OPEN",
+  "schema": "sohalf.g024-achilles-radial-gate-receipt/v0.5",
+  "source_alignment": {
+    "doi": "10.5802/ambp.210",
+    "paper": "Csordas-Escassut, The Laguerre inequality and the distribution of zeros of entire functions",
+    "theorem_2_3": "complex Laguerre-I criterion",
+    "theorem_2_4": "Hermitian/convexity criterion"
+  },
+  "status": "PASS",
+  "xi_finite_samples": [
+    {
+      "H": "0.01143511645173936879856487227752800607137905339978168482",
+      "Q_q": "0.0057124626536527080265458912143451766253153492639636961",
+      "q": "0.01",
+      "x": "0",
+      "y": "0.1"
+    },
+    {
+      "H": "0.0001534733191901126323568182738836151286546642189102790517",
+      "Q_q": "0.00007662481436841156607179718000805838706179911586208770905",
+      "q": "0.01",
+      "x": "10",
+      "y": "0.1"
+    },
+    {
+      "H": "0.000001919682062287571287187216737202547840840646415526117964",
+      "Q_q": "0.0000009572506516549072061774140696061243877003252285432880388",
+      "q": "0.01",
+      "x": "14.134725141734693790",
+      "y": "0.1"
+    },
+    {
+      "H": "0.000000001544983407884096995388517280127630761418994490545048984",
+      "Q_q": "0.0000000007397083687573202134289976705815265017601124442985814617",
+      "q": "0.1",
+      "x": "20",
+      "y": "0.3162277660168379331998893544432718533719555139325216827"
+    },
+    {
+      "H": "3.572328395713003072261268416336594686234781339367804596e-28",
+      "Q_q": "1.253423367624198144875170898747147359543061036372660307e-28",
+      "q": "0.24",
+      "x": "50",
+      "y": "0.4898979485566356196394568149411782783931894961313340257"
+    }
+  ]
+}
