@@ -1,0 +1,53 @@
+{
+  "classification": "EXACT_ZERO_SHADOW_HARMONIC_IDENTITIES_PLUS_FINITE_REGRESSION",
+  "controls": {
+    "mp_dps": 80,
+    "new_tests": "6 passed"
+  },
+  "exact_structure": {
+    "conjugate_pair_shadow": "2*((x-u)^2+q-v^2)/(((x-u)^2+(sqrt(q)-v)^2)*((x-u)^2+(sqrt(q)+v)^2))",
+    "harmonic_4d_lift": "W_xx+W_yy+(2/y)W_y=0 for W(x,y)=R(x,y^2)",
+    "harmonic_q_pde": "R_xx+6 R_q+4 q R_qq=0 away from zeros",
+    "normalized_gate": "R=d_q log Q=-Im(f'/f)/sqrt(q)",
+    "shadow_sign": "sign(S_uv)=sign((x-u)^2+q-v^2)",
+    "xi_outer_boundary": "R_Xi(x,1/4)>0 termwise from |Im zero(Xi)|<1/2"
+  },
+  "harmonic_lift_control": {
+    "pde_residual_abs": "1.686751670916883715895771848203203041233593821178961208e-80",
+    "q": "0.04",
+    "x": "2.7"
+  },
+  "pair_control": {
+    "direct_gate": "-8.580441640378548895899053627760252365930599369085173502",
+    "q": "0.025",
+    "residual_abs": "3.373503341833767431791543696406406082467187642357922416e-80",
+    "shadow_formula": "-8.580441640378548895899053627760252365930599369085173502",
+    "u": "3.2",
+    "v": "0.3",
+    "x": "3.05"
+  },
+  "quartet_control": {
+    "direct_gate": "-8.529626179316011987430313282375147240346082813032764076",
+    "quartet_formula": "-8.529626179316011987430313282375147240346082813032764076",
+    "residual_abs": "1.686751670916883715895771848203203041233593821178961208e-80"
+  },
+  "rh_status": "OPEN",
+  "riemann_outer_boundary_q_1_4": {
+    "classification": "FINITE_HIGH_PRECISION_DIAGNOSTIC_ONLY",
+    "samples": {
+      "1.0": "0.04641517378712896279113575306091401306244537895861939153",
+      "10.0": "0.1053603923176296704092142953820680288135824279959503646",
+      "100.0": "1.450378966949077907192426519606741069951692301556754588",
+      "14.13472514173469379": "4.067545216734331635109133456445569563904345869093882569",
+      "50.0": "3.801118634628652080050366813245383474311866855499115636"
+    }
+  },
+  "schema": "sohalf.g024-zero-shadow-harmonic-receipt/v0.7",
+  "shadow_sign_control": {
+    "circle_value": "9.151213492387606965580359419505224833081563699972662804e-80",
+    "inside_value": "-40.0",
+    "outside_value": "28.57142857142857142857142857142857142857142857142857143",
+    "real_pair_value": "0.09614363399159757375927862976164954169224402475822529805"
+  },
+  "status": "PASS"
+}
