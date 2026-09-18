@@ -183,7 +183,7 @@ Thus the critical strip \(0<|y|<1/2\) maps to
 \left\{
 w\in\mathbb C:
 0<
-\frac{|w|+\Re w}z2}
+\frac{|w|+\Re w}{2}
 <
 \frac14
 \right\}.
@@ -412,7 +412,7 @@ The deterministic receipt includes:
 
 1. exact \(q\leftrightarrow w\) roundtrip;
 2. exact linear-quotient dual-Gram / radial / Laguerre agreement;
-3. the positive-real-axis continuous digonal limit;
+3. the positive-real-axis continuous diagonal limit;
 4. critical-strip image checks;
 5. an 80-digit Riemann diagnostic at
    \(x=14.134725141734693790,\ q=0.01\), where the quotient-Gram and radial
@@ -466,7 +466,7 @@ The SOH-G024 algebraic assembly is closed:
 =
 \text{extended-Laguerre resummation}
 =
-\text|square-quotient weighted Gram diagonal}.
+\text{square-quotient weighted Gram diagonal}.
 }
 \]
 

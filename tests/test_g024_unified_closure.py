@@ -43,7 +43,7 @@ def test_real_axis_continuous_gram_limit():
     k0, k1 = pole_free_dual_gram_diagonals(F_linear, 0, q)
     assert mp.almosteq(k0, 1, rel_eps=mp.mpf("1e-55"))
     assert mp.almosteq(k1, 1, rel_eps=mp.mpf("1e-55"))
-    expected = F_linear(q)
+    expected = F_linear(q) * 1
     assert mp.almosteq(k0 + q * k1, expected, rel_eps=mp.mpf("1e-55"))
 
 
@@ -59,11 +59,7 @@ def test_laguerre_resummation_for_one_minus_z_squared():
     L2 = mp.mpf("1")
     radial = laguerre_resummed_radial_response([L0, L1, L2], q)
     assert mp.almosteq(radial, 1 + x*x + q, rel_eps=mp.mpf("1e-55"))
-    assert mp.almosteq(
-        radial,
-        radial_response_from_quotient(F_linear, x, q),
-        rel_eps=mp.mpf("1e-55"),
-    )
+    assert mp.almosteq(radial, radial_response_from_quotient(F_linear, x, q), rel_eps=mp.mpf("1e-55"))
 
 
 def test_critical_strip_image_condition():

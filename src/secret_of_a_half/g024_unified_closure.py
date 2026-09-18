@@ -53,7 +53,7 @@ def radial_response_from_quotient(
 
         Q_q = |F(w)|^2 [Re(phi(w)) + x/sqrt(q) Im(phi(w))],
 
-    where phi=F'/F. The implementation uses the pole-free numerator
+    where phi=F'/F.  The implementation uses the pole-free numerator
 
         Q_q = Re(F'(w) conj(F(w)))
               + x/sqrt(q) Im(F'(w) conj(F(w))).
@@ -135,7 +135,7 @@ def laguerre_resummed_radial_response(
 ) -> mp.mpf:
     r"""Return ``1/2 sum_{n>=1} n L_n q^(n-1)`` for supplied finite values.
 
-    ``laguerre_values[n]`` is L_n. This helper is exact for a polynomial
+    ``laguerre_values[n]`` is L_n.  This helper is exact for a polynomial
     whose extended-Laguerre q-series terminates at the supplied order.
     """
     q = mp.mpf(q)
