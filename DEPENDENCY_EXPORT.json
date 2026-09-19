@@ -2,13 +2,54 @@
   "schema": "FPDG_DEPENDENCY_EXPORT_V0_1",
   "repository_id": "SOH",
   "repository": "AdrianLipa90/secret-of-a-half",
-  "source_commit": "19b9820165cb46f441d006e0ff6e94f8c08f37b8",
-  "generated_at": "2026-08-29T18:34:00+01:00",
+  "source_commit": "d99545aa447ef86bc253d8241a3fee9adb8a42c1",
+  "generated_at": "2026-09-19T20:09:00+01:00",
   "claims": [
-    {"claim_id":"SOH.SU2.DOUBLE_COVER","status":"CANDIDATE_SOURCE","source_path":"research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json","evidence_class":"gremlin_candidate","canon_authority":false},
-    {"claim_id":"SOH.HALF.ZERO_ORDER_DOUBLING","status":"CANDIDATE_SOURCE","source_path":"research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json","evidence_class":"gremlin_candidate","canon_authority":false},
-    {"claim_id":"SOH.BLOCH.CENTERED_RAPIDITY","status":"CANDIDATE_SOURCE","source_path":"research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json","evidence_class":"gremlin_candidate","canon_authority":false},
-    {"claim_id":"SOH.LI_WEIL.NATIVE_CLOSURE","status":"OPEN_FRONTIER","source_path":"research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json","evidence_class":"integration_frontier"}
+    {
+      "claim_id": "SOH.SU2.DOUBLE_COVER",
+      "status": "CANDIDATE_SOURCE",
+      "source_path": "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json",
+      "evidence_class": "gremlin_candidate",
+      "canon_authority": false
+    },
+    {
+      "claim_id": "SOH.HALF.ZERO_ORDER_DOUBLING",
+      "status": "CANDIDATE_SOURCE",
+      "source_path": "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json",
+      "evidence_class": "gremlin_candidate",
+      "canon_authority": false
+    },
+    {
+      "claim_id": "SOH.BLOCH.CENTERED_RAPIDITY",
+      "status": "CANDIDATE_SOURCE",
+      "source_path": "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json",
+      "evidence_class": "gremlin_candidate",
+      "canon_authority": false
+    },
+    {
+      "claim_id": "SOH.LI_WEIL.NATIVE_CLOSURE",
+      "status": "OPEN_FRONTIER",
+      "source_path": "research/GREMLIN_DEPENDENCY_PROMOTION_MANIFEST_V0_1.json",
+      "evidence_class": "integration_frontier"
+    },
+    {
+      "claim_id": "SOH.G024.COMPLETE_MONOTONICITY_NOGO",
+      "status": "REPOSITORY_REVIEWED_BRANCH_PROMOTED_THEOREM / CANONICAL_ON_MAIN_FALSE / RH_OPEN",
+      "source_path": "claims/SOH_G024_T_COMPLETE_MONOTONICITY_ROUTE_NOGO_V0_1.json",
+      "evidence_class": "reviewed_theorem_claim"
+    },
+    {
+      "claim_id": "SOH.G025.STIELTJES_DUAL_GRAM",
+      "status": "EXACT_ALGEBRAIC_REDUCTION / STANDARD_EXTERNAL_STIELTJES_CRITERION / FIRST_FINITE_GATES_EXPOSED / RH_OPEN",
+      "source_path": "research/SOH_G025_STIELTJES_SQUARE_QUOTIENT_V1.md",
+      "evidence_class": "research_frontier"
+    },
+    {
+      "claim_id": "SOH.RH",
+      "status": "OPEN",
+      "source_path": "claims/CLAIM_LEDGER.md",
+      "evidence_class": "source_repository_frontier"
+    }
   ],
   "local_edges": []
 }
