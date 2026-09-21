@@ -2,6 +2,8 @@ import Mathlib
 
 namespace SecretOfAHalfFormal
 
+open scoped ComplexConjugate
+
 /-- A concrete entire polynomial with the same centered reflection and
 conjugation symmetries as the xi problem, but with zeros off Re(s)=1/2.
 
@@ -18,7 +20,7 @@ theorem symmetryWitness_reflection (s : ℂ) :
   ring
 
 theorem symmetryWitness_conjugation (s : ℂ) :
-    symmetryWitness (Complex.conj s) = Complex.conj (symmetryWitness s) := by
+    symmetryWitness (conj s) = conj (symmetryWitness s) := by
   simp [symmetryWitness]
   ring
 
@@ -26,8 +28,20 @@ noncomputable def offAxisWitnessZero : ℂ := (3 / 4 : ℂ) + Complex.I
 
 theorem symmetryWitness_has_offAxis_zero :
     symmetryWitness offAxisWitnessZero = 0 := by
-  simp [symmetryWitness, offAxisWitnessZero, Complex.I_sq]
-  ring
+  have hz :
+      offAxisWitnessZero - (1 / 2 : ℂ) = (1 / 4 : ℂ) + Complex.I := by
+    simp [offAxisWitnessZero]
+    ring
+  have hinner :
+      (((1 / 4 : ℂ) + Complex.I) ^ 2 + (15 / 16 : ℂ)) = Complex.I / 2 := by
+    calc
+      ((1 / 4 : ℂ) + Complex.I) ^ 2 + (15 / 16 : ℂ)
+          = (1 / 16 : ℂ) + (1 / 2 : ℂ) * Complex.I +
+              Complex.I * Complex.I + (15 / 16 : ℂ) := by ring
+      _ = Complex.I / 2 := by rw [Complex.I_mul_I]; ring
+  rw [symmetryWitness, hz, hinner]
+  rw [div_pow, Complex.I_sq]
+  norm_num
 
 theorem offAxisWitnessZero_in_critical_strip :
     0 < offAxisWitnessZero.re ∧ offAxisWitnessZero.re < 1 := by
@@ -43,7 +57,7 @@ symmetries alone cannot prove RH; an xi-specific incoming theorem is needed. -/
 theorem reflection_conjugation_symmetry_does_not_force_half_line :
     symmetryWitness offAxisWitnessZero = 0 ∧
       symmetryWitness (1 - offAxisWitnessZero) = 0 ∧
-      symmetryWitness (Complex.conj offAxisWitnessZero) = 0 ∧
+      symmetryWitness (conj offAxisWitnessZero) = 0 ∧
       offAxisWitnessZero.re ≠ (1 / 2 : ℝ) := by
   refine ⟨symmetryWitness_has_offAxis_zero, ?_, ?_, offAxisWitnessZero_not_on_critical_line⟩
   · rw [symmetryWitness_reflection]
