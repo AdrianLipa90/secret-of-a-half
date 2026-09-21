@@ -18,7 +18,6 @@ theorem symmetryWitness_star (s : ℂ) :
     symmetryWitness (star s) = star (symmetryWitness s) := by
   simp [symmetryWitness, star_mul, star_sub]
   ring
-  ring
 
 noncomputable def offAxisWitnessZero : ℂ := ((2 / 3 : ℝ) : ℂ)
 
