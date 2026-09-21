@@ -2,8 +2,6 @@ import Mathlib
 
 namespace SecretOfAHalfFormal
 
-open Complex
-
 /-- Projective coordinate used by the reciprocal--conjugation formulation. -/
 noncomputable def omega (s : ℂ) : ℂ := s / (1 - s)
 
@@ -20,15 +18,15 @@ theorem norm_one_implies_reciprocalConjugationSeam {u : ℂ} (h : ‖u‖ = 1) :
 theorem reciprocalConjugationSeam_implies_norm_one {u : ℂ} (hu : u ≠ 0)
     (h : reciprocalConjugationSeam u) : ‖u‖ = 1 := by
   unfold reciprocalConjugationSeam at h
-  have hn : ‖u⁻¹‖ = ‖Complex.conj u‖ := congrArg norm h
+  have hn := congrArg norm h
   have hinv : ‖u‖⁻¹ = ‖u‖ := by
     simpa using hn
-  have hpos : 0 < ‖u‖ := norm_pos_iff.mpr hu
-  have hmul : ‖u‖ * ‖u‖ = 1 := by
+  have hne : ‖u‖ ≠ 0 := norm_ne_zero_iff.mpr hu
+  have hsq : ‖u‖ * ‖u‖ = 1 := by
     calc
-      ‖u‖ * ‖u‖ = ‖u‖ * ‖u‖⁻¹ := by rw [hinv]
-      _ = 1 := mul_inv_cancel₀ (ne_of_gt hpos)
-  nlinarith
+      ‖u‖ * ‖u‖ = ‖u‖ * ‖u‖⁻¹ := congrArg (fun x : ℝ => ‖u‖ * x) hinv.symm
+      _ = 1 := mul_inv_cancel₀ hne
+  nlinarith [norm_nonneg u]
 
 /-- Exact reciprocal--conjugation coincidence criterion on ℂˣ. -/
 theorem reciprocalConjugationSeam_iff_norm_one {u : ℂ} (hu : u ≠ 0) :
