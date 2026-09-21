@@ -48,9 +48,6 @@ theorem c005_scalar_block_quadratic_eq_zero_iff
     (hdet : eps ^ 2 < mu * nu) :
     mu * x ^ 2 - 2 * eps * x * y + nu * y ^ 2 = 0 ↔
       x = 0 ∧ y = 0 := by
-  have hmunu : 0 < mu * nu := lt_of_le_of_lt (sq_nonneg eps) hdet
-  have hnu : 0 < nu := by
-    nlinarith
   constructor
   · intro hq
     have hsquare : 0 ≤ (mu * x - eps * y) ^ 2 := sq_nonneg _
@@ -61,13 +58,17 @@ theorem c005_scalar_block_quadratic_eq_zero_iff
           (mu * x - eps * y) ^ 2 +
             (mu * nu - eps ^ 2) * y ^ 2 := by
       ring
+    have htail : 0 ≤ (mu * nu - eps ^ 2) * y ^ 2 :=
+      mul_nonneg hmargin.le (sq_nonneg y)
     have hsum :
         (mu * x - eps * y) ^ 2 +
             (mu * nu - eps ^ 2) * y ^ 2 = 0 := by
       rw [← hid, hq]
       ring
-    have hy2 : y ^ 2 = 0 := by
-      nlinarith [sq_nonneg y]
+    have htail0 : (mu * nu - eps ^ 2) * y ^ 2 = 0 := by
+      nlinarith
+    have hy2 : y ^ 2 = 0 :=
+      (mul_eq_zero.mp htail0).resolve_left hmargin.ne'
     have hy : y = 0 := (sq_eq_zero_iff).mp hy2
     subst y
     simp at hq
