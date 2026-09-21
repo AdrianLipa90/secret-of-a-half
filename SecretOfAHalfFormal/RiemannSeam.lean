@@ -37,6 +37,25 @@ theorem reciprocalConjugationSeam_iff_norm_one {u : ℂ} (hu : u ≠ 0) :
   · exact reciprocalConjugationSeam_implies_norm_one hu
   · exact norm_one_implies_reciprocalConjugationSeam
 
+
+/-- Anti-holomorphic reflection whose fixed locus is the full critical line. -/
+noncomputable def criticalInvolution (s : ℂ) : ℂ := 1 - conj s
+
+/-- The critical line is exactly the fixed locus of the anti-holomorphic
+reflection s ↦ 1 - conjugate(s). -/
+theorem criticalInvolution_fixed_iff_re_half (s : ℂ) :
+    criticalInvolution s = s ↔ s.re = (1 / 2 : ℝ) := by
+  constructor
+  · intro h
+    have hr := congrArg Complex.re h
+    simp [criticalInvolution] at hr
+    linarith
+  · intro hr
+    apply Complex.ext
+    · simp [criticalInvolution]
+      linarith
+    · simp [criticalInvolution]
+
 /-- Equality of squared distances to 0 and 1 is exactly the critical line. -/
 theorem normSq_reflection_eq_iff_re_half (s : ℂ) :
     Complex.normSq s = Complex.normSq (1 - s) ↔ s.re = (1 / 2 : ℝ) := by
