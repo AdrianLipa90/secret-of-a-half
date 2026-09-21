@@ -89,6 +89,8 @@ jobs:
         run: python scripts/run_c005_interval_schur_plumbing.py
       - name: Run SOH-C005 mixed Fourier-tail plumbing
         run: python scripts/run_c005_mixed_fourier_tail_plumbing.py
+      - name: Run SOH-C005 zeta screw analytic envelopes
+        run: python scripts/run_c005_screw_analytic_bounds.py
       - name: Run SOH-G004 global log-concavity proof receipt
         run: python scripts/run_soh_g004_global_log_concavity.py
       - name: Run SOH-G005 PF3 finite diagnostic
