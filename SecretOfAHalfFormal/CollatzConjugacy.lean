@@ -21,11 +21,11 @@ theorem omega_halfMobius
   unfold omega halfMobius
   have h2s : (2 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs2)
   have h1s : (1 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs1)
-  have h22s : (2 : ℂ) - 2 * s ≠ 0 := by
-    intro h
-    apply hs1
-    linear_combination h
-  field_simp [h2s, h1s, h22s] <;> ring
+  rw [show 1 - s / (2 - s) = ((2 : ℂ) - 2 * s) / (2 - s) by
+    field_simp [h2s] <;> ring]
+  rw [div_div_div_cancel_right₀ h2s]
+  rw [show (2 : ℂ) - 2 * s = 2 * (1 - s) by ring]
+  field_simp [h1s] <;> ring
 
 /-- In the projective coordinate omega, the triple branch is u ↦ 3u+2. -/
 theorem omega_tripleMobius
@@ -33,6 +33,10 @@ theorem omega_tripleMobius
     omega (tripleMobius s) = 3 * omega s + 2 := by
   unfold omega tripleMobius
   have h1s : (1 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs1)
+  have h3 : (3 : ℂ) ≠ 0 := by norm_num
+  rw [show 1 - (s + 2) / 3 = (1 - s) / 3 by
+    field_simp <;> ring]
+  rw [div_div_div_cancel_right₀ h3]
   field_simp [h1s] <;> ring
 
 /-- Exact conjugacy of the half Möbius branch to x ↦ x/2. -/
@@ -99,7 +103,10 @@ theorem omega_canonicalOddMobius
     apply hsm2
     linear_combination h
   have h1s : (1 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs1)
-  field_simp [hsp2, h1s] <;> ring
+  rw [show 1 - (2 * s + 1) / (s + 2) = (1 - s) / (s + 2) by
+    field_simp [hsp2] <;> ring]
+  rw [div_div_div_cancel_right₀ hsp2]
+  field_simp [h1s] <;> ring
 
 /-- Accelerated odd Collatz step and the two-step radial selector used in the
 project's Stage-D mechanism. -/
@@ -117,8 +124,10 @@ theorem selfDualWord_fixed_iff (x : ℂ) :
     selfDualWord x = x ↔ x = 1 := by
   constructor
   · intro h
-    unfold selfDualWord acceleratedOdd at h
-    linear_combination -4 * h
+    have hd := selfDualWord_deviation x
+    rw [h] at hd
+    apply sub_eq_zero.mp
+    linear_combination 4 * hd
   · rintro rfl
     norm_num [selfDualWord, acceleratedOdd]
 
