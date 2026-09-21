@@ -434,3 +434,204 @@ The corresponding executable reduction is
 The immediate analytic task is therefore to produce rigorous interval
 envelopes for \(G_0(a)\) and \(G_1(a)\) on bounded \(a\)-cells from the
 explicit arithmetic screw function.
+
+
+## 11. Unconditional one-dimensional screw envelopes
+
+The two remaining one-dimensional norms can themselves be bounded explicitly
+without RH.
+
+For \(t\in[0,T]\), Suzuki's arithmetic formula \(g(t)=-\Psi(t)\), the
+elementary inequalities
+
+\[
+\Lambda(n)\le\log n,
+\qquad
+\sum_{n=2}^{M}\frac1{\sqrt n}
+\le2(\sqrt M-1),
+\]
+
+and positivity of the Hurwitz--Lerch terms give a closed pointwise majorant
+for \(|g(t)|\).
+
+Using
+
+\[
+\psi(1/4)
+=
+-\gamma-\frac\pi2-3\log2
+\]
+
+and
+
+\[
+C=\pi^2+8G
+\]
+
+(Catalan \(G\)), define
+
+\[
+A_*=
+\gamma+\frac\pi2+3\log2+\log\pi.
+\]
+
+A safe uniform bound on \([0,T]\) is
+
+\[
+\boxed{
+|g(t)|
+\le
+M_0(T)
+}
+\]
+
+with
+
+\[
+M_0(T)
+=
+4(e^{T/2}+e^{-T/2}-2)
++
+2T^2(e^{T/2}-1)
++
+\frac{A_*T}{2}
++
+\frac{C}{4}.
+\]
+
+Therefore
+
+\[
+\boxed{
+G_0(T)
+\le
+T\,M_0(T)^2.
+}
+\]
+
+For the a.e. derivative, the \(s=1\) Hurwitz--Lerch term obeys
+
+\[
+\Phi(e^{-2t},1,1/4)
+\le
+4-\log(1-e^{-2t}),
+\]
+
+and
+
+\[
+-\log(1-e^{-2t})
+\le
+\log\frac{1+2T}{2t}
+\qquad(0<t\le T).
+\]
+
+This yields
+
+\[
+|g'(t)|
+\le
+K(T)
++
+\frac12\log\frac{1+2T}{2t},
+\]
+
+where
+
+\[
+K(T)
+=
+2T(e^{T/2}-1)
++
+2(e^{T/2}-e^{-T/2})
++
+\frac{A_*}{2}
++
+2.
+\]
+
+The logarithmic singularity is square-integrable.  Writing
+
+\[
+L_T=\log\frac{1+2T}{2T},
+\]
+
+we obtain the explicit integral bound
+
+\[
+\boxed{
+G_1(T)
+\le
+T\left[
+K(T)^2
++
+K(T)(L_T+1)
++
+\frac14(L_T^2+2L_T+2)
+\right].
+}
+\]
+
+The repository evaluates these closed formulas with outward interval
+arithmetic in
+
+\`src/secret_of_a_half/c005_screw_analytic_bounds.py\`.
+
+Taking \(T=2a_0\) gives a uniform mixed-tail certificate for every
+\(0<a\le a_0\):
+
+\[
+\boxed{
+\varepsilon_{N,a}^2
+\le
+\frac{
+8a_0G_0(2a_0)
++
+64a_0^3G_1(2a_0)
+}{
+\pi^2N
+}.
+}
+\]
+
+Thus the infinite mixed block now has an unconditional constructive schedule.
+
+## 12. Frontier after the analytic mixed-tail closure
+
+On each bounded scale interval, both infinite-dimensional inputs are now
+constructive:
+
+\[
+\boxed{
+\nu_{N,I}>0
+\quad\text{(high-mode coercivity)}
+}
+\]
+
+and
+
+\[
+\boxed{
+\varepsilon_{N,I}<\infty
+\quad\text{with explicit }N^{-1/2}\text{ schedule}.
+}
+\]
+
+The first unsolved proof-bearing object on the direct C005 route is therefore
+the **finite localized low Fourier block**
+
+\[
+\boxed{
+L_N(a)
+=
+\bigl(q_a(e_m,e_n)\bigr)_{|m|,|n|\le N}
+}
+\]
+
+with a rigorous interval enclosure uniform in \(a\) on each continuation cell.
+
+Once that matrix is enclosed, the interval-Schur layer is already present and
+can compute the certified lower gap.
+
+This is now a finite-dimensional interval-analysis problem rather than an
+uncontrolled infinite-complement problem.
