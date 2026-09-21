@@ -48,4 +48,19 @@ theorem positive_on_pos_iff_no_zero_on_pos
   · exact positive_on_pos_of_continuous_of_anchor_of_no_zero
       hcont ha0 hanchor
 
+
+/-- Explicit zero-crossing form of the spectral-flow argument: a continuous
+branch that is positive at the left endpoint and negative at the right
+endpoint must become degenerate somewhere between them. -/
+theorem exists_zero_between_of_continuous_of_pos_neg
+    {lambda : ℝ → ℝ}
+    (hcont : Continuous lambda)
+    {a b : ℝ}
+    (hab : a ≤ b)
+    (ha : 0 < lambda a)
+    (hb : lambda b < 0) :
+    ∃ c ∈ Set.Icc a b, lambda c = 0 := by
+  have hz : (0 : ℝ) ∈ Set.Icc (lambda b) (lambda a) := ⟨hb.le, ha.le⟩
+  exact (intermediate_value_Icc' hab hcont.continuousOn) hz
+
 end SecretOfAHalfFormal
