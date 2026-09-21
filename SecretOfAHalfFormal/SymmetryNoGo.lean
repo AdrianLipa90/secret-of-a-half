@@ -18,7 +18,7 @@ theorem symmetryWitness_reflection (s : ℂ) :
 
 theorem symmetryWitness_conjugation (s : ℂ) :
     symmetryWitness (conj s) = conj (symmetryWitness s) := by
-  simp [symmetryWitness, map_sub, map_mul]
+  simp only [symmetryWitness, map_mul, map_sub, Complex.conj_natCast]
 
 noncomputable def offAxisWitnessZero : ℂ := ((2 / 3 : ℝ) : ℂ)
 
