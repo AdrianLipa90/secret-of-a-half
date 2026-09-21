@@ -81,4 +81,85 @@ theorem zeroCollatzHalfCircle_iff_riemannHypothesis :
   · intro h s hz htriv hs1
     exact (collatzCoord_norm_half_iff_re_half hs1).mpr (h s hz htriv hs1)
 
+
+/-- Canonical odd Möbius branch obtained by conjugating x ↦ 3x+1 directly
+through omega, without the extra factor-of-two rescaling. -/
+noncomputable def canonicalOddMobius (s : ℂ) : ℂ := (2 * s + 1) / (s + 2)
+
+/-- In omega-space the canonical odd Möbius branch is literally u ↦ 3u+1. -/
+theorem omega_canonicalOddMobius
+    {s : ℂ} (hs1 : s ≠ 1) (hsm2 : s ≠ -2) :
+    omega (canonicalOddMobius s) = 3 * omega s + 1 := by
+  unfold omega canonicalOddMobius
+  field_simp [hs1, hsm2]
+  ring
+
+/-- Accelerated odd Collatz step and the two-step radial selector used in the
+project's Stage-D mechanism. -/
+noncomputable def acceleratedOdd (x : ℂ) : ℂ := (3 * x + 1) / 2
+noncomputable def selfDualWord (x : ℂ) : ℂ := acceleratedOdd x / 2
+
+/-- The RL word contracts affine deviation from the self-dual point by 3/4. -/
+theorem selfDualWord_deviation (x : ℂ) :
+    selfDualWord x - 1 = (3 / 4 : ℂ) * (x - 1) := by
+  unfold selfDualWord acceleratedOdd
+  ring
+
+/-- The self-dual point is the unique fixed point of the RL Collatz word. -/
+theorem selfDualWord_fixed_iff (x : ℂ) :
+    selfDualWord x = x ↔ x = 1 := by
+  constructor
+  · intro h
+    unfold selfDualWord acceleratedOdd at h
+    have hx : x - 1 = 0 := by
+      linear_combination 4 * h
+    exact sub_eq_zero.mp hx
+  · rintro rfl
+    norm_num [selfDualWord, acceleratedOdd]
+
+/-- Real radial version: the same RL word contracts distance to q=1 by 3/4. -/
+noncomputable def radialSelfDualWord (q : ℝ) : ℝ := (3 * q + 1) / 4
+
+theorem radialSelfDualWord_deviation (q : ℝ) :
+    radialSelfDualWord q - 1 = (3 / 4 : ℝ) * (q - 1) := by
+  unfold radialSelfDualWord
+  ring
+
+theorem radialSelfDualWord_fixed_iff (q : ℝ) :
+    radialSelfDualWord q = q ↔ q = 1 := by
+  constructor
+  · intro h
+    unfold radialSelfDualWord at h
+    linarith
+  · rintro rfl
+    norm_num [radialSelfDualWord]
+
+/-- For the Riemann projective radius q=|omega(s)|, fixedness under the RL
+radial Collatz selector is exactly the critical-line condition. -/
+theorem radialSelfDualWord_omega_fixed_iff_re_half
+    {s : ℂ} (hs1 : s ≠ 1) :
+    radialSelfDualWord ‖omega s‖ = ‖omega s‖ ↔
+      s.re = (1 / 2 : ℝ) := by
+  rw [radialSelfDualWord_fixed_iff]
+  exact omega_norm_one_iff_re_half hs1
+
+/-- The dynamic fixed-point formulation for all non-trivial zeros. -/
+def ZeroRadialCollatzFixedCondition : Prop :=
+  ∀ (s : ℂ), riemannZeta s = 0 →
+    (¬ ∃ n : ℕ, s = -2 * (n + 1)) →
+    s ≠ 1 →
+    radialSelfDualWord ‖omega s‖ = ‖omega s‖
+
+/-- The radial Collatz fixed-point condition is exactly RH. Any proof route
+using it must derive it independently from zeta/arithmetic structure. -/
+theorem zeroRadialCollatzFixed_iff_riemannHypothesis :
+    ZeroRadialCollatzFixedCondition ↔ RiemannHypothesis := by
+  constructor
+  · intro h s hz htriv hs1
+    exact (radialSelfDualWord_omega_fixed_iff_re_half hs1).mp
+      (h s hz htriv hs1)
+  · intro h s hz htriv hs1
+    exact (radialSelfDualWord_omega_fixed_iff_re_half hs1).mpr
+      (h s hz htriv hs1)
+
 end SecretOfAHalfFormal
