@@ -264,3 +264,60 @@ That is now the first unresolved gate in the natural flow.  It is narrower
 than the previous generic "Suzuki normalization" label.
 
 \`proof_of_rh = false\`
+
+
+## 9. Bulk-minus-leakage gate from Suzuki/Yoshida
+
+Suzuki's proof of Theorem 4.3 has the exact structural form
+
+\[
+Q_a(\phi)
+\ge
+A\,I(\phi)-D\,L_{t_0}(\phi),
+\]
+
+where \(I\) is the full transform energy and \(L_{t_0}\) is the transform
+energy restricted to \(|z|\le t_0\).  The constants \(A>0\) and \(D\ge0\)
+are built from the proof constants \(C,C_0,C_1,C_2\) once the normalization is
+frozen.
+
+The explicit Fourier-tail estimate gives
+
+\[
+\frac{L_{t_0}(\phi)}{I(\phi)}
+\le
+\frac{B(a_0,t_0)}{N}.
+\]
+
+Therefore
+
+\[
+\boxed{
+Q_a(\phi)
+\ge
+\left(
+A-
+D\frac{B(a_0,t_0)}{N}
+\right)I(\phi).
+}
+\]
+
+This converts the existence statement into a direct cutoff law.  For any
+target high-mode floor \(0\le\nu<A\), it is sufficient to take
+
+\[
+\boxed{
+N
+\ge
+\left\lceil
+\frac{D\,B(a_0,t_0)}
+{A-\nu}
+\right\rceil.
+}
+\]
+
+This adapter is now executable as
+\`cutoff_for_target_coercivity\`.
+
+What remains is not the \(N\)-dependence.  It is freezing the source constants
+\(A,D,t_0\) in the exact localized SOH/Suzuki normalization.
