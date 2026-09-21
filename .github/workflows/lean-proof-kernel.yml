@@ -48,8 +48,10 @@ jobs:
           lake exe cache get
           lake build --wfail
 
-      - name: Independent nanoda kernel check
+      - name: Independent environment and axiom audit
         uses: leanprover/lean-action@v1
+        env:
+          LEAN_NUM_THREADS: "1"
         with:
           auto-config: false
           build: false
@@ -57,5 +59,8 @@ jobs:
           lint: false
           use-github-cache: false
           use-mathlib-cache: false
-          nanoda: true
-          nanoda-allow-sorry: false
+          leanchecker: true
+          leanchecker-args: "SecretOfAHalfFormal"
+          axiom-audit: true
+          axiom-audit-root: "SecretOfAHalfFormal"
+          axiom-audit-allow: "propext,Classical.choice,Quot.sound"
