@@ -607,3 +607,69 @@ Downstream plumbing is already present:
 \to
 \text{continuation cells}.
 \]
+
+
+## 13. Direct C005 route no longer waits on the operator domain
+
+A structural simplification is now explicit.
+
+Yoshida/Suzuki high-mode coercivity is already a statement about the localized
+Weil/Hermitian form.  Therefore the direct C005 positivity route can remain at
+form level:
+
+\[
+q_a[\ell+h]
+=
+q_{LL,a}[\ell]
++
+2\Re q_{LH,a}(\ell,h)
++
+q_{HH,a}[h].
+\]
+
+With
+
+\[
+q_{LL,a}[\ell]\ge\mu\|\ell\|^2,
+\]
+
+\[
+|q_{LH,a}(\ell,h)|
+\le\varepsilon\|\ell\|\|h\|,
+\]
+
+and the source high-mode theorem
+
+\[
+q_{HH,a}[h]\ge\nu\|h\|^2,
+\]
+
+the scalar C005 theorem gives the complete form-level gate
+
+\[
+\mu\nu-\varepsilon^2\ge0.
+\]
+
+Thus the Friedrichs/domain join belongs to the Suzuki spectral exit, not to the
+minimal direct C005 route.
+
+The direct route now has the shorter flow
+
+\[
+\boxed{
+\text{localized source form}
+\to
+\text{finite low Fourier block}
++
+\text{mixed Fourier tail}
++
+\text{explicit high coercivity}
+\to
+\text{interval Schur}
+\to
+\text{continuation}.
+}
+\]
+
+The immediate analytic frontier is the uniform mixed-form tail
+\(\varepsilon_{N,I}\), with the finite low block developed in parallel.
