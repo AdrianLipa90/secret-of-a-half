@@ -14,8 +14,10 @@ The formulas below are intentionally conservative but unconditional.  They
 use mpmath interval arithmetic to evaluate the closed-form upper envelopes
 with outward rounding.
 
-These are scalar analytic envelopes only.  They do not prove a finite low
-Fourier block is positive and therefore do not prove C005 or RH.
+These are scalar analytic envelopes for the bounded screw integral operator
+G_a.  They do NOT by themselves bound the mixed block of the Weil form
+Q_W(psi)=<D psi,G_a D psi>, because the derivative factors change the Fourier
+tail.  They therefore do not close C005 or RH.
 """
 from __future__ import annotations
 
@@ -187,7 +189,7 @@ def screw_analytic_gate_receipt(a0: float, target_epsilon: float) -> dict[str, o
     env = screw_l2_envelope(a0)
     mixed = cutoff_for_uniform_mixed_norm(a0, target_epsilon)
     return {
-        "schema": "SOH_ZETA_SCREW_ANALYTIC_ENVELOPES_V0_1",
+        "schema": "SOH_ZETA_SCREW_ANALYTIC_ENVELOPES_V0_2",
         "a0": a0,
         "T": env.T,
         "g_l2_sq_upper": env.g_l2_sq_upper,
@@ -201,14 +203,16 @@ def screw_analytic_gate_receipt(a0: float, target_epsilon: float) -> dict[str, o
         "closed": [
             "unconditional closed-form majorant for int_0^(2a0)|g|^2",
             "unconditional closed-form majorant for int_0^(2a0)|g'|^2",
-            "uniform mixed Fourier-tail schedule on 0<a<=a0",
+            "uniform mixed Fourier-tail schedule for bounded G_a on 0<a<=a0",
         ],
         "open": [
+            "derivative-weighted mixed Weil-form estimate for D*G_a*D",
             "finite localized low Fourier block interval enclosure",
             "sharp/optimized screw envelopes",
             "all-scale interval continuation of the low Schur gap",
             "SOH-C005",
             "Riemann Hypothesis",
         ],
+        "claim_boundary": "G_a regularity/tail only; not derivative-weighted C005 mixed form",
         "proof_of_rh": False,
     }
