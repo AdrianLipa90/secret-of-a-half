@@ -2,11 +2,13 @@ import Mathlib
 
 namespace SecretOfAHalfFormal
 
+open scoped ComplexConjugate
+
 /-- Projective coordinate used by the reciprocal--conjugation formulation. -/
 noncomputable def omega (s : ℂ) : ℂ := s / (1 - s)
 
 /-- The reciprocal--conjugation seam in projective coordinates. -/
-def reciprocalConjugationSeam (u : ℂ) : Prop := u⁻¹ = Complex.conj u
+def reciprocalConjugationSeam (u : ℂ) : Prop := u⁻¹ = conj u
 
 /-- Unit-modulus points lie on the reciprocal--conjugation seam. -/
 theorem norm_one_implies_reciprocalConjugationSeam {u : ℂ} (h : ‖u‖ = 1) :
