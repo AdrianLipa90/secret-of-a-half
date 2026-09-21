@@ -37,4 +37,27 @@ theorem reciprocalConjugationSeam_iff_norm_one {u : ℂ} (hu : u ≠ 0) :
   · exact reciprocalConjugationSeam_implies_norm_one hu
   · exact norm_one_implies_reciprocalConjugationSeam
 
+/-- Equality of squared distances to 0 and 1 is exactly the critical line. -/
+theorem normSq_reflection_eq_iff_re_half (s : ℂ) :
+    Complex.normSq s = Complex.normSq (1 - s) ↔ s.re = (1 / 2 : ℝ) := by
+  rw [Complex.normSq_apply, Complex.normSq_apply]
+  simp only [sub_re, one_re, sub_im, one_im, zero_sub]
+  constructor <;> intro h <;> nlinarith
+
+/-- Equality of distances to 0 and 1 is exactly the critical line. -/
+theorem norm_reflection_eq_iff_re_half (s : ℂ) :
+    ‖s‖ = ‖1 - s‖ ↔ s.re = (1 / 2 : ℝ) := by
+  rw [← sq_eq_sq₀ (norm_nonneg s) (norm_nonneg (1 - s))]
+  rw [Complex.sq_norm, Complex.sq_norm]
+  exact normSq_reflection_eq_iff_re_half s
+
+/-- Away from the pole of the projective coordinate, the unit circle in
+`omega`-space is exactly the Riemann critical line. -/
+theorem omega_norm_one_iff_re_half {s : ℂ} (hs1 : s ≠ 1) :
+    ‖omega s‖ = 1 ↔ s.re = (1 / 2 : ℝ) := by
+  have hden : ‖1 - s‖ ≠ 0 := by
+    exact norm_ne_zero_iff.mpr (sub_ne_zero.mpr (Ne.symm hs1))
+  rw [omega, Complex.norm_div, div_eq_one_iff_eq hden]
+  exact norm_reflection_eq_iff_re_half s
+
 end SecretOfAHalfFormal
