@@ -79,4 +79,24 @@ theorem omega_norm_one_iff_re_half {s : ℂ} (hs1 : s ≠ 1) :
   rw [omega, Complex.norm_div, div_eq_one_iff_eq hden]
   exact norm_reflection_eq_iff_re_half s
 
+
+/-- Away from 0 and 1, the reciprocal--conjugation seam of the projective
+coordinate is exactly the Riemann critical line. -/
+theorem omega_reciprocalConjugationSeam_iff_re_half
+    {s : ℂ} (hs0 : s ≠ 0) (hs1 : s ≠ 1) :
+    reciprocalConjugationSeam (omega s) ↔ s.re = (1 / 2 : ℝ) := by
+  have homega : omega s ≠ 0 := by
+    unfold omega
+    exact div_ne_zero hs0 (sub_ne_zero.mpr (Ne.symm hs1))
+  rw [reciprocalConjugationSeam_iff_norm_one homega]
+  exact omega_norm_one_iff_re_half hs1
+
+/-- Equivalent fixed-locus and projective-seam descriptions of the critical
+line, away from the exceptional projective points 0 and 1. -/
+theorem omega_seam_iff_criticalInvolution_fixed
+    {s : ℂ} (hs0 : s ≠ 0) (hs1 : s ≠ 1) :
+    reciprocalConjugationSeam (omega s) ↔ criticalInvolution s = s := by
+  rw [omega_reciprocalConjugationSeam_iff_re_half hs0 hs1,
+      criticalInvolution_fixed_iff_re_half]
+
 end SecretOfAHalfFormal
