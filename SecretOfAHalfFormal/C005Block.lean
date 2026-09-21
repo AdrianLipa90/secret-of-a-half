@@ -38,4 +38,42 @@ theorem c005_determinant_margin_nonneg
     0 ≤ mu * nu - eps ^ 2 := by
   linarith
 
+
+/-- A strict Schur margin removes scalar zero modes completely.  This is the
+finite-dimensional algebraic analogue of the nondegeneracy needed in the
+localized spectral-flow route. -/
+theorem c005_scalar_block_quadratic_eq_zero_iff
+    {mu eps nu x y : ℝ}
+    (hmu : 0 < mu)
+    (hdet : eps ^ 2 < mu * nu) :
+    mu * x ^ 2 - 2 * eps * x * y + nu * y ^ 2 = 0 ↔
+      x = 0 ∧ y = 0 := by
+  have hmunu : 0 < mu * nu := lt_of_le_of_lt (sq_nonneg eps) hdet
+  have hnu : 0 < nu := by
+    nlinarith
+  constructor
+  · intro hq
+    have hsquare : 0 ≤ (mu * x - eps * y) ^ 2 := sq_nonneg _
+    have hmargin : 0 < mu * nu - eps ^ 2 := by
+      linarith
+    have hid :
+        mu * (mu * x ^ 2 - 2 * eps * x * y + nu * y ^ 2) =
+          (mu * x - eps * y) ^ 2 +
+            (mu * nu - eps ^ 2) * y ^ 2 := by
+      ring
+    have hsum :
+        (mu * x - eps * y) ^ 2 +
+            (mu * nu - eps ^ 2) * y ^ 2 = 0 := by
+      rw [← hid, hq]
+      ring
+    have hy2 : y ^ 2 = 0 := by
+      nlinarith [sq_nonneg y]
+    have hy : y = 0 := (sq_eq_zero_iff).mp hy2
+    subst y
+    have hx2 : x ^ 2 = 0 := by
+      simpa using (mul_eq_zero.mp (by simpa using hq) : mu = 0 ∨ x ^ 2 = 0) |>.resolve_left hmu.ne'
+    exact ⟨(sq_eq_zero_iff.mp hx2), rfl⟩
+  · rintro ⟨rfl, rfl⟩
+    ring
+
 end SecretOfAHalfFormal
