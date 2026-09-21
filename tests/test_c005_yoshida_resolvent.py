@@ -80,5 +80,5 @@ def test_pipeline_keeps_proof_frontier_open() -> None:
     gates = pipeline_gate_map()
     assert gates["proof_of_rh"] is False
     assert "Riemann Hypothesis" in gates["open"]
-    assert "exact repository-to-Suzuki normalization/domain join" in gates["open"]
+    assert "localized form equality with boundary/domain/Friedrichs-extension join" in gates["open"]
     assert "HIGH_MODE_RESOLVENT_BOUND" in gates["flow"]
