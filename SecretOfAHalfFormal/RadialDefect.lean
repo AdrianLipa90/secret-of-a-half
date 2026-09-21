@@ -125,6 +125,27 @@ theorem zeroReciprocalDefect_iff_riemannHypothesis :
       (h s hz htriv hs1)
 
 
+
+/-- Coordinate used by the Suzuki-type spectral parametrization
+s = 1/2 - i z, equivalently z = i (s - 1/2). -/
+noncomputable def suzukiCoord (s : ℂ) : ℂ :=
+  Complex.I * (s - (1 / 2 : ℂ))
+
+theorem suzukiCoord_im (s : ℂ) :
+    (suzukiCoord s).im = s.re - (1 / 2 : ℝ) := by
+  simp [suzukiCoord]
+
+/-- The native half-axis defect is literally the square of the imaginary part
+of the Suzuki spectral coordinate. -/
+theorem halfAxisDefect_eq_suzukiCoord_im_sq (s : ℂ) :
+    halfAxisDefect s = (suzukiCoord s).im ^ 2 := by
+  rw [suzukiCoord_im]
+  rfl
+
+theorem suzukiCoord_im_zero_iff_re_half (s : ℂ) :
+    (suzukiCoord s).im = 0 ↔ s.re = (1 / 2 : ℝ) := by
+  rw [suzukiCoord_im, sub_eq_zero]
+
 /-- The native half-axis / PhaseNav closure condition on all non-trivial zeta
 zeros. -/
 def ZeroHalfAxisDefectCondition : Prop :=
