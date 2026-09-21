@@ -54,4 +54,36 @@ theorem zeroCriticalFixed_iff_riemannHypothesis :
     ZeroCriticalFixedCondition ↔ RiemannHypothesis := by
   rw [zeroCriticalFixed_iff_zeroOmegaUnit, zeroOmegaUnit_iff_riemannHypothesis]
 
+
+/-- A zeta zero cannot occur at s = 0 because ζ(0) = -1/2. -/
+theorem riemannZeta_zero_point_ne_zero {s : ℂ} (hz : riemannZeta s = 0) :
+    s ≠ 0 := by
+  intro hs
+  subst s
+  norm_num [riemannZeta_zero] at hz
+
+/-- The exact missing edge written literally in reciprocal--conjugation seam
+language. -/
+def ZeroReciprocalSeamCondition : Prop :=
+  ∀ (s : ℂ), riemannZeta s = 0 →
+    (¬ ∃ n : ℕ, s = -2 * (n + 1)) →
+    s ≠ 1 →
+    reciprocalConjugationSeam (omega s)
+
+theorem zeroReciprocalSeam_iff_zeroOmegaUnit :
+    ZeroReciprocalSeamCondition ↔ ZeroOmegaUnitCondition := by
+  constructor
+  · intro h s hz htriv hs1
+    have hs0 : s ≠ 0 := riemannZeta_zero_point_ne_zero hz
+    have homega : omega s ≠ 0 := by
+      unfold omega
+      exact div_ne_zero hs0 (sub_ne_zero.mpr (Ne.symm hs1))
+    exact reciprocalConjugationSeam_implies_norm_one homega (h s hz htriv hs1)
+  · intro h s hz htriv hs1
+    exact norm_one_implies_reciprocalConjugationSeam (h s hz htriv hs1)
+
+theorem zeroReciprocalSeam_iff_riemannHypothesis :
+    ZeroReciprocalSeamCondition ↔ RiemannHypothesis := by
+  rw [zeroReciprocalSeam_iff_zeroOmegaUnit, zeroOmegaUnit_iff_riemannHypothesis]
+
 end SecretOfAHalfFormal
