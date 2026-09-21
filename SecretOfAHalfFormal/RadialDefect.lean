@@ -100,7 +100,11 @@ theorem omega_reciprocalDefect_eq_weighted_halfAxisDefect
   rw [Complex.normSq_div]
   unfold halfAxisDefect
   field_simp [hA, hB]
-  rw [hdiff]
+  have hdiff' :
+      Complex.normSq (1 - s) - Complex.normSq s =
+        1 - 2 * s.re := by
+    linarith [hdiff]
+  rw [hdiff']
   ring
 
 /-- The missing statement written as defect vanishing on every non-trivial
