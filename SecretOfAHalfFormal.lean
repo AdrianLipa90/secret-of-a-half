@@ -3,3 +3,5 @@ import SecretOfAHalfFormal.SymmetryNoGo
 import SecretOfAHalfFormal.RHBridge
 
 import SecretOfAHalfFormal.C005Block
+
+import SecretOfAHalfFormal.TwoChannelNoGo
