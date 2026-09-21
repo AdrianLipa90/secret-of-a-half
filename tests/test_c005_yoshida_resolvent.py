@@ -12,6 +12,8 @@ from secret_of_a_half.c005_yoshida_resolvent import (
     low_block_effective_floor,
     pipeline_gate_map,
     scalar_schur_certificate,
+    scalar_block_lower_eigenvalue,
+    strict_block_gap,
 )
 
 
@@ -82,3 +84,18 @@ def test_pipeline_keeps_proof_frontier_open() -> None:
     assert "Riemann Hypothesis" in gates["open"]
     assert "localized form equality with boundary/domain/Friedrichs-extension join" in gates["open"]
     assert "HIGH_MODE_RESOLVENT_BOUND" in gates["flow"]
+
+
+def test_exact_scalar_block_gap_matches_eigenvalue_formula() -> None:
+    mu = 2.0
+    epsilon = 0.5
+    nu = 3.0
+    expected = 0.5 * (
+        mu + nu - math.hypot(mu - nu, 2.0 * epsilon)
+    )
+    assert scalar_block_lower_eigenvalue(mu, epsilon, nu) == pytest.approx(expected)
+    assert strict_block_gap(mu, epsilon, nu) == pytest.approx(expected)
+    assert expected > 0.0
+
+    with pytest.raises(ValueError):
+        strict_block_gap(1.0, 1.0, 1.0)
