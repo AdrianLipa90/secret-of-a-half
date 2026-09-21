@@ -13,3 +13,5 @@ import SecretOfAHalfFormal.CollatzConjugacy
 import SecretOfAHalfFormal.ZeroAccumulation
 
 import SecretOfAHalfFormal.RadialDefect
+
+import SecretOfAHalfFormal.SuzukiLimit
