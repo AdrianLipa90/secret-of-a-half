@@ -161,4 +161,51 @@ assuming an RH-equivalent premise.
 If such a map is obtained, the topological endgame is already formalized in
 Lean using discreteness of zeta zeros.
 
+
+## 7. Stronger continuous-flow rigidity
+
+There is an even sharper exact consequence of discreteness.
+
+Because (mathbb R) is connected while the zeta-zero set is discrete, every
+continuous path
+
+[
+gamma:mathbb R	omathbb C
+]
+
+satisfying
+
+[
+zeta(gamma(t))=0qquadorall t
+]
+
+must be constant.
+
+This is now formalized in Lean as
+
+`continuous_zetaZero_path_constant`
+
+and
+
+`continuous_zetaZero_deformation_fixed`.
+
+Therefore a hypothetical continuous zero-preserving radial flow cannot
+continuously transport an off-axis zero toward the seam. If an independently
+derived physical/operator flow is both continuous and genuinely moves the
+projective radius while preserving zerohood for all flow times, those
+properties are inconsistent with the known discreteness of the zeta-zero set.
+
+This sharpens the admissible route:
+
+- a **discrete** zero-preserving contraction may jump among isolated zeros, but
+  any convergent orbit must eventually land on its limiting zero;
+- a **continuous** zero-preserving deformation cannot move inside the zero set
+  at all.
+
+Hence the missing incoming edge cannot simply be “there is a continuous
+Collatz flow on the zeros.” It must instead be an arithmetic/operator theorem
+that forces the radial defect of each individual zero to vanish, or a discrete
+zero-to-zero mechanism whose convergence and finite-landing structure are
+proved independently.
+
 `proof_of_rh = false`
