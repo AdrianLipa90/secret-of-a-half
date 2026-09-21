@@ -1,0 +1,708 @@
+# SOH C005 Form-Level Schur Rebase v0.1
+
+Status: **ARCHITECTURAL SIMPLIFICATION / OPERATOR-DOMAIN BOTTLENECK REMOVED FROM C005 ROUTE / RH OPEN**
+
+## 1. The key correction
+
+The Fourier high-mode theorem of Yoshida/Suzuki is already a theorem about the
+localized Weil/Hermitian **quadratic form**.  Therefore the C005 positivity
+route does not need to pass through the unbounded operator \(B_a\), its
+Friedrichs extension \(A_a\), or the operator domain before performing the
+low/high split.
+
+Those operator objects remain important for the Suzuki spectral-limit route,
+but they are not logically required for the direct C005 form-positivity route.
+
+This removes an unnecessary choke point from the pipeline.
+
+## 2. Form-level split
+
+Let
+
+\[
+\mathcal H=L_N\oplus H_N
+\]
+
+be the Fourier low/high decomposition of the localized test/form space and
+write the Hermitian form schematically as
+
+\[
+q_a[\ell+h]
+=
+q_{LL,a}[\ell]
++
+2\Re q_{LH,a}(\ell,h)
++
+q_{HH,a}[h].
+\]
+
+The source high-mode theorem supplies, after the explicit constants already
+developed in the repository,
+
+\[
+\boxed{
+q_{HH,a}[h]\ge\nu\,\|h\|^2
+}
+\]
+
+uniformly on each declared bounded \(a\)-interval.
+
+Suppose independently that
+
+\[
+q_{LL,a}[\ell]\ge\mu\,\|\ell\|^2
+\]
+
+and
+
+\[
+|q_{LH,a}(\ell,h)|
+\le
+\varepsilon\,\|\ell\|\,\|h\|.
+\]
+
+Then
+
+\[
+q_a[\ell+h]
+\ge
+\mu\|\ell\|^2
+-
+2\varepsilon\|\ell\|\|h\|
++
+\nu\|h\|^2.
+\]
+
+The already-formalized scalar C005 theorem therefore gives positivity whenever
+
+\[
+\boxed{
+\mu\ge0,\qquad
+\nu>0,\qquad
+\mu\nu-\varepsilon^2\ge0.
+}
+\]
+
+No unbounded-operator domain manipulation is needed for this implication.
+
+## 3. What remains finite and what remains infinite
+
+The infinite sector is now controlled by the source coercivity theorem.
+
+The unresolved quantities are:
+
+\[
+\boxed{
+\mu_{N,a}
+=
+\lambda_{\min}(q_{LL,a})
+}
+\]
+
+and
+
+\[
+\boxed{
+\varepsilon_{N,a}
+=
+\|q_{LH,a}\|.
+}
+\]
+
+The low block is finite-dimensional.
+
+The mixed block still has an infinite high index, but because the localized
+screw kernel is continuous on a compact square, it is a compact/Hilbert--Schmidt
+type object at the integral-kernel level.  A rigorous Fourier-coefficient or
+kernel-tail estimate can therefore target \(\varepsilon\) directly.
+
+This is a narrower problem than constructing the entire localized operator
+\(A_a\).
+
+## 4. Two different pipelines must now stay separate
+
+### C005 direct form route
+
+\[
+\boxed{
+\text{localized Weil form}
+\to
+\text{Fourier split}
+\to
+(\mu,\varepsilon,\nu)
+\to
+\text{scalar Schur gate}
+\to
+Q_W^a\ge0.
+}
+\]
+
+For this route the active implementation target is the localized form matrix
+and its mixed Fourier tail.
+
+### Suzuki spectral route
+
+\[
+\boxed{
+Q_W^a
+\to
+B_a=D^*G_aD
+\to
+A_a=\mathrm{Friedrichs}(B_a)
+\to
+W(a,\theta;z)
+\to
+\text{large-}a\text{ zero attraction}.
+}
+\]
+
+This route genuinely needs the operator domains, extensions, and resolvents.
+
+Mixing these two routes was making the C005 pipeline harder than necessary.
+
+## 5. Natural implementation contract
+
+For each bounded scale cell \(I=[a_-,a_+]\), the C005 implementation should
+produce only three proof-bearing objects:
+
+1. an interval Hermitian enclosure of the finite low matrix \(L_N(a)\);
+2. an upper bound on the mixed form norm \(\varepsilon_{N,I}\);
+3. the explicit source-level high-mode lower bound \(\nu_{N,I}>0\).
+
+Then the existing interval-Schur code computes a certified lower gap.
+
+Thus the desired dataflow is
+
+\[
+\boxed{
+\begin{array}{c}
+\text{source high-mode theorem}
+\longrightarrow \nu_{N,I}\\
+\text{localized finite Fourier entries}
+\longrightarrow \mu_{N,I}\\
+\text{localized mixed-tail estimate}
+\longrightarrow \varepsilon_{N,I}
+\end{array}
+}
+\]
+
+followed by
+
+\[
+\boxed{
+\mu_{N,I}\nu_{N,I}-\varepsilon_{N,I}^2>0.
+}
+\]
+
+## 6. Current first hard analytic target
+
+After this rebase, the immediate bottleneck is no longer the full
+Friedrichs-domain join.
+
+It is
+
+\[
+\boxed{
+\texttt{MIXED\_FOURIER\_TAIL}:
+\quad
+|q_{LH,a}(\ell,h)|
+\le
+\varepsilon_{N,I}\|\ell\|\|h\|
+}
+\]
+
+uniformly for \(a\in I\).
+
+The finite low block should be implemented in parallel, but it is not an
+infinite-dimensional conceptual obstruction.
+
+## 7. Firewall
+
+A finite matrix constructed from the global Hermite ladder is not the
+localized Fourier low block.
+
+The new localized form implementation must start from the source
+screw/Weil form and the exact coordinate normalization already established.
+
+\`proof_of_rh = false\`
+
+
+## 8. Generic mixed-tail theorem
+
+Let \(T_a\) be the localized integral-form operator with kernel \(K_a(t,u)\)
+on \((-a,a)\), and let \(Q_N^F\) project onto Fourier modes \(|n|>N\).
+
+For the normalized basis
+
+\[
+e_n(u)=\frac1{\sqrt{2a}}e^{\pi i n u/a},
+\]
+
+assume \(K_a(t,\cdot)\) is absolutely continuous for almost every \(t\), and
+define
+
+\[
+E_{\partial}(a)
+=
+\int_{-a}^{a}
+|K_a(t,a)-K_a(t,-a)|^2\,dt,
+\]
+
+\[
+E_{u}(a)
+=
+\int_{-a}^{a}\int_{-a}^{a}
+|\partial_u K_a(t,u)|^2\,du\,dt.
+\]
+
+One integration by parts in \(u\), followed by Parseval/Cauchy--Schwarz and
+
+\[
+\sum_{|n|>N}\frac1{n^2}\le\frac2N,
+\]
+
+gives
+
+\[
+\boxed{
+\|T_aQ_N^F\|^2
+\le
+\frac{4a^2}{\pi^2N}
+\left[
+\frac{E_{\partial}(a)}{2a}
++
+E_u(a)
+\right].
+}
+\]
+
+Therefore
+
+\[
+\boxed{
+\|P_N^FT_aQ_N^F\|
+\le
+\frac{2a}{\pi\sqrt N}
+\sqrt{
+\frac{E_{\partial}(a)}{2a}
++
+E_u(a)
+}.
+}
+\]
+
+This is exactly the mixed form constant needed in the scalar Schur gate:
+
+\[
+\varepsilon_{N,a}
+\le
+\frac{2a}{\pi\sqrt N}
+\sqrt{
+\frac{E_{\partial}(a)}{2a}
++
+E_u(a)
+}.
+\]
+
+Hence a requested mixed budget \(\varepsilon_*>0\) has the constructive
+schedule
+
+\[
+\boxed{
+N
+\ge
+\left\lceil
+\frac{
+4a^2
+\left(E_{\partial}(a)/(2a)+E_u(a)\right)
+}{
+\pi^2\varepsilon_*^2
+}
+\right\rceil.
+}
+\]
+
+The generic bound is implemented in
+\`src/secret_of_a_half/c005_mixed_fourier_tail.py\`.
+
+## 9. Bottleneck after the mixed-tail reduction
+
+The infinite mixed block has now been reduced to two scalar regularity
+envelopes of the actual localized screw kernel:
+
+\[
+\boxed{
+E_{\partial}(a),\qquad E_u(a).
+}
+\]
+
+So the immediate analytic target is no longer an abstract infinite matrix.
+
+For the zeta screw kernel one must derive interval-uniform upper bounds on:
+
+- the endpoint jump \(K_a(t,a)-K_a(t,-a)\);
+- the weak \(u\)-derivative of \(K_a(t,u)\).
+
+Once these are available on an \(a\)-cell \(I\), the mixed coupling
+\(\varepsilon_{N,I}\) becomes explicit and can be merged with the already
+explicit high-mode coercivity \(\nu_{N,I}\).
+
+At that point only the finite low Fourier matrix enclosure remains before the
+interval Schur gate can run on the actual localized form.
+
+
+## 10. Screw-kernel reduction to one-dimensional norms
+
+For the actual screw kernel
+
+\[
+K_a(t,u)
+=
+g(t-u)-g(t)-g(-u)+g(0),
+\]
+
+the evenness of \(g\) gives
+
+\[
+K_a(t,a)-K_a(t,-a)
+=
+g(t-a)-g(t+a).
+\]
+
+Hence
+
+\[
+E_{\partial}(a)
+\le
+4\int_0^{2a}|g(v)|^2\,dv.
+\]
+
+Also
+
+\[
+\partial_uK_a(t,u)
+=
+-g'(t-u)-g'(u),
+\]
+
+so
+
+\[
+|\partial_uK_a(t,u)|^2
+\le
+2|g'(t-u)|^2+2|g'(u)|^2.
+\]
+
+After integration over the square \((-a,a)^2\),
+
+\[
+E_u(a)
+\le
+16a\int_0^{2a}|g'(v)|^2\,dv.
+\]
+
+Therefore the mixed coupling obeys
+
+\[
+\boxed{
+\varepsilon_{N,a}
+\le
+\frac{2a}{\pi\sqrt N}
+\sqrt{
+\frac{2}{a}\int_0^{2a}|g(v)|^2\,dv
++
+16a\int_0^{2a}|g'(v)|^2\,dv
+}.
+}
+\]
+
+This removes the two-dimensional kernel norm from the bottleneck.
+
+The mixed-tail gate is now reduced to two one-dimensional scalar quantities:
+
+\[
+\boxed{
+G_0(a)=\int_0^{2a}|g(v)|^2\,dv,
+\qquad
+G_1(a)=\int_0^{2a}|g'(v)|^2\,dv.
+}
+\]
+
+The corresponding executable reduction is
+\`screw_kernel_regularity_envelope_from_even_g\`.
+
+The immediate analytic task is therefore to produce rigorous interval
+envelopes for \(G_0(a)\) and \(G_1(a)\) on bounded \(a\)-cells from the
+explicit arithmetic screw function.
+
+
+## 11. Unconditional one-dimensional screw envelopes
+
+The two remaining one-dimensional norms can themselves be bounded explicitly
+without RH.
+
+For \(t\in[0,T]\), Suzuki's arithmetic formula \(g(t)=-\Psi(t)\), the
+elementary inequalities
+
+\[
+\Lambda(n)\le\log n,
+\qquad
+\sum_{n=2}^{M}\frac1{\sqrt n}
+\le2(\sqrt M-1),
+\]
+
+and positivity of the Hurwitz--Lerch terms give a closed pointwise majorant
+for \(|g(t)|\).
+
+Using
+
+\[
+\psi(1/4)
+=
+-\gamma-\frac\pi2-3\log2
+\]
+
+and
+
+\[
+C=\pi^2+8G
+\]
+
+(Catalan \(G\)), define
+
+\[
+A_*=
+\gamma+\frac\pi2+3\log2+\log\pi.
+\]
+
+A safe uniform bound on \([0,T]\) is
+
+\[
+\boxed{
+|g(t)|
+\le
+M_0(T)
+}
+\]
+
+with
+
+\[
+M_0(T)
+=
+4(e^{T/2}+e^{-T/2}-2)
++
+2T^2(e^{T/2}-1)
++
+\frac{A_*T}{2}
++
+\frac{C}{4}.
+\]
+
+Therefore
+
+\[
+\boxed{
+G_0(T)
+\le
+T\,M_0(T)^2.
+}
+\]
+
+For the a.e. derivative, the \(s=1\) Hurwitz--Lerch term obeys
+
+\[
+\Phi(e^{-2t},1,1/4)
+\le
+4-\log(1-e^{-2t}),
+\]
+
+and
+
+\[
+-\log(1-e^{-2t})
+\le
+\log\frac{1+2T}{2t}
+\qquad(0<t\le T).
+\]
+
+This yields
+
+\[
+|g'(t)|
+\le
+K(T)
++
+\frac12\log\frac{1+2T}{2t},
+\]
+
+where
+
+\[
+K(T)
+=
+2T(e^{T/2}-1)
++
+2(e^{T/2}-e^{-T/2})
++
+\frac{A_*}{2}
++
+2.
+\]
+
+The logarithmic singularity is square-integrable.  Writing
+
+\[
+L_T=\log\frac{1+2T}{2T},
+\]
+
+we obtain the explicit integral bound
+
+\[
+\boxed{
+G_1(T)
+\le
+T\left[
+K(T)^2
++
+K(T)(L_T+1)
++
+\frac14(L_T^2+2L_T+2)
+\right].
+}
+\]
+
+The repository evaluates these closed formulas with outward interval
+arithmetic in
+
+\`src/secret_of_a_half/c005_screw_analytic_bounds.py\`.
+
+Taking \(T=2a_0\) gives a uniform mixed-tail certificate for every
+\(0<a\le a_0\):
+
+\[
+\boxed{
+\varepsilon_{N,a}^2
+\le
+\frac{
+8a_0G_0(2a_0)
++
+64a_0^3G_1(2a_0)
+}{
+\pi^2N
+}.
+}
+\]
+
+Thus the infinite mixed block now has an unconditional constructive schedule.
+
+## 12. Frontier after the analytic mixed-tail closure
+
+On each bounded scale interval, both infinite-dimensional inputs are now
+constructive:
+
+\[
+\boxed{
+\nu_{N,I}>0
+\quad\text{(high-mode coercivity)}
+}
+\]
+
+and
+
+\[
+\boxed{
+\varepsilon_{N,I}<\infty
+\quad\text{with explicit }N^{-1/2}\text{ schedule}.
+}
+\]
+
+The first unsolved proof-bearing object on the direct C005 route is therefore
+the **finite localized low Fourier block**
+
+\[
+\boxed{
+L_N(a)
+=
+\bigl(q_a(e_m,e_n)\bigr)_{|m|,|n|\le N}
+}
+\]
+
+with a rigorous interval enclosure uniform in \(a\) on each continuation cell.
+
+Once that matrix is enclosed, the interval-Schur layer is already present and
+can compute the certified lower gap.
+
+This is now a finite-dimensional interval-analysis problem rather than an
+uncontrolled infinite-complement problem.
+
+
+## CORRECTION — derivative-weighted mixed block firewall
+
+A subsequent domain audit sharpens the mixed-tail claim.
+
+The generic integration-by-parts estimate derived above controls the bounded
+screw integral operator \(G_a\):
+
+\[
+\|P_N^F G_a Q_N^F\|.
+\]
+
+However the Weil form on the primitive/test-function variable is
+
+\[
+\boxed{
+Q_W^a(\psi)
+=
+\langle D\psi,G_aD\psi\rangle,
+\qquad
+D=i\,d/dt.
+}
+\]
+
+Thus a Fourier mode \(e_n\) carries an additional derivative factor
+\(\pi n/a\).  Consequently the bound for \(G_a\) cannot be silently promoted
+to
+
+\[
+|Q_W^a(\ell,h)|
+\le
+\varepsilon\|\ell\|\|h\|.
+\]
+
+One integration by parts in the continuous kernel is not enough to absorb the
+high-mode derivative weight in that statement.
+
+Therefore the following remain **OPEN** for the direct C005 route:
+
+\[
+\boxed{
+\texttt{WEIL\_MIXED\_TAIL}:
+\quad
+|\langle D\ell,G_aDh\rangle|
+\le
+\varepsilon_{N,I}\|\ell\|\,\|h\|
+}
+\]
+
+in the exact Hilbert norm used by the Rayleigh quotient, and the finite
+localized low block.
+
+The \(G_a\)-tail and one-dimensional \(g,g'\) envelopes remain valid and
+useful inputs for the Suzuki integral-operator route and for future stronger
+regularity estimates.  They are not discarded; their proof scope is simply
+narrower than the derivative-weighted Weil-form block.
+
+The natural flow is therefore currently
+
+\[
+\text{source high-mode coercivity}
+\quad+\quad
+\boxed{\text{derivative-weighted mixed-form estimate}}
+\quad+\quad
+\text{finite low block}
+\to
+\text{Schur gate}.
+\]
+
+\`proof_of_rh = false\`

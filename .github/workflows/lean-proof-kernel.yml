@@ -1,0 +1,66 @@
+name: Lean proof kernel
+
+on:
+  pull_request:
+    paths:
+      - "SecretOfAHalfFormal/**"
+      - "SecretOfAHalfFormal.lean"
+      - "lakefile.toml"
+      - "lean-toolchain"
+      - ".github/workflows/lean-proof-kernel.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lean-proof-kernel-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  kernel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fail on local proof escape hatches
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -R -n -E '\b(sorry|admit|axiom)\b' SecretOfAHalfFormal SecretOfAHalfFormal.lean; then
+            echo "Local proof escape hatch detected"
+            exit 1
+          fi
+
+      - name: Install elan and pinned Lean
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- --default-toolchain none -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          "$HOME/.elan/bin/lean" --version
+
+      - name: Resolve pinned mathlib and build
+        shell: bash
+        run: |
+          set -euo pipefail
+          lake update
+          lake exe cache get
+          lake build --wfail
+
+      - name: Independent environment and axiom audit
+        uses: leanprover/lean-action@v1
+        env:
+          LEAN_NUM_THREADS: "1"
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+          leanchecker: true
+          leanchecker-args: "SecretOfAHalfFormal"
+          axiom-audit: true
+          axiom-audit-root: "SecretOfAHalfFormal"
+          axiom-audit-allow: "propext,Classical.choice,Quot.sound"

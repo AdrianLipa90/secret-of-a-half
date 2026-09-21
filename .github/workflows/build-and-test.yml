@@ -73,6 +73,24 @@ jobs:
         run: python scripts/run_c005_full_operator_cancellation.py
       - name: Run SOH-C005 growing-M full-operator stability diagnostic
         run: python scripts/run_c005_full_operator_stability.py
+      - name: Run SOH-C005 Yoshida Fourier resolvent pipeline
+        run: python scripts/run_c005_yoshida_resolvent_pipeline.py
+      - name: Run SOH-C005 Yoshida source-constant gate
+        run: python scripts/run_c005_yoshida_constant_gate.py
+      - name: Run SOH-C005 Yoshida gamma-window gate
+        run: python scripts/run_c005_yoshida_gamma_window.py
+      - name: Run SOH-C005 explicit Yoshida high-mode gate
+        run: python scripts/run_c005_yoshida_high_mode.py
+      - name: Run SOH-C005 Suzuki localization crosswalk
+        run: python scripts/run_c005_suzuki_localization_crosswalk.py
+      - name: Run SOH-C005 finite Schur diagnostic
+        run: python scripts/run_c005_finite_schur_diagnostic.py
+      - name: Run SOH-C005 interval Schur plumbing
+        run: python scripts/run_c005_interval_schur_plumbing.py
+      - name: Run SOH-C005 mixed Fourier-tail plumbing
+        run: python scripts/run_c005_mixed_fourier_tail_plumbing.py
+      - name: Run SOH-C005 zeta screw analytic envelopes
+        run: python scripts/run_c005_screw_analytic_bounds.py
       - name: Run SOH-G004 global log-concavity proof receipt
         run: python scripts/run_soh_g004_global_log_concavity.py
       - name: Run SOH-G005 PF3 finite diagnostic
