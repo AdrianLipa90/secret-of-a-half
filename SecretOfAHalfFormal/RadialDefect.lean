@@ -58,6 +58,51 @@ theorem omega_reciprocalDefect_zero_iff_halfAxisDefect_zero
   rw [omega_defect_eq_zero_iff_re_half hs0 hs1,
       halfAxisDefect_eq_zero_iff_re_half]
 
+
+/-- Exact radial form of the reciprocal--conjugation defect. -/
+theorem reciprocalConjugationDefect_eq_normSq_formula
+    {u : ℂ} (hu : u ≠ 0) :
+    reciprocalConjugationDefect u =
+      (1 - Complex.normSq u) ^ 2 / Complex.normSq u := by
+  have hid :
+      u⁻¹ - conj u =
+        (((1 - Complex.normSq u : ℝ) : ℂ) / u) := by
+    apply (eq_div_iff hu).2
+    rw [sub_mul]
+    simp [hu, Complex.normSq_eq_conj_mul_self]
+  unfold reciprocalConjugationDefect
+  rw [← Complex.normSq_eq_norm_sq, hid, Complex.normSq_div,
+      Complex.normSq_ofReal]
+  ring
+
+/-- Exact positive-weight crosswalk between the reciprocal--conjugation defect
+and the native half-axis / PhaseNav closure defect. -/
+theorem omega_reciprocalDefect_eq_weighted_halfAxisDefect
+    {s : ℂ} (hs0 : s ≠ 0) (hs1 : s ≠ 1) :
+    reciprocalConjugationDefect (omega s) =
+      4 * halfAxisDefect s /
+        (Complex.normSq s * Complex.normSq (1 - s)) := by
+  have hden : (1 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs1)
+  have homega : omega s ≠ 0 := by
+    unfold omega
+    exact div_ne_zero hs0 hden
+  have hA : Complex.normSq s ≠ 0 :=
+    ne_of_gt ((Complex.normSq_pos).2 hs0)
+  have hB : Complex.normSq (1 - s) ≠ 0 :=
+    ne_of_gt ((Complex.normSq_pos).2 hden)
+  have hdiff :
+      Complex.normSq s - Complex.normSq (1 - s) =
+        2 * s.re - 1 := by
+    simp [Complex.normSq_apply]
+    ring
+  rw [reciprocalConjugationDefect_eq_normSq_formula homega]
+  unfold omega
+  rw [Complex.normSq_div]
+  unfold halfAxisDefect
+  field_simp [hA, hB]
+  rw [hdiff]
+  ring
+
 /-- The missing statement written as defect vanishing on every non-trivial
 zeta zero. -/
 def ZeroReciprocalDefectCondition : Prop :=
