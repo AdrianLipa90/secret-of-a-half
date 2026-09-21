@@ -55,4 +55,20 @@ theorem zero_preserving_orbit_eventually_hits_limit
         simpa [Function.iterate_succ_apply'] using hpres ((F^[n]) z0) ih
   · exact hlim
 
+
+/-- Therefore a zero-preserving orbit cannot converge to a zeta zero while
+remaining distinct from that limit at every finite iterate. -/
+theorem no_zero_preserving_convergent_orbit_without_hit
+    {F : ℂ → ℂ} {z0 rho : ℂ}
+    (hrho : riemannZeta rho = 0)
+    (hz0 : riemannZeta z0 = 0)
+    (hpres : ∀ z : ℂ, riemannZeta z = 0 → riemannZeta (F z) = 0)
+    (hlim : Tendsto (fun n : ℕ => (F^[n]) z0) atTop (𝓝 rho))
+    (hne : ∀ n : ℕ, (F^[n]) z0 ≠ rho) :
+    False := by
+  have hev :=
+    zero_preserving_orbit_eventually_hits_limit hrho hz0 hpres hlim
+  obtain ⟨N, hN⟩ := eventually_atTop.mp hev
+  exact hne N (hN N le_rfl)
+
 end SecretOfAHalfFormal
