@@ -2,8 +2,8 @@
   "schema": "FPDG_DEPENDENCY_EXPORT_V0_1",
   "repository_id": "SOH",
   "repository": "AdrianLipa90/secret-of-a-half",
-  "source_commit": "d99545aa447ef86bc253d8241a3fee9adb8a42c1",
-  "generated_at": "2026-09-19T20:09:00+01:00",
+  "source_commit": "41772776dadf837c7a2f8b095b752e586d85c5dc",
+  "generated_at": "2026-09-21T13:37:00+01:00",
   "claims": [
     {
       "claim_id": "SOH.SU2.DOUBLE_COVER",
