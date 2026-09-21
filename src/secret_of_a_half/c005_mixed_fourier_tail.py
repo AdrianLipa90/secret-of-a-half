@@ -129,6 +129,52 @@ def common_cutoff(
     return max(high_mode_cutoff, mixed_tail_cutoff)
 
 
+
+def screw_kernel_regularity_envelope_from_even_g(
+    a: float,
+    g_l2_sq_0_2a: float,
+    gprime_l2_sq_0_2a: float,
+) -> KernelRegularityEnvelope:
+    """Reduce the screw-kernel regularity constants to 1D g/g' integrals.
+
+    For the even real screw kernel
+        K(t,u)=g(t-u)-g(t)-g(-u)+g(0),
+    one has
+        E_boundary <= 4 * int_0^(2a) |g(v)|^2 dv
+    and
+        E_du <= 16*a * int_0^(2a) |g'(v)|^2 dv.
+
+    The derivative estimate uses
+        d_u K = -g'(t-u)-g'(u)
+    for even g (so g' is odd), followed by |x+y|^2<=2|x|^2+2|y|^2.
+    """
+    if not math.isfinite(a) or a <= 0.0:
+        raise ValueError("a must be finite and positive")
+    for name, value in (
+        ("g_l2_sq_0_2a", g_l2_sq_0_2a),
+        ("gprime_l2_sq_0_2a", gprime_l2_sq_0_2a),
+    ):
+        if not math.isfinite(value) or value < 0.0:
+            raise ValueError(f"{name} must be finite and non-negative")
+    return KernelRegularityEnvelope(
+        a=a,
+        boundary_jump_l2_sq=4.0 * g_l2_sq_0_2a,
+        du_l2_sq=16.0 * a * gprime_l2_sq_0_2a,
+    )
+
+
+def screw_mixed_tail_norm_upper_from_even_g(
+    a: float,
+    cutoff_N: int,
+    g_l2_sq_0_2a: float,
+    gprime_l2_sq_0_2a: float,
+) -> float:
+    """Direct mixed-tail bound in terms of the 1D screw-function norms."""
+    envelope = screw_kernel_regularity_envelope_from_even_g(
+        a, g_l2_sq_0_2a, gprime_l2_sq_0_2a
+    )
+    return mixed_fourier_tail_norm_upper(envelope, cutoff_N)
+
 def mixed_tail_gate_map() -> dict[str, object]:
     return {
         "schema": "SOH_C005_MIXED_FOURIER_TAIL_V0_1",
@@ -146,6 +192,7 @@ def mixed_tail_gate_map() -> dict[str, object]:
             "rigorous boundary-jump L2 envelope for the actual zeta screw kernel",
             "rigorous u-derivative L2 envelope for the actual zeta screw kernel",
             "uniformization of those envelopes on a-cells",
+            "rigorous 1D bounds for int_0^(2a)|g|^2 and int_0^(2a)|g'|^2 for the zeta screw function",
             "finite localized low Fourier block interval enclosure",
             "all-scale Schur continuation",
             "SOH-C005",
