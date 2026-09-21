@@ -418,3 +418,110 @@ C_0\ge
 Once a rigorous \(t_0,C_0\) pair is available, the coefficients \(A,D\) in
 the bulk-minus-leakage inequality become explicit and flow directly into the
 already-implemented cutoff/resolvent/Schur stages.
+
+
+## 11. Equation (4.11) normalization closure
+
+The printed source equation (4.11) keeps a \(1/(2\pi)\) factor in each of
+the two symmetric \(+\!z\) and \(-\!z\) channels.  Since
+
+\[
+\int_{\mathbb R}|\Phi_1(\phi,-z)|^2dz
+=
+\int_{\mathbb R}|\Phi_1(\phi,z)|^2dz
+\]
+
+and the same holds for the low-frequency window, the two-channel inequality
+collapses exactly to
+
+\[
+\boxed{
+\langle\phi,\phi\rangle_{G_g,a}
+\ge
+\frac{C-2C_1C_2}{\pi}\,I
+-
+\frac{C+C_0}{\pi}\,L,
+}
+\]
+
+where
+
+\[
+I=\int_{\mathbb R}|\Phi_1(\phi,z)|^2dz,
+\qquad
+L=\int_{|z|\le t_0}|\Phi_1(\phi,z)|^2dz.
+\]
+
+Combining this with the explicit Fourier leakage law
+
+\[
+\frac LI\le\frac{B(a_0,t_0)}{N}
+\]
+
+gives the fully explicit high-mode floor
+
+\[
+\boxed{
+\nu_N
+=
+\frac{
+C-2C_1C_2-(C+C_0)B(a_0,t_0)/N
+}{\pi}.
+}
+\]
+
+Therefore, for a desired raw-integral floor \(\mu>0\), it is sufficient to
+choose \(C\) so that
+
+\[
+C-2C_1C_2-\pi\mu>0
+\]
+
+and then take
+
+\[
+\boxed{
+N\ge
+\left\lceil
+\frac{(C+C_0)B(a_0,t_0)}
+{C-2C_1C_2-\pi\mu}
+\right\rceil.
+}
+\]
+
+The implementation deliberately uses the stronger normalization-safe choice
+
+\[
+C=3C_1C_2+\pi\mu+\delta_C,
+\qquad \delta_C>0.
+\]
+
+This absorbs the printed \(1/(2\pi)\) factors explicitly instead of hiding
+them in the symbol \(\mu\).
+
+The complete source-level certificate now lives in
+
+\`src/secret_of_a_half/c005_yoshida_high_mode.py\`.
+
+Hence the existential high-frequency statement on every fixed bounded
+\(a\)-interval has been turned into a constructive certificate.  The current
+constants are intentionally very conservative; efficiency is a separate
+optimization problem.
+
+The first remaining cross-domain gate is now
+
+\[
+\boxed{
+\texttt{LOCALIZED\_FORM\_JOIN}:
+\quad
+\langle\cdot,\cdot\rangle_{G_g,a}
+\longleftrightarrow
+Q_W^a
+\longleftrightarrow
+A_a
+}
+\]
+
+with exact domains, zero-mean/primitive map, boundary terms, and Friedrichs
+extension tracked.  Downstream of that join, the next proof-bearing object is
+the finite low/high Schur gap, not the high-mode coercivity itself.
