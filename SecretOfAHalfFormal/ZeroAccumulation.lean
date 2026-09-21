@@ -71,4 +71,34 @@ theorem no_zero_preserving_convergent_orbit_without_hit
   obtain ⟨N, hN⟩ := eventually_atTop.mp hev
   exact hne N (hN N le_rfl)
 
+
+/-- Any continuous real-parameter path that remains entirely inside the zeta
+zero set is constant. This is the connected-domain counterpart of the
+sequence accumulation obstruction. -/
+theorem continuous_zetaZero_path_constant
+    {gamma : ℝ → ℂ}
+    (hgamma : Continuous gamma)
+    (hzero : ∀ t : ℝ, riemannZeta (gamma t) = 0)
+    (a b : ℝ) :
+    gamma a = gamma b := by
+  apply isPreconnected_univ.constant_of_mapsTo
+      isDiscrete_riemannZetaZeros hgamma.continuousOn
+  · intro t ht
+    exact (mem_riemannZetaZeros).2 (hzero t)
+  · exact Set.mem_univ a
+  · exact Set.mem_univ b
+
+/-- In particular, a continuous zero-preserving deformation cannot move a
+zeta zero through a nonconstant real-parameter orbit. -/
+theorem continuous_zetaZero_deformation_fixed
+    {gamma : ℝ → ℂ} {rho : ℂ}
+    (hgamma : Continuous gamma)
+    (hzero : ∀ t : ℝ, riemannZeta (gamma t) = 0)
+    (h0 : gamma 0 = rho) :
+    ∀ t : ℝ, gamma t = rho := by
+  intro t
+  calc
+    gamma t = gamma 0 := continuous_zetaZero_path_constant hgamma hzero t 0
+    _ = rho := h0
+
 end SecretOfAHalfFormal
