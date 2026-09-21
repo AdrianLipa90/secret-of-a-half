@@ -635,3 +635,74 @@ can compute the certified lower gap.
 
 This is now a finite-dimensional interval-analysis problem rather than an
 uncontrolled infinite-complement problem.
+
+
+## CORRECTION — derivative-weighted mixed block firewall
+
+A subsequent domain audit sharpens the mixed-tail claim.
+
+The generic integration-by-parts estimate derived above controls the bounded
+screw integral operator \(G_a\):
+
+\[
+\|P_N^F G_a Q_N^F\|.
+\]
+
+However the Weil form on the primitive/test-function variable is
+
+\[
+\boxed{
+Q_W^a(\psi)
+=
+\langle D\psi,G_aD\psi\rangle,
+\qquad
+D=i\,d/dt.
+}
+\]
+
+Thus a Fourier mode \(e_n\) carries an additional derivative factor
+\(\pi n/a\).  Consequently the bound for \(G_a\) cannot be silently promoted
+to
+
+\[
+|Q_W^a(\ell,h)|
+\le
+\varepsilon\|\ell\|\|h\|.
+\]
+
+One integration by parts in the continuous kernel is not enough to absorb the
+high-mode derivative weight in that statement.
+
+Therefore the following remain **OPEN** for the direct C005 route:
+
+\[
+\boxed{
+\texttt{WEIL\_MIXED\_TAIL}:
+\quad
+|\langle D\ell,G_aDh\rangle|
+\le
+\varepsilon_{N,I}\|\ell\|\,\|h\|
+}
+\]
+
+in the exact Hilbert norm used by the Rayleigh quotient, and the finite
+localized low block.
+
+The \(G_a\)-tail and one-dimensional \(g,g'\) envelopes remain valid and
+useful inputs for the Suzuki integral-operator route and for future stronger
+regularity estimates.  They are not discarded; their proof scope is simply
+narrower than the derivative-weighted Weil-form block.
+
+The natural flow is therefore currently
+
+\[
+\text{source high-mode coercivity}
+\quad+\quad
+\boxed{\text{derivative-weighted mixed-form estimate}}
+\quad+\quad
+\text{finite low block}
+\to
+\text{Schur gate}.
+\]
+
+\`proof_of_rh = false\`
