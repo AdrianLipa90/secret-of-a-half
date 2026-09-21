@@ -75,6 +75,8 @@ jobs:
         run: python scripts/run_c005_full_operator_stability.py
       - name: Run SOH-C005 Yoshida Fourier resolvent pipeline
         run: python scripts/run_c005_yoshida_resolvent_pipeline.py
+      - name: Run SOH-C005 finite Schur diagnostic
+        run: python scripts/run_c005_finite_schur_diagnostic.py
       - name: Run SOH-G004 global log-concavity proof receipt
         run: python scripts/run_soh_g004_global_log_concavity.py
       - name: Run SOH-G005 PF3 finite diagnostic
