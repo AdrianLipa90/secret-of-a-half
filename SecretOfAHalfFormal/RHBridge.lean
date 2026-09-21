@@ -31,4 +31,27 @@ theorem zeroOmegaUnit_iff_riemannHypothesis :
   · exact riemannHypothesis_of_zeroOmegaUnit
   · exact zeroOmegaUnit_of_riemannHypothesis
 
+
+/-- Equivalent missing edge in the slice-gluing language: every non-trivial
+zeta zero is fixed by the critical anti-holomorphic involution. -/
+def ZeroCriticalFixedCondition : Prop :=
+  ∀ (s : ℂ), riemannZeta s = 0 →
+    (¬ ∃ n : ℕ, s = -2 * (n + 1)) →
+    s ≠ 1 →
+    criticalInvolution s = s
+
+theorem zeroCriticalFixed_iff_zeroOmegaUnit :
+    ZeroCriticalFixedCondition ↔ ZeroOmegaUnitCondition := by
+  constructor
+  · intro h s hz htriv hs1
+    exact (omega_norm_one_iff_re_half hs1).mpr
+      ((criticalInvolution_fixed_iff_re_half s).mp (h s hz htriv hs1))
+  · intro h s hz htriv hs1
+    exact (criticalInvolution_fixed_iff_re_half s).mpr
+      ((omega_norm_one_iff_re_half hs1).mp (h s hz htriv hs1))
+
+theorem zeroCriticalFixed_iff_riemannHypothesis :
+    ZeroCriticalFixedCondition ↔ RiemannHypothesis := by
+  rw [zeroCriticalFixed_iff_zeroOmegaUnit, zeroOmegaUnit_iff_riemannHypothesis]
+
 end SecretOfAHalfFormal
