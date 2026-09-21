@@ -7,3 +7,5 @@ import SecretOfAHalfFormal.C005Block
 import SecretOfAHalfFormal.TwoChannelNoGo
 
 import SecretOfAHalfFormal.SpectralFlow
+
+import SecretOfAHalfFormal.CollatzConjugacy
