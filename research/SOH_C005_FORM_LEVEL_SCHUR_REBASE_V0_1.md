@@ -225,3 +225,127 @@ The new localized form implementation must start from the source
 screw/Weil form and the exact coordinate normalization already established.
 
 \`proof_of_rh = false\`
+
+
+## 8. Generic mixed-tail theorem
+
+Let \(T_a\) be the localized integral-form operator with kernel \(K_a(t,u)\)
+on \((-a,a)\), and let \(Q_N^F\) project onto Fourier modes \(|n|>N\).
+
+For the normalized basis
+
+\[
+e_n(u)=\frac1{\sqrt{2a}}e^{\pi i n u/a},
+\]
+
+assume \(K_a(t,\cdot)\) is absolutely continuous for almost every \(t\), and
+define
+
+\[
+E_{\partial}(a)
+=
+\int_{-a}^{a}
+|K_a(t,a)-K_a(t,-a)|^2\,dt,
+\]
+
+\[
+E_{u}(a)
+=
+\int_{-a}^{a}\int_{-a}^{a}
+|\partial_u K_a(t,u)|^2\,du\,dt.
+\]
+
+One integration by parts in \(u\), followed by Parseval/Cauchy--Schwarz and
+
+\[
+\sum_{|n|>N}\frac1{n^2}\le\frac2N,
+\]
+
+gives
+
+\[
+\boxed{
+\|T_aQ_N^F\|^2
+\le
+\frac{4a^2}{\pi^2N}
+\left[
+\frac{E_{\partial}(a)}{2a}
++
+E_u(a)
+\right].
+}
+\]
+
+Therefore
+
+\[
+\boxed{
+\|P_N^FT_aQ_N^F\|
+\le
+\frac{2a}{\pi\sqrt N}
+\sqrt{
+\frac{E_{\partial}(a)}{2a}
++
+E_u(a)
+}.
+}
+\]
+
+This is exactly the mixed form constant needed in the scalar Schur gate:
+
+\[
+\varepsilon_{N,a}
+\le
+\frac{2a}{\pi\sqrt N}
+\sqrt{
+\frac{E_{\partial}(a)}{2a}
++
+E_u(a)
+}.
+\]
+
+Hence a requested mixed budget \(\varepsilon_*>0\) has the constructive
+schedule
+
+\[
+\boxed{
+N
+\ge
+\left\lceil
+\frac{
+4a^2
+\left(E_{\partial}(a)/(2a)+E_u(a)\right)
+}{
+\pi^2\varepsilon_*^2
+}
+\right\rceil.
+}
+\]
+
+The generic bound is implemented in
+\`src/secret_of_a_half/c005_mixed_fourier_tail.py\`.
+
+## 9. Bottleneck after the mixed-tail reduction
+
+The infinite mixed block has now been reduced to two scalar regularity
+envelopes of the actual localized screw kernel:
+
+\[
+\boxed{
+E_{\partial}(a),\qquad E_u(a).
+}
+\]
+
+So the immediate analytic target is no longer an abstract infinite matrix.
+
+For the zeta screw kernel one must derive interval-uniform upper bounds on:
+
+- the endpoint jump \(K_a(t,a)-K_a(t,-a)\);
+- the weak \(u\)-derivative of \(K_a(t,u)\).
+
+Once these are available on an \(a\)-cell \(I\), the mixed coupling
+\(\varepsilon_{N,I}\) becomes explicit and can be merged with the already
+explicit high-mode coercivity \(\nu_{N,I}\).
+
+At that point only the finite low Fourier matrix enclosure remains before the
+interval Schur gate can run on the actual localized form.
