@@ -41,7 +41,7 @@ theorem reciprocalConjugationSeam_iff_norm_one {u : ℂ} (hu : u ≠ 0) :
 theorem normSq_reflection_eq_iff_re_half (s : ℂ) :
     Complex.normSq s = Complex.normSq (1 - s) ↔ s.re = (1 / 2 : ℝ) := by
   rw [Complex.normSq_apply, Complex.normSq_apply]
-  simp only [sub_re, one_re, sub_im, one_im, zero_sub]
+  simp only [Complex.sub_re, Complex.one_re, Complex.sub_im, Complex.one_im, zero_sub]
   constructor <;> intro h <;> nlinarith
 
 /-- Equality of distances to 0 and 1 is exactly the critical line. -/
