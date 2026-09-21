@@ -349,3 +349,88 @@ explicit high-mode coercivity \(\nu_{N,I}\).
 
 At that point only the finite low Fourier matrix enclosure remains before the
 interval Schur gate can run on the actual localized form.
+
+
+## 10. Screw-kernel reduction to one-dimensional norms
+
+For the actual screw kernel
+
+\[
+K_a(t,u)
+=
+g(t-u)-g(t)-g(-u)+g(0),
+\]
+
+the evenness of \(g\) gives
+
+\[
+K_a(t,a)-K_a(t,-a)
+=
+g(t-a)-g(t+a).
+\]
+
+Hence
+
+\[
+E_{\partial}(a)
+\le
+4\int_0^{2a}|g(v)|^2\,dv.
+\]
+
+Also
+
+\[
+\partial_uK_a(t,u)
+=
+-g'(t-u)-g'(u),
+\]
+
+so
+
+\[
+|\partial_uK_a(t,u)|^2
+\le
+2|g'(t-u)|^2+2|g'(u)|^2.
+\]
+
+After integration over the square \((-a,a)^2\),
+
+\[
+E_u(a)
+\le
+16a\int_0^{2a}|g'(v)|^2\,dv.
+\]
+
+Therefore the mixed coupling obeys
+
+\[
+\boxed{
+\varepsilon_{N,a}
+\le
+\frac{2a}{\pi\sqrt N}
+\sqrt{
+\frac{2}{a}\int_0^{2a}|g(v)|^2\,dv
++
+16a\int_0^{2a}|g'(v)|^2\,dv
+}.
+}
+\]
+
+This removes the two-dimensional kernel norm from the bottleneck.
+
+The mixed-tail gate is now reduced to two one-dimensional scalar quantities:
+
+\[
+\boxed{
+G_0(a)=\int_0^{2a}|g(v)|^2\,dv,
+\qquad
+G_1(a)=\int_0^{2a}|g'(v)|^2\,dv.
+}
+\]
+
+The corresponding executable reduction is
+\`screw_kernel_regularity_envelope_from_even_g\`.
+
+The immediate analytic task is therefore to produce rigorous interval
+envelopes for \(G_0(a)\) and \(G_1(a)\) on bounded \(a\)-cells from the
+explicit arithmetic screw function.
