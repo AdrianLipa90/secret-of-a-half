@@ -11,3 +11,5 @@ import SecretOfAHalfFormal.SpectralFlow
 import SecretOfAHalfFormal.CollatzConjugacy
 
 import SecretOfAHalfFormal.ZeroAccumulation
+
+import SecretOfAHalfFormal.RadialDefect
