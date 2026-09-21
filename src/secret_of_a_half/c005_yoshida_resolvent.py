@@ -177,6 +177,34 @@ def low_block_effective_floor(
     return mu - (epsilon * epsilon) / nu
 
 
+
+def scalar_block_lower_eigenvalue(
+    mu: float,
+    epsilon: float,
+    nu: float,
+) -> float:
+    """Exact lower eigenvalue of [[mu,-epsilon],[-epsilon,nu]].
+
+    A positive value is the quantitative no-Weyl-sequence gap for the scalar
+    block model, stronger information than determinant positivity alone.
+    """
+    if not all(math.isfinite(x) for x in (mu, epsilon, nu)):
+        raise ValueError("parameters must be finite")
+    discriminant = math.hypot(mu - nu, 2.0 * epsilon)
+    return 0.5 * (mu + nu - discriminant)
+
+
+def strict_block_gap(
+    mu: float,
+    epsilon: float,
+    nu: float,
+) -> float:
+    """Return the exact scalar coercivity gap, requiring strict positivity."""
+    gap = scalar_block_lower_eigenvalue(mu, epsilon, nu)
+    if gap <= 0.0:
+        raise ValueError("block is not strictly positive")
+    return gap
+
 def pipeline_gate_map() -> dict[str, object]:
     """Return the explicit fail-closed proof-flow contract."""
     return {
@@ -190,6 +218,8 @@ def pipeline_gate_map() -> dict[str, object]:
             "LOW_HIGH_COUPLING_EPSILON",
             "FINITE_LOW_BLOCK_MU",
             "STRICT_SCHUR_MARGIN",
+            "UNIFORM_BLOCK_COERCIVITY_GAP",
+            "NO_APPROXIMATE_NULL_SEQUENCE",
             "SPECTRAL_NONDEGENERACY_OR_SUZUKI_ZERO_ATTRACTION",
         ],
         "closed": [
@@ -197,12 +227,14 @@ def pipeline_gate_map() -> dict[str, object]:
             "explicit Fourier-tail B(a0,t0)/N schedule",
             "scalar resolvent gap formula below a supplied coercivity floor",
             "scalar Schur margin and effective low-block floor",
+            "exact scalar 2x2 coercivity gap from the lower eigenvalue",
         ],
         "open": [
             "localized form equality with boundary/domain/Friedrichs-extension join",
             "certified high-mode coercivity constant nu in that normalization",
             "certified full low/high coupling epsilon",
             "uniform positive finite low-block floor mu",
+            "uniform positive Schur/coercivity gap excluding approximate null sequences",
             "all-scale continuation a0 -> infinity",
             "SOH-C005",
             "Riemann Hypothesis",
