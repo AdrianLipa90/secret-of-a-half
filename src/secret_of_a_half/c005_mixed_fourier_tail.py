@@ -20,8 +20,13 @@ One integration by parts gives
 Hence any finite low projection P_N satisfies the same mixed bound
 ||P_N T Q_N|| <= ||T Q_N||.
 
-This is an abstract analytic adapter.  The actual zeta screw kernel still
-needs rigorous E_boundary/E_derivative envelopes on each a-interval.
+This is an abstract analytic adapter for the bounded screw integral operator
+G_a itself.  It must NOT be identified with the mixed block of the Weil form
+on the primitive/test-function variable psi, because
+Q_W(psi)=<D psi, G_a D psi> carries derivative weights on both Fourier
+indices.  The actual C005 mixed-form estimate therefore remains a separate
+gate.  The actual zeta screw kernel also still needs rigorous
+E_boundary/E_derivative envelopes on each a-interval.
 """
 from __future__ import annotations
 
@@ -177,7 +182,7 @@ def screw_mixed_tail_norm_upper_from_even_g(
 
 def mixed_tail_gate_map() -> dict[str, object]:
     return {
-        "schema": "SOH_C005_MIXED_FOURIER_TAIL_V0_1",
+        "schema": "SOH_SCREW_G_MIXED_FOURIER_TAIL_V0_2",
         "bound": (
             "||P_N T Q_N|| <= 2*a/(pi*sqrt(N)) * "
             "sqrt(E_boundary/(2*a)+E_du)"
@@ -193,10 +198,12 @@ def mixed_tail_gate_map() -> dict[str, object]:
             "rigorous u-derivative L2 envelope for the actual zeta screw kernel",
             "uniformization of those envelopes on a-cells",
             "rigorous 1D bounds for int_0^(2a)|g|^2 and int_0^(2a)|g'|^2 for the zeta screw function",
+            "derivative-weighted mixed Weil-form estimate for D*G_a*D",
             "finite localized low Fourier block interval enclosure",
             "all-scale Schur continuation",
             "SOH-C005",
             "Riemann Hypothesis",
         ],
+        "claim_boundary": "G_a operator tail only; not the C005 Weil-form mixed block",
         "proof_of_rh": False,
     }
