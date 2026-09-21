@@ -525,3 +525,85 @@ A_a
 with exact domains, zero-mean/primitive map, boundary terms, and Friedrichs
 extension tracked.  Downstream of that join, the next proof-bearing object is
 the finite low/high Schur gap, not the high-mode coercivity itself.
+
+
+## 12. Source-side localized operator join
+
+The old gate \`LOCALIZED_FORM_JOIN\` is now split into a closed source-side
+coordinate/operator join and an open repository implementation join.
+
+Suzuki's source operator is
+
+\[
+B_a=D_y^*G_aD_y,\qquad
+\mathfrak D(B_a)=H_0^1(-a,a),
+\]
+
+with \(D_y=i\,d/dy\), \(G_a=P_aGP_a\), and \(A_a\) the Friedrichs extension
+of \(B_a\). On \(H_0^1(-a,a)\),
+
+\[
+Q_W^a(v)=\langle B_av,v\rangle.
+\]
+
+Under the exact SOH scaling
+
+\[
+y=2\pi x,
+\qquad
+(Uf)(x)=\sqrt{2\pi}\,f(2\pi x),
+\]
+
+the convolution operator acquires kernel
+
+\[
+2\pi\,g(2\pi(x-x')),
+\]
+
+the zero-mean projection is preserved, and
+
+\[
+U D_y U^{-1}
+=
+\frac1{2\pi}D_x.
+\]
+
+Hence
+
+\[
+\boxed{
+U B_a U^{-1}
+=
+\frac1{(2\pi)^2}
+D_x^*(U G_aU^{-1})D_x.
+}
+\]
+
+This closes the coordinate/Jacobian/domain ambiguity of the source operator.
+
+The current first open gate is therefore narrower:
+
+\[
+\boxed{
+\texttt{REPOSITORY\_LOCALIZED\_IMPLEMENTATION\_JOIN}
+}
+\]
+
+namely: instantiate the actual zeta screw kernel in the SOH coordinate and
+verify its localized Fourier matrix elements against the repository's
+arithmetic Weil decomposition.
+
+The existing global translated-Hermite matrix is retained as a dense-core
+diagnostic and is not promoted into this localized role.
+
+Downstream plumbing is already present:
+
+\[
+\text{localized interval matrix entries}
+\to
+\text{interval eigenvalue/coupling bounds}
+\to
+\text{Schur gap}
+\to
+\text{continuation cells}.
+\]
