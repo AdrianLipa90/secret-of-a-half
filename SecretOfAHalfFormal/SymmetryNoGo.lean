@@ -12,6 +12,7 @@ noncomputable def symmetryWitness (s : ℂ) : ℂ :=
 /-- The witness is entire; analyticity/single-valued gluing alone therefore
 cannot supply the missing RH edge. -/
 theorem symmetryWitness_entire : Differentiable ℂ symmetryWitness := by
+  unfold symmetryWitness
   fun_prop
 
 theorem symmetryWitness_reflection (s : ℂ) :
@@ -22,6 +23,7 @@ theorem symmetryWitness_reflection (s : ℂ) :
 theorem symmetryWitness_star (s : ℂ) :
     symmetryWitness (star s) = star (symmetryWitness s) := by
   simp [symmetryWitness, star_mul, star_sub]
+  ring
 
 noncomputable def offAxisWitnessZero : ℂ := ((2 / 3 : ℝ) : ℂ)
 
