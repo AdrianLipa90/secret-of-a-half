@@ -76,6 +76,30 @@ def zero_mean_integral_scale() -> float:
     return math.sqrt(_TWO_PI)
 
 
+
+def pulled_convolution_kernel_multiplier() -> float:
+    """For (Gf)(y)=∫g(y-v)f(v)dv, U G U^-1 has kernel 2*pi*g(2*pi*(x-x'))."""
+    return _TWO_PI
+
+
+def pulled_convolution_kernel_argument(delta_x: float) -> float:
+    """Argument of the original Suzuki kernel after y=2*pi*x."""
+    return _TWO_PI * float(delta_x)
+
+
+def raw_scaled_kernel_B_prefactor() -> float:
+    """If G_raw uses kernel g(2*pi*(x-x')) without the 2*pi Jacobian,
+    then U (D_y^* G D_y) U^-1 = (1/(2*pi)) D_x^* G_raw D_x.
+    """
+    return 1.0 / _TWO_PI
+
+
+def pulled_full_kernel_B_derivative_prefactor() -> float:
+    """If G_pull := U G U^-1 includes kernel 2*pi*g(2*pi*delta),
+    then U B U^-1=(1/(2*pi)^2) D_x^* G_pull D_x.
+    """
+    return 1.0 / (_TWO_PI * _TWO_PI)
+
 def localization_crosswalk_receipt() -> dict[str, object]:
     return {
         "schema": "SOH_SUZUKI_LOCALIZATION_UNITARY_CROSSWALK_V0_1",
@@ -95,10 +119,12 @@ def localization_crosswalk_receipt() -> dict[str, object]:
             "zero-mean equivalence",
             "derivative scaling",
             "Dirichlet endpoint correspondence",
+            "generic convolution pullback G -> kernel 2*pi*g(2*pi*delta)",
+            "D=i*d/dy scaling and induced D*G D prefactors",
         ],
         "open": [
-            "pullback identity for the screw-kernel integral operator G_a",
-            "quadratic-form equality Q_W^a=<D*G_aD ., .> in SOH coordinates",
+            "instantiate the actual zeta screw kernel g in repository-native localized code",
+            "quadratic-form equality Q_W^a=<D*G_aD ., .> against repository arithmetic formulas",
             "repository implementation of the localized operator",
             "uniform Schur gap",
             "SOH-C005",
