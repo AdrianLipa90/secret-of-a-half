@@ -8,6 +8,10 @@ import pytest
 from secret_of_a_half.c005_suzuki_localization import (
     derivative_conjugation_factor,
     localization_crosswalk_receipt,
+    pulled_convolution_kernel_argument,
+    pulled_convolution_kernel_multiplier,
+    pulled_full_kernel_B_derivative_prefactor,
+    raw_scaled_kernel_B_prefactor,
     pullback_basis_via_definition,
     soh_halfwidth_from_suzuki_a,
     soh_pulled_back_fourier_basis_value,
@@ -65,7 +69,8 @@ def test_source_fourier_basis_has_unit_density_integral() -> None:
 def test_localization_receipt_keeps_kernel_pullback_open() -> None:
     receipt = localization_crosswalk_receipt()
     assert receipt["proof_of_rh"] is False
-    assert "pullback identity for the screw-kernel integral operator G_a" in receipt["open"]
+    assert "generic convolution pullback G -> kernel 2*pi*g(2*pi*delta)" in receipt["closed"]
+    assert "instantiate the actual zeta screw kernel g in repository-native localized code" in receipt["open"]
 
 
 def test_invalid_a_fails_closed() -> None:
@@ -73,3 +78,12 @@ def test_invalid_a_fails_closed() -> None:
         soh_halfwidth_from_suzuki_a(0.0)
     with pytest.raises(ValueError):
         suzuki_fourier_basis_value(0, -1.0, 0.0)
+
+
+def test_generic_convolution_and_DGD_pullback_factors() -> None:
+    assert pulled_convolution_kernel_multiplier() == pytest.approx(2.0 * math.pi)
+    assert pulled_convolution_kernel_argument(0.25) == pytest.approx(0.5 * math.pi)
+    assert raw_scaled_kernel_B_prefactor() == pytest.approx(1.0 / (2.0 * math.pi))
+    assert pulled_full_kernel_B_derivative_prefactor() == pytest.approx(
+        1.0 / (4.0 * math.pi * math.pi)
+    )
