@@ -321,3 +321,100 @@ This adapter is now executable as
 
 What remains is not the \(N\)-dependence.  It is freezing the source constants
 \(A,D,t_0\) in the exact localized SOH/Suzuki normalization.
+
+
+## 10. Source-constant gate at c=2
+
+The Yoshida/Suzuki proof constants can be partially frozen analytically before
+touching the gamma window.
+
+For contour parameter \(c=2\),
+
+\[
+C_1=
+\max_{\Re w=3}
+\left\{
+\left|\frac1{w-1}+\frac1w\right|,
+\left|\frac{\zeta'}{\zeta}(w)\right|
+\right\}
+\]
+
+admits the safe bound
+
+\[
+\boxed{C_1\le\frac56}.
+\]
+
+The rational part is bounded by \(1/2+1/3\).  For the zeta logarithmic
+derivative, absolute convergence on \(\Re w=3\) and
+\(\Lambda(n)\le\log n\le n-1\) give
+
+\[
+\left|\frac{\zeta'}{\zeta}(3+it)\right|
+\le
+\sum_{n\ge2}\frac{n-1}{n^3}
+=
+\zeta(2)-\zeta(3)
+<
+\zeta(2)-1
+<
+\frac56.
+\]
+
+For the kernel comparison constant on \(|t|,|u|\le a_1\), the explicit
+Suzuki kernel at \(y=\pm2\) gives the safe envelope
+
+\[
+\boxed{
+C_2(a_1)\le
+\frac{e^{4a_1}-1}{4a_1}.
+}
+\]
+
+Therefore the source inequality can use the constructive choice
+
+\[
+\boxed{
+C=
+3C_1C_2+\mu+\delta_C,
+\qquad \delta_C>0.
+}
+\]
+
+This stage is now executable in
+\`src/secret_of_a_half/c005_yoshida_constants.py\`
+and CI emits
+\`SOH_YOSHIDA_CONSTANT_GATE_V0_1\`.
+
+The first unresolved analytic gate has therefore moved again.  It is now
+
+\[
+\boxed{\texttt{GAMMA\_WINDOW}(C)
+=
+\{t_0,C_0\}}
+\]
+
+with
+
+\[
+\Re\!\left[
+\psi\!\left(\frac14-\frac{iz}{2}\right)
+-\frac12\log\pi
+\right]\ge C
+\qquad (|z|\ge t_0)
+\]
+
+and
+
+\[
+C_0\ge
+\max_{|z|\le t_0}
+\Re\!\left[
+\psi\!\left(\frac14-\frac{iz}{2}\right)
+-\frac12\log\pi
+\right].
+\]
+
+Once a rigorous \(t_0,C_0\) pair is available, the coefficients \(A,D\) in
+the bulk-minus-leakage inequality become explicit and flow directly into the
+already-implemented cutoff/resolvent/Schur stages.
