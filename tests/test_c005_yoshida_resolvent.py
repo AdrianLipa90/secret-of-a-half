@@ -4,7 +4,9 @@ import math
 import pytest
 
 from secret_of_a_half.c005_yoshida_resolvent import (
+    coercivity_floor_from_leakage,
     cutoff_for_leakage,
+    cutoff_for_target_coercivity,
     fourier_tail_sum_upper,
     high_mode_resolvent_certificate,
     integrated_low_frequency_leakage_upper,
@@ -99,3 +101,35 @@ def test_exact_scalar_block_gap_matches_eigenvalue_formula() -> None:
 
     with pytest.raises(ValueError):
         strict_block_gap(1.0, 1.0, 1.0)
+
+
+def test_bulk_minus_leakage_coercivity_schedule() -> None:
+    schedule = cutoff_for_target_coercivity(
+        a0=2.0,
+        t0=1.5,
+        positive_bulk=5.0,
+        low_frequency_penalty=3.0,
+        target_floor=4.0,
+    )
+    assert schedule.pass_floor
+    assert schedule.certified_floor >= 4.0
+    assert schedule.certified_floor == pytest.approx(
+        coercivity_floor_from_leakage(
+            5.0, 3.0, schedule.leakage_upper
+        )
+    )
+    if schedule.cutoff > 1:
+        previous_leakage = integrated_low_frequency_leakage_upper(
+            2.0, 1.5, schedule.cutoff - 1
+        )
+        previous_floor = coercivity_floor_from_leakage(
+            5.0, 3.0, previous_leakage
+        )
+        assert previous_floor < 4.0
+
+
+def test_target_coercivity_rejects_circular_or_invalid_inputs() -> None:
+    with pytest.raises(ValueError):
+        cutoff_for_target_coercivity(1.0, 1.0, 1.0, 2.0, 1.0)
+    with pytest.raises(ValueError):
+        cutoff_for_target_coercivity(1.0, 1.0, 1.0, -1.0, 0.5)
