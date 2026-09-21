@@ -29,18 +29,42 @@ def test_prime_hinge_is_empty_below_log_two() -> None:
     assert mangoldt_sqrt_sum(t) == 0
 
 
-def test_psi_prime_matches_small_t_closed_formula() -> None:
-    # Suzuki 2023, proof of Theorem 4.1, valid on 0<t<log 2.
+def test_psi_prime_matches_direct_derivative_of_equation_1_1() -> None:
+    # Suzuki 2023, equation (1.1), in the prime-free range 0<t<log 2.
+    #
+    # Direct differentiation gives
+    #   Psi'(t) = 2(e^(t/2)-e^(-t/2))
+    #             + 1/2*(digamma(1/4)-log(pi))
+    #             + atanh(e^(-t/2)) + atan(e^(-t/2)).
+    #
+    # The closed formula printed later in the proof of Theorem 4.1 omits
+    # exactly -(1/2)log(pi) relative to (1.1).  The implementation follows
+    # the source definition (1.1), which is also independently checked below
+    # against numerical differentiation.
+    t = mp.mpf("0.3")
+    r = mp.e ** (-t / 2)
+    expected = (
+        2 * (mp.e ** (t / 2) - mp.e ** (-t / 2))
+        + (mp.digamma(mp.mpf("0.25")) - mp.log(mp.pi)) / 2
+        + mp.atanh(r)
+        + mp.atan(r)
+    )
+    actual = psi_prime_positive(t)
+    assert actual == pytest.approx(float(expected), rel=1e-11, abs=1e-11)
+
+
+def test_published_theorem_4_1_derivative_offset_is_half_log_pi() -> None:
+    # Regression receipt for the source-text discrepancy noted above.
     t = mp.mpf("0.3")
     c = mp.pi / 4 - (mp.euler + 3 * mp.log(2)) / 2
-    expected = (
+    printed = (
         2 * (mp.e ** (t / 2) - mp.e ** (-t / 2))
         + c
         - mp.atan(mp.e ** (t / 2))
         + mp.atanh(mp.e ** (-t / 2))
     )
-    actual = psi_prime_positive(t)
-    assert actual == pytest.approx(float(expected), rel=1e-11, abs=1e-11)
+    direct = psi_prime_positive(t)
+    assert direct - printed == pytest.approx(float(-mp.log(mp.pi) / 2), rel=1e-11, abs=1e-11)
 
 
 def test_psi_prime_matches_numerical_derivative_away_from_thresholds() -> None:
