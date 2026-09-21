@@ -124,6 +124,30 @@ theorem zeroReciprocalDefect_iff_riemannHypothesis :
     exact (omega_defect_eq_zero_iff_re_half hs0 hs1).mpr
       (h s hz htriv hs1)
 
+
+/-- The native half-axis / PhaseNav closure condition on all non-trivial zeta
+zeros. -/
+def ZeroHalfAxisDefectCondition : Prop :=
+  ∀ (s : ℂ), riemannZeta s = 0 →
+    (¬ ∃ n : ℕ, s = -2 * (n + 1)) →
+    s ≠ 1 →
+    halfAxisDefect s = 0
+
+theorem zeroHalfAxisDefect_iff_riemannHypothesis :
+    ZeroHalfAxisDefectCondition ↔ RiemannHypothesis := by
+  constructor
+  · intro h s hz htriv hs1
+    exact (halfAxisDefect_eq_zero_iff_re_half s).mp
+      (h s hz htriv hs1)
+  · intro h s hz htriv hs1
+    exact (halfAxisDefect_eq_zero_iff_re_half s).mpr
+      (h s hz htriv hs1)
+
+theorem zeroHalfAxisDefect_iff_zeroReciprocalDefect :
+    ZeroHalfAxisDefectCondition ↔ ZeroReciprocalDefectCondition := by
+  rw [zeroHalfAxisDefect_iff_riemannHypothesis,
+      zeroReciprocalDefect_iff_riemannHypothesis]
+
 /-- Abstract incoming-edge interface for an operator/energy construction.
 
 To prove RH through an independently constructed scalar certificate E, it is
