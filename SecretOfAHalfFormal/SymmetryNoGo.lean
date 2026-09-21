@@ -2,17 +2,14 @@ import Mathlib
 
 namespace SecretOfAHalfFormal
 
+open Complex
 open scoped ComplexConjugate
 
-/-- A concrete entire polynomial with the same centered reflection and
-conjugation symmetries as the xi problem, but with zeros off Re(s)=1/2.
-
-In z = s - 1/2 coordinates it is
-  ((z^2 + 15/16)^2 + 1/4).
-Its roots are ±1/4 ± i. -/
+/-- A concrete entire polynomial with the same reflection and conjugation
+symmetries used in the centered zeta problem, but with zeros away from
+Re(s)=1/2. Thus those symmetries alone cannot imply RH. -/
 noncomputable def symmetryWitness (s : ℂ) : ℂ :=
-  let z := s - (1 / 2 : ℂ)
-  (z ^ 2 + (15 / 16 : ℂ)) ^ 2 + (1 / 4 : ℂ)
+  (s - (1 / 4 : ℂ)) * (s - (3 / 4 : ℂ))
 
 theorem symmetryWitness_reflection (s : ℂ) :
     symmetryWitness (1 - s) = symmetryWitness s := by
@@ -22,26 +19,12 @@ theorem symmetryWitness_reflection (s : ℂ) :
 theorem symmetryWitness_conjugation (s : ℂ) :
     symmetryWitness (conj s) = conj (symmetryWitness s) := by
   simp [symmetryWitness]
-  ring
 
-noncomputable def offAxisWitnessZero : ℂ := (3 / 4 : ℂ) + Complex.I
+noncomputable def offAxisWitnessZero : ℂ := (3 / 4 : ℂ)
 
 theorem symmetryWitness_has_offAxis_zero :
     symmetryWitness offAxisWitnessZero = 0 := by
-  have hz :
-      offAxisWitnessZero - (1 / 2 : ℂ) = (1 / 4 : ℂ) + Complex.I := by
-    simp [offAxisWitnessZero]
-    ring
-  have hinner :
-      (((1 / 4 : ℂ) + Complex.I) ^ 2 + (15 / 16 : ℂ)) = Complex.I / 2 := by
-    calc
-      ((1 / 4 : ℂ) + Complex.I) ^ 2 + (15 / 16 : ℂ)
-          = (1 / 16 : ℂ) + (1 / 2 : ℂ) * Complex.I +
-              Complex.I * Complex.I + (15 / 16 : ℂ) := by ring
-      _ = Complex.I / 2 := by rw [Complex.I_mul_I]; ring
-  rw [symmetryWitness, hz, hinner]
-  rw [div_pow, Complex.I_sq]
-  norm_num
+  simp [symmetryWitness, offAxisWitnessZero]
 
 theorem offAxisWitnessZero_in_critical_strip :
     0 < offAxisWitnessZero.re ∧ offAxisWitnessZero.re < 1 := by
@@ -51,9 +34,8 @@ theorem offAxisWitnessZero_not_on_critical_line :
     offAxisWitnessZero.re ≠ (1 / 2 : ℝ) := by
   norm_num [offAxisWitnessZero]
 
-/-- Reflection + conjugation symmetry are jointly consistent with a zero
-strictly inside the critical strip but off the critical line. Thus those
-symmetries alone cannot prove RH; an xi-specific incoming theorem is needed. -/
+/-- Reflection + conjugation symmetry are compatible with an off-axis strip
+zero, so any RH proof needs additional xi-specific structure. -/
 theorem reflection_conjugation_symmetry_does_not_force_half_line :
     symmetryWitness offAxisWitnessZero = 0 ∧
       symmetryWitness (1 - offAxisWitnessZero) = 0 ∧
