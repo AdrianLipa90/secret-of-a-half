@@ -30,6 +30,22 @@ class FourierLeakageSchedule:
 
 
 @dataclass(frozen=True)
+class CoercivitySchedule:
+    a0: float
+    t0: float
+    positive_bulk: float
+    low_frequency_penalty: float
+    target_floor: float
+    cutoff: int
+    leakage_upper: float
+    certified_floor: float
+
+    @property
+    def pass_floor(self) -> bool:
+        return self.certified_floor >= self.target_floor
+
+
+@dataclass(frozen=True)
 class ResolventCertificate:
     coercivity_floor: float
     spectral_parameter: float
@@ -125,6 +141,79 @@ def cutoff_for_leakage(
     )
 
 
+
+def coercivity_floor_from_leakage(
+    positive_bulk: float,
+    low_frequency_penalty: float,
+    leakage_upper: float,
+) -> float:
+    """Propagate a low-frequency leakage bound through Q >= A I - D L.
+
+    If L <= rho I, then Q >= (A-D*rho) I.  The constants A and D must come
+    from an independently verified analytic inequality in the exact
+    normalization under audit.
+    """
+    if positive_bulk <= 0.0:
+        raise ValueError("positive_bulk must be positive")
+    if low_frequency_penalty < 0.0 or leakage_upper < 0.0:
+        raise ValueError("penalty and leakage must be non-negative")
+    if not all(
+        math.isfinite(x)
+        for x in (positive_bulk, low_frequency_penalty, leakage_upper)
+    ):
+        raise ValueError("parameters must be finite")
+    return positive_bulk - low_frequency_penalty * leakage_upper
+
+
+def cutoff_for_target_coercivity(
+    a0: float,
+    t0: float,
+    positive_bulk: float,
+    low_frequency_penalty: float,
+    target_floor: float,
+) -> CoercivitySchedule:
+    """Explicit N schedule for an inequality Q >= A I - D L.
+
+    Uses L/I <= B(a0,t0)/N.  This is the quantitative adapter needed to turn
+    Suzuki/Yoshida's lower-bound structure into a computable high-mode floor
+    once the exact A,D,t0 constants are frozen.
+    """
+    if positive_bulk <= target_floor:
+        raise ValueError("target_floor must be strictly below positive_bulk")
+    if target_floor < 0.0:
+        raise ValueError("target_floor must be non-negative")
+    if low_frequency_penalty < 0.0:
+        raise ValueError("low_frequency_penalty must be non-negative")
+
+    coefficient = leakage_coefficient(a0, t0)
+    if low_frequency_penalty == 0.0:
+        cutoff = 1
+    else:
+        allowed_leakage = (positive_bulk - target_floor) / low_frequency_penalty
+        cutoff = max(1, math.ceil(coefficient / allowed_leakage))
+
+    leakage = integrated_low_frequency_leakage_upper(a0, t0, cutoff)
+    floor = coercivity_floor_from_leakage(
+        positive_bulk, low_frequency_penalty, leakage
+    )
+    while floor < target_floor:
+        cutoff += 1
+        leakage = integrated_low_frequency_leakage_upper(a0, t0, cutoff)
+        floor = coercivity_floor_from_leakage(
+            positive_bulk, low_frequency_penalty, leakage
+        )
+
+    return CoercivitySchedule(
+        a0=a0,
+        t0=t0,
+        positive_bulk=positive_bulk,
+        low_frequency_penalty=low_frequency_penalty,
+        target_floor=target_floor,
+        cutoff=cutoff,
+        leakage_upper=leakage,
+        certified_floor=floor,
+    )
+
 def high_mode_resolvent_certificate(
     coercivity_floor: float,
     spectral_parameter: float,
@@ -213,7 +302,8 @@ def pipeline_gate_map() -> dict[str, object]:
             "YOSHIDA_FOURIER_TAIL_BOUND",
             "EXACT_SOH_SUZUKI_FOURIER_SCALING",
             "LOCALIZED_FORM_DOMAIN_BOUNDARY_JOIN",
-            "HIGH_MODE_COERCIVITY_NU",
+            "YOSHIDA_BULK_MINUS_LEAKAGE_CONSTANTS",
+            "EXPLICIT_HIGH_MODE_COERCIVITY_NU",
             "HIGH_MODE_RESOLVENT_BOUND",
             "LOW_HIGH_COUPLING_EPSILON",
             "FINITE_LOW_BLOCK_MU",
@@ -225,13 +315,15 @@ def pipeline_gate_map() -> dict[str, object]:
         "closed": [
             "explicit SOH<->Suzuki spectral/Fourier scaling",
             "explicit Fourier-tail B(a0,t0)/N schedule",
+            "bulk-minus-leakage adapter A-D*B/N",
+            "explicit cutoff schedule for any target floor below A",
             "scalar resolvent gap formula below a supplied coercivity floor",
             "scalar Schur margin and effective low-block floor",
             "exact scalar 2x2 coercivity gap from the lower eigenvalue",
         ],
         "open": [
             "localized form equality with boundary/domain/Friedrichs-extension join",
-            "certified high-mode coercivity constant nu in that normalization",
+            "freeze Suzuki/Yoshida bulk and low-frequency penalty constants in the exact normalization",
             "certified full low/high coupling epsilon",
             "uniform positive finite low-block floor mu",
             "uniform positive Schur/coercivity gap excluding approximate null sequences",
