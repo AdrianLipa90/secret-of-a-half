@@ -124,7 +124,7 @@ def psi_prime_positive(
     arch_derivative = (
         2 * (mp.e ** (t / 2) - mp.e ** (-t / 2))
         + gamma_term / 2
-        - mp.e ** (-t / 2) * mp.lerchphi(q, 1, _A) / 2
+        + mp.e ** (-t / 2) * mp.lerchphi(q, 1, _A) / 2
     )
 
     return (
