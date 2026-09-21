@@ -70,8 +70,9 @@ theorem c005_scalar_block_quadratic_eq_zero_iff
       nlinarith [sq_nonneg y]
     have hy : y = 0 := (sq_eq_zero_iff).mp hy2
     subst y
-    have hx2 : x ^ 2 = 0 := by
-      simpa using (mul_eq_zero.mp (by simpa using hq) : mu = 0 ∨ x ^ 2 = 0) |>.resolve_left hmu.ne'
+    simp at hq
+    have hx2 : x ^ 2 = 0 :=
+      (mul_eq_zero.mp hq).resolve_left hmu.ne'
     exact ⟨(sq_eq_zero_iff.mp hx2), rfl⟩
   · rintro ⟨rfl, rfl⟩
     ring
