@@ -8,7 +8,7 @@ open Complex
 noncomputable def omega (s : ℂ) : ℂ := s / (1 - s)
 
 /-- The reciprocal--conjugation seam in projective coordinates. -/
-def reciprocalConjugationSeam (u : ℂ) : Prop := u⁻¹ = conj u
+def reciprocalConjugationSeam (u : ℂ) : Prop := u⁻¹ = Complex.conj u
 
 /-- Unit-modulus points lie on the reciprocal--conjugation seam. -/
 theorem norm_one_implies_reciprocalConjugationSeam {u : ℂ} (h : ‖u‖ = 1) :
@@ -20,7 +20,7 @@ theorem norm_one_implies_reciprocalConjugationSeam {u : ℂ} (h : ‖u‖ = 1) :
 theorem reciprocalConjugationSeam_implies_norm_one {u : ℂ} (hu : u ≠ 0)
     (h : reciprocalConjugationSeam u) : ‖u‖ = 1 := by
   unfold reciprocalConjugationSeam at h
-  have hn := congrArg norm h
+  have hn : ‖u⁻¹‖ = ‖Complex.conj u‖ := congrArg norm h
   have hinv : ‖u‖⁻¹ = ‖u‖ := by
     simpa using hn
   have hpos : 0 < ‖u‖ := norm_pos_iff.mpr hu
