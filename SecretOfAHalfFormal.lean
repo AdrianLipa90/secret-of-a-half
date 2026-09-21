@@ -15,3 +15,5 @@ import SecretOfAHalfFormal.ZeroAccumulation
 import SecretOfAHalfFormal.RadialDefect
 
 import SecretOfAHalfFormal.SuzukiLimit
+
+import SecretOfAHalfFormal.RadialContraction
