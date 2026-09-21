@@ -12,6 +12,8 @@ from secret_of_a_half.c005_mixed_fourier_tail import (
     mixed_fourier_tail_norm_sq_upper,
     mixed_fourier_tail_norm_upper,
     mixed_tail_gate_map,
+    screw_kernel_regularity_envelope_from_even_g,
+    screw_mixed_tail_norm_upper_from_even_g,
 )
 
 
@@ -77,3 +79,21 @@ def test_invalid_inputs_fail_closed() -> None:
         )
     with pytest.raises(ValueError):
         common_cutoff(0, 1)
+
+
+def test_screw_kernel_reduction_to_one_dimensional_norms() -> None:
+    a = 1.5
+    g0 = 2.0
+    g1 = 3.0
+    env = screw_kernel_regularity_envelope_from_even_g(a, g0, g1)
+    assert env.boundary_jump_l2_sq == pytest.approx(4.0 * g0)
+    assert env.du_l2_sq == pytest.approx(16.0 * a * g1)
+
+    direct = screw_mixed_tail_norm_upper_from_even_g(a, 20, g0, g1)
+    generic = mixed_fourier_tail_norm_upper(env, 20)
+    assert direct == pytest.approx(generic)
+
+
+def test_invalid_screw_norm_inputs_fail_closed() -> None:
+    with pytest.raises(ValueError):
+        screw_kernel_regularity_envelope_from_even_g(1.0, -1.0, 1.0)
