@@ -19,13 +19,13 @@ theorem c005_scalar_block_quadratic_nonneg
     have heps : eps = 0 := by
       nlinarith [sq_nonneg eps]
     subst eps
-    positivity
+    simpa using mul_nonneg hnu (sq_nonneg y)
   · have hmupos : 0 < mu := lt_of_le_of_ne hmu (Ne.symm hmu0)
     have hsquare : 0 ≤ (mu * x - eps * y) ^ 2 := sq_nonneg _
     have hmargin : 0 ≤ mu * nu - eps ^ 2 := by
       nlinarith
     have htail : 0 ≤ (mu * nu - eps ^ 2) * y ^ 2 := by
-      positivity
+      exact mul_nonneg hmargin (sq_nonneg y)
     have hscaled :
         0 ≤ mu * (mu * x ^ 2 - 2 * eps * x * y + nu * y ^ 2) := by
       nlinarith
