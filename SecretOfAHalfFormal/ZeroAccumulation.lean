@@ -4,6 +4,7 @@ import Mathlib.NumberTheory.LSeries.ZetaZeros
 namespace SecretOfAHalfFormal
 
 open Filter
+open scoped Topology
 
 /-- A sequence of zeta zeros converging to a zeta zero is eventually constant.
 This packages mathlib's discreteness theorem for the zeta zero set into the
