@@ -9,7 +9,7 @@ open scoped ComplexConjugate
 symmetries used in the centered zeta problem, but with zeros away from
 Re(s)=1/2. Thus those symmetries alone cannot imply RH. -/
 noncomputable def symmetryWitness (s : ℂ) : ℂ :=
-  (s - (1 / 4 : ℂ)) * (s - (3 / 4 : ℂ))
+  (s - ((1 / 4 : ℝ) : ℂ)) * (s - ((3 / 4 : ℝ) : ℂ))
 
 theorem symmetryWitness_reflection (s : ℂ) :
     symmetryWitness (1 - s) = symmetryWitness s := by
@@ -18,9 +18,9 @@ theorem symmetryWitness_reflection (s : ℂ) :
 
 theorem symmetryWitness_conjugation (s : ℂ) :
     symmetryWitness (conj s) = conj (symmetryWitness s) := by
-  simp [symmetryWitness]
+  simp [symmetryWitness, map_div₀]
 
-noncomputable def offAxisWitnessZero : ℂ := (3 / 4 : ℂ)
+noncomputable def offAxisWitnessZero : ℂ := ((3 / 4 : ℝ) : ℂ)
 
 theorem symmetryWitness_has_offAxis_zero :
     symmetryWitness offAxisWitnessZero = 0 := by
