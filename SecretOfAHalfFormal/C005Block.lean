@@ -72,9 +72,7 @@ theorem c005_scalar_block_quadratic_eq_zero_iff
     have hy : y = 0 := (sq_eq_zero_iff).mp hy2
     subst y
     simp at hq
-    have hx2 : x ^ 2 = 0 :=
-      (mul_eq_zero.mp hq).resolve_left hmu.ne'
-    exact ⟨(sq_eq_zero_iff.mp hx2), rfl⟩
+    exact ⟨hq.resolve_left hmu.ne', rfl⟩
   · rintro ⟨rfl, rfl⟩
     ring
 
