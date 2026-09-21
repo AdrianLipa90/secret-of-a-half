@@ -34,6 +34,30 @@ theorem omega_defect_eq_zero_iff_re_half
   rw [reciprocalConjugationDefect_eq_zero_iff_seam]
   exact omega_reciprocalConjugationSeam_iff_re_half hs0 hs1
 
+
+/-- Native half-axis / PhaseNav closure defect in scalar form. -/
+noncomputable def halfAxisDefect (s : ℂ) : ℝ :=
+  (s.re - (1 / 2 : ℝ)) ^ 2
+
+theorem halfAxisDefect_nonneg (s : ℂ) :
+    0 ≤ halfAxisDefect s := by
+  unfold halfAxisDefect
+  exact sq_nonneg _
+
+theorem halfAxisDefect_eq_zero_iff_re_half (s : ℂ) :
+    halfAxisDefect s = 0 ↔ s.re = (1 / 2 : ℝ) := by
+  unfold halfAxisDefect
+  rw [sq_eq_zero_iff, sub_eq_zero]
+
+/-- The native PhaseNav half-axis defect and the reciprocal--conjugation defect
+have exactly the same zero locus away from the projective exceptional points. -/
+theorem omega_reciprocalDefect_zero_iff_halfAxisDefect_zero
+    {s : ℂ} (hs0 : s ≠ 0) (hs1 : s ≠ 1) :
+    reciprocalConjugationDefect (omega s) = 0 ↔
+      halfAxisDefect s = 0 := by
+  rw [omega_defect_eq_zero_iff_re_half hs0 hs1,
+      halfAxisDefect_eq_zero_iff_re_half]
+
 /-- The missing statement written as defect vanishing on every non-trivial
 zeta zero. -/
 def ZeroReciprocalDefectCondition : Prop :=
