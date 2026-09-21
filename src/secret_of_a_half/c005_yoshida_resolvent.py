@@ -183,7 +183,8 @@ def pipeline_gate_map() -> dict[str, object]:
         "schema": "SOH_C005_YOSHIDA_RESOLVENT_PIPELINE_V0_1",
         "flow": [
             "YOSHIDA_FOURIER_TAIL_BOUND",
-            "EXACT_REPOSITORY_TO_SUZUKI_NORMALIZATION",
+            "EXACT_SOH_SUZUKI_FOURIER_SCALING",
+            "LOCALIZED_FORM_DOMAIN_BOUNDARY_JOIN",
             "HIGH_MODE_COERCIVITY_NU",
             "HIGH_MODE_RESOLVENT_BOUND",
             "LOW_HIGH_COUPLING_EPSILON",
@@ -192,12 +193,13 @@ def pipeline_gate_map() -> dict[str, object]:
             "SPECTRAL_NONDEGENERACY_OR_SUZUKI_ZERO_ATTRACTION",
         ],
         "closed": [
+            "explicit SOH<->Suzuki spectral/Fourier scaling",
             "explicit Fourier-tail B(a0,t0)/N schedule",
             "scalar resolvent gap formula below a supplied coercivity floor",
             "scalar Schur margin and effective low-block floor",
         ],
         "open": [
-            "exact repository-to-Suzuki normalization/domain join",
+            "localized form equality with boundary/domain/Friedrichs-extension join",
             "certified high-mode coercivity constant nu in that normalization",
             "certified full low/high coupling epsilon",
             "uniform positive finite low-block floor mu",
