@@ -9,6 +9,11 @@ cannot imply RH. -/
 noncomputable def symmetryWitness (s : ℂ) : ℂ :=
   ((3 : ℂ) * s - 1) * ((3 : ℂ) * s - 2)
 
+/-- The witness is entire; analyticity/single-valued gluing alone therefore
+cannot supply the missing RH edge. -/
+theorem symmetryWitness_entire : Differentiable ℂ symmetryWitness := by
+  fun_prop
+
 theorem symmetryWitness_reflection (s : ℂ) :
     symmetryWitness (1 - s) = symmetryWitness s := by
   simp [symmetryWitness]
