@@ -171,3 +171,25 @@ normalization and pole/zero issues handled explicitly.
 No such convergence theorem is claimed here.
 
 `proof_of_rh = false`
+
+
+## 9. Pole audit update
+
+A separate audit,
+\`SOH_SUZUKI_COROLLARY_1_6_POLE_AUDIT_V0_1.md\`,
+records an important domain issue with the literal global form of the
+Corollary 1.6 target.  The ratio
+
+\[
+z^2\xi(1/2-iz)/\xi'(1/2-iz)
+\]
+
+is naturally meromorphic because zeros of the denominator that are not xi
+zeros create genuine poles.  Consequently the repository does **not** promote
+ordinary uniform convergence on every compact subset of all of \(\mathbb C\)
+as the working proof target.
+
+The retained Route B target is local: convergence/zero-attraction on
+pole-free neighborhoods of xi zeros, with a holomorphic non-vanishing
+normalization.  The Lean theorem in \`SuzukiLimit.lean\` already uses only
+this pointwise zero-attraction endgame.
