@@ -79,4 +79,33 @@ theorem riemannHypothesis_of_zero_energy_representation
   rw [← hErepr s hz htriv hs1]
   exact hEzero s hz htriv hs1
 
+
+/-- Stronger operator-facing interface: an independently constructed energy
+that vanishes on non-trivial zeros and coercively dominates the projective
+defect with a strictly positive constant forces RH. -/
+theorem riemannHypothesis_of_coercive_zero_energy
+    {E : ℂ → ℝ} {c : ℝ}
+    (hc : 0 < c)
+    (hEzero :
+      ∀ (s : ℂ), riemannZeta s = 0 →
+        (¬ ∃ n : ℕ, s = -2 * (n + 1)) →
+        s ≠ 1 →
+        E s = 0)
+    (hcoercive :
+      ∀ (s : ℂ), riemannZeta s = 0 →
+        (¬ ∃ n : ℕ, s = -2 * (n + 1)) →
+        s ≠ 1 →
+        c * reciprocalConjugationDefect (omega s) ≤ E s) :
+    RiemannHypothesis := by
+  rw [← zeroReciprocalDefect_iff_riemannHypothesis]
+  intro s hz htriv hs1
+  have hnonneg : 0 ≤ reciprocalConjugationDefect (omega s) :=
+    reciprocalConjugationDefect_nonneg _
+  have hupper :
+      c * reciprocalConjugationDefect (omega s) ≤ 0 := by
+    simpa [hEzero s hz htriv hs1] using hcoercive s hz htriv hs1
+  have hdefect_le : reciprocalConjugationDefect (omega s) ≤ 0 := by
+    nlinarith
+  exact le_antisymm hdefect_le hnonneg
+
 end SecretOfAHalfFormal
