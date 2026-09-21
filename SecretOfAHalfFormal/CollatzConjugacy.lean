@@ -19,16 +19,21 @@ theorem omega_halfMobius
     {s : ℂ} (hs1 : s ≠ 1) (hs2 : s ≠ 2) :
     omega (halfMobius s) = omega s / 2 := by
   unfold omega halfMobius
-  field_simp [hs1, hs2]
-  ring
+  have h2s : (2 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs2)
+  have h1s : (1 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs1)
+  have h22s : (2 : ℂ) - 2 * s ≠ 0 := by
+    intro h
+    apply hs1
+    linear_combination h
+  field_simp [h2s, h1s, h22s] <;> ring
 
 /-- In the projective coordinate omega, the triple branch is u ↦ 3u+2. -/
 theorem omega_tripleMobius
     {s : ℂ} (hs1 : s ≠ 1) :
     omega (tripleMobius s) = 3 * omega s + 2 := by
   unfold omega tripleMobius
-  field_simp [hs1]
-  ring
+  have h1s : (1 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs1)
+  field_simp [h1s] <;> ring
 
 /-- Exact conjugacy of the half Möbius branch to x ↦ x/2. -/
 theorem collatzCoord_halfMobius
@@ -36,7 +41,6 @@ theorem collatzCoord_halfMobius
     collatzCoord (halfMobius s) = collatzEven (collatzCoord s) := by
   unfold collatzCoord collatzEven
   rw [omega_halfMobius hs1 hs2]
-  ring
 
 /-- Exact conjugacy of the triple Möbius branch to x ↦ 3x+1. -/
 theorem collatzCoord_tripleMobius
@@ -52,7 +56,7 @@ theorem collatzCoord_norm_half_iff_re_half
     {s : ℂ} (hs1 : s ≠ 1) :
     ‖collatzCoord s‖ = (1 / 2 : ℝ) ↔ s.re = (1 / 2 : ℝ) := by
   have hnorm : ‖collatzCoord s‖ = ‖omega s‖ / 2 := by
-    simp [collatzCoord, norm_div]
+    simp [collatzCoord]
   rw [hnorm]
   constructor
   · intro h
@@ -81,7 +85,6 @@ theorem zeroCollatzHalfCircle_iff_riemannHypothesis :
   · intro h s hz htriv hs1
     exact (collatzCoord_norm_half_iff_re_half hs1).mpr (h s hz htriv hs1)
 
-
 /-- Canonical odd Möbius branch obtained by conjugating x ↦ 3x+1 directly
 through omega, without the extra factor-of-two rescaling. -/
 noncomputable def canonicalOddMobius (s : ℂ) : ℂ := (2 * s + 1) / (s + 2)
@@ -91,8 +94,12 @@ theorem omega_canonicalOddMobius
     {s : ℂ} (hs1 : s ≠ 1) (hsm2 : s ≠ -2) :
     omega (canonicalOddMobius s) = 3 * omega s + 1 := by
   unfold omega canonicalOddMobius
-  field_simp [hs1, hsm2]
-  ring
+  have hsp2 : s + 2 ≠ 0 := by
+    intro h
+    apply hsm2
+    linear_combination h
+  have h1s : (1 : ℂ) - s ≠ 0 := sub_ne_zero.mpr (Ne.symm hs1)
+  field_simp [hsp2, h1s] <;> ring
 
 /-- Accelerated odd Collatz step and the two-step radial selector used in the
 project's Stage-D mechanism. -/
@@ -111,9 +118,7 @@ theorem selfDualWord_fixed_iff (x : ℂ) :
   constructor
   · intro h
     unfold selfDualWord acceleratedOdd at h
-    have hx : x - 1 = 0 := by
-      linear_combination 4 * h
-    exact sub_eq_zero.mp hx
+    linear_combination -4 * h
   · rintro rfl
     norm_num [selfDualWord, acceleratedOdd]
 
