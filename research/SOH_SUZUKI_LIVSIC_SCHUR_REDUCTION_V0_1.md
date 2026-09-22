@@ -564,6 +564,113 @@ limit.
 
 ---
 
+## 7.1. Imaginary-axis parity reduction
+
+For
+
+\[
+z=iy,\qquad y>1/2,
+\]
+
+the corresponding zeta argument is the real zero-free point
+
+\[
+s=\frac12+y>1.
+\]
+
+Write
+
+\[
+c_y(x)=\cosh(yx),
+\qquad
+s_y(x)=\sinh(yx).
+\]
+
+Because \(T_a^{-1}\) preserves parity,
+
+\[
+\langle c_y,T_a^{-1}s_1\rangle
+=
+\langle s_y,T_a^{-1}c_1\rangle
+=0.
+\]
+
+Define the even/odd scalar channels
+
+\[
+C_a(y)
+:=
+\langle c_y,T_a^{-1}c_1\rangle,
+\qquad
+S_a(y)
+:=
+\langle s_y,T_a^{-1}s_1\rangle.
+\]
+
+Then
+
+\[
+\langle e^{yx},T_a^{-1}e^x\rangle=C_a(y)+S_a(y),
+\]
+
+\[
+\langle e^{yx},T_a^{-1}e^{-x}\rangle=C_a(y)-S_a(y),
+\]
+
+and (7.1) becomes
+
+\[
+\boxed{
+\chi_{a,\lambda}(iy)
+=
+\frac{1-y}{1+y}
+\frac{C_a(y)-S_a(y)}
+     {C_a(y)+S_a(y)}.
+}
+\tag{7.2}
+\]
+
+Thus the zero-free convergence problem splits into the two parity sectors
+already natural in Suzuki's analysis of \(A_a\).
+
+The target also simplifies. Put
+
+\[
+r(s):=\frac{\xi'(s)}{\xi(s)},
+\qquad
+r_0:=r(3/2)=\frac{B}{A}.
+\]
+
+For \(s=1/2+y>1\),
+
+\[
+f(iy)=\xi(s),
+\qquad
+f'(iy)=-i\xi'(s),
+\]
+
+so
+
+\[
+\boxed{
+\chi_\infty(iy)
+=
+\frac{r_0-r(s)}
+     {r_0+r(s)}.
+}
+\tag{7.3}
+\]
+
+The proof-bearing scalar target is therefore an equality between:
+
+- a Cayley transform of an even/odd finite-interval resolvent ratio; and
+- a Cayley transform of the classical logarithmic derivative
+  \(\xi'/\xi\) on the absolutely convergent half-plane \(s>1\).
+
+No zeta-zero locations enter either side of (7.2)--(7.3).
+
+---
+
 ## 8. True remaining obstruction: the shift \(\lambda\)
 
 Suzuki's unconditional finite construction requires
