@@ -470,7 +470,7 @@ unknown zeta zeros.
 
 ---
 
-## 7. The convergence condition is only scalar resolvent data
+## 7. Canonical parity gauge and scalar resolvent data
 
 Suzuki Section 6.3 proves
 
@@ -480,21 +480,79 @@ v_z=T_a^{-1}e_z,
 e_z(x)=e^{-izx}.
 \]
 
-Therefore
+There is in fact a canonical equal-norm choice of the deficiency basis, so the
+phase normalization need not be left arbitrary.
+
+Let \(J\) be parity,
+
+\[
+(Ju)(x)=u(-x).
+\]
+
+Suzuki's parity decomposition shows that \(A_a\) commutes with \(J\).
+Therefore \(T_a=A_a-\lambda I\) and \(T_a^{-1}\) also commute with \(J\).
+Since
+
+\[
+Je_i=e_{-i},
+\]
+
+we have
+
+\[
+v_{-i}
+=
+T_a^{-1}e_{-i}
+=
+JT_a^{-1}e_i
+=
+Jv_i.
+\]
+
+Parity is unitary for both the \(L^2\) and \(T_a\) inner products, hence
+
+\[
+\boxed{
+\|v_i\|_{T_a}=\|v_{-i}\|_{T_a}.
+}
+\]
+
+Thus one may canonically choose
+
+\[
+\boxed{
+v_+=v_i=T_a^{-1}e_i,
+\qquad
+v_-=v_{-i}=T_a^{-1}e_{-i}.
+}
+\]
+
+For this choice,
 
 \[
 A_a(z)
 =
-\langle e_z,T_a^{-1}e_{+i}\rangle_{L^2}
-\]
-
-and, up to the fixed phase/normalization chosen for the equal-norm deficiency
-basis,
-
-\[
+\langle e_z,T_a^{-1}e_i\rangle_{L^2},
+\qquad
 B_a(z)
 =
-\langle e_z,T_a^{-1}e_{-i}\rangle_{L^2}.
+\langle e_z,T_a^{-1}e_{-i}\rangle_{L^2},
+\]
+
+and therefore
+
+\[
+\boxed{
+\chi_{a,\lambda}(z)
+=
+-\frac{z-i}{z+i}
+\frac{
+\langle e_z,T_a^{-1}e_{-i}\rangle_{L^2}
+}{
+\langle e_z,T_a^{-1}e_i\rangle_{L^2}
+}.
+}
+\tag{7.1}
 \]
 
 Consequently (6.1) asks only for convergence of the ratio of two scalar
