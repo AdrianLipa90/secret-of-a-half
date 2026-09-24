@@ -6,479 +6,117 @@
   "proof_of_rh": false,
   "open_frontier": "SOH-G003 real-rootedness, actual quotient PF3/PF-infinity, SOH-C005 full admissible Weil positivity, and RH remain open. SOH-G021 proves that the abstract G020 structural package does not imply PF3. SOH-G022 proves an exact local sufficient condition for the G006 solid margin. SOH-G023 gives an exact reciprocal-deficit normal form and reduces that local package to a monotone one-Lipschitz increment target, whose global validity for the actual Riemann coefficients remains open.",
   "claims": [
-    {
-      "id": "SOH-L001",
-      "status": "exact",
-      "statement": "Binary Shannon entropy is uniquely maximal at sigma=1/2, with value ln 2."
-    },
-    {
-      "id": "SOH-L002",
-      "status": "exact",
-      "statement": "Equal-gain normalized two-channel cancellation occurs only at sigma=1/2 and relative phase pi."
-    },
-    {
-      "id": "SOH-L003",
-      "status": "exact",
-      "statement": "The fixed set of K(s)=1-conjugate(s) is Re(s)=1/2."
-    },
-    {
-      "id": "SOH-L004",
-      "status": "exact",
-      "statement": "Entropy deficit from balance equals Bernoulli KL divergence and is positive away from 1/2."
-    },
-    {
-      "id": "SOH-L005",
-      "status": "exact_model_theorem",
-      "statement": "Within the binary-spinor representation, complement symmetry, maximal entropy, spinorial sign and phase-locked cancellation select sigma=1/2."
-    },
-    {
-      "id": "SOH-L006",
-      "status": "exact_classical",
-      "statement": "Eta and zeta have identical zero sets with multiplicity in the open critical strip."
-    },
-    {
-      "id": "SOH-L007",
-      "status": "exact",
-      "statement": "Unequal channel gains shift the cancellation point to |b|^2/(|a|^2+|b|^2)."
-    },
-    {
-      "id": "SOH-L008",
-      "status": "exact",
-      "statement": "The native paired theta state satisfies P(K(s)) = X conjugate(P(s))."
-    },
-    {
-      "id": "SOH-L009",
-      "status": "exact",
-      "statement": "The normalized native PhaseNav closure defect equals (Re(s)-1/2)^2."
-    },
-    {
-      "id": "SOH-L010",
-      "status": "exact_classical",
-      "statement": "The continuous paired theta-Mellin detector equals xi(s)."
-    },
-    {
-      "id": "SOH-L011",
-      "status": "exact_finite_lemma",
-      "statement": "For an involution-fixed finite centred zero fixture, the PhaseNav-Weil matrix reduces to a positive-semidefinite Gram matrix."
-    },
-    {
-      "id": "SOH-L012",
-      "status": "exact",
-      "statement": "Omega(s)=s/(1-s) maps the critical line Re(s)=1/2 to the unit circle."
-    },
-    {
-      "id": "SOH-L013",
-      "status": "exact",
-      "statement": "Omega(K(s))=1/conjugate(Omega(s)) for K(s)=1-conjugate(s)."
-    },
-    {
-      "id": "SOH-L014",
-      "status": "exact",
-      "statement": "Re(s)=1/2 if and only if |Omega(s)|=1."
-    },
-    {
-      "id": "SOH-L015",
-      "status": "exact_reformulation",
-      "statement": "RH is equivalent to every transformed non-trivial zero lying on |Omega|=1."
-    },
-    {
-      "id": "SOH-L016",
-      "status": "exact",
-      "statement": "B=log|Omega| is K-odd; V=B^2 is non-negative and vanishes exactly on Re(s)=1/2."
-    },
-    {
-      "id": "SOH-L017",
-      "status": "exact",
-      "statement": "The Li coordinate z_L(s)=1-1/s equals -1/Omega(s)."
-    },
-    {
-      "id": "SOH-L018",
-      "status": "exact",
-      "statement": "z_L(K(s))=1/conjugate(z_L(s))."
-    },
-    {
-      "id": "SOH-L019",
-      "status": "exact_classical",
-      "statement": "With the standard symmetric zero-sum convention, Li coefficients are power sums in z_L(rho)."
-    },
-    {
-      "id": "SOH-L020",
-      "status": "exact",
-      "statement": "A reciprocal-conjugate quartet z=R exp(i phi) contributes L_n=4-2(R^n+R^-n)cos(n phi)."
-    },
-    {
-      "id": "SOH-L021",
-      "status": "exact",
-      "statement": "The local quartet growth radius is max(R,R^-1)=exp(|B(rho)|)."
-    },
-    {
-      "id": "SOH-L022",
-      "status": "exact",
-      "statement": "V(rho)=(log R_script(rho))^2 for the local Li growth radius."
-    },
-    {
-      "id": "SOH-L023",
-      "status": "exact",
-      "statement": "Every off-circle reciprocal-conjugate quartet has a local Li contribution with liminf equal to minus infinity."
-    },
-    {
-      "id": "SOH-L024",
-      "status": "exact",
-      "statement": "An off-axis zero maps to a singularity of the Li generating function inside the unit disk on the corresponding side of the functional symmetry."
-    },
-    {
-      "id": "SOH-L025",
-      "status": "exact_classical_criterion",
-      "statement": "Global Li non-negativity lambda_n>=0 for all n is equivalent to RH."
-    },
-    {
-      "id": "SOH-L026",
-      "status": "exact_classical_criterion",
-      "statement": "Under the standard admissible Weil setup, full Weil positivity is equivalent to RH."
-    },
-    {
-      "id": "SOH-L027",
-      "status": "exact_coordinate_reduction",
-      "statement": "B=log|Omega| is an additive log-radial coordinate for the prime-shift representation."
-    },
-    {
-      "id": "SOH-L028",
-      "status": "exact_standard_normalization",
-      "statement": "Prime arithmetic support occurs at additive shifts plus/minus log n in the screw/Weil representation."
-    },
-    {
-      "id": "SOH-L029",
-      "status": "exact_no_go",
-      "statement": "A single positive-weight hinge kernel h_a(t)=(|t|-a)_+ is indefinite; a two-point minor has determinant -a^2/4."
-    },
-    {
-      "id": "SOH-L030",
-      "status": "exact_no_go",
-      "statement": "Positivity of von Mangoldt weights alone cannot establish SOH-C005 term by term."
-    },
-    {
-      "id": "SOH-L031",
-      "status": "exact_reduction",
-      "statement": "Localized SOH-C005 reduces to non-negativity of the lowest spectral value lambda(a) of the localized arithmetic Weil operator."
-    },
-    {
-      "id": "SOH-L032",
-      "status": "exact_domain_monotonicity",
-      "statement": "For the standard localized Rayleigh domains C_c^infinity(-a,a), lambda(a) is non-increasing as a grows by nested-domain inclusion."
-    },
-    {
-      "id": "SOH-WA001",
-      "status": "exact_analytic",
-      "statement": "The Gaussian PhaseNav-Weil matrix test has the declared closed Fourier transform under the exp(-2 pi i x r) convention."
-    },
-    {
-      "id": "SOH-HM001",
-      "status": "exact_functional_analytic",
-      "statement": "Finite spans of translated-scaled Hermite PhaseNav channels are dense in Schwartz space."
-    },
-    {
-      "id": "SOH-HM002",
-      "status": "exact_analytic",
-      "statement": "The Hermite kernel has the declared closed Fourier transform and Hhat_mn(0)=delta_mn."
-    },
-    {
-      "id": "SOH-ZU001",
-      "status": "exact",
-      "statement": "Binary complement is conjugate to reciprocal inversion in projective odds coordinates."
-    },
-    {
-      "id": "SOH-ZU002",
-      "status": "exact",
-      "statement": "The unique positive reciprocal fixed point corresponds to p=1/2."
-    },
-    {
-      "id": "SOH-ZU003",
-      "status": "exact_information_geometric",
-      "statement": "p=1/2 is the Fisher-Rao geodesic midpoint between the labelled pure states."
-    },
-    {
-      "id": "SOH-PT001",
-      "status": "exact_analytic",
-      "statement": "The logarithmic prime tail is compactified by z_tail=1/log(x) to a finite interval with a smooth flat endpoint."
-    },
-    {
-      "id": "SOH-PT002",
-      "status": "exact_analytic",
-      "statement": "Every fixed Hermite entry has the declared upper-incomplete-gamma prime-tail majorant under an explicit monotonicity condition."
-    },
-    {
-      "id": "SOH-PT003",
-      "status": "exact_finite_section",
-      "statement": "Entrywise prime-tail certificates imply a finite-section operator-norm bound and Weyl eigenvalue enclosure."
-    },
-    {
-      "id": "SOH-AC001",
-      "status": "exact_asymptotic",
-      "statement": "For every c>0, Q_N=exp(cN) forces the declared coarse Hermite finite-section prime-tail envelope to zero."
-    },
-    {
-      "id": "SOH-DHSE-M001",
-      "status": "exact_finite_computer_assisted",
-      "statement": "The declared primitive K=6 Stage-M forcing landscape for word lengths 1..4 is exactly classified; q=1 is uniquely maximal only for lengths 2 and 3."
-    },
-    {
-      "id": "SOH-C001",
-      "status": "open_bridge",
-      "statement": "A canonical zeta-state map converts every non-trivial zero into equal-gain complementary cancellation."
-    },
-    {
-      "id": "SOH-C002",
-      "status": "open_programme",
-      "statement": "A theta-kernel, analytic-vector, positivity or reproducing-kernel construction satisfies the canonical bridge requirements."
-    },
-    {
-      "id": "SOH-C003",
-      "status": "open_spectral_route",
-      "statement": "A self-adjoint operator has spectral determinant proportional to Xi."
-    },
-    {
-      "id": "SOH-C004",
-      "status": "open_bridge",
-      "statement": "Every non-trivial xi zero closes in the canonical self-dual PhaseNav shell."
-    },
-    {
-      "id": "SOH-C005",
-      "status": "open_global_positivity_bridge",
-      "statement": "The complete arithmetic PhaseNav-Weil form is non-negative on the full admissible test family by an independent proof not assuming an RH-equivalent premise."
-    },
-    {
-      "id": "SOH-G001",
-      "status": "exact_reduction_zero_closure_open",
-      "statement": "Inverse-boundary geometry reduces zero closure to the self-dual unit circle/half-layer and admits the holomorphic square quotient."
-    },
-    {
-      "id": "SOH-G002",
-      "status": "inactive_not_promoted",
-      "statement": "Historical intermediate quotient identifier; no standalone theorem is promoted under this ID in the integrated canon."
-    },
-    {
-      "id": "SOH-G003",
-      "status": "open_rh_equivalent",
-      "statement": "Every zero of the entire quotient F is real; with proved coefficient positivity this is equivalent to RH."
-    },
-    {
-      "id": "SOH-G004",
-      "status": "proved",
-      "statement": "The compactified exact Riemann-kernel weight W is strictly log-concave; prior strict log-concavity of the classical Xi kernel Phi is attributed to Gershon."
-    },
-    {
-      "id": "SOH-G005",
-      "status": "proved_pf2",
-      "statement": "The Taylor coefficients of F form a PF2 sequence."
-    },
-    {
-      "id": "SOH-G006",
-      "status": "exact_reduction_actual_pf3_open",
-      "statement": "The solid PF3 Toeplitz minor has the exact ratio-curvature reduction M_k; global non-negativity for the actual quotient coefficients remains open."
-    },
-    {
-      "id": "SOH-G007",
-      "status": "exact_conditional_quotient",
-      "statement": "The half-centered Collatz branch conjugacies are exact; the Uroboros torus exists only after the explicit scale identification u~32u."
-    },
-    {
-      "id": "SOH-G008",
-      "status": "proved",
-      "statement": "The xi scale defect obeys reciprocal antisymmetry and cannot be globally scale-periodic for nontrivial dilation."
-    },
-    {
-      "id": "SOH-G009",
-      "status": "proved_finite_orbit_identity",
-      "statement": "The selected five-halving chain is an exact hyperbolic/Mobius translation to the centered half-layer."
-    },
-    {
-      "id": "SOH-G010",
-      "status": "proved",
-      "statement": "On the positive real u-axis the scale defect has the unique sign-changing crossing u=a^-1/2."
-    },
-    {
-      "id": "SOH-G011",
-      "status": "proved_open_extension",
-      "statement": "The scale defect has the symmetry-forced simple pair u=+/-a^-1/2 exchanged by the Euler half-period; additional complex defect zeros are not excluded."
-    },
-    {
-      "id": "SOH-G012",
-      "status": "proved",
-      "statement": "Riemann reflection and the Euler half-turn factor the canonical negative inverse; the projective operator group is V4."
-    },
-    {
-      "id": "SOH-G013",
-      "status": "proved",
-      "statement": "The G012 projective operators admit the Pauli/SU(2) lift Q8->V4 with kernel {+/-I}."
-    },
-    {
-      "id": "SOH-G014",
-      "status": "proved_later_strengthened",
-      "statement": "Only finitely many xi zeros can be paired by canonical negative inversion."
-    },
-    {
-      "id": "SOH-G015",
-      "status": "proved_later_strengthened",
-      "statement": "Only finitely many F roots can be paired by J(w)=1/(16w), with the stated involution-orbit classification."
-    },
-    {
-      "id": "SOH-G016",
-      "status": "proved",
-      "statement": "The paired xi and quotient spectra obey q(P_N)=P_J and |P_N|=2|P_J|."
-    },
-    {
-      "id": "SOH-G017",
-      "status": "proved_later_strengthened",
-      "statement": "Neither fixed value w=+/-1/4 is a root of F; any remaining paired sets have forced orbit divisibility."
-    },
-    {
-      "id": "SOH-G018",
-      "status": "proved_complete_no_go",
-      "statement": "The closed disk |w|<=1/4 is zero-free; consequently P_J=P_N=empty and negative inversion has no zero-to-zero spectral action."
-    },
-    {
-      "id": "SOH-G019",
-      "status": "proved",
-      "statement": "There is a unique R_star>0 with F(R_star)=2F(0), Re F(w)>0 on |w|<=R_star, and the rescaled positive coefficients are exactly normalized."
-    },
-    {
-      "id": "SOH-G020",
-      "status": "proved",
-      "statement": "The canonical rescaling gives a probability law with half its mass at index zero and half on positive indices; PF2 is preserved, masses decrease strictly, and the sharpened coefficient envelope holds."
-    },
-    {
-      "id": "SOH-G021",
-      "status": "proved_structural_no_go_actual_pf3_open",
-      "statement": "The abstract G020 package of positivity, half-mass normalization, strict mass decay, PF2 and the normalized envelope does not imply PF3; an exact counterexample has G006 margin -1271/2500. This does not decide PF3 for the actual coefficients of F."
-    },
-    {
-      "id": "SOH-G022",
-      "status": "proved_local_sufficient_condition_actual_pf3_open",
-      "statement": "The G006 solid PF3 margin has the exact decomposition M=(1-v)^3+v(1-w)[1-v(2-u)]+v(1-v)(w-v); if 0<v<1, v<=w<=1 and 1-v(2-u)>=0, then M>=(1-v)^3>0. The required ratio-curvature inequalities are not proved globally for the actual coefficients, and the upgrade from solid minors to full PF3 remains open."
-    },
-    {
-      "id": "SOH-G023",
-      "status": "proved_reciprocal_deficit_normal_form_global_law_open",
-      "statement": "For q_k=r_{k+1}/r_k and E_k=1/(1-q_k), the G006 solid PF3 margin satisfies M_k=[E_{k-1}E_{k+1}-(E_k-1)^2]/[E_{k-1}E_k^2E_{k+1}]. The G022 local conditions become a monotone one-Lipschitz reciprocal-deficit increment package; the global law 0<=E_{k+1}-E_k<=1 is not proved for the actual Riemann coefficients."
-    },
-    {
-      "id": "SOH-T001",
-      "status": "conditional",
-      "statement": "Under SOH-C001 and the channel assumptions, all non-trivial zeros lie on Re(s)=1/2."
-    },
-    {
-      "id": "SOH-T002",
-      "status": "conditional",
-      "statement": "Under SOH-C004, all non-trivial zeros lie on Re(s)=1/2."
-    },
-    {
-      "id": "SOH-T003",
-      "status": "conditional",
-      "statement": "Under SOH-C005 and the standard Weil correspondence, all non-trivial zeros lie on Re(s)=1/2."
-    },
-    {
-      "id": "SOH-T004",
-      "status": "conditional_reduction",
-      "statement": "Positivity of every finite Hermite section plus continuity extends non-negativity to the dense core."
-    },
-    {
-      "id": "SOH-N001",
-      "status": "numerical",
-      "statement": "The 18-pair detector is a low-height quadrature approximation to xi(s)."
-    },
-    {
-      "id": "SOH-N002",
-      "status": "numerical_falsification_witness",
-      "statement": "A declared synthetic off-axis quartet produces a negative minimum eigenvalue in the two-channel Gaussian probe."
-    },
-    {
-      "id": "SOH-N003",
-      "status": "numerical_arithmetic_audit",
-      "statement": "The declared prime-side matrix is stable between tested prime cutoffs and matches the low-height spectral receipt."
-    },
-    {
-      "id": "SOH-N004",
-      "status": "numerical_audit",
-      "statement": "The finite Hermite ladder through basis size six is cutoff-audited and PSD-tested."
-    },
-    {
-      "id": "SOH-N005",
-      "status": "numerical_certificate",
-      "statement": "For w=0.8, Q=100000 and N<=6, the largest certified prime-tail norm bound is 7.717202888999335e-13."
-    },
-    {
-      "id": "SOH-N006",
-      "status": "numerical_certificate",
-      "statement": "For the declared adaptive schedule through N<=20, all sharp tail certificates pass 1e-12; the maximum is 3.280365246530569e-14 at N=5."
-    },
-    {
-      "id": "SOH-D001",
-      "status": "exact_finite_counterexample",
-      "statement": "Reciprocal symmetry alone does not force the self-dual point to be a global maximum in the declared Stage-M universe."
-    },
-    {
-      "id": "SOH-H001",
-      "status": "exploratory_hypothesis",
-      "statement": "DEFINED_ZERO and UNDEFINED_BOTTOM are informational boundary labels; IEEE NaN is not a numeric endpoint."
-    },
-    {
-      "id": "SOH-RZ001",
-      "status": "exact_within_declared_relational_model",
-      "statement": "For normalized complement J(sigma)=1-sigma, the unique fixed point is sigma=1/2, equivalently centered coordinate x=0."
-    },
-    {
-      "id": "SOH-RZ002",
-      "status": "exact_within_declared_relational_model",
-      "statement": "The Shannon deficit ln2-H2(sigma)=D_KL((sigma,1-sigma)||(1/2,1/2)) is non-negative and vanishes exactly at sigma=1/2; its derivative has the same unique stationary point."
-    },
-    {
-      "id": "SOH-RZ003",
-      "status": "exact_within_declared_relational_model",
-      "statement": "For a finite or countable family of positive relational action-defect terms, S_rel=0 iff every local relational dynamical vector vanishes and every complementary coordinate equals 1/2."
-    },
-    {
-      "id": "SOH-RZ004",
-      "status": "conditional_rh_corollary",
-      "statement": "If every non-trivial xi zero is independently established to be a global relational zero-mode governed by RZ-A1/RZ-A2, then every such zero has Re(rho)=1/2."
-    },
-    {
-      "id": "SOH-RZ005",
-      "status": "exact_formal_crosswalk",
-      "statement": "For s != 0,1, the reciprocal-conjugation defect equals 4*(Re(s)-1/2)^2/(|s|^2|1-s|^2), hence it vanishes exactly on Re(s)=1/2."
-    },
-    {
-      "id": "SOH-RZ006",
-      "status": "exact_formal_pointwise_conditional_rh_theorem",
-      "statement": "If a scalar energy E vanishes on every non-trivial zeta zero and a strictly positive pointwise coefficient c(s) satisfies c(s)*Delta_RC(Omega(s)) <= E(s) on those zeros, then the Riemann Hypothesis follows. Formalized in Lean by riemannHypothesis_of_pointwise_coercive_zero_energy; the earlier uniform-c theorem remains valid."
-    },
-    {
-      "id": "SOH-RZ007",
-      "status": "exact_rh_equivalence_firewall",
-      "statement": "The condition that the half-axis defect (equivalently the reciprocal-conjugation defect) vanishes on every non-trivial zeta zero is equivalent to the Riemann Hypothesis; therefore it cannot be used as an independent premise without an external derivation."
-    },
-    {
-      "id": "SOH-RZ008",
-      "status": "exact_relational_model_coercivity",
-      "statement": "For 0<Re(s)<1 and s!=0,1, D_H(Re(s)) >= 2(Re(s)-1/2)^2 = (|s|^2|1-s|^2/2)*Delta_RC(Omega(s)). Any declared non-negative U(1)/holonomy energy terms strengthen this pointwise coercivity."
-    },
-    {
-      "id": "SOH-RZ009",
-      "status": "axiomatic_occam_rh_theorem",
-      "statement": "Under the universal relational-zero realization principle R0, xi(rho)=0 implies zero canonical relational action-defect. Together with SOH-RZ008 this forces Delta_RC(Omega(rho))=0 and hence Re(rho)=1/2 for every non-trivial zero. Thus RH is a theorem inside the declared Occam relational system; R0 is not claimed as an independently proved theorem of standard analysis."
-    }
+    {"id":"SOH-L001","status":"exact","statement":"Binary Shannon entropy is uniquely maximal at sigma=1/2, with value ln 2."},
+    {"id":"SOH-L002","status":"exact","statement":"Equal-gain normalized two-channel cancellation occurs only at sigma=1/2 and relative phase pi."},
+    {"id":"SOH-L003","status":"exact","statement":"The fixed set of K(s)=1-conjugate(s) is Re(s)=1/2."},
+    {"id":"SOH-L004","status":"exact","statement":"Entropy deficit from balance equals Bernoulli KL divergence and is positive away from 1/2."},
+    {"id":"SOH-L005","status":"exact_model_theorem","statement":"Within the binary-spinor representation, complement symmetry, maximal entropy, spinorial sign and phase-locked cancellation select sigma=1/2."},
+    {"id":"SOH-L006","status":"exact_classical","statement":"Eta and zeta have identical zero sets with multiplicity in the open critical strip."},
+    {"id":"SOH-L007","status":"exact","statement":"Unequal channel gains shift the cancellation point to |b|^2/(|a|^2+|b|^2)."},
+    {"id":"SOH-L008","status":"exact","statement":"The native paired theta state satisfies P(K(s)) = X conjugate(P(s))."},
+    {"id":"SOH-L009","status":"exact","statement":"The normalized native PhaseNav closure defect equals (Re(s)-1/2)^2."},
+    {"id":"SOH-L010","status":"exact_classical","statement":"The continuous paired theta-Mellin detector equals xi(s)."},
+    {"id":"SOH-L011","status":"exact_finite_lemma","statement":"For an involution-fixed finite centred zero fixture, the PhaseNav-Weil matrix reduces to a positive-semidefinite Gram matrix."},
+
+    {"id":"SOH-L012","status":"exact","statement":"Omega(s)=s/(1-s) maps the critical line Re(s)=1/2 to the unit circle."},
+    {"id":"SOH-L013","status":"exact","statement":"Omega(K(s))=1/conjugate(Omega(s)) for K(s)=1-conjugate(s)."},
+    {"id":"SOH-L014","status":"exact","statement":"Re(s)=1/2 if and only if |Omega(s)|=1."},
+    {"id":"SOH-L015","status":"exact_reformulation","statement":"RH is equivalent to every transformed non-trivial zero lying on |Omega|=1."},
+    {"id":"SOH-L016","status":"exact","statement":"B=log|Omega| is K-odd; V=B^2 is non-negative and vanishes exactly on Re(s)=1/2."},
+    {"id":"SOH-L017","status":"exact","statement":"The Li coordinate z_L(s)=1-1/s equals -1/Omega(s)."},
+    {"id":"SOH-L018","status":"exact","statement":"z_L(K(s))=1/conjugate(z_L(s))."},
+    {"id":"SOH-L019","status":"exact_classical","statement":"With the standard symmetric zero-sum convention, Li coefficients are power sums in z_L(rho)."},
+    {"id":"SOH-L020","status":"exact","statement":"A reciprocal-conjugate quartet z=R exp(i phi) contributes L_n=4-2(R^n+R^-n)cos(n phi)."},
+    {"id":"SOH-L021","status":"exact","statement":"The local quartet growth radius is max(R,R^-1)=exp(|B(rho)|)."},
+    {"id":"SOH-L022","status":"exact","statement":"V(rho)=(log R_script(rho))^2 for the local Li growth radius."},
+    {"id":"SOH-L023","status":"exact","statement":"Every off-circle reciprocal-conjugate quartet has a local Li contribution with liminf equal to minus infinity."},
+    {"id":"SOH-L024","status":"exact","statement":"An off-axis zero maps to a singularity of the Li generating function inside the unit disk on the corresponding side of the functional symmetry."},
+    {"id":"SOH-L025","status":"exact_classical_criterion","statement":"Global Li non-negativity lambda_n>=0 for all n is equivalent to RH."},
+    {"id":"SOH-L026","status":"exact_classical_criterion","statement":"Under the standard admissible Weil setup, full Weil positivity is equivalent to RH."},
+    {"id":"SOH-L027","status":"exact_coordinate_reduction","statement":"B=log|Omega| is an additive log-radial coordinate for the prime-shift representation."},
+    {"id":"SOH-L028","status":"exact_standard_normalization","statement":"Prime arithmetic support occurs at additive shifts plus/minus log n in the screw/Weil representation."},
+    {"id":"SOH-L029","status":"exact_no_go","statement":"A single positive-weight hinge kernel h_a(t)=(|t|-a)_+ is indefinite; a two-point minor has determinant -a^2/4."},
+    {"id":"SOH-L030","status":"exact_no_go","statement":"Positivity of von Mangoldt weights alone cannot establish SOH-C005 term by term."},
+    {"id":"SOH-L031","status":"exact_reduction","statement":"Localized SOH-C005 reduces to non-negativity of the lowest spectral value lambda(a) of the localized arithmetic Weil operator."},
+    {"id":"SOH-L032","status":"exact_domain_monotonicity","statement":"For the standard localized Rayleigh domains C_c^infinity(-a,a), lambda(a) is non-increasing as a grows by nested-domain inclusion."},
+
+    {"id":"SOH-WA001","status":"exact_analytic","statement":"The Gaussian PhaseNav-Weil matrix test has the declared closed Fourier transform under the exp(-2 pi i x r) convention."},
+    {"id":"SOH-HM001","status":"exact_functional_analytic","statement":"Finite spans of translated-scaled Hermite PhaseNav channels are dense in Schwartz space."},
+    {"id":"SOH-HM002","status":"exact_analytic","statement":"The Hermite kernel has the declared closed Fourier transform and Hhat_mn(0)=delta_mn."},
+    {"id":"SOH-ZU001","status":"exact","statement":"Binary complement is conjugate to reciprocal inversion in projective odds coordinates."},
+    {"id":"SOH-ZU002","status":"exact","statement":"The unique positive reciprocal fixed point corresponds to p=1/2."},
+    {"id":"SOH-ZU003","status":"exact_information_geometric","statement":"p=1/2 is the Fisher-Rao geodesic midpoint between the labelled pure states."},
+    {"id":"SOH-PT001","status":"exact_analytic","statement":"The logarithmic prime tail is compactified by z_tail=1/log(x) to a finite interval with a smooth flat endpoint."},
+    {"id":"SOH-PT002","status":"exact_analytic","statement":"Every fixed Hermite entry has the declared upper-incomplete-gamma prime-tail majorant under an explicit monotonicity condition."},
+    {"id":"SOH-PT003","status":"exact_finite_section","statement":"Entrywise prime-tail certificates imply a finite-section operator-norm bound and Weyl eigenvalue enclosure."},
+    {"id":"SOH-AC001","status":"exact_asymptotic","statement":"For every c>0, Q_N=exp(cN) forces the declared coarse Hermite finite-section prime-tail envelope to zero."},
+    {"id":"SOH-DHSE-M001","status":"exact_finite_computer_assisted","statement":"The declared primitive K=6 Stage-M forcing landscape for word lengths 1..4 is exactly classified; q=1 is uniquely maximal only for lengths 2 and 3."},
+
+    {"id":"SOH-C001","status":"open_bridge","statement":"A canonical zeta-state map converts every non-trivial zero into equal-gain complementary cancellation."},
+    {"id":"SOH-C002","status":"open_programme","statement":"A theta-kernel, analytic-vector, positivity or reproducing-kernel construction satisfies the canonical bridge requirements."},
+    {"id":"SOH-C003","status":"open_spectral_route","statement":"A self-adjoint operator has spectral determinant proportional to Xi."},
+    {"id":"SOH-C004","status":"open_bridge","statement":"Every non-trivial xi zero closes in the canonical self-dual PhaseNav shell."},
+    {"id":"SOH-C005","status":"open_global_positivity_bridge","statement":"The complete arithmetic PhaseNav-Weil form is non-negative on the full admissible test family by an independent proof not assuming an RH-equivalent premise."},
+
+    {"id":"SOH-G001","status":"exact_reduction_zero_closure_open","statement":"Inverse-boundary geometry reduces zero closure to the self-dual unit circle/half-layer and admits the holomorphic square quotient."},
+    {"id":"SOH-G002","status":"inactive_not_promoted","statement":"Historical intermediate quotient identifier; no standalone theorem is promoted under this ID in the integrated canon."},
+    {"id":"SOH-G003","status":"open_rh_equivalent","statement":"Every zero of the entire quotient F is real; with proved coefficient positivity this is equivalent to RH."},
+    {"id":"SOH-G004","status":"proved","statement":"The compactified exact Riemann-kernel weight W is strictly log-concave; prior strict log-concavity of the classical Xi kernel Phi is attributed to Gershon."},
+    {"id":"SOH-G005","status":"proved_pf2","statement":"The Taylor coefficients of F form a PF2 sequence."},
+    {"id":"SOH-G006","status":"exact_reduction_actual_pf3_open","statement":"The solid PF3 Toeplitz minor has the exact ratio-curvature reduction M_k; global non-negativity for the actual quotient coefficients remains open."},
+    {"id":"SOH-G007","status":"exact_conditional_quotient","statement":"The half-centered Collatz branch conjugacies are exact; the Uroboros torus exists only after the explicit scale identification u~32u."},
+    {"id":"SOH-G008","status":"proved","statement":"The xi scale defect obeys reciprocal antisymmetry and cannot be globally scale-periodic for nontrivial dilation."},
+    {"id":"SOH-G009","status":"proved_finite_orbit_identity","statement":"The selected five-halving chain is an exact hyperbolic/Mobius translation to the centered half-layer."},
+    {"id":"SOH-G010","status":"proved","statement":"On the positive real u-axis the scale defect has the unique sign-changing crossing u=a^-1/2."},
+    {"id":"SOH-G011","status":"proved_open_extension","statement":"The scale defect has the symmetry-forced simple pair u=+/-a^-1/2 exchanged by the Euler half-period; additional complex defect zeros are not excluded."},
+    {"id":"SOH-G012","status":"proved","statement":"Riemann reflection and the Euler half-turn factor the canonical negative inverse; the projective operator group is V4."},
+    {"id":"SOH-G013","status":"proved","statement":"The G012 projective operators admit the Pauli/SU(2) lift Q8->V4 with kernel {+/-I}."},
+    {"id":"SOH-G014","status":"proved_later_strengthened","statement":"Only finitely many xi zeros can be paired by canonical negative inversion."},
+    {"id":"SOH-G015","status":"proved_later_strengthened","statement":"Only finitely many F roots can be paired by J(w)=1/(16w), with the stated involution-orbit classification."},
+    {"id":"SOH-G016","status":"proved","statement":"The paired xi and quotient spectra obey q(P_N)=P_J and |P_N|=2|P_J|."},
+    {"id":"SOH-G017","status":"proved_later_strengthened","statement":"Neither fixed value w=+/-1/4 is a root of F; any remaining paired sets have forced orbit divisibility."},
+    {"id":"SOH-G018","status":"proved_complete_no_go","statement":"The closed disk |w|<=1/4 is zero-free; consequently P_J=P_N=empty and negative inversion has no zero-to-zero spectral action."},
+    {"id":"SOH-G019","status":"proved","statement":"There is a unique R_star>0 with F(R_star)=2F(0), Re F(w)>0 on |w|<=R_star, and the rescaled positive coefficients are exactly normalized."},
+    {"id":"SOH-G020","status":"proved","statement":"The canonical rescaling gives a probability law with half its mass at index zero and half on positive indices; PF2 is preserved, masses decrease strictly, and the sharpened coefficient envelope holds."},
+    {"id":"SOH-G021","status":"proved_structural_no_go_actual_pf3_open","statement":"The abstract G020 package of positivity, half-mass normalization, strict mass decay, PF2 and the normalized envelope does not imply PF3; an exact counterexample has G006 margin -1271/2500. This does not decide PF3 for the actual coefficients of F."},
+    {"id":"SOH-G022","status":"proved_local_sufficient_condition_actual_pf3_open","statement":"The G006 solid PF3 margin has the exact decomposition M=(1-v)^3+v(1-w)[1-v(2-u)]+v(1-v)(w-v); if 0<v<1, v<=w<=1 and 1-v(2-u)>=0, then M>=(1-v)^3>0. The required ratio-curvature inequalities are not proved globally for the actual coefficients, and the upgrade from solid minors to full PF3 remains open."},
+    {"id":"SOH-G023","status":"proved_reciprocal_deficit_normal_form_global_law_open","statement":"For q_k=r_{k+1}/r_k and E_k=1/(1-q_k), the G006 solid PF3 margin satisfies M_k=[E_{k-1}E_{k+1}-(E_k-1)^2]/[E_{k-1}E_k^2E_{k+1}]. The G022 local conditions become a monotone one-Lipschitz reciprocal-deficit increment package; the global law 0<=E_{k+1}-E_k<=1 is not proved for the actual Riemann coefficients."},
+
+    {"id":"SOH-T001","status":"conditional","statement":"Under SOH-C001 and the channel assumptions, all non-trivial zeros lie on Re(s)=1/2."},
+    {"id":"SOH-T002","status":"conditional","statement":"Under SOH-C004, all non-trivial zeros lie on Re(s)=1/2."},
+    {"id":"SOH-T003","status":"conditional","statement":"Under SOH-C005 and the standard Weil correspondence, all non-trivial zeros lie on Re(s)=1/2."},
+    {"id":"SOH-T004","status":"conditional_reduction","statement":"Positivity of every finite Hermite section plus continuity extends non-negativity to the dense core."},
+
+    {"id":"SOH-N001","status":"numerical","statement":"The 18-pair detector is a low-height quadrature approximation to xi(s)."},
+    {"id":"SOH-N002","status":"numerical_falsification_witness","statement":"A declared synthetic off-axis quartet produces a negative minimum eigenvalue in the two-channel Gaussian probe."},
+    {"id":"SOH-N003","status":"numerical_arithmetic_audit","statement":"The declared prime-side matrix is stable between tested prime cutoffs and matches the low-height spectral receipt."},
+    {"id":"SOH-N004","status":"numerical_audit","statement":"The finite Hermite ladder through basis size six is cutoff-audited and PSD-tested."},
+    {"id":"SOH-N005","status":"numerical_certificate","statement":"For w=0.8, Q=100000 and N<=6, the largest certified prime-tail norm bound is 7.717202888999335e-13."},
+    {"id":"SOH-N006","status":"numerical_certificate","statement":"For the declared adaptive schedule through N<=20, all sharp tail certificates pass 1e-12; the maximum is 3.280365246530569e-14 at N=5."},
+    {"id":"SOH-D001","status":"exact_finite_counterexample","statement":"Reciprocal symmetry alone does not force the self-dual point to be a global maximum in the declared Stage-M universe."},
+    {"id":"SOH-H001","status":"exploratory_hypothesis","statement":"DEFINED_ZERO and UNDEFINED_BOTTOM are informational boundary labels; IEEE NaN is not a numeric endpoint."},
+    {"id":"SOH-RZ001","status":"exact_within_declared_relational_model","statement":"For normalized complement J(sigma)=1-sigma, the unique fixed point is sigma=1/2, equivalently centered coordinate x=0."},
+    {"id":"SOH-RZ002","status":"exact_within_declared_relational_model","statement":"The Shannon deficit ln2-H2(sigma)=D_KL((sigma,1-sigma)||(1/2,1/2)) is non-negative and vanishes exactly at sigma=1/2; its derivative has the same unique stationary point."},
+    {"id":"SOH-RZ003","status":"exact_within_declared_relational_model","statement":"For a finite or countable family of positive relational action-defect terms, S_rel=0 iff every local relational dynamical vector vanishes and every complementary coordinate equals 1/2."},
+    {"id":"SOH-RZ004","status":"conditional_rh_corollary","statement":"If every non-trivial xi zero is independently established to be a global relational zero-mode governed by RZ-A1/RZ-A2, then every such zero has Re(rho)=1/2."},
+    {"id":"SOH-RZ005","status":"exact_formal_crosswalk","statement":"For s != 0,1, the reciprocal-conjugation defect equals 4*(Re(s)-1/2)^2/(|s|^2|1-s|^2), hence it vanishes exactly on Re(s)=1/2."},
+    {"id":"SOH-RZ006","status":"exact_formal_pointwise_conditional_rh_theorem","statement":"If a scalar energy E vanishes on every non-trivial zeta zero and a strictly positive pointwise coefficient c(s) satisfies c(s)*Delta_RC(Omega(s)) <= E(s) on those zeros, then the Riemann Hypothesis follows. Formalized in Lean by riemannHypothesis_of_pointwise_coercive_zero_energy; the earlier uniform-c theorem remains valid."},
+    {"id":"SOH-RZ007","status":"exact_rh_equivalence_firewall","statement":"The condition that the half-axis defect (equivalently the reciprocal-conjugation defect) vanishes on every non-trivial zeta zero is equivalent to the Riemann Hypothesis; therefore it cannot be used as an independent premise without an external derivation."},
+    {"id":"SOH-RZ008","status":"exact_relational_model_coercivity","statement":"For 0<Re(s)<1 and s!=0,1, D_H(Re(s)) >= 2(Re(s)-1/2)^2 = (|s|^2|1-s|^2/2)*Delta_RC(Omega(s)). Any declared non-negative U(1)/holonomy energy terms strengthen this pointwise coercivity."},
+    {"id":"SOH-RZ009","status":"axiomatic_occam_rh_theorem","statement":"Under the universal relational-zero realization principle R0, xi(rho)=0 implies zero canonical relational action-defect. Together with SOH-RZ008 this forces Delta_RC(Omega(rho))=0 and hence Re(rho)=1/2 for every non-trivial zero. Thus RH is a theorem inside the declared Occam relational system; R0 is not claimed as an independently proved theorem of standard analysis."}
   ],
   "legacy_aliases": {
-    "pre_v0.9:SOH-L012": "SOH-WA001",
-    "pre_v0.9:SOH-L013": "SOH-HM001",
-    "pre_v0.9:SOH-L014": "SOH-HM002",
-    "pre_v0.9:SOH-L015": "SOH-ZU001",
-    "pre_v0.9:SOH-L016": "SOH-ZU002",
-    "pre_v0.9:SOH-L017": "SOH-ZU003",
-    "pre_v0.9:SOH-L018": "SOH-PT001",
-    "pre_v0.9:SOH-L019": "SOH-PT002",
-    "pre_v0.9:SOH-L020": "SOH-PT003",
-    "pre_v0.9:SOH-L021": "SOH-AC001",
-    "pre_v0.9:SOH-L022": "SOH-DHSE-M001"
+    "pre_v0.9:SOH-L012":"SOH-WA001",
+    "pre_v0.9:SOH-L013":"SOH-HM001",
+    "pre_v0.9:SOH-L014":"SOH-HM002",
+    "pre_v0.9:SOH-L015":"SOH-ZU001",
+    "pre_v0.9:SOH-L016":"SOH-ZU002",
+    "pre_v0.9:SOH-L017":"SOH-ZU003",
+    "pre_v0.9:SOH-L018":"SOH-PT001",
+    "pre_v0.9:SOH-L019":"SOH-PT002",
+    "pre_v0.9:SOH-L020":"SOH-PT003",
+    "pre_v0.9:SOH-L021":"SOH-AC001",
+    "pre_v0.9:SOH-L022":"SOH-DHSE-M001"
   },
   "alias_rule": "Legacy aliases are historical provenance only. Canonical unprefixed SOH-L012 through SOH-L032 always mean the promoted Li/Weil claims in this ledger.",
   "nan_boundary": "IEEE NaN is an implementation marker, not a numeric endpoint."
