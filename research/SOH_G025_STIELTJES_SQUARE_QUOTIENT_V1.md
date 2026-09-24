@@ -349,9 +349,26 @@ r_1-r_2\ge r_2-r_3.
 }
 \]
 
-This is discrete convexity of the normalized coefficient ratios. Existing
-SOH-G005 PF2 proves monotone ratios but does not by itself prove this stronger
-second-difference sign.
+This is discrete convexity of the normalized coefficient ratios.
+
+**Provenance correction (18 September 2026).** SOH-G005 PF2 controls the raw
+coefficient ratios
+\[
+p_k=\frac{a_k}{a_{k-1}},
+\]
+but does **not** by itself imply monotonicity of
+\[
+r_k=\frac{\gamma_k}{\gamma_{k-1}},\qquad \gamma_k=k!a_k.
+\]
+The monotonicity \(r_k\ge r_{k+1}\) follows from the stronger normalized
+Turán inequality
+\[
+\gamma_k^2\ge \gamma_{k-1}\gamma_{k+1},
+\]
+classically due to Csordas--Norfolk--Varga for the Riemann-Xi coefficients.
+Michałowski's 2026 coefficient-minor work uses the same normalization and
+provides a modern independent source for this provenance. The G025
+second-difference gate remains strictly stronger than first-order monotonicity.
 
 If \(p_k=a_k/a_{k-1}\), then \(r_k=kp_k\), so the same gate is
 
@@ -397,7 +414,8 @@ The current hierarchy is:
 
 ```text
 G001 exact square quotient
-    -> G005 PF2 / monotone coefficient ratios
+    -> G005 PF2 / monotone raw ratios p_k
+    -> Csordas--Norfolk--Varga normalized Turán / monotone r_k
     -> G006 PF3 ratio-curvature frontier
     -> G025 Stieltjes dual-Hankel / S-fraction frontier
 ```
@@ -447,6 +465,98 @@ promote an RH-level sign.
 | D1 iff `r1-2r2+r3 >= 0` under positive prefactors | EXACT |
 | full Stieltjes positivity for the Riemann quotient | OPEN / RH_EQUIVALENT |
 | Riemann hypothesis | OPEN |
+
+## 11. PRIOR_ART_AND_INDEPENDENT_REDISCOVERY
+
+This section is normative provenance. Mathematical overlap is credited even
+when the same structure was re-derived independently inside the SOH/TIR work.
+INDEPENDENT_REDISCOVERY means only that the project derivation was obtained
+without using the cited source at that step; it is **not** a priority claim.
+
+### 11.1 PRIOR_ART
+
+- **Csordas--Norfolk--Varga (1986):** unconditional Turán inequalities for the
+  normalized Riemann-Xi coefficients. In the present notation the relevant
+  normalization is \(\gamma_k=k!a_k\). Credit for the first-order monotonicity
+  of \(r_k=\gamma_k/\gamma_{k-1}\) belongs here, not to G005 PF2 alone.
+- **Lagarias (1999, correction 2005):** positivity/Pick-Nevanlinna formulation
+  for the logarithmic derivative of \(\xi\), forming the classical analytic
+  background for the XF-9 normalized-force route.
+- **Sokal (2022) and Sokal--Walrad (2024):** Stieltjes moment,
+  logarithmic-derivative, and continued-fraction criteria underlying the
+  moment/Hankel/S-fraction language used in G025.
+- **Csordas (2013), Dimitrov--Xu (2016), Wang--Yang (2024):** positive-definite
+  kernels, Wronskian/Laguerre inequalities, and complete-monotonicity machinery
+  in the Riemann-Xi setting.
+- **Planat--Solé (2026):** second-level concavity of the first Laguerre
+  expression and associated double-Turán inequalities. These results are used
+  only where their hypotheses and exact algebraic interface have been checked.
+- **Michałowski (2026):** explicit all-order asymptotic positivity for
+  consecutive Toeplitz minors of the Xi coefficient sequence, plus a certified
+  PF_5 failure for the continuous de Bruijn--Newman kernel. These results are
+  also a firewall against identifying coefficient total positivity with
+  continuous-kernel total positivity.
+- **Denisov--Yattselev (2026):** Nevanlinna--Pick, Loewner-kernel,
+  sign-regularity, Gram-total-positivity, and Pólya-frequency machinery in one
+  framework. This is directly relevant to the G025/XF-9 operator interface.
+- **Covei (2026):** independent formalization of the pole obstruction for
+  naive pointwise logarithmic-derivative concavity and a spectral-averaging
+  regularization.
+- **Najnudel--Nikeghbali (2026):** Stieltjes transforms of positive point
+  measures and zeta-zero logarithmic-derivative limits, relevant to controlled
+  zero-measure resolvent formulations.
+- **Banerjee--Bringmann--Rolen (2026):** Jensen--Pólya framework for higher
+  Turán/Laguerre inequalities, infinite log-concavity, and Toeplitz
+  determinants; potentially relevant to all-order tail control.
+- **Campbell--Jalowy (2026) and Polson (2026):** complementary Pólya--Schur,
+  Cauchy-root, Jacobi/resolvent, Thorin/Stieltjes, and probabilistic
+  formulations around Xi. They are methodological context, not imported
+  proofs of the G025 gates.
+
+Bibliographic keys for these items are maintained in `references/v09.bib`.
+
+### 11.2 INDEPENDENT_REDISCOVERY
+
+The following structures were derived in the project before the targeted
+18 September 2026 preprint spider, but overlap with established or concurrent
+literature and therefore carry **no priority claim**:
+
+1. using \(F'/F\) as the natural resolvent of the square quotient;
+2. reading its alternating Taylor coefficients as moment data;
+3. expressing the two Stieltjes Hankel families as Gram kernels;
+4. regularizing logarithmic-derivative poles by multiplying through by the
+   underlying entire function;
+5. treating Pick/Loewner positivity, Gram positivity, and determinant
+   inequalities as different coordinate views of one operator geometry.
+
+Where a literature theorem supplies the same implication, the literature
+theorem is the credited source and the project derivation is recorded only as
+an independent cross-check.
+
+### 11.3 PROJECT-SPECIFIC CROSSWALKS
+
+As of the literature search dated 18 September 2026, the following are kept as
+project-specific constructions rather than claims of historical priority:
+
+- the explicit identification of the SOH native closure defect
+  \[
+  r=(\Re s-\tfrac12)^2
+  \]
+  with the radial variable used by the Xi modulus surface in TIR XF-9;
+- the exact coordinate crosswalk from the SOH square quotient
+  \(\xi(1/2+z)=F(z^2)\) and its dual Stieltjes Gram kernels to the
+  pole-free Xi/de Branges kernel of XF-9;
+- the exact finite G025 identity
+  \[
+  D_1=\frac{r_1^2r_2}{2}(r_1-2r_2+r_3),
+  \]
+  used to expose the first Stieltjes ratio-curvature gate;
+- the later boundary reduction through the local scalar decomposition
+  \(s^3\mathcal B=A_3+xA_4\), pending its own certificate writeback.
+
+If a pre-existing equivalent result is later identified, this section must be
+updated and credit transferred immediately. The repository treats provenance
+as append-correctable, not as a fixed ownership assertion.
 
 ## References
 
