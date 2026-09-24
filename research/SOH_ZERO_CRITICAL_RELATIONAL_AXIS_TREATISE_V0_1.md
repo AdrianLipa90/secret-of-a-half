@@ -3,7 +3,7 @@
 ## A three-sided Occam closure theorem for the Secret-of-a-Half programme
 
 **Date:** 24 September 2026  
-**Status:** EXACT RELATIONAL/GEOMETRIC THEOREMS + EXACT AXIOMATIC RH IMPLICATION + ANALYTIC INCOMING EDGE EXPLICITLY SEPARATED  
+**Status:** EXACT RELATIONAL/GEOMETRIC THEOREMS + DERIVED ENERGY COERCIVITY + EXACT OCCAM-SYSTEM RH THEOREM / R0 EXTERNAL FIREWALL  
 **Author:** Adrian Lipa
 
 ---
@@ -40,9 +40,16 @@ through the exact reciprocal-conjugation defect
 
 Thus three routes—relational fixed-point geometry, Shannon/KL information geometry, and projective/operator geometry—share one zero locus.
 
-The formal Lean layer already proves the shortest endgame: if an independently constructed non-negative energy \(E\) vanishes on every non-trivial zeta zero and coercively dominates the reciprocal-conjugation defect with a positive constant, then the Riemann Hypothesis follows. This is the minimal Occam proof channel.
+The energy/coercivity edge is not an additional axiom. Strong convexity of the Shannon defect gives
 
-Within an axiomatic system that includes that incoming energy axiom, RH is therefore a theorem and the proof channel is closed. However, the formal layer also proves that the bare statement 'the half-axis defect vanishes on every non-trivial zeta zero' is equivalent to RH itself. Consequently the energy axiom must be independently derived, rather than merely postulated, before the result can be called an unconditional proof of RH in ordinary mathematics.
+\[
+D_H(\Re s)\ge2(\Re s-1/2)^2
+=\frac{|s|^2|1-s|^2}{2}\,\Delta_{\rm RC}(\Omega(s)),
+\]
+
+and the existing TIR \(U(1)\) Lagrangian/holonomy sector adds only non-negative energy. Thus the pointwise coercivity required by the formal Lean endgame is derived.
+
+The minimal Occam system is therefore reduced to one foundational zero-semantics statement, R0: a zero of an admitted relational observable is realized as zero of its canonical relational action-defect. Under R0, the derived energy inequality forces every non-trivial zeta zero onto \(\Re s=1/2\), so RH is a theorem inside that declared system. The formal layer also proves that zero half-axis/reciprocal defect on every non-trivial zeta zero is RH-equivalent; consequently R0 specialized to zeta zeros remains the external proof firewall unless independently derived in standard analysis.
 
 ---
 
