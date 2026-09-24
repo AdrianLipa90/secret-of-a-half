@@ -84,3 +84,28 @@ E(\rho)=0
 \]
 
 Within the enlarged Occam axiom system that includes the canonical zero-energy coercivity axiom, RH is a theorem and the axiomatic channel is closed. The repository still keeps `proof_of_rh=false` because the canonical zero-energy coercivity edge has not been independently derived from non-RH-equivalent analytic structure.
+
+## Derived relational-energy coercivity — 2026-09-24
+
+- **SOH-RZ008 — EXACT RELATIONAL-MODEL COERCIVITY.** For (0<Re s<1), (s\neq0,1),
+  \[
+  D_H(\Re s)
+  \ge
+  2(\Re s-1/2)^2
+  =
+  \frac{|s|^2|1-s|^2}{2}\,\Delta_{\rm RC}(\Omega(s)).
+  \]
+  This follows from (D_H''(\sigma)=1/[\sigma(1-\sigma)]\ge4) and the exact reciprocal-defect crosswalk. Existing non-negative TIR (U(1))/holonomy energy terms only strengthen the inequality.
+- **SOH-RZ009 — AXIOMATIC OCCAM RH THEOREM.** Under the universal relational-zero realization principle `R0`,
+  \[
+  \xi(\rho)=0
+  \Longrightarrow
+  E_{\rm rel}(\rho)=0
+  \Longrightarrow
+  \Delta_{\rm RC}(\Omega(\rho))=0
+  \Longrightarrow
+  \Re\rho=1/2.
+  \]
+  Therefore RH is a theorem inside the declared Occam relational system.
+
+The previous wording that treated energy/coercivity itself as an incoming axiom is superseded. The energy edge is `CLOSED / DERIVED`. The remaining foundational statement is `R0`. The external repository firewall remains: `R0` specialized to all non-trivial zeta zeros has not been independently proved in standard analysis and must not be silently counted as an unconditional RH resolution.
