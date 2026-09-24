@@ -27,7 +27,7 @@ Current G024 status:
 The active book contains:
 
 - frontmatter title, abstract, preface, and **Reader Roadmap and Evidence Map**;
-- 55 numbered chapters;
+- 58 numbered chapters;
 - appendices for elementary proofs, asymmetric channels, numerical tables,
   the claim ledger, and notation;
 - an unnumbered **Integrated Synthesis and Open Problems** backmatter chapter;
@@ -91,3 +91,7 @@ The following remain open in the integrated publication:
 - the Riemann Hypothesis.
 
 The monograph does not claim a proof of the Riemann Hypothesis.
+
+## Chapter 58 — Occam Relational Zero Triad
+
+Chapter 58 introduces the two-axiom RZ model and proves the same relational zero by complement fixed point, Shannon/KL equality, and positive Lagrange/action-defect closure. `SOH-RZ001`--`SOH-RZ003` are exact within the declared relational model; `SOH-RZ004` keeps the zeta-to-zero-mode binding explicit and conditional.
