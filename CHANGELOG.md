@@ -90,3 +90,13 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Added `DHSE-001-RECEIPT-PROVENANCE-AUDIT-2026-08-07.md` and receipt compatibility helpers instead of rewriting old receipts to satisfy regression tests.
 - Updated monograph metadata to `0.6.1-review — 7 August 2026` and documented the review-line build and claim boundaries.
 - Cross-review with TIR treats half-side fixed-point/entropy results as exact, TIR normalization as a model definition, and downstream phase-rate closure as exact only conditional on those definitions.
+
+## 2026-09-24 — Occam Relational Zero Triad v0.1
+
+- Reduced the relational-zero construction to two explicit structural axioms: normalized complementarity and a positive relational action-defect.
+- Added `SOH-RZ001`--`SOH-RZ003`, proving the same half-axis zero by complement fixed point, Shannon/KL equality, and relational Lagrange/action closure.
+- Added `SOH-RZ004` as the explicitly conditional Riemann corollary.
+- Added Chapter 58 and the standalone research note `research/SOH_RELATIONAL_ZERO_TRIAD_V0_1.md`.
+- Distinguished the project defect `S_rel = 0` from standard mechanical stationarity `delta S = 0`.
+- Preserved the astronomical Lagrange-point boundary: the project uses "Lagrange node" for a zero of a declared relational vector field and does not claim all celestial Lagrange points are midpoints.
+- Left `SOH-C001`, `SOH-C004`, `SOH-C005`, `SOH-G003`, actual PF3/PF-infinity and the external proof status of RH unchanged.
