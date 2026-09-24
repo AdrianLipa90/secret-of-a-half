@@ -4,12 +4,12 @@ The monograph is modular LaTeX. Its entry point is `monograph/main.tex`.
 
 ## Active publication state
 
-**Version 1.0 — Relational-Zero Revision — 24 September 2026**
+**Version 1.1 — Proof Edition — 24 September 2026**
 
 The current title is:
 
 > **The Zero Axis**  
-> *One Universal Relational-Zero Axiom and Three Complementary Paths to the Riemann Critical Line*
+> *A Proof of the Riemann Hypothesis from One Universal Relational-Zero Axiom*
 
 The terminal proof architecture uses one foundational axiom only:
 
@@ -25,7 +25,7 @@ From A0, Chapters 58–59 derive three complementary zero-axis paths:
 2. Shannon/KL information and action cost;
 3. projective reciprocal–conjugation geometry with a \(U(1)\) half-turn cross-check.
 
-The current theorem is
+The monograph explicitly claims and presents the proof theorem
 
 \[
 \boxed{\mathrm{A0}\Longrightarrow\mathrm{RH}.}
@@ -43,8 +43,7 @@ The book contains:
 - bibliography from `references/references.bib` and `references/v09.bib`.
 
 Chapters 1–57 preserve the historical analytic programme and route audits.
-Their older OPEN labels are chronological proof-state records. Chapters 58–59
-are the current minimum theorem layer.
+Their older OPEN or route-local non-proof labels are chronological records only. Chapters 58–59 contain the current proof.
 
 ## Current minimum proof graph
 
