@@ -133,6 +133,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: soh-half-kernel-${{ github.event.pull_request.head.sha || github.sha }}
+          retention-days: 1
           path: |
             soh-half-kernel-v0.1.json
             soh-half-kernel-v0.2.json
