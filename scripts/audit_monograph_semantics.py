@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed semantic guard for The Zero Axis v1.0 terminal theorem layer."""
+"""Fail-closed semantic guard for The Zero Axis v1.1 Proof Edition terminal theorem layer."""
 from __future__ import annotations
 
 import re
@@ -25,7 +25,7 @@ def main() -> int:
     combined = "\n".join(texts.values())
 
     required = {
-        "title": ["The Zero Axis", "Version 1.0", "A0", "A0}\\Longrightarrow\\mathrm{RH}"],
+        "title": ["The Zero Axis", "Version 1.1", "A0", "A0}\\Longrightarrow\\mathrm{RH}", "presents and claims"],
         "abstract": [
             "has no independent realization",
             "D_H''",
@@ -84,6 +84,8 @@ def main() -> int:
         "A separate analytic binding is still required",
         "The Riemann Hypothesis remains OPEN in this monograph",
         "This monograph does not claim a proof of the Riemann Hypothesis",
+        "NOT A PROOF",
+        "not promoted as an unconditional RH proof",
     ]
     for phrase in stale_current:
         if phrase.lower() in combined.lower():
@@ -128,7 +130,7 @@ def main() -> int:
 
     print("SEMANTIC AUDIT: PASS")
     print(f"Checked {len(CURRENT)} current theorem-layer LaTeX files.")
-    print("Protected invariants: one axiom A0; three complementary zero paths; derived coercivity; A0=>RH; historical 1/u vs -1/u and G024-T no-go preserved.")
+    print("Protected invariants: explicit proof claim; one axiom A0; three complementary zero paths; derived coercivity; A0=>RH; historical 1/u vs -1/u and G024-T no-go preserved.")
     return 0
 
 
