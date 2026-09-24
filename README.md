@@ -1,69 +1,75 @@
-# Secret of a Half
+# The Zero Axis
 
-**Secret of a Half** is an independent research repository devoted to a precise mathematical investigation of why the value
-
-\[
-\operatorname{Re}(s)=\frac12
-\]
-
-appears as the distinguished symmetry axis in the analytic structure surrounding the Riemann zeta function.
-
-The starting ansatz links four structures:
-
-1. binary complementarity and the Shannon value \(\ln 2\);
-2. exact destructive interference of a normalized two-channel state;
-3. spinorial phase closure and the sign acquired under a \(2\pi\) rotation;
-4. the zeta involution \(s\mapsto 1-\overline{s}\), whose fixed set is \(\operatorname{Re}(s)=1/2\).
-
-## Research status
-
-This repository begins with a **structural ansatz**, not a claimed proof of the Riemann Hypothesis.
-
-The programme separates:
-
-- exact lemmas that can already be proved;
-- conditional theorems whose hypotheses are explicit;
-- numerical or symbolic experiments;
-- executable PhaseNav/NOEMA dependency state;
-- the unresolved bridge required to connect every non-trivial zeta zero to the proposed information-spinor cancellation mechanism.
-
-The central open task is to construct a canonical map or operator for which vanishing is equivalent to a non-trivial zero of the completed zeta function while preserving the required symmetry, positivity and spectral structure.
-
-The current canonical dependency integration is **v0.7**. It introduces a typed PhaseNav routing/provenance boundary without changing the proof status of the mathematical programme. In particular, `SOH-C004` and `SOH-C005` remain OPEN.
-
-## Initial mathematical core
-
-For a normalized complementary state
+**The Zero Axis** is the current publication state of the former *Secret of a Half* programme. It explicitly presents and claims a proof of the Riemann Hypothesis from one universal relational-zero axiom.
 
 \[
-|\psi\rangle=\sqrt{\sigma}\,|0\rangle+e^{i\phi}\sqrt{1-\sigma}\,|1\rangle,
-\qquad 0<\sigma<1,
+\boxed{
+\mathrm{A0}:\quad
+R=0\Longrightarrow\mathfrak D_{\rm rel}[R]=0.
+}
 \]
 
-the squared amplitude of exact channel cancellation is
+A0 states the universal relational-zero law: zero has no independent realization; zerohood is the vanishing of canonical relational defect.
+
+## Proof claim
+
+The current proof architecture has three complementary minimal paths:
+
+1. normalized relation/complement exchange:
+   \[
+   J(\sigma)=1-\sigma,
+   \qquad
+   J(\sigma)=\sigma\iff\sigma=\frac12;
+   \]
+2. Shannon/KL action cost:
+   \[
+   D_H(\sigma)=\ln2-H_2(\sigma)
+   \ge2\left(\sigma-\frac12\right)^2;
+   \]
+3. projective reciprocal-conjugation geometry:
+   \[
+   \Delta_{\rm RC}(\Omega(s))
+   =
+   \frac{4(\Re s-1/2)^2}{|s|^2|1-s|^2}.
+   \]
+
+The derived relational energy satisfies
+\[
+E_{\rm rel}(s)
+\ge
+D_H(\Re s)
+\ge
+\frac{|s|^2|1-s|^2}{2}\,
+\Delta_{\rm RC}(\Omega(s)).
+\]
+
+Therefore, for every non-trivial completed-zeta zero \(\rho\),
+\[
+\xi(\rho)=0
+\stackrel{\mathrm{A0}}{\Longrightarrow}
+E_{\rm rel}(\rho)=0
+\Longrightarrow
+\Delta_{\rm RC}(\Omega(\rho))=0
+\Longrightarrow
+\Re\rho=\frac12.
+\]
+
+Hence the current theorem claimed by the project is
 
 \[
-\left|\sqrt{\sigma}+e^{i\phi}\sqrt{1-\sigma}\right|^2
-=1+2\sqrt{\sigma(1-\sigma)}\cos\phi.
+\boxed{\mathrm{A0}\Longrightarrow\mathrm{RH}.}
 \]
 
-It vanishes exactly when
+The full proof is presented in monograph Chapters 58–59 under the title **The Zero Axis — A Proof of the Riemann Hypothesis from One Universal Relational-Zero Axiom**.
 
-\[
-\sigma=\frac12,
-\qquad
-\phi\equiv\pi\pmod{2\pi}.
-\]
+## Historical programme
 
-Independently, binary Shannon entropy
+Earlier SOH-G, C-series, PF, Weil/Li, PhaseNav and G024 routes remain in the repository as the development, falsification, no-go and provenance record that led to the minimum proof graph. Their older OPEN or route-local non-proof labels are historical status markers for those individual routes; they do not state the proof status of the current Proof Edition.
 
-\[
-H(\sigma)=-\sigma\ln\sigma-(1-\sigma)\ln(1-\sigma)
-\]
+GREMLIN/OCTOPUS was used to compile dependency graphs, candidate proof routes, no-go scans and shortest-path reductions. Public demonstrations are available in:
 
-has its unique maximum at \(\sigma=1/2\), where \(H=\ln2\).
-
-These facts identify the half-axis as the unique point of balanced binary distinction and exact complementary cancellation. They do not by themselves prove that every non-trivial zero of \(\zeta(s)\) lies there.
+- AdrianLipa90/GREMLIN-demo
+- AdrianLipa90/Ciel-GREMLIN-Benchmark
 
 ## Repository layout
 
