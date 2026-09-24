@@ -1,0 +1,18 @@
+{
+  "schema": "SOH_STELLA_PARITY_CHIRAL_SWAP_V0_1",
+  "date": "2026-09-24",
+  "candidate_only": true,
+  "rh_claim": false,
+  "status": "PASS",
+  "checks": {
+    "star_square_identity": true,
+    "pplus_idempotent": true,
+    "pminus_idempotent": true,
+    "projectors_orthogonal": true,
+    "projectors_sum_identity": true,
+    "rank_trace_three_each": true,
+    "parity_hodge_anticommutation": true,
+    "parity_swaps_plus_to_minus": true,
+    "parity_swaps_minus_to_plus": true
+  }
+}
