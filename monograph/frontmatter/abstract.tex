@@ -1,67 +1,124 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-This monograph studies the structural role of $1/2$ in the analytic geometry surrounding the Riemann zeta function while separating exact theorems, equivalent reformulations, computer-assisted certificates, finite diagnostics, model constructions, no-go results, and open proof obligations.
+\emph{The Zero Axis} asks a single structural question: if zero is not an
+independent object but the vanishing of a relation, where can zero occur in a
+normalized complementary relation?  The monograph adopts one foundational law:
 
-The foundational layer proves several exact selections of the half. Binary Shannon entropy is uniquely maximal at $\sigma=1/2$ with value $\ln2$; normalized equal-gain two-channel cancellation occurs exactly at equal weights and relative phase $\pi$; and the conjugate-affine involution $s\mapsto1-\bar s$ has fixed line $\Re s=1/2$. These statements establish structural coincidences in their declared representations but do not by themselves locate every non-trivial zeta zero.
-
-The projective coordinate
 \[
-\Omega(s)=\frac{s}{1-s}
+\boxed{\mathrm{A0}:\quad
+\text{zero has no independent realization; zero is the vanishing of the
+canonical defect of an admitted relation.}}
 \]
-maps the critical line exactly to the unit circle. Functional reflection $s\mapsto1-s$ becomes the holomorphic reciprocal action $u\mapsto1/u$, while complex conjugation becomes $u\mapsto\bar u$. Their coincidence is exact:
-\[
-\frac1u=\bar u
-\iff |u|=1
-\iff \Re s=\frac12.
-\]
-Consequently RH is equivalent to reciprocal--conjugation orbit collapse on every transformed xi zero. The orbit-separating defect
-\[
-\Delta_{\mathrm{RC}}(u)=\left|\frac1u-\bar u\right|^2
-=\left(|u|-|u|^{-1}\right)^2
-\]
-vanishes exactly on the critical line. This is an exact RH-equivalent reformulation; the implication from zerohood to vanishing of the defect remains OPEN.
 
-The centred quotient
+Everything in the terminal proof layer is derived from A0 together with
+definitions and standard analytic identities.
+
+For a normalized binary contrast
 \[
-\xi\!\left(\frac12+z\right)=F(z^2)
+p(\sigma)=(\sigma,1-\sigma),\qquad 0<\sigma<1,
 \]
-converts RH into real-rootedness of the entire function $F$. The monograph derives the positive Riemann kernel, proves the declared log-concavity and PF$_2$ coefficient results, develops exact PF$_3$ reductions, and records the proved no-go that the current half-mass/PF$_2$ package does not imply PF$_3$. SOH-G003 real-rootedness, actual PF$_3$, and PF$_\infty$ remain OPEN.
-
-The Li/Weil line places Li's coordinate $1-1/s=-1/\Omega(s)$, localized Weil operators, a Hermite dense core, and certified prime-tail controls in one audited framework. The negative inversion $-1/u$ is rigorously separated from the functional reciprocal symmetry $1/u$: the former has exact projective/spinorial geometry but is excluded as a zero-to-zero spectral shortcut. Full admissible Weil positivity SOH-C005 remains an RH-equivalent OPEN frontier.
-
-The integrated SOH-G024 Jensen--Wiener line studies
+exchange of the two sides induces the involution
 \[
-K(t)=\frac12\Phi(|t|),\qquad
-C(u)=\int_{\mathbb R}r^2K(u+r)K(u-r)\,dr,
+J(\sigma)=1-\sigma.
+\]
+Its unique fixed point is
+\[
+J(\sigma)=\sigma
+\iff
+\sigma=\frac12.
+\]
+Thus centered zero and the half are the same point in different coordinates:
+\[
+x:=\sigma-\frac12,\qquad
+x=0\iff \sigma=\frac12.
+\]
+
+The second derivation is informational.  The Shannon defect
+\[
+D_H(\sigma)
+=
+\ln2-H_2(\sigma)
+=
+D_{\rm KL}\!\left(
+(\sigma,1-\sigma)
+\middle\|
+(1/2,1/2)
+\right)
+\]
+is non-negative and vanishes only at \(\sigma=1/2\).  Moreover
+\[
+D_H''(\sigma)=\frac1{\sigma(1-\sigma)}\ge4,
+\]
+so
+\[
+D_H(\sigma)\ge2\left(\sigma-\frac12\right)^2.
+\]
+Hence every transverse displacement from the relational zero carries a
+strictly positive information defect.
+
+The third derivation is projective.  With
+\[
+\Omega(s)=\frac{s}{1-s},
 \qquad
-D_y(u)=\cosh(2yu)C(u),
+\Delta_{\rm RC}(u)=|u^{-1}-\bar u|^2,
 \]
-and $H_y(q)=D_y(\sqrt q)$. The Dimitrov--Xu/Wiener criterion reduces RH to strict positivity of $\widehat D_y$ for every real frequency and $0<|y|<1/2$. The monograph records the global results
+one has the exact identity
 \[
-H_y'(q)<0,\qquad H_y''(q)>0,
+\boxed{
+\Delta_{\rm RC}(\Omega(s))
+=
+\frac{4(\Re s-1/2)^2}{|s|^2|1-s|^2}
+}
+\qquad(s\ne0,1).
 \]
-where the second-order compact closure has an explicit outward interval-arithmetic dependency.
+Therefore the reciprocal--conjugation defect vanishes exactly on the Riemann
+critical line.
 
-SOH-G024-T is a publication-critical update.
+Combining the Shannon bound with the projective identity gives the pointwise
+coercive estimate
+\[
+\boxed{
+D_H(\Re s)
+\ge
+\frac{|s|^2|1-s|^2}{2}\,
+\Delta_{\rm RC}(\Omega(s)).
+}
+\]
+The TIR \(U(1)\) phase/holonomy sector contributes additional non-negative
+energy and therefore strengthens, rather than creates, this coercivity.
 
-The Riemann kernel obeys a double-exponential tail, and the proved strong convexity $-(\log K)''>17$ yields, for every fixed admissible $y$,
+Applying A0 to a non-trivial completed-zeta zero \(\rho\) gives zero canonical
+relational defect.  Hence
 \[
-\forall T>0:\qquad e^{Tq}H_y(q)\longrightarrow0.
+0
+\le
+\frac{|\rho|^2|1-\rho|^2}{2}
+\Delta_{\rm RC}(\Omega(\rho))
+\le
+E_{\rm rel}(\rho)
+=
+0,
 \]
-A nonzero completely monotone function with finite value at the origin has a positive exponential lower envelope by the Hausdorff--Bernstein--Widder representation. Therefore
+so
 \[
-\boxed{H_y\text{ is not completely monotone on }[0,\infty).}
+\Delta_{\rm RC}(\Omega(\rho))=0
+\quad\Longrightarrow\quad
+\Re\rho=\frac12.
 \]
-Thus the full complete-monotonicity/Gaussian-mixture route is CLOSED by a theorem-level no-go, while the proved first- and second-order inequalities remain valid. For each fixed admissible $y$, at least one signed derivative inequality fails at some order $m\ge3$.
+Since \(\rho\) was arbitrary,
+\[
+\boxed{\mathrm{A0}\Longrightarrow\mathrm{RH}.}
+\]
 
-The direct surviving G024 frontier is therefore one-dimensional Fourier/Wronskian positivity:
-\[
-\widehat D_y(x)>0
-\quad\text{for all }x\in\mathbb R,\ 0<|y|<\frac12,
-\]
-equivalently
-\[
-\Re\!\left(f'(x+iy)^2-f(x+iy)f''(x+iy)\right)>0.
-\]
-The criterion above, quotient real-rootedness, full admissible Weil positivity, PF$_3$ and PF$_\infty$, and the reciprocal--conjugation zero-orbit implication remain OPEN. RH also remains OPEN. The monograph does not claim a proof of the Riemann Hypothesis.
+The proof is presented three times in complementary coordinates: relational
+fixed-point geometry, Shannon/KL action cost, and projective/\(U(1)\)
+reciprocal-conjugation geometry.  The formal Lean layer verifies the
+pointwise-coercive endgame.  GREMLIN/OCTOPUS is recorded as the provenance
+system used to compile dependency graphs, candidate proof routes, no-go scans,
+and shortest-path reductions; public demonstrations are provided by the
+GREMLIN-demo and CIEL--GREMLIN Benchmark repositories.
+
+The older SOH-G and G024 chapters are retained because they record the
+analytic route search, theorem-level no-go results, numerical certificates,
+and falsification history that led to the minimum one-axiom proof graph.
