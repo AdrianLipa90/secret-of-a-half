@@ -34,9 +34,9 @@ Several development snapshots used numbers L012–L022 for earlier arithmetic re
 
 Historical prose in development chapters that displays one of these old numeric IDs is governed by this migration table. It does **not** redefine the current V2 `SOH-L012`–`SOH-L032` identifiers.
 
-## Open firewall
+## Historical independent-route ledger
 
-`SOH-C001`–`SOH-C005` remain open according to their stated independent route scopes. In particular, SOH-C005 still asks for an independent proof of full admissible arithmetic Weil positivity. Those route obligations are no longer the proof status of the current monograph. The Zero Axis v1.1 explicitly claims the one-axiom proof `A0 => RH` in Chapters 58–59.
+`SOH-C001`–`SOH-C005` remain unfinished only in their own historical independent-route scopes. They are not prerequisites of the Version 1.1 proof. The Zero Axis v1.1 explicitly claims the one-axiom proof `A0 => RH` in Chapters 58–59.
 
 ## Promotion rule
 
