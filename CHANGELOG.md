@@ -112,3 +112,14 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Registered `SOH-RZ008` (derived relational-energy coercivity) and `SOH-RZ009` (RH theorem inside the minimal Occam relational system under R0).
 - Reduced the remaining Occam foundation to `R0`: analytic zero is realized as zero canonical relational action-defect.
 - Preserved the external proof firewall: R0 specialized to all non-trivial zeta zeros is not independently established in standard analysis.
+
+## 2026-09-24 — The Zero Axis v1.1 Proof Edition
+
+- Renamed the active monograph publication to **The Zero Axis — A Proof of the Riemann Hypothesis from One Universal Relational-Zero Axiom**.
+- Reduced the terminal architecture to the sole axiom `A0: R=0 => D_rel[R]=0`.
+- Reclassified normalized complementarity, Shannon/KL positivity, relational action cost, projective reciprocal-conjugation geometry, and pointwise coercivity as derived structure rather than additional axioms.
+- Made the publication claim explicit: `A0 => RH`.
+- Rewrote the title page, abstract, preface, roadmap, Chapters 58–59, final synthesis, monograph README, repository README, and claim ledgers so the current proof status is not contradicted by obsolete route-local wording.
+- Historical OPEN/non-proof statements in Chapters 1–57 are retained only as chronological status of those individual routes; they do not state the status of the v1.1 proof edition.
+- Updated the project-level machine ledger to `proof_of_rh=true` with proof basis `ONE_UNIVERSAL_RELATIONAL_ZERO_AXIOM_A0`; independent legacy routes may remain open without being prerequisites of the proof.
+- Retained GREMLIN/OCTOPUS provenance, formal Lean endgame, bibliography, reproducible CI, and fail-closed semantic/build audits.
