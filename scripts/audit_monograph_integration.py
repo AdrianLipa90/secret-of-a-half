@@ -94,7 +94,7 @@ def main() -> None:
             MONO / "backmatter" / "final_synthesis.tex",
         ]
     )
-    for token in ["SOH-G024-T", "not completely monotone", "CLOSED ROUTE / NO-GO", "u^{-1}=\\bar u", "Delta_{\\mathrm{RC}}", "SOH-RZ003", "SOH-RZ006", "Relational Lagrange--Zero Theorem", "Occam axiomatic RH theorem", "Riemann Hypothesis"]:
+    for token in ["SOH-G024-T", "not completely monotone", "CLOSED ROUTE / NO-GO", "u^{-1}=\\bar u", "Delta_{\\mathrm{RC}}", "SOH-RZ003", "SOH-RZ006", "Relational Lagrange--Zero Theorem", "Axiomatic Occam RH theorem", "Riemann Hypothesis"]:
         if token not in required_text:
             fail(f"publication synthesis missing token {token!r}")
     if "OPEN" not in required_text:
