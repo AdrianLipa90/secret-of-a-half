@@ -55,3 +55,51 @@ Promotion ledger:
 - identification with Stella Octangula dual tetrahedra: CANDIDATE CROSSWALK
 - identification with affine half-bifurcation algebra: OPEN CROSSWALK
 - RH closure from this split: NOT IMPLIED
+
+
+## Parity exchanges the half sectors
+
+The antipodal tetrahedral layer acts on the four-vector carrier as spatial parity
+
+\[
+P=\operatorname{diag}(1,-1,-1,-1).
+\]
+
+Its exterior-square action in the ordered bivector basis
+\((01,02,03,23,31,12)\) is
+
+\[
+\boxed{
+K=C_2(P)=\operatorname{diag}(-I_3,+I_3).
+}
+\]
+
+For the Euclidean Hodge matrix \(\star\) used by the exact half projectors,
+
+\[
+\boxed{
+K\star=-\star K.
+}
+\]
+
+Hence
+
+\[
+\boxed{
+K P_+=P_-K,
+\qquad
+K P_-=P_+K.
+}
+\]
+
+So orientation-reversing spatial parity exchanges the self-dual and anti-self-dual three-dimensional sectors.
+
+This gives a precise project-level phase/antiphase crosswalk:
+
+\[
+3_+\leftrightarrow3_-.
+\]
+
+It does not identify the two sectors with matter/antimatter, chirality, or any physical field without an additional theorem.
+
+In Lorentzian signature the analogous statement is formulated on the complexified \(\pm i\) Hodge eigenspaces; the real Euclidean projector formula is not silently reused.
