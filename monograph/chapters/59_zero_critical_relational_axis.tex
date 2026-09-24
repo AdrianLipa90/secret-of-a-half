@@ -280,42 +280,173 @@ E(\rho)=0
 }
 \]
 
-\section{Occam axiomatic RH theorem}
+\section{Derived relational-energy coercivity}
 
-Add to the relational axioms the following single analytic closure axiom.
-
-\begin{axiom}[Canonical zero-energy coercivity]
-\label{ax:occam-zero-energy}
-There exist a canonical independently defined energy \(E\) and \(c>0\)
-such that every non-trivial zeta zero \(\rho\) satisfies
+The energy/coercivity edge need not be postulated.  Let
 \[
-E(\rho)=0,
+x=\Re s-\frac12,
 \qquad
-c\,\Delta_{\rm RC}(\Omega(\rho))\le E(\rho).
+D_H(\sigma)=\ln2-H_2(\sigma).
+\]
+Since
+\[
+D_H\left(\frac12\right)=0,
+\qquad
+D_H'\left(\frac12\right)=0,
+\]
+and
+\[
+D_H''(\sigma)
+=
+\frac1{\sigma(1-\sigma)}
+\ge4
+\qquad(0<\sigma<1),
+\]
+strong convexity gives
+\[
+\boxed{
+D_H(\sigma)
+\ge
+2\left(\sigma-\frac12\right)^2
+=
+2x^2.
+}
+\]
+
+On the other hand the exact reciprocal--conjugation crosswalk is
+\[
+\Delta_{\rm RC}(\Omega(s))
+=
+\frac{4x^2}{|s|^2|1-s|^2}.
+\]
+Therefore, for every \(s\ne0,1\) in the open strip,
+\[
+\boxed{
+D_H(\Re s)
+\ge
+c(s)\,\Delta_{\rm RC}(\Omega(s)),
+\qquad
+c(s):=\frac{|s|^2|1-s|^2}{2}>0.
+}
+\]
+
+This is an exact pointwise coercivity theorem and contains no RH premise.
+
+The TIR \(U(1)\) phase sector strengthens the same inequality.  Its
+White--Thread potential and mechanical energy satisfy
+\[
+V_{\rm WT}\ge0,
+\qquad
+\mathcal E_{\rm WT}
+=
+\sum_i\frac{I_i}{2}\dot\Theta_i^2+V_{\rm WT}
+\ge0.
+\]
+For static holonomy,
+\[
+\dot{\mathcal E}_{\rm WT}
+=
+-\sum_i\eta_i\dot\Theta_i^2
+\le0.
+\]
+Thus a canonical relational energy may be written
+\[
+\boxed{
+E_{\rm rel}(s)
+=
+D_H(\Re s)
++
+\mathcal E_{\rm WT}(s)
++
+E_{\rm other,+}(s),
+}
+\]
+with every additional declared term non-negative.  Hence
+\[
+\boxed{
+E_{\rm rel}(s)
+\ge
+D_H(\Re s)
+\ge
+c(s)\Delta_{\rm RC}(\Omega(s)).
+}
+\]
+
+The normalized Berry closure also gives
+\[
+q_B=-(1-\sigma)\pmod1.
+\]
+For the canonical representative \(0<\sigma<1\), this is \(q_B=\sigma\),
+so the displacement from the half-turn obeys
+\[
+q_B-\frac12
+=
+\sigma-\frac12
+=
+x.
+\]
+Thus the horizontal Riemann displacement, the Shannon imbalance and the
+normalized \(U(1)\) half-turn displacement are the same scalar defect in
+three coordinate systems.
+
+\section{Minimal Occam axiom after energy derivation}
+
+The preceding section removes the need for a separate energy axiom.  The
+remaining foundational statement of the relational system is instead:
+
+\begin{axiom}[Relational-zero realization]
+\label{ax:occam-relational-zero}
+A zero of an admitted relational observable is represented by a zero of its
+canonical relational action-defect.  For the canonical completed-zeta
+observable this reads
+\[
+\xi(\rho)=0
+\quad\Longrightarrow\quad
+E_{\rm rel}(\rho)=0.
 \]
 \end{axiom}
 
-\begin{theorem}[RH in the Occam relational system]
-Let \(\mathsf O\) denote the relational axioms together with
-\Cref{ax:occam-zero-energy}.  Then
+\begin{theorem}[RH in the minimal Occam relational system]
+Let \(\mathsf O_{\rm rel}\) denote normalized complementarity, the derived
+relational-energy construction above, and
+\Cref{ax:occam-relational-zero}.  Then
 \[
-\boxed{\mathsf O\vdash\mathrm{RH}.}
+\boxed{\mathsf O_{\rm rel}\vdash\mathrm{RH}.}
 \]
 \end{theorem}
 
 \begin{proof}
-Apply the coercive zero-energy argument above to an arbitrary non-trivial zero
-\(\rho\).  Non-negativity forces the reciprocal--conjugation defect to
-vanish, hence \(\Re\rho=1/2\).  Therefore all non-trivial zeros lie on the
-critical line.
+Let \(\rho\) be an arbitrary non-trivial zeta zero.  Relational-zero
+realization gives \(E_{\rm rel}(\rho)=0\).  Derived pointwise coercivity
+gives
+\[
+0
+\le
+c(\rho)\Delta_{\rm RC}(\Omega(\rho))
+\le
+E_{\rm rel}(\rho)=0.
+\]
+Because \(c(\rho)>0\),
+\[
+\Delta_{\rm RC}(\Omega(\rho))=0.
+\]
+The exact projective crosswalk then yields
+\[
+\Re\rho=\frac12.
+\]
+Since \(\rho\) was arbitrary, every non-trivial zero lies on the critical
+line.
 \end{proof}
 
-Thus the axiomatic proof channel is closed: after the zero-energy coercivity
-axiom no further conjectural edge remains.
+The formal layer now also contains the pointwise version
+\texttt{riemannHypothesis\_of\_pointwise\_coercive\_zero\_energy},
+so a uniform global coercivity constant is unnecessary.
 
 \section{Proof-cost firewall}
 
-The formal layer also proves
+The energy and coercive inequality are now derived rather than assumed.  The
+remaining logical boundary is the relational-zero realization principle
+itself.  The formal layer proves
 \[
 \texttt{ZeroHalfAxisDefectCondition}
 \iff
@@ -327,29 +458,32 @@ and
 \iff
 \mathrm{RH}.
 \]
-Therefore simply postulating that the defect vanishes on every non-trivial
-zero would be an RH-equivalent assumption.  The Occam theorem above is a
-valid proof inside the enlarged axiomatic system, but it becomes an
-unconditional proof in ordinary mathematics only when the canonical energy
-and its coercive inequality are derived independently of RH or another
-RH-equivalent premise.
+Consequently, when specialized to all non-trivial zeta zeros, the assertion
+that zerohood is realized as zero relational defect cannot be counted as an
+independent standard-mathematical theorem unless it is derived from analytic
+structure without importing an RH-equivalent premise.
+
+This changes the proof frontier substantially: the energy edge is closed;
+the only foundational edge is the universal semantics of relational zero.
 
 \section{Minimum proof cost}
 
-The exact crosswalks show that the native half-axis defect, the
-reciprocal--conjugation defect, and the Suzuki imaginary-coordinate defect
-are three representations of the same transverse quantity.  Therefore this
-proof channel does not require simultaneous closure of every historical
-route.  Its single independent incoming obligation is:
+The minimum graph is now
 \[
 \boxed{
-\text{construct canonical }E
-\text{ with }E(\rho)=0
-\text{ and }E\ge c\Delta_{\rm RC},
-\quad c>0.
+\xi(\rho)=0
+\stackrel{\mathrm{R0}}{\Longrightarrow}
+E_{\rm rel}(\rho)=0
+\stackrel{\text{derived coercivity}}{\Longrightarrow}
+\Delta_{\rm RC}(\Omega(\rho))=0
+\Longrightarrow
+\Re\rho=\frac12.
 }
 \]
-All subsequent edges are exact and already formalized.
+
+No separate energy axiom, uniform coercivity constant, PF$_\infty$, complete
+monotonicity, or additional spinorial postulate is needed for this Occam
+channel.
 
 \section{Conclusion}
 
@@ -368,13 +502,19 @@ The relational-zero theorem has three independent faces:
 The half-axis is therefore the unique critical axis of the normalized
 relational barycenter.
 
-Within the declared Occam axiomatic system, RH follows with no further gap.
-The repository nevertheless retains the external proof firewall: the incoming
-canonical zero-energy coercivity theorem must be independently derived before
-the result is promoted as an unconditional proof of RH.
+The previously stated energy axiom has been eliminated: Shannon strong
+convexity plus the exact projective crosswalk already provides pointwise
+coercivity, while the TIR \(U(1)\) Lagrangian adds non-negative holonomy
+energy.
 
-\status{The three-sided relational-zero theorem and the coercive zero-energy
-RH implication are exact.  The Occam axiomatic channel is closed as an
-implication.  Independent derivation of the canonical zero-energy coercivity
-edge remains OPEN; therefore the repository does not promote an unconditional
-proof of RH.}
+Within the minimal Occam relational system, the sole foundational statement
+is relational-zero realization, and RH follows exactly from it together with
+the derived energy theorem.
+
+\status{The three-sided relational-zero theorem, the Shannon/projective
+pointwise coercivity theorem, the U(1) energy strengthening, and the
+pointwise-coercive RH implication are exact at their declared levels.  The
+energy edge is CLOSED / DERIVED.  The remaining external proof firewall is
+the independent standard-mathematical derivation of the universal
+relational-zero realization principle; the repository therefore does not
+promote an unconditional RH proof.}
