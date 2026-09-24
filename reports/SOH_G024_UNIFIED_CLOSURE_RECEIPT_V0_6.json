@@ -1,0 +1,42 @@
+{
+  "classification": "EXACT_CROSSWALK_PLUS_FINITE_REGRESSION",
+  "controls": {
+    "mp_dps": 80,
+    "new_tests": "6 passed"
+  },
+  "exact_closure": {
+    "critical_strip_image": "0<(|w|+Re(w))/2<1/4",
+    "laguerre_resummation": "Q_q=1/2 sum_{n>=1} n L_n[f](x) q^(n-1)",
+    "physical_tangent": "Fourier[G_q](2x)=Q_q",
+    "q_from_w": "q=(|w|+Re(w))/2",
+    "radial_dual_gram": "Q_q=K0hat(w,w)+|w| K1hat(w,w)",
+    "rh_gate": "RH iff Q_q>=0 for all real x and 0<q<1/4"
+  },
+  "linear_quotient_control": {
+    "K0hat": "1.0",
+    "K0hat_plus_absw_K1hat": "1.58",
+    "K1hat": "1.0",
+    "dual_residual_abs": "0.0",
+    "laguerre_residual_abs": "0.0",
+    "laguerre_resummed_response": "1.58",
+    "q": "0.09",
+    "q_roundtrip": "0.09",
+    "radial_response_direct": "1.58",
+    "w_imag": "-0.42",
+    "w_real": "-0.4",
+    "x": "0.7"
+  },
+  "rh_status": "OPEN",
+  "riemann_quotient_crosswalk": {
+    "classification": "FINITE_HIGH_PRECISION_DIAGNOSTIC",
+    "dual_gram_sum": "0.000000957250651654907206177414069606124387700325228543288038779665",
+    "q": "0.01",
+    "radial_response": "0.000000957250651654907206177414069606124387700325228543288038779665",
+    "residual_abs": "2.01076468338594879614802819276237850336264827391977454186969e-87",
+    "w_imag": "-2.826945028346938758",
+    "w_real": "-199.7804548323868594504389237450645641",
+    "x": "14.13472514173469379"
+  },
+  "schema": "sohalf.g024-unified-closure-receipt/v0.6",
+  "status": "PASS"
+}

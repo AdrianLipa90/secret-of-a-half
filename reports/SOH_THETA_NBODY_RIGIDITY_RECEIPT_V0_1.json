@@ -1,0 +1,56 @@
+{
+  "controls": {
+    "mp_dps": 100,
+    "riemann_kernel_cutoff": "4",
+    "riemann_kernel_n_terms": 8
+  },
+  "nbody_real_hessian_alpha_0_3_beta_0_1": {
+    "F_aa": "0.092375404519265956922363361272448169733699528009422",
+    "F_ab": "-0.000026729707130944943914169504773325794689100833815845",
+    "F_bb": "0.092375404519265956922363361272448169733699528009422",
+    "det": "0.0085332146456207780718479732222320709510016128489332",
+    "positive_definite": true
+  },
+  "proof_firewall": {
+    "external_dimitrov_xu_route_declared_wrong": false,
+    "finite_riemann_external_sign_change_promoted": false,
+    "rh_disproved": false,
+    "rh_proved": false
+  },
+  "riemann_external_conflict_diagnostic": {
+    "classification": "FINITE_HIGH_PRECISION_DIAGNOSTIC_REQUIRES_INDEPENDENT_SOURCE_CONVENTION_AUDIT",
+    "external_sign_change_bracket": true,
+    "external_x_110": "8.4000005444218380783955876270342423175891625536947e-68",
+    "external_x_111": "-5.7790891317437284950867533408854294964086669511253e-69",
+    "hermitian_positive_at_bracket_endpoints": true,
+    "hermitian_x_110": "4.5486780713481310352318244208542286549907967172884e-67",
+    "hermitian_x_111": "3.7491964858869617158307726359571772922655445403241e-68",
+    "y": "0.499"
+  },
+  "schema": "SOH_THETA_NBODY_RIGIDITY_RECEIPT_V0_1",
+  "status": "PASS_WITH_QUARANTINED_RIEMANN_EXTERNAL_CONFLICT",
+  "tent_control": {
+    "external_bilinear": "-0.00020413006881246967476392814942800098867591907371754",
+    "external_identity_residual": "1.0464362102804031209250948013049386225450836134242e-104",
+    "external_negative": true,
+    "external_tilt_fourier": "-0.00040826013762493934952785629885600197735183814743508",
+    "hermitian_jensen": "0.00062313199739443606871049222823608941446247007312941",
+    "hermitian_positive": true,
+    "x": "3.1415926535897932384626433832795028841971693993751",
+    "y": "0.1"
+  },
+  "theta_transverse_potential": {
+    "0": "0.0",
+    "0.1": "0.00046209614514456352804751525076206329630015795520666",
+    "0.25": "0.0028879789574221651065238277529016694538520979439175",
+    "0.49": "0.011092876096916694564769083997036868262487178159025"
+  },
+  "verdicts": {
+    "RH": "OPEN",
+    "internal_external_nonidentity": "PASS",
+    "nbody_real_hessian_sampled_positive_definite": "PASS",
+    "riemann_external_sign_change": "QUARANTINED_DIAGNOSTIC",
+    "tent_external_identity": "PASS",
+    "theta_potential_sampled_nonnegative_unique_zero": "PASS"
+  }
+}

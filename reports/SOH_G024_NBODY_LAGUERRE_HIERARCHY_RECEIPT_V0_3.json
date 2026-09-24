@@ -1,0 +1,90 @@
+{
+  "classification": {
+    "cardon_extended_laguerre_crosswalk": "STANDARD_EXTERNAL_THEOREM",
+    "nbody_generating_identity": "EXACT",
+    "q_coefficient_identity": "EXACT",
+    "xi_samples": "FINITE_DIAGNOSTIC_NOT_PROOF"
+  },
+  "exact_crosswalk": {
+    "Q_x(q)": "1/2*f(x+i*sqrt(q))*f(x-i*sqrt(q))",
+    "coefficient": "c_n(x)=L_n[f](x)/2",
+    "jensen_generator": "H_f(x+i*y)=sum_{n>=1} n*(2*n-1)*L_n[f](x)*y^(2*n-2)",
+    "wick_partition": "Z(-i*x,y)=Q_x(y^2)",
+    "xi_equivalence": "RH iff L_n[Xi](x)>=0 for every real x and every n>=0"
+  },
+  "finite_real_zero_jensen_generator": {
+    "direct_hermitian": "3.561676615672",
+    "hierarchy_value": "3.561676615672",
+    "residual_abs": "3.622271631530684947003647716355116712273012479255655276e-71",
+    "x": "0.63",
+    "y": "0.27"
+  },
+  "non_lp_quartic_control": {
+    "c1_exact": "-4.0",
+    "c1_numeric": "-4.0",
+    "expected_sign": "NEGATIVE",
+    "f": "1+z^4",
+    "x": "1"
+  },
+  "real_zero_product_control": {
+    "gammas": [
+      "1.0",
+      "2.0",
+      "3.5"
+    ],
+    "max_abs_derivative_vs_factorized_residual": "1.811135815765342473501823858177558356136506239627827638e-71",
+    "minimum_coefficient": "0.0002082465639316951270304039983340274885464389837567680133",
+    "x": "0.7"
+  },
+  "rh_status": "OPEN",
+  "schema": "sohalf.g024-nbody-laguerre-hierarchy-receipt/v0.3",
+  "source": {
+    "arxiv": "0911.1122",
+    "author": "David A. Cardon",
+    "operator": "L_n[f](x)=sum_{k=0}^{2n} (-1)^(k+n)/(2n)! binom(2n,k) f^(k)(x) f^(2n-k)(x)",
+    "theorem": "Theorem 1.1",
+    "title": "Extended Laguerre inequalities and a criterion for real zeros"
+  },
+  "status": "PASS",
+  "tests": {
+    "combined_suite_not_rerun_in_single_checkout": true,
+    "new_test_module_result": "7 passed",
+    "new_test_runtime_seconds": "9.75",
+    "prior_branch_suite_result": "14 passed (validated before v0.3 staging)"
+  },
+  "xi_low_order_samples": {
+    "0": {
+      "c_0_to_4": [
+        "0.1235645340532774988459466956064945041340593711035298859",
+        "0.005709915417221859168673118412076284912878182800050861394",
+        "0.0001273343414943021513359810527150517790222443881960679687",
+        "0.000001831747646987518800511491568447828689455691634431650551",
+        "0.00000001916523103712251019978943970696186787261996620034166833"
+      ],
+      "sampled_all_nonnegative": true,
+      "x": "0"
+    },
+    "10": {
+      "c_0_to_4": [
+        "0.0007207788286168094666077555016416558623481406142232345625",
+        "0.00007656890888356493951861222271821968347341702356731131815",
+        "0.000002794417975093626611752393094982785718493431728095660312",
+        "0.00000005707404718519859614383725323556274212871912765351275177",
+        "0.0000000007825506202954323498415702193547644547119265973694534339"
+      ],
+      "sampled_all_nonnegative": true,
+      "x": "10"
+    },
+    "first_zero": {
+      "c_0_to_4": [
+        "1.998706927445278753754228817166816342056236307563760067e-43",
+        "0.00000095595603984151373834535549741844385204827053766722592",
+        "0.00000006470170106609078231182003485267476311455516153972119607",
+        "0.000000001925510397870218530407978421061767804637401630043773681",
+        "0.00000000003473262150562593028795857679719171980046522195596316745"
+      ],
+      "sampled_all_nonnegative": true,
+      "x": "14.134725141734693790"
+    }
+  }
+}

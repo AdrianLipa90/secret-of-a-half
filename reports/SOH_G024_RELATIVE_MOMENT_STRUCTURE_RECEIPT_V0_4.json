@@ -1,0 +1,51 @@
+{
+  "controls": {
+    "base_witness_x": "1.222",
+    "mp_dps": 90,
+    "oscillatory_gaussian_a": "0.13",
+    "oscillatory_gaussian_epsilon": "0.2",
+    "oscillatory_gaussian_frequency": "1",
+    "oscillatory_gaussian_scale": "40",
+    "scaled_witness_x": "48.88"
+  },
+  "gaussian_generating_mixture_control": {
+    "Bhat_2x": "0.901331285207699519025795373889974467268727936011800155101871",
+    "half_modulus_square": "0.901331285207699519025795373889974467268727936011800155101871",
+    "residual_abs": "2.45454673264886327654788597749313782148760775624972478255577e-91",
+    "x": "0.7",
+    "y": "0.2"
+  },
+  "gaussian_saturation_control": {
+    "C0": "0.633217571268940258559597412179058036863866426026434162558511",
+    "C1": "0.105536261878156709759932902029843006143977737671072360426418",
+    "C2": "0.0527681309390783548799664510149215030719888688355361802132092",
+    "exact_relative_moment_curvature": "6.0",
+    "hankel_2x2_determinant": "0.0222758051424297464228205181572178335261231998274223173047397",
+    "kernel_kappa": "3.0",
+    "predicted_relative_moment_curvature": "6.0",
+    "radial_first_gate_lower_bound": "3.0",
+    "u": "0.4"
+  },
+  "rh_status": "OPEN",
+  "schema": "sohalf.g024-relative-moment-structure-receipt/v0.4",
+  "status": "PASS",
+  "strong_log_concavity_no_go_control": {
+    "L2_base_at_x_1_222": "-0.916958880981396529056400784552590108898695183537601582541369",
+    "L2_scaled_at_x_48_88": "-0.000000000223866914302098761976660347791159694555345503793359761362639",
+    "L2_scaled_prediction": "-0.000000000223866914302098761976660347791159694555345503793359761362639",
+    "certified_scaled_curvature_margin": "16.0",
+    "comparison_to_riemann_internal_margin_10": "GREATER",
+    "scaling_residual_abs": "4.85769641294966867441708008029769907767061747799689431016428e-100",
+    "verdict": "STRONG_LOG_CONCAVITY_PLUS_AUTOMATIC_MOMENT_AND_MIXTURE_POSITIVITY_DO_NOT_FORCE_COEFFICIENTWISE_FOURIER_POSITIVITY"
+  },
+  "test_suite": {
+    "branch_local_new_tests": "6 passed",
+    "classification": "FINITE_REGRESSION_PASS"
+  },
+  "theorem_status": {
+    "coefficientwise_fourier_positivity": "OPEN_FOR_RIEMANN",
+    "generating_mixture_fourier_modulus_square": "EXACT",
+    "relative_moment_stieltjes_hankel": "EXACT",
+    "strong_log_concavity_inheritance": "EXACT_USING_STRONG_PREKOPA"
+  }
+}
