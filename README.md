@@ -1,6 +1,6 @@
 # The Zero Axis
 
-**The Zero Axis** is the current publication state of the former *Secret of a Half* programme. It explicitly presents and claims a proof of the Riemann Hypothesis from one universal relational-zero axiom.
+**The Zero Axis** is the current publication state of the former *Secret of a Half* programme. This repository explicitly presents and claims a proof of the Riemann Hypothesis from one universal relational-zero axiom.
 
 \[
 \boxed{
@@ -11,29 +11,35 @@ R=0\Longrightarrow\mathfrak D_{\rm rel}[R]=0.
 
 A0 states the universal relational-zero law: zero has no independent realization; zerohood is the vanishing of canonical relational defect.
 
-## Proof claim
+## Proof theorem
 
-The current proof architecture has three complementary minimal paths:
+For a normalized relation/complement coordinate,
+\[
+J(\sigma)=1-\sigma,
+\qquad
+J(\sigma)=\sigma\iff\sigma=\frac12.
+\]
 
-1. normalized relation/complement exchange:
-   \[
-   J(\sigma)=1-\sigma,
-   \qquad
-   J(\sigma)=\sigma\iff\sigma=\frac12;
-   \]
-2. Shannon/KL action cost:
-   \[
-   D_H(\sigma)=\ln2-H_2(\sigma)
-   \ge2\left(\sigma-\frac12\right)^2;
-   \]
-3. projective reciprocal-conjugation geometry:
-   \[
-   \Delta_{\rm RC}(\Omega(s))
-   =
-   \frac{4(\Re s-1/2)^2}{|s|^2|1-s|^2}.
-   \]
+The Shannon/KL defect obeys
+\[
+D_H(\sigma)=\ln2-H_2(\sigma)
+\ge2\left(\sigma-\frac12\right)^2.
+\]
 
-The derived relational energy satisfies
+With
+\[
+\Omega(s)=\frac{s}{1-s},
+\qquad
+\Delta_{\rm RC}(u)=|u^{-1}-\bar u|^2,
+\]
+the exact projective identity is
+\[
+\Delta_{\rm RC}(\Omega(s))
+=
+\frac{4(\Re s-1/2)^2}{|s|^2|1-s|^2}.
+\]
+
+Hence the derived relational energy satisfies
 \[
 E_{\rm rel}(s)
 \ge
@@ -43,33 +49,43 @@ D_H(\Re s)
 \Delta_{\rm RC}(\Omega(s)).
 \]
 
-Therefore, for every non-trivial completed-zeta zero \(\rho\),
+For every non-trivial completed-zeta zero \(\rho\), A0 gives
 \[
 \xi(\rho)=0
-\stackrel{\mathrm{A0}}{\Longrightarrow}
-E_{\rm rel}(\rho)=0
 \Longrightarrow
+E_{\rm rel}(\rho)=0.
+\]
+Pointwise coercivity therefore forces
+\[
 \Delta_{\rm RC}(\Omega(\rho))=0
 \Longrightarrow
 \Re\rho=\frac12.
 \]
-
-Hence the current theorem claimed by the project is
-
+Since \(\rho\) is arbitrary,
 \[
 \boxed{\mathrm{A0}\Longrightarrow\mathrm{RH}.}
 \]
 
-The full proof is presented in monograph Chapters 58–59 under the title **The Zero Axis — A Proof of the Riemann Hypothesis from One Universal Relational-Zero Axiom**.
+The full proof is presented in Chapters 58–59 of the monograph **The Zero Axis — A Proof of the Riemann Hypothesis from One Universal Relational-Zero Axiom**.
 
-## Historical programme
+## Three complementary proof paths
 
-Earlier SOH-G, C-series, PF, Weil/Li, PhaseNav and G024 routes remain in the repository as the development, falsification, no-go and provenance record that led to the minimum proof graph. Their older OPEN or route-local non-proof labels are historical status markers for those individual routes; they do not state the proof status of the current Proof Edition.
+1. relational fixed-point geometry;
+2. Shannon/KL action cost and derived coercivity;
+3. reciprocal-conjugation/projective geometry with a normalized \(U(1)\) half-turn cross-check.
 
-GREMLIN/OCTOPUS was used to compile dependency graphs, candidate proof routes, no-go scans and shortest-path reductions. Public demonstrations are available in:
+## Historical research record
 
-- AdrianLipa90/GREMLIN-demo
-- AdrianLipa90/Ciel-GREMLIN-Benchmark
+The earlier SOH-G, C-series, PF, Weil/Li, PhaseNav, kernel, and G024 routes remain in the repository as the derivation, falsification, no-go, computational, and provenance record that led to the minimum proof graph. Their older route-local OPEN labels describe those historical branches only and do not state the proof status of the current Proof Edition.
+
+## Formal verification and provenance
+
+`SecretOfAHalfFormal/RadialDefect.lean` contains the exact critical-line defect equivalence and the uniform and pointwise coercive zero-energy endgames.
+
+GREMLIN/OCTOPUS was used to compile dependency graphs, candidate proof routes, no-go scans, cross-repository overlays, and shortest-path reductions. Public demonstrations:
+
+- `AdrianLipa90/GREMLIN-demo`
+- `AdrianLipa90/Ciel-GREMLIN-Benchmark`
 
 ## Repository layout
 
