@@ -231,6 +231,31 @@ F_e=0\ \text{and}\ \sigma_e=\frac12
 
 The full derivation is in `research/SOH_RELATIONAL_ZERO_TRIAD_V0_1.md` and monograph Chapter 58. The theorem closes the project's internal relational-zero equivalence. The separate binding from every non-trivial xi-zero to a global relational zero-mode remains an explicit proof boundary, so the repository does not silently promote the external status of RH.
 
+## Zero Critical Relational Axis / Derived Energy Closure
+
+The three-sided treatise is in `research/SOH_ZERO_CRITICAL_RELATIONAL_AXIS_TREATISE_V0_1.md` and monograph Chapter 59.
+
+The earlier provisional energy axiom has been eliminated. For `x = Re(s)-1/2`,
+
+\[
+D_H(\Re s)\ge2x^2
+=\frac{|s|^2|1-s|^2}{2}\,\Delta_{\rm RC}(\Omega(s)).
+\]
+
+Thus the Shannon defect already gives the required pointwise coercivity, and the TIR U(1)/holonomy energy strengthens it. The minimal Occam proof graph is now
+
+\[
+\xi(\rho)=0
+\stackrel{R0}{\Longrightarrow}
+E_{\rm rel}(\rho)=0
+\Longrightarrow
+\Delta_{\rm RC}(\Omega(\rho))=0
+\Longrightarrow
+\Re\rho=\frac12.
+\]
+
+Accordingly, the energy edge is `CLOSED / DERIVED`. RH is a theorem inside the declared Occam relational system under the foundational relational-zero realization principle `R0`. The external repository firewall remains because `R0` has not been independently proved as a theorem of standard analysis.
+
 ## Author
 
 Adrian Lipa
