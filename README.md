@@ -208,6 +208,29 @@ The v0.7 validation also recovered three historical technical debts without rewr
 
 The repair ledger is `data/processed/DHSE_001_RECEIPT_REPAIR_V0_7.json`. These corrections do not promote any scientific claim.
 
+## Occam Relational Zero Triad v0.1
+
+The 24 September 2026 theorem line isolates a two-axiom relational core and proves the same zero by three routes:
+
+\[
+J(\sigma)=\sigma
+\iff
+\sigma=\frac12
+\iff
+\ln2-H_2(\sigma)=0.
+\]
+
+For a finite or countable relation family with positive local dynamical norms and Shannon/KL defects,
+
+\[
+\mathfrak S_{\rm rel}=0
+\iff
+F_e=0\ \text{and}\ \sigma_e=\frac12
+\quad\text{for every relation }e.
+\]
+
+The full derivation is in `research/SOH_RELATIONAL_ZERO_TRIAD_V0_1.md` and monograph Chapter 58. The theorem closes the project's internal relational-zero equivalence. The separate binding from every non-trivial xi-zero to a global relational zero-mode remains an explicit proof boundary, so the repository does not silently promote the external status of RH.
+
 ## Author
 
 Adrian Lipa
