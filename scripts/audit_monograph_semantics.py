@@ -27,7 +27,7 @@ def main() -> int:
     required = {
         "title": ["The Zero Axis", "Version 1.0", "A0", "A0}\\Longrightarrow\\mathrm{RH}"],
         "abstract": [
-            "zero has no independent realization",
+            "has no independent realization",
             "D_H''",
             "Delta_{\\rm RC}",
             "GREMLIN",
