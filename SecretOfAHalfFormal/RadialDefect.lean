@@ -238,4 +238,38 @@ theorem riemannHypothesis_of_coercive_zero_energy
     nlinarith
   exact le_antisymm hdefect_le hnonneg
 
+
+/-- Pointwise-coercive zero-energy endgame. A uniform coercivity constant is
+not needed; a strictly positive coefficient at each non-trivial zero suffices. -/
+theorem riemannHypothesis_of_pointwise_coercive_zero_energy
+    {E c : ℂ → ℝ}
+    (hc :
+      ∀ (s : ℂ), riemannZeta s = 0 →
+        (¬ ∃ n : ℕ, s = -2 * (n + 1)) →
+        s ≠ 1 →
+        0 < c s)
+    (hEzero :
+      ∀ (s : ℂ), riemannZeta s = 0 →
+        (¬ ∃ n : ℕ, s = -2 * (n + 1)) →
+        s ≠ 1 →
+        E s = 0)
+    (hcoercive :
+      ∀ (s : ℂ), riemannZeta s = 0 →
+        (¬ ∃ n : ℕ, s = -2 * (n + 1)) →
+        s ≠ 1 →
+        c s * reciprocalConjugationDefect (omega s) ≤ E s) :
+    RiemannHypothesis := by
+  rw [← zeroReciprocalDefect_iff_riemannHypothesis]
+  intro s hz htriv hs1
+  have hnonneg : 0 ≤ reciprocalConjugationDefect (omega s) :=
+    reciprocalConjugationDefect_nonneg _
+  have hcpos : 0 < c s := hc s hz htriv hs1
+  have hupper :
+      c s * reciprocalConjugationDefect (omega s) ≤ 0 := by
+    simpa [hEzero s hz htriv hs1] using hcoercive s hz htriv hs1
+  have hdefect_le : reciprocalConjugationDefect (omega s) ≤ 0 := by
+    nlinarith
+  exact le_antisymm hdefect_le hnonneg
+
+
 end SecretOfAHalfFormal
