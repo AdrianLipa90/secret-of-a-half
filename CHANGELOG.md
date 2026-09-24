@@ -100,3 +100,15 @@ This file is append-only. Existing entries must not be deleted or rewritten.
 - Distinguished the project defect `S_rel = 0` from standard mechanical stationarity `delta S = 0`.
 - Preserved the astronomical Lagrange-point boundary: the project uses "Lagrange node" for a zero of a declared relational vector field and does not claim all celestial Lagrange points are midpoints.
 - Left `SOH-C001`, `SOH-C004`, `SOH-C005`, `SOH-G003`, actual PF3/PF-infinity and the external proof status of RH unchanged.
+
+## 2026-09-24 — Zero Critical Relational Axis / derived energy closure
+
+- Audited every branch against `main`; 25 branches were already fully contained and three unique branches were merged by the minimum-cut path (PRs #88, #89, #90).
+- Added the three-sided zero treatise and monograph Chapter 59.
+- Replaced the provisional canonical-energy axiom with an exact derived pointwise coercivity theorem.
+- Proved inside the declared relational model that `D_H(Re(s)) >= 2(Re(s)-1/2)^2 = (|s|^2|1-s|^2/2) Delta_RC(Omega(s))`.
+- Recorded that non-negative TIR U(1)/White-Thread holonomy energy strengthens the same bound.
+- Added Lean theorem `riemannHypothesis_of_pointwise_coercive_zero_energy`, removing the need for a uniform coercivity constant.
+- Registered `SOH-RZ008` (derived relational-energy coercivity) and `SOH-RZ009` (RH theorem inside the minimal Occam relational system under R0).
+- Reduced the remaining Occam foundation to `R0`: analytic zero is realized as zero canonical relational action-defect.
+- Preserved the external proof firewall: R0 specialized to all non-trivial zeta zeros is not independently established in standard analysis.
