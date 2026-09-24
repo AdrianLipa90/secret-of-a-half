@@ -1,0 +1,21 @@
+{
+  "schema": "LOSSLESS_BRANCH_MERGE_MANIFEST_V1",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "target_branch": "main",
+  "source_branch": "formalize/lean-proof-gates-v0.1",
+  "source_head_sha": "266b1a0ddc3e164665c071bba5ae360b707ce444",
+  "merge_base_sha": "41772776dadf837c7a2f8b095b752e586d85c5dc",
+  "target_parent_sha": "b8ba328463c06ff9f51fe377411f71e1f2f21547",
+  "policy": "APPLY_BRANCH_ONLY_KEEP_TARGET_ON_CONFLICT_ARCHIVE_BRANCH_NEVER_DELETE_TARGET",
+  "applied_paths": [
+    ".github/workflows/lean-proof-gate.yml"
+  ],
+  "conflicts": [
+    {
+      "path": "lakefile.toml",
+      "archive_path": ".merge-preservation/formalize__lean-proof-gates-v0.1/lakefile.toml",
+      "action": "kept_target_archived_branch"
+    }
+  ],
+  "deletion_intents_preserved_without_deletion": []
+}
