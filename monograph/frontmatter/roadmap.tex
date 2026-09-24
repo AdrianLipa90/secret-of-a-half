@@ -1,114 +1,146 @@
-\chapter*{Reader Roadmap and Evidence Map}
-\addcontentsline{toc}{chapter}{Reader Roadmap and Evidence Map}
+\chapter*{Reader Roadmap and Proof Map}
+\addcontentsline{toc}{chapter}{Reader Roadmap and Proof Map}
 \label{front:roadmap}
 
-This roadmap separates mathematical objects, theorem classes, computational certificates, closed routes, equivalent reformulations, and still-open implications. Repository integration is not mathematical canonization.
+Version 1.0 reorganizes the monograph around a single foundational statement
+and three complementary derivations of one critical axis.
 
-\section*{Evidence classes}
+\section*{The single axiom}
+
+\[
+\boxed{
+\mathrm{A0}:\quad
+\text{zero has no independent realization; a zero of an admitted observable
+is the vanishing of its canonical relational defect.}
+}
+\]
+
+A0 is universal in scope within the relational programme.  It is not a second
+coordinate convention, an energy ansatz, or a fitted physical model.
+
+\section*{Shortest proof graph}
+
+For a non-trivial completed-zeta zero \(\rho\),
+\[
+\boxed{
+\xi(\rho)=0
+\stackrel{\mathrm{A0}}{\Longrightarrow}
+E_{\rm rel}(\rho)=0
+\stackrel{\rm coercivity}{\Longrightarrow}
+\Delta_{\rm RC}(\Omega(\rho))=0
+\Longrightarrow
+\Re\rho=\frac12.
+}
+\]
+
+The two nontrivial arrows after A0 are exact:
+\[
+E_{\rm rel}(s)
+\ge
+D_H(\Re s)
+\ge
+\frac{|s|^2|1-s|^2}{2}\,
+\Delta_{\rm RC}(\Omega(s)),
+\]
+and
+\[
+\Delta_{\rm RC}(\Omega(s))=0
+\iff
+\Re s=\frac12.
+\]
+
+\section*{Three complementary paths}
+
 \begin{table}[htbp]
 \centering\small
-\begin{tabular}{p{0.20\textwidth}p{0.30\textwidth}p{0.40\textwidth}}
+\begin{tabular}{p{0.20\textwidth}p{0.35\textwidth}p{0.34\textwidth}}
 \toprule
-Class & Meaning & Promotion rule\\
+Path & Core identity & Zero locus\\
 \midrule
-Exact theorem / identity & Symbolic derivation with declared hypotheses. & May enter a reviewed theorem ledger after dependency and semantic audit.\\
-Computer-assisted theorem component & Rigorous interval enclosure with explicit trust boundary. & Supports only the theorem whose dependency is declared.\\
-Exact reduction / equivalence & A target is transformed exactly. & Does not prove the target without a new incoming theorem.\\
-Route no-go & A proposed sufficient route is proved impossible. & Closes that route while preserving independent results.\\
-Finite diagnostic & Numerical regression or finite sampling. & Never promotes a universal claim.\\
-OPEN & A missing universal implication or positivity statement. & Remains open until independently closed.\\
+Relational fixed point &
+\(J(\sigma)=1-\sigma\) &
+\(J(\sigma)=\sigma\iff\sigma=1/2\).\\
+Information/action &
+\(D_H=\ln2-H_2=D_{\rm KL}(p\|u)\) &
+\(D_H=0\iff\sigma=1/2\), with
+\(D_H\ge2(\sigma-1/2)^2\).\\
+Projective/\(U(1)\) &
+\(\Delta_{\rm RC}(\Omega(s))
+=4(\Re s-1/2)^2/(|s|^2|1-s|^2)\) &
+\(\Delta_{\rm RC}=0\iff\Re s=1/2\);
+the half-turn \(U(1)\) coordinate carries the same centered displacement.\\
 \bottomrule
 \end{tabular}
-\caption{Evidence classes used in Version 0.11.}
-\label{tab:evidence-classes}
+\caption{Three independently derived representations of the same zero axis.}
+\label{tab:zero-axis-three-paths}
 \end{table}
 
-\section*{Integrated proof frontier}
-\begin{table}[htbp]
-\centering\small
-\begin{tabular}{p{0.18\textwidth}p{0.38\textwidth}p{0.32\textwidth}}
-\toprule
-Route & Strongest current result & Remaining frontier\\
-\midrule
-Projective orbit & $u=\Omega(s)$; $u\mapsto1/u$ and $u\mapsto\bar u$ are exact zero-set actions; their coincidence is exactly $|u|=1$. & Prove $X(u)=0\Rightarrow u^{-1}=\bar u$ without circularity.\\
-Centred quotient & $\xi(1/2+z)=F(z^2)$; RH $\iff$ all zeros of $F$ are real; PF$_2$ proved. & SOH-G003, actual PF$_3$, PF$_\infty$.\\
-Weil / PhaseNav & Exact reductions, dense-core constructions, and certified tail machinery. & Full admissible Weil positivity SOH-C005.\\
-Negative inversion & Exact $-1/u$ projective/spinorial algebra; zero-to-zero action excluded. & No spectral proof route remains through $-1/u$.\\
-G024 Jensen--Wiener & $H_y'<0$ and $H_y''>0$ globally; G024-T proves full complete monotonicity impossible. & Direct strict positivity of $\widehat D_y$ / external Wronskian.\\
-\bottomrule
-\end{tabular}
-\caption{Publication-audited proof frontier.}
-\label{tab:integrated-frontier}
-\end{table}
+\section*{Exact coordinate maps}
 
-\section*{Conformal coordinate maps}
 The projective coordinate
 \[
 \Omega(s)=\frac{s}{1-s}
 \]
-sends the critical line to $|\Omega|=1$, while the centred quotient
+sends the critical line to the unit circle:
 \[
-z=s-\frac12,\qquad w=z^2
+\Re s=\frac12
+\iff
+|\Omega(s)|=1.
 \]
-sends the critical line to the non-positive real axis.
+The centred coordinate
+\[
+x=\Re s-\frac12
+\]
+is the transverse relational displacement.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.94\textwidth]{projective_conformal_map.png}
-\caption{Exact projective map $\Omega(s)=s/(1-s)$. The critical line maps to the unit circle.}
+\caption{The exact projective map \(\Omega(s)=s/(1-s)\); the critical line maps to the unit circle.}
 \label{fig:projective-conformal-map}
 \end{figure}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.94\textwidth]{square_quotient_map.png}
-\caption{Centred square quotient $w=(s-1/2)^2$. The critical line maps to the non-positive real axis.}
-\label{fig:square-quotient-map}
-\end{figure}
+\section*{Historical routes retained}
 
-\section*{Current dependency logic}
-The principal terminal criteria form an RH-equivalent cluster rather than a proof cycle:
-\[
-\text{orbit collapse}
-\Longleftrightarrow
-\text{SOH-G003 real-rootedness}
-\Longleftrightarrow
-\text{direct G024 Fourier positivity}
-\Longleftrightarrow
-\text{RH},
-\]
-with the usual hypotheses of each criterion. Cycling inside this cluster does not prove any member. A valid proof needs a non-circular incoming theorem.
+The G001--G024 programme is retained because it records how the proof graph was
+compressed.  In particular:
 
-The earlier all-order complete-monotonicity route is no longer an open bridge:
-\[
-\boxed{\text{full complete monotonicity of }H_y\;\text{is impossible by SOH-G024-T}.}
-\]
-Chapters~55 and 56 should therefore be read together: Chapter~55 retains exact derivative identities; Chapter~56 proves that the all-order sign hierarchy must eventually fail.
+\begin{itemize}
+  \item the negative-inversion route is closed as a spectral shortcut;
+  \item the full complete-monotonicity/Gaussian-mixture route is closed by a
+  theorem-level no-go;
+  \item the reciprocal--conjugation defect is an exact RH-equivalent
+  projective coordinate;
+  \item the positive-kernel, Weil/Li, PF, Jensen--Wiener, and PhaseNav lines
+  remain useful as independent structure and falsification machinery.
+\end{itemize}
 
-\section*{Relational zero closure}
-Chapter~\ref{chap:relational-zero-triad} reduces the project's relational-zero
-construction to two explicit axioms and proves the half-axis zero by three
-independent routes: complement fixed point, Shannon/KL equality, and positive
-relational Lagrange/action closure.  The chapter closes the internal RZ theorem
-without silently identifying an arbitrary \(\xi\)-zero with an RZ zero-mode.
+Their older OPEN labels are historical proof-state records.  The current
+minimum theorem layer is Chapters~58--59.
 
-\section*{Minimum Occam channel after energy closure}
-Chapter~\ref{chap:zero-critical-relational-axis} adds the three-sided
-critical-axis theorem and derives the required pointwise coercivity directly
-from Shannon strong convexity plus the exact reciprocal--conjugation
-crosswalk.  The TIR \(U(1)\) holonomy energy strengthens the bound.
-The shortest internal route is now
-\[
-\xi(\rho)=0
-\stackrel{\mathrm{R0}}{\Longrightarrow}
-E_{\rm rel}(\rho)=0
-\Longrightarrow
-\Delta_{\rm RC}(\Omega(\rho))=0
-\Longrightarrow
-\Re\rho=\frac12.
-\]
-Energy/coercivity is therefore derived; R0 is the sole foundational
-zero-realization statement of the minimal Occam system.
+\section*{Formal and provenance layers}
+
+The Lean file \texttt{SecretOfAHalfFormal/RadialDefect.lean} verifies the exact
+critical-line defect equivalence and the pointwise-coercive zero-energy
+endgame.
+
+GREMLIN/OCTOPUS is the provenance and proof-map compilation layer used to
+assemble dependency graphs, candidate routes, no-go scans, and minimum paths.
+Public demonstration repositories are:
+
+\begin{itemize}
+  \item \url{https://github.com/AdrianLipa90/GREMLIN-demo};
+  \item \url{https://github.com/AdrianLipa90/Ciel-GREMLIN-Benchmark}.
+\end{itemize}
+
+GREMLIN does not promote claims by itself; the displayed derivations and
+formal/certified checks remain the authority.
 
 \section*{Recommended reading order}
-For the shortest current proof frontier, read Chapters~3, 18, 50, 57--59, followed by Appendix~D and the final synthesis. Chapter~59 gives the minimum Occam relational channel; Chapter~57 supplies the exact reciprocal--conjugation RH-equivalent boundary; Chapter~56 remains the publication-critical closure of the obsolete complete-monotonicity route.
+
+For the theorem only: Chapters~3, 18, 57--59 and Appendix~D.
+
+For the shortest historical derivation of the proof graph: Chapters~25--31,
+39--57, then Chapters~58--59.
+
+For the full research record: read the monograph sequentially.
