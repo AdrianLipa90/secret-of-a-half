@@ -217,7 +217,7 @@ spectral normalization check: PASS
 ```
 
 This closes the first executable prime-to-phase-to-spectrum audit loop. It is
-one positive localized sample, not a proof of dense Weil positivity; `SOH-C005`
+one positive localized sample, which does not establish dense Weil positivity by itself; `SOH-C005`
 remains open.
 
 ## v0.7 receipt hygiene
