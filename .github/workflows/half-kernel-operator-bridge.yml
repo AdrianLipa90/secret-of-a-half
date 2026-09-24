@@ -1,0 +1,152 @@
+name: SoHalf half-kernel operator bridge
+
+on:
+  push:
+    branches:
+      - feat/half-kernel-operator-bridge-v0.1
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-half-kernel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout exact event revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Record provenance
+        run: |
+          set -euo pipefail
+          git rev-parse HEAD
+          git diff --check
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install package and test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+
+      - name: Run half-kernel regression tests
+        run: |
+          set -euo pipefail
+          python -m pytest -q \
+            tests/test_half_kernel_operator_bridge.py \
+            tests/test_half_kernel_green_carrier.py \
+            tests/test_half_kernel_wronskian_completion.py \
+            tests/test_parabolic_disk_compactification.py \
+            tests/test_halfplane_weyl_bridge.py \
+            tests/test_half_kernel_sqrt_ulc.py \
+            tests/test_half_kernel_critical_exponent.py \
+            tests/test_second_stieltjes_global.py
+
+      - name: Generate v0.1 fail-closed receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_operator_bridge.py | tee soh-half-kernel-v0.1.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.1.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.1.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.1.json
+
+      - name: Generate v0.2 Green-carrier correction receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_green_carrier.py | tee soh-half-kernel-v0.2.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.2.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.2.json
+          grep -Fq '"supersedes_v01_domain_note": true' soh-half-kernel-v0.2.json
+          grep -Fq '"third_order_G024_complete_monotonicity": true' soh-half-kernel-v0.2.json
+
+      - name: Generate v0.3 Wronskian completion receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_wronskian_completion.py | tee soh-half-kernel-v0.3.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.3.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.3.json
+          grep -Fq '"blockwise_same_sign_route_rejected": true' soh-half-kernel-v0.3.json
+          grep -Fq '"third_order_G024_complete_monotonicity": true' soh-half-kernel-v0.3.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.3.json
+
+      - name: Generate v0.4 parabolic-disk compactification receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_parabolic_disk_compactification.py | tee soh-half-kernel-v0.4.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.4.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.4.json
+          grep -Fq '"disk_real_zero_or_inner_factor_closure": true' soh-half-kernel-v0.4.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.4.json
+
+      - name: Generate v0.5 sin-quotient Weyl receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_halfplane_weyl_bridge.py | tee soh-half-kernel-v0.5.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.5.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.5.json
+          grep -Fq '"construct_weyl_M_from_Xi_theta_without_zero_input": true' soh-half-kernel-v0.5.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.5.json
+
+      - name: Generate v0.6 sqrt-kernel ULC receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_sqrt_ulc.py | tee soh-half-kernel-v0.6.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.6.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.6.json
+          grep -Fq '"sub_poisson_first_stieltjes_closed": true' soh-half-kernel-v0.6.json
+          grep -Fq '"higher_stieltjes_derivative_signs": true' soh-half-kernel-v0.6.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.6.json
+
+      - name: Generate v0.7 critical-exponent firewall receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_critical_exponent.py | tee soh-half-kernel-v0.7.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.7.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.7.json
+          grep -Fq '"critical_alpha_exactly_two": true' soh-half-kernel-v0.7.json
+          grep -Fq '"corrected_R_second_firewall": true' soh-half-kernel-v0.7.json
+          grep -Fq '"higher_stieltjes_derivative_signs": true' soh-half-kernel-v0.7.json
+          grep -Fq '"global_sqrt_kernel_PF3": true' soh-half-kernel-v0.7.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.7.json
+
+      - name: Generate v0.8 global second-Stieltjes receipt
+        run: |
+          set -euo pipefail
+          python scripts/run_soh_half_kernel_second_stieltjes_global.py | tee soh-half-kernel-v0.8.json
+          grep -Fq '"status": "PASS"' soh-half-kernel-v0.8.json
+          grep -Fq '"rh_claim": false' soh-half-kernel-v0.8.json
+          grep -Fq '"second_stieltjes_global_closed": true' soh-half-kernel-v0.8.json
+          grep -Fq '"higher_stieltjes_signs_remain_open": true' soh-half-kernel-v0.8.json
+          grep -Fq '"riemann_hypothesis": true' soh-half-kernel-v0.8.json
+
+      - name: Upload exact-head receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: soh-half-kernel-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            soh-half-kernel-v0.1.json
+            soh-half-kernel-v0.2.json
+            soh-half-kernel-v0.3.json
+            soh-half-kernel-v0.4.json
+            soh-half-kernel-v0.5.json
+            soh-half-kernel-v0.6.json
+            soh-half-kernel-v0.7.json
+            soh-half-kernel-v0.8.json
+            reports/SOH_HALF_KERNEL_OPERATOR_BRIDGE_V0_1.json
+            reports/SOH_HALF_KERNEL_GREEN_CARRIER_V0_2.json
+            reports/SOH_HALF_KERNEL_WRONSKIAN_COMPLETION_V0_3.json
+            reports/SOH_HALF_KERNEL_PARABOLIC_DISK_COMPACTIFICATION_V0_4.json
+            reports/SOH_HALFPLANE_SIN_QUOTIENT_WEYL_M_V0_5.json
+            reports/SOH_HALF_KERNEL_SQRT_ULC_V0_6.json
+            reports/SOH_HALF_KERNEL_CRITICAL_EXPONENT_V0_7.json
+            reports/SOH_HALF_KERNEL_SECOND_STIELTJES_GLOBAL_V0_8.json
