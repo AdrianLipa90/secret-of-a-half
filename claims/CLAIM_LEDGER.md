@@ -58,3 +58,54 @@ The relational-zero line is deliberately separate from the canonical G-series an
 - **SOH-RZ004 — CONDITIONAL RH COROLLARY.** If every non-trivial \(\xi\)-zero is independently bound to a global RZ zero-mode, then \(\Re\rho=1/2\).
 
 The triad closes the project's internal relational-zero theorem. It does not by itself discharge SOH-C001, SOH-C004, SOH-C005, SOH-G003, or any RH-equivalent incoming bridge.
+
+## Zero critical relational axis / Occam proof channel — 2026-09-24
+
+- **SOH-RZ005 — EXACT FORMAL CROSSWALK.** For `s != 0,1`, the reciprocal-conjugation defect satisfies
+  \[
+  \Delta_{\rm RC}(\Omega(s))
+  =
+  \frac{4(\Re s-1/2)^2}{|s|^2|1-s|^2},
+  \]
+  so its zero locus is exactly the critical line.
+- **SOH-RZ006 — EXACT FORMAL CONDITIONAL RH THEOREM.** If a canonical scalar energy `E` vanishes on every non-trivial zeta zero and, for some `c>0`, obeys `c Delta_RC <= E` on those zeros, then RH follows. This is formalized in Lean as `riemannHypothesis_of_coercive_zero_energy`.
+- **SOH-RZ007 — EXACT RH-EQUIVALENCE FIREWALL.** The condition that the half-axis defect (equivalently the reciprocal-conjugation defect) vanishes on every non-trivial zeta zero is equivalent to RH. Therefore that zero-defect condition is not an independent proof premise unless derived from a non-RH-equivalent theorem.
+
+The resulting shortest graph is
+
+\[
+\xi(\rho)=0
+\Longrightarrow
+E(\rho)=0
+\stackrel{E\ge c\Delta}{\Longrightarrow}
+\Delta(\rho)=0
+\Longrightarrow
+\Re\rho=\frac12.
+\]
+
+Within the enlarged Occam axiom system that includes the canonical zero-energy coercivity axiom, RH is a theorem and the axiomatic channel is closed. The repository still keeps `proof_of_rh=false` because the canonical zero-energy coercivity edge has not been independently derived from non-RH-equivalent analytic structure.
+
+## Derived relational-energy coercivity — 2026-09-24
+
+- **SOH-RZ008 — EXACT RELATIONAL-MODEL COERCIVITY.** For (0<Re s<1), (s\neq0,1),
+  \[
+  D_H(\Re s)
+  \ge
+  2(\Re s-1/2)^2
+  =
+  \frac{|s|^2|1-s|^2}{2}\,\Delta_{\rm RC}(\Omega(s)).
+  \]
+  This follows from (D_H''(\sigma)=1/[\sigma(1-\sigma)]\ge4) and the exact reciprocal-defect crosswalk. Existing non-negative TIR (U(1))/holonomy energy terms only strengthen the inequality.
+- **SOH-RZ009 — AXIOMATIC OCCAM RH THEOREM.** Under the universal relational-zero realization principle `R0`,
+  \[
+  \xi(\rho)=0
+  \Longrightarrow
+  E_{\rm rel}(\rho)=0
+  \Longrightarrow
+  \Delta_{\rm RC}(\Omega(\rho))=0
+  \Longrightarrow
+  \Re\rho=1/2.
+  \]
+  Therefore RH is a theorem inside the declared Occam relational system.
+
+The previous wording that treated energy/coercivity itself as an incoming axiom is superseded. The energy edge is `CLOSED / DERIVED`. The remaining foundational statement is `R0`. The external repository firewall remains: `R0` specialized to all non-trivial zeta zeros has not been independently proved in standard analysis and must not be silently counted as an unconditional RH resolution.

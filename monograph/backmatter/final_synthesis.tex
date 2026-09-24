@@ -94,6 +94,67 @@ equivalently
 \]
 This is the surviving one-dimensional Jensen--Wiener frontier. It is not supplied by the disproved complete-monotonicity premise.
 
+\section*{Zero critical relational axis and the minimum Occam channel}
+
+Chapter~\ref{chap:zero-critical-relational-axis} compresses the relational
+programme to three exact descriptions of one zero locus:
+\[
+J(\sigma)=\sigma
+\iff
+\ln2-H_2(\sigma)=0
+\iff
+\Delta_{\rm RC}(\Omega(s))=0
+\iff
+\Re s=\frac12.
+\]
+
+The energy/coercivity edge is now derived rather than postulated.  Since
+\[
+D_H''(\sigma)=\frac1{\sigma(1-\sigma)}\ge4,
+\]
+strong convexity yields
+\[
+D_H(\Re s)\ge2(\Re s-1/2)^2.
+\]
+Combined with the exact defect crosswalk,
+\[
+\boxed{
+D_H(\Re s)
+\ge
+\frac{|s|^2|1-s|^2}{2}\,
+\Delta_{\rm RC}(\Omega(s)).
+}
+\]
+The TIR \(U(1)\) phase/Holonomy Hamiltonian adds further non-negative
+terms, so the canonical relational energy obeys the same pointwise
+coercivity.  The Lean layer now exposes the corresponding pointwise theorem
+\texttt{riemannHypothesis\_of\_pointwise\_coercive\_zero\_energy}.
+
+Therefore the only foundational statement left in the minimal Occam system
+is relational-zero realization:
+\[
+\mathrm{R0}:\qquad
+\xi(\rho)=0
+\Longrightarrow
+E_{\rm rel}(\rho)=0.
+\]
+With R0, derived coercivity forces
+\[
+\Delta_{\rm RC}(\Omega(\rho))=0
+\Longrightarrow
+\Re\rho=\frac12,
+\]
+and hence
+\[
+\boxed{\mathsf O_{\rm rel}\vdash\mathrm{RH}.}
+\]
+
+Thus the energy edge is \textbf{CLOSED / DERIVED}.  The remaining external
+proof firewall is R0 itself.  Because the formal layer proves that vanishing
+half-axis/reciprocal defect on all non-trivial zeros is RH-equivalent, R0
+specialized to zeta zeros is not promoted as an independently proved theorem
+of standard analysis.  This distinction preserves the external repository
+status while recording the complete internal Occam proof channel.
 \section*{Open problems}
 \begin{enumerate}
 \item \textbf{Reciprocal--conjugation zero-orbit collapse.} Prove non-circularly
@@ -114,7 +175,7 @@ equivalently $\Delta_{\mathrm{RC}}(u)=0$.
 \end{enumerate}
 
 \section*{Final proof boundary}
-The exact projective orbit formulation, quotient real-rootedness criterion, external Fourier criterion, and classical Weil/Li criteria meet at an RH-equivalent boundary. Equivalence among them does not supply a proof. A valid closure requires a new incoming theorem from already proved structure.
+The exact projective orbit formulation, quotient real-rootedness criterion, external Fourier criterion, and classical Weil/Li criteria meet at an RH-equivalent boundary. Equivalence among them does not supply an external proof. In the minimum Occam channel the energy/coercivity edge is now derived; external closure therefore reduces to an independent non-circular derivation of the relational-zero realization principle R0 (or an equivalent theorem from standard analytic structure).
 
 Therefore the publication status is
 \[

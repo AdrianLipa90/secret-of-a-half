@@ -1,5 +1,5 @@
 {
-  "version": "0.9-integrated-canon-v3-g023-rz001-rz004",
+  "version": "0.9-integrated-canon-v3-g023-rz001-rz009",
   "date": "2026-09-24",
   "status": "CANONICAL_PROJECT_CLAIM_LEDGER",
   "canonical_through": "SOH-G023",
@@ -98,7 +98,12 @@
     {"id":"SOH-RZ001","status":"exact_within_declared_relational_model","statement":"For normalized complement J(sigma)=1-sigma, the unique fixed point is sigma=1/2, equivalently centered coordinate x=0."},
     {"id":"SOH-RZ002","status":"exact_within_declared_relational_model","statement":"The Shannon deficit ln2-H2(sigma)=D_KL((sigma,1-sigma)||(1/2,1/2)) is non-negative and vanishes exactly at sigma=1/2; its derivative has the same unique stationary point."},
     {"id":"SOH-RZ003","status":"exact_within_declared_relational_model","statement":"For a finite or countable family of positive relational action-defect terms, S_rel=0 iff every local relational dynamical vector vanishes and every complementary coordinate equals 1/2."},
-    {"id":"SOH-RZ004","status":"conditional_rh_corollary","statement":"If every non-trivial xi zero is independently established to be a global relational zero-mode governed by RZ-A1/RZ-A2, then every such zero has Re(rho)=1/2."}
+    {"id":"SOH-RZ004","status":"conditional_rh_corollary","statement":"If every non-trivial xi zero is independently established to be a global relational zero-mode governed by RZ-A1/RZ-A2, then every such zero has Re(rho)=1/2."},
+    {"id":"SOH-RZ005","status":"exact_formal_crosswalk","statement":"For s != 0,1, the reciprocal-conjugation defect equals 4*(Re(s)-1/2)^2/(|s|^2|1-s|^2), hence it vanishes exactly on Re(s)=1/2."},
+    {"id":"SOH-RZ006","status":"exact_formal_pointwise_conditional_rh_theorem","statement":"If a scalar energy E vanishes on every non-trivial zeta zero and a strictly positive pointwise coefficient c(s) satisfies c(s)*Delta_RC(Omega(s)) <= E(s) on those zeros, then the Riemann Hypothesis follows. Formalized in Lean by riemannHypothesis_of_pointwise_coercive_zero_energy; the earlier uniform-c theorem remains valid."},
+    {"id":"SOH-RZ007","status":"exact_rh_equivalence_firewall","statement":"The condition that the half-axis defect (equivalently the reciprocal-conjugation defect) vanishes on every non-trivial zeta zero is equivalent to the Riemann Hypothesis; therefore it cannot be used as an independent premise without an external derivation."},
+    {"id":"SOH-RZ008","status":"exact_relational_model_coercivity","statement":"For 0<Re(s)<1 and s!=0,1, D_H(Re(s)) >= 2(Re(s)-1/2)^2 = (|s|^2|1-s|^2/2)*Delta_RC(Omega(s)). Any declared non-negative U(1)/holonomy energy terms strengthen this pointwise coercivity."},
+    {"id":"SOH-RZ009","status":"axiomatic_occam_rh_theorem","statement":"Under the universal relational-zero realization principle R0, xi(rho)=0 implies zero canonical relational action-defect. Together with SOH-RZ008 this forces Delta_RC(Omega(rho))=0 and hence Re(rho)=1/2 for every non-trivial zero. Thus RH is a theorem inside the declared Occam relational system; R0 is not claimed as an independently proved theorem of standard analysis."}
   ],
   "legacy_aliases": {
     "pre_v0.9:SOH-L012":"SOH-WA001",
