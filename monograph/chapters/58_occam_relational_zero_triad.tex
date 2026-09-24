@@ -1,0 +1,280 @@
+\chapter{Occam Relational Zero Triad}
+\label{chap:relational-zero-triad}
+
+\section{Purpose and proof boundary}
+
+This chapter isolates the smallest declared axiom set needed to formalize the
+project's relational notion of zero. It deliberately distinguishes the
+non-negative relational action-defect introduced below from the ordinary
+mechanical action. In particular, the standard variational equation
+\(\delta S=0\) is not identified with the numerical statement \(S=0\).
+
+The result proved here is internal to the declared relational model. It gives
+three independent routes to the same half-axis zero. A separate analytic
+binding is still required before a zero of \(\xi\) may be identified with a
+global relational zero-mode.
+
+\section{Occam axiom set}
+
+\begin{axiom}[Normalized relational complementarity]
+\label{ax:rz-complement}
+Every admitted local relation \(e\) carries a normalized complementary
+coordinate
+\[
+p_e=(\sigma_e,1-\sigma_e),\qquad 0<\sigma_e<1,
+\]
+with involution
+\[
+J_e(\sigma_e)=1-\sigma_e.
+\]
+Its centered coordinate is
+\[
+x_e=\sigma_e-\frac12.
+\]
+\end{axiom}
+
+\begin{axiom}[Positive relational action-defect]
+\label{ax:rz-defect}
+Let \(E\) be finite or countable. Each relation carries a dynamical vector
+\(F_e\) in a positive-definite metric \(G_e\), and positive coefficients
+\(w_e,\lambda_e>0\). Define
+\[
+D_H(\sigma)
+=
+\ln2-H_2(\sigma)
+=
+D_{\mathrm{KL}}\!\left(
+(\sigma,1-\sigma)
+\middle\|
+\left(\frac12,\frac12\right)
+\right)
+\]
+and
+\[
+\boxed{
+\mathfrak S_{\rm rel}
+=
+\sum_{e\in E}
+w_e\left[
+\|F_e\|_{G_e}^{2}
++
+\lambda_e D_H(\sigma_e)
+\right]
+\in[0,\infty].
+}
+\]
+A local \emph{Lagrange node} is a relation satisfying \(F_e=0\). A global
+\emph{relational zero} is a state satisfying
+\(\mathfrak S_{\rm rel}=0\).
+\end{axiom}
+
+\begin{warning}
+The symbol \(\mathfrak S_{\rm rel}\) denotes a non-negative project
+action-defect. It is not the usual Lorentzian action
+\(S=\int L\,dt\). Consequently the theorem below does not replace the
+standard stationarity condition \(\delta S=0\) by \(S=0\).
+\end{warning}
+
+\section{First route: complement fixed point}
+
+\begin{theorem}[SOH-RZ001: relational fixed-point zero]
+\label{thm:rz-fixed-point}
+For every relation admitted by \Cref{ax:rz-complement},
+\[
+J_e(\sigma_e)=\sigma_e
+\iff
+\sigma_e=\frac12
+\iff
+x_e=0.
+\]
+\end{theorem}
+
+\begin{proof}
+The fixed-point equation is
+\[
+1-\sigma_e=\sigma_e,
+\]
+hence \(2\sigma_e=1\) and \(\sigma_e=1/2\). By definition
+\(x_e=\sigma_e-1/2\), so this is equivalent to \(x_e=0\).
+Uniqueness is immediate.
+\end{proof}
+
+\section{Second route: Shannon and relative entropy}
+
+\begin{theorem}[SOH-RZ002: information zero]
+\label{thm:rz-shannon}
+For \(0<\sigma<1\),
+\[
+D_H(\sigma)\ge0
+\]
+and
+\[
+D_H(\sigma)=0
+\iff
+\sigma=\frac12
+\iff
+H_2(\sigma)=\ln2.
+\]
+Moreover \(\sigma=1/2\) is the unique stationary point and strict global
+minimum of \(D_H\).
+\end{theorem}
+
+\begin{proof}
+The identity
+\[
+D_H(\sigma)
+=
+D_{\mathrm{KL}}\!\left(
+(\sigma,1-\sigma)
+\middle\|
+(1/2,1/2)
+\right)
+\]
+gives non-negativity and the equality condition
+\(D_H=0\iff(\sigma,1-\sigma)=(1/2,1/2)\).
+Alternatively,
+\[
+D_H'(\sigma)=\ln\frac{\sigma}{1-\sigma},
+\qquad
+D_H''(\sigma)=\frac1\sigma+\frac1{1-\sigma}>0.
+\]
+Hence the only stationary point is \(\sigma=1/2\), and strict convexity
+makes it the unique global minimum.
+\end{proof}
+
+\section{Third route: relational Lagrange/action zero}
+
+\begin{theorem}[SOH-RZ003: Relational Lagrange--Zero Theorem]
+\label{thm:rz-lagrange}
+Under \Cref{ax:rz-complement,ax:rz-defect},
+\[
+\boxed{
+\mathfrak S_{\rm rel}=0
+\iff
+\forall e\in E:
+\quad
+F_e=0
+\quad\text{and}\quad
+\sigma_e=\frac12.
+}
+\]
+Therefore the global relational zero is exactly the simultaneous closure of
+all local Lagrange nodes and all complementary half coordinates.
+\end{theorem}
+
+\begin{proof}
+Every term
+\[
+w_e\left[
+\|F_e\|_{G_e}^{2}+\lambda_eD_H(\sigma_e)
+\right]
+\]
+is non-negative. A finite or countable sum of non-negative terms is zero if
+and only if every term is zero. Positive definiteness of \(G_e\) gives
+\(\|F_e\|_{G_e}^{2}=0\iff F_e=0\), while
+\Cref{thm:rz-shannon} gives
+\(D_H(\sigma_e)=0\iff\sigma_e=1/2\). Combining these equivalences proves
+the claim.
+\end{proof}
+
+For the information potential
+\[
+V_e(\sigma_e)=\lambda_eD_H(\sigma_e),
+\]
+the equilibrium equation is independently
+\[
+\frac{\partial V_e}{\partial\sigma_e}
+=
+\lambda_e\ln\frac{\sigma_e}{1-\sigma_e}=0,
+\]
+again selecting only \(\sigma_e=1/2\).
+
+\section{Three-route equivalence}
+
+\begin{corollary}[Relational Zero Triad]
+\label{cor:rz-triad}
+For every admitted local relation,
+\[
+\boxed{
+x=0
+\iff
+\sigma=\frac12
+\iff
+H_2(\sigma)=\ln2
+\iff
+D_H(\sigma)=0.
+}
+\]
+For the full relational system,
+\[
+\boxed{
+\mathfrak S_{\rm rel}=0
+\iff
+\bigcap_{e\in E}
+\{F_e=0,\ \sigma_e=1/2\}.
+}
+\]
+\end{corollary}
+
+The number of relations and the graph topology do not move the local normalized
+complement fixed point. Adding relations adds non-negative constraints; it
+does not alter \(1/2\) as the local center.
+
+\section{Spinorial consistency check}
+
+The already established binary-spinor relation
+\[
+e^{2\pi i\sigma}=-1
+\]
+has the unique solution \(\sigma=1/2\) in \(0<\sigma<1\). Thus the
+spinorial sign supplies an independent consistency check but is not required as
+a third axiom.
+
+\section{Boundary with celestial Lagrange points}
+
+The phrase \emph{Lagrange node} in this chapter means a zero of a declared
+relational vector field \(F_e\). Standard celestial-mechanics Lagrange
+points are equilibria of an effective rotating-frame potential and are not in
+general geometric midpoints. No claim that all astronomical Lagrange points
+occur at coordinate \(1/2\) is made here.
+
+\section{Riemann binding}
+
+For
+\[
+s=\sigma+it,
+\qquad
+\sigma=\Re s,
+\]
+the functional involution is centered by
+\[
+x=\Re s-\frac12.
+\]
+Therefore any state independently established to be a global relational
+zero-mode satisfies
+\[
+x=0
+\quad\Longrightarrow\quad
+\Re s=\frac12.
+\]
+
+\begin{corollary}[Conditional Riemann consequence]
+\label{cor:rz-rh}
+If every non-trivial zero \(\rho\) of \(\xi\) is independently proved to
+be a global relational zero-mode governed by
+\Cref{ax:rz-complement,ax:rz-defect}, then
+\[
+\Re\rho=\frac12
+\]
+for every such zero.
+\end{corollary}
+
+\begin{proof}
+Apply \Cref{thm:rz-lagrange} to each admitted zero-mode.
+\end{proof}
+
+\status{SOH-RZ001--SOH-RZ003 are exact within the two declared relational
+axioms. They close the project's internal three-route zero theorem. The
+zeta-to-relational-zero identification in \Cref{cor:rz-rh} is a separate
+binding and is not promoted here; the external proof status of RH is
+unchanged.}

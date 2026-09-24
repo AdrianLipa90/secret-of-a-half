@@ -1,6 +1,6 @@
 {
-  "version": "0.9-integrated-canon-v3-g023",
-  "date": "2026-08-19",
+  "version": "0.9-integrated-canon-v3-g023-rz001-rz004",
+  "date": "2026-09-24",
   "status": "CANONICAL_PROJECT_CLAIM_LEDGER",
   "canonical_through": "SOH-G023",
   "proof_of_rh": false,
@@ -94,7 +94,11 @@
     {"id":"SOH-N005","status":"numerical_certificate","statement":"For w=0.8, Q=100000 and N<=6, the largest certified prime-tail norm bound is 7.717202888999335e-13."},
     {"id":"SOH-N006","status":"numerical_certificate","statement":"For the declared adaptive schedule through N<=20, all sharp tail certificates pass 1e-12; the maximum is 3.280365246530569e-14 at N=5."},
     {"id":"SOH-D001","status":"exact_finite_counterexample","statement":"Reciprocal symmetry alone does not force the self-dual point to be a global maximum in the declared Stage-M universe."},
-    {"id":"SOH-H001","status":"exploratory_hypothesis","statement":"DEFINED_ZERO and UNDEFINED_BOTTOM are informational boundary labels; IEEE NaN is not a numeric endpoint."}
+    {"id":"SOH-H001","status":"exploratory_hypothesis","statement":"DEFINED_ZERO and UNDEFINED_BOTTOM are informational boundary labels; IEEE NaN is not a numeric endpoint."},
+    {"id":"SOH-RZ001","status":"exact_within_declared_relational_model","statement":"For normalized complement J(sigma)=1-sigma, the unique fixed point is sigma=1/2, equivalently centered coordinate x=0."},
+    {"id":"SOH-RZ002","status":"exact_within_declared_relational_model","statement":"The Shannon deficit ln2-H2(sigma)=D_KL((sigma,1-sigma)||(1/2,1/2)) is non-negative and vanishes exactly at sigma=1/2; its derivative has the same unique stationary point."},
+    {"id":"SOH-RZ003","status":"exact_within_declared_relational_model","statement":"For a finite or countable family of positive relational action-defect terms, S_rel=0 iff every local relational dynamical vector vanishes and every complementary coordinate equals 1/2."},
+    {"id":"SOH-RZ004","status":"conditional_rh_corollary","statement":"If every non-trivial xi zero is independently established to be a global relational zero-mode governed by RZ-A1/RZ-A2, then every such zero has Re(rho)=1/2."}
   ],
   "legacy_aliases": {
     "pre_v0.9:SOH-L012":"SOH-WA001",
