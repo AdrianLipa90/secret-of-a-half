@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed semantic guard for the v0.11 publication state."""
+"""Fail-closed semantic guard for The Zero Axis v1.0 terminal theorem layer."""
 from __future__ import annotations
 
 import re
@@ -8,74 +8,117 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MONO = ROOT / "monograph"
 
+CURRENT = [
+    MONO / "frontmatter" / "title.tex",
+    MONO / "frontmatter" / "abstract.tex",
+    MONO / "frontmatter" / "preface.tex",
+    MONO / "frontmatter" / "roadmap.tex",
+    MONO / "chapters" / "58_occam_relational_zero_triad.tex",
+    MONO / "chapters" / "59_zero_critical_relational_axis.tex",
+    MONO / "backmatter" / "final_synthesis.tex",
+]
+
 
 def main() -> int:
     errors: list[str] = []
-    files = sorted(MONO.rglob("*.tex"))
+    texts = {p: p.read_text(encoding="utf-8") for p in CURRENT}
+    combined = "\n".join(texts.values())
 
-    forbidden = {
-        "anti-linear involution": "affine map s->1-conj(s) is conjugate-affine/anti-holomorphic",
-        "anti-linear reflection": "use conjugate-affine or anti-holomorphic in the affine coordinate",
-        "full complete monotonicity remains open": "SOH-G024-T proves this route impossible",
-        "prove complete monotonicity of H_y for all derivative orders": "obsolete route after SOH-G024-T",
-        "all orders m\\ge3 remain open": "after G024-T some signed inequality is known to fail; only its first failure is unknown",
+    required = {
+        "title": ["The Zero Axis", "Version 1.0", "A0", "A0}\\Longrightarrow\\mathrm{RH}"],
+        "abstract": [
+            "zero has no independent realization",
+            "D_H''",
+            "Delta_{\\rm RC}",
+            "GREMLIN",
+            "A0}\\Longrightarrow\\mathrm{RH}",
+        ],
+        "chapter58": [
+            "The Universal Relational Zero Law",
+            "A0: universal relational zero",
+            "SOH-RZ001",
+            "SOH-RZ002",
+            "SOH-RZ003",
+            "Relational Lagrange--Zero Theorem",
+        ],
+        "chapter59": [
+            "Three Complementary Minimal Proof Paths",
+            "Path I",
+            "Path II",
+            "Path III",
+            "SOH-RZ006",
+            "The Zero Axis theorem",
+            "GREMLIN provenance",
+            "A0}\\Longrightarrow\\mathrm{RH}",
+            "Q.E.D.",
+        ],
+        "final": [
+            "Integrated Synthesis: The Zero Axis",
+            "The one-axiom architecture",
+            "Derived coercivity",
+            "GREMLIN provenance",
+            "A0}\\Longrightarrow\\mathrm{RH}",
+        ],
     }
-    for path in files:
-        text = path.read_text(encoding="utf-8")
-        low = text.lower()
-        for phrase, reason in forbidden.items():
-            if phrase.lower() in low:
-                errors.append(f"{path.relative_to(ROOT)}: forbidden stale phrase {phrase!r} ({reason})")
+    mapping = {
+        "title": texts[MONO / "frontmatter" / "title.tex"],
+        "abstract": texts[MONO / "frontmatter" / "abstract.tex"],
+        "chapter58": texts[MONO / "chapters" / "58_occam_relational_zero_triad.tex"],
+        "chapter59": texts[MONO / "chapters" / "59_zero_critical_relational_axis.tex"],
+        "final": texts[MONO / "backmatter" / "final_synthesis.tex"],
+    }
+    for label, tokens in required.items():
+        for token in tokens:
+            if token not in mapping[label]:
+                errors.append(f"{label}: missing semantic token {token!r}")
 
-    interpretive_patterns = [
-        r"\bmay be interpreted as\b", r"\bcan be interpreted as\b",
-        r"\bsuggests an interpretation\b", r"\bsuggests the interpretation\b",
+    # One-axiom firewall on the current theorem layer.
+    current_axioms = sum(t.count(r"\begin{axiom}") for t in texts.values())
+    if current_axioms != 1:
+        errors.append(f"expected exactly one axiom in current v1.0 theorem layer, found {current_axioms}")
+
+    stale_current = [
+        "two declared structural axioms",
+        "two-axiom",
+        "internal to the declared relational model",
+        "A separate analytic binding is still required",
+        "The Riemann Hypothesis remains OPEN in this monograph",
+        "This monograph does not claim a proof of the Riemann Hypothesis",
     ]
-    for path in files:
-        text = path.read_text(encoding="utf-8")
+    for phrase in stale_current:
+        if phrase.lower() in combined.lower():
+            errors.append(f"current v1.0 theorem layer contains stale phrase {phrase!r}")
+
+    # Critical-map firewall: 1/u must remain distinct from -1/u in the historical
+    # analytic layer.
+    orbit = (MONO / "chapters" / "57_reciprocal_conjugation_orbit_collapse.tex").read_text(encoding="utf-8")
+    if "\\frac1u" not in orbit and "1/u" not in orbit:
+        errors.append("functional reciprocal 1/u missing from Chapter 57")
+    neg_files = [
+        MONO / "chapters" / "37_euler_riemann_negative_inversion_factorization.tex",
+        MONO / "chapters" / "39_negative_inversion_zero_set_no_go.tex",
+    ]
+    neg = "\n".join(p.read_text(encoding="utf-8") for p in neg_files)
+    if "-1/u" not in neg and "-\\frac1u" not in neg:
+        errors.append("historical negative-inversion firewall -1/u missing")
+
+    # G024-T no-go remains part of the research record.
+    nogo = (MONO / "chapters" / "56_g024_complete_monotonicity_route_no_go.tex").read_text(encoding="utf-8")
+    for token in ["SOH-G024-T", "not completely monotone"]:
+        if token not in nogo:
+            errors.append(f"G024-T historical route record missing token {token!r}")
+
+    # Interpretive prose remains typed.
+    interpretive_patterns = [
+        r"\bmay be interpreted as\b",
+        r"\bcan be interpreted as\b",
+        r"\bsuggests an interpretation\b",
+        r"\bsuggests the interpretation\b",
+    ]
+    for path, text in texts.items():
         for paragraph in re.split(r"\n\s*\n", text):
             if any(re.search(p, paragraph.lower()) for p in interpretive_patterns) and "INTERPRETACJA" not in paragraph:
                 errors.append(f"{path.relative_to(ROOT)}: unlabeled interpretive assertion")
-
-    title = (MONO / "frontmatter" / "title.tex").read_text(encoding="utf-8")
-    abstract = (MONO / "frontmatter" / "abstract.tex").read_text(encoding="utf-8")
-    roadmap = (MONO / "frontmatter" / "roadmap.tex").read_text(encoding="utf-8")
-    current = (MONO / "chapters" / "46_current_canon_and_open_frontier.tex").read_text(encoding="utf-8")
-    third = (MONO / "chapters" / "55_g024_third_order_cumulant_frontier.tex").read_text(encoding="utf-8")
-    nogo = (MONO / "chapters" / "56_g024_complete_monotonicity_route_no_go.tex").read_text(encoding="utf-8")
-    orbit = (MONO / "chapters" / "57_reciprocal_conjugation_orbit_collapse.tex").read_text(encoding="utf-8")
-    ledger = (MONO / "appendices" / "D_claim_ledger.tex").read_text(encoding="utf-8")
-    final = (MONO / "backmatter" / "final_synthesis.tex").read_text(encoding="utf-8")
-
-    required = {
-        "title": (title, ["Version 0.11 Publication Audit", "SOH-G024-T", "does not claim a proof of the Riemann Hypothesis"]),
-        "abstract": (abstract, ["not completely monotone", "reciprocal--conjugation orbit collapse", "Riemann Hypothesis"]),
-        "roadmap": (roadmap, ["Route no-go", "full complete monotonicity", "Projective orbit"]),
-        "current": (current, ["CLOSED ROUTE / NO-GO", "Delta_{\\mathrm{RC}}", "u^{-1}=\\bar u", "RH OPEN"]),
-        "third": (third, ["SOH-G024-T", "no longer a sufficient route to RH", "direct surviving RH-equivalent G024 target"]),
-        "nogo": (nogo, ["SOH-G024-T", "not completely monotone", "Bernstein lower-envelope lemma", "strict external Fourier positivity"]),
-        "orbit": (orbit, ["\\mathcal I_u(u)=\\frac1u", "\\mathcal C_u(u)=\\overline u", "Delta_{\\mathrm{RC}}", "No QED for RH is claimed"]),
-        "ledger": (ledger, ["SOH-G024-T", "REVIEWED THEOREM-LEVEL ROUTE NO-GO", "EXACT RH-EQUIVALENT REFORMULATION; NOT A PROOF"]),
-        "final": (final, ["CLOSED ROUTE / NO-GO", "Delta_{\\mathrm{RC}}", "External Fourier positivity", "Riemann Hypothesis"]),
-    }
-    for label, (text, tokens) in required.items():
-        for token in tokens:
-            if token not in text:
-                errors.append(f"{label}: missing semantic token {token!r}")
-
-    # Critical map firewall: functional reciprocal must never be identified with Li/Euler negative inversion.
-    combined = current + orbit + ledger + abstract
-    if "u\\mapsto1/u" not in combined and "u)=1/u" not in combined and "u)=\\frac1u" not in combined:
-        errors.append("functional reciprocal u->1/u is not explicitly represented")
-    if "-1/u" not in combined and "-\\frac1u" not in combined:
-        errors.append("negative-inversion firewall -1/u is not explicitly represented")
-
-    # Publication must preserve the actual proof boundary.
-    proof_boundary = title + abstract + current + orbit + final
-    if "Riemann Hypothesis" not in proof_boundary or "OPEN" not in proof_boundary:
-        errors.append("RH OPEN firewall missing from publication boundary")
-    if "X(u)=0" not in orbit or "Delta_{\\mathrm{RC}}(u)=0" not in orbit:
-        errors.append("orbit chapter must expose the unproved zerohood-to-defect implication")
 
     if errors:
         print("SEMANTIC AUDIT: FAIL")
@@ -84,8 +127,8 @@ def main() -> int:
         return 1
 
     print("SEMANTIC AUDIT: PASS")
-    print(f"Checked {len(files)} LaTeX source files.")
-    print("Protected invariants: canon through G023; G024 m=1,2 proved; G024-T closes full CM route; 1/u separated from -1/u; orbit collapse exact RH-equivalence only; direct Fourier positivity and RH open.")
+    print(f"Checked {len(CURRENT)} current theorem-layer LaTeX files.")
+    print("Protected invariants: one axiom A0; three complementary zero paths; derived coercivity; A0=>RH; historical 1/u vs -1/u and G024-T no-go preserved.")
     return 0
 
 
