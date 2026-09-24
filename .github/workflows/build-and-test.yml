@@ -166,7 +166,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
         uses: actions/upload-artifact@v4
         with:
-          name: secret-of-a-half-monograph-v0.11-publication-candidate
+          name: the-zero-axis-v1.1-proof-edition
           retention-days: 7
           path: |
             monograph/main.pdf

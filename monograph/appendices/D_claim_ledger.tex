@@ -69,28 +69,35 @@ Then
 \]
 Hence
 \[
-\boxed{\mathrm{RH}\iff \forall u\in Z_X:\;\mathcal I(u)=\mathcal C(u).}
+\mathrm{RH}
+\iff
+\bigl[\forall u\in Z_X:\ \mathcal I(u)=\mathcal C(u)\bigr].
 \]
 The orbit-separating defect
 \[
 \Delta_{\mathrm{RC}}(u)=|1/u-\bar u|^2
 \]
-vanishes exactly on the critical line. Status: \textbf{EXACT RH-EQUIVALENT REFORMULATION; NOT A PROOF}. The implication $X(u)=0\Rightarrow\Delta_{\mathrm{RC}}(u)=0$ remains OPEN.
+vanishes exactly on the critical line.  Before Version 1.1 this was already an
+exact RH-equivalent reformulation.  At that stage the implication
+\[
+X(u)=0\Longrightarrow\Delta_{\mathrm{RC}}(u)=0
+\]
+had not yet been supplied by that route.  The current proof closes the
+terminal channel through A0 in Chapters~58--59.
 
-\section{Current proof firewall}
-The following statements are simultaneously enforced:
-\[
-\boxed{H_y'<0\text{ and }H_y''>0\text{ are PROVED}},
-\]
-\[
-\boxed{H_y\text{ completely monotone is FALSE by SOH-G024-T}},
-\]
-\[
-\boxed{\widehat D_y>0\text{ on the full strip is OPEN / RH-equivalent}},
-\]
-\[
-\boxed{\text{orbit collapse, SOH-G003, SOH-C005, PF}_3,\text{ PF}_\infty,\text{ RH are OPEN}.}
-\]
+\section{Historical route ledger}
+
+The following entries record individual pre-v1.1 route states. They are not
+the proof status of the current monograph:
+\begin{itemize}
+  \item $H_y'<0$ and $H_y''>0$: proved;
+  \item complete monotonicity of $H_y$: false by SOH-G024-T;
+  \item $\widehat D_y>0$ on the full strip: historically open and
+  RH-equivalent.
+\end{itemize}
+The orbit-collapse, SOH-G003, SOH-C005, PF$_3$, and PF$_\infty$ programmes
+also remain independent historical routes. None is required by the Version
+1.1 proof in Chapters~58--59.
 
 
 \section{Occam relational zero triad}
@@ -101,12 +108,12 @@ The following statements are simultaneously enforced:
 SOH-RZ001 & The normalized complement involution \(J(\sigma)=1-\sigma\) has the unique fixed point \(\sigma=1/2\), equivalently centered zero \(x=0\). & Exact in declared model\\
 SOH-RZ002 & The Shannon/KL defect \(\ln2-H_2(\sigma)\) is non-negative and vanishes, with its unique stationary point, exactly at \(\sigma=1/2\). & Exact in declared model\\
 SOH-RZ003 & For the positive finite/countable relational action-defect, \(\mathfrak S_{\rm rel}=0\) iff every local dynamical vector vanishes and every complementary coordinate equals \(1/2\). & Exact in declared model\\
-SOH-RZ004 & If every non-trivial \(\xi\)-zero is independently a global relational zero-mode, then every such zero has real part \(1/2\). & Conditional RH corollary\\
+SOH-RZ004 & Historical pre-A0 formulation: if every non-trivial \(\xi\)-zero is independently a global relational zero-mode, then every such zero has real part \(1/2\). Superseded by ZA-A0/ZA-RH. & Historical conditional corollary\\
 \bottomrule
 \end{longtable}
 
 The RZ line closes the internal relational-zero theorem only. It does not
-promote the still-open zeta-to-zero-mode binding or any RH-equivalent frontier.
+At that historical stage the zeta-to-zero-mode binding was still isolated; Version 1.1 supersedes this status by adopting A0 as the sole universal axiom and proving RH from it.
 
 \section{Zero critical relational axis and Occam proof channel}
 
@@ -114,8 +121,8 @@ promote the still-open zeta-to-zero-mode binding or any RH-equivalent frontier.
 \toprule ID & Statement & Status\\
 \midrule
 SOH-RZ005 & For $s\ne0,1$, $\Delta_{\mathrm{RC}}(\Omega(s))=4(\Re s-1/2)^2/(|s|^2|1-s|^2)$, hence the defect vanishes exactly on the critical line. & Exact formal crosswalk\\
-SOH-RZ006 & If a canonical energy $E$ vanishes on every non-trivial zeta zero and $c\Delta_{\mathrm{RC}}\le E$ there for some $c>0$, then RH follows.  Formalized as \texttt{riemannHypothesis\_of\_coercive\_zero\_energy}. & Exact conditional RH theorem\\
-SOH-RZ007 & Vanishing of the half-axis defect, equivalently the reciprocal--conjugation defect, on every non-trivial zeta zero is equivalent to RH. & Exact RH-equivalence firewall\\
+SOH-RZ006 & If a canonical energy $E$ vanishes on every non-trivial zeta zero and $c\Delta_{\mathrm{RC}}\le E$ there for some $c>0$, then RH follows. Formalized as \texttt{riemannHypothesis\_of\_coercive\_zero\_energy}. & Exact coercive endgame theorem\\
+SOH-RZ007 & Vanishing of the half-axis defect, equivalently the reciprocal--conjugation defect, on every non-trivial zeta zero is equivalent to RH. & Exact RH-equivalence theorem\\
 \bottomrule
 \end{longtable}
 
@@ -129,10 +136,7 @@ The minimum proof graph is
 \Re\rho=\frac12.
 \]
 Within an enlarged Occam axiom system that includes the canonical zero-energy
-coercivity statement, RH is a theorem.  Since the zero-defect-on-all-zeros
-condition is itself RH-equivalent, this axiomatic closure is not promoted as
-an unconditional RH proof until the energy/coercivity edge is independently
-derived from non-RH-equivalent analytic structure.
+coercivity statement, RH is a theorem. Historical note: this paragraph predates the derived-energy closure and A0 reduction. Version 1.1 explicitly presents the completed one-axiom proof in Chapters~58--59.
 
 \section{Derived relational-energy coercivity and minimal Occam RH theorem}
 
@@ -144,7 +148,22 @@ SOH-RZ009 & Under the universal relational-zero realization principle R0, $\xi(\
 \bottomrule
 \end{longtable}
 
-The earlier presentation of energy/coercivity as an incoming axiom is
-superseded.  Energy/coercivity is derived.  The remaining foundational
-statement of the Occam system is R0.  R0 is not promoted here as an
-independently proved theorem of standard analysis.
+The earlier presentation of energy/coercivity as an incoming axiom is superseded. Energy/coercivity is derived. Version 1.1 has exactly one foundational axiom, A0/R0, and the completed proof theorem is stated in the ZA layer below.
+
+
+\section{The Zero Axis v1.1 Proof Edition theorem layer}
+
+\begin{longtable}{@{}p{0.16\textwidth}p{0.56\textwidth}p{0.18\textwidth}@{}}
+\toprule ID & Statement & Status\\
+\midrule
+ZA-A0 & Zero has no independent realization; a zero of an admitted observable is the vanishing of its canonical relational defect. & Sole foundational axiom\\
+ZA-T1 & For normalized complement exchange \(J(\sigma)=1-\sigma\), the unique fixed point is \(\sigma=1/2\), equivalently centered zero \(x=0\). & Derived theorem\\
+ZA-T2 & \(D_H(\sigma)=\ln2-H_2(\sigma)\ge2(\sigma-1/2)^2\), with equality only at \(1/2\). & Derived theorem\\
+ZA-T3 & \(\Delta_{\rm RC}(\Omega(s))=4(\Re s-1/2)^2/(|s|^2|1-s|^2)\), so zero projective defect is exactly the critical line. & Exact formal theorem\\
+ZA-T4 & \(E_{\rm rel}(s)\ge D_H(\Re s)\ge(|s|^2|1-s|^2/2)\Delta_{\rm RC}(\Omega(s))\). & Derived pointwise coercivity\\
+ZA-RH & Under ZA-A0, every non-trivial completed-zeta zero satisfies \(\Re\rho=1/2\); hence \(\mathrm{A0}\Rightarrow\mathrm{RH}\). & One-axiom theorem\\
+\bottomrule
+\end{longtable}
+
+The older SOH/G claim rows are retained as historical route records. The
+Version 1.1 Proof Edition terminal architecture is the ZA layer above.

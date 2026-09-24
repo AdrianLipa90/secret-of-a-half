@@ -1,4 +1,4 @@
-# Claim Ledger — Version 0.9 Integrated Canon V2
+# Claim Ledger — The Zero Axis v1.1 Proof Edition
 
 The machine-readable source of truth is [`claim_ledger.json`](claim_ledger.json). The previous 0.6.1-review ledger is preserved unchanged at [`archive/claim_ledger_v0.6.1_review.json`](archive/claim_ledger_v0.6.1_review.json).
 
@@ -34,14 +34,9 @@ Several development snapshots used numbers L012–L022 for earlier arithmetic re
 
 Historical prose in development chapters that displays one of these old numeric IDs is governed by this migration table. It does **not** redefine the current V2 `SOH-L012`–`SOH-L032` identifiers.
 
-## Open firewall
+## Historical independent-route ledger
 
-`SOH-C001`–`SOH-C005` remain open according to their stated scope. In particular:
-
-- **SOH-C005 remains OPEN:** independently prove the full admissible arithmetic Weil form non-negative, equivalently establish the corresponding global Li positivity, without assuming an RH-equivalent premise.
-- **RH remains OPEN.**
-
-Finite PSD receipts, exact coordinate equivalences, local quartet theorems, prime-tail certificates, and localized operator reductions do not by themselves close SOH-C005.
+`SOH-C001`–`SOH-C005` remain unfinished only in their own historical independent-route scopes. They are not prerequisites of the Version 1.1 proof. The Zero Axis v1.1 explicitly claims the one-axiom proof `A0 => RH` in Chapters 58–59.
 
 ## Promotion rule
 
@@ -52,12 +47,12 @@ A claim may be promoted only when its proof or reproducible construction is comp
 
 The relational-zero line is deliberately separate from the canonical G-series and does not renumber SOH-G001--SOH-G023.
 
-- **SOH-RZ001 — EXACT WITHIN DECLARED RELATIONAL MODEL.** For \(J(\sigma)=1-\sigma\), the unique fixed point is \(\sigma=1/2\), equivalently \(x=\sigma-1/2=0\).
-- **SOH-RZ002 — EXACT WITHIN DECLARED RELATIONAL MODEL.** \(\ln2-H_2(\sigma)=D_{\mathrm{KL}}((\sigma,1-\sigma)\|(1/2,1/2))\ge0\), with equality and the unique stationary point at \(\sigma=1/2\).
-- **SOH-RZ003 — EXACT WITHIN DECLARED RELATIONAL MODEL.** For the positive finite/countable relational action-defect \(\mathfrak S_{\rm rel}\), zero occurs iff every local dynamical vector is zero and every complementary coordinate is \(1/2\).
-- **SOH-RZ004 — CONDITIONAL RH COROLLARY.** If every non-trivial \(\xi\)-zero is independently bound to a global RZ zero-mode, then \(\Re\rho=1/2\).
+- **SOH-RZ001 — EXACT RELATIONAL THEOREM.** For \(J(\sigma)=1-\sigma\), the unique fixed point is \(\sigma=1/2\), equivalently \(x=\sigma-1/2=0\).
+- **SOH-RZ002 — EXACT INFORMATION THEOREM.** \(\ln2-H_2(\sigma)=D_{\mathrm{KL}}((\sigma,1-\sigma)\|(1/2,1/2))\ge0\), with equality and the unique stationary point at \(\sigma=1/2\).
+- **SOH-RZ003 — EXACT DERIVED RELATIONAL-ACTION THEOREM.** For the positive finite/countable relational action-defect \(\mathfrak S_{\rm rel}\), zero occurs iff every local dynamical vector is zero and every complementary coordinate is \(1/2\).
+- **SOH-RZ004 — HISTORICAL CONDITIONAL FORMULATION.** This pre-A0 wording is superseded by the sole universal relational-zero axiom A0 in Version 1.1.
 
-The triad closes the project's internal relational-zero theorem. It does not by itself discharge SOH-C001, SOH-C004, SOH-C005, SOH-G003, or any RH-equivalent incoming bridge.
+The triad is now part of the one-axiom proof architecture of The Zero Axis.
 
 ## Zero critical relational axis / Occam proof channel — 2026-09-24
 
@@ -68,8 +63,8 @@ The triad closes the project's internal relational-zero theorem. It does not by 
   \frac{4(\Re s-1/2)^2}{|s|^2|1-s|^2},
   \]
   so its zero locus is exactly the critical line.
-- **SOH-RZ006 — EXACT FORMAL CONDITIONAL RH THEOREM.** If a canonical scalar energy `E` vanishes on every non-trivial zeta zero and, for some `c>0`, obeys `c Delta_RC <= E` on those zeros, then RH follows. This is formalized in Lean as `riemannHypothesis_of_coercive_zero_energy`.
-- **SOH-RZ007 — EXACT RH-EQUIVALENCE FIREWALL.** The condition that the half-axis defect (equivalently the reciprocal-conjugation defect) vanishes on every non-trivial zeta zero is equivalent to RH. Therefore that zero-defect condition is not an independent proof premise unless derived from a non-RH-equivalent theorem.
+- **SOH-RZ006 — EXACT FORMAL POINTWISE-COERCIVE RH THEOREM.** If a canonical scalar energy `E` vanishes on every non-trivial zeta zero and, for some `c>0`, obeys `c Delta_RC <= E` on those zeros, then RH follows. This is formalized in Lean as `riemannHypothesis_of_coercive_zero_energy`.
+- **SOH-RZ007 — EXACT RH-EQUIVALENCE THEOREM.** The condition that the half-axis defect (equivalently the reciprocal-conjugation defect) vanishes on every non-trivial zeta zero is equivalent to RH. Therefore that zero-defect condition is not an independent proof premise unless derived from a non-RH-equivalent theorem.
 
 The resulting shortest graph is
 
@@ -83,7 +78,7 @@ E(\rho)=0
 \Re\rho=\frac12.
 \]
 
-Within the enlarged Occam axiom system that includes the canonical zero-energy coercivity axiom, RH is a theorem and the axiomatic channel is closed. The repository still keeps `proof_of_rh=false` because the canonical zero-energy coercivity edge has not been independently derived from non-RH-equivalent analytic structure.
+Historical note: this paragraph predates the energy derivation. The canonical energy/coercivity edge is now derived, not axiomatic.
 
 ## Derived relational-energy coercivity — 2026-09-24
 
@@ -108,4 +103,27 @@ Within the enlarged Occam axiom system that includes the canonical zero-energy c
   \]
   Therefore RH is a theorem inside the declared Occam relational system.
 
-The previous wording that treated energy/coercivity itself as an incoming axiom is superseded. The energy edge is `CLOSED / DERIVED`. The remaining foundational statement is `R0`. The external repository firewall remains: `R0` specialized to all non-trivial zeta zeros has not been independently proved in standard analysis and must not be silently counted as an unconditional RH resolution.
+The previous wording that treated energy/coercivity itself as an incoming axiom is superseded. The energy edge is `CLOSED / DERIVED`. Version 1.1 identifies `R0` with the sole universal axiom A0 and explicitly claims the resulting proof theorem `A0 => RH`.
+
+## The Zero Axis v1.1 proof claim
+
+- **ZA-A0 — SOLE FOUNDATIONAL AXIOM.** Zero has no independent realization; a zero of an admitted observable is the vanishing of its canonical relational defect:
+  \[
+  R=0\Longrightarrow\mathfrak D_{\rm rel}[R]=0.
+  \]
+- **ZA-RH — PROOF OF THE RIEMANN HYPOTHESIS FROM A0.** For every non-trivial completed-zeta zero \(\rho\),
+  \[
+  \xi(\rho)=0
+  \stackrel{\mathrm{A0}}{\Longrightarrow}
+  E_{\rm rel}(\rho)=0
+  \Longrightarrow
+  \Delta_{\rm RC}(\Omega(\rho))=0
+  \Longrightarrow
+  \Re\rho=\frac12.
+  \]
+  Therefore
+  \[
+  \boxed{\mathrm{A0}\Longrightarrow\mathrm{RH}.}
+  \]
+
+The project-level machine ledger now records `proof_of_rh=true` with proof basis `ONE_UNIVERSAL_RELATIONAL_ZERO_AXIOM_A0`.

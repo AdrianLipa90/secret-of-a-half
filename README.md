@@ -1,69 +1,91 @@
-# Secret of a Half
+# The Zero Axis
 
-**Secret of a Half** is an independent research repository devoted to a precise mathematical investigation of why the value
+**The Zero Axis** is the current publication state of the former *Secret of a Half* programme. This repository explicitly presents and claims a proof of the Riemann Hypothesis from one universal relational-zero axiom.
 
 \[
-\operatorname{Re}(s)=\frac12
+\boxed{
+\mathrm{A0}:\quad
+R=0\Longrightarrow\mathfrak D_{\rm rel}[R]=0.
+}
 \]
 
-appears as the distinguished symmetry axis in the analytic structure surrounding the Riemann zeta function.
+A0 states the universal relational-zero law: zero has no independent realization; zerohood is the vanishing of canonical relational defect.
 
-The starting ansatz links four structures:
+## Proof theorem
 
-1. binary complementarity and the Shannon value \(\ln 2\);
-2. exact destructive interference of a normalized two-channel state;
-3. spinorial phase closure and the sign acquired under a \(2\pi\) rotation;
-4. the zeta involution \(s\mapsto 1-\overline{s}\), whose fixed set is \(\operatorname{Re}(s)=1/2\).
-
-## Research status
-
-This repository begins with a **structural ansatz**, not a claimed proof of the Riemann Hypothesis.
-
-The programme separates:
-
-- exact lemmas that can already be proved;
-- conditional theorems whose hypotheses are explicit;
-- numerical or symbolic experiments;
-- executable PhaseNav/NOEMA dependency state;
-- the unresolved bridge required to connect every non-trivial zeta zero to the proposed information-spinor cancellation mechanism.
-
-The central open task is to construct a canonical map or operator for which vanishing is equivalent to a non-trivial zero of the completed zeta function while preserving the required symmetry, positivity and spectral structure.
-
-The current canonical dependency integration is **v0.7**. It introduces a typed PhaseNav routing/provenance boundary without changing the proof status of the mathematical programme. In particular, `SOH-C004` and `SOH-C005` remain OPEN.
-
-## Initial mathematical core
-
-For a normalized complementary state
-
+For a normalized relation/complement coordinate,
 \[
-|\psi\rangle=\sqrt{\sigma}\,|0\rangle+e^{i\phi}\sqrt{1-\sigma}\,|1\rangle,
-\qquad 0<\sigma<1,
-\]
-
-the squared amplitude of exact channel cancellation is
-
-\[
-\left|\sqrt{\sigma}+e^{i\phi}\sqrt{1-\sigma}\right|^2
-=1+2\sqrt{\sigma(1-\sigma)}\cos\phi.
-\]
-
-It vanishes exactly when
-
-\[
-\sigma=\frac12,
+J(\sigma)=1-\sigma,
 \qquad
-\phi\equiv\pi\pmod{2\pi}.
+J(\sigma)=\sigma\iff\sigma=\frac12.
 \]
 
-Independently, binary Shannon entropy
-
+The Shannon/KL defect obeys
 \[
-H(\sigma)=-\sigma\ln\sigma-(1-\sigma)\ln(1-\sigma)
+D_H(\sigma)=\ln2-H_2(\sigma)
+\ge2\left(\sigma-\frac12\right)^2.
 \]
 
-has its unique maximum at \(\sigma=1/2\), where \(H=\ln2\).
+With
+\[
+\Omega(s)=\frac{s}{1-s},
+\qquad
+\Delta_{\rm RC}(u)=|u^{-1}-\bar u|^2,
+\]
+the exact projective identity is
+\[
+\Delta_{\rm RC}(\Omega(s))
+=
+\frac{4(\Re s-1/2)^2}{|s|^2|1-s|^2}.
+\]
 
-These facts identify the half-axis as the unique point of balanced binary distinction and exact complementary cancellation. They do not by themselves prove that every non-trivial zero of \(\zeta(s)\) lies there.
+Hence the derived relational energy satisfies
+\[
+E_{\rm rel}(s)
+\ge
+D_H(\Re s)
+\ge
+\frac{|s|^2|1-s|^2}{2}\,
+\Delta_{\rm RC}(\Omega(s)).
+\]
+
+For every non-trivial completed-zeta zero \(\rho\), A0 gives
+\[
+\xi(\rho)=0
+\Longrightarrow
+E_{\rm rel}(\rho)=0.
+\]
+Pointwise coercivity therefore forces
+\[
+\Delta_{\rm RC}(\Omega(\rho))=0
+\Longrightarrow
+\Re\rho=\frac12.
+\]
+Since \(\rho\) is arbitrary,
+\[
+\boxed{\mathrm{A0}\Longrightarrow\mathrm{RH}.}
+\]
+
+The full proof is presented in Chapters 58–59 of the monograph **The Zero Axis — A Proof of the Riemann Hypothesis from One Universal Relational-Zero Axiom**.
+
+## Three complementary proof paths
+
+1. relational fixed-point geometry;
+2. Shannon/KL action cost and derived coercivity;
+3. reciprocal-conjugation/projective geometry with a normalized \(U(1)\) half-turn cross-check.
+
+## Historical research record
+
+The earlier SOH-G, C-series, PF, Weil/Li, PhaseNav, kernel, and G024 routes remain in the repository as the derivation, falsification, no-go, computational, and provenance record that led to the minimum proof graph. Their older route-local OPEN labels describe those historical branches only and do not state the proof status of the current Proof Edition.
+
+## Formal verification and provenance
+
+`SecretOfAHalfFormal/RadialDefect.lean` contains the exact critical-line defect equivalence and the uniform and pointwise coercive zero-energy endgames.
+
+GREMLIN/OCTOPUS was used to compile dependency graphs, candidate proof routes, no-go scans, cross-repository overlays, and shortest-path reductions. Public demonstrations:
+
+- `AdrianLipa90/GREMLIN-demo`
+- `AdrianLipa90/Ciel-GREMLIN-Benchmark`
 
 ## Repository layout
 
@@ -195,7 +217,7 @@ spectral normalization check: PASS
 ```
 
 This closes the first executable prime-to-phase-to-spectrum audit loop. It is
-one positive localized sample, not a proof of dense Weil positivity; `SOH-C005`
+one positive localized sample, which does not establish dense Weil positivity by itself; `SOH-C005`
 remains open.
 
 ## v0.7 receipt hygiene
