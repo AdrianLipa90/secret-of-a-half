@@ -27,7 +27,7 @@ Current G024 status:
 The active book contains:
 
 - frontmatter title, abstract, preface, and **Reader Roadmap and Evidence Map**;
-- 58 numbered chapters;
+- 59 numbered chapters;
 - appendices for elementary proofs, asymmetric channels, numerical tables,
   the claim ledger, and notation;
 - an unnumbered **Integrated Synthesis and Open Problems** backmatter chapter;
@@ -95,3 +95,7 @@ The monograph does not claim a proof of the Riemann Hypothesis.
 ## Chapter 58 — Occam Relational Zero Triad
 
 Chapter 58 introduces the two-axiom RZ model and proves the same relational zero by complement fixed point, Shannon/KL equality, and positive Lagrange/action-defect closure. `SOH-RZ001`--`SOH-RZ003` are exact within the declared relational model; `SOH-RZ004` keeps the zeta-to-zero-mode binding explicit and conditional.
+
+## Chapter 59 — Zero as the Critical Axis of the Relational Barycenter
+
+Chapter 59 gives the requested three-sided proof of the relational zero: exchange fixed point, Shannon/KL information zero, and reciprocal-conjugation/projective zero. It also removes the previously stated energy axiom: strong convexity gives `D_H >= 2(Re(s)-1/2)^2`, the exact projective crosswalk converts this into pointwise coercivity of `Delta_RC`, and the TIR U(1)/holonomy Hamiltonian adds non-negative energy. The remaining foundational Occam statement is `R0`, relational-zero realization. Under `R0`, RH follows inside the declared relational system; `R0` is not promoted as an independently proved theorem of standard analysis.
