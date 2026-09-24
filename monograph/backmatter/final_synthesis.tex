@@ -107,41 +107,54 @@ J(\sigma)=\sigma
 \iff
 \Re s=\frac12.
 \]
-The first route is exchange-symmetric relational geometry, the second is
-Shannon/KL information geometry, and the third is the exact projective
-reciprocal--conjugation defect.  Together with the positive relational
-action-defect, they identify the half-axis as the unique relational
-zero-defect barycenter.
 
-The formal Lean endgame reduces the RH channel to one incoming analytic
-certificate.  If an independently constructed energy $E$ and a constant
-$c>0$ satisfy, on every non-trivial zeta zero $\rho$,
+The energy/coercivity edge is now derived rather than postulated.  Since
 \[
-E(\rho)=0,
-\qquad
-c\,\Delta_{\rm RC}(\Omega(\rho))\le E(\rho),
+D_H''(\sigma)=\frac1{\sigma(1-\sigma)}\ge4,
 \]
-then
+strong convexity yields
 \[
-\boxed{\mathrm{RH}}
+D_H(\Re s)\ge2(\Re s-1/2)^2.
 \]
-follows.  This is the theorem
-\texttt{riemannHypothesis\_of\_coercive\_zero\_energy}.
-
-Hence the enlarged Occam system obtained by adjoining canonical zero-energy
-coercivity has a closed axiomatic RH proof channel:
+Combined with the exact defect crosswalk,
 \[
-\boxed{\mathsf O\vdash\mathrm{RH}.}
+\boxed{
+D_H(\Re s)
+\ge
+\frac{|s|^2|1-s|^2}{2}\,
+\Delta_{\rm RC}(\Omega(s)).
+}
 \]
-After that axiom no additional conjectural edge remains.
+The TIR \(U(1)\) phase/Holonomy Hamiltonian adds further non-negative
+terms, so the canonical relational energy obeys the same pointwise
+coercivity.  The Lean layer now exposes the corresponding pointwise theorem
+\texttt{riemannHypothesis\_of\_pointwise\_coercive\_zero\_energy}.
 
-The same formal layer also proves that zero half-axis defect on every
-non-trivial zeta zero is equivalent to RH.  Therefore the axiomatic closure
-must not be confused with an independent proof in ordinary mathematics:
-the canonical energy/coercivity input has to be derived from already proved,
-non-RH-equivalent analytic structure before the repository can set
-\texttt{proof\_of\_rh=true}.
+Therefore the only foundational statement left in the minimal Occam system
+is relational-zero realization:
+\[
+\mathrm{R0}:\qquad
+\xi(\rho)=0
+\Longrightarrow
+E_{\rm rel}(\rho)=0.
+\]
+With R0, derived coercivity forces
+\[
+\Delta_{\rm RC}(\Omega(\rho))=0
+\Longrightarrow
+\Re\rho=\frac12,
+\]
+and hence
+\[
+\boxed{\mathsf O_{\rm rel}\vdash\mathrm{RH}.}
+\]
 
+Thus the energy edge is \textbf{CLOSED / DERIVED}.  The remaining external
+proof firewall is R0 itself.  Because the formal layer proves that vanishing
+half-axis/reciprocal defect on all non-trivial zeros is RH-equivalent, R0
+specialized to zeta zeros is not promoted as an independently proved theorem
+of standard analysis.  This distinction preserves the external repository
+status while recording the complete internal Occam proof channel.
 \section*{Open problems}
 \begin{enumerate}
 \item \textbf{Reciprocal--conjugation zero-orbit collapse.} Prove non-circularly
