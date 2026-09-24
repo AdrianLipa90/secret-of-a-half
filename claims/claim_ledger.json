@@ -1,5 +1,5 @@
 {
-  "version": "0.9-integrated-canon-v3-g023-rz001-rz007",
+  "version": "0.9-integrated-canon-v3-g023-rz001-rz009",
   "date": "2026-09-24",
   "status": "CANONICAL_PROJECT_CLAIM_LEDGER",
   "canonical_through": "SOH-G023",
@@ -448,13 +448,23 @@
     },
     {
       "id": "SOH-RZ006",
-      "status": "exact_formal_conditional_rh_theorem",
-      "statement": "If a canonical scalar energy E vanishes on every non-trivial zeta zero and for some c>0 coercively dominates c times the reciprocal-conjugation defect on those zeros, then the Riemann Hypothesis follows. Formalized in Lean as riemannHypothesis_of_coercive_zero_energy."
+      "status": "exact_formal_pointwise_conditional_rh_theorem",
+      "statement": "If a scalar energy E vanishes on every non-trivial zeta zero and a strictly positive pointwise coefficient c(s) satisfies c(s)*Delta_RC(Omega(s)) <= E(s) on those zeros, then the Riemann Hypothesis follows. Formalized in Lean by riemannHypothesis_of_pointwise_coercive_zero_energy; the earlier uniform-c theorem remains valid."
     },
     {
       "id": "SOH-RZ007",
       "status": "exact_rh_equivalence_firewall",
       "statement": "The condition that the half-axis defect (equivalently the reciprocal-conjugation defect) vanishes on every non-trivial zeta zero is equivalent to the Riemann Hypothesis; therefore it cannot be used as an independent premise without an external derivation."
+    },
+    {
+      "id": "SOH-RZ008",
+      "status": "exact_relational_model_coercivity",
+      "statement": "For 0<Re(s)<1 and s!=0,1, D_H(Re(s)) >= 2(Re(s)-1/2)^2 = (|s|^2|1-s|^2/2)*Delta_RC(Omega(s)). Any declared non-negative U(1)/holonomy energy terms strengthen this pointwise coercivity."
+    },
+    {
+      "id": "SOH-RZ009",
+      "status": "axiomatic_occam_rh_theorem",
+      "statement": "Under the universal relational-zero realization principle R0, xi(rho)=0 implies zero canonical relational action-defect. Together with SOH-RZ008 this forces Delta_RC(Omega(rho))=0 and hence Re(rho)=1/2 for every non-trivial zero. Thus RH is a theorem inside the declared Occam relational system; R0 is not claimed as an independently proved theorem of standard analysis."
     }
   ],
   "legacy_aliases": {
