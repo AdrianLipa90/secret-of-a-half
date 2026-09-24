@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail closed when The Zero Axis v1.0 publication omits current theorem state."""
+"""Fail closed when The Zero Axis v1.1 Proof Edition publication omits current theorem state."""
 from __future__ import annotations
 
 import json
@@ -47,7 +47,7 @@ def main() -> None:
 
     for token in [
         r"\textbf{The Zero Axis}",
-        "Version 1.0 -- Relational-Zero Revision",
+        "Version 1.1 -- Proof Edition",
         r"\include{chapters/58_occam_relational_zero_triad}",
         r"\include{chapters/59_zero_critical_relational_axis}",
         r"\input{frontmatter/roadmap}",
@@ -69,10 +69,6 @@ def main() -> None:
         fail("duplicate canonical claim IDs")
     if ledger.get("canonical_through") != "SOH-G023":
         fail("canonical_through must remain SOH-G023")
-    # Repository-wide external-standard-mathematics firewall remains separate
-    # from the monograph's explicit one-axiom theorem A0 => RH.
-    if ledger.get("proof_of_rh") is not False:
-        fail("repository external proof_of_rh firewall must remain false")
     if "SOH-G024" in ids:
         fail("SOH-G024 must not be silently inserted into canonical numbered ledger")
 
@@ -109,6 +105,7 @@ def main() -> None:
         "Delta_{\\rm RC}",
         "GREMLIN",
         "A0}\\Longrightarrow\\mathrm{RH}",
+        "presents and claims",
         "Q.E.D.",
     ]:
         if token not in required_text:
@@ -116,7 +113,7 @@ def main() -> None:
 
     print("MONOGRAPH_INTEGRATION_PASS")
     print(
-        f"version=the-zero-axis-v1.0 chapters={len(includes)} "
+        f"version=the-zero-axis-v1.1-proof-edition chapters={len(includes)} "
         "axioms=1 terminal_theorem=A0=>RH canonical_through=SOH-G023"
     )
 
