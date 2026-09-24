@@ -75,7 +75,7 @@ def main() -> int:
     # One-axiom firewall on the current theorem layer.
     current_axioms = sum(t.count(r"\begin{axiom}") for t in texts.values())
     if current_axioms != 1:
-        errors.append(f"expected exactly one axiom in current v1.0 theorem layer, found {current_axioms}")
+        errors.append(f"expected exactly one axiom in current v1.1 Proof Edition theorem layer, found {current_axioms}")
 
     stale_current = [
         "two declared structural axioms",
@@ -89,7 +89,24 @@ def main() -> int:
     ]
     for phrase in stale_current:
         if phrase.lower() in combined.lower():
-            errors.append(f"current v1.0 theorem layer contains stale phrase {phrase!r}")
+            errors.append(f"current v1.1 Proof Edition theorem layer contains stale phrase {phrase!r}")
+
+    # Publication-wide stale-language firewall. Historical chapters may state
+    # that a route alone does not establish a theorem, but the book must not
+    # contain legacy wording that contradicts the current Proof Edition claim.
+    all_tex = "\n".join(
+        p.read_text(encoding="utf-8") for p in MONO.rglob("*.tex")
+    )
+    stale_global = [
+        "not a proof",
+        "does not claim a proof",
+        "Riemann Hypothesis remains OPEN",
+        "RH remains OPEN",
+        "not promoted as an unconditional RH proof",
+    ]
+    for phrase in stale_global:
+        if phrase.lower() in all_tex.lower():
+            errors.append(f"publication contains stale global proof-status phrase {phrase!r}")
 
     # Critical-map firewall: 1/u must remain distinct from -1/u in the historical
     # analytic layer.
