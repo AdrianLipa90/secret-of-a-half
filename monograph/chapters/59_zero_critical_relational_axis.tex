@@ -1,0 +1,380 @@
+\chapter{Zero as the Critical Axis of the Relational Barycenter}
+\label{chap:zero-critical-relational-axis}
+
+\section{Purpose}
+
+This chapter compresses the relational-zero programme to its shortest current
+proof graph.  It proves the same half-axis zero from three independent
+directions: exchange symmetry, Shannon/KL information geometry, and the
+projective reciprocal--conjugation defect.  It then states the exact
+operator-facing endgame for the Riemann Hypothesis.
+
+The word \emph{barycenter} below means the exchange-symmetric affine midpoint
+of a normalized complementary pair.  It is not an arbitrary mass-weighted
+center of unequal physical bodies.  Likewise, \emph{relational singular
+node} means the unique zero-defect state selected by the declared relation;
+it does not mean an analytic pole.
+
+\section{Minimal relational core}
+
+For every admitted relation let
+\[
+p_e=(\sigma_e,1-\sigma_e),\qquad
+J_e(\sigma_e)=1-\sigma_e,
+\qquad
+x_e=\sigma_e-\frac12.
+\]
+Define
+\[
+D_H(\sigma)
+=
+\ln2-H_2(\sigma)
+=
+D_{\mathrm{KL}}\!\left(
+(\sigma,1-\sigma)
+\middle\|
+(1/2,1/2)
+\right).
+\]
+For a finite or countable relation family define the non-negative relational
+action-defect
+\[
+\mathfrak S_{\rm rel}
+=
+\sum_{e}w_e
+\left(
+\|F_e\|_{G_e}^2
++
+\lambda_eD_H(\sigma_e)
+\right),
+\qquad w_e,\lambda_e>0,
+\]
+where every \(G_e\) is positive definite.
+
+\begin{warning}
+The project quantity \(\mathfrak S_{\rm rel}\) is not the ordinary
+Lorentzian action \(S=\int L\,dt\).  Its zero condition must not be
+identified with the standard variational condition \(\delta S=0\).
+\end{warning}
+
+\section{First side: exchange-symmetric relational center}
+
+\begin{theorem}[Fixed-point center]
+For every normalized complementary relation,
+\[
+J_e(\sigma_e)=\sigma_e
+\iff
+\sigma_e=\frac12
+\iff
+x_e=0.
+\]
+\end{theorem}
+
+\begin{proof}
+The fixed-point equation is \(1-\sigma_e=\sigma_e\), hence
+\(2\sigma_e=1\).  The centered-coordinate statement is immediate.
+\end{proof}
+
+For an affine pair \((a_e,b_e)\), the exchange-symmetric midpoint is
+\[
+c_e=\frac{a_e+b_e}{2}.
+\]
+Under affine normalization \(a_e\mapsto0\), \(b_e\mapsto1\), this becomes
+\(c_e=1/2\).  Thus the half is the normalized relational barycenter.
+
+\section{Second side: Shannon/KL information zero}
+
+\begin{theorem}[Information center]
+For \(0<\sigma<1\),
+\[
+D_H(\sigma)\ge0
+\]
+and
+\[
+D_H(\sigma)=0
+\iff
+\sigma=\frac12
+\iff
+H_2(\sigma)=\ln2.
+\]
+Moreover \(1/2\) is the unique stationary point of \(D_H\).
+\end{theorem}
+
+\begin{proof}
+Non-negativity and the equality condition follow from the KL-divergence
+identity.  Independently,
+\[
+D_H'(\sigma)=\ln\frac{\sigma}{1-\sigma},
+\qquad
+D_H''(\sigma)=\frac1\sigma+\frac1{1-\sigma}>0.
+\]
+Hence the sole stationary point is \(\sigma=1/2\), and it is the strict
+global minimum of the defect.
+\end{proof}
+
+Near the center, with \(x=\sigma-1/2\),
+\[
+D_H\!\left(\frac12+x\right)
+=
+2x^2+\frac43x^4+O(x^6),
+\]
+so every nonzero transverse displacement carries positive information defect.
+
+\section{Relational Lagrange closure}
+
+\begin{theorem}[Relational Lagrange--Zero Theorem]
+\[
+\boxed{
+\mathfrak S_{\rm rel}=0
+\iff
+\forall e:\quad F_e=0\quad\text{and}\quad\sigma_e=\frac12.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+Every summand in \(\mathfrak S_{\rm rel}\) is non-negative.  A finite or
+countable sum of non-negative terms is zero exactly when every term is zero.
+Positive definiteness gives \(\|F_e\|_{G_e}^2=0\iff F_e=0\), while the
+information-center theorem gives \(D_H(\sigma_e)=0\iff\sigma_e=1/2\).
+\end{proof}
+
+A local \emph{Lagrange node} here means a zero of the declared relational
+vector field \(F_e\).  This is an abstract project definition; it does not
+assert that every celestial-mechanics Lagrange point is a geometric midpoint.
+
+\section{Third side: reciprocal--conjugation geometry}
+
+Let
+\[
+s=\sigma+it,
+\qquad
+\Omega(s)=\frac{s}{1-s}.
+\]
+The critical line is exactly the projective unit circle:
+\[
+\Re s=\frac12
+\iff
+|\Omega(s)|=1.
+\]
+Define
+\[
+\Delta_{\rm RC}(u)
+=
+\left|u^{-1}-\overline u\right|^2.
+\]
+The formal layer proves, for \(s\ne0,1\),
+\[
+\boxed{
+\Delta_{\rm RC}(\Omega(s))
+=
+\frac{4(\Re s-1/2)^2}{|s|^2|1-s|^2}.
+}
+\]
+Hence
+\[
+\boxed{
+\Delta_{\rm RC}(\Omega(s))=0
+\iff
+\Re s=\frac12.
+}
+\]
+
+Inside the declared binary-spinor model, the phase condition
+\[
+e^{2\pi i\sigma}=-1
+\]
+also selects the unique value \(\sigma=1/2\) in the open unit interval.
+
+\begin{corollary}[Three-sided relational zero]
+The exchange fixed point, the Shannon/KL zero, and the reciprocal--conjugation
+defect zero have the same locus:
+\[
+\boxed{
+x=0
+\iff
+\sigma=\frac12
+\iff
+H_2(\sigma)=\ln2
+\iff
+\Delta_{\rm RC}=0.
+}
+\]
+\end{corollary}
+
+\section{Zero as a relationally forced singular node}
+
+In the project terminology define a relational singular node by
+\[
+\text{all declared relational defects}=0.
+\]
+Under the preceding hypotheses this forces
+\[
+F_e=0,\qquad
+D_H(\sigma_e)=0,\qquad
+\sigma_e=\frac12
+\]
+for each participating relation.  Zero is therefore represented as the
+centered vanishing of relational imbalance, not as an independently inserted
+absolute origin.
+
+\section{Riemann symmetry and the one remaining analytic edge}
+
+The completed zeta symmetry acts horizontally as
+\[
+\sigma\longmapsto1-\sigma.
+\]
+Its fixed line is therefore \(\Re s=1/2\).  Symmetry alone does not collapse
+an off-axis pair
+\[
+\frac12+x+it,\qquad\frac12-x+it,
+\]
+because its midpoint lies on the critical line even when \(x\ne0\).
+Consequently an RH proof needs a mechanism forcing the transverse defect
+itself to vanish at every non-trivial zero.
+
+\section{Occam minimum proof path}
+
+Let \(E:\C\to\R\) be an independently constructed scalar energy and let
+\(c>0\).  Suppose every non-trivial zeta zero \(\rho\) satisfies
+\[
+E(\rho)=0
+\]
+and
+\[
+\boxed{
+c\,\Delta_{\rm RC}(\Omega(\rho))
+\le
+E(\rho).
+}
+\]
+Then
+\[
+0
+\le
+c\,\Delta_{\rm RC}(\Omega(\rho))
+\le
+0,
+\]
+so
+\[
+\Delta_{\rm RC}(\Omega(\rho))=0.
+\]
+The exact projective theorem gives \(\Re\rho=1/2\).  Since \(\rho\) was
+arbitrary, RH follows.
+
+This endgame is formalized in
+\texttt{SecretOfAHalfFormal/RadialDefect.lean} as
+\texttt{riemannHypothesis\_of\_coercive\_zero\_energy}.
+
+The minimum graph is therefore
+\[
+\boxed{
+\xi(\rho)=0
+\longrightarrow
+E(\rho)=0
+\stackrel{E\ge c\Delta}{\longrightarrow}
+\Delta(\rho)=0
+\longrightarrow
+\Re\rho=\frac12.
+}
+\]
+
+\section{Occam axiomatic RH theorem}
+
+Add to the relational axioms the following single analytic closure axiom.
+
+\begin{axiom}[Canonical zero-energy coercivity]
+\label{ax:occam-zero-energy}
+There exist a canonical independently defined energy \(E\) and \(c>0\)
+such that every non-trivial zeta zero \(\rho\) satisfies
+\[
+E(\rho)=0,
+\qquad
+c\,\Delta_{\rm RC}(\Omega(\rho))\le E(\rho).
+\]
+\end{axiom}
+
+\begin{theorem}[RH in the Occam relational system]
+Let \(\mathsf O\) denote the relational axioms together with
+\Cref{ax:occam-zero-energy}.  Then
+\[
+\boxed{\mathsf O\vdash\mathrm{RH}.}
+\]
+\end{theorem}
+
+\begin{proof}
+Apply the coercive zero-energy argument above to an arbitrary non-trivial zero
+\(\rho\).  Non-negativity forces the reciprocal--conjugation defect to
+vanish, hence \(\Re\rho=1/2\).  Therefore all non-trivial zeros lie on the
+critical line.
+\end{proof}
+
+Thus the axiomatic proof channel is closed: after the zero-energy coercivity
+axiom no further conjectural edge remains.
+
+\section{Proof-cost firewall}
+
+The formal layer also proves
+\[
+\texttt{ZeroHalfAxisDefectCondition}
+\iff
+\mathrm{RH}
+\]
+and
+\[
+\texttt{ZeroReciprocalDefectCondition}
+\iff
+\mathrm{RH}.
+\]
+Therefore simply postulating that the defect vanishes on every non-trivial
+zero would be an RH-equivalent assumption.  The Occam theorem above is a
+valid proof inside the enlarged axiomatic system, but it becomes an
+unconditional proof in ordinary mathematics only when the canonical energy
+and its coercive inequality are derived independently of RH or another
+RH-equivalent premise.
+
+\section{Minimum proof cost}
+
+The exact crosswalks show that the native half-axis defect, the
+reciprocal--conjugation defect, and the Suzuki imaginary-coordinate defect
+are three representations of the same transverse quantity.  Therefore this
+proof channel does not require simultaneous closure of every historical
+route.  Its single independent incoming obligation is:
+\[
+\boxed{
+\text{construct canonical }E
+\text{ with }E(\rho)=0
+\text{ and }E\ge c\Delta_{\rm RC},
+\quad c>0.
+}
+\]
+All subsequent edges are exact and already formalized.
+
+\section{Conclusion}
+
+The relational-zero theorem has three independent faces:
+\[
+\boxed{
+0_{\rm relational}
+\equiv
+\frac12_{\rm complement}
+\equiv
+\ln2_{\rm Shannon\ maximum}
+\equiv
+\Delta_{\rm RC}=0.
+}
+\]
+The half-axis is therefore the unique critical axis of the normalized
+relational barycenter.
+
+Within the declared Occam axiomatic system, RH follows with no further gap.
+The repository nevertheless retains the external proof firewall: the incoming
+canonical zero-energy coercivity theorem must be independently derived before
+the result is promoted as an unconditional proof of RH.
+
+\status{The three-sided relational-zero theorem and the coercive zero-energy
+RH implication are exact.  The Occam axiomatic channel is closed as an
+implication.  Independent derivation of the canonical zero-energy coercivity
+edge remains OPEN; therefore the repository does not promote an unconditional
+proof of RH.}
