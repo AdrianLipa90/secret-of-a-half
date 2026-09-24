@@ -107,3 +107,29 @@ SOH-RZ004 & If every non-trivial \(\xi\)-zero is independently a global relation
 
 The RZ line closes the internal relational-zero theorem only. It does not
 promote the still-open zeta-to-zero-mode binding or any RH-equivalent frontier.
+
+\section{Zero critical relational axis and Occam proof channel}
+
+\begin{longtable}{@{}p{0.15\textwidth}p{0.57\textwidth}p{0.18\textwidth}@{}}
+\toprule ID & Statement & Status\\
+\midrule
+SOH-RZ005 & For $s\ne0,1$, $\Delta_{\mathrm{RC}}(\Omega(s))=4(\Re s-1/2)^2/(|s|^2|1-s|^2)$, hence the defect vanishes exactly on the critical line. & Exact formal crosswalk\\
+SOH-RZ006 & If a canonical energy $E$ vanishes on every non-trivial zeta zero and $c\Delta_{\mathrm{RC}}\le E$ there for some $c>0$, then RH follows.  Formalized as \texttt{riemannHypothesis\_of\_coercive\_zero\_energy}. & Exact conditional RH theorem\\
+SOH-RZ007 & Vanishing of the half-axis defect, equivalently the reciprocal--conjugation defect, on every non-trivial zeta zero is equivalent to RH. & Exact RH-equivalence firewall\\
+\bottomrule
+\end{longtable}
+
+The minimum proof graph is
+\[
+\xi(\rho)=0
+\Longrightarrow E(\rho)=0
+\stackrel{E\ge c\Delta}{\Longrightarrow}
+\Delta(\rho)=0
+\Longrightarrow
+\Re\rho=\frac12.
+\]
+Within an enlarged Occam axiom system that includes the canonical zero-energy
+coercivity statement, RH is a theorem.  Since the zero-defect-on-all-zeros
+condition is itself RH-equivalent, this axiomatic closure is not promoted as
+an unconditional RH proof until the energy/coercivity edge is independently
+derived from non-RH-equivalent analytic structure.
