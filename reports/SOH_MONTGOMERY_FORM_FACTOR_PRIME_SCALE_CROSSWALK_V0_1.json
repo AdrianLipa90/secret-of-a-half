@@ -9,9 +9,14 @@
     "SOH-MD001B1": "CLOSED_EXACT_PROJECTOR_GEOMETRY",
     "SOH-MD001B2": "CLOSED_FORCED_FORM_FACTOR_IN_DECLARED_PROJECTOR_CAR_SECTOR",
     "SOH-MD001B3": "CLOSED_EXACT_ARITHMETIC_FREQUENCY_MAP",
-    "SOH-MD001B4": "OPEN_FULL_ZETA_LOCAL_PROCESS_BINDING"
+    "SOH-MD001B4": "OPEN_FULL_ZETA_LOCAL_PROCESS_BINDING",
+    "SOH-MD001B4a": "STANDARD_RH_CONDITIONAL_RAMP_FOR_0_LT_ABS_ALPHA_LT_1",
+    "SOH-MD001B4b": "OPEN_MONTGOMERY_PLATEAU_FOR_ABS_ALPHA_GT_1",
+    "SOH-MD001B4c": "OPEN_NONCIRCULAR_ZETA_OCCUPANCY_OPERATOR_DERIVATION"
   },
   "exact_frequency_map": "tau_{p^m}(T)=m log p/log(T/(2pi))",
   "no_go": "fixed-q Landau response cannot by itself imply the full nonzero-tau ramp",
-  "canon_allowed": false
+  "canon_allowed": false,
+  "classical_form_factor_under_RH": "F(alpha,T)=T^(-2|alpha|) log(T)(1+o(1))+|alpha|+o(1), 0<|alpha|<1",
+  "proof_firewall": "RH-conditional ramp is validation only if RH itself is the proof target"
 }
