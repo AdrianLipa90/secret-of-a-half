@@ -201,3 +201,49 @@ K_{N,a}(x,y)
 After its own mean-density unfolding, the normalized kernel converges to the same sinc kernel as the Hardy consecutive-shift projector. Therefore SOH-MD001 no longer needs to prove a Hardy-vs-Fourier basis equivalence. The remaining gate is solely the zeta spectral **occupancy/state binding** that turns the relevant zeta local process into the filled-CAR/quasi-free projector process.
 
 See research/SOH_YOSHIDA_FOURIER_SINE_KERNEL_COMPATIBILITY_V0_1.md.
+
+
+## 9. Restricted-support external binding
+
+There is a rigorous external slice of the zeta/GUE correspondence that must be kept separate from the new internal forced-prediction theorem.
+
+Montgomery's pair-correlation theorem, in its classical restricted-support form and under its stated hypotheses, agrees with the GUE/sine-kernel two-point functional for Schwartz test functions whose Fourier transforms are supported in the permitted interval. Rudnick--Sarnak later established restricted-support n-level GUE correlations in the broader principal-L-function setting.
+
+This yields the status split
+
+\[
+\boxed{
+\text{internal Hardy/Fourier--CAR}
+\to
+\text{sine-kernel functional}
+=
+\text{FORCED}
+}
+\]
+
+\[
+\boxed{
+\text{zeta correlations on the classical restricted test class}
+=
+\text{EXTERNAL\_STANDARD / PARTIAL\_BINDING}
+}
+\]
+
+\[
+\boxed{
+\text{full zeta local point process}
+=
+\text{OPEN}.
+}
+\]
+
+The restricted-support theorem is validation evidence only. In particular, any argument intended to prove RH must not import an RH-conditional version of Montgomery's theorem as a premise.
+
+For SOH-MD001 it is useful to split the gate:
+
+- **SOH-MD001A — restricted-support consistency:** externally available / not a new proof obligation;
+- **SOH-MD001B — full zero-list-free local occupancy/projector binding:** OPEN.
+
+References:
+- H. L. Montgomery, *The pair correlation of zeros of the zeta function*, Proc. Sympos. Pure Math. 24 (1973), 181--193.
+- Z. Rudnick and P. Sarnak, *Zeros of principal L-functions and random matrix theory*, Duke Math. J. 81 (1996), 269--322.
