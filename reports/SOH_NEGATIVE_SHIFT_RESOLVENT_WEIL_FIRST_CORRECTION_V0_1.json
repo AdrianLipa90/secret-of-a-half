@@ -1,0 +1,23 @@
+{
+  "schema": "SOH_NEGATIVE_SHIFT_RESOLVENT_WEIL_FIRST_CORRECTION_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_FORM_DOMAIN_BINDING__EXACT_FIXED_A_FIRST_CORRECTION__ITERATED_ZERO_FREE_PRIME_TARGET_CLOSED",
+  "exact_results": {
+    "form_domain": "v_p^a=e^(px) 1_[-a,a] belongs to D(Q_W^a) by form-core cutoff argument",
+    "cross_form": "Q_W^a(v_p^a,v_q^a)=W(v_p^a * tilde(v_q^a))",
+    "abstract_resolvent": "mu^2(<f,(A+mu)^-1 g>-<f,g>/mu)->-q_A(f,g)",
+    "application": "normalized first correction -> W(f_{a,y})",
+    "iterated_limit": "a->infinity after mu->infinity gives xi'/xi(3/2)+xi'/xi(1/2+y)"
+  },
+  "gates": {
+    "LIV-MD2c1": "CLOSED_FINITE_WEIL_TO_PRIME_TARGET",
+    "LIV-MD2c2": "CLOSED_FORM_DOMAIN_BINDING",
+    "LIV-MD2c3": "CLOSED_FIXED_A_RESOLVENT_FIRST_CORRECTION",
+    "LIV-MD2c4": "OPEN_COMPUTABLE_JOINT_MU_OF_A_SCHEDULE"
+  },
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
