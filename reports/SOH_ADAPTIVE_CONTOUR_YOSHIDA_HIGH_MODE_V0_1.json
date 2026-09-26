@@ -1,0 +1,39 @@
+{
+  "schema": "SOH_ADAPTIVE_CONTOUR_YOSHIDA_HIGH_MODE_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "GENERAL_C_ENVELOPE__ADAPTIVE_LOGLOG_SLOPE_2__RATE_OPTIMAL_WITHIN_CURRENT_CERTIFICATE_ARCHITECTURE",
+  "source": {
+    "work": "Masatoshi Suzuki, Aspects of the screw function corresponding to the Riemann zeta-function",
+    "theorem": "4.3",
+    "equations": [
+      "4.4",
+      "4.11",
+      "4.13"
+    ],
+    "source_condition": "c>1"
+  },
+  "general_bounds": {
+    "C1": "max(1/c+1/(1+c), log(2)/2^(1+c)+2^(-c)(log(2)/c+1/c^2))",
+    "C2": "(exp(2 c a1)-1)/(2 c a1)"
+  },
+  "adaptive_schedule": {
+    "c": "1+a^-2",
+    "a1": "a+a^-2",
+    "C1_limit": "3/2",
+    "C2_asymptotic": "exp(2a)/(2a)",
+    "C_asymptotic": "(9/4) exp(2a)/a",
+    "log_N_asymptotic": "(27/4) exp(2a)/a",
+    "log_log_N_asymptotic": "2a-log(a)+log(27/4)+o(1)"
+  },
+  "rate_optimality": "Leading loglog cutoff slope 2 is optimal within the current c>1, a1>a, absolute C1*C2, gamma-window, Fourier-leakage architecture.",
+  "firewall": [
+    "No minimal operator cutoff claim",
+    "No literal low-Fourier support claim for negative eigenvectors",
+    "Rate-optimality is architecture-relative, not operator-universal"
+  ],
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
