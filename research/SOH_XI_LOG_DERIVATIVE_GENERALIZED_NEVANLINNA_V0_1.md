@@ -4,6 +4,58 @@ Status: **EXACT_ZERO_TO_POLE_MAP / EXACT_RH_IFF_N0 / CONDITIONAL_NK_OFF-AXIS_COU
 
 Date: 2026-09-26
 
+## Provenance correction
+
+The equivalence
+
+\[
+\mathrm{RH}
+\iff
+Q_\xi\in N_0
+\]
+
+is **not claimed as a new RH criterion**.
+
+Under
+
+\[
+s=\frac12-iz,
+\]
+
+we have
+
+\[
+Q_\xi(z)
+=
+i\frac{\xi'}{\xi}(s)
+\]
+
+and therefore
+
+\[
+\Im Q_\xi(z)
+=
+\Re\frac{\xi'}{\xi}(s).
+\]
+
+Thus the ordinary-Nevalinna condition on \(Q_\xi\) is the classical
+Hinkkanen/Lagarias positivity criterion
+
+\[
+\mathrm{RH}
+\iff
+\Re\frac{\xi'}{\xi}(s)>0
+\quad
+(\Re s>1/2),
+\]
+
+written in the rotated centered coordinate.
+
+The project-specific contribution of this branch is the
+Suzuki/de Branges/Pontryagin/Cayley crosswalk to that classical criterion,
+not the criterion itself.
+
+
 Parents:
 - \`research/SOH_DE_BRANGES_PONTRYAGIN_COMPLEMENT_V0_1.md\`
 - \`research/SOH_FREE_SUBTRACTED_RESOLVENT_PONTRYAGIN_FRONTIER_V0_1.md\`
