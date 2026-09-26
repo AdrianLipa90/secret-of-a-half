@@ -1,0 +1,15 @@
+{
+  "schema": "SOH_SUZUKI_HEAT_SEMIGROUP_CAR_CROSSWALK_NOGO_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/montgomery-dyson-hard-car-binding-v0.1-20260926",
+  "status": "EXACT_FUNCTIONAL_CALCULUS_NOGO",
+  "exact_results": {
+    "contraction": "||exp(-tA)||<=1 iff inf spec(A)>=0 iff A>=0 for self-adjoint lower-bounded A",
+    "projection": "exp(-tA) idempotent => A=0 for ordinary finite spectral values",
+    "required_spectral_match": "mu_rho=1-2 Re(rho) to reproduce q^(2 Re(rho)-1)"
+  },
+  "consequence": "Suzuki heat semigroup is not an independent MD002C closure; contraction repackages C005 positivity.",
+  "open_gate": "construct zero-list-free arithmetic operator with normalized zeta radial weights as genuine occupation spectrum",
+  "canon_allowed": false
+}
