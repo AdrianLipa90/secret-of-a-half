@@ -8,14 +8,16 @@
     "nesting": "localized form domains embed by zero extension",
     "monotonicity": "a1<a2 => n_-(A_a1)<=n_-(A_a2)",
     "persistence": "if kappa_a0>0 then kappa_a>=1 for all a>=a0",
-    "first_correction": "Pontryagin complement inherits the same monotone index"
+    "first_correction": "Pontryagin complement inherits the same monotone index",
+    "high_mode_index_envelope": "If K_N(a) is strictly positive then kappa_a<=2N+1."
   },
   "gates": {
     "LIV-MD2c5P3a": "CLOSED_INDEX_MONOTONICITY",
-    "LIV-MD2c5P3b": "OPEN_HIGH_MODE_CUTOFF_GROWTH",
+    "LIV-MD2c5P3b": "OPEN_SUFFICIENT_HIGH_MODE_CUTOFF_GROWTH_AND_INDEX_ENVELOPE",
     "LIV-MD2c5P3c": "OPEN_COMPACT_DEFECT_OBSTRUCTION_OR_ESCAPE"
   },
   "rh_used": false,
   "zero_list_used": false,
-  "canon_allowed": false
+  "canon_allowed": false,
+  "firewall": "High-block positivity bounds the negative index/codimension problem; it does not imply that negative eigenvectors have literal low-Fourier support."
 }
