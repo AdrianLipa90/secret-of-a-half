@@ -1,0 +1,42 @@
+{
+  "schema": "SOH_EXPLICIT_GLOBAL_LIVSIC_SHIFT_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "LIV_MD1_CLOSED__EXPLICIT_UNCONDITIONAL_SHIFT",
+  "source": {
+    "work": "Masatoshi Suzuki, Weil's quadratic form via the screw function",
+    "version": "arXiv:2606.09096v3, 2026-09-23",
+    "equations": [
+      "2.2",
+      "2.5",
+      "4.4",
+      "4.5"
+    ],
+    "rh_assumed": false
+  },
+  "exact_bounds": {
+    "L_nonnegative": "mathcal L(w)>=0",
+    "prime_overlap": "P_a(w)<=2 sum_{n<=exp(2a)} Lambda(n)/sqrt(n)<=8 a exp(a)",
+    "r1_second": "|r1''(t)|<=1/4",
+    "remainder": "|r''(t)|<=2 cosh(a)+1/4 for |t|<=2a",
+    "remainder_form": "|J_a(w)|<=4 a cosh(a)+a/2",
+    "lambda_lower": "lambda_a >= -log(a)-log(2pi)-gamma-8 a exp(a)-4 a cosh(a)-a/2"
+  },
+  "shift": "lambda_sh(a)=lower_bound(a)-1",
+  "consequences": [
+    "lambda_sh(a)<lambda_a for every a>0",
+    "A_a-lambda_sh(a) I >= I",
+    "||(A_a-lambda_sh(a)I)^-1|| <= 1"
+  ],
+  "gates": {
+    "LIV-MD1": "CLOSED",
+    "LIV-MD2": "OPEN_NORMALIZED_PARITY_RATIO_CONVERGENCE"
+  },
+  "zero_list_used": false,
+  "rh_used": false,
+  "local_validator": {
+    "status": "PASS"
+  },
+  "canon_allowed": false
+}
