@@ -1,0 +1,40 @@
+{
+  "schema": "SOH_LOCALIZED_FOURIER_GALERKIN_OPERATOR_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "ACTUAL_LOCALIZED_ARITHMETIC_GALERKIN_IMPLEMENTED__NUMERICAL_NOT_INTERVAL",
+  "implementation": "src/secret_of_a_half/localized_weil_fourier_matrix.py",
+  "basis": "e_n=(2a)^-1/2 exp(pi i n x/a)",
+  "entry": "A_nm=localized_weil_cross_form(a,-pi n/a,-pi m/a)/(2a)",
+  "sample": {
+    "a": 0.345,
+    "prime_free": true,
+    "min_eigenvalue_N1": 0.00771077,
+    "min_eigenvalue_N2": 0.00316033,
+    "min_eigenvalue_N3": 0.00216026,
+    "eigenvalues_N3": [
+      0.00216026,
+      0.11759507,
+      0.67793805,
+      0.96394167,
+      1.22226293,
+      1.41507437,
+      1.64052584
+    ]
+  },
+  "closed": [
+    "separate localized Fourier matrix implementation",
+    "low/high block API",
+    "no global Hermite substitution"
+  ],
+  "open": [
+    "interval matrix enclosure",
+    "interval Schur feed",
+    "independent D*G_a*D screw-kernel cross-check"
+  ],
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
