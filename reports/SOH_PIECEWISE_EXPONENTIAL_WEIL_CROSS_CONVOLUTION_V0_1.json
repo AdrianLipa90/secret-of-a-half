@@ -24,5 +24,10 @@
   },
   "rh_used": false,
   "zero_list_used": false,
-  "canon_allowed": false
+  "canon_allowed": false,
+  "local_validator": {
+    "status": "PASS",
+    "max_arch_identity_error": 1.0691058840368783e-50,
+    "note": "Regression only; exact proof uses the digamma difference identity."
+  }
 }
