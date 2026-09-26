@@ -267,3 +267,6 @@ A cross-repository audit now separates the already derived sine-kernel law from 
 
 
 The existing C005 Yoshida Fourier rebase has now also been audited at the projector-kernel level. Its symmetric low-mode projector has the same unit-density sine-kernel limit as the Hardy/Hilbert-Hotel projector. This closes the basis-geometry part of SOH-MD001; the remaining open gate is the zeta spectral occupancy/quasi-free-CAR binding, not the sinc kernel or the choice of Fourier versus Hardy basis.
+
+
+The Montgomery–Dyson gate is now further reduced. Projector geometry, the forced ramp/plateau, and the prime-power frequency coordinate \(\tau_{p^m}=m\log p/\log(T/2\pi)\) are all closed in their declared mathematical sectors. The remaining substantive gate is **SOH-MD001B4**: derive the full local zeta pair process / smoothed form factor from the prime/Weil side without importing the target GUE statistics. Fixed-\(q\) Landau asymptotics are explicitly insufficient because they collapse to \(\tau=0\).
