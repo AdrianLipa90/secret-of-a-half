@@ -12,11 +12,22 @@
     "SOH-MD001B4": "OPEN_FULL_ZETA_LOCAL_PROCESS_BINDING",
     "SOH-MD001B4a": "STANDARD_RH_CONDITIONAL_RAMP_FOR_0_LT_ABS_ALPHA_LT_1",
     "SOH-MD001B4b": "OPEN_MONTGOMERY_PLATEAU_FOR_ABS_ALPHA_GT_1",
-    "SOH-MD001B4c": "OPEN_NONCIRCULAR_ZETA_OCCUPANCY_OPERATOR_DERIVATION"
+    "SOH-MD001B4c": "OPEN_NONCIRCULAR_ZETA_OCCUPANCY_OPERATOR_DERIVATION",
+    "SOH-MD001B4d": "CLOSED_FEJER_AVERAGED_ARITHMETIC_TAIL_FOR_H_GE_X^(2/15+EPS)_FROM_GUTH_MAYNARD_2026",
+    "SOH-MD001B4e": "OPEN_BELOW_2_OVER_15_OR_EXACT_SMOOTH_LOG_WINDOW_TRANSFER"
   },
   "exact_frequency_map": "tau_{p^m}(T)=m log p/log(T/(2pi))",
   "no_go": "fixed-q Landau response cannot by itself imply the full nonzero-tau ramp",
   "canon_allowed": false,
   "classical_form_factor_under_RH": "F(alpha,T)=T^(-2|alpha|) log(T)(1+o(1))+|alpha|+o(1), 0<|alpha|<1",
-  "proof_firewall": "RH-conditional ramp is validation only if RH itself is the proof target"
+  "proof_firewall": "RH-conditional ramp is validation only if RH itself is the proof target",
+  "arithmetic_average_update": {
+    "source_repository": "AdrianLipa90/On-Primes",
+    "source_branch": "integrate/fejer-averaged-mobius-crt-low-block-v0.1-20260926",
+    "range": "X^(2/15+epsilon) <= H+1 <= X^0.99",
+    "cutoff": "R=X^(1/4)",
+    "result": "Fejer-averaged high-divisor tail / X -> 0",
+    "rh_used": false,
+    "fixed_shift_twin_prime_asymptotic_used": false
+  }
 }
