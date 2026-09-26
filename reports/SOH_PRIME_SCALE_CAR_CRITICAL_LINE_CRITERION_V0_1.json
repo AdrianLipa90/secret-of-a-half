@@ -18,7 +18,10 @@
   },
   "firewall": "No CAR positivity/contraction may be assumed from RH or from a critical-line zero list.",
   "local_validator": {
-    "status": "PENDING_RUNTIME_CHECK"
+    "status": "PASS",
+    "max_modulus_error": 2.220446049250313e-16,
+    "reflected_occupation_product": "PASS",
+    "off_axis_reflection_orbit_exceeds_one": "PASS"
   },
   "canon_allowed": false
 }
