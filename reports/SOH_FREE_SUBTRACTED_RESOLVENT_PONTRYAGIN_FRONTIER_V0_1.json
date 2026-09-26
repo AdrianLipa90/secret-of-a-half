@@ -1,0 +1,22 @@
+{
+  "schema": "SOH_FREE_SUBTRACTED_RESOLVENT_PONTRYAGIN_FRONTIER_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_INERTIA__DIRECT_POSITIVE_RENORMALIZATION_C005_EQUIVALENT__GENERALIZED_SCHUR_REALIZATION_OPEN",
+  "exact_results": {
+    "operator": "C=I-mu(A+mu I)^-1=A(A+mu I)^-1",
+    "sign_preservation": "sign(lambda/(lambda+mu))=sign(lambda)",
+    "inertia": "n_-(C)=n_-(A)",
+    "positivity": "C>=0 iff A>=0",
+    "kernel": "<e_w,C e_z> has exactly n_-(A) negative squares on the total exponential family"
+  },
+  "external_framework": "Krein-Langer generalized Schur / Pontryagin negative-square theory",
+  "gates": {
+    "LIV-MD2c5P": "OPEN_GENERALIZED_SCHUR_REALIZATION_AND_DEFECT_ESCAPE"
+  },
+  "firewall": "Krein-Langer factorization records finite negative index; it does not prove the index is zero.",
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
