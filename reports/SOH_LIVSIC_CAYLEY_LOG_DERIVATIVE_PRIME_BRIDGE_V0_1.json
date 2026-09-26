@@ -1,0 +1,25 @@
+{
+  "schema": "SOH_LIVSIC_CAYLEY_LOG_DERIVATIVE_PRIME_BRIDGE_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "LIV_MD2A_B_CLOSED__FINITE_OPERATOR_TO_FINITE_PRIME_TARGET_OPEN",
+  "exact_results": {
+    "cayley": "r0(1-chi_infty(iy))/(1+chi_infty(iy))=xi'(s)/xi(s), s=1/2+y>1",
+    "xi_log_derivative": "1/s+1/(s-1)-0.5log(pi)+0.5psi(s/2)-sum Lambda(n)n^-s",
+    "finite_support": "M_a=floor(exp(2a)) matches localized prime-shift support",
+    "tail": "<=M_a^(1-s)[log(M_a)/(s-1)+1/(s-1)^2]",
+    "uniform_tail": "s>=1+eta => O_eta(a exp(-2a eta))"
+  },
+  "gates": {
+    "LIV-MD2a": "CLOSED_EXACT_CAYLEY_LOG_DERIVATIVE",
+    "LIV-MD2b": "CLOSED_EXPLICIT_PRIME_TAIL",
+    "LIV-MD2c": "OPEN_FINITE_OPERATOR_TO_FINITE_PRIME_TARGET"
+  },
+  "zero_list_used": false,
+  "rh_used": false,
+  "local_validator": {
+    "status": "PASS"
+  },
+  "canon_allowed": false
+}
