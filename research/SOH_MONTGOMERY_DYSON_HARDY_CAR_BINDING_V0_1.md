@@ -247,3 +247,43 @@ For SOH-MD001 it is useful to split the gate:
 References:
 - H. L. Montgomery, *The pair correlation of zeros of the zeta function*, Proc. Sympos. Pure Math. 24 (1973), 181--193.
 - Z. Rudnick and P. Sarnak, *Zeros of principal L-functions and random matrix theory*, Duke Math. J. 81 (1996), 269--322.
+
+
+## Prime-scale CAR critical-line criterion
+
+The remaining zeta-to-projector gate now admits a sharper conditional decomposition.
+
+For every \(q>1\) and spectral point \(s=\sigma+it\), define
+
+\[
+Z_q(s)=q^{s-1/2}.
+\]
+
+Then
+
+\[
+|Z_q(s)|=q^{\sigma-1/2},
+\qquad
+|Z_q(s)|^2=q^{2\sigma-1}.
+\]
+
+Hence a nontrivial zero \(\rho=\beta+i\gamma\) has a pure phase channel precisely when \(\beta=1/2\).
+
+More strongly, if a canonical zero-list-free zeta construction realizes
+
+\[
+q^{2\Re\rho-1}
+\]
+
+as the occupation spectrum of a fermionic one-particle density operator \(\Gamma_q\), then:
+
+- pure Slater/projector condition \(\Gamma_q^2=\Gamma_q\) forces \(\Re\rho=1/2\) directly;
+- already the weaker CAR condition \(0\le\Gamma_q\le I\), applied to the full reflected zeta-zero set, forces \(\Re\rho=1/2\), because every off-axis reflection orbit contains a channel with occupation \(>1\).
+
+This creates a new sharply typed gate:
+
+- **SOH-MD002A:** Slater-projector implication — CLOSED / EXACT;
+- **SOH-MD002B:** CAR-contraction + reflection implication — CLOSED / EXACT;
+- **SOH-MD002C:** canonical zero-list-free zeta-to-CAR density construction — OPEN.
+
+The open construction cannot be defined from critical-line zeros or from RH. See \`research/SOH_PRIME_SCALE_CAR_CRITICAL_LINE_CRITERION_V0_1.md\`.
