@@ -1,0 +1,37 @@
+{
+  "schema": "SOH_PRIME_FREE_INTERVAL_RANK4_MINIMAL_CHANNEL_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "CERTIFIED_RANK4__MINIMAL_FOUR_CHANNEL_J22_NEAR_FREE_POINT",
+  "parameters": {
+    "a": "69/200",
+    "prime_free_condition": "2a<log(2)",
+    "points": [
+      "i/20",
+      "3i/20",
+      "3i/10",
+      "9i/20"
+    ]
+  },
+  "determinant_interval": [
+    "7.9960256384132325188436556635391341466347256412e-17",
+    "7.9960256384132336311836061823760311174433641068e-17"
+  ],
+  "conclusions": [
+    "first-correction displacement rank is exactly 4 on the certified sample",
+    "canonical four-channel J_{2,2} realization is minimal at the certified scale",
+    "by first-correction continuity, actual K0-Kt displacement has rank 4 for all sufficiently small positive admissible t",
+    "scalar and three-channel exact compression are rejected in that regime"
+  ],
+  "gates": {
+    "LIV-MD2c5C4a": "CLOSED_NEGATIVELY",
+    "LIV-MD2c5C4b": "THREE_CHANNEL_COMPRESSION_CLOSED_NEGATIVELY_NEAR_FREE_POINT",
+    "LIV-MD2c5C4c": "OPEN_MINIMAL_FOUR_CHANNEL_J22_TRANSFER"
+  },
+  "effective_small_t_threshold": false,
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
