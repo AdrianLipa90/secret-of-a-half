@@ -1,0 +1,24 @@
+{
+  "schema": "SOH_PRIME_SCALE_CAR_CRITICAL_LINE_CRITERION_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/montgomery-dyson-hard-car-binding-v0.1-20260926",
+  "status": "EXACT_CONDITIONAL_CRITERION__ZETA_TO_CAR_BINDING_OPEN",
+  "normalized_channel": "Z_q(rho)=q^(rho-1/2)=q^(beta-1/2) exp(i gamma log q)",
+  "occupation_weight": "lambda_q(rho)=q^(2 beta-1)",
+  "exact_criteria": {
+    "unit_modulus": "|Z_q|=1 iff beta=1/2 for q>1",
+    "pure_projector": "lambda^2=lambda and lambda>0 => beta=1/2",
+    "car_contraction_plus_reflection": "0<=lambda<=1 for full reflected zero set => beta=1/2"
+  },
+  "gates": {
+    "SOH-MD002A": "CLOSED_EXACT_SLATER_PROJECTOR_IMPLICATION",
+    "SOH-MD002B": "CLOSED_EXACT_CAR_CONTRACTION_PLUS_REFLECTION_IMPLICATION",
+    "SOH-MD002C": "OPEN_ZERO_LIST_FREE_ZETA_TO_CAR_DENSITY_CONSTRUCTION"
+  },
+  "firewall": "No CAR positivity/contraction may be assumed from RH or from a critical-line zero list.",
+  "local_validator": {
+    "status": "PENDING_RUNTIME_CHECK"
+  },
+  "canon_allowed": false
+}
