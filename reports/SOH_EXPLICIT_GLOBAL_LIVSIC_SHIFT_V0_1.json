@@ -36,7 +36,12 @@
   "zero_list_used": false,
   "rh_used": false,
   "local_validator": {
-    "status": "PASS"
+    "status": "PASS",
+    "max_sampled_abs_r1_second": 0.25,
+    "analytic_bound": "|r1''|<=1/4",
+    "tested_t_interval": "[0,30]",
+    "note": "sampling is regression only; analytic inequality is the proof"
   },
-  "canon_allowed": false
+  "canon_allowed": false,
+  "firewall": "Shift admissibility/invertibility is closed; convergence of the associated characteristic quotient to the Suzuki infinite target remains open and schedule-dependent."
 }
