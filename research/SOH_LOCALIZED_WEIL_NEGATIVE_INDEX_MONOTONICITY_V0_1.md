@@ -151,47 +151,49 @@ statement about where the defect lives.
 ## 5. Connection to high-mode coercivity
 
 Yoshida/Suzuki high-mode coercivity states that for every bounded scale range
+
 \[
 0<a\le a_0
 \]
+
 and every prescribed positive coercivity margin, sufficiently high Fourier
 modes are positive uniformly in that bounded \(a\)-range.
 
-Therefore every negative direction at fixed bounded scale is carried by a
-finite low-mode sector.
+Let \(K_N(a)\) be the high Fourier subspace \(|n|>N\). If the localized form
+is strictly positive on \(K_N(a)\), then any negative subspace has dimension
+at most the codimension of \(K_N(a)\). Hence
 
-For the large-\(a\) limit, let
-\[
-N_{\rm coh}(a)
-\]
-denote any certified Fourier cutoff above which the localized form is positive.
-
-Then every negative subspace is contained, after the corresponding Schur/Feshbach
-reduction, in the sector below \(N_{\rm coh}(a)\).
-
-Hence defect escape in spectral frequency requires
 \[
 \boxed{
-\frac{N_{\rm coh}(a)}{a}
-\to\infty
+\kappa_a=n_-(A_a)\le 2N+1.
 }
 \]
-along the escaping lane, because the physical Fourier frequencies on
-\([-a,a]\) scale like
+
+Indeed, any subspace of dimension \(>2N+1\) must intersect \(K_N(a)\)
+nontrivially, contradicting strict positivity there.
+
+**Correction to the earlier working interpretation.** High-block positivity
+does not imply that every negative eigenvector is literally supported only on
+the low Fourier modes. Low/high coupling may give a negative eigenvector a
+nonzero high-mode tail. What is finite-dimensional is the negative index and,
+after an admissible high-block inverse is supplied, the corresponding
+Schur/Feshbach coordinate problem.
+
+Therefore a growth law for a sufficient cutoff \(N_{\rm cert}(a)\) gives a
+rigorous upper envelope
+
 \[
-\omega_n\asymp\frac{n}{a}.
+\boxed{
+\kappa_a\le 2N_{\rm cert}(a)+1,
+}
 \]
 
-If instead one could prove
-\[
-\sup_{a\ge a_*}\frac{N_{\rm coh}(a)}{a}<\infty,
-\]
-then a persistent negative index could not escape to arbitrarily large
-frequency; some compact spectral obstruction would remain.
+but by itself it does **not** prove a frequency-support law for the defect and
+does not imply a necessary escape condition \(N(a)/a\to\infty\).
 
-This does not itself prove RH, because converting that obstruction into a
-failure of the desired characteristic convergence still requires the explicit
-generalized-Schur transfer.
+To turn cutoff growth into a compact-defect obstruction one still needs the
+explicit generalized-Schur/Feshbach transfer controlling the high-mode tail
+that is slaved to the finite low coordinates.
 
 ## 6. Refined defect-escape gate
 
