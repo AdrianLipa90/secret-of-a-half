@@ -178,3 +178,65 @@ F_T(\tau)\longrightarrow1,
 with all normalization, diagonal subtraction, smoothing, and hypothesis dependence explicit.
 
 If this is proved without inserting the GUE target, SOH-MD001B4 is closed.
+
+
+## 8. Final split of the zeta-specific gate
+
+The remaining gate must be separated into three logically different statements.
+
+### SOH-MD001B4a — subcritical ramp, conditional classical theorem
+Status: **STANDARD / RH-CONDITIONAL / NOT A NEW PROJECT RESULT**.
+
+For Montgomery's weighted form factor \(F(\alpha,T)\), under RH and for fixed \(0<|\alpha|<1\),
+
+\[
+F(\alpha,T)
+=
+T^{-2|\alpha|}\log T\,(1+o(1))
++
+|\alpha|
++
+o(1).
+\]
+
+Hence for each fixed nonzero \(|\alpha|<1\),
+
+\[
+F(\alpha,T)\to|\alpha|.
+\]
+
+This matches the forced projector ramp, but it cannot serve as a premise in an argument intended to prove RH.
+
+### SOH-MD001B4b — plateau
+Status: **OPEN / MONTGOMERY STRONG PAIR-CORRELATION CONJECTURE**.
+
+For \(|\alpha|>1\), the expected limit
+
+\[
+F(\alpha,T)\to1
+\]
+
+is not supplied by the classical theorem.
+
+### SOH-MD001B4c — noncircular zeta occupancy/operator derivation
+Status: **OPEN / PROJECT-SPECIFIC PROOF GATE**.
+
+Construct the local zeta spectral process, projector, or equivalent smoothed pair-power law from prime/Weil/operator data without:
+- assuming RH when RH is the target;
+- importing Montgomery's conjectured plateau;
+- fitting a sine kernel;
+- consuming a zeta-zero list as the derivation source.
+
+This is the gate relevant to any independent proof programme.
+
+Therefore the current status is:
+
+\[
+\boxed{
+\text{forced internal ramp}
+\;\cap\;
+\text{RH-conditional classical zeta ramp on }0<|\alpha|<1
+}
+\]
+
+with exact agreement in the overlapping domain, while the plateau and noncircular operator/occupancy binding remain unproved.
