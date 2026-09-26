@@ -20,5 +20,10 @@
   "proof_of_rh": false,
   "rh_used": false,
   "zero_list_used": false,
-  "canon_allowed": false
+  "canon_allowed": false,
+  "local_validator": {
+    "status": "PASS",
+    "max_metric_error": 1.1102230246251565e-16,
+    "max_frame_error": 7.108895957933346e-16
+  }
 }
