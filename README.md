@@ -259,3 +259,8 @@ Accordingly, the energy edge is `CLOSED / DERIVED`. RH is a theorem inside the d
 ## Author
 
 Adrian Lipa
+
+
+## Montgomery–Dyson / Hardy–CAR forced-prediction crosswalk
+
+A cross-repository audit now separates the already derived sine-kernel law from the still-open zeta-specific binding. The declared Hardy/Toeplitz + CAR sector in \`Infinities\` derives the Montgomery–Dyson functional form without GUE or zeta data as input. In Secret-of-a-Half, the remaining gate is therefore not the sine-kernel algebra but **SOH-MD001**: derive the zeta/Weil spectral process as the canonical consecutive-mode Hardy–CAR projector sector without importing Montgomery/GUE statistics. See \`research/SOH_MONTGOMERY_DYSON_HARDY_CAR_BINDING_V0_1.md\`.
