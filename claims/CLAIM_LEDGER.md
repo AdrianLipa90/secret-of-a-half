@@ -109,3 +109,24 @@ Within the enlarged Occam axiom system that includes the canonical zero-energy c
   Therefore RH is a theorem inside the declared Occam relational system.
 
 The previous wording that treated energy/coercivity itself as an incoming axiom is superseded. The energy edge is `CLOSED / DERIVED`. The remaining foundational statement is `R0`. The external repository firewall remains: `R0` specialized to all non-trivial zeta zeros has not been independently proved in standard analysis and must not be silently counted as an unconditional RH resolution.
+
+
+## Suzuki–Livšic zero-free resolvent line — 2026-09-26
+
+- **SOH-LIV001 — EXACT.** Suzuki's finite-\(a\) characteristic quotient is Schur in the upper half-plane for every admissible shift \(\lambda<\lambda_a\), with \(\chi_{a,\lambda}(i)=0\); convergence to the declared infinite characteristic on any zero-free accumulation set implies RH by Montel/Vitali and the identity theorem.
+- **SOH-LIV002 — EXACT / UNCONDITIONAL.** The explicit lower bound
+  \[
+  \lambda_a\ge-\log a-\log(2\pi)-\gamma-8ae^a-4a\cosh a-a/2
+  \]
+  yields a zero-list-free admissible shift for every \(a>0\).
+- **SOH-LIV003 — EXACT NO-GO.** Any independently proved admissible shift schedule with \(\lambda(a)\to0\) already forces \(\lambda_a\ge0\) for all \(a\), hence imports the RH-hard Weil-positivity conclusion.
+- **SOH-LIV004 — EXACT.** On \(s=1/2+y>1\), the Cayley target reduces to the zero-free prime-side scalar \(\xi'(s)/\xi(s)\), with explicit prime truncation error \(O_\eta(ae^{-2a\eta})\) at cutoff \(n\le e^{2a}\).
+- **SOH-LIV005 — EXACT.** The piecewise-exponential Weil functional and finite cross-convolution realize the denominator combination \(r_0+\xi'(s)/\xi(s)\); the finite prime support is exactly \(n\le e^{2a}\).
+- **SOH-LIV006 — EXACT.** The large-negative-shift resolvent first correction converges at fixed \(a\) to the localized Weil form on the closed form domain.
+- **SOH-LIV007 — EXACT / EFFECTIVE.** Endpoint-zero operator-domain vectors admit a certified first-correction error \(M_a(f)M_a(g)/(\mu+1)\).
+- **SOH-LIV008 — EXACT / EFFECTIVE.** Sharp exponential vectors admit the explicit boundary-layer form-norm bound \(O_{a,p}(\delta\log(1/\delta))\), with displayed constants.
+- **SOH-LIV009 — EXACT / EFFECTIVE.** On \(1\le y\le2\), the finite denominator cross-Weil scalar has a uniform error \(E_W^\ast(a)=O(ae^{-a})\), and explicit \((a_n,\delta_n,\mu_n)\) schedules yield zero-list-free denominator convergence.
+- **SOH-LIV010 — OPEN STRUCTURAL GATE.** The second deficiency/numerator channel must be transported to the target \(r(s)-r_0\) by a source-compatible finite-part, boundary-triple, or equivalent construction that preserves the finite Schur/self-adjoint geometry. Direct termwise analytic continuation is forbidden.
+- **SOH-LIV-N001 — NUMERICAL FALSIFICATION DIAGNOSTIC.** Direct evaluation of the naturally normalized finite numerator Weil functional at \(y=1\) does not exhibit convergence to its formal value \(0\) over the tested \(a\)-range; large cancellations and growing oscillations appear. This diagnostic is not a theorem, but it falsifies treating naive termwise continuation as an established limit.
+
+**Firewall:** SOH-LIV001–SOH-LIV009 do not prove RH because SOH-LIV010 remains open. The direct near-zero shift shortcut is RH-hard by SOH-LIV003.
