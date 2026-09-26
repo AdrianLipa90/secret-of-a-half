@@ -4,7 +4,7 @@
   "status": "CANONICAL_PROJECT_CLAIM_LEDGER",
   "canonical_through": "SOH-G023",
   "proof_of_rh": false,
-  "open_frontier": "SOH-G003 real-rootedness, actual quotient PF3/PF-infinity, SOH-C005 full admissible Weil positivity, SOH-LIV010 numerator Schur transport, and RH remain open. The Livsic denominator channel is now effective and zero-list-free; the second deficiency channel is the surviving structural gate in that route.",
+  "open_frontier": "SOH-G003 real-rootedness, actual quotient PF3/PF-infinity, SOH-C005 full admissible Weil positivity, and SOH-LIV012 matrix/J-contractive four-channel transfer remain open in their respective lanes. In the Livsic lane the denominator/numerator # symmetry is exact and scalar collapse is closed negatively by SOH-LIV011; the surviving structural gate is the matrix/J transfer. RH status remains governed by the separate project proof/provenance lane rather than being re-proved here.",
   "claims": [
     {
       "id": "SOH-L001",
@@ -520,6 +520,16 @@
       "id": "SOH-LIV-N001",
       "status": "numerical_falsification_diagnostic",
       "statement": "Direct finite numerator Weil evaluations at y=1 over the tested localization range show growing oscillatory behavior rather than convergence to the formal continued value 0; diagnostic only, not proof."
+    },
+    {
+      "id": "SOH-LIV011",
+      "status": "exact_certified_scalarization_no_go",
+      "statement": "At a=69/200, a prime-free outward-rounded interval certificate on four imaginary exponential channels has a strictly positive 4x4 displacement determinant. Hence the localized Weil first-correction displacement has rank 4, excluding scalar generalized-Schur/de Branges collapse; by resolvent continuity the actual K0-Kt complement also has rank 4 for all sufficiently small positive admissible t."
+    },
+    {
+      "id": "SOH-LIV012",
+      "status": "open_matrix_j_transfer_gate",
+      "statement": "Construct the finite matrix/J-contractive transfer retaining the four-channel J_{2,2}=diag(1,-1,-1,1) structure and connect it to the xi generalized-Schur/Nevanlinna target. Scalar collapse is no longer an admissible universal route near the free point."
     }
   ],
   "legacy_aliases": {
