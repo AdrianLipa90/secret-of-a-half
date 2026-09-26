@@ -335,3 +335,54 @@ gauge, would force the corresponding displacement rank to be at most two.
 Hence finite negative-square index alone does not provide a scalar transfer.
 
 The next finite-transfer decision is a concrete rank-collapse test.
+
+
+## 10. Certified closure update
+
+The prime-free interval certificate now supplies a rigorous four-point witness:
+
+\[
+a=69/200,
+\qquad
+z\in\{i/20,\,3i/20,\,3i/10,\,9i/20\},
+\]
+
+with no prime-power contribution and an outward-rounded interval enclosure
+
+\[
+\det M
+\in
+[
+7.9960256384132330750131598189604317774\times10^{-17},
+\;
+7.9960256384132330750141020269547584673\times10^{-17}
+].
+\]
+
+Hence
+
+\[
+\boxed{\operatorname{rank}M=4.}
+\]
+
+Therefore the special scalar-collapse gate is no longer open:
+
+\[
+\boxed{
+\text{LIV-MD2c5C4a = CLOSED NEGATIVELY}.
+}
+\]
+
+By continuity of the resolvent first correction, the actual finite complement
+has the same sampled rank four for all sufficiently small positive admissible
+\(t\).
+
+The surviving construction is therefore
+
+\[
+\boxed{
+\text{LIV-MD2c5C4b = matrix/}J\text{-contractive transfer}.
+}
+\]
+
+See research/SOH_PRIME_FREE_INTERVAL_RANK4_CERTIFICATE_V0_1.md.
