@@ -1,0 +1,30 @@
+{
+  "schema": "SOH_LOCALIZED_SCREW_WEIL_CROSSCHECK_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "NUMERICAL_SOURCE_NORMALIZATION_CROSSCHECK_PASS",
+  "sample": {
+    "a": "0.345",
+    "mode": 1,
+    "prime_free": true,
+    "q_screw": "0.00262569081058866498516318",
+    "q_weil": "0.002625690810588664988342864",
+    "absolute_error": "3.18e-21"
+  },
+  "validated_conventions": [
+    "g=-Psi",
+    "D=i d/dx",
+    "localized interval normalization",
+    "explicit-Weil localized cross form"
+  ],
+  "open": [
+    "full finite matrix screw-vs-Weil cross-check",
+    "interval-certified screw-side integral"
+  ],
+  "interval_proof": false,
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
