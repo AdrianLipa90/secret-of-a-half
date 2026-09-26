@@ -18,5 +18,10 @@
   "firewall": "Krein-Langer factorization records finite negative index; it does not prove the index is zero.",
   "rh_used": false,
   "zero_list_used": false,
-  "canon_allowed": false
+  "canon_allowed": false,
+  "local_validator": {
+    "status": "PASS",
+    "cases": 400,
+    "max_spectral_map_residual": 3.197442310920451e-14
+  }
 }
