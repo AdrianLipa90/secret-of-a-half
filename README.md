@@ -281,3 +281,56 @@ q^{\beta-1/2}e^{i\gamma\log q}.
 \]
 
 Thus unit modulus is exactly \(\beta=1/2\). If these normalized squared amplitudes \(q^{2\beta-1}\) are canonically realized as CAR occupation eigenvalues, the fermionic contraction bound plus zeta reflection already forces the critical line; a pure Slater projector forces it even more directly. The implication is exact, while the zero-list-free zeta-to-CAR operator construction remains OPEN as SOH-MD002C.
+
+
+## MD004 — positive-intertwiner frontier
+
+A direct GNS construction from the existing zeta screw kernel is not an
+independent proof route: Suzuki's global screw-form positivity is already
+RH-equivalent. Conversely, the prime-side autocorrelation kernel is
+positive-definite unconditionally, but its GNS spectral support is
+\(\log p^m\), not the zeta ordinates.
+
+The surviving operator target is therefore a **positive prime-to-zeta
+intertwiner**: a zero-list-free map that transports the independently positive
+arithmetic metric into a zeta scale representation while preserving controlled
+relative metric distortion.
+
+The finite fail-closed certificate is now explicit. With reference pencil
+\((K_0,G_0)\),
+
+\[
+\delta_G=
+\|G_0^{-1/2}(G-G_0)G_0^{-1/2}\|<1
+\]
+
+and
+
+\[
+\epsilon_K=
+\|G_0^{-1/2}(K-K_0)G_0^{-1/2}\|,
+\]
+
+every generalized eigenvalue obeys
+
+\[
+\boxed{
+|\lambda_j-\lambda_j^{(0)}|
+\le
+\frac{
+\epsilon_K+
+\delta_G\|G_0^{-1/2}K_0G_0^{-1/2}\|
+}{
+1-\delta_G
+}.
+}
+\]
+
+Thus future prime-to-zero claims must provide metric and operator error
+receipts rather than spectral resemblance alone.
+
+See:
+- \`research/SOH_SCREW_GNS_BOCHNER_CROSSWALK_NOGO_V0_1.md\`;
+- \`research/SOH_PRIME_AUTOCORRELATION_WEIL_POSITIVITY_DILEMMA_V0_1.md\`;
+- \`research/SOH_RELATIVE_METRIC_PENCIL_STABILITY_V0_1.md\`;
+- \`research/SOH_2026_FINITE_WEIL_POSITIVE_INTERTWINER_CROSSWALK_V0_1.md\`.
