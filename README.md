@@ -264,3 +264,6 @@ Adrian Lipa
 ## Montgomery–Dyson / Hardy–CAR forced-prediction crosswalk
 
 A cross-repository audit now separates the already derived sine-kernel law from the still-open zeta-specific binding. The declared Hardy/Toeplitz + CAR sector in \`Infinities\` derives the Montgomery–Dyson functional form without GUE or zeta data as input. In Secret-of-a-Half, the remaining gate is therefore not the sine-kernel algebra but **SOH-MD001**: derive the zeta/Weil spectral process as the canonical consecutive-mode Hardy–CAR projector sector without importing Montgomery/GUE statistics. See \`research/SOH_MONTGOMERY_DYSON_HARDY_CAR_BINDING_V0_1.md\`.
+
+
+The existing C005 Yoshida Fourier rebase has now also been audited at the projector-kernel level. Its symmetric low-mode projector has the same unit-density sine-kernel limit as the Hardy/Hilbert-Hotel projector. This closes the basis-geometry part of SOH-MD001; the remaining open gate is the zeta spectral occupancy/quasi-free-CAR binding, not the sinc kernel or the choice of Fourier versus Hardy basis.
