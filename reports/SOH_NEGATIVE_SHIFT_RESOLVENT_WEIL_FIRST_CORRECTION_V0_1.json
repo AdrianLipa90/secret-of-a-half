@@ -19,5 +19,11 @@
   },
   "rh_used": false,
   "zero_list_used": false,
-  "canon_allowed": false
+  "canon_allowed": false,
+  "local_validator": {
+    "status": "PASS",
+    "cases": 300,
+    "max_error_at_mu_10000_scale": 0.006182019126827143,
+    "note": "Finite-dimensional regression only; spectral-theorem proof is exact."
+  }
 }
