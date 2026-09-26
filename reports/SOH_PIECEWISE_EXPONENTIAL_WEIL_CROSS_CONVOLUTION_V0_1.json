@@ -1,0 +1,28 @@
+{
+  "schema": "SOH_PIECEWISE_EXPONENTIAL_WEIL_CROSS_CONVOLUTION_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_EXTENDED_WEIL_EVALUATION__FINITE_CROSS_CONVOLUTION_LIMIT_CLOSED__OPERATOR_DOMAIN_BINDING_OPEN",
+  "source": {
+    "work": "Masatoshi Suzuki, Weil's quadratic form via the screw function",
+    "arxiv": "2606.09096v3",
+    "normalization": "Weil functional Section 1.1"
+  },
+  "exact_results": {
+    "piecewise_test": "F_pq(t)=exp(-pt) for t>=0; exp(qt) for t<=0",
+    "weil_value": "W(F_pq)=xi'/xi(p+1/2)+xi'/xi(q+1/2)",
+    "finite_cross_support": "[-2a,2a]",
+    "prime_support": "n<=exp(2a)",
+    "domination": "0<=f_{a,y}(t)<=F_{1,y}(t)",
+    "limit": "W(f_{a,y})->xi'/xi(3/2)+xi'/xi(1/2+y)"
+  },
+  "gates": {
+    "LIV-MD2c1": "CLOSED_EXPLICIT_FUNCTIONAL_LEVEL",
+    "LIV-MD2c2": "OPEN_OPERATOR_FORM_DOMAIN_OR_SMOOTH_CUTOFF_BINDING",
+    "LIV-MD2c3": "OPEN_RESOLVENT_TO_FORM_RENORMALIZED_FIRST_CORRECTION"
+  },
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
