@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from secret_of_a_half.localized_weil_rank_interval import (
+    certified_rank4_witness,
     certified_rank_witness,
     determinant_3x3,
     displacement_matrix,
@@ -26,3 +27,9 @@ def test_receipt_reports_rank_at_least_three():
     receipt = certified_rank_witness()
     assert receipt["prime_free"] is True
     assert receipt["rank_lower_bound"] == 3
+
+
+def test_certified_rank_four_witness():
+    receipt = certified_rank4_witness()
+    assert receipt["prime_free"] is True
+    assert receipt["rank"] == 4
