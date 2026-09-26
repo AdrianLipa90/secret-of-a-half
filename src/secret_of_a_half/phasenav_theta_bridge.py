@@ -237,6 +237,58 @@ def closure_defect(state: NativePhaseState) -> float:
     return numerator / denominator
 
 
+
+def normalized_pair_occupations(state: NativePhaseState) -> tuple[tuple[float, float], ...]:
+    """Return theta-pair squared gains normalized by the self-dual base gain.
+
+    For each node u_k these are exactly
+        (exp(delta*u_k), exp(-delta*u_k)),
+    where delta = Re(s)-1/2.  Their product is one.
+    """
+    occupations: list[tuple[float, float]] = []
+    for index, node in enumerate(state.nodes):
+        plus, minus = state.pair(index)
+        seed = base_gain(node)
+        if seed <= 0.0:
+            raise ValueError("theta base gain must be positive")
+        occupations.append(
+            (
+                (plus.gain / seed) ** 2,
+                (minus.gain / seed) ** 2,
+            )
+        )
+    return tuple(occupations)
+
+
+def car_contraction_violation(state: NativePhaseState) -> float:
+    """Return max(lambda-1,0) across normalized theta-pair occupations.
+
+    This is zero exactly on the native half-axis for a non-degenerate positive
+    theta-node set.  It is a diagnostic criterion only: the function does not
+    assert that detector-zero states are physically or mathematically CAR
+    density operators.
+    """
+    return max(
+        max(lam_plus - 1.0, lam_minus - 1.0, 0.0)
+        for lam_plus, lam_minus in normalized_pair_occupations(state)
+    )
+
+
+def car_pair_admissible(
+    state: NativePhaseState, *, tolerance: float = 1e-14
+) -> bool:
+    """Whether all normalized reciprocal pair occupations lie in [0,1].
+
+    Because every pair product is exactly one in the declared construction,
+    simultaneous admissibility is equivalent to native radial closure up to
+    floating-point tolerance.
+    """
+    return all(
+        -tolerance <= lam_plus <= 1.0 + tolerance
+        and -tolerance <= lam_minus <= 1.0 + tolerance
+        for lam_plus, lam_minus in normalized_pair_occupations(state)
+    )
+
 def native_closed(state: NativePhaseState, *, tolerance: float = 1e-24) -> bool:
     """Whether the state closes in the canonical self-dual PhaseNav shell."""
     return closure_defect(state) <= tolerance
