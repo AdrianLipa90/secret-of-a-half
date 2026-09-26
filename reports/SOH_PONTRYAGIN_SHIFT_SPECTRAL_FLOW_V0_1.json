@@ -1,0 +1,35 @@
+{
+  "schema": "SOH_PONTRYAGIN_SHIFT_SPECTRAL_FLOW_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "FINITE_PONTRYAGIN_GENERALIZED_SCHUR_INDEX_CLOSED__TARGET_CONVERGENCE_OPEN",
+  "external_inputs": {
+    "suzuki": "arXiv:2606.09096v3: localized A_a discrete lower-bounded; positive-shift differential realization",
+    "standard": "Pontryagin-space passive/characteristic realizations give generalized Schur functions; Cayley gives generalized Nevanlinna functions"
+  },
+  "exact_results": {
+    "shifted_metric": "T_{a,eta}=A_a-eta I for real eta in rho(A_a)",
+    "index": "kappa_a(eta)=number of eigenvalues of A_a below eta, with multiplicity",
+    "generalized_schur": "chi_{a,eta} in S_{kappa_a(eta)}",
+    "generalized_nevanlinna": "m_{a,eta}=i(1-chi)/(1+chi) in N_{kappa_a(eta)}",
+    "spectral_flow": "index jumps by eigenvalue multiplicity at real spectral crossings",
+    "near_zero": "for eta<0 sufficiently close to 0 and eta in rho(A_a), kappa_a(eta)=n_-(A_a)"
+  },
+  "correction": "The previous near-zero RH-hard no-go applies to Hilbert-admissible eta<lambda_a, not to indefinite Pontryagin shifts near zero.",
+  "dual_lane": {
+    "tangent": "q_a -> Q_xi is closed on Im z>1/2; finite N_k index open",
+    "pontryagin_shift": "finite N_k index closed; xi target convergence open"
+  },
+  "gates": {
+    "LIV-MD2c5SF1": "CLOSED_SHIFTED_PONTRYAGIN_REALIZATION",
+    "LIV-MD2c5SF2": "CLOSED_EXACT_FINITE_INDEX",
+    "LIV-MD2c5SF3": "CLOSED_NEAR_ZERO_INDEX_STABILIZATION",
+    "LIV-MD2c5SF4": "OPEN_PONTRYAGIN_CHARACTERISTIC_TARGET_CONVERGENCE",
+    "LIV-MD2c5SF5": "OPEN_ZERO_KERNEL_RELATION_FORMULATION_OPTIONAL"
+  },
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
