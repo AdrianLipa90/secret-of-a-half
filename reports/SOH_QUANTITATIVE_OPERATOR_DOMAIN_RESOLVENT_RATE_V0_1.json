@@ -1,0 +1,26 @@
+{
+  "schema": "SOH_QUANTITATIVE_OPERATOR_DOMAIN_RESOLVENT_RATE_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_OPERATOR_DOMAIN_RATE__EFFECTIVE_MU_CLOSED__SHARP_TO_SMOOTH_RATE_OPEN",
+  "exact_results": {
+    "operator_bound": "||A_a v||_2 <= sqrt(2 G1_up(a)) ||v'||_1 for v in H_0^1(-a,a)",
+    "shifted_bound": "||T_a v|| <= sqrt(2 G1_up)||v'||_1+|lambda_sh| ||v||",
+    "resolvent_error": "|F_mu(f,g)-<f,T_a g>| <= ||T_af|| ||T_ag||/(mu+1)",
+    "effective_mu": "mu >= M_a(f)M_a(g)/epsilon - 1"
+  },
+  "gates": {
+    "LIV-MD2c4b1": "CLOSED_EFFECTIVE_OPERATOR_DOMAIN_RATE",
+    "LIV-MD2c4b2": "OPEN_EXPLICIT_SHARP_TO_SMOOTH_FORM_NORM_RATE",
+    "LIV-MD2c4b3": "OPEN_JOINT_DELTA_MU_LARGE_A_SCHEDULE"
+  },
+  "dependencies": [
+    "Suzuki B_a=D*G_aD on H_0^1 and A_a Friedrichs extension",
+    "SOH screw gprime L2 envelope",
+    "explicit global Livsic lower-bound shift"
+  ],
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
