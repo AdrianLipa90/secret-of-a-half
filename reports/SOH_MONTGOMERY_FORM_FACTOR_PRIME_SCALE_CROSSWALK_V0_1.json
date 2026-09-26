@@ -1,0 +1,17 @@
+{
+  "schema": "SOH_MONTGOMERY_FORM_FACTOR_PRIME_SCALE_CROSSWALK_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/montgomery-dyson-hard-car-binding-v0.1-20260926",
+  "status": "PROJECTOR_AND_FREQUENCY_GEOMETRY_CLOSED__FULL_ZETA_LOCAL_PROCESS_OPEN",
+  "gates": {
+    "SOH-MD001A": "EXTERNAL_STANDARD_PARTIAL_BINDING",
+    "SOH-MD001B1": "CLOSED_EXACT_PROJECTOR_GEOMETRY",
+    "SOH-MD001B2": "CLOSED_FORCED_FORM_FACTOR_IN_DECLARED_PROJECTOR_CAR_SECTOR",
+    "SOH-MD001B3": "CLOSED_EXACT_ARITHMETIC_FREQUENCY_MAP",
+    "SOH-MD001B4": "OPEN_FULL_ZETA_LOCAL_PROCESS_BINDING"
+  },
+  "exact_frequency_map": "tau_{p^m}(T)=m log p/log(T/(2pi))",
+  "no_go": "fixed-q Landau response cannot by itself imply the full nonzero-tau ramp",
+  "canon_allowed": false
+}
