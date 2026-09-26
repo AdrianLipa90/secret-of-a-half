@@ -1,0 +1,28 @@
+{
+  "schema": "SOH_MINIMAL_2X2_J_TRANSFER_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_2X2_TRANSFER__SCALAR_REJECTED__MINIMAL_DIMENSION_2__MATRIX_INDEX_AND_XI_LIMIT_OPEN",
+  "exact_results": {
+    "ratio": "r_t=E_t/E_0",
+    "transfer": "Theta_t=diag(r_t,r_t#)",
+    "section": "u_t=Theta_t u_0",
+    "j_defect": "2i(wbar-z)(K0-Kt)=u0(w)^*[J-Theta_t(w)^*J Theta_t(z)]u0(z)",
+    "sharp_covariance": "Theta_t#=Sigma Theta_t Sigma"
+  },
+  "minimality": {
+    "dimension_1": "rejected in perturbative lane by interval-certified rank-3 first-correction displacement",
+    "dimension_2": "exact construction exists"
+  },
+  "gates": {
+    "LIV-MD2c5C4a": "CLOSED_NEGATIVE",
+    "LIV-MD2c5C4b1": "CLOSED_EXACT_2X2_TRANSFER",
+    "LIV-MD2c5C4b2": "OPEN_FULL_MATRIX_NEGATIVE_SQUARE_INDEX",
+    "LIV-MD2c5C4b3": "OPEN_MATRIX_TO_XI_LIMIT"
+  },
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
