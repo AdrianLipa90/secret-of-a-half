@@ -1,0 +1,22 @@
+{
+  "schema": "SOH_INFINITESIMAL_J_TRANSFER_XI_LOG_DERIVATIVE_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_FINITE_GENERATOR__ZERO_LIST_FREE_XI_TARGET_CONVERGENCE__FINITE_NEVANLINNA_INDEX_OPEN",
+  "exact_results": {
+    "generator": "H_a=Q_W^a(v_z,v_i)/<v_z,v_i> - 1/2 Q_W^a(v_i,v_i)/||v_i||^2",
+    "transfer_derivative": "H_a=-d/dt log(E_t/E_0)|_{t=0}",
+    "target": "i H_a -> Q_xi=i xi'/xi(1/2-i z) locally uniformly on Im z>1/2",
+    "kernel": "top-left first-order J-defect = 1/2 Nevanlinna kernel of q_a=iH_a"
+  },
+  "gates": {
+    "LIV-MD2c5G1": "CLOSED_FINITE_GENERATOR",
+    "LIV-MD2c5G2": "CLOSED_ZERO_FREE_TARGET_CONVERGENCE",
+    "LIV-MD2c5G3": "OPEN_FINITE_NEGATIVE_SQUARE_BOUND_FOR_q_a"
+  },
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
