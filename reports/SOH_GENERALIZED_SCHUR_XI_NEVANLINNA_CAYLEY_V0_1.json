@@ -1,0 +1,31 @@
+{
+  "schema": "SOH_GENERALIZED_SCHUR_XI_NEVANLINNA_CAYLEY_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_CAYLEY_INDEX_PRESERVATION__EXACT_XI_TARGET__BOUNDED_INDEX_LIMIT_CLOSED__FINITE_TRANSFER_OPEN",
+  "constants": {
+    "A": "xi(3/2)>0",
+    "B": "xi'(3/2)>0",
+    "ratio": "A/B>0"
+  },
+  "exact_results": {
+    "cayley": "q=i(1-chi)/(1+chi)",
+    "kernel_identity": "N_q=2*K_chi/[(1+chi(z))(1+conj(chi(w)))]",
+    "index": "chi in S_k iff Cayley(chi) in N_k",
+    "target": "Cayley(chi_infty)=(A/B) Q_xi",
+    "limit_closure": "q_n in N_{<=K} and local meromorphic q_n->q implies q in N_{<=K}"
+  },
+  "consequence": "A bounded-index finite transfer converging to chi_infty bounds the number of distinct right-half off-critical xi-zero locations by the same uniform index bound.",
+  "gates": {
+    "LIV-MD2c5C1": "CLOSED_CAYLEY_INDEX_PRESERVATION",
+    "LIV-MD2c5C2": "CLOSED_XI_TARGET_IDENTIFICATION",
+    "LIV-MD2c5C3": "CLOSED_BOUNDED_INDEX_LIMIT",
+    "LIV-MD2c5C4": "OPEN_FINITE_SCALAR_GENERALIZED_SCHUR_TRANSFER",
+    "LIV-MD2c5C5": "OPEN_LOCAL_MEROMORPHIC_TARGET_CONVERGENCE"
+  },
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
