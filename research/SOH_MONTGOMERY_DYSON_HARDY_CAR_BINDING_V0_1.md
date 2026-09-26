@@ -184,3 +184,20 @@ Disallowed as proof of SOH-MD001:
 \]
 
 This split is the current non-circular proof boundary.
+
+
+## 8. Addendum — Yoshida/Fourier basis mismatch closed
+
+The existing C005 Yoshida rebase already supplies consecutive symmetric Fourier modes on \([-a,a]\). Their orthogonal projector has exact Dirichlet kernel
+
+\[
+K_{N,a}(x,y)
+=
+\frac1{2a}
+\frac{\sin((2N+1)\pi(x-y)/(2a))}
+{\sin(\pi(x-y)/(2a))}.
+\]
+
+After its own mean-density unfolding, the normalized kernel converges to the same sinc kernel as the Hardy consecutive-shift projector. Therefore SOH-MD001 no longer needs to prove a Hardy-vs-Fourier basis equivalence. The remaining gate is solely the zeta spectral **occupancy/state binding** that turns the relevant zeta local process into the filled-CAR/quasi-free projector process.
+
+See research/SOH_YOSHIDA_FOURIER_SINE_KERNEL_COMPATIBILITY_V0_1.md.
