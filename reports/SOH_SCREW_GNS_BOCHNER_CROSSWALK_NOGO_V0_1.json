@@ -1,0 +1,32 @@
+{
+  "schema": "SOH_SCREW_GNS_BOCHNER_CROSSWALK_NOGO_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_REDUCTION__DIRECT_SCREW_GNS_RH_EQUIVALENT__INDEPENDENT_PD_KERNEL_ROUTE_OPEN",
+  "external_source": {
+    "author": "Masatoshi Suzuki",
+    "work": "Aspects of the screw function corresponding to the Riemann zeta-function",
+    "arxiv": "2206.03682v4",
+    "theorem_1_3": "global screw hermitian-form nonnegativity for every localization iff RH",
+    "theorem_1_7": "Psi(t)>=0 for every real t iff RH"
+  },
+  "exact_results": {
+    "direct_screw_gns": "requires exactly the global PSD/nonnegative form condition",
+    "bochner_character": "unitary character exp(a(rho-1/2)) forces Re(rho)=1/2",
+    "pointwise_kernel_nonnegative": "insufficient for Gram/kernel PSD",
+    "local_psd": "insufficient without consistent global scale representation"
+  },
+  "gates": {
+    "SOH-MD004A": "CLOSED_EXACT_BOCHNER_CHARACTER_IMPLICATION",
+    "SOH-MD004B": "CLOSED_EXACT_DIRECT_SCREW_GNS_NOGO",
+    "SOH-MD004C": "OPEN_INDEPENDENT_ARITHMETIC_PD_KERNEL_PLUS_ZETA_INTERTWINER"
+  },
+  "forbidden_shortcuts": [
+    "assume global Suzuki screw positivity",
+    "assume global Weil positivity",
+    "use ordinary translation unitarity without zeta intertwiner",
+    "use finite numerical PSD as global positivity"
+  ],
+  "canon_allowed": false
+}
