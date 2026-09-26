@@ -1,0 +1,22 @@
+{
+  "schema": "SOH_LIVSIC_NEAR_ZERO_SHIFT_NOGO_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "NEAR_ZERO_SHIFT_RH_HARD__LAMBDA_SENSITIVITY_EXACT__RENORMALIZED_NEGATIVE_SHIFT_OPEN",
+  "exact_results": {
+    "near_zero_schedule": "lambda_adm(a)<lambda_a and lambda_adm(a)->0 implies lambda_a>=0 for all a, hence RH via Weil criterion",
+    "lambda_derivative": "Q_lambda'=2(S C'-C S')/(C+S)^2",
+    "fixed_a_negative_infinity": "chi_{a,-infinity}(iy)=-sinh((y-1)a)/sinh((y+1)a)",
+    "iterated_free_limit": "for fixed y>1/2, chi_{a,-infinity}(iy)->0 as a->infinity"
+  },
+  "source_alignment": "Suzuki v3 states the expected limit may require lambda=0 eventually, which is equivalent to RH",
+  "gates": {
+    "LIV-MD1a": "CLOSED_EXPLICIT_ADMISSIBLE_SHIFT",
+    "LIV-MD1b": "NO_NEAR_ZERO_SHORTCUT_RH_HARD",
+    "LIV-MD2R": "OPEN_RENORMALIZED_NEGATIVE_SHIFT_SCALAR_LIMIT"
+  },
+  "rh_used_in_open_lane": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
