@@ -4,6 +4,33 @@ Status: **EXACT_CAYLEY_INDEX_PRESERVATION / EXACT_XI_TARGET_IDENTIFICATION / BOU
 
 Date: 2026-09-26
 
+## Provenance correction
+
+The equivalence
+
+\[
+\mathrm{RH}\iff Q_\xi\in N_0
+\]
+
+is **not claimed as a new RH criterion**. Under
+
+\[
+s=\frac12-iz,
+\]
+
+we have
+
+\[
+Q_\xi(z)=i\frac{\xi'}{\xi}(s),
+\qquad
+\Im Q_\xi(z)=\Re\frac{\xi'}{\xi}(s).
+\]
+
+Thus the ordinary-Nevanlinna condition on \(Q_\xi\) is the classical Hinkkanen/Lagarias positivity criterion, written in the centered rotated coordinate.
+
+The project-specific contribution here is the Suzuki/de Branges/Pontryagin/Cayley crosswalk to that classical criterion.
+
+
 Parents:
 - \`research/SOH_LIVSIC_DENOMINATOR_SHARP_THETA_WEIL_V0_1.md\`
 - \`research/SOH_DE_BRANGES_PONTRYAGIN_COMPLEMENT_V0_1.md\`
