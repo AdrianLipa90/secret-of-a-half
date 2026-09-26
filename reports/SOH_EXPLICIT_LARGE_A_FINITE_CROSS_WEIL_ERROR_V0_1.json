@@ -1,0 +1,23 @@
+{
+  "schema": "SOH_EXPLICIT_LARGE_A_FINITE_CROSS_WEIL_ERROR_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXPLICIT_LARGE_A_RATE__EFFECTIVE_DENOMINATOR_CHANNEL_CLOSED__NUMERATOR_OPEN",
+  "exact_results": {
+    "finite_cross_error": "|W(f_a,y)-r0-r(1/2+y)| <= E_W(a,y)",
+    "uniform_interval": "sup_{1<=y<=2} error <= E_W_star(a)=O(a exp(-a))",
+    "cutoff_schedule": "delta_n selected by finite explicit search until replacement error <= exp(-n)",
+    "resolvent_schedule": "mu_n=exp(n)(M_n_star)^2+1",
+    "total_denominator_error": "<=2 exp(-n)+E_W_star(n)"
+  },
+  "gates": {
+    "LIV-MD2c4b3": "CLOSED_EXPLICIT_LARGE_A_RATE",
+    "LIV-MD2c4E": "CLOSED_EFFECTIVE_DENOMINATOR_SCHEDULE",
+    "LIV-MD2c5N": "OPEN_NUMERATOR_FINITE_PART_OR_BOUNDARY_TRIPLE_TRANSPORT"
+  },
+  "interval": "1<=y<=2, hence 3/2<=s<=5/2",
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
