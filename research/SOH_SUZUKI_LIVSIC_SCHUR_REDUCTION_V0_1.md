@@ -787,3 +787,50 @@ Epistemic status:
 \]
 
 proof_of_rh = false
+
+
+## 11. LIV-MD1 update — explicit admissible shift is closed
+
+A separate theorem now supplies the global zero-list-free lower bound
+
+\[
+\lambda_a
+\ge
+L_{\rm elem}(a)
+=
+-\log a-\log(2\pi)-\gamma
+-8ae^a-4a\cosh a-\frac a2.
+\]
+
+Therefore
+
+\[
+\boxed{
+\lambda_{\rm sh}(a)=L_{\rm elem}(a)-1<\lambda_a
+}
+\]
+
+for every \(a>0\), and
+
+\[
+\boxed{
+A_a-\lambda_{\rm sh}(a)I\ge I.
+}
+\]
+
+Thus the existence of a computable admissible shift and uniform invertibility
+of the shifted finite operator are no longer open.
+
+This does **not** close the scalar-limit theorem. The characteristic quotient
+depends on the chosen shifted resolvent, and a very negative admissible shift
+may have the wrong large-\(a\) limit.
+
+The current Livšic split is therefore:
+
+- **LIV-MD1a — explicit admissible shift:** CLOSED.
+- **LIV-MD1b — select/renormalize an admissible shift family with the correct
+  infinite characteristic limit:** OPEN.
+- **LIV-MD2 — normalized parity-ratio convergence on \(z=iy,\ y>1/2\):**
+  OPEN.
+
+See \`research/SOH_EXPLICIT_GLOBAL_LIVSIC_SHIFT_V0_1.md\`.
