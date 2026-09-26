@@ -1,0 +1,22 @@
+{
+  "schema": "SOH_PRIME_AUTOCORRELATION_WEIL_POSITIVITY_DILEMMA_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_PRIME_PD__EXACT_ARITHMETIC_SPECTRUM__POSITIVE_ZETA_INTERTWINER_OPEN",
+  "exact_results": {
+    "prime_kernel": "C(a,b)=sum |b_n|^2 exp(i(a-b)log n) is positive definite",
+    "prime_gns_spectrum": "support at log n; von-Mangoldt support at log p^m",
+    "zero_side": "global Weil/screw positivity is RH-equivalent under standard criterion",
+    "linear_explicit_formula": "does not itself imply a positive/isometric Hilbert intertwiner"
+  },
+  "gates": {
+    "SOH-MD004D": "OPEN_POSITIVE_PRIME_TO_ZETA_INTERTWINER"
+  },
+  "no_go": [
+    "identify log prime-power frequencies with zeta ordinates",
+    "treat linear explicit formula as unitary equivalence",
+    "use global Weil positivity to define the target metric when RH is the target"
+  ],
+  "canon_allowed": false
+}
