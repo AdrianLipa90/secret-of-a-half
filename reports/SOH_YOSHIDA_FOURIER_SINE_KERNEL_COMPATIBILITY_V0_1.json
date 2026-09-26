@@ -1,0 +1,34 @@
+{
+  "schema": "SOH_YOSHIDA_FOURIER_SINE_KERNEL_COMPATIBILITY_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/montgomery-dyson-hard-car-binding-v0.1-20260926",
+  "parent": "research/SOH_C005_YOSHIDA_FOURIER_REBASE_V0_1.md",
+  "status": "EXACT_PROJECTOR_KERNEL__FORCED_SINE_KERNEL_COMPATIBILITY__ZETA_POINT_PROCESS_BINDING_OPEN",
+  "derivation_inputs": [
+    "existing Yoshida Fourier modes e_n^(a) on [-a,a]",
+    "orthogonal projector onto |n|<=N",
+    "unit-density unfolding",
+    "standard CAR/Slater lift only for the two-point determinant"
+  ],
+  "forbidden_inputs": [
+    "zeta zero list",
+    "GUE",
+    "Montgomery pair correlation",
+    "fitted sine kernel"
+  ],
+  "finite_kernel": "K_Na=(2a)^-1 sin(M*pi*(x-y)/(2a))/sin(pi*(x-y)/(2a)), M=2N+1",
+  "normalized_limit": "sin(pi*s)/(pi*s)",
+  "pair_limit": "1-[sin(pi*s)/(pi*s)]^2",
+  "local_validator": {
+    "status": "PASS",
+    "max_abs_pair_error_N512_on_s_minus3_to3": 3.1727519100854806e-7
+  },
+  "closes": [
+    "Hardy-vs-SOH projector basis mismatch at local normalized-kernel level"
+  ],
+  "remains_open": [
+    "SOH-MD001 zeta spectral occupancy -> filled-CAR Fourier projector"
+  ],
+  "canon_allowed": false
+}
