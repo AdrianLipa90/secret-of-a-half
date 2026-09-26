@@ -1,0 +1,29 @@
+{
+  "schema": "SOH_MONTGOMERY_DYSON_HARDY_CAR_BINDING_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/montgomery-dyson-hard-car-binding-v0.1-20260926",
+  "base_sha": "492dc2e31546f6fdce798801549d544d8cbda3b4",
+  "dependency": {
+    "repository": "AdrianLipa90/Infinities",
+    "branch": "formalize/hardy-car-sine-kernel-forced-prediction-v0.1-20260926",
+    "head": "7008a9121d878674a7190d0966faa727f9eacb55",
+    "claim": "INF-270",
+    "status": "DERIVED_IN_FRAMEWORK__FORCED_PREDICTION"
+  },
+  "split": {
+    "hardy_car_to_sine_kernel": "CLOSED_DERIVED_FORCED",
+    "zeta_to_hardy_car_projector": "OPEN_BINDING"
+  },
+  "new_gate": {
+    "id": "SOH-MD001",
+    "target": "derive zeta/Weil spectral process -> canonical consecutive-mode Hardy-CAR projector without Montgomery/GUE input"
+  },
+  "circular_inputs_forbidden": [
+    "Montgomery pair correlation",
+    "GUE universality",
+    "Odlyzko-fit-derived projector",
+    "sine kernel chosen as target"
+  ],
+  "canon_allowed": false
+}
