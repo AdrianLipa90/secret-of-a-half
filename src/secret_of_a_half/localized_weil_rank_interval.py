@@ -26,6 +26,7 @@ iv.dps = 80
 
 A = Fraction(69, 200)
 Y_POINTS = (Fraction(1, 20), Fraction(1, 4), Fraction(9, 20))
+Y_POINTS_4 = (Fraction(1, 20), Fraction(3, 20), Fraction(3, 10), Fraction(9, 20))
 
 
 def _q(x: Fraction | int):
@@ -198,6 +199,49 @@ def certified_rank_witness():
         "prime_free": True,
         "determinant_interval": iv.nstr(det, 60),
         "rank_lower_bound": 3,
+        "tail_terms": 60,
+        "interval_backend": "mpmath.iv outward-rounded mpi arithmetic",
+    }
+
+
+def determinant_leibniz(M):
+    """Validated determinant for a small interval matrix."""
+    from itertools import permutations
+
+    n = len(M)
+    if any(len(row) != n for row in M):
+        raise ValueError("square matrix required")
+
+    def sign(p):
+        inversions = 0
+        for i in range(n):
+            for j in range(i + 1, n):
+                if p[i] > p[j]:
+                    inversions += 1
+        return -1 if inversions % 2 else 1
+
+    out = iv.mpf(0)
+    for p in permutations(range(n)):
+        term = iv.mpf(1)
+        for i, j in enumerate(p):
+            term *= M[i][j]
+        out += sign(p) * term
+    return out
+
+
+def certified_rank4_witness():
+    M = displacement_matrix(points=Y_POINTS_4)
+    det = determinant_leibniz(M)
+    if not (det > 0):
+        raise AssertionError(
+            f"rank-4 determinant interval does not exclude zero: {det}"
+        )
+    return {
+        "a": "69/200",
+        "points": ["i/20", "3i/20", "3i/10", "9i/20"],
+        "prime_free": True,
+        "determinant_interval": iv.nstr(det, 70),
+        "rank": 4,
         "tail_terms": 60,
         "interval_backend": "mpmath.iv outward-rounded mpi arithmetic",
     }
