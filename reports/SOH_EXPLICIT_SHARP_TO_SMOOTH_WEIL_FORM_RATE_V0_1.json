@@ -28,5 +28,10 @@
   },
   "rh_used": false,
   "zero_list_used": false,
-  "canon_allowed": false
+  "canon_allowed": false,
+  "local_validator": {
+    "status": "PASS",
+    "cases": 45,
+    "note": "Regression checks explicit majorant asymptotic order; analytic inequalities carry proof."
+  }
 }
