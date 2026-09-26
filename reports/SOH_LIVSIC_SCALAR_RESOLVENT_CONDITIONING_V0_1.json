@@ -1,0 +1,21 @@
+{
+  "schema": "SOH_LIVSIC_SCALAR_RESOLVENT_CONDITIONING_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_RESOLVENT_CERTIFICATE__NORM_RESOLVENT_OVERKILL__DIRECT_RATIO_TARGET",
+  "exact_results": {
+    "inverse_bound": "||T^-1-Ttilde^-1|| <= epsilon/[m(m-epsilon)]",
+    "eval_norm": "||e_iy||^2=sinh(2ay)/y",
+    "deficiency_norm": "||e_+-||^2=sinh(2a)",
+    "conditioning": "unnormalized scalar prefactor grows Theta_y(exp(a(y+1)))",
+    "ratio_bound": "|Btilde/Atilde-B/A| <= eta_B/(d-eta_A)+|B|eta_A/[d(d-eta_A)]"
+  },
+  "gates": {
+    "LIV-MD1": "OPEN_ADMISSIBLE_SHIFT_SCHEDULE",
+    "LIV-MD2": "OPEN_DIRECT_NORMALIZED_PARITY_RATIO_CONVERGENCE"
+  },
+  "zero_list_used": false,
+  "rh_used": false,
+  "canon_allowed": false
+}
