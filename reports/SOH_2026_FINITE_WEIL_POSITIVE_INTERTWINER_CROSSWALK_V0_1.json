@@ -1,0 +1,38 @@
+{
+  "schema": "SOH_2026_FINITE_WEIL_POSITIVE_INTERTWINER_PRIOR_ART_CROSSWALK_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXTERNAL_ALIGNMENT__MD004D_OPEN",
+  "external_results": [
+    {
+      "work": "A finite Guinand-Weil dictionary and archimedean tail order for the truncated Weil quadratic form",
+      "year": 2026,
+      "closes": [
+        "finite vector to admissible test function",
+        "exact finite quadratic value to zero sum",
+        "positive archimedean tail order"
+      ],
+      "does_not_close": [
+        "inverse dictionary",
+        "full Weil positivity",
+        "zero-list-free spectral intertwiner"
+      ]
+    },
+    {
+      "work": "Construction of Finite Hilbert--Polya Matrices from Weil's Explicit Formula",
+      "year": 2026,
+      "closes": [
+        "finite arithmetic pencil",
+        "exact reconstruction of supplied ordinates"
+      ],
+      "does_not_close": [
+        "derivation of ordinates without inputs",
+        "uniform relative prime-to-zero perturbation",
+        "full positive metric intertwiner"
+      ]
+    }
+  ],
+  "refined_gate": "SOH-MD004D relative positive-metric prime-to-zeta intertwiner",
+  "canon_allowed": false
+}
