@@ -5,9 +5,12 @@ from pathlib import Path
 
 from secret_of_a_half.phasenav_theta_bridge import (
     PhaseNavProgram,
+    car_contraction_violation,
+    car_pair_admissible,
     closure_defect,
     covariance_residual,
     native_closed,
+    normalized_pair_occupations,
     phase_state,
     theta_detector,
     zeta_involution,
@@ -75,3 +78,53 @@ def test_first_known_zero_is_small_for_low_height_profile() -> None:
     first_zero = 0.5 + 14.134725141734693j
     value = theta_detector(phase_state(first_zero, PROGRAM))
     assert abs(value) < 1e-8
+
+
+def test_native_theta_pair_occupations_are_reciprocal() -> None:
+    for sigma in (0.1, 0.25, 0.5, 0.73, 0.9):
+        state = phase_state(sigma + 11.0j, PROGRAM)
+        delta = sigma - 0.5
+        for node, (lam_plus, lam_minus) in zip(
+            PROGRAM.nodes,
+            normalized_pair_occupations(state),
+            strict=True,
+        ):
+            assert math.isclose(
+                lam_plus,
+                math.exp(delta * node.u),
+                rel_tol=3e-14,
+                abs_tol=3e-15,
+            )
+            assert math.isclose(
+                lam_minus,
+                math.exp(-delta * node.u),
+                rel_tol=3e-14,
+                abs_tol=3e-15,
+            )
+            assert math.isclose(
+                lam_plus * lam_minus,
+                1.0,
+                rel_tol=3e-14,
+                abs_tol=3e-15,
+            )
+
+
+def test_native_car_admissibility_is_half_axis_only() -> None:
+    assert car_pair_admissible(phase_state(0.5 + 14.0j, PROGRAM))
+    for sigma in (0.1, 0.25, 0.49, 0.51, 0.73, 0.9):
+        state = phase_state(sigma + 14.0j, PROGRAM)
+        assert not car_pair_admissible(state)
+        assert car_contraction_violation(state) > 0.0
+
+
+def test_car_violation_has_closed_form_from_largest_theta_node() -> None:
+    u_max = max(node.u for node in PROGRAM.nodes)
+    for sigma in (0.2, 0.4, 0.6, 0.8):
+        state = phase_state(sigma + 7.0j, PROGRAM)
+        expected = math.exp(abs(sigma - 0.5) * u_max) - 1.0
+        assert math.isclose(
+            car_contraction_violation(state),
+            expected,
+            rel_tol=3e-14,
+            abs_tol=3e-15,
+        )
