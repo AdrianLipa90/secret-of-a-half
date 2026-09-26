@@ -1,0 +1,35 @@
+{
+  "schema": "SOH_XI_LOG_DERIVATIVE_GENERALIZED_NEVANLINNA_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_ZERO_POLE_MAP__RH_IFF_N0__CONDITIONAL_NK_DISTINCT_OFF_AXIS_BOUND",
+  "definitions": {
+    "f": "xi(1/2-i z)",
+    "Q_xi": "-f'/f = i xi'/xi(1/2-i z)",
+    "zero_map": "rho=beta+i gamma -> z_rho=-gamma+i(beta-1/2)"
+  },
+  "exact_results": {
+    "side_map": "Re(rho)>1/2 iff z_rho in C+",
+    "local_pole": "zero multiplicity m gives Q_xi=-m/(z-z_rho)+O(1)",
+    "rh_criterion": "RH iff Q_xi belongs to N_0",
+    "conditional_index_bound": "Q_xi in N_kappa implies at most kappa distinct xi-zero locations with Re(rho)>1/2"
+  },
+  "firewall": [
+    "A multiplicity-m zero still gives a simple logarithmic-derivative pole; multiplicity is stored in the residue -m.",
+    "Therefore the generic N_kappa pole-count theorem is used only for distinct off-axis zero locations.",
+    "No claim that Q_xi belongs to N_kappa for finite kappa>0 is made.",
+    "RH iff N_0 is a reformulation, not a proof."
+  ],
+  "gates": {
+    "LIV-MD2c5N1": "CLOSED_ZERO_TO_POLE_MAP",
+    "LIV-MD2c5N2": "CLOSED_RH_IFF_N0_REFORMULATION",
+    "LIV-MD2c5N3": "CONDITIONAL_NK_DISTINCT_RIGHT_HALF_ZERO_BOUND",
+    "LIV-MD2c5N4": "OPEN_FINITE_PONTRYAGIN_TO_Q_XI_TRANSFER",
+    "LIV-MD2c5N5": "OPEN_INDEX_ZERO_ENDGAME_RH_EQUIVALENT"
+  },
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
