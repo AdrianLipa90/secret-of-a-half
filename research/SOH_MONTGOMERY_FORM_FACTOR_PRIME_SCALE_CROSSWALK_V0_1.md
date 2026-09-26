@@ -240,3 +240,60 @@ Therefore the current status is:
 \]
 
 with exact agreement in the overlapping domain, while the plateau and noncircular operator/occupancy binding remain unproved.
+
+
+## 9. Arithmetic averaged-tail status after Guth–Maynard 2026
+
+The On-Primes arithmetic side has now been refined beyond the generic
+"shifted von Mangoldt correlation open" label.
+
+Using:
+- the exact finite phase-bank/form-factor frequency map;
+- the exact Möbius--CRT decomposition of the shifted von Mangoldt correlation;
+- the exact Fejér-averaged low-divisor block;
+- Guth--Maynard's 2026 unconditional von-Mangoldt short-interval \(L^2\)
+  theorem,
+
+the Fejér-averaged high-divisor tail is closed in the range
+
+\[
+\boxed{
+X^{2/15+\varepsilon}
+\le
+H+1
+\le
+X^{0.99}
+}
+\]
+
+with the explicit low-divisor choice
+
+\[
+R=X^{1/4}.
+\]
+
+In that range,
+
+\[
+\boxed{
+\frac{\mathcal T_{X,H,R}}{X}\to0
+}
+\]
+
+without a fixed-shift Hardy--Littlewood asymptotic and without a twin-prime
+input.
+
+This is an arithmetic average/window theorem. It does not by itself identify
+the zeta zero process with the Hardy--CAR projector process.
+
+### Updated gate split
+
+- **SOH-MD001B4d — Fejér averaged arithmetic tail in the modern long-window range:** CLOSED FROM STANDARD GUTH--MAYNARD + EXACT ARPL/CRT REDUCTIONS.
+- **SOH-MD001B4e — below-\(2/15\) or exact smooth/logarithmic explicit-formula window transfer:** OPEN.
+- **SOH-MD001B4c / MD004D — zero-list-free positive zeta spectral/operator binding:** OPEN.
+
+The remaining zeta-specific obstruction is therefore not an undifferentiated
+prime-pair correlation problem. A substantial averaged arithmetic sector is
+already controlled unconditionally; the unresolved step is the exact
+test-function/operator transport into the positive zeta spectral
+representation.
