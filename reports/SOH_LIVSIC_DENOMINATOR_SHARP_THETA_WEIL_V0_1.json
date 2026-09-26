@@ -1,0 +1,21 @@
+{
+  "schema": "SOH_LIVSIC_DENOMINATOR_SHARP_THETA_WEIL_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_FINITE_SHARP_SYMMETRY__NUMERATOR_GATE_REMOVED__SCHUR_COMPATIBLE_RENORMALIZATION_OPEN",
+  "exact_results": {
+    "finite_sharp": "B_{a,lambda}(z)=A_{a,lambda}#(z)",
+    "finite_characteristic": "chi=-E#/E with E=(z+i)A",
+    "theta_self_dual": "f(z)=xi(1/2-iz), f#=f",
+    "target_denominator": "D=A_const*f*(r0+xi'/xi)=B_const*f+i*A_const*f'",
+    "target_numerator": "N=D#",
+    "first_difference": "negative-shift first-difference quotient preserves # exactly"
+  },
+  "removed_gate": "separate absolutely-convergent prime-side numerator evaluation",
+  "open_gate": "LIV-MD2c5R #_equivariant Schur/J-contractive renormalization",
+  "firewall": "Affine/free-term subtraction preserves # but not Hermite-Biehler/Schur class automatically.",
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
