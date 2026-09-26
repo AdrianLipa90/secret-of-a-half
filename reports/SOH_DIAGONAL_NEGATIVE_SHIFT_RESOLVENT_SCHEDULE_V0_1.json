@@ -1,0 +1,22 @@
+{
+  "schema": "SOH_DIAGONAL_NEGATIVE_SHIFT_RESOLVENT_SCHEDULE_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "JOINT_SCHEDULE_EXISTENCE_CLOSED__LOCAL_UNIFORM_ZERO_FREE_LIMIT__EFFECTIVE_RATE_OPEN",
+  "domain": "Im(z)>1/2 <=> Re(1/2-iz)>1",
+  "exact_results": {
+    "complex_piecewise_extension": "W(F_{1,-iz})=r0+xi'/xi(1/2-iz)",
+    "fixed_a_uniformity": "resolvent first correction converges uniformly on compact z-families in form space",
+    "large_a_uniformity": "normalized finite Weil cross form converges locally uniformly on Im(z)>1/2",
+    "diagonal_schedule": "there exist a_n->infinity and mu_n->infinity with local-uniform joint convergence"
+  },
+  "gates": {
+    "LIV-MD2c4a": "CLOSED_NONCONSTRUCTIVE_JOINT_SCHEDULE_EXISTENCE",
+    "LIV-MD2c4b": "OPEN_EFFECTIVE_COMPUTABLE_MU_OF_A_RATE",
+    "LIV-MD2c5": "OPEN_SCHUR_CHARACTERISTIC_COMPATIBILITY_OF_RENORMALIZED_CORRECTION"
+  },
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
