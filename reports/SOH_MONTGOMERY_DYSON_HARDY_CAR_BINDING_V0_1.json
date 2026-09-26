@@ -25,5 +25,20 @@
     "Odlyzko-fit-derived projector",
     "sine kernel chosen as target"
   ],
-  "canon_allowed": false
+  "canon_allowed": false,
+  "gate_split": {
+    "SOH-MD001A": {
+      "target": "restricted-support zeta/GUE correlation consistency",
+      "status": "EXTERNAL_STANDARD_PARTIAL_BINDING",
+      "proof_role": "VALIDATION_ONLY_NOT_RH_PROOF_INPUT"
+    },
+    "SOH-MD001B": {
+      "target": "full zero-list-free zeta local occupancy / quasi-free-CAR projector binding",
+      "status": "OPEN"
+    }
+  },
+  "external_references": [
+    "Montgomery 1973 pair correlation of zeros of zeta",
+    "Rudnick-Sarnak 1996 zeros of principal L-functions and random matrix theory"
+  ]
 }
