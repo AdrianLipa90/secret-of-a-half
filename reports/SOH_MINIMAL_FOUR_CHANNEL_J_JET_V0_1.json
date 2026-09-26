@@ -1,0 +1,24 @@
+{
+  "schema": "SOH_MINIMAL_FOUR_CHANNEL_J_JET_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_FIXED_SIGNATURE_JET__MINIMAL_FOUR_CHANNEL_NEAR_FREE_POINT__POTAPOV_TRANSFER_OPEN",
+  "exact_results": {
+    "original_frame": "E_matrix=[[E0,Et],[E0#,Et#]]",
+    "secant": "H_t=(E0-Et)/t",
+    "midpoint": "M_t=(E0+Et)/2",
+    "column_metric": "G_t=[[0,1],[1,-t]]",
+    "fixed_metric": "G_t=S_t F S_t* with S_t=[[1,0],[-t/2,1]], F=[[0,1],[1,0]]",
+    "fixed_signature": "Hadamard diagonalizes F to diag(1,-1); vectorized total signature is J_{2,2}",
+    "minimality": "certified rank-four first-correction sample forces at least four scalar channels near t=0"
+  },
+  "gates": {
+    "LIV-MD2c5C4c": "CLOSED_MINIMAL_FOUR_CHANNEL_JET_REALIZATION",
+    "LIV-MD2c5C4d": "OPEN_POTAPOV_J_CONTRACTIVE_DYNAMICAL_TRANSFER_AND_XI_LIMIT"
+  },
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
