@@ -1,0 +1,32 @@
+{
+  "schema": "SOH_EXPLICIT_SHARP_TO_SMOOTH_WEIL_FORM_RATE_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_EXPLICIT_FORM_RATE__FIXED_A_SHARP_RESOLVENT_EFFECTIVE__LARGE_A_RATE_OPEN",
+  "source": {
+    "work": "Masatoshi Suzuki, Weil's quadratic form via the screw function",
+    "version": "arXiv:2606.09096v3",
+    "source_cutoff_bounds": [
+      "|w_hat(z)| <= L1(w)",
+      "|w_hat(z)| <= (endpoint values + ||w'||_1)/|z|"
+    ]
+  },
+  "exact_results": {
+    "low_frequency": "|w_hat| <= 2 delta exp(|p|a)",
+    "high_frequency": "|w_hat| <= 2 exp(|p|a)(2+|p|a delta)/|z|",
+    "form_rate": "||sharp-smooth||_T^2 <= E_T(a,p,delta)=O_{a,p}(delta log(1/delta)) with displayed constants",
+    "resolvent_contraction": "0<=mu T(T+mu)^-1<=T",
+    "fixed_a_effective": "delta then mu can be chosen explicitly for any requested tolerance"
+  },
+  "gates": {
+    "LIV-MD2c4b1": "CLOSED_EFFECTIVE_OPERATOR_DOMAIN_RATE",
+    "LIV-MD2c4b2": "CLOSED_EXPLICIT_SHARP_TO_SMOOTH_FORM_RATE",
+    "LIV-MD2c4b2R": "CLOSED_EFFECTIVE_FIXED_A_SHARP_RESOLVENT_RATE",
+    "LIV-MD2c4b3": "OPEN_EXPLICIT_LARGE_A_ASSEMBLY",
+    "LIV-MD2c5": "OPEN_FULL_SCHUR_NUMERATOR_COMPATIBILITY"
+  },
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
