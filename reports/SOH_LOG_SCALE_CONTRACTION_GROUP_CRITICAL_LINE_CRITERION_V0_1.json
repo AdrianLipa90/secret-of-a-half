@@ -1,0 +1,20 @@
+{
+  "schema": "SOH_LOG_SCALE_CONTRACTION_GROUP_CRITICAL_LINE_CRITERION_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/montgomery-dyson-hard-car-binding-v0.1-20260926",
+  "status": "EXACT_OPERATOR_CRITERION__ZETA_SCALE_GROUP_CONSTRUCTION_OPEN",
+  "exact_results": {
+    "two_sided_contraction_group": "unitary",
+    "reflection_plus_forward_contraction": "implies two-sided contraction and unitarity",
+    "zeta_character": "exp(a(rho-1/2)) unitary => Re(rho)=1/2",
+    "generator": "G eigenvalue rho-1/2 and G skew-adjoint => Re(rho)=1/2"
+  },
+  "gates": {
+    "SOH-MD003A": "CLOSED_EXACT_UNITARY_GROUP_IMPLICATION",
+    "SOH-MD003B": "CLOSED_EXACT_REFLECTION_CONTRACTION_IMPLICATION",
+    "SOH-MD003C": "OPEN_ZERO_LIST_FREE_SCALE_GROUP_CONSTRUCTION"
+  },
+  "existing_compatibility": "SOH-L028 has arithmetic support at +/- log n, but does not itself construct the required group/intertwiner.",
+  "canon_allowed": false
+}
