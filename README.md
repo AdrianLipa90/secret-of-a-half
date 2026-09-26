@@ -270,3 +270,14 @@ The existing C005 Yoshida Fourier rebase has now also been audited at the projec
 
 
 The Montgomery–Dyson gate is now further reduced. Projector geometry, the forced ramp/plateau, and the prime-power frequency coordinate \(\tau_{p^m}=m\log p/\log(T/2\pi)\) are all closed in their declared mathematical sectors. The remaining substantive gate is **SOH-MD001B4**: derive the full local zeta pair process / smoothed form factor from the prime/Weil side without importing the target GUE statistics. Fixed-\(q\) Landau asymptotics are explicitly insufficient because they collapse to \(\tau=0\).
+
+
+The zeta/CAR frontier is now sharpened further by an exact prime-scale amplitude criterion. For \(q>1\),
+
+\[
+q^{\rho-1/2}
+=
+q^{\beta-1/2}e^{i\gamma\log q}.
+\]
+
+Thus unit modulus is exactly \(\beta=1/2\). If these normalized squared amplitudes \(q^{2\beta-1}\) are canonically realized as CAR occupation eigenvalues, the fermionic contraction bound plus zeta reflection already forces the critical line; a pure Slater projector forces it even more directly. The implication is exact, while the zero-list-free zeta-to-CAR operator construction remains OPEN as SOH-MD002C.
