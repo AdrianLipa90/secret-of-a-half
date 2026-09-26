@@ -1,0 +1,22 @@
+{
+  "schema": "SOH_DE_BRANGES_PONTRYAGIN_COMPLEMENT_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_DE_BRANGES_KERNEL_IDENTITY__PONTRYAGIN_COMPLEMENT_CONSTRUCTED__SCALAR_TRANSFER_OPEN",
+  "exact_results": {
+    "normalized_kernel": "K_t=[E_t E_t* - E_t# E_t#*]/[2i(wbar-z)]=<e_w,(I+tA)^-1 e_z>",
+    "complement": "K_0-K_t=<e_w,tA(I+tA)^-1 e_z>",
+    "negative_squares": "index(K_0-K_t)=n_-(A_a)=kappa_a",
+    "positive_case": "K_0-K_t>=0 iff A_a>=0"
+  },
+  "external_framework": "de Branges RKHS; reproducing-kernel Pontryagin spaces; Krein-Langer generalized Schur factorization",
+  "gates": {
+    "LIV-MD2c5P1": "CLOSED_CANONICAL_PONTRYAGIN_COMPLEMENT",
+    "LIV-MD2c5P2": "OPEN_EXPLICIT_SCALAR_OR_J_CONTRACTIVE_TRANSFER",
+    "LIV-MD2c5P3": "OPEN_DEFECT_ESCAPE_IN_LIMIT"
+  },
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
