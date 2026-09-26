@@ -1,0 +1,21 @@
+{
+  "schema": "SOH_RELATIVE_METRIC_PENCIL_STABILITY_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_FINITE_PERTURBATION_CERTIFICATE",
+  "theorem": {
+    "delta_G": "||G0^-1/2 (G-G0) G0^-1/2|| < 1",
+    "epsilon_K": "||G0^-1/2 (K-K0) G0^-1/2||",
+    "spectral_bound": "|lambda_j(K,G)-lambda_j(K0,G0)| <= [epsilon_K+delta_G ||G0^-1/2 K0 G0^-1/2||]/(1-delta_G)"
+  },
+  "gate_role": "MD004D finite relative positive-metric certificate",
+  "proof_status": "EXACT_LINEAR_ALGEBRA",
+  "zero_list_required": false,
+  "local_validator": {
+    "status": "PASS",
+    "cases": 1000,
+    "max_observed_to_bound_ratio": 0.9606768134286625
+  },
+  "canon_allowed": false
+}
