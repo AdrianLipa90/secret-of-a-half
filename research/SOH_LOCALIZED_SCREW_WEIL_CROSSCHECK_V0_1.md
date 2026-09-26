@@ -228,3 +228,112 @@ This is not:
 
 It is a high-precision independent normalization test with a \(10^{-21}\)
 residual.
+
+
+## 9. Three-mode integration-by-parts upgrade
+
+The screw-side integral can be accelerated without changing the source object.
+
+For the normalized Dirichlet mode \(\phi_n\), let
+
+\[
+k_n=\frac{n\pi}{2a}
+\]
+
+and define
+
+\[
+F_n(t)
+=
+1+\frac{t-2a}{2a}\cos(k_nt)
+-\frac{\sin(k_nt)}{2ak_n}.
+\]
+
+Then
+
+\[
+F_n''(t)=C_n(t),
+\]
+
+with boundary data
+
+\[
+F_n(0)=F_n'(0)=0,
+\qquad
+F_n(2a)=1,
+\qquad
+F_n'(2a)=0.
+\]
+
+In the prime-free window,
+
+\[
+g''(t)
+=
+-2\cosh(t/2)
++
+\frac{e^{-t/2}}{1-e^{-2t}}
+\qquad(t>0).
+\]
+
+Two integrations by parts give
+
+\[
+\boxed{
+Q_{\rm screw}(\phi_n)
+=
+2\left[
+-g'(2a)
++
+\int_0^{2a}
+g''(t)F_n(t)\,dt
+\right].
+}
+\]
+
+Near zero,
+
+\[
+g''(t)\sim\frac1{2t},
+\qquad
+F_n(t)\sim\frac{k_n^2t^2}{2},
+\]
+
+so the product is regular and tends to zero.
+
+At \(a=0.345\), the independent screw and explicit-Weil lanes agree for the
+first three modes:
+
+\[
+\boxed{
+Q_1
+=
+0.00262569081058866498516318025485,
+}
+\]
+
+\[
+\boxed{
+Q_2
+=
+0.157045650889994298960677934719,
+}
+\]
+
+\[
+\boxed{
+Q_3
+=
+0.700976786436366215066158696726.
+}
+\]
+
+The maximum cross-lane discrepancy in the high-precision regression is below
+
+\[
+10^{-28}.
+\]
+
+This remains numerical rather than interval-certified, but it upgrades the
+single-mode normalization smoke test to a three-mode independent modal
+cross-check.
