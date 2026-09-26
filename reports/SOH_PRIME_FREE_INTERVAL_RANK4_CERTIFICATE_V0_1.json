@@ -1,0 +1,42 @@
+{
+  "schema": "SOH_PRIME_FREE_INTERVAL_RANK4_CERTIFICATE_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "CERTIFIED_RANK4__SCALAR_COLLAPSE_CLOSED_NEGATIVELY__MATRIX_J_TRANSFER_REQUIRED",
+  "parameters": {
+    "a": "69/200",
+    "prime_free_condition": "2a<log(2)",
+    "points": [
+      "i/20",
+      "3i/20",
+      "3i/10",
+      "9i/20"
+    ]
+  },
+  "interval_method": {
+    "backend": "mpmath.iv outward-rounded interval arithmetic",
+    "digamma": "Gauss finite formula at rational arguments",
+    "regularization_tail_terms": 60,
+    "numerical_quadrature": false,
+    "prime_terms": 0
+  },
+  "determinant_interval": [
+    "7.9960256384132330750131598189604317774020397658504e-17",
+    "7.9960256384132330750141020269547584672851695359059e-17"
+  ],
+  "exact_conclusions": [
+    "first-correction displacement rank is exactly 4 on the certified sample",
+    "scalar generalized-Schur/de Branges rank collapse is impossible for this localized first-correction object",
+    "actual K0-Kt sampled displacement has rank 4 for all sufficiently small positive admissible t by continuity"
+  ],
+  "gates": {
+    "LIV-MD2c5C4a": "CLOSED_NEGATIVELY_CERTIFIED_RANK4",
+    "LIV-MD2c5C4b": "MATRIX_J_CONTRACTIVE_TRANSFER_REQUIRED"
+  },
+  "effective_small_t_threshold": false,
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
