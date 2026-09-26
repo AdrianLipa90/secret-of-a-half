@@ -19,7 +19,10 @@
   "zero_list_used": false,
   "rh_used": false,
   "local_validator": {
-    "status": "PASS"
+    "status": "PASS",
+    "cases": 16,
+    "max_error_to_bound_ratio": 0.3249746944512982,
+    "note": "Numerical regression only; tail inequality is analytic."
   },
   "canon_allowed": false
 }
