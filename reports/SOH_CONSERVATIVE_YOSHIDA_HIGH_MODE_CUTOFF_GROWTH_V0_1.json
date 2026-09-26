@@ -1,0 +1,38 @@
+{
+  "schema": "SOH_CONSERVATIVE_YOSHIDA_HIGH_MODE_CUTOFF_GROWTH_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_ASYMPTOTIC_CURRENT_SUFFICIENT_CERTIFICATE__MINIMAL_CUTOFF_OPEN",
+  "schedule": {
+    "a0": "a",
+    "a1": "a+1/a",
+    "target_mu": "fixed positive constant",
+    "C_margin": "fixed positive constant",
+    "contour_c": 2
+  },
+  "exact_asymptotics": {
+    "C1": "5/6",
+    "C2": "~ exp(4a)/(4a)",
+    "p_C1C2": "~ (5/24) exp(4a)/a",
+    "chosen_C": "~ (5/8) exp(4a)/a",
+    "log_t0": "C+O(1)",
+    "log_N": "~ (15/8) exp(4a)/a",
+    "log_log_N": "4a-log(a)+log(15/8)+o(1)",
+    "N": "exp[(15/8+o(1)) exp(4a)/a]"
+  },
+  "exact_index_consequence": "If the certified high tail is strictly positive for A_a, then kappa_a<=2*N_cert(a)+1.",
+  "firewall": [
+    "N_cert is sufficient, not proved minimal",
+    "high-tail positivity bounds negative index but does not imply literal low-mode support of negative eigenvectors",
+    "double-exponential growth reflects conservative certificate choices"
+  ],
+  "optimization_gates": [
+    "YHC-OPT1 general contour c",
+    "YHC-OPT2 certified direct inversion of gamma lower envelope",
+    "YHC-OPT3 sharper sufficient/minimal cutoff separation"
+  ],
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
