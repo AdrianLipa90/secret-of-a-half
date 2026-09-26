@@ -1,0 +1,26 @@
+{
+  "schema": "SOH_SCALARIZATION_RANK_BARRIER_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_RANK_NECESSITY__AUTOMATIC_SCALARIZATION_NO_GO__ACTUAL_SUZUKI_RANK_OPEN",
+  "exact_results": {
+    "scalar_schur_rank": "After multiplying by the Cauchy denominator, a scalar generalized-Schur kernel has feature rank <=2.",
+    "scalar_de_branges_rank": "A scalar de Branges numerator has feature rank <=2.",
+    "complement_channels": "The exact K0-Kt displacement uses E0,E0#,Et,Et# with J=diag(1,-1,-1,1).",
+    "necessary_test": "Scalarization implies every sampled displacement matrix has rank <=2, equivalently all 3x3 minors vanish."
+  },
+  "firewall": [
+    "Finite negative-square index controls inertia, not displacement rank.",
+    "A numerical rank-2 sample is not a proof of global scalar collapse.",
+    "A certified nonzero 3x3 displacement minor is a valid scalarization rejection."
+  ],
+  "gates": {
+    "LIV-MD2c5C4a": "OPEN_SPECIAL_SUZUKI_RANK_COLLAPSE",
+    "LIV-MD2c5C4b": "OPEN_MATRIX_OR_J_CONTRACTIVE_TRANSFER_IF_RANK_GT_2"
+  },
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
