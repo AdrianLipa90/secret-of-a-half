@@ -1,0 +1,46 @@
+{
+  "schema": "SOH_LOCALIZED_WEIL_RANK3_INTERVAL_CERTIFICATE_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "MACHINE_INTERVAL_CERTIFIED_RANK3__SCALAR_C4A_CLOSED_NEGATIVE__MATRIX_J_ROUTE_FORCED",
+  "sample": {
+    "a": "0.6",
+    "points": [
+      "0.2+0.7i",
+      "-0.6+0.9i",
+      "1.1+0.5i"
+    ]
+  },
+  "certificate_K500": {
+    "real_det_interval": [
+      0.001023452286950197,
+      0.0010460214830344539
+    ],
+    "imag_det_interval": [
+      -0.00001213168162023273,
+      0.000012131693091063315
+    ],
+    "zero_excluded": true
+  },
+  "independent_checks": {
+    "K300_real_interval": [
+      0.001003345742796944,
+      0.0010661293968810101
+    ],
+    "K1000_real_interval": [
+      0.0010319187176398247,
+      0.0010375548733737893
+    ]
+  },
+  "theorem_consequence": "A scalar generalized-Schur realization would require displacement rank <=2; the certified sample has rank 3.",
+  "gates": {
+    "LIV-MD2c5C4a": "CLOSED_NEGATIVE_INTERVAL_CERTIFIED",
+    "LIV-MD2c5C4b": "FORCED_OPEN_MATRIX_OR_J_CONTRACTIVE_TRANSFER"
+  },
+  "trust_boundary": "Machine-assisted interval proof using mpmath.iv; not proof-assistant verified.",
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
