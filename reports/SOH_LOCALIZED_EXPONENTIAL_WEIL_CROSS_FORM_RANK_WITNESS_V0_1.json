@@ -1,0 +1,43 @@
+{
+  "schema": "SOH_LOCALIZED_EXPONENTIAL_WEIL_CROSS_FORM_RANK_WITNESS_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_CROSS_CONVOLUTION__NUMERICAL_RANK3_WITNESS__INTERVAL_CERTIFICATE_OPEN",
+  "sample_points": [
+    "0.2+0.7i",
+    "-0.6+0.9i",
+    "1.1+0.5i"
+  ],
+  "diagnostics": {
+    "a_0_6": {
+      "determinant": 0.00103473679061,
+      "singular_values": [
+        1.19336408,
+        0.08056982,
+        0.01076179
+      ]
+    },
+    "a_1_0": {
+      "determinant": 0.0007395531492,
+      "singular_values": [
+        2.1293444,
+        0.207125322,
+        0.00167683482
+      ]
+    },
+    "hermitian_residual_scale": "~1e-60"
+  },
+  "interpretation": {
+    "numerical": "strong rank-3 witness; scalar rank collapse numerically fails",
+    "rigorous": "not yet a proof because compact quadrature is not interval certified"
+  },
+  "gates": {
+    "LIV-MD2c5C4a": "NUMERICAL_FAIL_WITNESS_INTERVAL_PROOF_OPEN",
+    "LIV-MD2c5C4b": "MATRIX_J_TRANSFER_NATURAL_IF_INTERVAL_RANK3_CERTIFIES"
+  },
+  "proof_of_rh": false,
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
