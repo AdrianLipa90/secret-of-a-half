@@ -3,7 +3,7 @@
   "date": "2026-09-26",
   "repository": "AdrianLipa90/secret-of-a-half",
   "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
-  "status": "NUMERICAL_SOURCE_NORMALIZATION_CROSSCHECK_PASS",
+  "status": "THREE_MODE_NUMERICAL_SOURCE_NORMALIZATION_CROSSCHECK_PASS",
   "sample": {
     "a": "0.345",
     "mode": 1,
@@ -26,5 +26,12 @@
   "proof_of_rh": false,
   "rh_used": false,
   "zero_list_used": false,
-  "canon_allowed": false
+  "canon_allowed": false,
+  "modes": {
+    "1": "0.00262569081058866498516318025485",
+    "2": "0.157045650889994298960677934719",
+    "3": "0.700976786436366215066158696726"
+  },
+  "max_cross_lane_error": "<1e-28",
+  "method_upgrade": "two integrations by parts; prime-free g'' formula; endpoint limit handled analytically"
 }
