@@ -27,5 +27,10 @@
   "proof_of_rh": false,
   "rh_used": false,
   "zero_list_used": false,
-  "canon_allowed": false
+  "canon_allowed": false,
+  "provenance": {
+    "classical_criterion": "RH iff Re[xi'/xi](s)>0 on Re(s)>1/2 is classical (Hinkkanen; highlighted by Lagarias 1999).",
+    "coordinate_rewrite": "With s=1/2-i z, Im Q_xi(z)=Re[xi'/xi](s), so RH iff Q_xi in N_0 is the same classical criterion in Nevanlinna coordinates.",
+    "project_specific_layer": "The project-specific result is the Cayley/Pontryagin crosswalk from localized Suzuki/de Branges negative-square data to this classical target."
+  }
 }
