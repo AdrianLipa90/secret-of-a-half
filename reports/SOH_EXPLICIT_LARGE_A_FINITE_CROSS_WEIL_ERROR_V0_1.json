@@ -19,5 +19,12 @@
   "interval": "1<=y<=2, hence 3/2<=s<=5/2",
   "rh_used": false,
   "zero_list_used": false,
-  "canon_allowed": false
+  "canon_allowed": false,
+  "local_validator": {
+    "status": "PASS",
+    "cases": 505,
+    "uniform_bound_a8": 0.036677255051661806,
+    "uniform_bound_a16": 0.000023107222542355106,
+    "note": "Regression checks pointwise bound <= uniform envelope; analytic estimates carry proof."
+  }
 }
