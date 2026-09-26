@@ -1,0 +1,21 @@
+{
+  "schema": "SOH_LOCALIZED_WEIL_NEGATIVE_INDEX_MONOTONICITY_V0_1",
+  "date": "2026-09-26",
+  "repository": "AdrianLipa90/secret-of-a-half",
+  "branch": "formalize/screw-gns-bochner-md003-nogo-v0.1-20260926",
+  "status": "EXACT_NEGATIVE_INDEX_MONOTONICITY__DEFECT_MIGRATION_FRONTIER",
+  "exact_results": {
+    "nesting": "localized form domains embed by zero extension",
+    "monotonicity": "a1<a2 => n_-(A_a1)<=n_-(A_a2)",
+    "persistence": "if kappa_a0>0 then kappa_a>=1 for all a>=a0",
+    "first_correction": "Pontryagin complement inherits the same monotone index"
+  },
+  "gates": {
+    "LIV-MD2c5P3a": "CLOSED_INDEX_MONOTONICITY",
+    "LIV-MD2c5P3b": "OPEN_HIGH_MODE_CUTOFF_GROWTH",
+    "LIV-MD2c5P3c": "OPEN_COMPACT_DEFECT_OBSTRUCTION_OR_ESCAPE"
+  },
+  "rh_used": false,
+  "zero_list_used": false,
+  "canon_allowed": false
+}
